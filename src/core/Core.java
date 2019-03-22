@@ -1,7 +1,10 @@
 package core;
 
+import map.Tray;
+
 public class Core {
 	public static void main(String[] args) {
-		System.out.println("Bienvenu !");
+		Tray tray=new Tray(11, 11);
+		System.out.println(tray);
 	}
 }
