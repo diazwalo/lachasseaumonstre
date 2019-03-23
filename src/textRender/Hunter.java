@@ -1,6 +1,6 @@
 package textRender;
 
-public class Hunter {
+public class Hunter implements Entite {
 	private int posX;
 	private int posY;
 	
@@ -9,7 +9,7 @@ public class Hunter {
 		this.posY=posY;
 	}
 
-	public boolean posHunter(int posX, int posY) {
+	public boolean estSurCase(int posX, int posY) {
 		return this.posX==posX && this.posY==posY;
 	}
 	
@@ -27,6 +27,10 @@ public class Hunter {
 	
 	public void setPosY(int posY) {
 		this.posY=posY;
+	}
+	
+	public int[] position() {
+		return new int[] {posX ,posY};
 	}
 	
 	

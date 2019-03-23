@@ -1,6 +1,6 @@
 package textRender;
 
-public class Beast {
+public class Beast implements Entite{
 	private int posX;
 	private int posY;
 	
@@ -9,7 +9,7 @@ public class Beast {
 		this.posY=posY;
 	}
 	
-	public boolean posBeast(int posX, int posY) {
+	public boolean estSurCase(int posX, int posY) {
 		return this.posX==posX && this.posY==posY;
 	}
 
@@ -28,4 +28,9 @@ public class Beast {
 	public void setPosY(int posY) {
 		this.posY=posY;
 	}
+
+	public int[] position() {
+		return new int[] {posX ,posY};
+	}
+
 }

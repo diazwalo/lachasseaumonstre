@@ -39,8 +39,8 @@ public class Tray {
 		for (int x = 0; x < tab.length; x++) {
 			affichage+="\n|";
 			for (int y = 0; y < tab[x].length; y++) {
-				if(this.beast.posBeast(x, y)) affichage+=" B |";
-				else if(this.hunter.posHunter(x, y)) affichage+=" H |";
+				if(this.beast.estSurCase(x, y)) affichage+=" B |";
+				else if(this.hunter.estSurCase(x, y)) affichage+=" H |";
 				else if(this.tab[x][y].getCaseType().getCaseType()==1) affichage+="   |";
 				else if(this.tab[x][y].getCaseType().getCaseType()==2) affichage+=" 0 |";
 			}
