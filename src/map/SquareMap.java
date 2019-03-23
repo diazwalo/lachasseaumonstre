@@ -3,16 +3,15 @@ package map;
 import textRender.Beast;
 import textRender.Hunter;
 
-public class Tray {
+public class SquareMap implements Map {
 	private Case[][] tab;
 	private Hunter hunter;
 	private Beast beast;
 	
-	public Tray(int len, int wid) {
+	public SquareMap(int len, int wid) {
 		this.hunter=new Hunter(0, 0);
 		this.beast=new Beast(len-1, wid-1);
 		this.tab=new Case[len][wid];
-		this.generationMap();
 	}
 	
 	public void generationMap() {
