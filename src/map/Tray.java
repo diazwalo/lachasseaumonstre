@@ -12,9 +12,13 @@ public class Tray {
 		this.hunter=new Hunter(0, 0);
 		this.beast=new Beast(len-1, wid-1);
 		this.tab=new Case[len][wid];
-		for (int x = 0; x < tab.length; x++) {
-			for (int y = 0; y < tab[x].length; y++) {
-				boolean posBeast=beast.getPosX()==x && beast.getPosY()==y;
+		this.generationMap();
+	}
+	
+	public void generationMap() {
+		for (int x = 0; x < this.tab.length; x++) {
+			for (int y = 0; y < this.tab[x].length; y++) {
+				boolean posBeast=this.beast.getPosX()==x && this.beast.getPosY()==y;
 				CaseType caseType=CaseType.SOL;
 				if(x%3==2 && y%3==2) caseType=CaseType.OBSTACLE;
 				this.tab[x][y]=new Case(caseType, posBeast);

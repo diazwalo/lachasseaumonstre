@@ -1,6 +1,6 @@
 package textRender;
 
-public class Hunter implements Entite {
+public class Hunter implements Entity {
 	private int posX;
 	private int posY;
 	

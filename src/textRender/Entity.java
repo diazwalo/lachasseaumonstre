@@ -1,6 +1,6 @@
 package textRender;
 
-public interface Entite {
+public interface Entity {
 	public int[] position();
 	public int getPosY();
 	public int getPosX();

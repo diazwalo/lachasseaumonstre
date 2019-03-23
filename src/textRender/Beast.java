@@ -1,6 +1,6 @@
 package textRender;
 
-public class Beast implements Entite{
+public class Beast implements Entity{
 	private int posX;
 	private int posY;
 	
