@@ -69,7 +69,7 @@ public class SquareMap implements Map {
 	}
 	
 	/**
-	 * Defini (grace à aModifier un tableau de 4 booleans) s'il faut changer la Config
+	 * Definis (grace à aModifier un tableau de 4 booleans) s'il faut changer la Config
 	 * @param aModifier
 	 */
 	public void setConfig(boolean[] aModifier) {
