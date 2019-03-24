@@ -55,30 +55,34 @@ public class Beast implements Entity{
 	public int[] position() {
 		return new int[] {posX ,posY};
 	}
-	/*public Mouvement askMouvement() {
-		int hor = 0;
-		int vert = 0;
-		String input = sc.nextLine();
-		if(input != null && input.length()<3 && (input.charAt(0) == 'z' || input.charAt(0) == 'q' )) {
-			if(input.charAt(0) == 'z') {
-				vert++;
-			}else {
-				vert--;
-			}
-			if(input.length() == 2 && (input.charAt(1)=='q' || input.charAt(1)=='d')){
-				if(input.charAt(1) == 'q') {
-					hor--;
-				}else {
-					hor++;
-				}	
-			}else {
-				return null;
-			}
-			return new Mouvement(vert,hor);
-		}
-		return null;
-		}
-	*/
+	public Mouvement askMouvement() {
+        int hor = 0;
+        int vert = 0;
+        String input = sc.nextLine();
+        if(input != null && input.length()<3 && (input.charAt(0) == 'z' || input.charAt(0) == 'q' )) {
+            if(input.charAt(0) == 'z') {
+                vert++;
+            }else {
+                vert--;
+            }
+            if(input.length() == 2 && (input.charAt(1)=='q' || input.charAt(1)=='d')){
+                if(input.charAt(1) == 'q') {
+                    hor--;
+                }else {
+                    hor++;
+                }    
+            }else {
+                return null;
+            }
+            
+            for (Mouvement m : Mouvement.values()) {
+                if(m.getMvtX() == hor && m.getMvtY() == vert) {
+                    return Mouvement.valueOf(m.name());
+                }
+            }
+        }
+        return null;
+    }
 	/**
 	 * Renvoie un B
 	 */
