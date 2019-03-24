@@ -97,8 +97,7 @@ public class SquareMap implements Map {
 	}
 	
 	/**
-	 * Teste si le déplacement souhaité ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Chasseur 
-	 * @param beast
+	 * Teste si le déplacement souhaité pour Beast ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Hunter 
 	 * @param mvt
 	 * @return boolean valide
 	 */
@@ -109,8 +108,23 @@ public class SquareMap implements Map {
 		if(valide) {
 			valide=valide && tab[posBeastX][posBeastY].getCaseType().getCaseType()==1;
 			valide=valide && !hunter.estSurCase(posBeastX, posBeastY);
-		}
-		return valide;
+			valide=valide && tab[posBeastX][posBeastY].getBeastPas()==-1;
+		}return valide;
+	}
+	
+	/**
+	 * Teste si le déplacement souhaité pour Hunter ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Beast
+	 * @param mvt
+	 * @return boolean valide
+	 */
+	public boolean mvtValideHunter(Mouvement mvt) {
+		int posHunterX=beast.getPosX()+mvt.getMvtX();
+		int posHunterY=beast.getPosY()+mvt.getMvtY();
+		boolean valide=posHunterX>-1 && posHunterY>-1 && posHunterX<tab.length && posHunterY<tab[posHunterX].length;
+		if(valide) {
+			valide=valide && tab[posHunterX][posHunterY].getCaseType().getCaseType()==1;
+			valide=valide && !beast.estSurCase(posHunterX, posHunterY);
+		}return valide;
 	}
 	
 	/**
