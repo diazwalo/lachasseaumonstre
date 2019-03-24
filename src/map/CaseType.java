@@ -11,4 +11,9 @@ public enum CaseType {
 	public int getCaseType(){
 		return this.caseType;
 	}
+	
+	public String toString() {
+		if(caseType==1) return " ";
+		return "0";
+	}
 }

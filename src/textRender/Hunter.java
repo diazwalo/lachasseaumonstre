@@ -33,5 +33,8 @@ public class Hunter implements Entity {
 		return new int[] {posX ,posY};
 	}
 	
+	public String toString() {
+		return "H";
+	}
 	
 }

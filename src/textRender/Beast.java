@@ -32,5 +32,9 @@ public class Beast implements Entity{
 	public int[] position() {
 		return new int[] {posX ,posY};
 	}
+	
+	public String toString() {
+		return"B";
+	}
 
 }

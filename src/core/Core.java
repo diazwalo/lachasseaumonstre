@@ -21,5 +21,11 @@ public class Core {
 		map.generationMap();
 		
 		System.out.println(map);
+		
+		
+		//active la présence de piège et en met un dans le tableau à un endroit ou il y a du sol.
+		map.testModifBuff();
+		
+		System.out.println(map);
 	}
 }
