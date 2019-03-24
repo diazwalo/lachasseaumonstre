@@ -1,4 +1,5 @@
 package map;
+
 /**
  * Il s'agis de la classe qui defini l'etat de la case
  * comme etant un le sol sur lequel le personnage peut se deplacer ou
