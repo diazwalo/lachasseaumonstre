@@ -55,7 +55,7 @@ public class Beast implements Entity{
 	public int[] position() {
 		return new int[] {posX ,posY};
 	}
-	public Mouvement askMouvement() {
+	/*public Mouvement askMouvement() {
 		int hor = 0;
 		int vert = 0;
 		String input = sc.nextLine();
@@ -78,7 +78,7 @@ public class Beast implements Entity{
 		}
 		return null;
 		}
-	
+	*/
 	/**
 	 * Renvoie un B
 	 */
