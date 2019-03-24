@@ -5,7 +5,7 @@ import textRender.Beast;
 import textRender.Hunter;
 
 /**
- * Cette Class Définit le fonctionnement du plateau ou évolue les Entités tout en tenant compte de la Config
+ * Cette Class Définit le fonctionnement du plateau où évolue les Entités tout en tenant compte de la Config
  * @author diazw
  *
  */
