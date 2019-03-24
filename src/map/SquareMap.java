@@ -4,6 +4,12 @@ import config.Config;
 import textRender.Beast;
 import textRender.Hunter;
 
+/**
+ * Cette Class Définit le fonctionnement du plateau ou évolue les Entités tout en tenant compte de la Config
+ * @author diazw
+ *
+ */
+
 public class SquareMap implements Map {
 	private Case[][] tab;
 	private Hunter hunter;
