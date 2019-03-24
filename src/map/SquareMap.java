@@ -15,7 +15,7 @@ public class SquareMap implements Map {
 	private Hunter hunter;
 	private Beast beast;
 	private Config config;
-	
+
 	/**
 	 * Construit un tableau de longueur len et de largeur wid et set Beast, Hunter et la Config
 	 * @param len
@@ -94,6 +94,23 @@ public class SquareMap implements Map {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Teste si le déplacement souhaité ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Chasseur 
+	 * @param beast
+	 * @param mvt
+	 * @return boolean valide
+	 */
+	public boolean mvtValideBeast(Mouvement mvt) {
+		int posBeastX=beast.getPosX()+mvt.getMvtX();
+		int posBeastY=beast.getPosY()+mvt.getMvtY();
+		boolean valide=posBeastX>-1 && posBeastY>-1 && posBeastX<tab.length && posBeastY<tab[posBeastX].length;
+		if(valide) {
+			valide=valide && tab[posBeastX][posBeastY].getCaseType().getCaseType()==1;
+			valide=valide && !hunter.estSurCase(posBeastX, posBeastY);
+		}
+		return valide;
 	}
 	
 	/**
