@@ -5,7 +5,7 @@ public class Config {
 	private static boolean camouflage=false;
 	private static boolean ward=false;
 	private static boolean leurre=false;
-	
+
 	public static boolean[] getConfig() {
 		return new boolean[] {piege, camouflage, ward, leurre};
 	}
