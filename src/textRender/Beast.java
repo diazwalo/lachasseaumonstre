@@ -1,5 +1,9 @@
 package textRender;
-
+/**
+ * 
+ * @author Quentin Prognon
+ *
+ */
 public class Beast implements Entity{
 	private int posX;
 	private int posY;
@@ -8,31 +12,48 @@ public class Beast implements Entity{
 		this.posX=posX;
 		this.posY=posY;
 	}
-	
+/**
+ * Renvoie un boolean qui deternime si la bete est presente au coordonnées passer en paramètre,
+ */
 	public boolean estSurCase(int posX, int posY) {
 		return this.posX==posX && this.posY==posY;
 	}
-
+	/**
+	 * Renvoie la position en X de la Bete
+	 * @see textRender.Entity#getPosY()
+	 */
 	public int getPosX() {
 		return this.posX;
 	}
-	
+	/**
+	 * Renvoie la position en y de la Bete
+	 * @see textRender.Entity#getPosY()
+	 */
 	public int getPosY() {
 		return this.posY;
 	}
-	
+	/**
+	 * Edite la potion en X de la bete
+	 */
 	public void setPosX(int posX) {
 		this.posX=posX;
 	}
-	
+	/**
+	 *  Edite la potion en Y la bete
+	 */
 	public void setPosY(int posY) {
 		this.posY=posY;
 	}
-
+/**
+ * Renvois un tableau d'entier contenant les coordonées de la bete sous la forme (coord x , coord y)
+ */
 	public int[] position() {
 		return new int[] {posX ,posY};
 	}
 	
+	/**
+	 * Renvoie un B
+	 */
 	public String toString() {
 		return"B";
 	}
