@@ -1,6 +1,6 @@
 package textRender;
 /**
- * 
+ * Cette classe definit les caractéristique principale de la classe jouable Beast
  * @author Quentin Prognon
  *
  */
