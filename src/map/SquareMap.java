@@ -1,8 +1,8 @@
 package map;
 
 import config.Config;
-import textRender.Beast;
-import textRender.Hunter;
+import render.text.Beast;
+import render.text.Hunter;
 
 /**
  * Cette Class Définit le fonctionnement du plateau ou évolue les Entites tout en tenant compte de la Config

@@ -1,7 +1,6 @@
 package interaction;
 
 import java.util.Scanner;
-
 import map.Mouvment;
 
 public class Interaction {

@@ -1,7 +1,5 @@
 package map;
 
-import config.Config;
-
 /**
  * Definit le type de case (obstacle ou sol), un compteur pour
  * du nombre tours depuis le dernier passage de la bête, un boolean qui 
