@@ -1,6 +1,6 @@
 package map;
 
-public interface Map {
+public interface IMap {
 	public void generationMap();
 	public void testModifBuff();
 }

@@ -1,6 +1,6 @@
 package core;
 
-import map.Map;
+import map.IMap;
 import map.SquareMap;
 
 public class Core {
@@ -17,7 +17,7 @@ public class Core {
 		 * On la bougera plus tard
 		 */
 		
-		Map map = new SquareMap(11, 11);
+		IMap map = new SquareMap(11, 11);
 		map.generationMap();
 		
 		System.out.println(map);

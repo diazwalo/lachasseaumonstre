@@ -1,6 +1,6 @@
 package textRender;
 
-import map.Mouvement;
+import map.Mouvment;
 import java.util.Scanner;
 /**
  * Cette classe definit les caractéristique principale de la classe jouable Hunter
@@ -55,7 +55,7 @@ public class Hunter implements Entity {
 		return new int[] {posX ,posY};
 	}
 	
-	public Mouvement askMouvement() {
+	public Mouvment askMouvement() {
         int hor = 0;
         int vert = 0;
         String input = sch.nextLine();
@@ -75,9 +75,9 @@ public class Hunter implements Entity {
                 return null;
             }
             
-            for (Mouvement m : Mouvement.values()) {
+            for (Mouvment m : Mouvment.values()) {
                 if(m.getMvtX() == hor && m.getMvtY() == vert) {
-                    return Mouvement.valueOf(m.name());
+                    return Mouvment.valueOf(m.name());
                 }
             }
         }

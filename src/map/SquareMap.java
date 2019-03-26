@@ -10,7 +10,7 @@ import textRender.Hunter;
  *
  */
 
-public class SquareMap implements Map {
+public class SquareMap implements IMap {
 	private Case[][] tab;
 	private Hunter hunter;
 	private Beast beast;
@@ -101,7 +101,7 @@ public class SquareMap implements Map {
 	 * @param mvt
 	 * @return boolean valide
 	 */
-	public boolean mvtValideBeast(Mouvement mvt) {
+	public boolean mvtValideBeast(Mouvment mvt) {
 		int posBeastX=beast.getPosX()+mvt.getMvtX();
 		int posBeastY=beast.getPosY()+mvt.getMvtY();
 		boolean valide=posBeastX>-1 && posBeastY>-1 && posBeastX<tab.length && posBeastY<tab[posBeastX].length;
@@ -117,7 +117,7 @@ public class SquareMap implements Map {
 	 * @param mvt
 	 * @return boolean valide
 	 */
-	public boolean mvtValideHunter(Mouvement mvt) {
+	public boolean mvtValideHunter(Mouvment mvt) {
 		int posHunterX=beast.getPosX()+mvt.getMvtX();
 		int posHunterY=beast.getPosY()+mvt.getMvtY();
 		boolean valide=posHunterX>-1 && posHunterY>-1 && posHunterX<tab.length && posHunterY<tab[posHunterX].length;
