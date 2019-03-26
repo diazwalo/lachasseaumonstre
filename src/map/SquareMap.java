@@ -5,7 +5,7 @@ import textRender.Beast;
 import textRender.Hunter;
 
 /**
- * Cette Class Définit le fonctionnement du plateau où évolue les Entités tout en tenant compte de la Config
+ * Cette Class Définit le fonctionnement du plateau ou évolue les Entites tout en tenant compte de la Config
  * @author diazw
  *
  */
@@ -34,7 +34,7 @@ public class SquareMap implements IMap {
 	public void generationMap() {
 		for (int x = 0; x < this.tab.length; x++) {
 			for (int y = 0; y < this.tab[x].length; y++) {
-				boolean posBeast=this.beast.getPosX()==x && this.beast.getPosY()==y;
+				boolean posBeast=this.beast.isPosEnt(x, y);
 				CaseType caseType=CaseType.SOL;
 				if(x%3==2 && y%3==2) caseType=CaseType.OBSTACLE;
 				this.tab[x][y]=new Case(caseType, posBeast);
@@ -47,7 +47,7 @@ public class SquareMap implements IMap {
 	 * @return tab
 	 */
 	public Case[][] getTab() {
-		return tab;
+		return this.tab;
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class SquareMap implements IMap {
 	 * @return hunter
 	 */
 	public Hunter getHunter() {
-		return hunter;
+		return this.hunter;
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class SquareMap implements IMap {
 	 * @return beast
 	 */
 	public Beast getBeast() {
-		return beast;
+		return this.beast;
 	}
 	
 	/**
@@ -79,7 +79,7 @@ public class SquareMap implements IMap {
 	 * @param aModifier
 	 */
 	public void setConfig(boolean[] aModifier) {
-		config.setConfig(aModifier);
+		this.config.setConfig(aModifier);
 	}
 	
 	/**
@@ -89,7 +89,7 @@ public class SquareMap implements IMap {
 		for (int i = 0; i < tab.length; i++) {
 			for (int j = 0; j < tab.length; j++) {
 				boolean obstacle=tab[i][j].getCaseType()==CaseType.OBSTACLE;
-				if(i==(this.tab.length/2)+1 && j==this.tab[i].length/2 && !this.beast.estSurCase(i, j) && !this.hunter.estSurCase(i, j) && !obstacle) {
+				if(i==(this.tab.length/2)+1 && j==this.tab[i].length/2 && !this.beast.isPosEnt(i, j) && !this.hunter.isPosEnt(i, j) && !obstacle) {
 					this.tab[i][j].setBuff(new boolean[] {true, false, false, false});
 				}
 			}
@@ -102,12 +102,12 @@ public class SquareMap implements IMap {
 	 * @return boolean valide
 	 */
 	public boolean mvtValideBeast(Mouvment mvt) {
-		int posBeastX=beast.getPosX()+mvt.getMvtX();
-		int posBeastY=beast.getPosY()+mvt.getMvtY();
+		int posBeastX=this.beast.getPos().getPosX()+mvt.getMvtX();
+		int posBeastY=this.beast.getPos().getPosY()+mvt.getMvtY();
 		boolean valide=posBeastX>-1 && posBeastY>-1 && posBeastX<tab.length && posBeastY<tab[posBeastX].length;
 		if(valide) {
 			valide=valide && tab[posBeastX][posBeastY].getCaseType().getCaseType()==1;
-			valide=valide && !hunter.estSurCase(posBeastX, posBeastY);
+			valide=valide && !hunter.isPosEnt(posBeastX, posBeastY);
 			valide=valide && tab[posBeastX][posBeastY].getBeastPas()==-1;
 		}return valide;
 	}
@@ -118,12 +118,12 @@ public class SquareMap implements IMap {
 	 * @return boolean valide
 	 */
 	public boolean mvtValideHunter(Mouvment mvt) {
-		int posHunterX=beast.getPosX()+mvt.getMvtX();
-		int posHunterY=beast.getPosY()+mvt.getMvtY();
-		boolean valide=posHunterX>-1 && posHunterY>-1 && posHunterX<tab.length && posHunterY<tab[posHunterX].length;
+		int posHunterX=this.beast.getPos().getPosX()+mvt.getMvtX();
+		int posHunterY=this.beast.getPos().getPosY()+mvt.getMvtY();
+		boolean valide=posHunterX>-1 && posHunterY>-1 && posHunterX<this.tab.length && posHunterY<this.tab[posHunterX].length;
 		if(valide) {
-			valide=valide && tab[posHunterX][posHunterY].getCaseType().getCaseType()==1;
-			valide=valide && !beast.estSurCase(posHunterX, posHunterY);
+			valide=valide && this.tab[posHunterX][posHunterY].getCaseType().getCaseType()==1;
+			valide=valide && !this.beast.isPosEnt(posHunterX, posHunterY);
 		}return valide;
 	}
 	
@@ -132,12 +132,12 @@ public class SquareMap implements IMap {
 	 */
 	public String toString() {
 		String affichage="";
-		for (int x = 0; x < tab.length; x++) {
+		for (int x = 0; x < this.tab.length; x++) {
 			affichage+="\n|";
-			for (int y = 0; y < tab[x].length; y++) {
-				if(this.beast.estSurCase(x, y)) affichage+=" "+this.beast.toString()+" |";
-				else if(this.hunter.estSurCase(x, y)) affichage+=" "+this.hunter.toString()+" |";
-				else affichage+=" "+tab[x][y].toString()+" |";
+			for (int y = 0; y < this.tab[x].length; y++) {
+				if(this.beast.isPosEnt(x, y)) affichage+=" "+this.beast.toString()+" |";
+				else if(this.hunter.isPosEnt(x, y)) affichage+=" "+this.hunter.toString()+" |";
+				else affichage+=" "+this.tab[x][y].toString()+" |";
 			}
 		}
 		return affichage;
