@@ -23,7 +23,7 @@ public class Core {
 		
 		System.out.println(map+"\n");
 		
-		Interaction.askMouvement();
+		System.out.println(Interaction.askMouvement());
 		
 		//active la présence de piège et en met un dans le tableau à un endroit ou il y a du sol.
 		map.testModifBuff();
