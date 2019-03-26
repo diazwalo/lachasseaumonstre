@@ -1,5 +1,6 @@
 package core;
 
+import interaction.Interaction;
 import map.IMap;
 import map.SquareMap;
 
@@ -20,12 +21,13 @@ public class Core {
 		IMap map = new SquareMap(11, 11);
 		map.generationMap();
 		
-		System.out.println(map);
+		System.out.println(map+"\n");
 		
+		Interaction.askMouvement();
 		
 		//active la présence de piège et en met un dans le tableau à un endroit ou il y a du sol.
 		map.testModifBuff();
 		
-		System.out.println(map);
+		System.out.println("\n"+map);
 	}
 }
