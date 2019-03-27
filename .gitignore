@@ -1,5 +1,7 @@
 .settings/
 build/
+.idea/
 
 .classpath
 .project
+lachasseaumonstre.iml
