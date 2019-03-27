@@ -1,5 +1,7 @@
 package render.text;
 
+import java.util.ArrayList;
+
 import map.Position;
 
 /**
@@ -10,6 +12,7 @@ import map.Position;
 
 public abstract class Entity {
 	private Position pos;
+	private ArrayList<Bonus> inventory = new ArrayList<>();
 	
 	public Entity(int posX, int posY) {
 		this.pos=new Position(posX, posY);
@@ -36,5 +39,15 @@ public abstract class Entity {
 	 */
 	public void setPos(Position pos) {
 		this.pos = pos;
+	}
+	
+	public void dispInventory() {
+		if(this.inventory.size() == 0) {
+			System.out.println("Il n'y aucun objet dans votre inventaire");
+		}else {
+			for(int i = 0 ; i< this.inventory.size() ; i++) {
+				System.out.println(this.inventory.get(i).getName());
+			}
+		}
 	}
 }
