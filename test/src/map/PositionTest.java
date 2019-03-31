@@ -2,13 +2,14 @@ package src.map;
 
 import static org.junit.Assert.*;
 
-import map.Position;
 import org.junit.Before;
 import org.junit.Test;
 
+import map.Position;
+
 public class PositionTest {
 
-    private Position position;
+	private Position position;
 
     @Before
     public void beforeTest()
@@ -27,5 +28,4 @@ public class PositionTest {
     {
         assertArrayEquals(this.position.position(), new int[]{1, 1});
     }
-
 }
