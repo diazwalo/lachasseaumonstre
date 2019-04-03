@@ -2,6 +2,7 @@ package render.text;
 
 import java.util.ArrayList;
 
+import map.Case;
 import map.Position;
 
 /**
@@ -32,7 +33,9 @@ public abstract class Entity {
 	public Position getPos() {
 		return this.pos;
 	}
-
+	
+	public abstract boolean deplacement(Case [][] tab);
+	
 	/**
 	 * Change la Position Courante
 	 * @param pos
