@@ -3,6 +3,7 @@ package render.text;
 import java.util.ArrayList;
 
 import map.Case;
+import map.Mouvment;
 import map.Position;
 
 /**
@@ -34,10 +35,15 @@ public abstract class Entity {
 		return this.pos;
 	}
 	
-	public abstract boolean deplacementSpe(Case [][] tab);
+	public abstract boolean verifDeplacementSpe(Case [][] tab, Mouvment mvt, Entity other);
 	
-	
-	
+	protected boolean verifDeplacement(Case [][] tab, Mouvment mvt ) {
+		int[] posModif=this.pos.getModifPosition(mvt.getMvt());
+		boolean valide=posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
+		if(valide) {
+			valide=valide && tab[posModif[0]][posModif[1]].getCaseType().getCaseType()==1;
+		}return valide;
+	}
 	
 	/**
 	 * Change la Position Courante

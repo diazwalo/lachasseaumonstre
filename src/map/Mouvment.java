@@ -25,7 +25,7 @@ public enum Mouvment {
 		return this.mvtY;
 	}
 	
-	public int[][]getMvt() {
-		return new int[][] {{this.mvtX}, {this.mvtY}};
+	public int[]getMvt() {
+		return new int[] {this.mvtX, this.mvtY};
 	}
 }

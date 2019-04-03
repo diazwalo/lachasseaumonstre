@@ -64,4 +64,8 @@ public class Position {
 		return new int[] {this.posX ,this.posY};
 	}
 
+	public int[] getModifPosition(int[] mvt) {
+		return new int[] {this.posX+mvt[0] ,this.posY+mvt[1]};
+	}
+	
 }
