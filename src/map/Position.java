@@ -61,10 +61,15 @@ public class Position {
 		this.posY=posY;
 	}
 	
+	public void movePosition(Mouvment mvt) {
+		int[] tabMvt=mvt.getMvt();
+		this.posX=this.posX+tabMvt[0];
+		this.posY=this.posY+tabMvt[1];
+	}
+	
 	/**
 	 * Renvoie un tableau d'entier contenant les deux composantes sous la forme(coord x , coord y)
 	 */
-	
 	public int[] position() {
 		return new int[] {this.posX ,this.posY};
 	}

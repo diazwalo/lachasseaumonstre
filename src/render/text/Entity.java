@@ -49,8 +49,10 @@ public abstract class Entity {
 	 * Change la Position Courante
 	 * @param pos
 	 */
-	public void setPos(Position pos) {
-		this.pos = pos;
+	public void setPos(Mouvment mvt) {
+		//this.pos = pos;
+		this.pos.movePosition(mvt);
+		
 	}
 	
 	public void dispInventory() {

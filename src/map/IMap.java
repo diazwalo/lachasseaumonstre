@@ -11,4 +11,6 @@ public interface IMap {
 	public Hunter getHunter();
 	public Case[][] getTab();
 	public Beast getBeast();
+	public void moveBeast(Mouvment mvt);
+	public void moveHunter(Mouvment mvt);
 }

@@ -86,47 +86,38 @@ public class SquareMap implements IMap {
 	 * Petit Test pour voir ou pop le Buff 'p'
 	 */
 	public void testModifBuff() {
-		for (int i = 0; i < tab.length; i++) {
+		for (int i = 0; i < tab.length; i++)
 			for (int j = 0; j < tab.length; j++) {
 				boolean obstacle=tab[i][j].getCaseType()==CaseType.OBSTACLE;
-				if(i==(this.tab.length/2)+1 && j==this.tab[i].length/2 && !this.beast.isPosEnt(i, j) && !this.hunter.isPosEnt(i, j) && !obstacle) {
+				if(i==(this.tab.length/2)+1 && j==this.tab[i].length/2 && !this.beast.isPosEnt(i, j) && !this.hunter.isPosEnt(i, j) && !obstacle)
 					this.tab[i][j].setBuff(new boolean[] {true, false, false, false});
-				}
 			}
-		}
 	}
-	
+
 	/**
 	 * Teste si le d�placement souhait� pour Beast ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Hunter 
 	 * @param mvt
 	 * @return boolean valide
 	 */
 	public boolean mvtValideBeast(Mouvment mvt) {
-		/*int posBeastX=this.beast.getPos().getPosX()+mvt.getMvtX();
-		int posBeastY=this.beast.getPos().getPosY()+mvt.getMvtY();
-		boolean valide=posBeastX>-1 && posBeastY>-1 && posBeastX<tab.length && posBeastY<tab[posBeastX].length;
-		if(valide) {
-			valide=valide && tab[posBeastX][posBeastY].getCaseType().getCaseType()==1;
-			valide=valide && !hunter.isPosEnt(posBeastX, posBeastY);
-			valide=valide && tab[posBeastX][posBeastY].getBeastPas()==-1;
-		}return valide;*/
 		return this.beast.verifDeplacementSpe(tab, mvt, hunter);
 	}
-	
+
 	/**
 	 * Teste si le d�placement souhait� pour Hunter ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Beast
 	 * @param mvt
 	 * @return boolean valide
 	 */
 	public boolean mvtValideHunter(Mouvment mvt) {
-		/*int posHunterX=this.beast.getPos().getPosX()+mvt.getMvtX();
-		int posHunterY=this.beast.getPos().getPosY()+mvt.getMvtY();
-		boolean valide=posHunterX>-1 && posHunterY>-1 && posHunterX<this.tab.length && posHunterY<this.tab[posHunterX].length;
-		if(valide) {
-			valide=valide && this.tab[posHunterX][posHunterY].getCaseType().getCaseType()==1;
-			valide=valide && !this.beast.isPosEnt(posHunterX, posHunterY);
-		}return valide;*/
 		return this.hunter.verifDeplacementSpe(tab, mvt, beast);
+	}
+
+	public void moveBeast(Mouvment mvt) {
+		if(this.mvtValideBeast(mvt)) this.beast.setPos(mvt);
+	}
+	
+	public void moveHunter(Mouvment mvt) {
+		if(this.mvtValideHunter(mvt)) this.hunter.setPos(mvt);
 	}
 	
 	/**
