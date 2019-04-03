@@ -46,11 +46,10 @@ public abstract class Entity {
 	}
 	
 	/**
-	 * Change la Position Courante
-	 * @param pos
+	 * deplace la position selon le Mouvment mvt
+	 * @param mvt
 	 */
 	public void setPos(Mouvment mvt) {
-		//this.pos = pos;
 		this.pos.movePosition(mvt);
 		
 	}
