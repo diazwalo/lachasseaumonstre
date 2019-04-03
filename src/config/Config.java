@@ -10,18 +10,18 @@ public class Config {
 	private static boolean piege=false;
 	private static boolean camouflage=false;
 	private static boolean ward=false;
-	private static boolean leurre=false;
+	private static boolean bait=false;
 
 	/**
 	 * Retourne la Config sous la forme d'un tableau de 4 boolean 
 	 * @return boolean[]config
 	 */
 	public static boolean[] getConfig() {
-		return new boolean[] {piege, camouflage, ward, leurre};
+		return new boolean[] {piege, camouflage, ward, bait};
 	}
 	
 	/**
-	 * Pour les Cases a "true" dans "aModifier", inverse les le boolean qui lui est associé dans Config
+	 * Pour les Cases a "true" dans "aModifier", inverse les le boolean qui lui est associï¿½ dans Config
 	 * @param aModifier
 	 */
 	public void setConfig(boolean[] aModifier) {
@@ -65,13 +65,13 @@ public class Config {
 	}
 	
 	public static boolean isLeurre() {
-		return leurre;
+		return bait;
 	}
 	
 	/**
 	 * Inverse les reglages de Leurre
 	 */
 	private static void setLeurre() {
-		Config.leurre = !leurre;
+		Config.bait = !bait;
 	}
 }
