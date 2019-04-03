@@ -1,7 +1,7 @@
 package render.text;
 
 /**
- * Cette classe definit les caractéristique principale de la classe jouable Beast
+ * Cette classe definit les caractï¿½ristique principale de la classe jouable Beast
  * @author Quentin Prognon
  *
  */
@@ -10,6 +10,7 @@ public class Beast extends Entity{
 		super(posX, posY);
 	}
 
+	
 	/**
 	 * Renvoie un B
 	 */

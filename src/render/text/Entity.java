@@ -34,7 +34,10 @@ public abstract class Entity {
 		return this.pos;
 	}
 	
-	public abstract boolean deplacement(Case [][] tab);
+	public abstract boolean deplacementSpe(Case [][] tab);
+	
+	
+	
 	
 	/**
 	 * Change la Position Courante
