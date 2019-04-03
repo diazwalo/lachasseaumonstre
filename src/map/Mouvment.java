@@ -28,7 +28,10 @@ public enum Mouvment {
 	public int[]getMvt() {
 		return new int[] {this.mvtX, this.mvtY};
 	}
-	
+	 /**
+	  * Renvoie un tableau contenant tous les deplacement de tous les mouvements possible.
+	  * @return
+	  */
 	public int[][] allMouv(){
 		int [][] tab = new int[8][2];
 		int index = 0;

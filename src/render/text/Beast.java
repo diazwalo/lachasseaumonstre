@@ -38,6 +38,12 @@ public class Beast extends Entity{
 		return valide;
 	}
 	
+	
+	/**
+	 * Revoie la liste des different Mouvment possible pour la bete.
+	 * @param tab
+	 * @return
+	 */
 	public ArrayList<Mouvment> PossibleMouv(Case[][] tab) {
 		ArrayList<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values()){
@@ -49,6 +55,12 @@ public class Beast extends Entity{
 	}
 	
 	
+	/**
+	 * Verfie si la bete à encore des coups jouable ou non.
+	 * @param tab
+	 * @param hunter
+	 * @return
+	 */
 	public boolean isLock(Case[][] tab, Entity hunter) {
 		ArrayList<Mouvment> possible = this.PossibleMouv(tab);
 		for(Mouvment m : possible) {
