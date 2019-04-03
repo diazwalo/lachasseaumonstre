@@ -73,13 +73,13 @@ public class Position {
 		return new int[] {this.posX+mvt[0] ,this.posY+mvt[1]};
 	}
 	
-	public List<Position> getAdjacentPosition(Position position, SquareMap sm){
+	public List<Position> getAdjacentPosition(IMap sm){
 		List<Position> posAdj =new ArrayList<Position>();
 		
-		for (int i=position.posX-1; i<position.posX+2; i++) {
-			for(int j=position.posY-1; j<position.posY+2; j++) {
+		for (int i=posX-1; i<posX+2; i++) {
+			for(int j=posY-1; j<posY+2; j++) {
 				
-				if (i>=0 || j>=0 || (i!=position.posX && j!=position.posY) || i<sm.getTab()[i].length || i<sm.getTab()[j].length || sm.getTab()[i][j].getCaseType().equals(CaseType.SOL) ) {
+				if (i>=0 || j>=0 || (i!=posX && j!=posY) || i<sm.getTab()[i].length || i<sm.getTab()[j].length || sm.getTab()[i][j].getCaseType().equals(CaseType.SOL) ) {
 					posAdj.add(new Position(i,j));
 				}
 				
