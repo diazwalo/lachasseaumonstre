@@ -1,5 +1,7 @@
 package render.text;
 
+import java.util.ArrayList;
+
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
@@ -34,5 +36,26 @@ public class Beast extends Entity{
 			valide=valide && tab[posModif[0]][posModif[1]].getBeastPas()==-1;
 		}
 		return valide;
+	}
+	
+	public ArrayList<Mouvment> PossibleMouv(Case[][] tab) {
+		ArrayList<Mouvment> mouvTab = new ArrayList<>();
+		for(Mouvment m : Mouvment.values()){
+			if(super.verifDeplacement(tab, m)) {
+				mouvTab.add(m);
+			}
+		}
+		return mouvTab;
+	}
+	
+	
+	public boolean isLock(Case[][] tab, Entity hunter) {
+		ArrayList<Mouvment> possible = this.PossibleMouv(tab);
+		for(Mouvment m : possible) {
+			if(this.verifDeplacementSpe(tab, m, hunter)) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
