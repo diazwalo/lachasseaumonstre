@@ -5,7 +5,7 @@ import render.text.Beast;
 import render.text.Hunter;
 
 /**
- * Cette Class Définit le fonctionnement du plateau ou évolue les Entites tout en tenant compte de la Config
+ * Cette Class Dï¿½finit le fonctionnement du plateau ou ï¿½volue les Entites tout en tenant compte de la Config
  * @author diazw
  *
  */
@@ -43,7 +43,7 @@ public class SquareMap implements IMap {
 	}
 
 	/**
-	 * Retourne le tableau à deux dimentions de Case
+	 * Retourne le tableau ï¿½ deux dimentions de Case
 	 * @return tab
 	 */
 	public Case[][] getTab() {
@@ -75,7 +75,7 @@ public class SquareMap implements IMap {
 	}
 	
 	/**
-	 * Definis (grace à aModifier un tableau de 4 booleans) s'il faut changer la Config
+	 * Definis (grace ï¿½ aModifier un tableau de 4 booleans) s'il faut changer la Config
 	 * @param aModifier
 	 */
 	public void setConfig(boolean[] aModifier) {
@@ -97,34 +97,36 @@ public class SquareMap implements IMap {
 	}
 	
 	/**
-	 * Teste si le déplacement souhaité pour Beast ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Hunter 
+	 * Teste si le dï¿½placement souhaitï¿½ pour Beast ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Hunter 
 	 * @param mvt
 	 * @return boolean valide
 	 */
 	public boolean mvtValideBeast(Mouvment mvt) {
-		int posBeastX=this.beast.getPos().getPosX()+mvt.getMvtX();
+		/*int posBeastX=this.beast.getPos().getPosX()+mvt.getMvtX();
 		int posBeastY=this.beast.getPos().getPosY()+mvt.getMvtY();
 		boolean valide=posBeastX>-1 && posBeastY>-1 && posBeastX<tab.length && posBeastY<tab[posBeastX].length;
 		if(valide) {
 			valide=valide && tab[posBeastX][posBeastY].getCaseType().getCaseType()==1;
 			valide=valide && !hunter.isPosEnt(posBeastX, posBeastY);
 			valide=valide && tab[posBeastX][posBeastY].getBeastPas()==-1;
-		}return valide;
+		}return valide;*/
+		return this.beast.verifDeplacementSpe(tab, mvt, hunter);
 	}
 	
 	/**
-	 * Teste si le déplacement souhaité pour Hunter ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Beast
+	 * Teste si le dï¿½placement souhaitï¿½ pour Hunter ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Beast
 	 * @param mvt
 	 * @return boolean valide
 	 */
 	public boolean mvtValideHunter(Mouvment mvt) {
-		int posHunterX=this.beast.getPos().getPosX()+mvt.getMvtX();
+		/*int posHunterX=this.beast.getPos().getPosX()+mvt.getMvtX();
 		int posHunterY=this.beast.getPos().getPosY()+mvt.getMvtY();
 		boolean valide=posHunterX>-1 && posHunterY>-1 && posHunterX<this.tab.length && posHunterY<this.tab[posHunterX].length;
 		if(valide) {
 			valide=valide && this.tab[posHunterX][posHunterY].getCaseType().getCaseType()==1;
 			valide=valide && !this.beast.isPosEnt(posHunterX, posHunterY);
-		}return valide;
+		}return valide;*/
+		return this.hunter.verifDeplacementSpe(tab, mvt, beast);
 	}
 	
 	/**
