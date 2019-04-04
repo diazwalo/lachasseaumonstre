@@ -12,14 +12,25 @@ public enum CaseType {
 	SOL(1), OBSTACLE(2);
 	private int caseType;
 	
+	/**
+	 * Associe un nombre (passe en parametre) au type de la Case
+	 * @param typeCase
+	 */
 	private CaseType(int typeCase) {
 		this.caseType=typeCase;
 	}
 	
+	/**
+	 * retourne l entier associe au type de la Case
+	 * @return int
+	 */
 	public int getCaseType(){
 		return this.caseType;
 	}
 	
+	/**
+	 * retourne le type de la Case sous la forme textuelle
+	 */
 	public String toString() {
 		if(caseType==1) return " ";
 		return "0";

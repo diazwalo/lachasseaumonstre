@@ -5,7 +5,7 @@ import render.text.Beast;
 import render.text.Hunter;
 
 /**
- * Cette Class D�finit le fonctionnement du plateau ou �volue les Entites tout en tenant compte de la Config
+ * Cette Class Definit le fonctionnement du plateau ou evolue les Entites tout en tenant compte de la Config
  * @author diazw
  *
  */
@@ -32,19 +32,18 @@ public class SquareMap implements IMap {
 	 * Remplie le tableau en mettant dans les cases soit des Obstacles soit des Sol.
 	 */
 	public void generationMap() {
-		for (int x = 0; x < this.tab.length; x++) {
+		for (int x = 0; x < this.tab.length; x++)
 			for (int y = 0; y < this.tab[x].length; y++) {
 				boolean posBeast=this.beast.isPosEnt(x, y);
 				CaseType caseType=CaseType.SOL;
 				if(x%3==2 && y%3==2) caseType=CaseType.OBSTACLE;
 				this.tab[x][y]=new Case(caseType, posBeast);
 			}
-		}
 	}
 
 	/**
-	 * Retourne le tableau � deux dimentions de Case
-	 * @return tab
+	 * Retourne le tableau a deux dimentions de Case
+	 * @return Case[][]
 	 */
 	public Case[][] getTab() {
 		return this.tab;
@@ -52,7 +51,7 @@ public class SquareMap implements IMap {
 
 	/**
 	 * Retourne le Hunter
-	 * @return hunter
+	 * @return Hunter
 	 */
 	public Hunter getHunter() {
 		return this.hunter;
@@ -60,7 +59,7 @@ public class SquareMap implements IMap {
 
 	/**
 	 * Retourne la Beast
-	 * @return beast
+	 * @return Beast
 	 */
 	public Beast getBeast() {
 		return this.beast;
@@ -68,14 +67,14 @@ public class SquareMap implements IMap {
 	
 	/**
 	 * Retourne la Config
-	 * @return config
+	 * @return Config
 	 */
 	public Config getConfig() {
 		return this.config;
 	}
 	
 	/**
-	 * Definis (grace � aModifier un tableau de 4 booleans) s'il faut changer la Config
+	 * Definis (grace a aModifier un tableau de 4 booleans) s'il faut changer la Config
 	 * @param aModifier
 	 */
 	public void setConfig(boolean[] aModifier) {
@@ -95,23 +94,27 @@ public class SquareMap implements IMap {
 	}
 
 	/**
-	 * Teste si le d�placement souhait� pour Beast ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Hunter 
+	 * Teste si le deplacement souhaite pour Beast ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Hunter 
 	 * @param mvt
-	 * @return boolean valide
+	 * @return boolean
 	 */
 	public boolean mvtValideBeast(Mouvment mvt) {
 		return this.beast.verifDeplacementSpe(tab, mvt, hunter);
 	}
 
 	/**
-	 * Teste si le d�placement souhait� pour Hunter ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Beast
+	 * Teste si le deplacement souhaite pour Hunter ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Beast
 	 * @param mvt
-	 * @return boolean valide
+	 * @return boolean
 	 */
 	public boolean mvtValideHunter(Mouvment mvt) {
 		return this.hunter.verifDeplacementSpe(tab, mvt, beast);
 	}
 
+	/**
+	 * Deplace la Beast avec le Mouvment passe en parametre si ce dernier est possible
+	 * @return boolean
+	 */
 	public boolean moveBeast(Mouvment mvt) {
 		if(this.mvtValideBeast(mvt)) {
 			this.beast.setPos(mvt);
@@ -120,6 +123,10 @@ public class SquareMap implements IMap {
 		}return false;
 	}
 	
+	/**
+	 * Deplace la Hunter avec le Mouvment passe en parametre si ce dernier est possible
+	 * @return boolean
+	 */
 	public boolean moveHunter(Mouvment mvt) {
 		if(this.mvtValideHunter(mvt)) {
 			this.hunter.setPos(mvt);
@@ -127,6 +134,9 @@ public class SquareMap implements IMap {
 		}return false;
 	}
 	
+	/**
+	 * Parcours le tableau de Case et met a jour "beastPas" qui correspond a la duree depuis laquel Beast a ete sur la Case
+	 */
 	public void setBeastPas() {
 		for (int i = 0; i < tab.length; i++)
 			for (int j = 0; j < tab[i].length; j++)

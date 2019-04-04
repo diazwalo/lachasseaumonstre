@@ -22,6 +22,7 @@ public abstract class Entity {
 	
 	/**
 	 * Determine si la position donnee en parametre est similaire a celle courante
+	 * @return boolean
 	 */
 	public boolean isPosEnt(int posX, int posY) {
 		return this.pos.isPos(posX, posY);
@@ -37,6 +38,12 @@ public abstract class Entity {
 	
 	public abstract boolean verifDeplacementSpe(Case [][] tab, Mouvment mvt, Entity other);
 	
+	/**
+	 * verifie que le deplacement souhaite ne fait pas sortir du tableau ou aller sur un obstable
+	 * @param tab
+	 * @param mvt
+	 * @return boolean
+	 */
 	protected boolean verifDeplacement(Case [][] tab, Mouvment mvt ) {
 		int[] posModif=this.pos.getModifPosition(mvt.getMvt());
 		boolean valide=posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
@@ -54,6 +61,9 @@ public abstract class Entity {
 		
 	}
 	
+	/**
+	 * retourne sous la forme textuelle l inventaire
+	 */
 	public void dispInventory() {
 		if(this.inventory.size() == 0) {
 			System.out.println("Il n'y aucun objet dans votre inventaire");

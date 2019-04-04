@@ -7,24 +7,33 @@ import map.CaseType;
 import map.Mouvment;
 
 /**
- * Cette classe definit les caract�ristique principale de la classe jouable Beast
+ * Cette classe definit les caracteristique principale de la classe jouable Beast
  * @author Quentin Prognon
  *
  */
 public class Beast extends Entity{
+	
+	/**
+	 * instancie Beast a la Position posX, posY
+	 * @param posX
+	 * @param posY
+	 */
 	public Beast(int posX, int posY) {
 		super(posX, posY);
 	}
 
 	
 	/**
-	 * Renvoie un B
+	 * retourne Beast sous la forme textuelle
 	 */
 	public String toString() {
 		return"B";
 	}
 
-
+	/**
+	 * verifie si le deplacement souhaite est realisable pour Beast
+	 * @return boolean
+	 */
 	@Override
 	public boolean verifDeplacementSpe(Case[][] tab, Mouvment mvt, Entity hunter) {
 		// TODO Auto-generated method stub
@@ -40,34 +49,30 @@ public class Beast extends Entity{
 	
 	
 	/**
-	 * Revoie la liste des different Mouvment possible pour la bete.
+	 * retourne la liste des differents Mouvment possible pour Beast.
 	 * @param tab
-	 * @return
+	 * @return ArrayList<Mouvment>
 	 */
 	public ArrayList<Mouvment> PossibleMouv(Case[][] tab) {
 		ArrayList<Mouvment> mouvTab = new ArrayList<>();
-		for(Mouvment m : Mouvment.values()){
-			if(super.verifDeplacement(tab, m)) {
+		for(Mouvment m : Mouvment.values())
+			if(super.verifDeplacement(tab, m))
 				mouvTab.add(m);
-			}
-		}
 		return mouvTab;
 	}
 	
 	
 	/**
-	 * Verfie si la bete à encore des coups jouable ou non.
+	 * Verfie si la bete à encore la possibilite de jouer ou non.
 	 * @param tab
 	 * @param hunter
-	 * @return
+	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity hunter) {
 		ArrayList<Mouvment> possible = this.PossibleMouv(tab);
-		for(Mouvment m : possible) {
-			if(this.verifDeplacementSpe(tab, m, hunter)) {
+		for(Mouvment m : possible)
+			if(this.verifDeplacementSpe(tab, m, hunter))
 				return false;
-			}
-		}
 		return true;
 	}
 }

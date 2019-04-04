@@ -2,7 +2,7 @@ package map;
 
 /**
  * Definit le type de case (obstacle ou sol), un compteur pour
- * du nombre tours depuis le dernier passage de la b�te, un boolean qui 
+ * du nombre tours depuis le dernier passage de la bete, un boolean qui 
  * precise si le case est visible pour le chasseur et un tableaux qui defini
  * le buff actif de cete case.
  * @author nath
@@ -19,21 +19,20 @@ public class Case {
 	
 	/**
 	 * Creer une class Case avec en parametre CaseType et posBeast respectivment le type de la case
-	 * et si la b�te est pass� sur la case, instansie par defaut les buff � false.
+	 * et si la bete est passe sur la case, instansie par defaut les buff a false.
 	 * @param caseType
 	 * @param posBeast
 	 */
-	
 	public Case(CaseType caseType, boolean posBeast) {
 		this(caseType, posBeast, new boolean[] {false, false, false, false});
 	}
+	
 	/**
-	 * Meme principe que le premier constructeur avec les tableau de buff souhait� en parametre.
+	 * Meme principe que le premier constructeur avec les tableau de buff souhaite en parametre
 	 * @param caseType
 	 * @param posBeast
 	 * @param buff
 	 */
-	
 	public Case(CaseType caseType, boolean posBeast, boolean[] buff) {
 		this.caseType=caseType;
 		if(posBeast) this.beastPas=0;
@@ -43,19 +42,17 @@ public class Case {
 	}
 	
 	/**
-	 * renvoie le type de la case.
+	 * renvoie le type de la case
 	 * @return caseType
 	 */
-	
 	public CaseType getCaseType() {
 		return this.caseType;
 	}
 	
 	/**
-	 * retourne le nombre tour depuis le dernier passage de la b�te
+	 * retourne le nombre tour depuis le dernier passage de la bete
 	 * @return int
 	 */
-	
 	public int getBeastPas() {
 		return this.beastPas;
 	}
@@ -64,7 +61,6 @@ public class Case {
 	 * retourne si la case est visible pour le chasseur ou non
 	 * @return boolean
 	 */
-	
 	public boolean getHideToHunter() {
 		return this.hideToHunter;
 	}
@@ -73,34 +69,38 @@ public class Case {
 	 * retourne le tableau de buff actif
 	 * @return boolean[]
 	 */
-	
 	public boolean[] getBuff() {
 		return this.buff;
 	}
-	 
-	 	
-	/*public void setBeastPas(int beastPas) {
-		this.beastPas=beastPas;
-	}*/
 	
+	/**
+	 * Passe beastPas a 0 cette case correspond a la position de la bete et incremente beastPas si Beast est deja passe ici
+	 * @param posBeast
+	 */
 	public void setBeastPas(boolean posBeast) {
 		if(posBeast) this.beastPas=0;
 		else if(this.beastPas!=-1) this.beastPas=this.beastPas+1;
 		
 	}
 	
+	/**
+	 * passe setHideToHunter a vrai afin que Hunter ne le voit pas
+	 */
 	public void setHideToHunter() {
 		this.hideToHunter=true;
 	}
 	
+	/**
+	 * modifie le tableau de buff en le remplacant par celui en parametre
+	 * @param buff
+	 */
 	public void setBuff(boolean[] buff) {
 		this.buff=buff;
 	}
 	
 	/**
-	 * Renvoie sous forme de chaine de caractere le buff actif sur la case
+	 * Renvoie sous forme de chaine de caractere le buff actif sur la Case ou la trace de la bete au cas echeant
 	 */
-	
 	public String toString() {
 		String res=caseType.toString();
 		if(this.beastPas>0 && this.beastPas<this.TRACE) res=this.beastPas+"";

@@ -12,25 +12,42 @@ public enum Mouvment {
 	private int mvtX;
 	private int mvtY;
 	
+	/**
+	 * associe au mouvement 2 int pour leurs mouvement sur x et y associees respectivement au parametres mvtX et mvtY
+	 * @param mvtX
+	 * @param mvtY
+	 */
 	private Mouvment(int mvtX, int mvtY) {
 		this.mvtX=mvtX;
 		this.mvtY=mvtY;
 	}
 	
+	/**
+	 * retourn le mouvement sur x
+	 * @return int
+	 */
 	public int getMvtX() {
 		return this.mvtX;
 	}
 	
+	/**
+	 * retourn le mouvement sur y
+	 * @return int
+	 */
 	public int getMvtY() {
 		return this.mvtY;
 	}
 	
-	public int[]getMvt() {
+	/**
+	 * retourn un tableau a une dimention contenant la composante sur x et celle sur y
+	 * @return int[]
+	 */
+	public int[] getMvt() {
 		return new int[] {this.mvtX, this.mvtY};
 	}
 	 /**
-	  * Renvoie un tableau contenant tous les deplacement de tous les mouvements possible.
-	  * @return
+	  * Renvoie un tableau contenant tous les deplacement de tous les mouvements possible
+	  * @return int[][]
 	  */
 	public int[][] allMouv(){
 		int [][] tab = new int[8][2];
