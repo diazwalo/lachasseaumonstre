@@ -11,10 +11,14 @@ public class Interaction {
 	 */
 	public static Mouvment askMouvement() {
 		Mouvment res=null;
-		String[] strMvt=new String[] {"z", "s", "d", "q", "zd", "zq", "sd", "sq", "dz", "qz", "ds", "qs"};
+		String[] strMvt=generateStrMvt();
 		Mouvment[] tabMvt=getTabMvt(strMvt);
 		res=getSaisieMvt(res, strMvt, tabMvt);
 		return res;
+	}
+	
+	public static String[] generateStrMvt() {
+		return new String[] {"z", "s", "d", "q", "zd", "zq", "sd", "sq", "dz", "qz", "ds", "qs"};
 	}
 	
 	/**
@@ -27,10 +31,15 @@ public class Interaction {
 	public static Mouvment getSaisieMvt(Mouvment res, String[] strMvt, Mouvment[] tabMvt) {
 		while(res==null) {
 			String saisie=getSaisie();
+			
 			for (int idx = 0; idx < strMvt.length; idx++) {
 				if(strMvt[idx].equals(saisie)) res=tabMvt[idx];
-			}if(res==null) System.out.println("Veuillez saisir correctement Les infos !\n");
-		}return res;
+			}
+			
+			if(res==null) System.out.println("Veuillez saisir correctement Les infos !\n");
+		}
+		
+		return res;
 	}
 	
 	/**
@@ -38,7 +47,7 @@ public class Interaction {
 	 * @param strMvt
 	 * @return Mouvment[]
 	 */
-	private static Mouvment[] getTabMvt(String[] strMvt) {
+	public static Mouvment[] getTabMvt(String[] strMvt) {
 		Mouvment[] tabMvt=new Mouvment[12];
 		Mouvment[] add=new Mouvment[] {Mouvment.NORDEST, Mouvment.NORDOUEST, Mouvment.SUDEST, Mouvment.SUDOUEST};
 		int idx=0;
@@ -61,8 +70,10 @@ public class Interaction {
 	 */
 	private static String getSaisie() {
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("Veuillez saisir la direction:");
 		String saisie = sc.nextLine();		
+		
 		return saisie;
 	}
 }
