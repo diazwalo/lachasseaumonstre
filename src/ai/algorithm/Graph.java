@@ -2,6 +2,7 @@ package ai.algorithm;
 
 import ai.models.Edge;
 import ai.models.Node;
+import ai.util.EdgeUtil;
 import ai.util.NodeUtil;
 import map.Case;
 import map.IMap;
@@ -23,13 +24,7 @@ public class Graph {
     {
         Case[][] cases = map.getTab();
 
-        //Node
-        for (int i = 0; i < cases.length; i++) {
-            for (int j = 0; j < cases[i].length; j++) {
-                String nodeName = NodeUtil.formatNode(new Position(i, j));
-                this.listNode.put(nodeName, new Node());
-            }
-        }
+        this.listNode = this.generateNode(cases);
 
         //Edge
         for (int i = 0; i < cases.length; i++) {
@@ -40,6 +35,24 @@ public class Graph {
             }
         }
 
+    }
+    
+    public Graph()
+    {
+    	this.listNode = new HashMap<String, Node>();
+    	this.listEdge = new HashMap<String, Edge>();
+    }
+    
+    public Map<String, Node> generateNode(Case[][] cases)
+    {
+    	Map<String, Node> listNode = new HashMap<String, Node>();
+    	for (int i = 0; i < cases.length; i++) {
+            for (int j = 0; j < cases[i].length; j++) {
+                String nodeName = NodeUtil.formatNode(new Position(i, j));
+                this.listNode.put(nodeName, new Node());
+            }
+        }
+    	return listNode;
     }
 
     public Map<String, Node> getListNode()
@@ -57,9 +70,7 @@ public class Graph {
     {
         Map<String, Edge> edges = new HashMap<String, Edge>();
         for (Position position : positions) {
-            String name = NodeUtil.formatNode(position);
-            Node node = this.listNode.get(name);
-
+        	String name = EdgeUtil.formatEdge(positionActual, position);
             Edge edge = this.listEdge.get(name);
             edges.put(name, edge);
         }

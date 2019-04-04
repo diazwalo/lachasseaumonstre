@@ -2,8 +2,6 @@ package ai.util;
 
 import static org.junit.Assert.*;
 
-import java.util.Map;
-
 import org.junit.Test;
 
 import map.Position;
@@ -11,7 +9,7 @@ import map.Position;
 public class NodeUtilTest {
 	
 	@Test
-    public void testIsPosition()
+    public void testFormatNode()
     {
         Position positionOne = new Position(1, 1);
         Position positionTwo = new Position(4, 2);
