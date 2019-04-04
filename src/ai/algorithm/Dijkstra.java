@@ -1,24 +1,34 @@
 package ai.algorithm;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import ai.models.Edge;
 import ai.models.Node;
 
 public class Dijkstra
 {
-	private ArrayList<Node> listNode;
-	private ArrayList<Edge> listEdge;
-	
-	public Dijkstra(ArrayList<Node> listNode, ArrayList<Edge> listEdge)
+	private Map<String, Node> listNode;
+	private Map<String, Edge> listEdge;
+
+	/// test : Graph graph = new Graph(map);
+	/// test : Dijkstra dijkstra = new Dijkstra(graph);
+	public Dijkstra(Graph graph)
 	{
-		this.listNode = listNode;
-		this.listEdge = listEdge;
+		this.listNode = graph.getListNode();
+		this.listEdge = graph.getListEdge();
 	}
-	
-	public ArrayList<Node> shortestPathFromTo(Edge from, Edge to)
+
+	///test : dijkstra.shortestPathFromTo( // hunter.pos.ToEdge // monster.pos.ToEdge )
+	public List<Node> shortestPathFromTo(Edge from, Edge to)
 	{
-		// TODO
+	    //Découvrir les distances depuis l'origine avec chaque Edge
+		List<Edge> distances = new ArrayList<Edge>();
+		for(String name : this.listEdge.keySet()) {
+			//distances.add();
+		}
+
 		return null;
 	}
 }
