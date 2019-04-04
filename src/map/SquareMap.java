@@ -128,11 +128,9 @@ public class SquareMap implements IMap {
 	}
 	
 	public void setBeastPas() {
-		for (Case[] cases : tab) {
-			for (Case case1 : cases) {
-				case1.setBeastPas(false);;
-			}
-		}
+		for (int i = 0; i < tab.length; i++)
+			for (int j = 0; j < tab[i].length; j++)
+				this.tab[i][j].setBeastPas(this.beast.isPosEnt(i, j));
 	}
 	
 	/**

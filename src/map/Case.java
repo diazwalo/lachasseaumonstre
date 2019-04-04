@@ -15,6 +15,7 @@ public class Case {
 	private int beastPas;
 	private boolean hideToHunter;
 	private boolean[] buff;
+	private final int TRACE=5;
 	
 	/**
 	 * Creer une class Case avec en parametre CaseType et posBeast respectivment le type de la case
@@ -102,7 +103,7 @@ public class Case {
 	
 	public String toString() {
 		String res=caseType.toString();
-		if(this.beastPas>0 && this.beastPas<5) res=this.beastPas+"";
+		if(this.beastPas>0 && this.beastPas<this.TRACE) res=this.beastPas+"";
 		String[] toStringConf=new String[] {"p", "c", "w", "l"};
 		for (int i = 0; i < buff.length; i++)
 			if(buff[i]) res=toStringConf[i];
