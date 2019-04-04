@@ -3,6 +3,7 @@ package ai.algorithm;
 import ai.models.Edge;
 import ai.models.Node;
 import ai.util.NodeUtil;
+import map.Case;
 import map.IMap;
 import map.Position;
 
@@ -67,7 +68,7 @@ public class Graph {
 
     public void addEdges(Map<String, Edge> edges)
     {
-        for (String name : edges) {
+        for (String name : edges.keySet()) {
             this.listEdge.put(name, edges.get(name));
         }
     }

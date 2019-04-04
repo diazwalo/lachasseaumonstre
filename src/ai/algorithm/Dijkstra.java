@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import ai.algorithm.Graph;
 import ai.models.Edge;
 import ai.models.Node;
 
