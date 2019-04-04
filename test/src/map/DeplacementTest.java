@@ -10,7 +10,7 @@ import map.Mouvment;
 import map.Position;
 import map.SquareMap;
 
-public class Deplacement {
+public class DeplacementTest {
 
 	private IMap map;
 
@@ -19,11 +19,11 @@ public class Deplacement {
     	map = new SquareMap(11, 11);
     	map.generationMap();
     	map.moveBeast(Mouvment.NORD);
-    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(1);
+    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(true);
     	map.moveBeast(Mouvment.NORD);
-    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(1);
+    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(true);
     	map.moveBeast(Mouvment.OUEST);
-    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(1);
+    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(true);
     }
 
     @Test

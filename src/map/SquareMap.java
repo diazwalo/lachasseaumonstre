@@ -112,12 +112,27 @@ public class SquareMap implements IMap {
 		return this.hunter.verifDeplacementSpe(tab, mvt, beast);
 	}
 
-	public void moveBeast(Mouvment mvt) {
-		if(this.mvtValideBeast(mvt)) this.beast.setPos(mvt);
+	public boolean moveBeast(Mouvment mvt) {
+		if(this.mvtValideBeast(mvt)) {
+			this.beast.setPos(mvt);
+			this.tab[this.beast.getPos().getPosX()][this.beast.getPos().getPosY()].setBeastPas(true);
+			return true;
+		}return false;
 	}
 	
-	public void moveHunter(Mouvment mvt) {
-		if(this.mvtValideHunter(mvt)) this.hunter.setPos(mvt);
+	public boolean moveHunter(Mouvment mvt) {
+		if(this.mvtValideHunter(mvt)) {
+			this.hunter.setPos(mvt);
+			return true;
+		}return false;
+	}
+	
+	public void setBeastPas() {
+		for (Case[] cases : tab) {
+			for (Case case1 : cases) {
+				case1.setBeastPas(false);;
+			}
+		}
 	}
 	
 	/**
@@ -128,9 +143,9 @@ public class SquareMap implements IMap {
 		for (int x = 0; x < this.tab.length; x++) {
 			affichage+="\n|";
 			for (int y = 0; y < this.tab[x].length; y++) {
-				if(this.beast.isPosEnt(x, y)) affichage+=" "+this.beast.toString()+" |";
-				else if(this.hunter.isPosEnt(x, y)) affichage+=" "+this.hunter.toString()+" |";
-				else affichage+=" "+this.tab[x][y].toString()+" |";
+				if(this.beast.isPosEnt(y, x)) affichage+=" "+this.beast.toString()+" |";
+				else if(this.hunter.isPosEnt(y, x)) affichage+=" "+this.hunter.toString()+" |";
+				else affichage+=" "+this.tab[y][x].toString()+" |";
 			}
 		}
 		return affichage;

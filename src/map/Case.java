@@ -2,7 +2,7 @@ package map;
 
 /**
  * Definit le type de case (obstacle ou sol), un compteur pour
- * du nombre tours depuis le dernier passage de la bête, un boolean qui 
+ * du nombre tours depuis le dernier passage de la bï¿½te, un boolean qui 
  * precise si le case est visible pour le chasseur et un tableaux qui defini
  * le buff actif de cete case.
  * @author nath
@@ -18,7 +18,7 @@ public class Case {
 	
 	/**
 	 * Creer une class Case avec en parametre CaseType et posBeast respectivment le type de la case
-	 * et si la bête est passé sur la case, instansie par defaut les buff à false.
+	 * et si la bï¿½te est passï¿½ sur la case, instansie par defaut les buff ï¿½ false.
 	 * @param caseType
 	 * @param posBeast
 	 */
@@ -27,7 +27,7 @@ public class Case {
 		this(caseType, posBeast, new boolean[] {false, false, false, false});
 	}
 	/**
-	 * Meme principe que le premier constructeur avec les tableau de buff souhaité en parametre.
+	 * Meme principe que le premier constructeur avec les tableau de buff souhaitï¿½ en parametre.
 	 * @param caseType
 	 * @param posBeast
 	 * @param buff
@@ -51,7 +51,7 @@ public class Case {
 	}
 	
 	/**
-	 * retourne le nombre tour depuis le dernier passage de la bête
+	 * retourne le nombre tour depuis le dernier passage de la bï¿½te
 	 * @return int
 	 */
 	
@@ -78,8 +78,14 @@ public class Case {
 	}
 	 
 	 	
-	public void setBeastPas(int beastPas) {
+	/*public void setBeastPas(int beastPas) {
 		this.beastPas=beastPas;
+	}*/
+	
+	public void setBeastPas(boolean posBeast) {
+		if(posBeast) this.beastPas=0;
+		else if(this.beastPas!=-1) this.beastPas=this.beastPas+1;
+		
 	}
 	
 	public void setHideToHunter() {
@@ -96,10 +102,10 @@ public class Case {
 	
 	public String toString() {
 		String res=caseType.toString();
+		if(this.beastPas>0 && this.beastPas<5) res=this.beastPas+"";
 		String[] toStringConf=new String[] {"p", "c", "w", "l"};
-		for (int i = 0; i < buff.length; i++) {
+		for (int i = 0; i < buff.length; i++)
 			if(buff[i]) res=toStringConf[i];
-		}
 		return res;
 	}
 }

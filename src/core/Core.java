@@ -2,6 +2,7 @@ package core;
 
 import interaction.Interaction;
 import map.IMap;
+import map.Mouvment;
 import map.SquareMap;
 
 public class Core {
@@ -20,14 +21,14 @@ public class Core {
 		
 		IMap map = new SquareMap(11, 11);
 		map.generationMap();
+		boolean mvtValide=true;
+		while(mvtValide) {
+			System.out.println(map+"\n");
+			Mouvment mvt=Interaction.askMouvement();
+			mvtValide=map.moveBeast(mvt);
+			map.setBeastPas();
+		}System.out.println("Mvt invalide");
 		
-		System.out.println(map+"\n");
-		
-		System.out.println(Interaction.askMouvement());
-		
-		//active la présence de piège et en met un dans le tableau à un endroit ou il y a du sol.
-		map.testModifBuff();
-		
-		System.out.println("\n"+map);
+		//active la prï¿½sence de piï¿½ge et en met un dans le tableau ï¿½ un endroit ou il y a du sol.
 	}
 }
