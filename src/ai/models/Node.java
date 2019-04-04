@@ -1,44 +1,22 @@
 package ai.models;
 
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Node {
-	private UUID UUID;
-	private String name;
+	private int distanceFromOrigin;
+	private Map<String, Edge> adjacentEdges;
 	
-	public Node(String name) {
-		this.UUID = UUID.randomUUID();
-		this.name = name;
-	}
-
-	public UUID getUUID()
-	{
-		return this.UUID;
-	}
-
-	public void setUUID(UUID UUID)
-	{
-		this.UUID = UUID;
-	}
-
-	public String getName()
-	{
-		return this.name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public boolean equals(Node node)
-	{
-		return (this.UUID.toString().equals(node.UUID.toString()));
+	public Node() {
+		this.distanceFromOrigin = Integer.MAX_VALUE;
+		this.adjacentEdges = new HashMap<String, Edge>();
 	}
 	
 	public boolean isAdjacent(Node node)
 	{
-		//TODO 
+		for (String name : this.adjacentEdges.keySet()) {
+			if (node.equals(name)) return true;
+		}
 		return false;
 	}
 	
