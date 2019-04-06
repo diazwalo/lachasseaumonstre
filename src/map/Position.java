@@ -102,7 +102,7 @@ public class Position {
 		List<Position> posAdj =new ArrayList<Position>();
 		for (int i=posX-1; i<posX+2; i++)
 			for(int j=posY-1; j<posY+2; j++)
-				if (i>=0 || j>=0 || (i!=posX && j!=posY) || i<sm.getTab()[i].length || i<sm.getTab()[j].length || sm.getTab()[i][j].getCaseType().equals(CaseType.SOL))
+				if (i>=0 && j>=0 && (i!=posX && j!=posY) && i<sm.getTab()[i].length && i<sm.getTab()[j].length && sm.getTab()[i][j].getCaseType().equals(CaseType.SOL))
 					posAdj.add(new Position(i,j));
 		return posAdj;
 	}
