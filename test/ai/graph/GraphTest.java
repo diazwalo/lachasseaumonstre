@@ -13,6 +13,7 @@ import org.junit.Test;
 import ai.algorithm.Graph;
 import ai.models.Edge;
 import ai.models.Node;
+import ai.util.EdgeUtil;
 import map.IMap;
 import map.Position;
 import map.SquareMap;
@@ -28,16 +29,36 @@ public class GraphTest {
     @Test
     public void testGenerateNode()
     {
+    	String[] awaitedPosition = {"0:0", "0:1", "0:2", "1:0", "1:1", "1:2", "2:0", "2:1", "2:2"};
     	IMap map = new SquareMap(3, 3);
     	map.generationMap();
-    	
-    	Graph graph = new Graph(map);
+
+    	Graph graph = new Graph();
     	Map<String, Node> generatedNode = graph.generateNode(map.getTab());
+
+    	int i = 0;
+    	for (String name : generatedNode.keySet()) {
+			assertEquals(name, awaitedPosition[i]);
+			i++;
+		}
     	
-    	
-    	//assertEquals(expected, actual);
+    	assertEquals(awaitedPosition.length, generatedNode.size());
     }
-	/*@Test
+    
+    /*@Test
+    public void testGenerateEdge()
+    {
+    	IMap map = new SquareMap(3, 3);
+    	map.generationMap();
+
+    	Graph graph = new Graph();
+    	Map<String, Edge> generatedEdge = graph.generateEdge(map);
+    	
+    	System.out.println("RETOUR:"+generatedEdge.size());
+    	assertEquals(40, generatedEdge.size());
+    }*/
+    
+	@Test
 	public void testPositionToEdge() {
 		Position positionActual = new Position(1, 1);
 		
@@ -62,12 +83,12 @@ public class GraphTest {
         positionArround.add(pEight);
         
         Map<String, Edge> resultedEdge = new HashMap<String, Edge>();
-        
-        Edge eOne = new Edge();
-        
         Graph graph = new Graph();
         Map<String, Edge> createdEdge = graph.positionToEdge(positionActual, positionArround);
         
-	}*/
+        assertEquals(createdEdge.size(), positionArround.size());
+        
+        assertTrue(createdEdge.containsKey(EdgeUtil.formatEdge(positionActual, pTwo)));
+	}
 
 }
