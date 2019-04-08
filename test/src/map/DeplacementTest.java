@@ -19,11 +19,11 @@ public class DeplacementTest {
     	map = new SquareMap(11, 11);
     	map.generationMap();
     	map.moveBeast(Mouvment.NORD);
-    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(true);
+    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].modifBeastPas(true);
     	map.moveBeast(Mouvment.NORD);
-    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(true);
+    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].modifBeastPas(true);
     	map.moveBeast(Mouvment.OUEST);
-    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].setBeastPas(true);
+    	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].modifBeastPas(true);
     }
 
     @Test

@@ -118,7 +118,7 @@ public class SquareMap implements IMap {
 	public boolean moveBeast(Mouvment mvt) {
 		if(this.mvtValideBeast(mvt)) {
 			this.beast.setPos(mvt);
-			this.tab[this.beast.getPos().getPosX()][this.beast.getPos().getPosY()].setBeastPas(true);
+			this.tab[this.beast.getPos().getPosX()][this.beast.getPos().getPosY()].modifBeastPas(true);
 			return true;
 		}return false;
 	}
@@ -140,7 +140,7 @@ public class SquareMap implements IMap {
 	public void setBeastPas() {
 		for (int i = 0; i < tab.length; i++)
 			for (int j = 0; j < tab[i].length; j++)
-				this.tab[i][j].setBeastPas(this.beast.isPosEnt(i, j));
+				this.tab[i][j].modifBeastPas(this.beast.isPosEnt(i, j));
 	}
 	
 	/**

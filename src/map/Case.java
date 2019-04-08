@@ -77,10 +77,17 @@ public class Case {
 	 * Passe beastPas a 0 cette case correspond a la position de la bete et incremente beastPas si Beast est deja passe ici
 	 * @param posBeast
 	 */
-	public void setBeastPas(boolean posBeast) {
-		if(posBeast) this.beastPas=0;
-		else if(this.beastPas!=-1) this.beastPas=this.beastPas+1;
-		
+	public void modifBeastPas(boolean posBeast) {
+		if(posBeast) this.setBeastPas(0);
+		else if(this.beastPas!=-1) this.setBeastPas(this.beastPas+1);
+	}
+	
+	/**
+	 * passe beastPas a la valeur passee en parametre
+	 * @param beastPas
+	 */
+	public void setBeastPas(int beastPas) {
+		this.beastPas=beastPas;
 	}
 	
 	/**
