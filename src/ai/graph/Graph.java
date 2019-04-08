@@ -1,4 +1,4 @@
-package ai.algorithm;
+package ai.graph;
 
 import ai.models.Edge;
 import ai.models.Node;
@@ -7,18 +7,20 @@ import ai.util.NodeUtil;
 import map.Case;
 import map.IMap;
 import map.Position;
-
 import java.util.*;
 
+/**
+ * Cette classe explore le plateau du jeu afin de le représenter mathématiquement sous forme
+ * d'un graphe composé composé de sommets (nodes) et d'arêtes (edges). Une fois sur cette forme, des algorithmes génériques peuvent 
+ * être appliqué.
+ * @author PHPierre
+ *
+ */
 public class Graph {
     private Map<String, Node> listNode;
     private Map<String, Edge> listEdge;
-
-    /*
-        Node : i:j       ex : 1:1
-        Edge : i:j|i:j   ex : 1:1|1:2
-        http://www.ssaurel.com/blog/calculate-shortest-paths-in-java-by-implementing-dijkstras-algorithm/
-     */
+    
+    //http://www.ssaurel.com/blog/calculate-shortest-paths-in-java-by-implementing-dijkstras-algorithm/
 
     public Graph()
     {

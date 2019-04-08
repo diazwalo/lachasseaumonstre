@@ -10,7 +10,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import ai.algorithm.Graph;
+import ai.graph.Graph;
 import ai.models.Edge;
 import ai.models.Node;
 import ai.util.EdgeUtil;

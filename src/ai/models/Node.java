@@ -12,12 +12,31 @@ public class Node {
 		this.adjacentEdges = new HashMap<String, Edge>();
 	}
 	
-	public boolean isAdjacent(Node node)
+	public boolean isAdjacent(String name)
 	{
-		for (String name : this.adjacentEdges.keySet()) {
-			if (node.equals(name)) return true;
-		}
+		if(this.adjacentEdges.containsKey(name)) return true;
 		return false;
 	}
+
+	public int getDistanceFromOrigin()
+	{
+		return this.distanceFromOrigin;
+	}
+
+	public void setDistanceFromOrigin(int distanceFromOrigin)
+	{
+		this.distanceFromOrigin = distanceFromOrigin;
+	}
+
+	public Map<String, Edge> getAdjacentEdges()
+	{
+		return this.adjacentEdges;
+	}
+
+	public void setAdjacentEdges(Map<String, Edge> adjacentEdges)
+	{
+		this.adjacentEdges = adjacentEdges;
+	}
+	
 	
 }
