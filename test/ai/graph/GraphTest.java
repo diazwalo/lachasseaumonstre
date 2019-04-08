@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -82,13 +83,16 @@ public class GraphTest {
         positionArround.add(pSeven);
         positionArround.add(pEight);
         
-        Map<String, Edge> resultedEdge = new HashMap<String, Edge>();
+        Map<String, Edge> resultedEdge = new TreeMap<String, Edge>();
         Graph graph = new Graph();
         Map<String, Edge> createdEdge = graph.positionToEdge(positionActual, positionArround);
         
         assertEquals(createdEdge.size(), positionArround.size());
         
-        assertTrue(createdEdge.containsKey(EdgeUtil.formatEdge(positionActual, pTwo)));
+        String name = EdgeUtil.formatEdge(positionActual, pOne);
+        assertEquals(createdEdge.get(name).getNodeOneName(), "1:1");
+        assertEquals(createdEdge.get(name).getNodeTwoName(), "0:0");
+        assertTrue(createdEdge.containsKey(name));
 	}
 
 }

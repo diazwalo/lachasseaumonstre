@@ -1,50 +1,37 @@
 package ai.models;
 
 public class Edge {
-	private Node NodeOne;
-	private Node NodeTwo;
+	private String nodeOneName;
+	private String nodeTwoName;
+	private Node nodeOne;
+	private Node nodeTwo;
 	private int weight;
 
-	public Edge(Node NodeOne, Node NodeTwo, int weigth)
+	public Edge(String nodeOneName, String nodeTwoName, int weigth)
 	{
-		this.NodeOne = NodeOne;
-		this.NodeTwo = NodeTwo;
+		this.nodeOneName = nodeOneName;
+		this.nodeTwoName = nodeTwoName;
 		this.weight = weigth;
 	}
 	
-	public Edge(Node NodeOne, Node NodeTwo)
+	public Edge(String nodeOneName, String nodeTwoName)
 	{
-		this(NodeOne, NodeTwo, Integer.MAX_VALUE);
+		this(nodeOneName, nodeTwoName, Integer.MAX_VALUE);
 	}
 
-	public Node getNodeOne()
+	public String getNodeOneName()
 	{
-		return this.NodeOne;
+		return this.nodeOneName;
 	}
 
-	public void setNodeOne(Node nodeOne)
+	public String getNodeTwoName()
 	{
-		this.NodeOne = nodeOne;
-	}
-
-	public Node getNodeTwo()
-	{
-		return this.NodeTwo;
-	}
-
-	public void setNodeTwo(Node nodeTwo)
-	{
-		this.NodeTwo = nodeTwo;
+		return this.nodeTwoName;
 	}
 
 	public int getWeight()
 	{
 		return this.weight;
-	}
-
-	public void setWeight(int weight)
-	{
-		this.weight = weight;
 	}
 
 }

@@ -97,9 +97,7 @@ public class Graph {
         	this.listNode.put(nameNodeOne, new Node());
         	this.listNode.put(nameNodeTwo, new Node());
         	
-        	Node nodeOne = this.listNode.get(nameNodeOne);   
-        	Node nodeTwo = this.listNode.get(nameNodeTwo);
-			edges.put(nameEdge, new Edge(nodeOne, nodeTwo, 10));
+			edges.put(nameEdge, new Edge(nameNodeOne, nameNodeTwo, 10));
         }
         
     	return edges;
