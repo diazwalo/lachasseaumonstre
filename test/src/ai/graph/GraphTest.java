@@ -1,4 +1,4 @@
-package ai.graph;
+package src.ai.graph;
 
 import static org.junit.Assert.*;
 

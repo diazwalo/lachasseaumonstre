@@ -1,8 +1,10 @@
-package ai.models;
+package src.ai.models;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import ai.models.Edge;
 
 public class EdgeTest {
 

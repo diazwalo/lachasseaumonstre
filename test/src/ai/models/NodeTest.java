@@ -1,4 +1,4 @@
-package ai.models;
+package src.ai.models;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
+import ai.models.Edge;
+import ai.models.Node;
 
 public class NodeTest {
 
