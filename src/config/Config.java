@@ -90,4 +90,15 @@ public class Config {
 	private static void setBait() {
 		Config.bait = !bait;
 	}
+	
+	/**
+	 * Affiche la configuration du jeu en cours.
+	 */
+	public String toString()
+	{
+		return "Piège:" + this.piege +
+				",Camouflage" + this.camouflage +
+				",Balise de vision" + this.ward + 
+				",Leurre" + this.bait;
+	}
 }

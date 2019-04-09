@@ -67,6 +67,14 @@ public class Position {
 	}
 	
 	/**
+	 * Affiche la position de l'objet.
+	 */
+	public String toString()
+	{
+		return "Position : [x:" + this.posX + ",y:" + this.posY + "]";
+	}
+	
+	/**
 	 * deplace la Position courante en lui applicant le Mouvment mvt passe en parametre
 	 * @param mvt
 	 */
