@@ -46,7 +46,7 @@ public class GraphTest {
     	assertEquals(awaitedPosition.length, generatedNode.size());
     }
     
-    /*@Test
+    @Test
     public void testGenerateEdge()
     {
     	IMap map = new SquareMap(3, 3);
@@ -55,9 +55,8 @@ public class GraphTest {
     	Graph graph = new Graph();
     	Map<String, Edge> generatedEdge = graph.generateEdge(map);
     	
-    	System.out.println("RETOUR:"+generatedEdge.size());
     	assertEquals(40, generatedEdge.size());
-    }*/
+    }
     
 	@Test
 	public void testPositionToEdge() {
