@@ -4,19 +4,16 @@ import java.util.*;
 
 public class Node {
 	private int distanceFromOrigin;
-	private List<Edge> adjacentEdges;
+	private Map<String, Node> adjacentNodes;
 	
 	public Node() {
 		this.distanceFromOrigin = Integer.MAX_VALUE;
-		this.adjacentEdges = new ArrayList<Edge>();
+		this.adjacentNodes = new HashMap<String, Node>();
 	}
 	
 	public boolean isAdjacent(String name)
 	{
-		for (Edge edge : this.adjacentEdges) {
-			if(edge.getNodeTwoName().equals(name)) return true;
-		}
-		return false;
+		return this.adjacentNodes.containsKey(name);
 	}
 
 	public int getDistanceFromOrigin()
@@ -29,19 +26,19 @@ public class Node {
 		this.distanceFromOrigin = distanceFromOrigin;
 	}
 
-	public List<Edge> getAdjacentEdges()
+	public Map<String, Node> getAdjacentNodes()
 	{
-		return this.adjacentEdges;
+		return this.adjacentNodes;
 	}
 	
-	public boolean addAdjacentEdge(Edge edge)
+	public void addAdjacentNode(String name, Node node)
 	{
-		return this.adjacentEdges.add(edge);
+		this.adjacentNodes.putIfAbsent(name, node);
 	}
 	
-	public boolean addAdjacentEdge(List<Edge> edgeList)
+	public void addAdjacentNode(Map<String, Node> nodeList)
 	{
-		return this.adjacentEdges.addAll(edgeList);
+		this.adjacentNodes.putAll(nodeList);
 	}
 	
 }

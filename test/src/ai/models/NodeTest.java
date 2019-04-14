@@ -1,9 +1,8 @@
 package src.ai.models;
 
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -23,18 +22,18 @@ public class NodeTest {
 	@Test
 	public void testAdjacentEdges()
 	{
-		List<Edge> listEdges = new ArrayList<Edge>();
+		Map<String, Node> listNodes = new HashMap<String, Node>();
 		
-		Edge edgeOne = new Edge("0:0", "0:1", 1);
-		Edge edgeTwo = new Edge("0:0", "1:0", 1);
-		Edge edgeThree = new Edge("0:0", "1:1", 1);
-		listEdges.add(edgeTwo);
-		listEdges.add(edgeThree);
+		Node nodeOne = new Node();
+		Node nodeTwo = new Node();
+		Node nodeThree = new Node();
+		listNodes.put("1:0", nodeTwo);
+		listNodes.put("1:1", nodeThree);
 		
 		
 		Node node = new Node();
-		node.addAdjacentEdge(edgeOne);
-		node.addAdjacentEdge(listEdges);
+		node.addAdjacentNode("0:1", nodeOne);
+		node.addAdjacentNode(listNodes);
 		
 		assertTrue(node.isAdjacent("0:1"));
 		assertTrue(node.isAdjacent("1:0"));

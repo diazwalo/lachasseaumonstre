@@ -16,7 +16,7 @@ public class Edge {
 	
 	public Edge(String nodeOneName, String nodeTwoName)
 	{
-		this(nodeOneName, nodeTwoName, Integer.MAX_VALUE);
+		this(nodeOneName, nodeTwoName, 1);
 	}
 
 	public String getNodeOneName()
@@ -33,5 +33,4 @@ public class Edge {
 	{
 		return this.weight;
 	}
-
 }
