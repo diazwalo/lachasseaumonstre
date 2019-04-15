@@ -1,6 +1,6 @@
 package ai.algorithm;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import ai.models.Edge;
@@ -30,34 +30,36 @@ public class Dijkstra
 	}
 
 	///test : dijkstra.shortestPathFromTo( // hunter.pos.ToEdge // monster.pos.ToEdge )
-	public List<Node> shortestPathFromTo(Node from, Node to)
+	public List<Node> shortestPathFromTo(String from, String to)
 	{
-		Map<String, Node> nodes = this.listNode;
+		Map<String, Node> nodes = new HashMap<String, Node>();
+		nodes.putAll(this.listNode);
 		// Set distance from source
-		from.setDistanceFromOrigin(0);
+		nodes.get(from).setDistanceFromOrigin(0);
 		
 		while(!nodes.isEmpty()) {
-			String s = this.findMin();
+			String s = this.findMin(nodes);
 			nodes.remove(s);
-			
-			for (String neighbourEdge : this.listEdge.keySet()) {
-				this.updateDistance(s, neighbourEdge);
+
+			for (String neighbourNode : this.listNode.get(s).getAdjacentNodes().keySet()) {
+				this.updateDistance(s, neighbourNode);
 			}
 		}
 
 		for (String name : this.listNode.keySet()) {
-			System.out.println("name:" + name + "|"+ this.listNode.get(name).getDistanceFromOrigin());
+			System.out.println("La position " + name + " est a "+ this.listNode.get(name).getDistanceFromOrigin() + " cases du monstre");
 		}
 		return null;
 	}
 	
-	public String findMin()
+	public String findMin(Map<String, Node> nodeList)
 	{
 		int min = Integer.MAX_VALUE;
 		String sommet = null;
 		
-		for (String nodeName : this.listNode.keySet()) {
-			int distance = this.listNode.get(nodeName).getDistanceFromOrigin();
+		for (String nodeName : nodeList.keySet()) {
+			int distance = nodeList.get(nodeName).getDistanceFromOrigin();
+
 			if(min > distance) {
 				min = distance;
 				sommet = nodeName;
@@ -69,10 +71,9 @@ public class Dijkstra
 	
 	public void updateDistance(String s1, String s2)
 	{
-		String name = s1 + "|" + s2;
-		//String name = EdgeUtil.formatEdge(positionOne, positionTwo)
+		String name = EdgeUtil.formatEdge(s1, s2);
 		int weightOld = this.listNode.get(s2).getDistanceFromOrigin();
-		int weightNew =  this.listNode.get(s1).getDistanceFromOrigin() + this.listEdge.get(name).getWeight();
+		int weightNew = this.listNode.get(s1).getDistanceFromOrigin() + this.listEdge.get(name).getWeight();
 		
 		if(weightOld > weightNew) {
 			this.listNode.get(s2).setDistanceFromOrigin(weightNew);

@@ -35,7 +35,7 @@ public class GraphTest {
     	map.generationMap();
 
     	Graph graph = new Graph();
-    	Map<String, Node> generatedNode = graph.generateNode(map.getTab());
+    	Map<String, Node> generatedNode = graph.generateNode(map);
 
     	int i = 0;
     	for (String name : generatedNode.keySet()) {
@@ -82,7 +82,6 @@ public class GraphTest {
         positionArround.add(pSeven);
         positionArround.add(pEight);
         
-        Map<String, Edge> resultedEdge = new TreeMap<String, Edge>();
         Graph graph = new Graph();
         Map<String, Edge> createdEdge = graph.positionToEdge(positionActual, positionArround);
         

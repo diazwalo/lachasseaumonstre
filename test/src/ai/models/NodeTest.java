@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
-
-import ai.models.Edge;
 import ai.models.Node;
 
 public class NodeTest {

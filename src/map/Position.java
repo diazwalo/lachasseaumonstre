@@ -109,7 +109,7 @@ public class Position {
 	public List<Position> getAdjacentPosition(IMap sm)
 	{
 		List<Position> positionAdjacent =new ArrayList<Position>();
-		System.out.println(sm);
+
 		checkPosition(new Position(this.posX-1, this.posY-1), positionAdjacent, sm);
 		checkPosition(new Position(this.posX, this.posY-1), positionAdjacent, sm);
 		checkPosition(new Position(this.posX+1, this.posY-1), positionAdjacent, sm);
