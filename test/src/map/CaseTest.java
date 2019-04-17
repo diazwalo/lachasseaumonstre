@@ -22,7 +22,6 @@ class CaseTest {
 		this.c4.setBeastPas(0);
 	}
 	
-	
 	@Test
 	public void testModifBeastPasWithPosBeastFalse() {
 		c1.setBeastPas(0);

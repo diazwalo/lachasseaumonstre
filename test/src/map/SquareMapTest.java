@@ -18,6 +18,7 @@ class SquareMapTest {
 	
 	@Test
 	public void testMvtValideBeast() {
+		//a modif (faux)
 		assertFalse(sm.mvtValideBeast(Mouvment.SUD));
 	}
 }
