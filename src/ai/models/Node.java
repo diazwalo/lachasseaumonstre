@@ -1,23 +1,44 @@
 package ai.models;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Node {
 	private int distanceFromOrigin;
-	private Map<String, Edge> adjacentEdges;
+	private Map<String, Node> adjacentNodes;
 	
 	public Node() {
 		this.distanceFromOrigin = Integer.MAX_VALUE;
-		this.adjacentEdges = new HashMap<String, Edge>();
+		this.adjacentNodes = new HashMap<String, Node>();
 	}
 	
-	public boolean isAdjacent(Node node)
+	public boolean isAdjacent(String name)
 	{
-		for (String name : this.adjacentEdges.keySet()) {
-			if (node.equals(name)) return true;
-		}
-		return false;
+		return this.adjacentNodes.containsKey(name);
+	}
+
+	public int getDistanceFromOrigin()
+	{
+		return this.distanceFromOrigin;
+	}
+
+	public void setDistanceFromOrigin(int distanceFromOrigin)
+	{
+		this.distanceFromOrigin = distanceFromOrigin;
+	}
+
+	public Map<String, Node> getAdjacentNodes()
+	{
+		return this.adjacentNodes;
+	}
+	
+	public void addAdjacentNode(String name, Node node)
+	{
+		this.adjacentNodes.putIfAbsent(name, node);
+	}
+	
+	public void addAdjacentNode(Map<String, Node> nodeList)
+	{
+		this.adjacentNodes.putAll(nodeList);
 	}
 	
 }

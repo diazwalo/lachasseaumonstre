@@ -1,9 +1,10 @@
-package ai.util;
+package src.ai.util;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import ai.util.NodeUtil;
 import map.Position;
 
 public class NodeUtilTest {

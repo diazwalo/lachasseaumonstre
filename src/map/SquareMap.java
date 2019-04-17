@@ -36,7 +36,9 @@ public class SquareMap implements IMap {
 			for (int y = 0; y < this.tab[x].length; y++) {
 				boolean posBeast=this.beast.isPosEnt(x, y);
 				CaseType caseType=CaseType.SOL;
+				// La ligne ci-dessous est invalide, avec une map 3x3, le monstre/beast est place sur un obstacle
 				if(x%3==2 && y%3==2) caseType=CaseType.OBSTACLE;
+				//
 				this.tab[x][y]=new Case(caseType, posBeast);
 			}
 	}

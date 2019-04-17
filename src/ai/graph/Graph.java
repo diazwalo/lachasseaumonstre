@@ -1,24 +1,27 @@
-package ai.algorithm;
+package ai.graph;
 
 import ai.models.Edge;
 import ai.models.Node;
 import ai.util.EdgeUtil;
 import ai.util.NodeUtil;
 import map.Case;
+import map.CaseType;
 import map.IMap;
 import map.Position;
-
 import java.util.*;
 
+/**
+ * Cette classe explore le plateau du jeu afin de le représenter mathématiquement sous forme
+ * d'un graphe composé composé de sommets (nodes) et d'arêtes (edges). Une fois sur cette forme, des algorithmes génériques peuvent 
+ * être appliqué.
+ * @author PHPierre
+ *
+ */
 public class Graph {
     private Map<String, Node> listNode;
     private Map<String, Edge> listEdge;
-
-    /*
-        Node : i:j       ex : 1:1
-        Edge : i:j|i:j   ex : 1:1|1:2
-        http://www.ssaurel.com/blog/calculate-shortest-paths-in-java-by-implementing-dijkstras-algorithm/
-     */
+    
+    //http://www.ssaurel.com/blog/calculate-shortest-paths-in-java-by-implementing-dijkstras-algorithm/
 
     public Graph()
     {
@@ -28,7 +31,7 @@ public class Graph {
     public Graph(IMap graph)
     {
     	this.initialze();
-    	this.listNode = this.generateNode(graph.getTab());
+    	this.listNode = this.generateNode(graph);
     	this.listEdge = this.generateEdge(graph);
     }
     
@@ -43,16 +46,28 @@ public class Graph {
      * @param cases Le tableau contenant les cases du jeu
      * @return listNode La liste des cases transformés en sommets
      */
-    public Map<String, Node> generateNode(Case[][] cases)
+    public Map<String, Node> generateNode(IMap map)
     {
-    	Node defaultNode = new Node();
+    	Map<String, Node> listNode = new TreeMap<String, Node>();
+    	Case[][] cases = map.getTab();
     	
     	for (int i = 0; i < cases.length; i++) {
             for (int j = 0; j < cases[i].length; j++) {
-                String nodeName = NodeUtil.formatNode(new Position(i, j));
-                listNode.put(nodeName, defaultNode);
+            	if(cases[i][j].getCaseType() != CaseType.OBSTACLE) {
+            		Node node = new Node();
+            		Position positionActual = new Position(i, j);
+                	
+                	List<Position> positions = positionActual.getAdjacentPosition(map);
+                	for (int k = 0; k < positions.size(); k++) {
+                		node.addAdjacentNode(NodeUtil.formatNode(positions.get(k)), new Node());
+    				}
+
+                    String nodeName = NodeUtil.formatNode(positionActual);
+                    listNode.put(nodeName, node);
+            	}
             }
         }
+
     	return listNode;
     }
     
@@ -92,12 +107,7 @@ public class Graph {
         	String nameNodeTwo = NodeUtil.formatNode(position);
         	String nameEdge = EdgeUtil.formatEdge(positionActual, position);
         	
-        	this.listNode.put(nameNodeOne, new Node());
-        	this.listNode.put(nameNodeTwo, new Node());
-        	
-        	Node nodeOne = this.listNode.get(nameNodeOne);   
-        	Node nodeTwo = this.listNode.get(nameNodeTwo);
-			edges.put(nameEdge, new Edge(nodeOne, nodeTwo, 10));
+			edges.put(nameEdge, new Edge(nameNodeOne, nameNodeTwo));
         }
         
     	return edges;

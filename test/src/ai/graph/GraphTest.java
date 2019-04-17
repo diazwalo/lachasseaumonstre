@@ -1,4 +1,4 @@
-package ai.graph;
+package src.ai.graph;
 
 import static org.junit.Assert.*;
 
@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import ai.algorithm.Graph;
+import ai.graph.Graph;
 import ai.models.Edge;
 import ai.models.Node;
 import ai.util.EdgeUtil;
@@ -34,7 +35,7 @@ public class GraphTest {
     	map.generationMap();
 
     	Graph graph = new Graph();
-    	Map<String, Node> generatedNode = graph.generateNode(map.getTab());
+    	Map<String, Node> generatedNode = graph.generateNode(map);
 
     	int i = 0;
     	for (String name : generatedNode.keySet()) {
@@ -45,7 +46,7 @@ public class GraphTest {
     	assertEquals(awaitedPosition.length, generatedNode.size());
     }
     
-    /*@Test
+    @Test
     public void testGenerateEdge()
     {
     	IMap map = new SquareMap(3, 3);
@@ -54,9 +55,8 @@ public class GraphTest {
     	Graph graph = new Graph();
     	Map<String, Edge> generatedEdge = graph.generateEdge(map);
     	
-    	System.out.println("RETOUR:"+generatedEdge.size());
     	assertEquals(40, generatedEdge.size());
-    }*/
+    }
     
 	@Test
 	public void testPositionToEdge() {
@@ -82,13 +82,15 @@ public class GraphTest {
         positionArround.add(pSeven);
         positionArround.add(pEight);
         
-        Map<String, Edge> resultedEdge = new HashMap<String, Edge>();
         Graph graph = new Graph();
         Map<String, Edge> createdEdge = graph.positionToEdge(positionActual, positionArround);
         
         assertEquals(createdEdge.size(), positionArround.size());
         
-        assertTrue(createdEdge.containsKey(EdgeUtil.formatEdge(positionActual, pTwo)));
+        String name = EdgeUtil.formatEdge(positionActual, pOne);
+        assertEquals(createdEdge.get(name).getNodeOneName(), "1:1");
+        assertEquals(createdEdge.get(name).getNodeTwoName(), "0:0");
+        assertTrue(createdEdge.containsKey(name));
 	}
 
 }

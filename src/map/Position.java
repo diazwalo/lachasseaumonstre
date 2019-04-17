@@ -67,6 +67,14 @@ public class Position {
 	}
 	
 	/**
+	 * Affiche la position de l'objet.
+	 */
+	public String toString()
+	{
+		return "Position : [x:" + this.posX + ",y:" + this.posY + "]";
+	}
+	
+	/**
 	 * deplace la Position courante en lui applicant le Mouvment mvt passe en parametre
 	 * @param mvt
 	 */
@@ -98,13 +106,38 @@ public class Position {
 	 * @param sm
 	 * @return List<Position>
 	 */
-	public List<Position> getAdjacentPosition(IMap sm){
-		List<Position> posAdj =new ArrayList<Position>();
-		for (int i=posX-1; i<posX+2; i++)
-			for(int j=posY-1; j<posY+2; j++)
-				if (i>=0 && j>=0 && (i!=posX && j!=posY) && i<sm.getTab()[i].length && i<sm.getTab()[j].length && sm.getTab()[i][j].getCaseType().equals(CaseType.SOL))
-					posAdj.add(new Position(i,j));
-		return posAdj;
+	public List<Position> getAdjacentPosition(IMap sm)
+	{
+		List<Position> positionAdjacent =new ArrayList<Position>();
+
+		checkPosition(new Position(this.posX-1, this.posY-1), positionAdjacent, sm);
+		checkPosition(new Position(this.posX, this.posY-1), positionAdjacent, sm);
+		checkPosition(new Position(this.posX+1, this.posY-1), positionAdjacent, sm);
+		
+		checkPosition(new Position(this.posX-1, this.posY), positionAdjacent, sm);
+		checkPosition(new Position(this.posX+1, this.posY), positionAdjacent, sm);
+		
+		checkPosition(new Position(this.posX-1, this.posY+1), positionAdjacent, sm);
+		checkPosition(new Position(this.posX, this.posY+1), positionAdjacent, sm);
+		checkPosition(new Position(this.posX+1, this.posY+1), positionAdjacent, sm);
+		
+		return positionAdjacent;
+	}
+	
+	/**
+	 * Ajoute la position a une liste donne si elle est accessible
+	 * @param p la position actuelle
+	 * @param positionAdjacent La position est ajoute dedans si elle est accessible
+	 * @param sm Le plateau de jeu
+	 */
+	private void checkPosition(Position p, List<Position> positionAdjacent, IMap sm)
+	{
+		if(p.getPosX() < 0 || p.getPosY() < 0) return;
+		if(p.getPosX() > sm.getTab().length-1 || p.getPosY() > sm.getTab()[p.getPosX()].length-1) return;
+		if(sm.getTab()[p.getPosX()][p.getPosY()] instanceof Case 
+				&& sm.getTab()[p.getPosX()][p.getPosY()].getCaseType().equals(CaseType.SOL)) {
+			positionAdjacent.add(p);
+		}
 	}
 		
 }
