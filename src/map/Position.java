@@ -98,7 +98,7 @@ public class Position {
 	 * @return int[]
 	 */
 	public int[] getModifPosition(int[] mvt) {
-		return new int[] {this.posX+mvt[0] ,this.posY+mvt[1]};
+		return new int[] {(this.posX+(mvt[0])) ,(this.posY+(mvt[1]))};
 	}
 	
 	/**
@@ -138,6 +138,10 @@ public class Position {
 				&& sm.getTab()[p.getPosX()][p.getPosY()].getCaseType().equals(CaseType.SOL)) {
 			positionAdjacent.add(p);
 		}
+	}
+	
+	public boolean equals(Position p) {
+		return this.posX==p.posX && this.posY==p.posY;
 	}
 		
 }
