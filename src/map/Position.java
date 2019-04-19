@@ -106,8 +106,7 @@ public class Position {
 	 * @param sm
 	 * @return List<Position>
 	 */
-	public List<Position> getAdjacentPosition(IMap sm)
-	{
+	public List<Position> getAdjacentPosition(IMap sm) {
 		List<Position> positionAdjacent =new ArrayList<Position>();
 
 		checkPosition(new Position(this.posX-1, this.posY-1), positionAdjacent, sm);
@@ -125,13 +124,12 @@ public class Position {
 	}
 	
 	/**
-	 * Ajoute la position a une liste donne si elle est accessible
+	 * Ajoute la position a une liste donnee si elle est accessible
 	 * @param p la position actuelle
 	 * @param positionAdjacent La position est ajoute dedans si elle est accessible
 	 * @param sm Le plateau de jeu
 	 */
-	private void checkPosition(Position p, List<Position> positionAdjacent, IMap sm)
-	{
+	public void checkPosition(Position p, List<Position> positionAdjacent, IMap sm) {
 		if(p.getPosX() < 0 || p.getPosY() < 0) return;
 		if(p.getPosX() > sm.getTab().length-1 || p.getPosY() > sm.getTab()[p.getPosX()].length-1) return;
 		if(sm.getTab()[p.getPosX()][p.getPosY()] instanceof Case 
@@ -143,5 +141,4 @@ public class Position {
 	public boolean equals(Position p) {
 		return this.posX==p.posX && this.posY==p.posY;
 	}
-		
 }
