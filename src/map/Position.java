@@ -97,7 +97,7 @@ public class Position {
 	 * @param mvt
 	 * @return int[]
 	 */
-	public int[] getModifPosition(int[] mvt) {
+	public int[] getModifPosTempo(int[] mvt) {
 		return new int[] {(this.posX+(mvt[0])) ,(this.posY+(mvt[1]))};
 	}
 	

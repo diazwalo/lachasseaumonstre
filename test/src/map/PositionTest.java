@@ -18,7 +18,7 @@ public class PositionTest {
 	private Position position;
 
 	@Before
-	public void beforeTest() {
+	public void before() {
 		this.position = new Position(2, 1);
 	}
 
@@ -43,11 +43,11 @@ public class PositionTest {
 	}
 	
 	@Test
-	public void testGetModifPosition() {
+	public void testGetModifPosTempo() {
 		Mouvment mvtTest=Mouvment.SUDEST;
 		int[] posModifTest=new int[] {(this.position.getPosX()+mvtTest.getMvtX()), (this.position.getPosY()+mvtTest.getMvtY())};
 		
-		assertArrayEquals(posModifTest, this.position.getModifPosition(mvtTest.getMvt()));
+		assertArrayEquals(posModifTest, this.position.getModifPosTempo(mvtTest.getMvt()));
 	}
 	
 	@Test

@@ -20,6 +20,16 @@ public class Bait implements Bonus {
 	}
 	
 	/**
+	 * Instancie Bait et le place a la position dont l'abscice et l'ordonnee sont donnees en parametre
+	 * @param posX
+	 * @param posY
+	 */
+	public Bait(int posX, int posY) {
+		this();
+		this.pos=new Position(posX, posY);
+	}
+	
+	/**
 	 * place ce Bonus a la position d abscice x et d ordonnee y
 	 */
 	@Override

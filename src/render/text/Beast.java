@@ -14,7 +14,7 @@ import map.Mouvment;
 public class Beast extends Entity{
 	
 	/**
-	 * instancie Beast a la Position posX, posY
+	 * Instancie Beast a la Position posX, posY
 	 * @param posX
 	 * @param posY
 	 */
@@ -38,7 +38,7 @@ public class Beast extends Entity{
 	public boolean verifDeplacementSpe(Case[][] tab, Mouvment mvt, Entity hunter) {
 		// TODO Auto-generated method stub
 		boolean valide=super.verifDeplacement(tab, mvt);
-		int[] posModif=super.getPos().getModifPosition(mvt.getMvt());
+		int[] posModif=super.getPos().getModifPosTempo(mvt.getMvt());
 		if(valide) {
 			valide=valide && tab[posModif[0]][posModif[1]].getCaseType()==CaseType.SOL;
 			valide=valide && !hunter.isPosEnt(posModif[0], posModif[1]);
@@ -63,7 +63,7 @@ public class Beast extends Entity{
 	
 	
 	/**
-	 * Verfie si la bete à encore la possibilite de jouer ou non.
+	 * Verfie si la bete a encore la possibilite de jouer ou non.
 	 * @param tab
 	 * @param hunter
 	 * @return boolean

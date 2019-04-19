@@ -39,13 +39,13 @@ public abstract class Entity {
 	public abstract boolean verifDeplacementSpe(Case [][] tab, Mouvment mvt, Entity other);
 	
 	/**
-	 * verifie que le deplacement souhaite ne fait pas sortir du tableau ou aller sur un obstable
+	 * verifie que le deplacement souhaite ne fait pas sortir du tableau ou aller sur un obstacle
 	 * @param tab
 	 * @param mvt
 	 * @return boolean
 	 */
 	protected boolean verifDeplacement(Case [][] tab, Mouvment mvt ) {
-		int[] posModif=this.pos.getModifPosition(mvt.getMvt());
+		int[] posModif=this.pos.getModifPosTempo(mvt.getMvt());
 		boolean valide=posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
 		if(valide) {
 			valide=valide && tab[posModif[0]][posModif[1]].getCaseType().getCaseType()==1;

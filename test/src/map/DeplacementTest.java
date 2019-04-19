@@ -14,7 +14,7 @@ public class DeplacementTest {
 	private IMap map;
 
 	@Before
-    public void beforeTest() {
+    public void before() {
     	map = new SquareMap(11, 11);
     	map.generationMap();
     	map.moveBeast(Mouvment.NORD);

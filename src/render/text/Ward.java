@@ -19,6 +19,16 @@ public class Ward implements Bonus {
 		this.radius = 3;
 		this.pos = null;
 	}
+	
+	/**
+	 * Instancie Ward et le place a la position dont l'abscice et l'ordonnee sont donnees en parametre
+	 * @param posX
+	 * @param posY
+	 */
+	public Ward(int posX, int posY) {
+		this();
+		this.pos=new Position(posX, posY);
+	}
 
 	/**
 	 * place ce Bonus a la position d abscice x et d ordonnee y

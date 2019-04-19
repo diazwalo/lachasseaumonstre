@@ -35,7 +35,7 @@ public class Hunter extends Entity {
 	public boolean verifDeplacementSpe(Case[][] tab, Mouvment mvt, Entity beast) {
 		// TODO Auto-generated method stub
 		boolean valide=super.verifDeplacement(tab, mvt);
-		int[] posModif=super.getPos().getModifPosition(mvt.getMvt());
+		int[] posModif=super.getPos().getModifPosTempo(mvt.getMvt());
 		if(valide) {
 			valide=valide && tab[posModif[0]][posModif[1]].getCaseType()==CaseType.SOL;
 			valide=valide && !beast.isPosEnt(posModif[0], posModif[1]);
