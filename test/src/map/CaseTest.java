@@ -1,14 +1,14 @@
 package src.map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import map.Case;
 import map.CaseType;
 
-class CaseTest {
+public class CaseTest {
 	private Case c1=new Case(CaseType.SOL, false);
 	private Case c2=new Case(CaseType.SOL, false);
 	private Case c3=new Case(CaseType.SOL, true);
