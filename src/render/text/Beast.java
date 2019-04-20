@@ -53,7 +53,7 @@ public class Beast extends Entity{
 	 * @param tab
 	 * @return ArrayList<Mouvment>
 	 */
-	public ArrayList<Mouvment> PossibleMouv(Case[][] tab) {
+	public ArrayList<Mouvment> mvtPossible(Case[][] tab) {
 		ArrayList<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values())
 			if(super.verifDeplacement(tab, m))
@@ -63,13 +63,13 @@ public class Beast extends Entity{
 	
 	
 	/**
-	 * Verfie si la bete a encore la possibilite de jouer ou non.
+	 * Verfie si la Beast a encore la possibilite de jouer ou non.
 	 * @param tab
 	 * @param hunter
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity hunter) {
-		ArrayList<Mouvment> possible = this.PossibleMouv(tab);
+		ArrayList<Mouvment> possible = this.mvtPossible(tab);
 		for(Mouvment m : possible)
 			if(this.verifDeplacementSpe(tab, m, hunter))
 				return false;

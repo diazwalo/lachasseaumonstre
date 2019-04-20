@@ -1,5 +1,7 @@
 package render.text;
 
+import java.util.ArrayList;
+
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
@@ -41,5 +43,32 @@ public class Hunter extends Entity {
 			valide=valide && !beast.isPosEnt(posModif[0], posModif[1]);
 		}
 		return valide;
+	}
+	
+	/**
+	 * retourne la liste des differents Mouvment possible pour Hunter.
+	 * @param tab
+	 * @return ArrayList<Mouvment>
+	 */
+	public ArrayList<Mouvment> mvtPossible(Case[][] tab) {
+		ArrayList<Mouvment> mouvTab = new ArrayList<>();
+		for(Mouvment m : Mouvment.values())
+			if(super.verifDeplacement(tab, m))
+				mouvTab.add(m);
+		return mouvTab;
+	}
+	
+	/**
+	 * Verfie si le Hunter a encore la possibilite de jouer ou non.
+	 * @param tab
+	 * @param hunter
+	 * @return boolean
+	 */
+	public boolean isLock(Case[][] tab, Entity beast) {
+		ArrayList<Mouvment> possible = this.mvtPossible(tab);
+		for(Mouvment m : possible)
+			if(this.verifDeplacementSpe(tab, m, beast))
+				return false;
+		return true;
 	}
 }

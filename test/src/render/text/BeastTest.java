@@ -2,6 +2,8 @@ package src.render.text;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,9 +43,33 @@ public class BeastTest {
 	
 	@Test
 	public void testVerifDeplacementSpe() {
-		this.caseTab[0][2].setBeastPas(42);
-		assertEquals(this.caseTab[0][2].getBeastPas(), 42);
-		assertTrue(this.beast.isPosEnt(1, 0));
-		//assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.EST, new Hunter(2, 1)));
+		Mouvment mvt=Mouvment.EST;
+		this.caseTab[this.beast.getPos().getPosX()+mvt.getMvtX()][this.beast.getPos().getPosY()+mvt.getMvtY()].setBeastPas(42);
+		assertFalse(this.beast.verifDeplacementSpe(caseTab, mvt, new Hunter(2, 1)));
+		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Hunter(2,1)));
+	}
+	
+	@Test
+	public void testMvtPossible() {
+		ArrayList<Mouvment> mvtPoss=this.beast.mvtPossible(caseTab);
+		assertFalse(mvtPoss.contains(Mouvment.NORD));
+		assertFalse(mvtPoss.contains(Mouvment.NORDEST));
+		assertTrue(mvtPoss.contains(Mouvment.EST));
+		assertTrue(mvtPoss.contains(Mouvment.SUDEST));
+		assertTrue(mvtPoss.contains(Mouvment.SUD));
+		assertTrue(mvtPoss.contains(Mouvment.SUDOUEST));
+		assertFalse(mvtPoss.contains(Mouvment.OUEST));
+		assertFalse(mvtPoss.contains(Mouvment.NORDOUEST));
+	}
+	
+	@Test
+	public void testIsLock() {
+		assertFalse(this.beast.isLock(caseTab, new Hunter(2, 1)));
+		
+		for (int i = 0; i < this.caseTab.length; i++)
+			for (int j = 0; j < this.caseTab[i].length; j++)
+				this.caseTab[i][j].setBeastPas(42);
+		
+		assertTrue(this.beast.isLock(caseTab, new Hunter(2, 1)));
 	}
 }
