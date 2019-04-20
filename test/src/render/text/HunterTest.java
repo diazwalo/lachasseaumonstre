@@ -18,23 +18,23 @@ public class HunterTest {
 	
 	@Before
 	public void before() {
-		this.hunter=new Hunter(1, 0);
+		this.hunter=new Hunter(0, 1);
 		this.caseTab=new Case[][] { {new Case(CaseType.OBSTACLE, false), new Case(CaseType.SOL, false), new Case(CaseType.SOL, false)},
-									{new Case(CaseType.SOL, true), new Case(CaseType.SOL, true), new Case(CaseType.SOL, true)},
-									{new Case(CaseType.SOL, true), new Case(CaseType.SOL, true), new Case(CaseType.SOL, true)} };
+									{new Case(CaseType.SOL, false), new Case(CaseType.SOL, false), new Case(CaseType.SOL, true)},
+									{new Case(CaseType.SOL, false), new Case(CaseType.SOL, false), new Case(CaseType.SOL, false)} };
 	}
 	
 	@Test
 	public void testIsPosEnt() {
-		assertTrue(this.hunter.isPosEnt(1, 0));
+		assertTrue(this.hunter.isPosEnt(0, 1));
 		assertFalse(this.hunter.isPosEnt(0, 0));
 	}
 	
 	@Test
 	public void testVerifDeplacement() {
-		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.OUEST, new Beast(0, 1)));
-		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Beast(0, 1)));
-		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.NORD, new Beast(0, 1)));
-		assertTrue(this.hunter.verifDeplacementSpe(caseTab, Mouvment.EST, new Beast(0, 1)));
+		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.OUEST, new Beast(1, 2)));
+		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Beast(1, 2)));
+		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.NORD, new Beast(1, 2)));
+		assertTrue(this.hunter.verifDeplacementSpe(caseTab, Mouvment.EST, new Beast(1, 2)));
 	}
 }

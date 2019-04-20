@@ -40,7 +40,7 @@ public class Beast extends Entity{
 		boolean valide=super.verifDeplacement(tab, mvt);
 		int[] posModif=super.getPos().getModifPosTempo(mvt.getMvt());
 		if(valide) {
-			valide=valide && tab[posModif[0]][posModif[1]].getCaseType()==CaseType.SOL;
+			valide=valide && tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.SOL);
 			valide=valide && !hunter.isPosEnt(posModif[0], posModif[1]);
 			valide=valide && tab[posModif[0]][posModif[1]].getBeastPas()==-1;
 		}

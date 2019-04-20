@@ -3,6 +3,7 @@ package render.text;
 import java.util.ArrayList;
 
 import map.Case;
+import map.CaseType;
 import map.Mouvment;
 import map.Position;
 
@@ -48,7 +49,7 @@ public abstract class Entity {
 		int[] posModif=this.pos.getModifPosTempo(mvt.getMvt());
 		boolean valide=posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
 		if(valide) {
-			valide=valide && tab[posModif[0]][posModif[1]].getCaseType().getCaseType()==1;
+			valide=valide && tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.SOL);
 		}return valide;
 	}
 	
