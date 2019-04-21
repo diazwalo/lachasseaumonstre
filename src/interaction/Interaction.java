@@ -17,6 +17,10 @@ public class Interaction {
 		return res;
 	}
 	
+	/**
+	 * Retourne un tableau contenant des Strings pouvant etre saisies correspondant a un Mouvment
+	 * @return String[]
+	 */
 	public static String[] generateStrMvt() {
 		return new String[] {"z", "s", "d", "q", "zd", "zq", "sd", "sq", "dz", "qz", "ds", "qs"};
 	}
