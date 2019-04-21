@@ -11,7 +11,7 @@ import map.SquareMap;
 
 public class GameHunter {
 
-	private IMap map;
+	private IMap map; 
 	public static GameStatus gameStatus;
 	
 	public GameHunter(IMap map) {

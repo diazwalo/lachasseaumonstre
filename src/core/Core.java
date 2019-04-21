@@ -18,28 +18,37 @@ public class Core {
 		 * Et dans le fichier config, il y aura cette ligne : Map map = new SquareMap(11, 11);
 		 * On la bougera plus tard
 		 */
-        int param[] = new int[4];
-        int indexParam = 0;
-        String argValide[] = new String[]{"--largeur=" , "--longueur=", "--ward"   , "--trap"};
-        for(int i = 1 ; i<args.length ; i++) {
-            for(String chaine : argValide) {
-                if(chaine.equals(args[i].substring(0, chaine.length()))) {
-                    if(chaine.equals("--ward") || chaine.equals("--trap")) {
-                        param[indexParam] = 1;
-                    }
-                    param[indexParam] = Integer.valueOf(args[i].substring(chaine.length()));
-                    //param[0] = largeur
-                    //param[1] = longueur
-                    //param[2] = ward
-                    //param[4] = trap
-                    //test
-                }
-                indexParam++;
-            }
-            indexParam = 0;
-        }
-		
-		
+		int param[] = new int[4];
+		int indexParam = 0;
+		String argValide[] = new String[]{"--largeur=" , "--longueur=", "--ward"   , "--trap"};
+		if(args.length == 4) {
+			for(int i = 1 ; i<args.length ; i++) {
+				for(String chaine : argValide) {
+					if(args[i].equals("--ward") || args[i].equals("--trap")) {
+						param[indexParam] = 1;
+					}else {
+						if(chaine.equals(args[i].substring(0, chaine.length()))) {
+							if(args[i].length() > chaine.length()) {
+								param[indexParam] = Integer.valueOf(args[i].substring(chaine.length()));
+								//param[0] = largeur
+								//param[1] = longueur
+								//param[2] = ward
+								//param[4] = trap
+								//test
+							}
+						}
+					}  
+
+				}
+				indexParam++;
+			}
+			indexParam = 0;
+		}
+
+		for(int num : param){
+			System.out.println(num);
+		}
+
 		IMap map = new SquareMap(11, 11);
 		map.generationMap();
 		boolean mvtValide=true;
@@ -49,7 +58,7 @@ public class Core {
 			mvtValide=map.moveBeast(mvt);
 			map.setBeastPas();
 		}System.out.println("Mvt invalide");
-		
+
 		//active la pr�sence de pi�ge et en met un dans le tableau � un endroit ou il y a du sol.
 	}
 }
