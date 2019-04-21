@@ -21,14 +21,14 @@ public class Config {
 	}
 	
 	/**
-	 * Pour les Cases a "true" dans "aModifier", inverse les le boolean qui lui est associe dans Config
+	 * Pour les Cases a "true" dans "aModifier", inverse le boolean qui lui est associe dans Config
 	 * @param aModifier
 	 */
 	public void setConfig(boolean[] aModifier) {
 		if(aModifier[0]) setPiege();
-		else if(aModifier[1]) setCamouflage();
-		else if(aModifier[2]) setWard();
-		else if(aModifier[3]) setBait();
+		if(aModifier[1]) setCamouflage();
+		if(aModifier[2]) setWard();
+		if(aModifier[3]) setBait();
 	}
 	
 	/**
@@ -96,9 +96,9 @@ public class Config {
 	 */
 	public String toString()
 	{
-		return "Piège:" + this.piege +
-				",Camouflage" + this.camouflage +
-				",Balise de vision" + this.ward + 
-				",Leurre" + this.bait;
+		return "Piège: " + this.piege +
+				", Camouflage: " + this.camouflage +
+				", Balise de vision: " + this.ward + 
+				", Leurre: " + this.bait + ".";
 	}
 }
