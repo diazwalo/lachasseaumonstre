@@ -32,15 +32,16 @@ public class SquareMap implements IMap {
 	 * Remplie le tableau en mettant dans les cases soit des Obstacles soit des Sol.
 	 */
 	public void generationMap() {
-		for (int x = 0; x < this.tab.length; x++)
+		for (int x = 0; x < this.tab.length; x++) {
 			for (int y = 0; y < this.tab[x].length; y++) {
 				boolean posBeast=this.beast.isPosEnt(x, y);
 				CaseType caseType=CaseType.SOL;
-				// La ligne ci-dessous est invalide, avec une map 3x3, le monstre/beast est place sur un obstacle
-				if(x%3==2 && y%3==2) caseType=CaseType.OBSTACLE;
-				//
+
+				if(x%3==2 && y%3==2 && !this.beast.isPosEnt(x, y) && !this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
+				
 				this.tab[x][y]=new Case(caseType, posBeast);
 			}
+		}
 	}
 
 	/**
