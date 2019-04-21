@@ -9,7 +9,7 @@ import map.IMap;
 import map.Mouvment;
 import map.SquareMap;
 
-public class GameHunter {
+public class GameHunter implements IGame {
 
 	private IMap map; 
 	public static GameStatus gameStatus;

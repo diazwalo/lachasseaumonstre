@@ -8,7 +8,7 @@ import map.IMap;
 import map.Mouvment;
 import map.Position;
 
-public class GameBeast {
+public class GameBeast implements IGame{
 	private IMap map;
 	public static GameStatus gameStatus;
 	
