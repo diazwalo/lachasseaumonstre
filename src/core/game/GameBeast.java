@@ -17,7 +17,6 @@ public class GameBeast {
 	}
 	
 	public void launchGame() {
-		
 		while(! this.beastTurn()) System.out.println("Mvt invalide");
 		this.hunterTurn();
 	}
