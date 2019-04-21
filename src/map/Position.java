@@ -2,7 +2,6 @@ package map;
 
 import java.util.ArrayList;
 import java.util.List;
-import map.SquareMap;
 
 /**
  * Cette Class defini les caracteristiques de la Position
