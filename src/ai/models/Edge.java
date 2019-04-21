@@ -1,5 +1,10 @@
 package ai.models;
 
+/**
+ * Cette classe défini comment les arêtes dont a besoin la classe Graph sont définies.
+ * @author PHPierre
+ *
+ */
 public class Edge {
 	
 	public static int defaultWeight = 1;
