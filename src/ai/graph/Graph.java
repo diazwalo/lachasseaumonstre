@@ -1,5 +1,10 @@
 package ai.graph;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import ai.models.Edge;
 import ai.models.Node;
 import ai.util.EdgeUtil;
@@ -8,9 +13,6 @@ import map.Case;
 import map.CaseType;
 import map.IMap;
 import map.Position;
-import map.SquareMap;
-
-import java.util.*;
 
 /**
  * Cette classe explore le plateau du jeu afin de le représenter mathématiquement sous forme
