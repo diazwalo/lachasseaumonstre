@@ -24,18 +24,24 @@ public class Dijkstra
 {
 	private Map<String, Node> listNode;
 	private Map<String, Edge> listEdge;
-	private Map<String, Node> shortestPath;
 
-	/// test : Graph graph = new Graph(map);
-	/// test : Dijkstra dijkstra = new Dijkstra(graph);
+	/**
+	 * Applique l'algorithme de Dijkstra sur un objet Graph.
+	 * @param graph Un graph contenant les aretes et les sommets.
+	 */
 	public Dijkstra(Graph graph)
 	{
 		this.listNode = graph.getListNode();
 		this.listEdge = graph.getListEdge();
-		this.shortestPath = new HashMap<String, Node>();
 	}
 
-	///test : dijkstra.shortestPathFromTo( // hunter.pos.ToEdge // monster.pos.ToEdge )
+	/**
+	 * Genere le chemin depuis le sommet final et le formate en position pour etre utilisable.
+	 * en compte les obstacles.
+	 * @param from L'identifiant de la position de depart.
+	 * @param to L'identifiant de la position finale.
+	 * @return Une liste de positions contenant l;'itineraire a suivre.
+	 */
 	public List<Position> shortestPathFromTo(String from, String to)
 	{
 		List<Position> shortestPath = new ArrayList<Position>();
@@ -54,6 +60,10 @@ public class Dijkstra
 		return shortestPath;
 	}
 	
+	/**
+	 * Execute l'algorithme de Dijkstra pour chaque sommets.
+	 * @param from
+	 */
 	private void executeDijkstra(String from)
 	{
 		Map<String, Node> nodes = new HashMap<String, Node>();
@@ -71,6 +81,11 @@ public class Dijkstra
 		}
 	}
 	
+	/**
+	 * Explore une liste de sommets afin de trouver celui ayant la plus courte distance depuis l'origine.
+	 * @param nodeList Une liste de sommets.
+	 * @return String L'identifiant du sommet ayant la plus courte distance depuis l'origine.
+	 */
 	private String findMin(Map<String, Node> nodeList)
 	{
 		int min = Integer.MAX_VALUE;
@@ -88,6 +103,11 @@ public class Dijkstra
 		return sommet;
 	}
 	
+	/**
+	 * Mets a jour les distances entre les sommets et l'origine grace au chemin le plus cours.
+	 * @param s1 L'identifiant du sommet ayant une distance depuis l'origine a verifier
+	 * @param s2 L'identifiant du sommet avec la distance connue.
+	 */
 	private void updateDistance(String s1, String s2)
 	{
 		String name = EdgeUtil.formatEdge(s1, s2);
