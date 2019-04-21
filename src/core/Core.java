@@ -32,6 +32,7 @@ public class Core {
                     //param[1] = longueur
                     //param[2] = ward
                     //param[4] = trap
+                    //test
                 }
                 indexParam++;
             }
