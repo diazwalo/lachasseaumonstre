@@ -5,6 +5,7 @@ import java.util.*;
 public class Node {
 	private int distanceFromOrigin;
 	private Map<String, Node> adjacentNodes;
+	private String precedent;
 	
 	public Node() {
 		this.distanceFromOrigin = Integer.MAX_VALUE;
@@ -29,6 +30,16 @@ public class Node {
 	public Map<String, Node> getAdjacentNodes()
 	{
 		return this.adjacentNodes;
+	}
+	
+	public void setPrecedent(String precedent)
+	{
+		this.precedent = precedent;
+	}
+
+	public String getPrecedent()
+	{
+		return this.precedent;
 	}
 	
 	public void addAdjacentNode(String name, Node node)

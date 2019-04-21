@@ -20,4 +20,9 @@ public class NodeUtil {
         return position.getPosX() + ":" + position.getPosY();
     }
 
+    public static Position formatNode(String name)
+    {
+    	String[] explodeArray = name.split(":");
+    	return new Position(Integer.valueOf(explodeArray[0]), Integer.valueOf(explodeArray[1]));
+    }
 }

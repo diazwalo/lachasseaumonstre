@@ -10,6 +10,7 @@ import map.Position;
 public class EdgeUtil {
 
 	public final static String SEPARATOR = "|";
+	
 	/**
 	 * Génère un identifiant pour relier deux positions du plateau.
 	 * @param positionOne Une position du plateau.
@@ -20,6 +21,7 @@ public class EdgeUtil {
     {
         return NodeUtil.formatNode(positionOne) + SEPARATOR + NodeUtil.formatNode(positionTwo);
     }
+    
     
     public static String formatEdge(String s1, String s2)
     {
