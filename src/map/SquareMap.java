@@ -83,18 +83,6 @@ public class SquareMap implements IMap {
 	public void setConfig(boolean[] aModifier) {
 		this.config.setConfig(aModifier);
 	}
-	
-	/**
-	 * Petit Test pour voir ou pop le Buff 'p'
-	 */
-	public void testModifBuff() {
-		for (int i = 0; i < tab.length; i++)
-			for (int j = 0; j < tab.length; j++) {
-				boolean obstacle=tab[i][j].getCaseType()==CaseType.OBSTACLE;
-				if(i==(this.tab.length/2)+1 && j==this.tab[i].length/2 && !this.beast.isPosEnt(i, j) && !this.hunter.isPosEnt(i, j) && !obstacle)
-					this.tab[i][j].setBuff(new boolean[] {true, false, false, false});
-			}
-	}
 
 	/**
 	 * Teste si le deplacement souhaite pour Beast ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Hunter 
