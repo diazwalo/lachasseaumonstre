@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
+import ai.models.Edge;
 import ai.util.NodeUtil;
 import map.IMap;
 import map.Position;
