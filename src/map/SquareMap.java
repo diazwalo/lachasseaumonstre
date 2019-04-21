@@ -37,7 +37,7 @@ public class SquareMap implements IMap {
 				boolean posBeast=this.beast.isPosEnt(x, y);
 				CaseType caseType=CaseType.SOL;
 
-				if(x%3==2 && y%3==2 && !this.beast.isPosEnt(x, y) && !this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
+				if(x%3==2 && y%3==2 && ! this.beast.isPosEnt(x, y) && ! this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
 				
 				this.tab[x][y]=new Case(caseType, posBeast);
 			}
