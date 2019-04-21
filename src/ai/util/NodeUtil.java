@@ -10,6 +10,8 @@ import map.Position;
  */
 public class NodeUtil {
 
+	public final static String SEPARATOR = ":";
+	
 	/**
 	 * Génère un identifiant pour une position donné du plateau.
 	 * @param position Une position sur le plateau.
@@ -17,7 +19,7 @@ public class NodeUtil {
 	 */
     public static String formatNode(Position position)
     {
-        return position.getPosX() + ":" + position.getPosY();
+        return position.getPosX() + SEPARATOR + position.getPosY();
     }
 
     /**
@@ -27,7 +29,7 @@ public class NodeUtil {
      */
     public static Position formatNode(String name)
     {
-    	String[] explodeArray = name.split(":");
+    	String[] explodeArray = name.split(SEPARATOR);
     	return new Position(Integer.valueOf(explodeArray[0]), Integer.valueOf(explodeArray[1]));
     }
 }
