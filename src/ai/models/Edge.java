@@ -5,8 +5,6 @@ public class Edge {
 	public static int defaultWeight = 1;
 	private String nodeOneName;
 	private String nodeTwoName;
-	private Node nodeOne;
-	private Node nodeTwo;
 	private int weight;
 
 	/**
