@@ -7,10 +7,10 @@ package config;
  *
  */
 public class Config {
-	private static boolean piege=false;
-	private static boolean camouflage=false;
-	private static boolean ward=false;
-	private static boolean bait=false;
+	public static boolean piege=false;
+	public static boolean camouflage=false;
+	public static boolean ward=false;
+	public static boolean bait=false;
 
 	/**
 	 * Retourne la Config sous la forme d'un tableau de 4 boolean 
@@ -96,9 +96,9 @@ public class Config {
 	 */
 	public String toString()
 	{
-		return "Piège: " + this.piege +
-				", Camouflage: " + this.camouflage +
-				", Balise de vision: " + this.ward + 
-				", Leurre: " + this.bait + ".";
+		return "Piège: " + piege +
+				", Camouflage: " + camouflage +
+				", Balise de vision: " + ward + 
+				", Leurre: " + bait + ".";
 	}
 }
