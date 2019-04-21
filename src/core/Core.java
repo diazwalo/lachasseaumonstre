@@ -18,6 +18,26 @@ public class Core {
 		 * Et dans le fichier config, il y aura cette ligne : Map map = new SquareMap(11, 11);
 		 * On la bougera plus tard
 		 */
+        int param[] = new int[4];
+        int indexParam = 0;
+        String argValide[] = new String[]{"--largeur=" , "--longueur=", "--ward"   , "--trap"};
+        for(int i = 1 ; i<args.length ; i++) {
+            for(String chaine : argValide) {
+                if(chaine.equals(args[i].substring(0, chaine.length()))) {
+                    if(chaine.equals("--ward") || chaine.equals("--trap")) {
+                        param[indexParam] = 1;
+                    }
+                    param[indexParam] = Integer.valueOf(args[i].substring(chaine.length()));
+                    //param[0] = largeur
+                    //param[1] = longueur
+                    //param[2] = ward
+                    //param[4] = trap
+                }
+                indexParam++;
+            }
+            indexParam = 0;
+        }
+		
 		
 		IMap map = new SquareMap(11, 11);
 		map.generationMap();
