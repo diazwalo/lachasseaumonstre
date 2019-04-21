@@ -6,6 +6,7 @@ import java.util.Random;
 import interaction.Interaction;
 import map.IMap;
 import map.Mouvment;
+import map.Position;
 
 public class GameBeast {
 	private IMap map;
@@ -19,6 +20,36 @@ public class GameBeast {
 	public void launchGame() {
 		while(! this.beastTurn()) System.out.println("Mvt invalide");
 		this.hunterTurn();
+	}
+	
+	public void checkGameStatus() {
+		GameStatus status=GameStatus.INGAME;
+		if(this.statusFound()) GameBeast.gameStatus=GameStatus.FOUND;
+		else if(this.statusDiscovered()) GameBeast.gameStatus=GameStatus.DISCOVERED;
+		else if(this.statusEnemyblock()) GameBeast.gameStatus=GameStatus.ENEMYBLOCK;
+	}
+	
+	public boolean statusFound() {
+		boolean res=false;
+		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
+		for (Mouvment mouvment : mvtHunter) {
+			int[] posHunterAfterMvt=this.map.getHunter().getPos().getModifPosTempo(mouvment.getMvt());
+			res=this.map.getHunter().isPosEnt(posHunterAfterMvt[0], posHunterAfterMvt[1]);
+		}return res;
+	}
+	
+	public boolean statusDiscovered() {
+		for (int i = 0; i < this.map.getTab().length; i++) {
+			for (int j = 0; j < this.map.getTab()[i].length; j++) {
+				if(this.map.getTab()[i][j].getBeastPas()==-1) return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean statusEnemyblock() {
+		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
+		return mvtHunter.size()==0;
 	}
 	
 	public boolean beastTurn() {
