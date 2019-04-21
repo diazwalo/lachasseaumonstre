@@ -8,6 +8,8 @@ import map.Case;
 import map.CaseType;
 import map.IMap;
 import map.Position;
+import map.SquareMap;
+
 import java.util.*;
 
 /**
@@ -21,13 +23,18 @@ public class Graph {
     private Map<String, Node> listNode;
     private Map<String, Edge> listEdge;
     
-    //http://www.ssaurel.com/blog/calculate-shortest-paths-in-java-by-implementing-dijkstras-algorithm/
-
+    /**
+     * Initialise un graph vide, utilise seulement pour les unitaires.
+     */
     public Graph()
     {
     	this.initialze();
     }
     
+    /**
+     * Execute le processus d'exploration du plateau pour en generer un graphe compose d'aretes et de sommets.
+     * @param graph Le plateau de jeu
+     */
     public Graph(IMap graph)
     {
     	this.initialze();
@@ -35,6 +42,9 @@ public class Graph {
     	this.listEdge = this.generateEdge(graph);
     }
     
+    /**
+     * Initialise les variables globales de la classe.
+     */
     private void initialze()
     {
     	this.listNode = new TreeMap<String, Node>();
@@ -80,25 +90,38 @@ public class Graph {
             for (int j = 0; j < cases[i].length; j++) {
                 Position positionActual = new Position(i, j);
                 List<Position> positions = positionActual.getAdjacentPosition(map);
-                Map<String, Edge> test = this.positionToEdge(positionActual, positions);
-                edges.putAll(test);
+                Map<String, Edge> edgeAdjacent = this.positionToEdge(positionActual, positions);
+                edges.putAll(edgeAdjacent);
             }
         }
 
     	return edges;
     }
 
+    /**
+     * Retourne la liste de sommets
+     * @return Map<String, Node>
+     */
     public Map<String, Node> getListNode()
     {
         return this.listNode;
     }
 
+    /**
+     * Retourne la liste des aretes
+     * @return Map<String, Edge>
+     */
     public Map<String, Edge> getListEdge()
     {
         return this.listEdge;
     }
 
-
+    /**
+     * Creer une liste d'aretes a partir d'une position et de ses positions adjacentes.
+     * @param positionActual La position qui est adjacente aux autres arretes
+     * @param positions Une liste de positions qui ont pour adjacente la premiere.
+     * @return Map<String, Edge> Une liste d'aretes
+     */
     public Map<String, Edge> positionToEdge(Position positionActual, List<Position> positions)
     {
         Map<String, Edge> edges = new TreeMap<String, Edge>();
