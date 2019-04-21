@@ -20,6 +20,11 @@ public class NodeUtil {
         return position.getPosX() + ":" + position.getPosY();
     }
 
+    /**
+     * Genere La position a partir de son identifiant.
+     * @param name Un identifiant sous forme de texte representant une position sur le plateau.
+     * @return La position de l'identifiant.
+     */
     public static Position formatNode(String name)
     {
     	String[] explodeArray = name.split(":");
