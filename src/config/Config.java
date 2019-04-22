@@ -18,11 +18,17 @@ public class Config
 	private boolean ward;
 	private boolean bait;
 
+	/**
+	 * Instancie une nouvelle configuration qui applique la configuration par default.
+	 */
 	public Config()
 	{
 		this.setDefaultConfig();
 	}
 	
+	/**
+	 * Restaure la configuration par default.
+	 */
 	public void setDefaultConfig()
 	{
 		this.width = 15;
@@ -34,71 +40,127 @@ public class Config
 		this.bait = false;
 	}
 
+	/**
+	 * Retourne la largueur du plateau (axe X).
+	 * @return int
+	 */
 	public int getWidth()
 	{
 		return this.width;
 	}
 
+	/**
+	 * Definit la largeur du plateau (axe X).
+	 * @param width La largeur du plateau.
+	 */
 	public void setWidth(int width)
 	{
 		this.width = width;
 	}
 
+	/**
+	 * Retourne la hauteur du plateay (axe Y).
+	 * @return int
+	 */
 	public int getHeight()
 	{
 		return this.height;
 	}
 
+	/**
+	 * Definit la hauteur du plateau (axe Y).
+	 * @param height La hauteur du plateau.
+	 */
 	public void setHeight(int height)
 	{
 		this.height = height;
 	}
 	
+	/**
+	 * Retourne le type de mode de jeu de la partie.
+	 * @return GameMode
+	 */
 	public GameMode getGameMode()
 	{
 		return this.gameMode;
 	}
 
+	/**
+	 * Definit le mode de jeu de la partie.
+	 * @param gameMode Le mode de jeu de la partie.
+	 */
 	public void setGameMode(GameMode gameMode)
 	{
 		this.gameMode = gameMode;
 	}
 
+	/**
+	 * Retourne le statut concernant l'utlisation des pieges pendant la partie.
+	 * @return boolean
+	 */
 	public boolean isTrap()
 	{
 		return this.trap;
 	}
 
+	/**
+	 * Definit si les pieges sont disponibles ou non.
+	 * @param trap Le statut des pieges
+	 */
 	public void setTrap(boolean trap)
 	{
 		this.trap = trap;
 	}
 
+	/**
+	 * Retourne le statut concernant l'utlisation des camouflages pendant la partie.
+	 * @return boolean
+	 */
 	public boolean isCamouflage()
 	{
 		return this.camouflage;
 	}
 
+	/**
+	 * Definit si les camouflages sont disponibles ou non.
+	 * @param camouflage Le statut des camouflages
+	 */
 	public void setCamouflage(boolean camouflage)
 	{
 		this.camouflage = camouflage;
 	}
 
+	/**
+	 * Retourne le statut concernant l'utlisation des balises de vision pendant la partie.
+	 * @return boolean
+	 */
 	public boolean isWard()
 	{
 		return this.ward;
 	}
 
+	/**
+	 * Definit si les balises de vision sont disponibles ou non.
+	 * @param ward Le statut des balises de vision
+	 */
 	public void setWard(boolean ward)
 	{
 		this.ward = ward;
 	}
 
+	/**
+	 * Retourne le statut concernant l'utlisation des leurres pendant la partie.
+	 * @return boolean
+	 */
 	public boolean isBait()
 	{
 		return this.bait;
 	}
 	
+	/**
+	 * Definit si les leurres sont disponibles ou non.
+	 * @param bait Le statut des leurres
+	 */
 	public void setBait(boolean bait)
 	{
 		this.bait = bait;
