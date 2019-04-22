@@ -12,6 +12,10 @@ public class CommandParser
 {
 	private Config config;
 	
+	/**
+	 * Instancie un nouvel analyseur de ligne de commande.
+	 * @param arguments Un tableau contenant les arguments.
+	 */
 	public CommandParser(String[] arguments)
 	{
 		this.config = new Config();
@@ -22,6 +26,10 @@ public class CommandParser
 		}
 	}
 	
+	/**
+	 * Cette fonction analyse un argument de la ligne de commande, le reconnnait et modifie la configuration du jeu.
+	 * @param argument Un argument sous la forme --XXXXX=XX
+	 */
 	private void handleArguments(String argument)
 	{
 		if(detectValueInArgument(argument))
@@ -72,16 +80,29 @@ public class CommandParser
 		}
 	}
 
+	/**
+	 * Retourne la configuration analyse par l'analyseur de commande. 
+	 * @return Config
+	 */
 	public Config getConfig()
 	{
 		return this.config;
 	}
 	
+	/**
+	 * Detecte si l'argument contient le symbole egal `=`
+	 * @param argument Une chaine de caracteres a analyser
+	 * @return boolean 
+	 */
 	private boolean detectValueInArgument(String argument)
 	{
 		return argument.contains("=");
 	}
 	
+	/**
+	 * Cette fonction analyse le mode de jeu contenu dans la ligne de commande, le reconnnait et modifie la configuration du jeu.
+	 * @param gameMode Un argument sous la forme --gamemode=XX
+	 */
 	private void handleGameMode(String gameMode)
 	{
 		switch(gameMode)
