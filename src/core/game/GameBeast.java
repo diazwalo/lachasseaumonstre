@@ -52,7 +52,7 @@ public class GameBeast implements IGame{
 	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
 	public boolean statusEnemyblock() {
 		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
-		return mvtHunter.size()==0;
+		return mvtHunter.size()==0; 
 	}
 	
 	public boolean beastTurn() {

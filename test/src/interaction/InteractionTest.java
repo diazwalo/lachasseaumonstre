@@ -20,7 +20,7 @@ public class InteractionTest {
 	}
 	
 	@Test
-	public void testGetSaisieMvt() {
+	public void testGetSaisieMvt() { 
 		//rentrez "z" et vaidez
 		assertEquals(Mouvment.NORD, Interaction.getSaisieMvt(null, this.strMvt, this.tabMvt));
 		

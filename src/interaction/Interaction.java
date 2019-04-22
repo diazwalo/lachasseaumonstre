@@ -73,7 +73,7 @@ public class Interaction {
 	 * @return String
 	 */
 	private static String getSaisie() {
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in); 
 		
 		System.out.print("Veuillez saisir la direction:");
 		String saisie = sc.nextLine();		

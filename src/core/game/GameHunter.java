@@ -49,7 +49,7 @@ public class GameHunter implements IGame {
 				
 				if(this.map.getTab()[i][j].getCaseType()==CaseType.SOL && this.map.getTab()[i][j].getBeastPas()==-1) 
 					pasBeast=false;
-					
+					 
 				}
 		}
 		return pasBeast;

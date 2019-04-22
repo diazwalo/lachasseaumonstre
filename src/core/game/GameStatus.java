@@ -11,5 +11,5 @@ public enum GameStatus {
 	
 	public String getStatus() {
 		return this.status;
-	}
+	} 
 }

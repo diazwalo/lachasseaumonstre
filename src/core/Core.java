@@ -21,7 +21,7 @@ public class Core {
 		 * On la bougera plus tard
 		 */
 		
-		IMap map = new SquareMap(11, 11);
+		IMap map = new SquareMap(11, 11); 
 		map.generationMap();
 		GameHunter gameHunter=new GameHunter(map);
 		gameHunter.launchGame();
