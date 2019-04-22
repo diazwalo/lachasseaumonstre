@@ -13,7 +13,7 @@ public class Config
 	private int height;
 	private GameMode gameMode;
 	
-	private boolean piege;
+	private boolean trap;
 	private boolean camouflage;
 	private boolean ward;
 	private boolean bait;
@@ -27,7 +27,7 @@ public class Config
 	{
 		this.width = 15;
 		this.height = 15;
-		this.piege = false;
+		this.trap = false;
 		this.camouflage = false;
 		this.ward = false;
 		this.bait = false;
@@ -53,24 +53,24 @@ public class Config
 		this.height = height;
 	}
 	
-	public GameMode getMod()
+	public GameMode getGameMode()
 	{
 		return this.gameMode;
 	}
 
-	public void setMod(GameMode gameMode)
+	public void setGameMode(GameMode gameMode)
 	{
 		this.gameMode = gameMode;
 	}
 
-	public boolean isPiege()
+	public boolean isTrap()
 	{
-		return this.piege;
+		return this.trap;
 	}
 
-	public void setPiege(boolean piege)
+	public void setTrap(boolean trap)
 	{
-		this.piege = piege;
+		this.trap = trap;
 	}
 
 	public boolean isCamouflage()

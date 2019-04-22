@@ -21,11 +21,11 @@ public class SquareMap implements IMap {
 	 * @param len
 	 * @param wid
 	 */
-	public SquareMap(int len, int wid) {
-		this.hunter=new Hunter(0, 0);
-		this.beast=new Beast(len-1, wid-1);
-		this.tab=new Case[len][wid];
-		this.config=new Config();
+	public SquareMap(Config config) {
+		this.hunter = new Hunter(0, 0);
+		this.beast = new Beast(config.getWidth()-1, config.getHeight()-1);
+		this.tab = new Case[config.getWidth()][config.getHeight()];
+		this.config = config;
 	}
 	
 	/**
@@ -74,14 +74,6 @@ public class SquareMap implements IMap {
 	 */
 	public Config getConfig() {
 		return this.config;
-	}
-	
-	/**
-	 * Definis (grace a aModifier un tableau de 4 booleans) s'il faut changer la Config
-	 * @param aModifier
-	 */
-	public void setConfig(boolean[] aModifier) {
-		this.config.setConfig(aModifier);
 	}
 
 	/**
