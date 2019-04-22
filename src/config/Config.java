@@ -2,103 +2,104 @@ package config;
 
 /**
  * 
- * Cette Class Enregistre et modifie les settings du Jeu
- * @author diazw
+ * Cette classe gere la configuration de la partie qui va etre instancie.
+ * @author PHPierre
  *
  */
-public class Config {
-	public static boolean piege=false;
-	public static boolean camouflage=false;
-	public static boolean ward=false;
-	public static boolean bait=false;
+public class Config
+{
+	//private int mod;
+	private int width;
+	private int height;
+	private GameMode gameMode;
+	
+	private boolean piege;
+	private boolean camouflage;
+	private boolean ward;
+	private boolean bait;
 
-	/**
-	 * Retourne la Config sous la forme d'un tableau de 4 boolean 
-	 * @return boolean[]
-	 */
-	public static boolean[] getConfig() {
-		return new boolean[] {piege, camouflage, ward, bait};
-	}
-	
-	/**
-	 * Pour les Cases a "true" dans "aModifier", inverse le boolean qui lui est associe dans Config
-	 * @param aModifier
-	 */
-	public void setConfig(boolean[] aModifier) {
-		if(aModifier[0]) setPiege();
-		if(aModifier[1]) setCamouflage();
-		if(aModifier[2]) setWard();
-		if(aModifier[3]) setBait();
-	}
-	
-	/**
-	 * determine si la Config accepte les pieges
-	 * @return boolean
-	 */
-	public static boolean isPiege() {
-		return piege;
-	}
-	
-	/**
-	 * Inverse les reglages de Piege
-	 */
-	private static void setPiege() {
-		Config.piege = !piege;
-	}
-	
-	/**
-	 * determine si la Config accepte les Camouflages
-	 * @return boolean
-	 */
-	public static boolean isCamouflage() {
-		return camouflage;
-	}
-	
-	/**
-	 * Inverse les reglages de Camouflages
-	 */
-	private static void setCamouflage() {
-		Config.camouflage = !camouflage;
-	}
-	
-	/**
-	 * determine si la Config accepte les balises de vision
-	 * @return boolean
-	 */
-	public static boolean isWard() {
-		return ward;
-	}
-	
-	/**
-	 * Inverse les reglages de balise de vision
-	 */
-	private static void setWard() {
-		Config.ward = !ward;
-	}
-	
-	/**
-	 * determine si la Config accepte les Leurre
-	 * @return boolean
-	 */
-	public static boolean isBait() {
-		return bait;
-	}
-	
-	/**
-	 * Inverse les reglages de Leurre
-	 */
-	private static void setBait() {
-		Config.bait = !bait;
-	}
-	
-	/**
-	 * Affiche la configuration du jeu en cours.
-	 */
-	public String toString()
+	public Config()
 	{
-		return "Piège: " + piege +
-				", Camouflage: " + camouflage +
-				", Balise de vision: " + ward + 
-				", Leurre: " + bait + ".";
+		this.setDefaultConfig();
+	}
+	
+	public void setDefaultConfig()
+	{
+		this.width = 15;
+		this.height = 15;
+		this.piege = false;
+		this.camouflage = false;
+		this.ward = false;
+		this.bait = false;
+	}
+
+	public int getWidth()
+	{
+		return this.width;
+	}
+
+	public void setWidth(int width)
+	{
+		this.width = width;
+	}
+
+	public int getHeight()
+	{
+		return this.height;
+	}
+
+	public void setHeight(int height)
+	{
+		this.height = height;
+	}
+	
+	public GameMode getMod()
+	{
+		return this.gameMode;
+	}
+
+	public void setMod(GameMode gameMode)
+	{
+		this.gameMode = gameMode;
+	}
+
+	public boolean isPiege()
+	{
+		return this.piege;
+	}
+
+	public void setPiege(boolean piege)
+	{
+		this.piege = piege;
+	}
+
+	public boolean isCamouflage()
+	{
+		return this.camouflage;
+	}
+
+	public void setCamouflage(boolean camouflage)
+	{
+		this.camouflage = camouflage;
+	}
+
+	public boolean isWard()
+	{
+		return this.ward;
+	}
+
+	public void setWard(boolean ward)
+	{
+		this.ward = ward;
+	}
+
+	public boolean isBait()
+	{
+		return this.bait;
+	}
+	
+	public void setBait(boolean bait)
+	{
+		this.bait = bait;
 	}
 }

@@ -20,6 +20,7 @@ public class Core {
 		 * Et dans le fichier config, il y aura cette ligne : Map map = new SquareMap(11, 11);
 		 * On la bougera plus tard
 		 */
+		CommandParser commandParser = new CommandParser(args);
 		
 		IMap map = new SquareMap(11, 11); 
 		map.generationMap();
