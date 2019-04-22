@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import config.Config;
 import map.IMap;
 import map.Mouvment;
 import map.Position;
@@ -16,11 +17,16 @@ import map.SquareMap;
 public class PositionTest {
 
 	private Position position;
-
+	private Config config;
+	
 	@Before
-	public void before() {
-		this.position = new Position(2, 1);
-	}
+    public void beforeTest()
+    {   
+		this.config = new Config();
+        this.config.setWidth(11);
+        this.config.setHeight(11);
+        this.position = new Position(2, 1);
+    }
 
 	@Test
 	public void testIsPosition() {
@@ -53,7 +59,7 @@ public class PositionTest {
 	@Test
 	public void testCheckPosition() {
 		List<Position> positionAdjacent =new ArrayList<Position>();
-		IMap sm=new SquareMap(11, 11);
+		IMap sm = new SquareMap(this.config);
 		sm.generationMap();
 		
 		Position[] tabPosValide=new Position[] {new Position(0, 0), new Position(sm.getTab().length-1, sm.getTab()[0].length-1)};

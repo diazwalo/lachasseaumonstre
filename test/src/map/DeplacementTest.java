@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import config.Config;
 import map.IMap;
 import map.Mouvment;
 import map.SquareMap;
@@ -12,10 +13,19 @@ import map.SquareMap;
 public class DeplacementTest {
 
 	private IMap map;
-
+	private Config config;
+	
+	@Before
+    public void beforeTest()
+    {   
+		this.config = new Config();
+        this.config.setWidth(11);
+        this.config.setHeight(11);
+    }
+	
 	@Before
     public void before() {
-    	map = new SquareMap(11, 11);
+    	map = new SquareMap(this.config);
     	map.generationMap();
     	map.moveBeast(Mouvment.NORD);
     	map.getTab()[map.getBeast().getPos().getPosX()][map.getBeast().getPos().getPosY()].modifBeastPas(true);

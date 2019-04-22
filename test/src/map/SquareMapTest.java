@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import config.Config;
 import map.IMap;
 import map.Mouvment;
 import map.SquareMap;
@@ -13,15 +14,21 @@ import render.text.Entity;
 import render.text.Hunter;
 
 public class SquareMapTest {
-	public IMap sm=new SquareMap(11, 11);
-	public Entity beast=new Beast(10, 10);
-	public Entity hunter=new Hunter(0, 0);
+	public IMap sm;
+	public Entity beast;
+	public Entity hunter;
+	private Config config;
 
 	@Before
 	public void initMap() {
-		sm.generationMap();
-		beast=new Beast(10, 10);
-		hunter=new Hunter(0, 0);
+		this.config = new Config();
+        this.config.setWidth(11);
+        this.config.setHeight(11);
+        
+        this.sm = new SquareMap(config);
+		this.sm.generationMap();
+		this.beast = new Beast(10, 10);
+		this.hunter = new Hunter(0, 0);
 	}
 
 	@Test

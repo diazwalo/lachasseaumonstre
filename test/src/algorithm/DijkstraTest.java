@@ -24,8 +24,8 @@ public class DijkstraTest
     public void beforeTest()
     {   
 		this.config = new Config();
-        this.config.setWidth(3);
-        this.config.setHeight(3);
+        this.config.setWidth(10);
+        this.config.setHeight(10);
     }
 	
 	@Test
