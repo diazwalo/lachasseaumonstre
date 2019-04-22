@@ -3,10 +3,8 @@ package src.ai.graph;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,23 +13,27 @@ import ai.graph.Graph;
 import ai.models.Edge;
 import ai.models.Node;
 import ai.util.EdgeUtil;
+import config.Config;
 import map.IMap;
 import map.Position;
 import map.SquareMap;
 
 public class GraphTest {
 
+	private Config config;
+	
     @Before
     public void beforeTest()
     {    	
-        
+        this.config.setWidth(3);
+        this.config.setHeight(3);
     }
     
     @Test
     public void testGenerateNode()
     {
     	String[] awaitedPosition = {"0:0", "0:1", "0:2", "1:0", "1:1", "1:2", "2:0", "2:1", "2:2"};
-    	IMap map = new SquareMap(3, 3);
+    	IMap map = new SquareMap(this.config);
     	map.generationMap();
 
     	Graph graph = new Graph();
@@ -49,7 +51,7 @@ public class GraphTest {
     @Test
     public void testGenerateEdge()
     {
-    	IMap map = new SquareMap(3, 3);
+    	IMap map = new SquareMap(this.config);
     	map.generationMap();
 
     	Graph graph = new Graph();

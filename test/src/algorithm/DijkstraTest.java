@@ -4,21 +4,31 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
-import ai.models.Edge;
 import ai.util.NodeUtil;
+import config.Config;
 import map.IMap;
 import map.Position;
 import map.SquareMap;
 
 public class DijkstraTest {
 
+	private Config config;
+	
+	@Before
+    public void beforeTest()
+    {    	
+        this.config.setWidth(3);
+        this.config.setHeight(3);
+    }
+	
 	@Test
 	public void testShortestPath() {
-		IMap map = new SquareMap(10, 10);
+		IMap map = new SquareMap(this.config);
 		map.generationMap();
 		
 		Graph graph = new Graph(map);
