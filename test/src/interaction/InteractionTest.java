@@ -24,13 +24,13 @@ public class InteractionTest {
 		//rentrez "z" et vaidez
 		assertEquals(Mouvment.NORD, Interaction.getSaisieMvt(null, this.strMvt, this.tabMvt));
 		
-		//rentrez "$" puis "d" et validez
+		//rentrez "$", validez puis "d" et validez
 		assertEquals(Mouvment.EST, Interaction.getSaisieMvt(null, this.strMvt, this.tabMvt));
 		
-		//rentrez rien puis "sq" ou "qs" et validez
+		//rentrez rien, validez puis "sq" ou "qs" et validez
 		assertEquals(Mouvment.SUDOUEST, Interaction.getSaisieMvt(null, this.strMvt, this.tabMvt));
 		
-		//rentrez ce que vous voulez puis terminez par l'un des deplacements valide a savoir une combinaison differente de 1 ou 2 lettre parmis z, q, s ou d en excluant 2 directions opposees.
+		//rentrez ce que vous voulez, validez puis terminez par l'un des deplacements valide a savoir une combinaison differente de 1 ou 2 lettre parmis z, q, s ou d en excluant 2 directions opposees.
 		assertNotEquals(null, Interaction.getSaisieMvt(null, this.strMvt, this.tabMvt));
 	}
 }

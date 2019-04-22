@@ -20,7 +20,7 @@ public class GameHunter {
 	}
 	
 	public void checkGameStatus() {
-		this.gameStatus=gameStatus.INGAME;
+		GameBeast.gameStatus=gameStatus.INGAME;
 		if(this.statusFound()) GameBeast.gameStatus=GameStatus.FOUND;
 		else if(this.statusDiscovered()) GameBeast.gameStatus=GameStatus.DISCOVERED;
 		else if(this.statusEnemyblock()) GameBeast.gameStatus=GameStatus.ENEMYBLOCK;
@@ -35,6 +35,7 @@ public class GameHunter {
 		}return res;
 	}
 	
+	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
 	public boolean statusEnemyblock() {
 		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
 		return mvtHunter.size()==0;
@@ -56,7 +57,7 @@ public class GameHunter {
 	
 	public void launchGame() {
 		
-		while(this.gameStatus.equals(gameStatus.INGAME)) {
+		while(GameBeast.gameStatus.equals(GameStatus.INGAME)) {
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			this.beastTurn();
 			this.checkGameStatus();

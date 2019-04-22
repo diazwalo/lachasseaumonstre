@@ -1,5 +1,7 @@
 package core;
 
+import core.game.GameBeast;
+import core.game.GameHunter;
 import interaction.Interaction;
 import map.IMap;
 import map.Mouvment;
@@ -18,6 +20,12 @@ public class Core {
 		 * Et dans le fichier config, il y aura cette ligne : Map map = new SquareMap(11, 11);
 		 * On la bougera plus tard
 		 */
+		
+		IMap map = new SquareMap(11, 11);
+		map.generationMap();
+		GameHunter gameHunter=new GameHunter(map);
+		gameHunter.launchGame();
+		
 		int param[] = new int[4];
 		int indexParam = 0;
 		String argValide[] = new String[]{"--largeur=" , "--longueur=", "--ward"   , "--trap"};
@@ -49,7 +57,7 @@ public class Core {
 			System.out.println(num);
 		}
 
-		IMap map = new SquareMap(11, 11);
+		/*IMap map = new SquareMap(11, 11);
 		map.generationMap();
 		boolean mvtValide=true;
 		while(mvtValide) {
@@ -57,7 +65,7 @@ public class Core {
 			Mouvment mvt=Interaction.askMouvement();
 			mvtValide=map.moveBeast(mvt);
 			map.setBeastPas();
-		}System.out.println("Mvt invalide");
+		}System.out.println("Mvt invalide");*/
 
 		//active la pr�sence de pi�ge et en met un dans le tableau � un endroit ou il y a du sol.
 	}

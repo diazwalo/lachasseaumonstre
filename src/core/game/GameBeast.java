@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import interaction.Interaction;
+import map.CaseType;
 import map.IMap;
 import map.Mouvment;
-import map.Position;
 
 public class GameBeast {
 	private IMap map;
@@ -18,12 +18,14 @@ public class GameBeast {
 	}
 	
 	public void launchGame() {
-		while(! this.beastTurn()) System.out.println("Mvt invalide");
-		this.hunterTurn();
+		while(gameStatus.equals(GameStatus.INGAME)) {
+			while(! this.beastTurn()) System.out.println("Mvt invalide");
+			this.hunterTurn();
+		}System.out.println(GameBeast.gameStatus.getStatus());
 	}
 	
 	public void checkGameStatus() {
-		GameStatus status=GameStatus.INGAME;
+		GameBeast.gameStatus=GameStatus.INGAME;
 		if(this.statusFound()) GameBeast.gameStatus=GameStatus.FOUND;
 		else if(this.statusDiscovered()) GameBeast.gameStatus=GameStatus.DISCOVERED;
 		else if(this.statusEnemyblock()) GameBeast.gameStatus=GameStatus.ENEMYBLOCK;
@@ -41,12 +43,13 @@ public class GameBeast {
 	public boolean statusDiscovered() {
 		for (int i = 0; i < this.map.getTab().length; i++) {
 			for (int j = 0; j < this.map.getTab()[i].length; j++) {
-				if(this.map.getTab()[i][j].getBeastPas()==-1) return false;
+				if(this.map.getTab()[i][j].getBeastPas()==-1 && this.map.getTab()[i][j].getCaseType().equals(CaseType.SOL)) return false;
 			}
 		}
 		return true;
 	}
 	
+	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
 	public boolean statusEnemyblock() {
 		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
 		return mvtHunter.size()==0;

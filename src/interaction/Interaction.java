@@ -77,8 +77,8 @@ public class Interaction {
 		
 		System.out.print("Veuillez saisir la direction:");
 		String saisie = sc.nextLine();		
-		sc.close();
 		
 		return saisie;
+
 	}
 }
