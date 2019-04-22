@@ -1,11 +1,9 @@
 package core;
 
 import config.Config;
-import core.game.GameBeast;
 import core.game.GameHunter;
-import interaction.Interaction;
+import core.game.IGame;
 import map.IMap;
-import map.Mouvment;
 import map.SquareMap;
 
 public class Core {
@@ -16,24 +14,33 @@ public class Core {
 		// --width=20 --height=20 --gamemode=beast --trap --bait --camouflage --ward
 		
 		CommandParser commandParser = new CommandParser(args);
+		Config config = commandParser.getConfig();
 		
-		IMap map = new SquareMap(commandParser.getConfig()); 
+		IMap map = new SquareMap(config); 
 		map.generationMap();
 		
-		GameHunter gameHunter=new GameHunter(map);
-		gameHunter.launchGame();
+		switch(config.getGameMode())
+		{
+		case AIvsAI:
+			//IGame game = new GameAI(map);
+			break;
+		case BEASTvsAI:
+			//IGame game = new GameBeast(map);
+			break;
+		case HUNTERvsAI:
+			//IGame game = new GameHunter(map);
+			break;
+		case BEASTvsHUNTER:
+			//Jalon 2 !
+			//IGame game = new GameHunter(map);
+			break;
+		}
 		
+		//A supprimer une fois les classes finies
+		IGame game = new GameHunter(map);
+		game.launchGame();
+		//fin du a supprimer
 
-		/*IMap map = new SquareMap(11, 11);
-		map.generationMap();
-		boolean mvtValide=true;
-		while(mvtValide) {
-			System.out.println(map+"\n");
-			Mouvment mvt=Interaction.askMouvement();
-			mvtValide=map.moveBeast(mvt);
-			map.setBeastPas();
-		}System.out.println("Mvt invalide");*/
-
-		//active la pr�sence de pi�ge et en met un dans le tableau � un endroit ou il y a du sol.
+		//TODO : reecritre les tests unitaires ayant besoin de square map
 	}
 }

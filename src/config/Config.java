@@ -27,6 +27,7 @@ public class Config
 	{
 		this.width = 15;
 		this.height = 15;
+		this.gameMode = GameMode.BEASTvsAI;
 		this.trap = false;
 		this.camouflage = false;
 		this.ward = false;
