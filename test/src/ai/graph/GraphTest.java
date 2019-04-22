@@ -18,13 +18,15 @@ import map.IMap;
 import map.Position;
 import map.SquareMap;
 
-public class GraphTest {
+public class GraphTest
+{
 
 	private Config config;
 	
     @Before
     public void beforeTest()
     {    	
+    	this.config = new Config();
         this.config.setWidth(3);
         this.config.setHeight(3);
     }

@@ -9,14 +9,13 @@ import interaction.Interaction;
 import map.Mouvment;
 
 public class InteractionTest {
-	private Mouvment mvt;
 	private String[] strMvt;
 	private Mouvment[] tabMvt;
 	
 	@Before
 	public void beforeTest(){
-		this.strMvt=Interaction.generateStrMvt();
-		this.tabMvt=Interaction.getTabMvt(strMvt);
+		this.strMvt = Interaction.generateStrMvt();
+		this.tabMvt = Interaction.getTabMvt(strMvt);
 	}
 	
 	@Test

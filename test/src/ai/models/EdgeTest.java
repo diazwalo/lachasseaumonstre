@@ -6,10 +6,12 @@ import org.junit.Test;
 
 import ai.models.Edge;
 
-public class EdgeTest {
+public class EdgeTest
+{
 
 	@Test
-	public void testEdge() {
+	public void testEdge()
+	{
 		Edge edge = new Edge("0:1", "1:1", 10);
 		
 		assertEquals(edge.getNodeOneName(), "0:1");

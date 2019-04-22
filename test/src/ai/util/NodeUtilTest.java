@@ -7,7 +7,8 @@ import org.junit.Test;
 import ai.util.NodeUtil;
 import map.Position;
 
-public class NodeUtilTest {
+public class NodeUtilTest
+{
 	
 	@Test
     public void testFormatNode()

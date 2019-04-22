@@ -7,10 +7,12 @@ import java.util.Map;
 import org.junit.Test;
 import ai.models.Node;
 
-public class NodeTest {
+public class NodeTest
+{
 
 	@Test
-	public void testDistanceFromOrigin() {
+	public void testDistanceFromOrigin()
+	{
 		Node node = new Node();
 		node.setDistanceFromOrigin(10);
 		
