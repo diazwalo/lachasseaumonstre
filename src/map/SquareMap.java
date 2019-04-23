@@ -15,7 +15,10 @@ public class SquareMap implements IMap {
 	private Hunter hunter;
 	private Beast beast;
 	private Config config;
-
+	private boolean beastWin;
+	private boolean hunterWin;
+	
+	
 	/**
 	 * Construit un tableau de longueur len et de largeur wid et set Beast, Hunter et la Config
 	 * @param len
@@ -26,6 +29,8 @@ public class SquareMap implements IMap {
 		this.beast = new Beast(config.getWidth()-1, config.getHeight()-1);
 		this.tab = new Case[config.getWidth()][config.getHeight()];
 		this.config = config;
+		this.beastWin = false;
+		this.hunterWin = false;
 	}
 	
 	/**
@@ -68,6 +73,22 @@ public class SquareMap implements IMap {
 		return this.beast;
 	}
 	
+	/**
+	 * Retourne si la bete a gagné
+	 * @return
+	 */
+	public boolean isBeastWin() {
+		return beastWin;
+	}
+	
+	/**
+	 * Retourne si le chasseur a gagné
+	 * @return
+	 */
+	public boolean isHunterWin() {
+		return hunterWin;
+	}
+
 	/**
 	 * Retourne la Config
 	 * @return Config
@@ -124,6 +145,45 @@ public class SquareMap implements IMap {
 		for (int i = 0; i < tab.length; i++)
 			for (int j = 0; j < tab[i].length; j++)
 				this.tab[i][j].modifBeastPas(this.beast.isPosEnt(i, j));
+	}
+	
+	
+	/**
+	 * Renvoie un boolean indiquant si le chasseur a gagné ou non
+	 * @return
+	 */
+	private boolean beastVictory() {
+		int i = 0;
+		int j = 0;
+		boolean victory = true;
+		while(victory && i< this.tab.length) {
+			while(victory && j<this.tab[i].length) {
+				if(!this.tab[i][j].isObstacle() && this.tab[i][j].getBeastPas() == -1) {
+					victory = false;
+				}
+				j++;
+			}
+			j=0;
+			i++;
+		}
+		return victory;
+	}
+	
+	/**
+	 * Renvoie un boolean indiquant si le chasseur a gagné ou non
+	 * @return
+	 */
+	private boolean hunterVictory() {
+		return this.beast.isLock(tab, hunter) || this.beast.getPos().equals(this.hunter.getPos());
+	}
+	
+	
+	/**
+	 * Verifie si il y a un vainqueur ou non
+	 */
+	public void winRefresh() {
+		this.beastWin = this.beastVictory();
+		this.hunterWin = this.hunterVictory();
 	}
 	
 	/**
