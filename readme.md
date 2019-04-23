@@ -50,8 +50,6 @@ multi     : Un des deux joueurs controle le monstre et son adversaire controle l
 	
 ## Developpement 
 
-Une video gource est disponible en cliquant sur l'image suivante, elle remuse l'activite des developpeurs sur le projet.
-
 <div align="center">
 [![Video resume du developpement](https://img.youtube.com/vi/yJjANTtQ66s/0.jpg)(https://www.youtube.com/watch?v=yJjANTtQ66s)
 </div>
