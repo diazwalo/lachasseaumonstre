@@ -48,6 +48,10 @@ multi     : Un des deux joueurs controle le monstre et son adversaire controle l
 --bait               Active les leurres sur le plateau
 ```
 	
+## Developpement 
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/yJjANTtQ66s/0.jpg)](https://www.youtube.com/watch?v=yJjANTtQ66s)
+
 ## Contributeurs
 - FORESTAL Virgil (diazw)
 - PEIRERA Nathanael (nath)
