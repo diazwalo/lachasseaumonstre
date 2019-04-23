@@ -106,8 +106,18 @@ public class Case {
 	}
 	
 	/**
+	 * Returne un boolean qui indique si la case et in obstacle ou non
+	 * @return
+	 */
+	
+	public boolean isObstacle() {
+		return this.caseType == CaseType.OBSTACLE;
+	}
+	
+	/**
 	 * Renvoie sous forme de chaine de caractere le buff actif sur la Case ou la trace de la bete au cas echeant
 	 */
+	
 	public String toString() {
 		String res=caseType.toString();
 		if(this.beastPas>0 && this.beastPas<this.TRACE) res=this.beastPas+"";
