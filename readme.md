@@ -51,7 +51,7 @@ multi     : Un des deux joueurs controle le monstre et son adversaire controle l
 ## Developpement 
 
 <div align="center">
-[![Video resume du developpement](https://img.youtube.com/vi/yJjANTtQ66s/0.jpg)(https://www.youtube.com/watch?v=yJjANTtQ66s)
+  <a href="https://www.youtube.com/watch?v=yJjANTtQ66s"><img src="https://img.youtube.com/vi/yJjANTtQ66s/0.jpg" alt="Video resume du developpement"></a>
 </div>
 
 ## Contributeurs
