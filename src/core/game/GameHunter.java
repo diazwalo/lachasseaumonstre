@@ -60,9 +60,9 @@ public class GameHunter implements IGame {
 		while(GameBeast.gameStatus.equals(GameStatus.INGAME)) {
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			this.beastTurn();
-			this.afficherBeastPas();
 			this.checkGameStatus();
 			this.map.setBeastWalk();
+			this.afficherBeastPas();
 		}
 	}
 	
