@@ -9,13 +9,11 @@ import map.Position;
 public class Bait implements Bonus {
 	private Position pos;
 	private final String NAME = "leurre";
-	private boolean decouvert;
 	
 	/**
 	 * Instancie Bait
 	 */
 	public Bait() {
-		this.decouvert = false;
 		this.pos = null;
 	}
 	
@@ -39,11 +37,25 @@ public class Bait implements Bonus {
 	}
 
 	/**
-	 * retourn le nom du Bonus
+	 * retourne le nom du Bonus
 	 */
 	@Override
 	public String getName() {
 		return this.NAME;
+	}
+	
+	public void isDiscover(Hunter h) {
+		if(this.pos.equals(h.getPos())) {
+			this.pos = null;
+		}
+	}
+	
+	
+	/**
+	 * retourne Beast sous la forme textuelle
+	 */
+	public String toString() {
+		return "B";
 	}
 
 }
