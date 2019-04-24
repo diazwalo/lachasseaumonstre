@@ -7,7 +7,6 @@ import interaction.Interaction;
 import map.CaseType;
 import map.IMap;
 import map.Mouvment;
-import map.SquareMap;
 
 public class GameHunter implements IGame {
 
@@ -20,7 +19,7 @@ public class GameHunter implements IGame {
 	}
 	 
 	public void checkGameStatus() {
-		GameBeast.gameStatus=gameStatus.INGAME;
+		GameBeast.gameStatus=GameStatus.INGAME;
 		if(this.statusFound()) GameBeast.gameStatus=GameStatus.FOUND;
 		else if(this.statusDiscovered()) GameBeast.gameStatus=GameStatus.DISCOVERED;
 		else if(this.statusEnemyblock()) GameBeast.gameStatus=GameStatus.ENEMYBLOCK;
@@ -28,10 +27,10 @@ public class GameHunter implements IGame {
 	
 	public boolean statusFound() {
 		boolean res=false;
-		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
+		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtPossiblePlusBeast(this.map.getTab());
 		for (Mouvment mouvment : mvtHunter) {
 			int[] posHunterAfterMvt=this.map.getHunter().getPos().getModifPosTempo(mouvment.getMvt());
-			res=this.map.getHunter().isPosEnt(posHunterAfterMvt[0], posHunterAfterMvt[1]);
+			res=this.map.getBeast().isPosEnt(posHunterAfterMvt[0], posHunterAfterMvt[1]);
 		}return res;
 	}
 	
@@ -58,6 +57,7 @@ public class GameHunter implements IGame {
 	public void launchGame() {
 		
 		while(!this.map.isBeastWin() && !this.map.isHunterWin()) {
+			System.out.println(GameBeast.gameStatus);
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			this.beastTurn() ;
 			this.checkGameStatus();
