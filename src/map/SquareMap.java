@@ -141,7 +141,7 @@ public class SquareMap implements IMap {
 	/**
 	 * Parcours le tableau de Case et met a jour "beastPas" qui correspond a la duree depuis laquel Beast a ete sur la Case
 	 */
-	public void setBeastPas() {
+	public void setBeastWalk() {
 		for (int i = 0; i < tab.length; i++)
 			for (int j = 0; j < tab[i].length; j++)
 				this.tab[i][j].modifBeastWalk(this.beast.isPosEnt(i, j));

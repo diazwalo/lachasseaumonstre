@@ -62,7 +62,7 @@ public class GameHunter implements IGame {
 			this.beastTurn();
 			this.afficherBeastPas();
 			this.checkGameStatus();
-			this.map.setBeastPas();
+			this.map.setBeastWalk();
 		}
 	}
 	
