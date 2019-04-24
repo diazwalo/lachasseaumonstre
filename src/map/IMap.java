@@ -16,4 +16,4 @@ public interface IMap {
 	public boolean isBeastWin();
 	public boolean isHunterWin();
 	public void winRefresh();
-}
+} 

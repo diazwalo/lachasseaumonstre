@@ -18,7 +18,7 @@ public class GameHunter implements IGame {
 		this.map=map;
 		GameBeast.gameStatus=GameStatus.INGAME;
 	}
-	
+	 
 	public void checkGameStatus() {
 		GameBeast.gameStatus=gameStatus.INGAME;
 		if(this.statusFound()) GameBeast.gameStatus=GameStatus.FOUND;
