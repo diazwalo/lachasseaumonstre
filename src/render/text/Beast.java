@@ -13,6 +13,7 @@ import map.Mouvment;
  */
 public class Beast extends Entity{
 	
+	private boolean isTrapped;
 	/**
 	 * Instancie Beast a la Position posX, posY
 	 * @param posX
@@ -20,6 +21,7 @@ public class Beast extends Entity{
 	 */
 	public Beast(int posX, int posY) {
 		super(posX, posY);
+		isTrapped = false;
 	}
 
 	
@@ -74,5 +76,12 @@ public class Beast extends Entity{
 			if(this.verifDeplacementSpe(tab, m, hunter))
 				return false;
 		return true;
+	}
+	
+	/**
+	 * Libére la bete du piège
+	 */
+	public void untrapped() {
+		this.isTrapped = false;
 	}
 }

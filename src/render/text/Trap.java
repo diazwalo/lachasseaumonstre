@@ -58,8 +58,10 @@ public class Trap implements Bonus {
 	 * met la valeur de activate a la valeur passee en parametre
 	 * @param activate
 	 */
-	public void setActivate(boolean activate) {
-		this.activate = activate;
+	public void isActivate(Beast b) {
+		if(this.pos.equals(b.getPos())) {
+			this.activate = true;
+		}
 	}
 
 	/**
@@ -68,6 +70,16 @@ public class Trap implements Bonus {
 	 */
 	public Position getPos() {
 		return pos;
+	}
+	
+	/**
+	 * Enleve le piège de la map si il a été utilisé
+	 * @param b
+	 */
+	public void isUsed(Beast b) {
+		if(this.pos.equals(b.getPos())) {
+			this.pos = null;
+		}
 	}
   
 }
