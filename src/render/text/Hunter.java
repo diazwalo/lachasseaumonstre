@@ -58,7 +58,7 @@ public class Hunter extends Entity {
 		return mouvTab;
 	}
 	
-	public ArrayList<Mouvment> getMvtPossiblePlusBeast(Case[][] tab) {
+	public ArrayList<Mouvment> getMvtPossiblePlusBeast(Case[][] tab) { 
 		ArrayList<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values()) {
 			if(super.verifDeplacementOutOfBonds(tab, m.getMvt()) && super.verifDeplacementColisionObstacle(tab, m.getMvt())) {

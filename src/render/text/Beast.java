@@ -70,7 +70,7 @@ public class Beast extends Entity{
 			if(super.verifDeplacementOutOfBonds(tab, m.getMvt()) && super.verifDeplacementColisionObstacle(tab, m.getMvt())) {
 				mouvTab.add(m);
 			}
-		}
+		} 
 		return mouvTab;
 	}
 	

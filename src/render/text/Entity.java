@@ -64,7 +64,7 @@ public abstract class Entity {
 	
 	public boolean verifDeplacementColisionObstacle(Case[][] tab, int[] posModif) {
 		return tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.SOL);
-	}
+	} 
 	
 	/**
 	 * deplace la position selon le Mouvment mvt
