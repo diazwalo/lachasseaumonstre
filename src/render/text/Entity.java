@@ -40,6 +40,7 @@ public abstract class Entity {
 	public abstract boolean verifDeplacementSpe(Case [][] tab, Mouvment mvt, Entity other);
 	public abstract ArrayList<Mouvment> mvtPossible(Case[][] tab);
 	public abstract boolean isLock(Case[][] tab, Entity hunter);
+	public abstract ArrayList<Mouvment> getMvtPossiblePlusEntity(Case[][] tab);
 	
 	/**
 	 * verifie que le deplacement souhaite ne fait pas sortir du tableau ou aller sur un obstacle

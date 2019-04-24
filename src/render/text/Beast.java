@@ -64,11 +64,24 @@ public class Beast extends Entity{
 		return mouvTab;
 	}
 	
-	public ArrayList<Mouvment> getMvtPossiblePlusHunter(Case[][] tab) {
+	public ArrayList<Mouvment> getMvtPossiblePlusEntity(Case[][] tab) {
+		ArrayList<Mouvment> mouvTab = new ArrayList<>();
+		for(Mouvment m : Mouvment.values())
+			if(super.verifDeplacement(tab, m))
+				mouvTab.add(m);
+		return mouvTab;
+	}
+	
+	public ArrayList<Mouvment> getMvtPossibleWithoutBeastWalk(Case[][] tab) {
 		ArrayList<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values()) {
-			if(super.verifDeplacementOutOfBonds(tab, m.getMvt()) && super.verifDeplacementColisionObstacle(tab, m.getMvt())) {
-				mouvTab.add(m);
+			int[] modifPosTempo=this.getPos().getModifPosTempo(m.getMvt());
+			
+			if(super.verifDeplacementOutOfBonds(tab, modifPosTempo) && super.verifDeplacementColisionObstacle(tab, modifPosTempo)) {
+				
+				if(tab[modifPosTempo[0]][modifPosTempo[1]].getBeastWalk() ==-1) {
+					mouvTab.add(m);
+				}
 			}
 		} 
 		return mouvTab;

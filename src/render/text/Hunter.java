@@ -40,9 +40,17 @@ public class Hunter extends Entity {
 		int[] posModif=super.getPos().getModifPosTempo(mvt.getMvt());
 		if(valide) {
 			valide=valide && tab[posModif[0]][posModif[1]].getCaseType()==CaseType.SOL;
-			valide=valide && !beast.isPosEnt(posModif[0], posModif[1]);
+			//valide=valide && !beast.isPosEnt(posModif[0], posModif[1]);
 		}
 		return valide;
+	}
+	
+	public ArrayList<Mouvment> getMvtPossiblePlusEntity(Case[][] tab) {
+		ArrayList<Mouvment> mouvTab = new ArrayList<>();
+		for(Mouvment m : Mouvment.values())
+			if(super.verifDeplacement(tab, m))
+				mouvTab.add(m);
+		return mouvTab;
 	}
 	
 	/**
@@ -58,7 +66,7 @@ public class Hunter extends Entity {
 		return mouvTab;
 	}
 	
-	public ArrayList<Mouvment> getMvtPossiblePlusBeast(Case[][] tab) { 
+	public ArrayList<Mouvment> getMvtPossiblePlusOther(Case[][] tab) { 
 		ArrayList<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values()) {
 			if(super.verifDeplacementOutOfBonds(tab, m.getMvt()) && super.verifDeplacementColisionObstacle(tab, m.getMvt())) {

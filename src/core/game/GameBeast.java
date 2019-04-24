@@ -19,7 +19,7 @@ public class GameBeast implements IGame{
 	
 	public void launchGame() {
 		while(gameStatus.equals(GameStatus.INGAME)) {
-			while(! this.beastTurn()) System.out.println("Mvt invalide");
+			while(!this.beastTurn()) System.out.println("Mvt invalide");
 			this.hunterTurn();
 		}System.out.println(GameBeast.gameStatus.getStatus());
 	}
@@ -52,15 +52,19 @@ public class GameBeast implements IGame{
 	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
 	public boolean statusEnemyblock() {
 		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
-		return mvtHunter.size()==0; 
+		return mvtHunter.size()==0;
 	}
 	
 	public boolean beastTurn() {
 		boolean mvtValide=false;
 		System.out.println(map+"\n");
 		
-		Mouvment mvt=Interaction.askMouvement();
-		mvtValide=map.moveBeast(mvt);
+		while(! mvtValide) {
+			
+			Mouvment mvt=Interaction.askMouvement();
+			System.out.println(mvt);
+			mvtValide=map.moveBeast(mvt);
+		}
 		
 		map.setBeastWalk();
 		

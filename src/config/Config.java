@@ -31,8 +31,8 @@ public class Config
 	 */
 	public void setDefaultConfig()
 	{
-		this.width = 15;
-		this.height = 15;
+		this.width = 11;
+		this.height = 11;
 		this.gameMode = GameMode.BEASTvsAI;
 		this.trap = false;
 		this.camouflage = false;
