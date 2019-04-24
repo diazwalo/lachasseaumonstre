@@ -1,5 +1,6 @@
 package render.text;
 
+
 import java.util.ArrayList;
 
 import map.Case;
@@ -84,4 +85,5 @@ public class Beast extends Entity{
 	public void untrapped() {
 		this.isTrapped = false;
 	}
+
 }
