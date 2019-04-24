@@ -64,7 +64,11 @@ public class GameHunter implements IGame {
 		}
 	}
 	
-
+	public void afficherBeastPas() {
+		if (this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastPas()>-1) {
+			System.out.println("La bete est passé par ici il y'a "+this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastPas()+" tours.");
+		}
+	}
 	
 	public boolean hunterTurn() {
 		boolean mvtValide=false;
@@ -89,20 +93,4 @@ public class GameHunter implements IGame {
 	
 	}
 	
-	
-	
-	/*
-	public static void main(String [] args) {
-	
-	IMap map = new SquareMap(11, 11);
-	map.generationMap();
-	boolean mvtValide=true;
-	while(mvtValide) {
-		System.out.println(map+"\n");
-		Mouvment mvt=Interaction.askMouvement();
-		mvtValide=map.moveBeast(mvt);
-		map.setBeastPas();
-	}System.out.println("Mvt invalide");
-	
-	}*/
 }
