@@ -13,4 +13,7 @@ public interface IMap {
 	public boolean moveBeast(Mouvment mvt);
 	public boolean moveHunter(Mouvment mvt);
 	public void setBeastWalk();
+	public boolean isBeastWin();
+	public boolean isHunterWin();
+	public void winRefresh();
 }
