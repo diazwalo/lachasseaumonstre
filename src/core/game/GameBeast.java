@@ -43,7 +43,7 @@ public class GameBeast implements IGame{
 	public boolean statusDiscovered() {
 		for (int i = 0; i < this.map.getTab().length; i++) {
 			for (int j = 0; j < this.map.getTab()[i].length; j++) {
-				if(this.map.getTab()[i][j].getBeastPas()==-1 && this.map.getTab()[i][j].getCaseType().equals(CaseType.SOL)) return false;
+				if(this.map.getTab()[i][j].getBeastWalk()==-1 && this.map.getTab()[i][j].getCaseType().equals(CaseType.SOL)) return false;
 			}
 		}
 		return true;

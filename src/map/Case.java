@@ -12,7 +12,7 @@ package map;
 
 public class Case {
 	private CaseType caseType;
-	private int beastPas;
+	private int beastWalk;
 	private boolean hideToHunter;
 	private boolean[] buff;
 	private final int TRACE=5;
@@ -35,8 +35,8 @@ public class Case {
 	 */
 	public Case(CaseType caseType, boolean posBeast, boolean[] buff) {
 		this.caseType=caseType;
-		if(posBeast) this.beastPas=0;
-		else this.beastPas=-1;
+		if(posBeast) this.beastWalk=0;
+		else this.beastWalk=-1;
 		this.hideToHunter=false;
 		this.buff=buff;
 	}
@@ -53,8 +53,8 @@ public class Case {
 	 * retourne le nombre tour depuis le dernier passage de la bete
 	 * @return int
 	 */
-	public int getBeastPas() {
-		return this.beastPas;
+	public int getBeastWalk() {
+		return this.beastWalk;
 	}
 	
 	/**
@@ -77,17 +77,17 @@ public class Case {
 	 * Passe beastPas a 0 cette case correspond a la position de la bete et incremente beastPas si Beast est deja passe ici
 	 * @param posBeast
 	 */
-	public void modifBeastPas(boolean posBeast) {
-		if(posBeast) this.setBeastPas(0);
-		else if(this.beastPas!=-1) this.setBeastPas(this.beastPas+1);
+	public void modifBeastWalk(boolean posBeast) {
+		if(posBeast) this.setBeastWalk(0);
+		else if(this.beastWalk!=-1) this.setBeastWalk(this.beastWalk+1);
 	}
 	
 	/**
 	 * passe beastPas a la valeur passee en parametre
 	 * @param beastPas
 	 */
-	public void setBeastPas(int beastPas) {
-		this.beastPas=beastPas;
+	public void setBeastWalk(int beastPas) {
+		this.beastWalk=beastPas;
 	}
 	
 	/**
@@ -120,7 +120,8 @@ public class Case {
 	
 	public String toString() {
 		String res=caseType.toString();
-		if(this.beastPas>0 && this.beastPas<this.TRACE) res=this.beastPas+"";
+		if(this.beastWalk>=this.TRACE) res=".";
+		if(this.beastWalk>0 && this.beastWalk<this.TRACE) res=this.beastWalk+"";
 		String[] toStringConf=new String[] {"p", "c", "w", "l"};
 		for (int i = 0; i < buff.length; i++)
 			if(buff[i]) res=toStringConf[i];

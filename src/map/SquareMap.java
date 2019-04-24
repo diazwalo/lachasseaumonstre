@@ -74,7 +74,7 @@ public class SquareMap implements IMap {
 	}
 	
 	/**
-	 * Retourne si la bete a gagné
+	 * Retourne si la bete a gagnï¿½
 	 * @return
 	 */
 	public boolean isBeastWin() {
@@ -82,7 +82,7 @@ public class SquareMap implements IMap {
 	}
 	
 	/**
-	 * Retourne si le chasseur a gagné
+	 * Retourne si le chasseur a gagnï¿½
 	 * @return
 	 */
 	public boolean isHunterWin() {
@@ -122,7 +122,7 @@ public class SquareMap implements IMap {
 	public boolean moveBeast(Mouvment mvt) {
 		if(this.mvtValideBeast(mvt)) {
 			this.beast.setPos(mvt);
-			this.tab[this.beast.getPos().getPosX()][this.beast.getPos().getPosY()].modifBeastPas(true);
+			this.tab[this.beast.getPos().getPosX()][this.beast.getPos().getPosY()].modifBeastWalk(true);
 			return true;
 		}return false;
 	}
@@ -144,12 +144,12 @@ public class SquareMap implements IMap {
 	public void setBeastPas() {
 		for (int i = 0; i < tab.length; i++)
 			for (int j = 0; j < tab[i].length; j++)
-				this.tab[i][j].modifBeastPas(this.beast.isPosEnt(i, j));
+				this.tab[i][j].modifBeastWalk(this.beast.isPosEnt(i, j));
 	}
 	
 	
 	/**
-	 * Renvoie un boolean indiquant si le chasseur a gagné ou non
+	 * Renvoie un boolean indiquant si le chasseur a gagnï¿½ ou non
 	 * @return
 	 */
 	private boolean beastVictory() {
@@ -158,7 +158,7 @@ public class SquareMap implements IMap {
 		boolean victory = true;
 		while(victory && i< this.tab.length) {
 			while(victory && j<this.tab[i].length) {
-				if(!this.tab[i][j].isObstacle() && this.tab[i][j].getBeastPas() == -1) {
+				if(!this.tab[i][j].isObstacle() && this.tab[i][j].getBeastWalk() == -1) {
 					victory = false;
 				}
 				j++;
@@ -170,7 +170,7 @@ public class SquareMap implements IMap {
 	}
 	
 	/**
-	 * Renvoie un boolean indiquant si le chasseur a gagné ou non
+	 * Renvoie un boolean indiquant si le chasseur a gagnï¿½ ou non
 	 * @return
 	 */
 	private boolean hunterVictory() {

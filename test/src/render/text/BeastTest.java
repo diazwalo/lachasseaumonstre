@@ -44,7 +44,7 @@ public class BeastTest {
 	@Test
 	public void testVerifDeplacementSpe() {
 		Mouvment mvt=Mouvment.EST;
-		this.caseTab[this.beast.getPos().getPosX()+mvt.getMvtX()][this.beast.getPos().getPosY()+mvt.getMvtY()].setBeastPas(42);
+		this.caseTab[this.beast.getPos().getPosX()+mvt.getMvtX()][this.beast.getPos().getPosY()+mvt.getMvtY()].setBeastWalk(42);
 		assertFalse(this.beast.verifDeplacementSpe(caseTab, mvt, new Hunter(2, 1)));
 		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Hunter(2,1)));
 	}
@@ -68,7 +68,7 @@ public class BeastTest {
 		
 		for (int i = 0; i < this.caseTab.length; i++)
 			for (int j = 0; j < this.caseTab[i].length; j++)
-				this.caseTab[i][j].setBeastPas(42);
+				this.caseTab[i][j].setBeastWalk(42);
 		
 		assertTrue(this.beast.isLock(caseTab, new Hunter(2, 1)));
 	}

@@ -16,24 +16,24 @@ public class CaseTest {
 	
 	@Before
 	public void before() {
-		this.c1.setBeastPas(-1);
-		this.c2.setBeastPas(-1);
-		this.c3.setBeastPas(0);
-		this.c4.setBeastPas(0);
+		this.c1.setBeastWalk(-1);
+		this.c2.setBeastWalk(-1);
+		this.c3.setBeastWalk(0);
+		this.c4.setBeastWalk(0);
 	}
 	
 	@Test
 	public void testModifBeastPasWithPosBeastFalse() {
-		c1.setBeastPas(0);
-		c2.modifBeastPas(true);
-		assertEquals(c1.getBeastPas(), c2.getBeastPas());
+		c1.setBeastWalk(0);
+		c2.modifBeastWalk(true);
+		assertEquals(c1.getBeastWalk(), c2.getBeastWalk());
 	}
 	
 	@Test
 	public void testModifBeastPasWithPosBeastTrue() {
-		c3.setBeastPas(c3.getBeastPas()+1);
-		c4.modifBeastPas(false);
-		assertEquals(c3.getBeastPas(), c4.getBeastPas());
+		c3.setBeastWalk(c3.getBeastWalk()+1);
+		c4.modifBeastWalk(false);
+		assertEquals(c3.getBeastWalk(), c4.getBeastWalk());
 	}
 
 }

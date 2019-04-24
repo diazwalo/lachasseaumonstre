@@ -47,7 +47,7 @@ public class GameHunter implements IGame {
 		for(int i=0; i<this.map.getTab().length; i++) {
 			for (int j=0; j<this.map.getTab().length; j++) {
 				
-				if(this.map.getTab()[i][j].getCaseType()==CaseType.SOL && this.map.getTab()[i][j].getBeastPas()==-1) 
+				if(this.map.getTab()[i][j].getCaseType()==CaseType.SOL && this.map.getTab()[i][j].getBeastWalk()==-1) 
 					pasBeast=false;
 					 
 				}
@@ -65,8 +65,8 @@ public class GameHunter implements IGame {
 	}
 	
 	public void afficherBeastPas() {
-		if (this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastPas()>-1) {
-			System.out.println("La bete est passé par ici il y'a "+this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastPas()+" tours.");
+		if (this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastWalk()>-1) {
+			System.out.println("La bete est passé par ici il y'a "+this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastWalk()+" tours.");
 		}
 	}
 	
