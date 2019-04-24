@@ -18,7 +18,7 @@ public class GameHunter implements IGame {
 		this.map=map;
 		GameBeast.gameStatus=GameStatus.INGAME;
 	}
-	
+	 
 	public void checkGameStatus() {
 		GameBeast.gameStatus=gameStatus.INGAME;
 		if(this.statusFound()) GameBeast.gameStatus=GameStatus.FOUND;
@@ -57,13 +57,21 @@ public class GameHunter implements IGame {
 	
 	public void launchGame() {
 		
-		while(GameBeast.gameStatus.equals(GameStatus.INGAME)) {
+		while(!this.map.isBeastWin() && !this.map.isHunterWin()) {
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
-			this.beastTurn();
+			this.beastTurn() ;
 			this.checkGameStatus();
 			this.map.setBeastWalk();
 			this.afficherBeastPas();
+			this.map.winRefresh();
 		}
+		if (this.map.isBeastWin()) {
+			System.out.println("Victoire de la bete");
+		}
+		else {
+			System.out.println("Victoire du Chasseur");
+		}
+			
 	}
 	
 	public void afficherBeastPas() {

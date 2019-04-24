@@ -67,4 +67,14 @@ public class Ward implements Bonus {
 	public Position getPos() {
 		return pos;
 	}
+	
+	/**
+	 * Decremente le rayon du champ de vision de la ward. Si il tombe a zero met la position de la ward a null
+	 */
+	public void refresh() {
+		this.radius--;
+		if(this.radius == 0) {
+			this.pos = null;
+		}
+	}
 }

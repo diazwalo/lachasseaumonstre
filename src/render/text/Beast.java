@@ -1,5 +1,6 @@
 package render.text;
 
+
 import java.util.ArrayList;
 
 import map.Case;
@@ -13,6 +14,7 @@ import map.Mouvment;
  */
 public class Beast extends Entity{
 	
+	private boolean isTrapped;
 	/**
 	 * Instancie Beast a la Position posX, posY
 	 * @param posX
@@ -20,6 +22,7 @@ public class Beast extends Entity{
 	 */
 	public Beast(int posX, int posY) {
 		super(posX, posY);
+		isTrapped = false;
 	}
 
 	
@@ -61,6 +64,16 @@ public class Beast extends Entity{
 		return mouvTab;
 	}
 	
+	public ArrayList<Mouvment> getMvtPossiblePlusHunter(Case[][] tab) {
+		ArrayList<Mouvment> mouvTab = new ArrayList<>();
+		for(Mouvment m : Mouvment.values()) {
+			if(super.verifDeplacementOutOfBonds(tab, m.getMvt()) && super.verifDeplacementColisionObstacle(tab, m.getMvt())) {
+				mouvTab.add(m);
+			}
+		} 
+		return mouvTab;
+	}
+	
 	
 	/**
 	 * Verfie si la Beast a encore la possibilite de jouer ou non.
@@ -75,4 +88,12 @@ public class Beast extends Entity{
 				return false;
 		return true;
 	}
+	
+	/**
+	 * Libére la bete du piège
+	 */
+	public void untrapped() {
+		this.isTrapped = false;
+	}
+
 }

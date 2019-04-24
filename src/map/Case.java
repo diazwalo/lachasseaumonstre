@@ -16,6 +16,7 @@ public class Case {
 	private boolean hideToHunter;
 	private boolean[] buff;
 	private final int TRACE=5;
+	private boolean blinded;
 	
 	/**
 	 * Creer une class Case avec en parametre CaseType et posBeast respectivment le type de la case
@@ -39,6 +40,7 @@ public class Case {
 		else this.beastWalk=-1;
 		this.hideToHunter=false;
 		this.buff=buff;
+		this.blinded = false;
 	}
 	
 	/**

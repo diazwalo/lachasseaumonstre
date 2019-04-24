@@ -49,11 +49,22 @@ public abstract class Entity {
 	 */
 	protected boolean verifDeplacement(Case [][] tab, Mouvment mvt ) {
 		int[] posModif=this.pos.getModifPosTempo(mvt.getMvt());
-		boolean valide=posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
+		boolean valide=this.verifDeplacementOutOfBonds(tab, posModif);
+		
 		if(valide) {
-			valide=valide && tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.SOL);
-		}return valide;
+			valide=valide && this.verifDeplacementColisionObstacle(tab, posModif);
+		}
+		
+		return valide;
 	}
+	
+	public boolean verifDeplacementOutOfBonds(Case[][] tab, int[] posModif) {
+		return posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
+	}
+	
+	public boolean verifDeplacementColisionObstacle(Case[][] tab, int[] posModif) {
+		return tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.SOL);
+	} 
 	
 	/**
 	 * deplace la position selon le Mouvment mvt
