@@ -21,7 +21,7 @@ public class CommandParserTest
 		CommandParser commandParser1 = new CommandParser(cmd1);
 		CommandParser commandParser2 = new CommandParser(cmd2);
 		
-		assertEquals(commandParser0.getConfig().getWidth(), 15);
+		assertEquals(commandParser0.getConfig().getWidth(), 11);
 		assertEquals(commandParser1.getConfig().getWidth(), 42);
 		assertEquals(commandParser2.getConfig().getWidth(), 42);
 	}
@@ -37,7 +37,7 @@ public class CommandParserTest
 		CommandParser commandParser1 = new CommandParser(cmd1);
 		CommandParser commandParser2 = new CommandParser(cmd2);
 		
-		assertEquals(commandParser0.getConfig().getHeight(), 15);
+		assertEquals(commandParser0.getConfig().getHeight(), 11);
 		assertEquals(commandParser1.getConfig().getHeight(), 42);
 		assertEquals(commandParser2.getConfig().getHeight(), 42);
 	}

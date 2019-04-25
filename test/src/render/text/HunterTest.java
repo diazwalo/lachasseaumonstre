@@ -35,7 +35,7 @@ public class HunterTest {
 	@Test
 	public void testVerifDeplacement() {
 		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.OUEST, new Beast(2, 1)));
-		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.SUDEST, new Beast(2, 1)));
+		assertTrue(this.hunter.verifDeplacementSpe(caseTab, Mouvment.SUDEST, new Beast(2, 1)));
 		assertFalse(this.hunter.verifDeplacementSpe(caseTab, Mouvment.NORD, new Beast(2, 1)));
 		assertTrue(this.hunter.verifDeplacementSpe(caseTab, Mouvment.EST, new Beast(2, 1)));
 	}

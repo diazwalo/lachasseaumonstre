@@ -24,16 +24,6 @@ public class Position {
 	}
 	
 	/**
-	 * Determine si l'Entity est a la position donnee en Parametre
-	 * @param posX
-	 * @param posY
-	 * @return boolean
-	 */
-	public boolean isPos(int posX, int posY) {
-		return this.posX==posX && this.posY==posY;
-	}
-	
-	/**
 	 * Retourne la composante sur X de la Position
 	 * @return int
 	 */
@@ -66,13 +56,15 @@ public class Position {
 	}
 	
 	/**
-	 * Affiche la position de l'objet.
+	 * Determine si l'Entity est a la position donnee en Parametre
+	 * @param posX
+	 * @param posY
+	 * @return boolean
 	 */
-	public String toString()
-	{
-		return "Position : [x:" + this.posX + ",y:" + this.posY + "]";
+	public boolean isPos(int posX, int posY) {
+		return this.posX==posX && this.posY==posY;
 	}
-	
+		
 	/**
 	 * deplace la Position courante en lui applicant le Mouvment mvt passe en parametre
 	 * @param mvt
@@ -87,7 +79,7 @@ public class Position {
 	 * Renvoie un tableau d'entier contenant les deux composantes sous la forme{coord x , coord y}
 	 * @return int[]
 	 */
-	public int[] position() {
+	public int[] getTabPosition() {
 		return new int[] {this.posX ,this.posY};
 	}
 
@@ -137,7 +129,10 @@ public class Position {
 		}
 	}
 	
-	public boolean equals(Position p) {
-		return this.posX==p.posX && this.posY==p.posY;
+	/**
+	 * Affiche la position de l'objet.
+	 */
+	public String toString() {
+		return "Position : [x:" + this.posX + ",y:" + this.posY + "]";
 	}
 }

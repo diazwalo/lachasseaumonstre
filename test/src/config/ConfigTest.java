@@ -72,8 +72,8 @@ public class ConfigTest
     {
     	this.config.setDefaultConfig();
     	
-    	assertEquals(this.config.getWidth(), 15);
-    	assertEquals(this.config.getHeight(), 15);
+    	assertEquals(this.config.getWidth(), 11);
+    	assertEquals(this.config.getHeight(), 11);
     	assertEquals(this.config.getGameMode(), GameMode.BEASTvsAI);
     	assertFalse(this.config.isTrap());
     	assertFalse(this.config.isCamouflage());

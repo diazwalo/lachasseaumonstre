@@ -74,8 +74,8 @@ public class SquareMap implements IMap {
 	}
 	
 	/**
-	 * Retourne si la bete a gagn�
-	 * @return
+	 * Retourne si la bete a gagnee
+	 * @return boolean
 	 */
 	public boolean isBeastWin() {
 		return beastWin;
@@ -83,7 +83,7 @@ public class SquareMap implements IMap {
 	
 	/**
 	 * Retourne si le chasseur a gagn�
-	 * @return
+	 * @return boolean
 	 */
 	public boolean isHunterWin() {
 		return hunterWin;
@@ -150,7 +150,7 @@ public class SquareMap implements IMap {
 	
 	/**
 	 * Renvoie un boolean indiquant si le chasseur a gagn� ou non
-	 * @return
+	 * @return boolean
 	 */
 	private boolean beastVictory() {
 		int i = 0;

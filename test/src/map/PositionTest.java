@@ -36,7 +36,7 @@ public class PositionTest {
 
 	@Test
 	public void testPosition() {
-		assertArrayEquals(this.position.position(), new int[] {2, 1});
+		assertArrayEquals(this.position.getTabPosition(), new int[] {2, 1});
 	}
 	
 	@Test
@@ -45,7 +45,7 @@ public class PositionTest {
 		Position posTest=new Position((this.position.getPosX()+mvtTest.getMvtX()), (this.position.getPosY()+mvtTest.getMvtY()));
 		
 		this.position.movePosition(mvtTest);
-		assertArrayEquals(posTest.position(), this.position.position());
+		assertArrayEquals(posTest.getTabPosition(), this.position.getTabPosition());
 	}
 	
 	@Test
