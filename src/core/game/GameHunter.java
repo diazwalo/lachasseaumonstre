@@ -56,17 +56,27 @@ public class GameHunter implements IGame {
 	public void launchGame() {
 		while(!this.map.isBeastWin() && !this.map.isHunterWin() && GameBeast.gameStatus.equals(GameStatus.INGAME)) {
 			//System.out.println(GameBeast.gameStatus);
-			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
-			this.map.winRefresh();
-			System.out.println("avant "+GameBeast.gameStatus);
-			this.beastTurn() ;
+			//while(! this.hunterTurn()) System.out.println("Mvt Invalide");
+			//this.map.winRefresh();
+			//System.out.println(this.map.isBeastWin());
+			//System.out.println("avant "+GameBeast.gameStatus);
+			/*this.beastTurn() ;
 			this.map.winRefresh();
 			this.checkGameStatus();
-			System.out.println("apres "+GameBeast.gameStatus);
+			System.out.println(this.map.isBeastWin());
+			//System.out.println("apres "+GameBeast.gameStatus);
 			this.map.setBeastWalk();
 			this.afficherBeastPas();
-			//this.map.winRefresh();
+			//this.map.winRefresh();*/
+			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
+			this.beastTurn() ;
+			this.map.setBeastWalk();
+			this.afficherBeastPas();
+			
 		}
+		
+		System.out.println(GameBeast.gameStatus);
+		
 		if (this.map.isBeastWin()) {
 			System.out.println("Victoire de la bete");
 		}
@@ -86,6 +96,8 @@ public class GameHunter implements IGame {
 		System.out.println(map+"\n");
 		Mouvment mvt=Interaction.askMouvement();
 		mvtValide=map.moveHunter(mvt);
+		
+		this.map.winRefresh();
 		return mvtValide;
 	}
 	
@@ -94,9 +106,12 @@ public class GameHunter implements IGame {
 
 		if(mvtBeast.size()>0) {
 			while(! map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size())))) System.out.println(mvtBeast.size());;
+			
+			this.map.winRefresh();
 			return true;
 		}
 		else {
+			this.map.winRefresh();
 			return false;
 		}
 	}

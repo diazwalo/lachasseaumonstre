@@ -174,7 +174,7 @@ public class SquareMap implements IMap {
 	 * @return
 	 */
 	private boolean hunterVictory() {
-		return this.hunter.isPosEnt(this.beast.getPos().getPosX(), this.beast.getPos().getPosY());
+		return this.hunter.isPosEnt(this.beast.getPos().getPosX(), this.beast.getPos().getPosY()) || this.beast.getMvtPossibleWithoutBeastWalk(tab).isEmpty();
 	}
 	
 	

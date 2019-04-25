@@ -83,7 +83,8 @@ public class Beast extends Entity{
 					mouvTab.add(m);
 				}
 			}
-		} 
+		}
+		
 		return mouvTab;
 	}
 	
