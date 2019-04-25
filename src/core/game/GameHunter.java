@@ -27,7 +27,7 @@ public class GameHunter implements IGame {
 	
 	public boolean statusFound() {
 		boolean res=false;
-		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtPossiblePlusOther(this.map.getTab());
+		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtEmptyCase(this.map.getTab());
 		for (Mouvment mouvment : mvtHunter) {
 			int[] posHunterAfterMvt=this.map.getHunter().getPos().getModifPosTempo(mouvment.getMvt());
 			res=this.map.getBeast().isPosEnt(posHunterAfterMvt[0], posHunterAfterMvt[1]);
@@ -55,19 +55,6 @@ public class GameHunter implements IGame {
 	
 	public void launchGame() {
 		while(!this.map.isBeastWin() && !this.map.isHunterWin() && GameBeast.gameStatus.equals(GameStatus.INGAME)) {
-			//System.out.println(GameBeast.gameStatus);
-			//while(! this.hunterTurn()) System.out.println("Mvt Invalide");
-			//this.map.winRefresh();
-			//System.out.println(this.map.isBeastWin());
-			//System.out.println("avant "+GameBeast.gameStatus);
-			/*this.beastTurn() ;
-			this.map.winRefresh();
-			this.checkGameStatus();
-			System.out.println(this.map.isBeastWin());
-			//System.out.println("apres "+GameBeast.gameStatus);
-			this.map.setBeastWalk();
-			this.afficherBeastPas();
-			//this.map.winRefresh();*/
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			this.beastTurn() ;
 			this.map.setBeastWalk();
@@ -102,7 +89,7 @@ public class GameHunter implements IGame {
 	}
 	
 	public boolean beastTurn() {
-		ArrayList<Mouvment> mvtBeast= this.map.getBeast().getMvtPossibleWithoutBeastWalk(this.map.getTab());
+		ArrayList<Mouvment> mvtBeast= this.map.getBeast().getMvtEmptyCase(this.map.getTab());
 
 		if(mvtBeast.size()>0) {
 			while(! map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size())))) System.out.println(mvtBeast.size());;

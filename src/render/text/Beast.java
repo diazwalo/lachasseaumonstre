@@ -13,8 +13,8 @@ import map.Mouvment;
  *
  */
 public class Beast extends Entity{
+	private boolean trapped;
 	
-	private boolean isTrapped;
 	/**
 	 * Instancie Beast a la Position posX, posY
 	 * @param posX
@@ -22,26 +22,34 @@ public class Beast extends Entity{
 	 */
 	public Beast(int posX, int posY) {
 		super(posX, posY);
-		isTrapped = false;
+		trapped = false;
 	}
-
 	
 	/**
-	 * retourne Beast sous la forme textuelle
+	 * retourne vrai si la bete est prise au piege
+	 * @return boolean
 	 */
-	public String toString() {
-		return"B";
+	public boolean getTrapped() {
+		return this.trapped;
+	}
+	
+	/**
+	 * la bete est prise au piege
+	 */
+	public void setTrapped() {
+		this.trapped=true;
 	}
 
 	/**
-	 * verifie si le deplacement souhaite est realisable pour Beast
+	 * verifie si le deplacement souhaite est realisable pour la bete
 	 * @return boolean
 	 */
 	@Override
 	public boolean verifDeplacementSpe(Case[][] tab, Mouvment mvt, Entity hunter) {
 		// TODO Auto-generated method stub
-		boolean valide=super.verifDeplacement(tab, mvt);
+		boolean valide=super.verifDeplacementEntity(tab, mvt);
 		int[] posModif=super.getPos().getModifPosTempo(mvt.getMvt());
+		
 		if(valide) {
 			valide=valide && tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.SOL);
 			valide=valide && !hunter.isPosEnt(posModif[0], posModif[1]);
@@ -52,27 +60,11 @@ public class Beast extends Entity{
 	
 	
 	/**
-	 * retourne la liste des differents Mouvment possible pour Beast.
+	 * retourne la liste des differents Mouvment possible pour Beast sans se soucier de si il y a le chasseur ou encore si elle � deja marche vers la case visee.
 	 * @param tab
 	 * @return ArrayList<Mouvment>
 	 */
-	public ArrayList<Mouvment> mvtPossible(Case[][] tab) {
-		ArrayList<Mouvment> mouvTab = new ArrayList<>();
-		for(Mouvment m : Mouvment.values())
-			if(super.verifDeplacement(tab, m))
-				mouvTab.add(m);
-		return mouvTab;
-	}
-	
-	public ArrayList<Mouvment> getMvtPossiblePlusEntity(Case[][] tab) {
-		ArrayList<Mouvment> mouvTab = new ArrayList<>();
-		for(Mouvment m : Mouvment.values())
-			if(super.verifDeplacement(tab, m))
-				mouvTab.add(m);
-		return mouvTab;
-	}
-	
-	public ArrayList<Mouvment> getMvtPossibleWithoutBeastWalk(Case[][] tab) {
+	public ArrayList<Mouvment> getMvtEmptyCase(Case[][] tab) {
 		ArrayList<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values()) {
 			int[] modifPosTempo=this.getPos().getModifPosTempo(m.getMvt());
@@ -96,7 +88,7 @@ public class Beast extends Entity{
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity hunter) {
-		ArrayList<Mouvment> possible = this.mvtPossible(tab);
+		ArrayList<Mouvment> possible = this.getMvtEmptyCase(tab);
 		for(Mouvment m : possible)
 			if(this.verifDeplacementSpe(tab, m, hunter))
 				return false;
@@ -104,10 +96,17 @@ public class Beast extends Entity{
 	}
 	
 	/**
-	 * Libére la bete du piège
+	 * Libere la bete du piege
 	 */
 	public void untrapped() {
-		this.isTrapped = false;
+		this.trapped = false;
+	}
+
+	/**
+	 * retourne Beast sous la forme textuelle
+	 */
+	public String toString() {
+		return"B";
 	}
 
 }

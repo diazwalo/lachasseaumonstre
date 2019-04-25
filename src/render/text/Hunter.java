@@ -36,21 +36,13 @@ public class Hunter extends Entity {
 	@Override
 	public boolean verifDeplacementSpe(Case[][] tab, Mouvment mvt, Entity beast) {
 		// TODO Auto-generated method stub
-		boolean valide=super.verifDeplacement(tab, mvt);
+		boolean valide=super.verifDeplacementEntity(tab, mvt);
 		int[] posModif=super.getPos().getModifPosTempo(mvt.getMvt());
+		
 		if(valide) {
 			valide=valide && tab[posModif[0]][posModif[1]].getCaseType()==CaseType.SOL;
-			//valide=valide && !beast.isPosEnt(posModif[0], posModif[1]);
 		}
 		return valide;
-	}
-	
-	public ArrayList<Mouvment> getMvtPossiblePlusEntity(Case[][] tab) {
-		ArrayList<Mouvment> mouvTab = new ArrayList<>();
-		for(Mouvment m : Mouvment.values())
-			if(super.verifDeplacement(tab, m))
-				mouvTab.add(m);
-		return mouvTab;
 	}
 	
 	/**
@@ -58,21 +50,11 @@ public class Hunter extends Entity {
 	 * @param tab
 	 * @return ArrayList<Mouvment>
 	 */
-	public ArrayList<Mouvment> mvtPossible(Case[][] tab) {
+	public ArrayList<Mouvment> getMvtEmptyCase(Case[][] tab) {
 		ArrayList<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values())
-			if(super.verifDeplacement(tab, m))
+			if(super.verifDeplacementEntity(tab, m))
 				mouvTab.add(m);
-		return mouvTab;
-	}
-	
-	public ArrayList<Mouvment> getMvtPossiblePlusOther(Case[][] tab) { 
-		ArrayList<Mouvment> mouvTab = new ArrayList<>();
-		for(Mouvment m : Mouvment.values()) {
-			if(super.verifDeplacementOutOfBonds(tab, m.getMvt()) && super.verifDeplacementColisionObstacle(tab, m.getMvt())) {
-				mouvTab.add(m);
-			}
-		}
 		return mouvTab;
 	}
 	
@@ -83,7 +65,7 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity beast) {
-		ArrayList<Mouvment> possible = this.mvtPossible(tab);
+		ArrayList<Mouvment> possible = this.getMvtEmptyCase(tab);
 		for(Mouvment m : possible)
 			if(this.verifDeplacementSpe(tab, m, beast))
 				return false;

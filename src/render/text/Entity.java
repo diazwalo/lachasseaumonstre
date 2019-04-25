@@ -20,14 +20,6 @@ public abstract class Entity {
 	public Entity(int posX, int posY) {
 		this.pos=new Position(posX, posY);
 	}
-	
-	/**
-	 * Determine si la position donnee en parametre est similaire a celle courante
-	 * @return boolean
-	 */
-	public boolean isPosEnt(int posX, int posY) {
-		return this.pos.isPos(posX, posY);
-	}
 
 	/**
 	 * Retourne la Position Courante
@@ -36,36 +28,6 @@ public abstract class Entity {
 	public Position getPos() {
 		return this.pos;
 	}
-	
-	public abstract boolean verifDeplacementSpe(Case [][] tab, Mouvment mvt, Entity other);
-	public abstract ArrayList<Mouvment> mvtPossible(Case[][] tab);
-	public abstract boolean isLock(Case[][] tab, Entity hunter);
-	public abstract ArrayList<Mouvment> getMvtPossiblePlusEntity(Case[][] tab);
-	
-	/**
-	 * verifie que le deplacement souhaite ne fait pas sortir du tableau ou aller sur un obstacle
-	 * @param tab
-	 * @param mvt
-	 * @return boolean
-	 */
-	protected boolean verifDeplacement(Case [][] tab, Mouvment mvt ) {
-		int[] posModif=this.pos.getModifPosTempo(mvt.getMvt());
-		boolean valide=this.verifDeplacementOutOfBonds(tab, posModif);
-		
-		if(valide) {
-			valide=valide && this.verifDeplacementColisionObstacle(tab, posModif);
-		}
-		
-		return valide;
-	}
-	
-	public boolean verifDeplacementOutOfBonds(Case[][] tab, int[] posModif) {
-		return posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
-	}
-	
-	public boolean verifDeplacementColisionObstacle(Case[][] tab, int[] posModif) {
-		return tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.SOL);
-	} 
 	
 	/**
 	 * deplace la position selon le Mouvment mvt
@@ -88,4 +50,53 @@ public abstract class Entity {
 			}
 		}
 	}
+	
+	/**
+	 * Determine si la position donnee en parametre est similaire a celle courante
+	 * @return boolean
+	 */
+	public boolean isPosEnt(int posX, int posY) {
+		return this.pos.isPos(posX, posY);
+	}
+	
+	public abstract boolean verifDeplacementSpe(Case [][] tab, Mouvment mvt, Entity other);
+	public abstract boolean isLock(Case[][] tab, Entity hunter);
+	public abstract ArrayList<Mouvment> getMvtEmptyCase(Case[][] tab);
+	
+	/**
+	 * verifie que le deplacement souhaite ne fait pas sortir du tableau ou aller sur un obstacle
+	 * @param tab
+	 * @param mvt
+	 * @return boolean
+	 */
+	protected boolean verifDeplacementEntity(Case [][] tab, Mouvment mvt ) {
+		int[] posModif=this.pos.getModifPosTempo(mvt.getMvt());
+		boolean valide=this.verifDeplacementOutOfBonds(tab, posModif);
+		
+		if(valide) {
+			valide=valide && this.verifDeplacementColisionObstacle(tab, posModif);
+		}
+		
+		return valide;
+	}
+	
+	/**
+	 * verifie que le deplacement ne vas pas faire sortir du plateau
+	 * @param tab
+	 * @param posModif
+	 * @return boolean
+	 */
+	public boolean verifDeplacementOutOfBonds(Case[][] tab, int[] posModif) {
+		return posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
+	}
+	
+	/**
+	 * verifie que le deplacement ne vas pas faire tomber sur un obstacle
+	 * @param tab
+	 * @param posModif
+	 * @return boolean
+	 */
+	public boolean verifDeplacementColisionObstacle(Case[][] tab, int[] posModif) {
+		return ! tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.OBSTACLE);
+	} 
 }

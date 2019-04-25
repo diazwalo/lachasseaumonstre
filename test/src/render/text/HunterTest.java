@@ -42,7 +42,7 @@ public class HunterTest {
 	
 	@Test
 	public void testMvtPossible() {
-		ArrayList<Mouvment> mvtPoss=this.hunter.mvtPossible(this.caseTab);
+		ArrayList<Mouvment> mvtPoss=this.hunter.getMvtEmptyCase(this.caseTab);
 		assertFalse(mvtPoss.contains(Mouvment.NORD));
 		assertFalse(mvtPoss.contains(Mouvment.NORDEST));
 		assertTrue(mvtPoss.contains(Mouvment.EST));

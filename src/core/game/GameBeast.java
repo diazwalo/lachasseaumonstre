@@ -33,7 +33,7 @@ public class GameBeast implements IGame{
 	
 	public boolean statusFound() {
 		boolean res=false;
-		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
+		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtEmptyCase(this.map.getTab());
 		for (Mouvment mouvment : mvtHunter) {
 			int[] posHunterAfterMvt=this.map.getHunter().getPos().getModifPosTempo(mouvment.getMvt());
 			res=this.map.getHunter().isPosEnt(posHunterAfterMvt[0], posHunterAfterMvt[1]);
@@ -51,7 +51,7 @@ public class GameBeast implements IGame{
 	
 	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
 	public boolean statusEnemyblock() {
-		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
+		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtEmptyCase(this.map.getTab());
 		return mvtHunter.size()==0;
 	}
 	
@@ -72,7 +72,7 @@ public class GameBeast implements IGame{
 	}
 	
 	public boolean hunterTurn() {
-		ArrayList<Mouvment> mvtHunter=this.map.getHunter().mvtPossible(this.map.getTab());
+		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtEmptyCase(this.map.getTab());
 		
 		if(mvtHunter.size()>0) {
 			int hazard=new Random().nextInt(mvtHunter.size()-1);
