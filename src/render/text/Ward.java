@@ -29,13 +29,6 @@ public class Ward implements Bonus {
 		this();
 		this.pos=new Position(posX, posY);
 	}
-
-	/**
-	 * place ce Bonus a la position d abscice x et d ordonnee y
-	 */
-	public void install(int x , int y) {
-		this.pos = new Position(x ,y);
-	}
 	
 	/**
 	 * retourne le nom du Bonus
@@ -53,6 +46,14 @@ public class Ward implements Bonus {
 	}
 
 	/**
+	 * retourne la position du Bonus courant
+	 * @return Position
+	 */
+	public Position getPos() {
+		return pos;
+	}
+
+	/**
 	 * met pour la valeur de radius le parametre qui defini le champ de vision de la balise de vision
 	 * @param radius
 	 */
@@ -61,11 +62,10 @@ public class Ward implements Bonus {
 	}
 
 	/**
-	 * retourne la position du Bonus courant
-	 * @return Position
+	 * place ce Bonus a la position d abscice x et d ordonnee y
 	 */
-	public Position getPos() {
-		return pos;
+	public void install(int x , int y) {
+		this.pos = new Position(x ,y);
 	}
 	
 	/**
@@ -76,5 +76,12 @@ public class Ward implements Bonus {
 		if(this.radius == 0) {
 			this.pos = null;
 		}
+	}
+	
+	/**
+	 * retourne la balise sous la forme textuelle
+	 */
+	public String toString() {
+		return "W";
 	}
 }

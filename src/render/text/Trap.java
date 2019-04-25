@@ -9,7 +9,7 @@ import map.Position;
 public class Trap implements Bonus {
 	
 	private Position pos;
-	private final String NAME = "Piège";
+	private final String NAME = "Piege";
 	private boolean activate;
 	
 	/**
@@ -29,13 +29,13 @@ public class Trap implements Bonus {
 		this();
 		this.pos=new Position(posX, posY);
 	}
-	
+
 	/**
-	 * place ce Bonus a la position d abscice x et d ordonnee y
+	 * retourne la position du Bonus courant
+	 * @return Position
 	 */
-	@Override
-	public void install(int x, int y) {
-		this.pos = new Position(x ,y);
+	public Position getPos() {
+		return pos;
 	}
 
 	/**
@@ -50,36 +50,34 @@ public class Trap implements Bonus {
 	 * retourne vrai si le piege est active
 	 * @return boolean
 	 */
-	public boolean isActivate() {
+	public boolean getActivate() {
 		return activate;
 	}
 
 	/**
-	 * met la valeur de activate a la valeur passee en parametre
+	 * place ce Bonus a la position d abscice x et d ordonnee y
+	 */
+	@Override
+	public void install(int x, int y) {
+		this.pos = new Position(x ,y);
+	}
+
+	/**
+	 * met la valeur de activate si la bete passe par la
 	 * @param activate
 	 */
 	public void isActivate(Beast b) {
 		if(this.pos.equals(b.getPos())) {
 			this.activate = true;
+			this.isUsed();
 		}
-	}
-
-	/**
-	 * retourne la position du Bonus courant
-	 * @return Position
-	 */
-	public Position getPos() {
-		return pos;
 	}
 	
 	/**
-	 * Enleve le piège de la map si il a été utilisé
-	 * @param b
+	 * Enleve le piege de la map si il a ete utilise
 	 */
-	public void isUsed(Beast b) {
-		if(this.pos.equals(b.getPos())) {
-			this.pos = null;
-		}
+	public void isUsed() {
+		this.pos=null;
 	}
   
 }

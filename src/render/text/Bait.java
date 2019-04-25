@@ -28,29 +28,30 @@ public class Bait implements Bonus {
 	}
 	
 	/**
-	 * place ce Bonus a la position d abscice x et d ordonnee y
-	 */
-	@Override
-	public void install(int x, int y) {
-		this.pos = new Position(x ,y);
-
-	}
-
-	/**
 	 * retourne le nom du Bonus
 	 */
 	@Override
 	public String getName() {
 		return this.NAME;
 	}
+
+	/**
+	 * place ce Bonus a la position d abscice x et d ordonnee y
+	 */
+	@Override
+	public void install(int x, int y) {
+		this.pos = new Position(x ,y);
+	}
 	
-	public void isDiscover(Hunter h) {
+	/**
+	 * passe le leurre a null si le chasseur passe dessus
+	 */
+	public void unInstall(Hunter h) {
 		if(this.pos.equals(h.getPos())) {
 			this.pos = null;
 		}
 	}
-	
-	
+		
 	/**
 	 * retourne Beast sous la forme textuelle
 	 */
