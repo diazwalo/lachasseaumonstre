@@ -55,13 +55,25 @@ public class GameHunter implements IGame {
 	
 	public void launchGame() {
 		while(!this.map.isBeastWin() && !this.map.isHunterWin() && GameBeast.gameStatus.equals(GameStatus.INGAME)) {
+			
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
-			this.beastTurn() ;
-			this.map.setBeastWalk();
+			
+			System.out.println("YourTurn: ");
+			System.out.println(this.map);
 			this.afficherBeastPas();
 			
+			Interaction.waitASec(0.5);
+			
+			this.beastTurn();
+			this.map.setBeastWalk();
+			System.out.println("BeastTurn: \n"+this.map);
+			Interaction.waitASec(0.5);
+			
 		}
-		
+		this.EndGame();
+	}
+	
+	public void EndGame() {
 		System.out.println(GameBeast.gameStatus);
 		
 		if (this.map.isBeastWin()) {

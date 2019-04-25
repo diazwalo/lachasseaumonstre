@@ -81,4 +81,15 @@ public class Interaction {
 		return saisie;
 
 	}
+	
+	public static void waitASec(double sec) {
+		try
+		{
+		    Thread.sleep((int)(sec*1000));
+		}
+		catch(InterruptedException ex)
+		{
+		    Thread.currentThread().interrupt();
+		}
+	}
 }
