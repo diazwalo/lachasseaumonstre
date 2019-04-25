@@ -74,22 +74,13 @@ public class Case {
 	public boolean[] getBuff() {
 		return this.buff;
 	}
-	
+		
 	/**
-	 * Passe beastPas a 0 cette case correspond a la position de la bete et incremente beastPas si Beast est deja passe ici
-	 * @param posBeast
+	 * passe beastWalk a la valeur passee en parametre
+	 * @param beastWalk
 	 */
-	public void modifBeastWalk(boolean posBeast) {
-		if(posBeast) this.setBeastWalk(0);
-		else if(this.beastWalk!=-1) this.setBeastWalk(this.beastWalk+1);
-	}
-	
-	/**
-	 * passe beastPas a la valeur passee en parametre
-	 * @param beastPas
-	 */
-	public void setBeastWalk(int beastPas) {
-		this.beastWalk=beastPas;
+	public void setBeastWalk(int beastWalk) {
+		this.beastWalk=beastWalk;
 	}
 	
 	/**
@@ -108,10 +99,18 @@ public class Case {
 	}
 	
 	/**
-	 * Returne un boolean qui indique si la case et in obstacle ou non
-	 * @return
+	 * Passe beastWalk a 0 cette case correspond a la position de la bete ou incremente beastWalk si Beast est deja passe ici
+	 * @param posBeast
 	 */
+	public void modifBeastWalk(boolean posBeast) {
+		if(posBeast) this.setBeastWalk(0);
+		else if(this.beastWalk!=-1) this.setBeastWalk(this.beastWalk+1);
+	}
 	
+	/**
+	 * Retourne un boolean qui indique si la case est un obstacle ou non
+	 * @return boolean
+	 */
 	public boolean isObstacle() {
 		return this.caseType == CaseType.OBSTACLE;
 	}
@@ -119,11 +118,10 @@ public class Case {
 	/**
 	 * Renvoie sous forme de chaine de caractere le buff actif sur la Case ou la trace de la bete au cas echeant
 	 */
-	
 	public String toString() {
 		String res=caseType.toString();
 		if(this.beastWalk>=this.TRACE) res=".";
-		if(this.beastWalk>0 && this.beastWalk<this.TRACE) res=this.beastWalk+"";
+		if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
 		String[] toStringConf=new String[] {"p", "c", "w", "l"};
 		for (int i = 0; i < buff.length; i++)
 			if(buff[i]) res=toStringConf[i];

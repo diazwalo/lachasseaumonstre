@@ -33,6 +33,6 @@ public enum CaseType {
 	 */
 	public String toString() {
 		if(caseType==1) return " ";
-		return "0";
+		return "#";
 	}
 }

@@ -49,7 +49,7 @@ public enum Mouvment {
 	  * Renvoie un tableau contenant tous les deplacement de tous les mouvements possible
 	  * @return int[][]
 	  */
-	public int[][] allMouv(){
+	public int[][] getAllMouv(){
 		int [][] tab = new int[8][2];
 		int index = 0;
 		for(Mouvment m :this.values()){
