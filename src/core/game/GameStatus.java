@@ -1,7 +1,7 @@
 package core.game;
 
 public enum GameStatus {
-	INGAME("partie en cours"), FOUND("trouve par le chasseur"), DISCOVERED("la map a ete entierement decouverte par la bete"), ENEMYBLOCK("l adversaire est bloque");
+	INGAME("la partie en cours"), BEASTFOUND("le chasseur a trouve la bete"), MAPDISCOVERED("la map a ete entierement decouverte par la bete"), BEASTBLOCK("la bete est bloquee");
 	
 	private String status;
 	

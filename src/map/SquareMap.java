@@ -88,6 +88,14 @@ public class SquareMap implements IMap {
 	public boolean isHunterWin() {
 		return hunterWin;
 	}
+	
+	public void setHunterWin(boolean hunterWin) {
+		this.hunterWin=hunterWin;
+	}
+	
+	public void setBeastWin(boolean beastWin) {
+		this.beastWin=beastWin;
+	}
 
 	/**
 	 * Retourne la Config
@@ -175,15 +183,6 @@ public class SquareMap implements IMap {
 	 */
 	private boolean hunterVictory() {
 		return this.hunter.isPosEnt(this.beast.getPos().getPosX(), this.beast.getPos().getPosY()) || this.beast.getMvtEmptyCase(tab).isEmpty();
-	}
-	
-	
-	/**
-	 * Verifie si il y a un vainqueur ou non
-	 */
-	public void winRefresh() {
-		this.beastWin = this.beastVictory();
-		this.hunterWin = this.hunterVictory();
 	}
 	
 	/**

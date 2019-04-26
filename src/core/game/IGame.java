@@ -4,9 +4,9 @@ public interface IGame {
 	
 	public void launchGame();
 	public void checkGameStatus();
-	public boolean statusFound();
-	public boolean statusDiscovered();
-	public boolean statusEnemyblock();
+	public boolean statusBeastFound();
+	public boolean statusMapDiscovered();
+	public boolean statusBeastblock();
 	public boolean beastTurn();
 	public boolean hunterTurn();
 	

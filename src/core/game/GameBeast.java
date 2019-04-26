@@ -26,9 +26,9 @@ public class GameBeast implements IGame{
 	
 	public void checkGameStatus() {
 		GameBeast.gameStatus=GameStatus.INGAME;
-		if(this.statusFound()) GameBeast.gameStatus=GameStatus.FOUND;
-		else if(this.statusDiscovered()) GameBeast.gameStatus=GameStatus.DISCOVERED;
-		else if(this.statusEnemyblock()) GameBeast.gameStatus=GameStatus.ENEMYBLOCK;
+		if(this.statusFound()) GameBeast.gameStatus=GameStatus.BEASTFOUND;
+		else if(this.statusDiscovered()) GameBeast.gameStatus=GameStatus.MAPDISCOVERED;
+		else if(this.statusEnemyblock()) GameBeast.gameStatus=GameStatus.BEASTBLOCK;
 	}
 	
 	public boolean statusFound() {
@@ -80,6 +80,24 @@ public class GameBeast implements IGame{
 		}
 		
 		return true;
+	}
+
+	@Override
+	public boolean statusBeastFound() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean statusMapDiscovered() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean statusBeastblock() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	// c'est pas bo (comme pierre)
