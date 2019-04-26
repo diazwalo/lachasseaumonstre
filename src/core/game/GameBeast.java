@@ -18,10 +18,22 @@ public class GameBeast implements IGame{
 	}
 	
 	public void launchGame() {
-		while(gameStatus.equals(GameStatus.INGAME)) {
-			while(!this.beastTurn()) System.out.println("Mvt invalide");
+	while(!this.map.isBeastWin() && !this.map.isHunterWin() && GameBeast.gameStatus.equals(GameStatus.INGAME)) {
+			
+			while(! this.beastTurn()) System.out.println("Mvt Invalide");
+			
+			System.out.println("YourTurn: ");
+			System.out.println(this.map);
+			
+			
+			Interaction.waitASec(0.5);
+			
 			this.hunterTurn();
-		}System.out.println(GameBeast.gameStatus.getStatus());
+			System.out.println("BeastTurn: \n"+this.map);
+			Interaction.waitASec(0.5);
+			
+		}
+		this.EndGame();
 	}
 	
 	public void checkGameStatus() {
@@ -80,6 +92,25 @@ public class GameBeast implements IGame{
 		}
 		
 		return true;
+	}
+	
+	/*public boolean estBloque() {
+		boolean block=true;
+		ArrayList<Mouvment> mvmDispo=this.map.getBeast().getMvtEmptyCase(map.getTab());
+		for(Mouvment m : mvmDispo) {
+			
+		}
+	}*/
+	
+	public void EndGame() {
+		System.out.println(GameBeast.gameStatus);
+		
+		if (this.map.isBeastWin()) {
+			System.out.println("Victoire de la bete");
+		}
+		else {
+			System.out.println("Victoire du Chasseur");
+		}
 	}
 	
 	// c'est pas bo (comme pierre)
