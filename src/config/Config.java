@@ -12,6 +12,7 @@ public class Config
 	private int width;
 	private int height;
 	private GameMode gameMode;
+	private int nbTeleportation;
 	
 	private boolean trap;
 	private boolean camouflage;
@@ -34,6 +35,8 @@ public class Config
 		this.width = 11;
 		this.height = 11;
 		this.gameMode = GameMode.BEASTvsAI;
+		this.nbTeleportation = 3;
+
 		this.trap = false;
 		this.camouflage = false;
 		this.ward = false;
@@ -92,6 +95,24 @@ public class Config
 	public void setGameMode(GameMode gameMode)
 	{
 		this.gameMode = gameMode;
+	}
+
+	/**
+	 * Retourne le nombre de teleportation disponible pour le monstre durant la partie.
+	 * @return int
+	 */
+	public int getNbTeleportation()
+	{
+		return this.nbTeleportation;
+	}
+
+	/**
+	 * Definit le nombre de teleportation disponible pour le monstre durant la partie.
+	 * @param nbTeleportation
+	 */
+	public void setNbTeleportation(int nbTeleportation)
+	{
+		this.nbTeleportation = nbTeleportation;
 	}
 
 	/**
