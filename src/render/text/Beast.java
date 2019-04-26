@@ -60,7 +60,7 @@ public class Beast extends Entity{
 	
 	
 	/**
-	 * retourne la liste des differents Mouvment possible pour Beast sans se soucier de si il y a le chasseur ou encore si elle à deja marche vers la case visee.
+	 * retourne la liste des differents Mouvment possible pour Beast sans se soucier de si il y a le chasseur ou encore si elle Ã  deja marche vers la case visee.
 	 * @param tab
 	 * @return ArrayList<Mouvment>
 	 */

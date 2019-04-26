@@ -128,7 +128,12 @@ public class Position {
 			positionAdjacent.add(p);
 		}
 	}
-	
+
+	public boolean equals(Position p) {
+		return this.posX==p.posX && this.posY==p.posY;
+	}
+
+
 	/**
 	 * Affiche la position de l'objet.
 	 */

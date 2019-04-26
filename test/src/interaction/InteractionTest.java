@@ -3,6 +3,7 @@ package src.interaction;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import interaction.Interaction;
@@ -19,6 +20,7 @@ public class InteractionTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testGetSaisieMvt() { 
 		//rentrez "z" et vaidez
 		assertEquals(Mouvment.NORD, Interaction.getSaisieMvt(null, this.strMvt, this.tabMvt));
