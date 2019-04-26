@@ -38,6 +38,13 @@ public class ConfigTest
     	this.config.setGameMode(GameMode.AIvsAI);
     	assertEquals(this.config.getGameMode(), GameMode.AIvsAI);
     }
+
+    @Test
+	public void testNbTeleportation()
+	{
+		this.config.setNbTeleportation(42);
+		assertEquals(this.config.getNbTeleportation(), 42);
+	}
 	
 	@Test
     public void testTrap()
@@ -75,6 +82,7 @@ public class ConfigTest
     	assertEquals(this.config.getWidth(), 11);
     	assertEquals(this.config.getHeight(), 11);
     	assertEquals(this.config.getGameMode(), GameMode.BEASTvsAI);
+    	assertEquals(this.config.getNbTeleportation(), 3);
     	assertFalse(this.config.isTrap());
     	assertFalse(this.config.isCamouflage());
     	assertFalse(this.config.isWard());
