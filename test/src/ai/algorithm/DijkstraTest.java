@@ -1,4 +1,4 @@
-package src.algorithm;
+package src.ai.algorithm;
 
 import static org.junit.Assert.*;
 

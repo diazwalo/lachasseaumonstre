@@ -78,7 +78,7 @@ public class GameBeast implements IGame{
 			mvtValide=map.moveBeast(mvt);
 		}
 		
-		map.setBeastWalk();
+		map.setBeastWalk(); 
 		
 		return mvtValide;
 	}

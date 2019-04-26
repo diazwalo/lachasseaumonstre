@@ -1,6 +1,7 @@
 package src.core;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -65,6 +66,22 @@ public class CommandParserTest
 		assertEquals(commandParser3.getConfig().getGameMode(), GameMode.HUNTERvsAI);
 		assertEquals(commandParser4.getConfig().getGameMode(), GameMode.BEASTvsHUNTER);
 		assertEquals(commandParser5.getConfig().getGameMode(), GameMode.BEASTvsHUNTER);
+	}
+
+	@Test
+	public void testArgsNbTeleportation()
+	{
+		String[] cmd0 = {};
+		String[] cmd1 = {"--tp=42"};
+		String[] cmd2 = {"--tp=20", "--tp=42"};
+
+		CommandParser commandParser0 = new CommandParser(cmd0);
+		CommandParser commandParser1 = new CommandParser(cmd1);
+		CommandParser commandParser2 = new CommandParser(cmd2);
+
+		assertEquals(commandParser0.getConfig().getNbTeleportation(), 3);
+		assertEquals(commandParser1.getConfig().getNbTeleportation(), 42);
+		assertEquals(commandParser2.getConfig().getNbTeleportation(), 42);
 	}
 	
 	@Test
@@ -145,6 +162,7 @@ public class CommandParserTest
 		assertEquals(42, commandParser0.getConfig().getWidth());
 		assertEquals(42, commandParser0.getConfig().getHeight());
 		assertEquals(GameMode.AIvsAI, commandParser0.getConfig().getGameMode());
+		assertEquals(3, commandParser0.getConfig().getNbTeleportation());
 		assertTrue(commandParser0.getConfig().isWard());
 		assertTrue(commandParser0.getConfig().isTrap());
 		assertTrue(commandParser0.getConfig().isCamouflage());

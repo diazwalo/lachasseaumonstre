@@ -49,6 +49,10 @@ public class CommandParser
 			case "g":
 			case "gamemode":
 				this.handleGameMode(argumentExploded[1]);
+				break;
+			case "tp":
+				this.config.setNbTeleportation(Integer.valueOf(argumentExploded[1]));
+				break;
 			default:
 				new IllegalArgumentException("L'argument " + argumentName + " n'a pas ete reconnu.");
 				break;
