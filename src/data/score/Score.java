@@ -1,4 +1,4 @@
-package src.data.score;
+package data.score;
 
 import java.time.LocalDate;
 
