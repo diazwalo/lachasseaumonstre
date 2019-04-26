@@ -66,6 +66,22 @@ public class CommandParserTest
 		assertEquals(commandParser4.getConfig().getGameMode(), GameMode.BEASTvsHUNTER);
 		assertEquals(commandParser5.getConfig().getGameMode(), GameMode.BEASTvsHUNTER);
 	}
+
+	/*@Test
+	public void testArgsNbTeleportation()
+	{
+		String[] cmd0 = {};
+		String[] cmd1 = {"--tp=42"};
+		String[] cmd2 = {"--tp=20", "--tp=42"};
+
+		CommandParser commandParser0 = new CommandParser(cmd0);
+		CommandParser commandParser1 = new CommandParser(cmd1);
+		CommandParser commandParser2 = new CommandParser(cmd2);
+
+		assertEquals(commandParser0.getConfig().getNbTeleportation(), 3);
+		assertEquals(commandParser1.getConfig().getNbTeleportation(), 42);
+		assertEquals(commandParser2.getConfig().getNbTeleportation(), 42);
+	}*/
 	
 	@Test
 	public void testArgsTrap()
