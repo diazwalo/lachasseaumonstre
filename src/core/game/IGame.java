@@ -10,4 +10,4 @@ public interface IGame {
 	public boolean beastTurn();
 	public boolean hunterTurn();
 	
-}
+} 

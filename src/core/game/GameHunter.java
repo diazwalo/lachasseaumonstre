@@ -26,7 +26,7 @@ public class GameHunter implements IGame {
 			System.out.println(this.map);
 			this.afficherBeastPas();
 			
-			//Interaction.waitASec(0.5);
+			//Interaction.waitASec(0.5); 
 			if(! this.map.isHunterWin()) {
 				this.beastTurn();
 				this.map.setBeastWalk();

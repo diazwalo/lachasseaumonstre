@@ -86,7 +86,7 @@ public class SquareMap implements IMap {
 	 * @return boolean
 	 */
 	public boolean isHunterWin() {
-		return hunterWin;
+		return hunterWin; 
 	}
 	
 	public void setHunterWin(boolean hunterWin) {

@@ -18,4 +18,4 @@ public interface IMap {
 	//public void winRefresh();
 	public void setHunterWin(boolean hunterWin);
 	public void setBeastWin(boolean beastWin);
-} 
+}  

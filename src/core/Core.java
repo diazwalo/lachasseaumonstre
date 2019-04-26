@@ -22,7 +22,7 @@ public class Core {
 		switch(config.getGameMode())
 		{
 		case AIvsAI:
-			//IGame game = new GameAI(map);
+			//IGame game = new GameAI(map); 
 			break;
 		case BEASTvsAI:
 			//IGame game = new GameBeast(map);
