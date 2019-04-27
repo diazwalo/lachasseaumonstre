@@ -3,6 +3,7 @@ package render.text;
 
 import java.util.ArrayList;
 
+import config.Config;
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
@@ -14,15 +15,17 @@ import map.Mouvment;
  */
 public class Beast extends Entity{
 	private boolean trapped;
+	private int tp;
 	
 	/**
 	 * Instancie Beast a la Position posX, posY
 	 * @param posX
 	 * @param posY
 	 */
-	public Beast(int posX, int posY) {
+	public Beast(int posX, int posY, Config config) {
 		super(posX, posY);
-		trapped = false;
+		this.trapped = false;
+		this.tp=config.getNbTeleportation();
 	}
 	
 	/**
@@ -60,7 +63,7 @@ public class Beast extends Entity{
 	
 	
 	/**
-	 * retourne la liste des differents Mouvment possible pour Beast sans se soucier de si il y a le chasseur ou encore si elle à deja marche vers la case visee.
+	 * retourne la liste des differents Mouvment possible pour Beast sans se soucier de si il y a le chasseur ou encore si elle a deja marche vers la case visee.
 	 * @param tab
 	 * @return ArrayList<Mouvment>
 	 */

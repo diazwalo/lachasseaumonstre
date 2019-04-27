@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import config.Config;
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
@@ -17,10 +18,11 @@ import render.text.Hunter;
 public class BeastTest {
 	private Entity beast;
 	private Case[][] caseTab;
+	private Config config=new Config();
 	
 	@Before
 	public void before() {
-		this.beast=new Beast(1, 0);
+		this.beast=new Beast(1, 0, config);
 		this.caseTab=new Case[][] { {new Case(CaseType.OBSTACLE, false), new Case(CaseType.SOL, false), new Case(CaseType.SOL, false)},
 									{new Case(CaseType.SOL, false), new Case(CaseType.SOL, false), new Case(CaseType.SOL, false)},
 									{new Case(CaseType.SOL, false), new Case(CaseType.SOL, false), new Case(CaseType.SOL, false)} };
@@ -34,19 +36,19 @@ public class BeastTest {
 	
 	@Test
 	public void testVerifDeplacement() {					
-		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.OUEST, new Hunter(2, 1)));
-		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDEST, new Hunter(2, 1)));
-		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.NORD, new Hunter(2, 1)));
-		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.EST, new Hunter(2, 1)));
-		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Hunter(2,1)));
+		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.OUEST, new Hunter(2, 1, config)));
+		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDEST, new Hunter(2, 1, config)));
+		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.NORD, new Hunter(2, 1, config)));
+		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.EST, new Hunter(2, 1, config)));
+		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Hunter(2, 1, config)));
 	}
 	
 	@Test
 	public void testVerifDeplacementSpe() {
 		Mouvment mvt=Mouvment.EST;
 		this.caseTab[this.beast.getPos().getPosX()+mvt.getMvtX()][this.beast.getPos().getPosY()+mvt.getMvtY()].setBeastWalk(42);
-		assertFalse(this.beast.verifDeplacementSpe(caseTab, mvt, new Hunter(2, 1)));
-		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Hunter(2,1)));
+		assertFalse(this.beast.verifDeplacementSpe(caseTab, mvt, new Hunter(2, 1, config)));
+		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Hunter(2, 1, config)));
 	}
 	
 	@Test
@@ -64,12 +66,12 @@ public class BeastTest {
 	
 	@Test
 	public void testIsLock() {
-		assertFalse(this.beast.isLock(caseTab, new Hunter(2, 1)));
+		assertFalse(this.beast.isLock(caseTab, new Hunter(2, 1, config)));
 		
 		for (int i = 0; i < this.caseTab.length; i++)
 			for (int j = 0; j < this.caseTab[i].length; j++)
 				this.caseTab[i][j].setBeastWalk(42);
 		
-		assertTrue(this.beast.isLock(caseTab, new Hunter(2, 1)));
+		assertTrue(this.beast.isLock(caseTab, new Hunter(2, 1, config)));
 	}
 }

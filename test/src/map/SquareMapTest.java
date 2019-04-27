@@ -27,8 +27,8 @@ public class SquareMapTest {
         
         this.sm = new SquareMap(config);
 		this.sm.generationMap();
-		this.beast = new Beast(10, 10);
-		this.hunter = new Hunter(0, 0);
+		this.beast = new Beast(10, 10, new Config());
+		this.hunter = new Hunter(0, 0, new Config());
 	}
 
 	@Test

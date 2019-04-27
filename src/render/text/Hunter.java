@@ -2,6 +2,7 @@ package render.text;
 
 import java.util.ArrayList;
 
+import config.Config;
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
@@ -18,7 +19,7 @@ public class Hunter extends Entity {
 	 * @param posX
 	 * @param posY
 	 */
-	public Hunter(int posX, int posY) {
+	public Hunter(int posX, int posY, Config config) {
 		super(posX, posY);
 	}
 

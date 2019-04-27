@@ -25,8 +25,8 @@ public class SquareMap implements IMap {
 	 * @param wid
 	 */
 	public SquareMap(Config config) {
-		this.hunter = new Hunter(0, 0);
-		this.beast = new Beast(config.getWidth()-1, config.getHeight()-1);
+		this.hunter = new Hunter(0, 0, config);
+		this.beast = new Beast(config.getWidth()-1, config.getHeight()-1, config);
 		this.tab = new Case[config.getWidth()][config.getHeight()];
 		this.config = config;
 		this.beastWin = false;
@@ -160,7 +160,7 @@ public class SquareMap implements IMap {
 	 * Renvoie un boolean indiquant si le chasseur a gagn� ou non
 	 * @return boolean
 	 */
-	private boolean beastVictory() {
+	/*private boolean beastVictory() {
 		int i = 0;
 		int j = 0;
 		boolean victory = true;
@@ -175,15 +175,15 @@ public class SquareMap implements IMap {
 			i++;
 		}
 		return victory;
-	}
+	}*/
 	
 	/**
 	 * Renvoie un boolean indiquant si le chasseur a gagn� ou non
 	 * @return
 	 */
-	private boolean hunterVictory() {
+	/*private boolean hunterVictory() {
 		return this.hunter.isPosEnt(this.beast.getPos().getPosX(), this.beast.getPos().getPosY()) || this.beast.getMvtEmptyCase(tab).isEmpty();
-	}
+	}*/
 	
 	/**
 	 * Retourne les La Map sous la forme textuelle d'un tableau avec des obstacles, des buffs, des Entity
