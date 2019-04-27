@@ -8,6 +8,12 @@ import map.CaseType;
 import map.IMap;
 import map.Mouvment;
 
+/**
+ * 
+ * La classe GameHunter gere la partie lorsque que le joueur incarne le chasseur.
+ * 
+ */
+
 public class GameHunter implements IGame {
 	private IMap map; 
 	public static GameStatus gameStatus;
@@ -16,6 +22,10 @@ public class GameHunter implements IGame {
 		this.map=map;
 		GameBeast.gameStatus=GameStatus.INGAME;
 	}
+	
+	/**
+	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqué, decouverte ou si elle a decouvert toute la map.
+	 */
 	
 	public void launchGame() {
 		System.out.println(map+"\n");
@@ -37,6 +47,10 @@ public class GameHunter implements IGame {
 		this.EndGame();
 	}
 	
+	/**
+	  * hunterTurn retourne true lorsque le mouvement entré par le joueur est valide et dans ce cas l'effectue. 
+	  */
+	
 	public boolean hunterTurn() {
 		boolean mvtValide=false;
 		
@@ -46,6 +60,10 @@ public class GameHunter implements IGame {
 		this.checkGameStatus();
 		return mvtValide;
 	}
+	
+	/**
+	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
+	 */
 	
 	public boolean beastTurn() {
 		ArrayList<Mouvment> mvtBeast= this.map.getBeast().getMvtEmptyCase(this.map.getTab());
@@ -61,7 +79,10 @@ public class GameHunter implements IGame {
 			return false;
 		}
 	}
-	
+	/**
+	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a été trouvé par le chasseur,
+	 * MAPDISCOVERED si la map a été entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloqué.
+	 */
 	public void checkGameStatus() {
 		GameBeast.gameStatus=GameStatus.INGAME;
 		if(this.statusBeastFound()) {
@@ -78,9 +99,18 @@ public class GameHunter implements IGame {
 		}
 	}
 	
+	/**
+	 * statusBastFound retourne true si la bete a été trouvé par le chasseur.
+	 */
+	
+	
 	public boolean statusBeastFound() {
 		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
 	}
+	
+	/**
+	 * statusMapDiscovered retourne true si la bete a entierement exploré la map.
+	 */
 	
 	public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
@@ -94,10 +124,18 @@ public class GameHunter implements IGame {
 		return pasBeast;
 	}
 	
+	/**
+	 * statusBeastblock retourne true si la bete se retrouve bloqué.
+	 */
+	
 	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
 	public boolean statusBeastblock() {
 		return this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty();
 	}
+	
+	/**
+	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
+	 */
 	
 	public void EndGame() {
 		System.out.println(GameBeast.gameStatus);
@@ -109,6 +147,10 @@ public class GameHunter implements IGame {
 			System.out.println("Victoire du Chasseur");
 		}
 	}
+	
+	/**
+	 * AfficherBeastPas affiche le nombre de pas depuis le dernier passage de la bete sur la case courante du chasseur.
+	 */
 	
 	public void afficherBeastPas() {
 		if (this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastWalk()>-1) {
