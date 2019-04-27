@@ -28,7 +28,6 @@ public class GameBeast implements IGame{
 	/**
 	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqué, decouverte ou si elle a decouvert toute la map.
 	 */
-	
 	public void launchGame() {
 		System.out.println(map+" \n");
 		
@@ -50,9 +49,9 @@ public class GameBeast implements IGame{
 	
 	
 	 /**
-	  * beastTurn retourne true lorsque le mouvement entré par le joueur est valide et dans ce cas l'effectue. 
+	  * beastTurn retourne true lorsque le mouvement entré par le joueur est valide et dans ce cas l'effectue.
+	  * @return boolean
 	  */
-	
 	public boolean beastTurn() {
 		boolean mvtValide=false;
 		
@@ -68,6 +67,7 @@ public class GameBeast implements IGame{
 
 	/**
 	 * hunterTurn retourne true lorsque le deplacement du chasseur est valide, c'est a dire si il ne va pas sur un obstacle.
+	 * @return boolean
 	 */
 	public boolean hunterTurn() {
 		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtEmptyCase(this.map.getTab());
@@ -111,39 +111,32 @@ public class GameBeast implements IGame{
 	
 	/**
 	 * statusBastFound retourne true si la bete a été trouvé par le chasseur.
+	 * @return boolean
 	 */
-	
 	public boolean statusBeastFound() {
-		/*boolean res=false;
-		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtEmptyCase(this.map.getTab());
-		for (Mouvment mouvment : mvtHunter) {
-			int[] posHunterAfterMvt=this.map.getHunter().getPos().getModifPosTempo(mouvment.getMvt());
-			res=this.map.getHunter().isPosEnt(posHunterAfterMvt[0], posHunterAfterMvt[1]);
-		}return res;*/
 		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
 	}
 	
 	/**
 	 * statusMapDiscovered retourne true si la bete a entierement exploré la map.
+	 * @return boolean
 	 */
-	
 	public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
 		for(int i=0; i<this.map.getTab().length; i++) {
 			for (int j=0; j<this.map.getTab().length; j++) {
-				
-				if(this.map.getTab()[i][j].getCaseType()==CaseType.SOL && this.map.getTab()[i][j].getBeastWalk()==-1) 
+				if(this.map.getTab()[i][j].getCaseType()==CaseType.SOL && this.map.getTab()[i][j].getBeastWalk()==-1) {
 					pasBeast=false;
 				}
+			}
 		}
 		return pasBeast;
 	}
 	
 	/**
 	 * statusBeastblock retourne true si la bete se retrouve bloqué.
+	 * @return boolean
 	 */
-	
-	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
 	public boolean statusBeastblock() {
 		return this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty();
 	}
@@ -151,7 +144,6 @@ public class GameBeast implements IGame{
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
 	 */
-	
 	public void EndGame() {
 		System.out.println(GameBeast.gameStatus);
 		
