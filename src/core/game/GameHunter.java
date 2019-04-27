@@ -19,7 +19,7 @@ public class GameHunter implements IGame {
 	
 	public void launchGame() {
 		while(!this.map.isBeastWin() && !this.map.isHunterWin() && GameBeast.gameStatus.equals(GameStatus.INGAME)) {
-			
+			System.out.println("grandeBoucle");
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			
 			System.out.println("YourTurn: ");
@@ -79,12 +79,13 @@ public class GameHunter implements IGame {
 	}
 	
 	public boolean statusBeastFound() {
-		boolean res=false;
+		/*boolean res=false;
 		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtEmptyCase(this.map.getTab());
 		for (Mouvment mouvment : mvtHunter) {
 			int[] posHunterAfterMvt=this.map.getHunter().getPos().getModifPosTempo(mouvment.getMvt());
 			res=this.map.getBeast().isPosEnt(posHunterAfterMvt[0], posHunterAfterMvt[1]);
-		}return res;
+		}return res;*/
+		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
 	}
 	
 	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
@@ -117,7 +118,7 @@ public class GameHunter implements IGame {
 	
 	public void afficherBeastPas() {
 		if (this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastWalk()>-1) {
-			System.out.println("La bete est passé par ici il y'a "+this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastWalk()+" tours.");
+			System.out.println("La bete est passee par ici il y'a "+this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastWalk()+" tours.");
 		}
 	}
 }
