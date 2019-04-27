@@ -40,11 +40,6 @@ public class Core {
 		}
 		
 		game.launchGame();
-		
-		//A supprimer une fois les classes finies
-		/*IGame game = new GameBeast(map);
-		game.launchGame();*/
-		//fin du a supprimer
 
 		//TODO : reecritre les tests unitaires ayant besoin de square map
 	}

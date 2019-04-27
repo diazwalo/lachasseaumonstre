@@ -18,7 +18,7 @@ public class GameBeast implements IGame{
 	}
 	
 	public void launchGame() {
-		System.out.println(map+"\n");
+		System.out.println(map+" \n");
 		
 		while(!this.map.isBeastWin() && !this.map.isHunterWin() && GameBeast.gameStatus.equals(GameStatus.INGAME)) {
 			

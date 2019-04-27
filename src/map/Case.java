@@ -122,7 +122,7 @@ public class Case {
 		String res=caseType.toString();
 		if(this.beastWalk>=this.TRACE) res=".";
 		if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
-		String[] toStringConf=new String[] {"p", "c", "w", "l"};
+		String[] toStringConf=new String[] { "p", "c", "w", "l" };
 		for (int i = 0; i < buff.length; i++)
 			if(buff[i]) res=toStringConf[i];
 		return res;

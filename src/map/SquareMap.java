@@ -191,7 +191,7 @@ public class SquareMap implements IMap {
 	public String toString() {
 		String affichage="";
 		for (int x = 0; x < this.tab.length; x++) {
-			affichage+="\n|";
+			affichage+=" \n|";
 			for (int y = 0; y < this.tab[x].length; y++) {
 				if(this.beast.isPosEnt(y, x)) affichage+=" "+this.beast.toString()+" |";
 				else if(this.hunter.isPosEnt(y, x)) affichage+=" "+this.hunter.toString()+" |";

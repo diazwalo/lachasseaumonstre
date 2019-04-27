@@ -109,7 +109,7 @@ public class Beast extends Entity{
 	 * retourne Beast sous la forme textuelle
 	 */
 	public String toString() {
-		return"B";
+		return "B";
 	}
 
 }
