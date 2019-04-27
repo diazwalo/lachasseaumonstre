@@ -19,6 +19,8 @@ de blocage.
 - Le chasseur lui doit trouver la bête avec pour seule indiction, le temps écoule entre le passage de la bête 
 et celui du chasseur sur les cases ou le chasseur passe.
 
+### Les Bonus
+
 Pour pimenter les parties nous avons également rajouter des objets collectable par les joueurs, pour aider à accomplir 
 son objectif ou alors handicaper son adversaire. Nous avons également prévu plusieurs plateaux plus ou moins complexe 
 pour ajouter de la difficulté et de la re jouabilité.
@@ -53,7 +55,7 @@ sur le casse ou est situe le leurre. Le leurre n'a pas de limite de temps.
 Lancer le jeu :
 
 ```
-jeu.jar --width=20 --height=20 --gamemode=beast
+jeu.jar --width=20 --height=20 --tp=3 --gamemode=beast
 ```
 
 Voici les arguments disponible :
@@ -74,8 +76,20 @@ multi     : Un des deux joueurs controle le monstre et son adversaire controle l
 --ward               Active les balises de vision sur le plateau
 --bait               Active les leurres sur le plateau
 ```
+
+Voici les arguments lances par default
 	
-## Developpement 
+## Developpement
+
+Trello est l'outil qui nous permet de definir les futures taches a repartir parmi les membres de l'equipe.
+L'outil nous permet de nous definir des sous-jalons 
+[Lien](https://trello.com/b/s4kqkszi/gdp-s2).
+
+Journal de bord du projet et premiere reflexion sur l'architecture du projet : 
+[Lien](https://docs.google.com/document/d/1dkxMliuccb0sJ5Aa55jqOZho3DUbD6qv2GQvYVswOF4/edit?usp=sharing)
+
+Estimation des heures sur le projet :
+[Lien](https://docs.google.com/spreadsheets/d/1WuWRMOKtEFklpOo74Tn_29-D8dcVBh5htOClASj9DFM/edit#gid=1856470417)
 
 <div align="center">
   <a href="https://www.youtube.com/watch?v=yJjANTtQ66s"><img src="https://img.youtube.com/vi/yJjANTtQ66s/0.jpg" alt="Video resume du developpement"></a>
