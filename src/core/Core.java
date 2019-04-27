@@ -1,6 +1,7 @@
 package core;
 
 import config.Config;
+import core.game.GameBeast;
 import core.game.GameHunter;
 import core.game.IGame;
 import map.IMap;
@@ -19,26 +20,30 @@ public class Core {
 		IMap map = new SquareMap(config); 
 		map.generationMap();
 		
+		IGame game=null;
+		
 		switch(config.getGameMode())
 		{
 		case AIvsAI:
-			//IGame game = new GameAI(map); 
+			//game = new GameAI(map); 
 			break;
 		case BEASTvsAI:
-			//IGame game = new GameBeast(map);
+			game = new GameBeast(map);
 			break;
 		case HUNTERvsAI:
-			//IGame game = new GameHunter(map);
+			game = new GameHunter(map);
 			break;
 		case BEASTvsHUNTER:
 			//Jalon 2 !
-			//IGame game = new GameHunter(map);
+			game = new GameHunter(map);
 			break;
 		}
 		
-		//A supprimer une fois les classes finies
-		IGame game = new GameHunter(map);
 		game.launchGame();
+		
+		//A supprimer une fois les classes finies
+		/*IGame game = new GameBeast(map);
+		game.launchGame();*/
 		//fin du a supprimer
 
 		//TODO : reecritre les tests unitaires ayant besoin de square map

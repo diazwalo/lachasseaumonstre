@@ -18,20 +18,20 @@ public class GameHunter implements IGame {
 	}
 	
 	public void launchGame() {
+		System.out.println(map+"\n");
+		
 		while(!this.map.isBeastWin() && !this.map.isHunterWin() && GameBeast.gameStatus.equals(GameStatus.INGAME)) {
-			System.out.println("grandeBoucle");
+
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			
-			System.out.println("YourTurn: ");
 			System.out.println(this.map);
 			this.afficherBeastPas();
+			Interaction.pressEnter();
 			
-			//Interaction.waitASec(0.5); 
 			if(! this.map.isHunterWin()) {
 				this.beastTurn();
-				this.map.setBeastWalk();
-				System.out.println("BeastTurn: \n"+this.map);
-				//Interaction.waitASec(0.5);
+				System.out.println(this.map);
+				Interaction.pressEnter();
 			}
 		}
 		this.EndGame();
@@ -39,7 +39,7 @@ public class GameHunter implements IGame {
 	
 	public boolean hunterTurn() {
 		boolean mvtValide=false;
-		System.out.println(map+"\n");
+		
 		Mouvment mvt=Interaction.askMouvement();
 		mvtValide=map.moveHunter(mvt);
 		
@@ -52,6 +52,7 @@ public class GameHunter implements IGame {
 
 		if(mvtBeast.size()>0) {
 			while(! map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size()))));
+			this.map.setBeastWalk();
 			this.checkGameStatus();
 			return true;
 		}
@@ -78,18 +79,7 @@ public class GameHunter implements IGame {
 	}
 	
 	public boolean statusBeastFound() {
-		/*boolean res=false;
-		ArrayList<Mouvment> mvtHunter=this.map.getHunter().getMvtEmptyCase(this.map.getTab());
-		for (Mouvment mouvment : mvtHunter) {
-			int[] posHunterAfterMvt=this.map.getHunter().getPos().getModifPosTempo(mouvment.getMvt());
-			res=this.map.getBeast().isPosEnt(posHunterAfterMvt[0], posHunterAfterMvt[1]);
-		}return res;*/
 		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
-	}
-	
-	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
-	public boolean statusBeastblock() {
-		return this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty();
 	}
 	
 	public boolean statusMapDiscovered() {
@@ -102,6 +92,11 @@ public class GameHunter implements IGame {
 				}
 		}
 		return pasBeast;
+	}
+	
+	//a changer car le deplacement vers la position enemy n'est pas dans les deplacements possible ...
+	public boolean statusBeastblock() {
+		return this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty();
 	}
 	
 	public void EndGame() {

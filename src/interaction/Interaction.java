@@ -92,4 +92,14 @@ public class Interaction {
 		    Thread.currentThread().interrupt();
 		}
 	}
+	
+	public static void pressEnter() {
+		String saisie=" ";
+		Scanner sc = new Scanner(System.in);
+		System.out.print("\nAppuyez sur ENTRER pour continuer.\n");
+		
+		while(saisie.length() != 0) {
+			saisie = sc.nextLine();
+		}
+	}
 }
