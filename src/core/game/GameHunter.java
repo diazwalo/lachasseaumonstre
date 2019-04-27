@@ -33,7 +33,6 @@ public class GameHunter implements IGame {
 				System.out.println("BeastTurn: \n"+this.map);
 				//Interaction.waitASec(0.5);
 			}
-			
 		}
 		this.EndGame();
 	}
