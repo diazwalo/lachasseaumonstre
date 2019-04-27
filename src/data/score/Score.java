@@ -2,6 +2,8 @@ package data.score;
 
 import java.time.LocalDate;
 
+import config.GameMode;
+
 public class Score
 {
 
@@ -10,7 +12,7 @@ public class Score
      * 2 : joueur vs IA monstre
      * 3 : joueur vs joueur
      */
-    private int type;
+    private GameMode gameMode;
 
     private String player1;
 
@@ -22,14 +24,14 @@ public class Score
 
     private LocalDate date;
 
-    public int getType()
+    public GameMode getGameMode()
     {
-        return this.type;
+        return this.gameMode;
     }
 
-    public void setType(int type)
+    public void setGameMode(GameMode gameMode)
     {
-        this.type = type;
+        this.gameMode = gameMode;
     }
 
     public String getPlayer1()

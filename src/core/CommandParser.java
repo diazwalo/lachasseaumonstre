@@ -54,7 +54,7 @@ public class CommandParser
 				this.config.setNbTeleportation(Integer.valueOf(argumentExploded[1]));
 				break;
 			default:
-				new IllegalArgumentException("L'argument " + argumentName + " n'a pas ete reconnu.");
+				this.throwWhenStart(argument);
 				break;
 			}
 		} 
@@ -78,7 +78,7 @@ public class CommandParser
 				this.config.setWard(true);
 				break;
 			default:
-				new IllegalArgumentException("L'argument " + argument + " n'a pas ete reconnu.");
+				this.throwWhenStart(argument);
 				break;
 			}
 		}
@@ -127,6 +127,18 @@ public class CommandParser
 			new IllegalArgumentException("Le mode de jeu " + gameMode + " n'existe pas.");
 			break;
 		}
+	}
+	
+	/**
+	 * Cette fonction affiche le nom de l'argument ayant un default, affiche ensuite l'aide et les parametres disponible 
+	 * pour le jeu, et stop le jeu.
+	 * @param arg Le nom de l'argument ayant un default
+	 */
+	public void throwWhenStart(String arg)
+	{
+		System.out.println("L'argument " + arg + " n'a pas ete reconnu. \n");
+		System.out.println("TODO : help msg from readme");
+		System.exit(1);
 	}
 	
 }
