@@ -31,7 +31,7 @@ public class GameBeast implements IGame{
 	public void launchGame() {
 		System.out.println(map+" \n");
 		
-		while(!this.map.isBeastWin() && !this.map.isHunterWin() && GameBeast.gameStatus.equals(GameStatus.INGAME)) {
+		while(GameBeast.gameStatus.equals(GameStatus.INGAME)) {
 			
 			while(! this.beastTurn()) System.out.println("Mvt Invalide");
 			
@@ -148,9 +148,11 @@ public class GameBeast implements IGame{
 		System.out.println(GameBeast.gameStatus);
 		
 		if (this.map.isBeastWin()) {
+			System.out.println(GameBeast.gameStatus);
 			System.out.println("Victoire de la bete");
 		}
 		else {
+			System.out.println(GameBeast.gameStatus);
 			System.out.println("Victoire du Chasseur");
 		}
 	}
