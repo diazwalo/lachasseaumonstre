@@ -55,7 +55,7 @@ sur le casse ou est situe le leurre. Le leurre n'a pas de limite de temps.
 Lancer le jeu :
 
 ```
-jeu.jar --width=20 --height=20 --tp=3 --gamemode=beast
+jeu.jar --width=20 --height=20 --tp=3 --gamemode=beast --trap --camouflage --ward --bait
 ```
 
 Voici les arguments disponible :
@@ -77,7 +77,12 @@ multi     : Un des deux joueurs controle le monstre et son adversaire controle l
 --bait               Active les leurres sur le plateau
 ```
 
-Voici les arguments lances par default
+Voici les arguments lances par defaut :
+
+
+```java
+jeu.jar --width=11 --height=11 --tp=3 --gamemode=beast 
+```
 	
 ## Developpement
 
