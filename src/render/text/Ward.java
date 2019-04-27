@@ -8,7 +8,7 @@ import map.Position;
  */
 public class Ward implements Bonus {
 	
-	private int radius;
+	private int timer;
 	private Position pos;
 	private final String NAME = "Balise";;
 	
@@ -16,7 +16,7 @@ public class Ward implements Bonus {
 	 * Instancie Ward
 	 */
 	public Ward() {
-		this.radius = 3;
+		this.timer = 5;
 		this.pos = null;
 	}
 	
@@ -41,8 +41,8 @@ public class Ward implements Bonus {
 	 * retourne la position du Bonus courant
 	 * @return Position
 	 */
-	public int getRadius() {
-		return radius;
+	public int getTimer() {
+		return timer;
 	}
 
 	/**
@@ -57,8 +57,8 @@ public class Ward implements Bonus {
 	 * met pour la valeur de radius le parametre qui defini le champ de vision de la balise de vision
 	 * @param radius
 	 */
-	public void setRadius(int radius) {
-		this.radius = radius;
+	public void setTimer(int time) {
+		this.timer = time;
 	}
 
 	/**
@@ -72,8 +72,8 @@ public class Ward implements Bonus {
 	 * Decremente le rayon du champ de vision de la ward. Si il tombe a zero met la position de la ward a null
 	 */
 	public void refresh() {
-		this.radius--;
-		if(this.radius == 0) {
+		this.timer--;
+		if(this.timer == 0) {
 			this.pos = null;
 		}
 	}
