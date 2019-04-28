@@ -3,6 +3,8 @@ package core.game;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.text.Position;
+
 import interaction.Interaction;
 import map.CaseType;
 import map.IMap;
@@ -138,7 +140,14 @@ public class GameBeast implements IGame{
 	 * @return boolean
 	 */
 	public boolean statusBeastblock() {
-		return this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty();
+		if(this.map.getBeast().teleportation() && this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty() ) {
+			this.tpBeast();
+			return false;
+		}
+		else if(!this.map.getBeast().teleportation() && this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty()) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -156,4 +165,19 @@ public class GameBeast implements IGame{
 			System.out.println("Victoire du Chasseur");
 		}
 	}
+	
+	public boolean tpBeast(){
+		ArrayList<Mouvment> mvtDispo=this.map.getBeast().getMvtEmptyCase(this.map.getTab());
+		Random randPos=new Random();
+		int pos;
+		boolean tp=false;
+		if(this.statusBeastblock() && mvtDispo.size()>0) {
+			pos= randPos.nextInt(mvtDispo.size());
+			this.map.getBeast().getPos().setPosX(mvtDispo.get(pos).getMvtX());
+			this.map.getBeast().getPos().setPosY(mvtDispo.get(pos).getMvtY());
+			tp=true;
+		}
+		return false;
+	}
+	
 }
