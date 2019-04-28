@@ -9,7 +9,7 @@ package map;
  */
 
 public enum CaseType {
-	SOL(1), OBSTACLE(2);
+	SOL(1), OBSTACLE(2), VOID(3), DEBUG(4);
 	private int caseType;
 	
 	/**
@@ -33,6 +33,8 @@ public enum CaseType {
 	 */
 	public String toString() {
 		if(caseType==1) return " ";
+		else if(caseType==3) return "V";
+		else if(caseType==4) return "D";
 		return "#";
 	}
 }
