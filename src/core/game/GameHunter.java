@@ -138,14 +138,12 @@ public class GameHunter implements IGame {
 	 */
 	
 	public void EndGame() {
-		System.out.println(GameBeast.gameStatus);
-		
 		if (this.map.isBeastWin()) {
-			System.out.println(GameBeast.gameStatus);
+			System.out.println("Status: "+GameHunter.gameStatus.getStatus());
 			System.out.println("Victoire de la bete");
 		}
 		else {
-			System.out.println(GameBeast.gameStatus);
+			System.out.println("Status: "+GameHunter.gameStatus.getStatus());
 			System.out.println("Victoire du Chasseur");
 		}
 	}

@@ -140,14 +140,12 @@ public class GameBeast implements IGame{
 	 * @return boolean
 	 */
 	public boolean statusBeastblock() {
-		if(this.map.getBeast().teleportation() && this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty() ) {
-			this.tpBeast();
-			return false;
+		if(this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty() ) {
+			if(this.map.getBeast().teleportation()) {
+				this.tpBeast();
+				return false;
+			}
 		}
-		else if(!this.map.getBeast().teleportation() && this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty()) {
-			return true;
-		}
-
 		return false;
 
 	}
@@ -168,18 +166,21 @@ public class GameBeast implements IGame{
 		}
 	}
 	
+	
+	//il faut get les position adjacentes la plus proche 
 	public boolean tpBeast(){
 		ArrayList<Mouvment> mvtDispo=this.map.getBeast().getMvtEmptyCase(this.map.getTab());
-		Random randPos=new Random();
+		
 		int pos;
 		boolean tp=false;
+		
 		if(this.statusBeastblock() && mvtDispo.size()>0) {
-			pos= randPos.nextInt(mvtDispo.size());
+			pos=new Random().nextInt(mvtDispo.size());
 			this.map.getBeast().getPos().setPosX(mvtDispo.get(pos).getMvtX());
 			this.map.getBeast().getPos().setPosY(mvtDispo.get(pos).getMvtY());
 			tp=true;
 		}
-		return false;
+		return tp;
 	}
 	
 }
