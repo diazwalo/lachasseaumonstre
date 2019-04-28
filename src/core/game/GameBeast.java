@@ -147,7 +147,9 @@ public class GameBeast implements IGame{
 		else if(!this.map.getBeast().teleportation() && this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty()) {
 			return true;
 		}
+
 		return false;
+
 	}
 	
 	/**
