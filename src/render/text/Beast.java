@@ -43,6 +43,20 @@ public class Beast extends Entity{
 		this.trapped=true;
 	}
 
+	/*
+	 * retourn le nombre de tp restant
+	 */
+	public int getTp() {
+		return this.tp;
+	}
+	
+	/*
+	 * passe la valeur de tp a celle passee en parametre
+	 */
+	public void setTp(int tp) {
+		this.tp=tp;
+	}
+	
 	/**
 	 * verifie si le deplacement souhaite est realisable pour la bete
 	 * @return boolean
@@ -103,6 +117,19 @@ public class Beast extends Entity{
 	 */
 	public void untrapped() {
 		this.trapped = false;
+	}
+	
+	/*
+	 * verifie qu'il reste au moins une tp a la bete puis retourne vrai au cas echeant
+	 * @return boolean
+	 */
+	public boolean teleportation() {
+		if(this.tp > 0) {
+			this.tp--;
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	/**
