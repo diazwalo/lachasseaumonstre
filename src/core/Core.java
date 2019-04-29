@@ -1,9 +1,9 @@
 package core;
 
 import config.Config;
-import core.game.GameBeast;
 import core.game.GameHunter;
 import core.game.IGame;
+import map.CircularMap;
 import map.IMap;
 import map.SquareMap;
 
@@ -17,29 +17,30 @@ public class Core {
 		CommandParser commandParser = new CommandParser(args);
 		Config config = commandParser.getConfig();
 		
-		IMap map = new SquareMap(config); 
+		IMap map = new CircularMap(config); 
 		map.generationMap();
-		
-		IGame game=null;
 		
 		switch(config.getGameMode())
 		{
 		case AIvsAI:
-			//game = new GameAI(map); 
+			//IGame game = new GameAI(map); 
 			break;
 		case BEASTvsAI:
-			game = new GameBeast(map);
+			//IGame game = new GameBeast(map);
 			break;
 		case HUNTERvsAI:
-			game = new GameHunter(map);
+			//IGame game = new GameHunter(map);
 			break;
 		case BEASTvsHUNTER:
 			//Jalon 2 !
-			game = new GameHunter(map);
+			//IGame game = new GameHunter(map);
 			break;
 		}
 		
+		//A supprimer une fois les classes finies
+		IGame game = new GameHunter(map);
 		game.launchGame();
+		//fin du a supprimer
 
 		//TODO : reecritre les tests unitaires ayant besoin de square map
 	}

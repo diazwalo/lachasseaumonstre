@@ -44,17 +44,26 @@ public class CircularMap implements IMap
 				if(y >= preRadius && y < radius+preRadius) {
 					caseType = CaseType.SOL;
 				} else {
-					if(preRadius-x >= 0 || (radius+preRadius)-x <= 0)
+					if(preRadius-x > 0 || (radius+preRadius)-x <= 0)
 					{
-						if(preRadius-x <= y || ((radius+preRadius)-x <= y)) {
-							caseType = CaseType.DEBUG;
+						if((preRadius-x <= y && y <= preRadius && x <= preRadius) || 
+							(radius+preRadius <= y && (radius+preRadius)+x > y) ||
+							((radius+preRadius <= x) && (radius+preRadius+y > x)) ||
+							// 20 > (19) 15
+							// 19
+							// 18
+							// 17
+							((radius+preRadius <= x && radius+preRadius <= y) && (radius+preRadius+(this.tab.length-y) > y+(y-(radius+preRadius))))
+							) {
+							System.out.println("x:"+x+",y"+y);
+							caseType = CaseType.DEBUG;//SOL
 						}
 						else {
-							caseType = CaseType.SOL;
+							caseType = CaseType.SOL;//VOID
 						}
 						a++;
 					}else {
-						caseType = CaseType.VOID;
+						caseType = CaseType.SOL;
 					}
 					
 				}
