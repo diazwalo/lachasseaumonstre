@@ -20,6 +20,11 @@ public abstract class Entity {
 	public Entity(int posX, int posY) {
 		this.pos=new Position(posX, posY);
 	}
+	
+	public void setPosition(Position posTarget) {
+		this.pos.setPosX(posTarget.getPosX());
+		this.pos.setPosY(posTarget.getPosY());
+	}
 
 	/**
 	 * Retourne la Position Courante

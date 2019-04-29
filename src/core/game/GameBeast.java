@@ -3,12 +3,12 @@ package core.game;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.text.Position;
-
 import interaction.Interaction;
+import map.Case;
 import map.CaseType;
 import map.IMap;
 import map.Mouvment;
+import map.Position;
 
 
 /**
@@ -94,7 +94,6 @@ public class GameBeast implements IGame{
 	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a été trouvé par le chasseur,
 	 * MAPDISCOVERED si la map a été entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloqué.
 	 */
-
 	public void checkGameStatus() {
 		GameBeast.gameStatus=GameStatus.INGAME;
 		if(this.statusBeastFound()) {
@@ -136,15 +135,20 @@ public class GameBeast implements IGame{
 	}
 	
 	/**
-	 * statusBeastblock retourne true si la bete se retrouve bloqué.
+	 * statusBeastblock retourne true si la bete se retrouve bloquee.
 	 * @return boolean
 	 */
 	public boolean statusBeastblock() {
 		if(this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty() ) {
+			
 			if(this.map.getBeast().teleportation()) {
-				this.tpBeast();
-				return false;
+				if(! this.tpBeast()) {
+					return true;
+				}
+			}else {
+				return true;
 			}
+			
 		}
 		return false;
 
@@ -154,33 +158,35 @@ public class GameBeast implements IGame{
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
 	 */
 	public void EndGame() {
-		System.out.println(GameBeast.gameStatus);
 		
 		if (this.map.isBeastWin()) {
 			System.out.println(GameBeast.gameStatus);
 			System.out.println("Victoire de la bete");
 		}
-		else {
+		else if(this.map.isHunterWin()){
 			System.out.println(GameBeast.gameStatus);
 			System.out.println("Victoire du Chasseur");
 		}
 	}
 	
 	
-	//il faut get les position adjacentes la plus proche 
+	/**
+	 * Cherche si il existe une Position ou la bete peut etre tp et retourne vrai si cela est fait et faux dans le cas contraire
+	 * @return boolean
+	 */
 	public boolean tpBeast(){
-		ArrayList<Mouvment> mvtDispo=this.map.getBeast().getMvtEmptyCase(this.map.getTab());
+		ArrayList<Position> posDispo=this.map.getBeast().getCaseTp(this.map.getTab(), this.map.getHunter());
 		
-		int pos;
 		boolean tp=false;
+		int idxPosDispo;
 		
-		if(this.statusBeastblock() && mvtDispo.size()>0) {
-			pos=new Random().nextInt(mvtDispo.size());
-			this.map.getBeast().getPos().setPosX(mvtDispo.get(pos).getMvtX());
-			this.map.getBeast().getPos().setPosY(mvtDispo.get(pos).getMvtY());
+		if(posDispo.size()>0) {
+			idxPosDispo=new Random().nextInt(posDispo.size());
+			this.map.getBeast().setPosition(posDispo.get(idxPosDispo));
+			this.map.setBeastWalk();
+			this.map.getBeast().setTp(this.map.getBeast().getTp()-1);
 			tp=true;
 		}
 		return tp;
 	}
-	
 }

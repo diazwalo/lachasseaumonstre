@@ -7,6 +7,7 @@ import config.Config;
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
+import map.Position;
 
 /**
  * Cette classe definit les caracteristique principale de la classe jouable Beast
@@ -97,7 +98,6 @@ public class Beast extends Entity{
 		return mouvTab;
 	}
 	
-	
 	/**
 	 * Verfie si la Beast a encore la possibilite de jouer ou non.
 	 * @param tab
@@ -117,6 +117,29 @@ public class Beast extends Entity{
 	 */
 	public void untrapped() {
 		this.trapped = false;
+	}
+	
+	/**
+	 * Retourne une ArrayList contenant les position sur lesquel la Bete peut se teleporter
+	 * @param tab
+	 * @param hunter
+	 * @return ArrayList<Position>
+	 */
+	public ArrayList<Position> getCaseTp(Case[][] tab, Hunter hunter) {
+		ArrayList<Position> ALTab = new ArrayList<>();
+		
+		for (int i = 0; i < tab.length; i++) {
+			for (int j = 0; j < tab[i].length; j++) {
+				
+				Case caseCour=tab[i][j];
+				if(! caseCour.isObstacle() && (caseCour.getBeastWalk() == -1) && ! hunter.isPosEnt(i, j)) {
+					ALTab.add(new Position(i, j));
+				}
+				
+			}
+		}
+		
+		return ALTab;
 	}
 	
 	/*
