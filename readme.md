@@ -100,6 +100,23 @@ Estimation des heures sur le projet :
   <a href="https://www.youtube.com/watch?v=yJjANTtQ66s"><img src="https://img.youtube.com/vi/yJjANTtQ66s/0.jpg" alt="Video resume du developpement"></a>
 </div>
 
+
+## IHM
+
+Pour l'interface homme machine nous avons décidé de diviser notre intreface en trois. Tous d'abord la partie centrale  de l'écran qui affichera la monde  ou le joueuer devra se deplacer, la partie inférieur de l'écran qui elle, aura a charge de gerer les action de l'utilisateur et de pouvoir lui communiquer des informations et la partie droite de l'ecran qui elle aura pour but d'afficher les bonus et de pouvoir les selectionner.
+
+- La partie inférieur de l'écran :
+
+L'utilisateur pourra diriger le personne qui incarne (Chasseur/Bête) grace aux quatres boutons  marquer chaqu'un d'un fleche indiquant le mouvement que peut faire l'utilisateur
+	
+Une boite de texte est également présente afin d'informer l'utilisateur de certain details de la partie comme l'activation d'un bonus, le nombre de tour que la bête est passé sur la case ou encore sa victoire ou sa defaite.
+
+
+- La partie droite de l'écran :
+
+L'utilisateur devra utiliser la souris pour selectioner l'un de ses bonus qui s'affichera dans la boite de texte puis valider son utilisation en appuyant sur la bouton "Utiliser Bonus".	
+	
+	
 ## Contributeurs
 - FORESTAL Virgil (diazw)
 - PEIRERA Nathanael (nath)
