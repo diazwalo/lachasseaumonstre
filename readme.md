@@ -117,13 +117,20 @@ De ce fait, nous avons organisé notre code sous forme de package regroupant les 
 
 - Egalement, le jeu contient a la fois le code pour etre lance en mode textuel et visuelle sans importante réécriture du code.
 
+Pour le moment, le jeu implemente deux algorithme pour les IA :
+
+- Dijkstra : Afin que le chasseur se deplace le plus rapidement vers sa cible.
+
+- Kruskal : Afin de parcourir tout le plateau plateau.
+
 ## IHM
 
 Pour l'interface homme machine nous avons décidé de diviser notre intreface en trois. Tous d'abord la partie centrale  de l'écran qui affichera la monde  ou le joueuer devra se deplacer, la partie inférieur de l'écran qui elle, aura a charge de gerer les action de l'utilisateur et de pouvoir lui communiquer des informations et la partie droite de l'ecran qui elle aura pour but d'afficher les bonus et de pouvoir les selectionner.
 
-![Image de la map](IHM/Maquette/Exemple_Map.png)
-
-![Image de l'interface](IHM/Maquette/Interface_IHM.png)
+<div align="center">
+	<img src="IHM/Maquette/Exemple_Map.png" alt="Image de la map" />
+	<img src="IHM/Maquette/Interface_IHM.png" alt="Image de l'interface" />
+</div>
 
 - La partie inférieur de l'écran :
 
