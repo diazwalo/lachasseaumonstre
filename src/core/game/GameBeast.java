@@ -2,6 +2,7 @@ package core.game;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import interaction.Interaction;
 import map.Case;
@@ -34,7 +35,7 @@ public class GameBeast extends AbstractGame{
 			
 			System.out.println(this.map);
 			Interaction.pressEnter();
-			
+			this.poserPiege();
 			if(! super.map.isBeastWin()) {
 				this.hunterTurn();
 				System.out.println(super.map);
@@ -183,4 +184,40 @@ public class GameBeast extends AbstractGame{
 		}
 		return tp;
 	}
+	
+	
+	public void poserPiege() {
+		System.out.println("Vous avez encore " + this.map.getBeast().getCamDispo() + " camouflage dispo et " + this.map.getBeast().getBaitDispo() + " leurre dispo.");
+		String choix=Interaction.askBonus();
+		if(choix.equals("1")) {
+			this.setCamouflage();
+		}
+		else if (choix.equals("2")) {
+			this.setBait();
+		}
+		else {
+			return;
+		}
+	}
+	
+	public boolean setCamouflage() {
+		if(this.map.getBeast().canSetCamouflage()) {
+			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,true,false,false});
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean setBait() {
+		if(this.map.getBeast().canSetBait()) {
+			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,false,false,true});
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 }

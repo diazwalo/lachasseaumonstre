@@ -32,7 +32,14 @@ public class Beast extends Entity{
 		this.camDispo=2;
 		this.baitDispo=2;
 	}
+	
+	public int getCamDispo() {
+		return this.camDispo;
+	}
 
+	public int getBaitDispo() {
+		return this.baitDispo;
+	} 
 	/**
 	 * retourne vrai si la bete est prise au piege
 	 * @return boolean

@@ -102,4 +102,9 @@ public class Interaction {
 			saisie = sc.nextLine();
 		}
 	}
+	
+	public static String askBonus() {
+		Scanner sc= new Scanner(System.in);
+		return sc.nextLine();
+	}
 }
