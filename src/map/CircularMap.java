@@ -47,19 +47,14 @@ public class CircularMap implements IMap
 					if(preRadius-x > 0 || (radius+preRadius)-x <= 0)
 					{
 						if((preRadius-x <= y && y <= preRadius && x <= preRadius) || 
-							(radius+preRadius <= y && (radius+preRadius)+x > y) ||
-							((radius+preRadius <= x) && (radius+preRadius+y > x)) ||
-							// 20 > (19) 15
-							// 19
-							// 18
-							// 17
-							((radius+preRadius <= x && radius+preRadius <= y) && (radius+preRadius+(this.tab.length-y) > y+(y-(radius+preRadius))))
+							(radius+preRadius > x && y > preRadius && (radius+preRadius)+x > y) ||
+							((radius+preRadius <= x) && preRadius >= y && (radius+preRadius+y > x)) ||
+							((radius+preRadius <= x && radius+preRadius <= y) && ((x+y) <= (this.tab.length + (Math.floor(2*this.tab.length/3)))))
 							) {
-							System.out.println("x:"+x+",y"+y);
-							caseType = CaseType.DEBUG;//SOL
+							caseType = CaseType.SOL;//SOL
 						}
 						else {
-							caseType = CaseType.SOL;//VOID
+							caseType = CaseType.VOID;//VOID
 						}
 						a++;
 					}else {
@@ -67,6 +62,8 @@ public class CircularMap implements IMap
 					}
 					
 				}
+				//((radius+preRadius <= x) && (radius+preRadius+y > x))
+				//((radius+preRadius <= x && radius+preRadius <= y) && false && ((x+y) <= 34))
 				//if(x%3==2 && y%3==2 && ! this.beast.isPosEnt(x, y) && ! this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
 				
 				this.tab[x][y]=new Case(caseType, posBeast);
@@ -233,7 +230,7 @@ public class CircularMap implements IMap
 			for (int y = 0; y < this.tab[x].length; y++) {
 				if(this.beast.isPosEnt(y, x)) affichage+=" "+this.beast.toString()+" |";
 				else if(this.hunter.isPosEnt(y, x)) affichage+=" "+this.hunter.toString()+" |";
-				else affichage+=" "+this.tab[y][x].toString()+" |";
+				else affichage+=" "+this.tab[x][y].toString()+" |";
 			}
 		}
 		return affichage;
