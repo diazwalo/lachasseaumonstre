@@ -19,7 +19,7 @@ public class Beast extends Entity{
 	private int tp;
 	private int camDispo;
 	private int baitDispo;
-	
+
 	/**
 	 * Instancie Beast a la Position posX, posY
 	 * @param posX
@@ -32,7 +32,7 @@ public class Beast extends Entity{
 		this.camDispo=2;
 		this.baitDispo=2;
 	}
-	
+
 	/**
 	 * retourne vrai si la bete est prise au piege
 	 * @return boolean
@@ -40,7 +40,7 @@ public class Beast extends Entity{
 	public boolean getTrapped() {
 		return this.trapped;
 	}
-	
+
 	/**
 	 * la bete est prise au piege
 	 */
@@ -60,6 +60,22 @@ public class Beast extends Entity{
 	 */
 	public void setTp(int tp) {
 		this.tp=tp;
+	}
+	
+	public boolean canSetBait() {
+		if(this.baitDispo > 0) {
+			this.baitDispo--;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean canSetCamouflage() {
+		if(this.camDispo > 0) {
+			this.camDispo--;
+			return true;
+		}
+		return false;
 	}
 	
 	/**
