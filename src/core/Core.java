@@ -2,7 +2,7 @@ package core;
 
 import config.Config;
 import core.game.GameHunter;
-import core.game.IGame;
+import core.game.AbstractGame;
 import map.CircularMap;
 import map.IMap;
 import map.SquareMap;
@@ -17,7 +17,7 @@ public class Core {
 		CommandParser commandParser = new CommandParser(args);
 		Config config = commandParser.getConfig();
 		
-		IMap map = new CircularMap(config); 
+		IMap map = new SquareMap(config); 
 		map.generationMap();
 		
 		switch(config.getGameMode())
@@ -38,7 +38,7 @@ public class Core {
 		}
 		
 		//A supprimer une fois les classes finies
-		IGame game = new GameHunter(map);
+		AbstractGame game = new GameHunter(map);
 		game.launchGame();
 		//fin du a supprimer
 

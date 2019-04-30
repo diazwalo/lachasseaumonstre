@@ -15,13 +15,10 @@ import map.Position;
  * 
  */
 
-public class GameHunter implements IGame {
-	private IMap map; 
-	public static GameStatus gameStatus;
+public class GameHunter extends AbstractGame {
 	
 	public GameHunter(IMap map) {
-		this.map=map;
-		GameHunter.gameStatus=GameStatus.INGAME;
+		super(map);
 	}
 	
 	/**
@@ -30,17 +27,17 @@ public class GameHunter implements IGame {
 	public void launchGame() {
 		System.out.println(map+"\n");
 		
-		while(GameHunter.gameStatus.equals(GameStatus.INGAME)) {
+		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			
-			System.out.println(this.map);
+			System.out.println(super.map);
 			this.afficherBeastPas();
 			Interaction.pressEnter();
 			
-			if(! this.map.isHunterWin()) {
+			if(! super.map.isHunterWin()) {
 				this.beastTurn();
-				System.out.println(this.map);
+				System.out.println(super.map);
 				Interaction.pressEnter();
 			}
 		}
@@ -54,9 +51,9 @@ public class GameHunter implements IGame {
 		boolean mvtValide=false;
 		
 		Mouvment mvt=Interaction.askMouvement();
-		mvtValide=map.moveHunter(mvt);
+		mvtValide=super.map.moveHunter(mvt);
 		
-		this.checkGameStatus();
+		super.checkGameStatus();
 		return mvtValide;
 	}
 	
@@ -64,16 +61,16 @@ public class GameHunter implements IGame {
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
 	 */
 	public boolean beastTurn() {
-		ArrayList<Mouvment> mvtBeast= this.map.getBeast().getMvtEmptyCase(this.map.getTab());
+		ArrayList<Mouvment> mvtBeast= super.map.getBeast().getMvtEmptyCase(super.map.getTab());
 
 		if(mvtBeast.size()>0) {
-			while(! map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size()))));
-			this.map.setBeastWalk();
-			this.checkGameStatus();
+			while(! super.map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size()))));
+			super.map.setBeastWalk();
+			super.checkGameStatus();
 			return true;
 		}
 		else {
-			GameBeast.gameStatus=GameStatus.BEASTBLOCK;
+			AbstractGame.gameStatus=GameStatus.BEASTBLOCK;
 			return false;
 		}
 	}
@@ -81,106 +78,68 @@ public class GameHunter implements IGame {
 	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a été trouvé par le chasseur,
 	 * MAPDISCOVERED si la map a été entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloqué.
 	 */
-	public void checkGameStatus() {
-		GameHunter.gameStatus=GameStatus.INGAME;
-		if(this.statusBeastFound()) {
-			GameHunter.gameStatus=GameStatus.BEASTFOUND;
-			this.map.setHunterWin(true);
+	/*public void checkGameStatus() {
+		AGame.gameStatus=GameStatus.INGAME;
+		if(super.statusBeastFound()) {
+			AGame.gameStatus=GameStatus.BEASTFOUND;
+			super.map.setHunterWin(true);
 		}
-		else if(this.statusMapDiscovered()) {
-			GameHunter.gameStatus=GameStatus.MAPDISCOVERED;
-			this.map.setBeastWin(true);
+		else if(super.statusMapDiscovered()) {
+			AGame.gameStatus=GameStatus.MAPDISCOVERED;
+			super.map.setBeastWin(true);
 		}
-		else if(this.statusBeastblock()) {
-			GameHunter.gameStatus=GameStatus.BEASTBLOCK;
-			this.map.setHunterWin(true);
+		else if(super.statusBeastblock()) {
+			AGame.gameStatus=GameStatus.BEASTBLOCK;
+			super.map.setHunterWin(true);
 		}
-	}
+	}*/
 	
 	/**
 	 * statusBastFound retourne true si la bete a été trouvé par le chasseur.
 	 */
-	public boolean statusBeastFound() {
-		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
-	}
+	/*public boolean statusBeastFound() {
+		return super.map.getBeast().isPosEnt(super.map.getHunter().getPos().getPosX(), super.map.getHunter().getPos().getPosY());
+	}*/
 	
 	/**
 	 * statusMapDiscovered retourne true si la bete a entierement exploré la map.
 	 */
-	public boolean statusMapDiscovered() {
+	/*public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
-		for(int i=0; i<this.map.getTab().length; i++) {
-			for (int j=0; j<this.map.getTab().length; j++) {
+		for(int i=0; i<super.map.getTab().length; i++) {
+			for (int j=0; j<super.map.getTab().length; j++) {
 				
-				if(this.map.getTab()[i][j].getCaseType()==CaseType.SOL && this.map.getTab()[i][j].getBeastWalk()==-1) 
+				if(super.map.getTab()[i][j].getCaseType()==CaseType.SOL && super.map.getTab()[i][j].getBeastWalk()==-1) 
 					pasBeast=false;
 				}
 		}
 		return pasBeast;
-	}
+	}*/
 	
 	/**
 	 * statusBeastblock retourne true si la bete se retrouve bloquee.
 	 */
-	public boolean statusBeastblock() {
-		if(this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty() ) {
+	/*public boolean statusBeastblock() {
+		if(super.map.getBeast().getMvtEmptyCase(super.map.getTab()).isEmpty() ) {
 			
-			if(this.map.getBeast().teleportation()) {
+			if(super.map.getBeast().teleportation()) {
 				if(! this.tpBeast()) {
-					System.out.println("oui");
 					return true;
 				}
 			}else {
-				System.out.println("oui");
 				return true;
 			}
 			
 		}
 		return false;
-	}
-	
-	/**
-	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
-	 */
-	public void EndGame() {
-		
-		if (this.map.isBeastWin()) {
-			System.out.println("Status: "+GameHunter.gameStatus.getStatus());
-			System.out.println("Victoire de la bete");
-		}
-		else if(this.map.isHunterWin()){
-			System.out.println("Status: "+GameHunter.gameStatus.getStatus());
-			System.out.println("Victoire du Chasseur");
-		}
-		
-	}
+	}*/
 	
 	/**
 	 * AfficherBeastPas affiche le nombre de pas depuis le dernier passage de la bete sur la case courante du chasseur.
 	 */
 	public void afficherBeastPas() {
-		if (this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastWalk()>-1) {
-			System.out.println("La bete est passee par ici il y'a "+this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBeastWalk()+" tours.");
+		if (super.map.getTab()[super.map.getHunter().getPos().getPosX()][super.map.getHunter().getPos().getPosY()].getBeastWalk()>-1) {
+			System.out.println("La bete est passee par ici il y'a "+super.map.getTab()[super.map.getHunter().getPos().getPosX()][super.map.getHunter().getPos().getPosY()].getBeastWalk()+" tours.");
 		}
-	}
-	
-	/**
-	 * Cherche si il existe une Position ou la bete peut etre tp et retourne vrai si cela est fait et faux dans le cas contraire
-	 * @return boolean
-	 */
-	public boolean tpBeast(){
-		ArrayList<Position> posDispo=this.map.getBeast().getCaseTp(this.map.getTab(), this.map.getHunter());
-		
-		boolean tp=false;
-		int idxPosDispo;
-		
-		if(posDispo.size()>0) {
-			idxPosDispo=new Random().nextInt(posDispo.size());
-			this.map.getBeast().setPosition(posDispo.get(idxPosDispo));
-			this.map.setBeastWalk();
-			this.map.getBeast().setTp(this.map.getBeast().getTp()-1);
-			tp=true;
-		}
-		return tp;
 	}
 }
