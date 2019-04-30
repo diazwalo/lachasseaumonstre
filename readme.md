@@ -86,6 +86,9 @@ jeu.jar --width=11 --height=11 --tp=3 --gamemode=beast
 	
 ## Developpement
 
+
+### Gestion de projet
+
 Trello est l'outil qui nous permet de definir les futures taches a repartir parmi les membres de l'equipe.
 L'outil nous permet de nous definir des sous-jalons 
 [Lien](https://trello.com/b/s4kqkszi/gdp-s2).
@@ -100,10 +103,27 @@ Estimation des heures sur le projet :
   <a href="https://www.youtube.com/watch?v=yJjANTtQ66s"><img src="https://img.youtube.com/vi/yJjANTtQ66s/0.jpg" alt="Video resume du developpement"></a>
 </div>
 
+### Aspects techniques
+
+Des le depart du projet, nous avons pense l'architecture pour que le jeu soit évolutif et facilement.
+
+De ce fait, nous avons organisé notre code sous forme de package regroupant les fonctionnalités lie au nom du package.
+
+- Au niveau gameplay, nous pouvons facilement créer de nouvelle maps dans le répertoire map.
+
+- Nous pouvons également créer aisément de nouvelles IA dans le package `ai.algorithm` qui peut librement utiliser le package `ai.graph`
+
+- Nous avons aussi une perspective de retenir le score pour plus tard dans le projet avec le package `data.score` 
+
+- Egalement, le jeu contient a la fois le code pour etre lance en mode textuel et visuelle sans importante réécriture du code.
 
 ## IHM
 
 Pour l'interface homme machine nous avons décidé de diviser notre intreface en trois. Tous d'abord la partie centrale  de l'écran qui affichera la monde  ou le joueuer devra se deplacer, la partie inférieur de l'écran qui elle, aura a charge de gerer les action de l'utilisateur et de pouvoir lui communiquer des informations et la partie droite de l'ecran qui elle aura pour but d'afficher les bonus et de pouvoir les selectionner.
+
+![Image de la map](IHM/Maquette/Exemple_Map.png)
+
+![Image de l'interface](IHM/Maquette/Interface_IHM.png)
 
 - La partie inférieur de l'écran :
 
