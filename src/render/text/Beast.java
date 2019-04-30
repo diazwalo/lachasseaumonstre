@@ -17,6 +17,8 @@ import map.Position;
 public class Beast extends Entity{
 	private boolean trapped;
 	private int tp;
+	private int camDispo;
+	private int baitDispo;
 	
 	/**
 	 * Instancie Beast a la Position posX, posY
@@ -27,6 +29,8 @@ public class Beast extends Entity{
 		super(posX, posY);
 		this.trapped = false;
 		this.tp=config.getNbTeleportation();
+		this.camDispo=2;
+		this.baitDispo=2;
 	}
 	
 	/**
