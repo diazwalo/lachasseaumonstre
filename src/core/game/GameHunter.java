@@ -74,6 +74,45 @@ public class GameHunter extends AbstractGame {
 			return false;
 		}
 	}
+	
+	
+	public void poserPiege() {
+		System.out.println("Vous avez encore " + this.map.getHunter().getTrapDispo() + " pieges dispo et " + this.map.getHunter().getWardDispo() + " balises dispo.");
+		String choix=Interaction.askBonus();
+		if(choix.equals("1")) {
+			this.setTrap();
+		}
+		else if (choix.equals("2")) {
+			this.setWard();
+		}
+		else {
+			return;
+		}
+	}
+	
+	public boolean setTrap() {
+		if(this.map.getHunter().canSetTrap()) {
+			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {true,false,false,false});
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean setWard() {
+		if(this.map.getHunter().canSetWard()) {
+			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {false,false,true,false});
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	
+	
+	
 	/**
 	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a été trouvé par le chasseur,
 	 * MAPDISCOVERED si la map a été entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloqué.

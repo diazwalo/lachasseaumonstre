@@ -13,7 +13,8 @@ import map.Mouvment;
  *
  */
 public class Hunter extends Entity {
-	
+	private int trapDispo;
+	private int wardDispo;
 	/**
 	 * instancie Hunter a la Position posX, posY
 	 * @param posX
@@ -23,6 +24,31 @@ public class Hunter extends Entity {
 		super(posX, posY);
 	}
 
+	public int getTrapDispo() {
+		return this.trapDispo;
+	}
+	
+	public int getWardDispo() {
+		return this.wardDispo;
+	}
+	
+	public boolean canSetTrap() {
+		if(this.trapDispo > 0) {
+			this.trapDispo--;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean canSetWard() {
+		if(this.wardDispo > 0) {
+			this.wardDispo--;
+			return true;
+		}
+		return false;
+	}
+	
+	
 	/**
 	 * retourne Hunter sous la forme textuelle
 	 */
