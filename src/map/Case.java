@@ -175,6 +175,9 @@ public class Case {
 		return res;
 	}
 	
+	public void setBlinded() {
+		this.blinded=true;
+	}
 	/**
 	 * Renvoie sous forme de chaine de caractere le buff actif sur la Case ou la trace de la bete au cas echeant
 	 */
