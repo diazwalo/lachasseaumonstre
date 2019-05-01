@@ -1,6 +1,13 @@
 package map;
 
+import java.util.Random;
+
 import config.Config;
+import render.bonus.Bait;
+import render.bonus.Camouflage;
+import render.bonus.IBonus;
+import render.bonus.Trap;
+import render.bonus.Ward;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -17,8 +24,8 @@ public class SquareMap implements IMap {
 	private Config config;
 	private boolean beastWin;
 	private boolean hunterWin;
-	
-	
+
+
 	/**
 	 * Construit un tableau de longueur len et de largeur wid et set Beast, Hunter et la Config
 	 * @param len
@@ -26,13 +33,23 @@ public class SquareMap implements IMap {
 	 */
 	public SquareMap(Config config) {
 		this.hunter = new Hunter(0, 0, config);
-		this.beast = new Beast(config.getWidth()-1, config.getHeight()-1, config);
-		this.tab = new Case[config.getWidth()][config.getHeight()];
+		int widthTab=config.getWidth()-1;
+		int heightTab=config.getHeight()-1;
+		
+		if(widthTab < 5 || heightTab < 5) {
+			widthTab=5;
+			heightTab=5;
+		}
+		
+		this.beast = new Beast(widthTab-1, heightTab-1, config);
+		this.tab = new Case[widthTab][heightTab];
+		//ajouter les pieges
+		//this.generationPiege();
 		this.config = config;
 		this.beastWin = false;
 		this.hunterWin = false;
 	}
-	
+
 	/**
 	 * Remplie le tableau en mettant dans les cases soit des Obstacles soit des Sol.
 	 */
@@ -43,10 +60,72 @@ public class SquareMap implements IMap {
 				CaseType caseType=CaseType.SOL;
 
 				if(x%3==2 && y%3==2 && ! this.beast.isPosEnt(x, y) && ! this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
-				
+
 				this.tab[x][y]=new Case(caseType, posBeast);
 			}
 		}
+	}
+
+	/**
+	 * place les bonus a ramasser sur la map 
+	 */
+	public void generationBonus() {
+		/*
+		 * NORMAL SI CA MARCHE PAS, GENERATION MAP N'A PAS ENCORE ETE FAIT !
+		 */
+		IBonus[] bonus=new IBonus[]{new Trap(), new Ward(), new Bait(), new Camouflage()};
+		Random r=new Random();
+		
+		Position posTrap=null;
+		Position posWard=null;
+		Position posBait=null;
+		Position posCamouflage=null;
+	
+		while(posTrap==null) {
+			int posTrapX=r.nextInt(this.tab.length)/2;
+			int posTrapY=r.nextInt(this.tab[posTrapX].length)/2;
+			Position posTrapTempo=new Position(posTrapX, posTrapY);
+			/*
+			 * LAAAAA ca peut pas marché le tableau n'est pas encore fait
+			 */
+			if(! this.tab[posTrapX][posTrapY].isObstacle() && ! this.beast.getPos().equals(posTrapTempo) && ! this.hunter.getPos().equals(posTrapTempo)) {
+				posTrap=posTrapTempo;
+			}
+		}
+		tab[posTrap.getPosX()][posTrap.getPosY()].setBuff(new boolean[] { true, false, false, false});
+
+		while(posWard.equals(null)) {
+			int posWardX=r.nextInt(this.tab.length)/2;
+			int posWardY=r.nextInt(this.tab[posWardX].length)/2;
+			Position posWardTempo=new Position(posWardX, posWardY);
+			
+			if(! this.tab[posWardX][posWardY].isObstacle() && ! this.beast.getPos().equals(posWardTempo) && ! ! this.hunter.getPos().equals(posWardTempo) && ! posWard.equals(posTrap)) {
+				posWard=posWardTempo;
+			}
+		}
+		tab[posWard.getPosX()][posWard.getPosY()].setBuff(new boolean[] { false, false, true, false});
+
+		while(posBait.equals(null)) {
+			int posBaitX=r.nextInt((this.tab.length)/2)+((this.tab.length)/2);
+			int posBaitY=r.nextInt(this.tab[posBaitX].length)/2;
+			Position posBaitTempo=new Position(posBaitX, posBaitY);
+			
+			if(! this.tab[posBaitX][posBaitY].isObstacle() && ! this.beast.getPos().equals(posBaitTempo) && ! ! this.hunter.getPos().equals(posBaitTempo)) {
+				posBait=posBaitTempo;
+			}
+		}
+		tab[posWard.getPosX()][posWard.getPosY()].setBuff(new boolean[] { false, false, false, true});
+
+		while(posCamouflage.equals(null)) {
+			int posCamouflageX=r.nextInt((this.tab.length)/2)+((this.tab.length)/2);
+			int posCamouflageY=r.nextInt(this.tab[posCamouflageX].length)/2;
+			Position posCamouflageTempo=new Position(posCamouflageX, posCamouflageY);
+			
+			if(! this.tab[posCamouflageX][posCamouflageY].isObstacle() && ! this.beast.getPos().equals(posCamouflageTempo) && ! ! this.hunter.getPos().equals(posCamouflageTempo) && ! posCamouflage.equals(posBait)) {
+				posCamouflage=posCamouflageTempo;
+			}
+		}
+		tab[posWard.getPosX()][posWard.getPosY()].setBuff(new boolean[] { false, true, false, false});
 	}
 
 	/**
@@ -154,37 +233,7 @@ public class SquareMap implements IMap {
 			for (int j = 0; j < tab[i].length; j++)
 				this.tab[i][j].modifBeastWalk(this.beast.isPosEnt(i, j));
 	}
-	
-	
-	/**
-	 * Renvoie un boolean indiquant si le chasseur a gagnï¿½ ou non
-	 * @return boolean
-	 */
-	/*private boolean beastVictory() {
-		int i = 0;
-		int j = 0;
-		boolean victory = true;
-		while(victory && i< this.tab.length) {
-			while(victory && j<this.tab[i].length) {
-				if(!this.tab[i][j].isObstacle() && this.tab[i][j].getBeastWalk() == -1) {
-					victory = false;
-				}
-				j++;
-			}
-			j=0;
-			i++;
-		}
-		return victory;
-	}*/
-	
-	/**
-	 * Renvoie un boolean indiquant si le chasseur a gagnï¿½ ou non
-	 * @return
-	 */
-	/*private boolean hunterVictory() {
-		return this.hunter.isPosEnt(this.beast.getPos().getPosX(), this.beast.getPos().getPosY()) || this.beast.getMvtEmptyCase(tab).isEmpty();
-	}*/
-	
+
 	public String gameBeastToString() {
 		String affichage="";
 		for (int x = 0; x < this.tab.length; x++) {
