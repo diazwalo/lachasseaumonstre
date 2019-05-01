@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import config.Config;
 import map.Position;
+import render.bonus.Trap;
 import render.text.Beast;
-import render.text.Trap;
 
 public class TrapTest {
 

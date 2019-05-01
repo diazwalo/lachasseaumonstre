@@ -6,6 +6,7 @@ import map.Case;
 import map.CaseType;
 import map.Mouvment;
 import map.Position;
+import render.bonus.Bonus;
 
 /**
  * Cette Class defini les caracteristiques d'une Entity

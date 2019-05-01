@@ -1,4 +1,4 @@
-package render.text;
+package render.bonus;
 
 public interface Bonus {
 	public void install(int x , int y);

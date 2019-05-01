@@ -8,9 +8,9 @@ import org.junit.Test;
 
 import config.Config;
 import map.Position;
-import render.text.Bait;
+import render.bonus.Bait;
+import render.bonus.Ward;
 import render.text.Hunter;
-import render.text.Ward;
 
 public class BaitTest {
 

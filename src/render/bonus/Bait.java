@@ -1,6 +1,7 @@
-package render.text;
+package render.bonus;
 
 import map.Position;
+import render.text.Hunter;
 
 /**
  * @author prognonq

@@ -1,4 +1,4 @@
-package render.text;
+package render.bonus;
 
 import map.Position;
 

@@ -1,4 +1,4 @@
-package render.text;
+package render.bonus;
 
 public class Camouflage {
 	// a completer

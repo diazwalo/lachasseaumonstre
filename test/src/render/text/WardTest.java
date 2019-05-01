@@ -7,8 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import map.Position;
-import render.text.Bonus;
-import render.text.Ward;
+import render.bonus.Bonus;
+import render.bonus.Ward;
 
 public class WardTest {
 	
