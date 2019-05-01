@@ -7,7 +7,7 @@ public class Interaction {
 	
 	/**
 	 * Retourne le Mouvement saisie par le Joueur
-	 * @return Mouvment
+	 * @return Le Mouvement saisiet
 	 */
 	public static Mouvment askMouvement() {
 		Mouvment res=null;
@@ -19,7 +19,7 @@ public class Interaction {
 	
 	/**
 	 * Retourne un tableau contenant des Strings pouvant etre saisies correspondant a un Mouvment
-	 * @return String[]
+	 * @return Un tableau avec les combinaisons de touches possible.
 	 */
 	public static String[] generateStrMvt() {
 		return new String[] {"z", "s", "d", "q", "zd", "zq", "sd", "sq", "dz", "qz", "ds", "qs"};
@@ -27,9 +27,9 @@ public class Interaction {
 	
 	/**
 	 * boucle pour demander a l'utilisateur de saisir un mouvment valide
-	 * @param res
-	 * @param strMvt
-	 * @param tabMvt
+	 * @param res Le mouvement a effectuer.
+	 * @param strMvt La liste des touches clavies acceptes.
+	 * @param tabMvt La liste des mouvements acceptes.
 	 * @return Mouvment
 	 */
 	public static Mouvment getSaisieMvt(Mouvment res, String[] strMvt, Mouvment[] tabMvt) {
@@ -48,7 +48,7 @@ public class Interaction {
 	
 	/**
 	 * Retourn toute les Mouvements que le Joueur peut saisir associes au tableau strMvt
-	 * @param strMvt
+	 * @param strMvt La liste des touches clavies acceptes.
 	 * @return Mouvment[]
 	 */
 	public static Mouvment[] getTabMvt(String[] strMvt) {
@@ -82,6 +82,11 @@ public class Interaction {
 
 	}
 	
+	/**
+	 * Cette fonction mets le programme dans une phase de sommeil pour x secondes.
+	 * @param sec Le nombre de seconde a attendre avant de continuer
+	 * @see http://blog.paumard.org/cours/java-api/chap05-concurrent-premier-thread.html
+	 */
 	public static void waitASec(double sec) {
 		try
 		{
@@ -93,6 +98,9 @@ public class Interaction {
 		}
 	}
 	
+	/**
+	 * Cette fonction attend que l'utilisateur saisisse le bouton clavier "enter"
+	 */
 	public static void pressEnter() {
 		String saisie=" ";
 		Scanner sc = new Scanner(System.in);

@@ -55,7 +55,7 @@ public class Graph {
     
     /**
      * Explore un tableau pour creer un diagramme de noeuds
-     * @param cases Le tableau contenant les cases du jeu
+     * @param map Une instance d'une map
      * @return listNode La liste des cases transformés en sommets
      */
     public Map<String, Node> generateNode(IMap map)
@@ -102,7 +102,7 @@ public class Graph {
 
     /**
      * Retourne la liste de sommets
-     * @return Map<String, Node>
+     * @return Une Map contenant les identifiants et son sommets.
      */
     public Map<String, Node> getListNode()
     {
@@ -111,7 +111,7 @@ public class Graph {
 
     /**
      * Retourne la liste des aretes
-     * @return Map<String, Edge>
+     * @return Une Map contenant les identifiants et son arete.
      */
     public Map<String, Edge> getListEdge()
     {
@@ -122,7 +122,7 @@ public class Graph {
      * Creer une liste d'aretes a partir d'une position et de ses positions adjacentes.
      * @param positionActual La position qui est adjacente aux autres arretes
      * @param positions Une liste de positions qui ont pour adjacente la premiere.
-     * @return Map<String, Edge> Une liste d'aretes
+     * @return Une liste d'aretes signifiant les chemins possibles. 
      */
     public Map<String, Edge> positionToEdge(Position positionActual, List<Position> positions)
     {

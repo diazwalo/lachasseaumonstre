@@ -51,7 +51,7 @@ public class Node {
 
 	/**
 	 * Retourne la liste des sommets adjacent au somnmet actuel.
-	 * @return Map<String, Node>
+	 * @return Une liste de sommet
 	 */
 	public Map<String, Node> getAdjacentNodes()
 	{

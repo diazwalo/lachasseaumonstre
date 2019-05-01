@@ -108,7 +108,7 @@ public class Config
 
 	/**
 	 * Definit le nombre de teleportation disponible pour le monstre durant la partie.
-	 * @param nbTeleportation
+	 * @param nbTeleportation Le nombre de teleportation lors de la partie.
 	 */
 	public void setNbTeleportation(int nbTeleportation)
 	{
