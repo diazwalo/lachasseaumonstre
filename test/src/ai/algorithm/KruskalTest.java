@@ -5,14 +5,19 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ai.algorithm.Dijkstra;
 import ai.algorithm.Kruskal;
 import ai.graph.Graph;
 import config.Config;
 import map.IMap;
 import map.SquareMap;
 
-public class KruskalTest {
+/**
+ * TODO : to finish
+ * @author PHPierre
+ *
+ */
+public class KruskalTest
+{
 
 private Config config;
 	
@@ -33,6 +38,9 @@ private Config config;
 		Graph graph = new Graph(map);
 		Kruskal kruskal = new Kruskal(graph);
 		
-		kruskal.getPath();
+		System.out.println(kruskal.getPath().size());
+		//assertEquals(kruskal, kruskal.getPath());
+		
+		//Ceci n'est pas encore finie.
 	}
 }

@@ -66,7 +66,7 @@ public class GameHunter extends AbstractGame {
 		ArrayList<Mouvment> mvtBeast= super.map.getBeast().getMvtEmptyCase(super.map.getTab());
 
 		if(this.map.getBeast().getTrapped()) {
-			System.out.println("La bete est prise au piege !");
+			System.out.println("La bete est prise au piege !"); 
 			this.map.getBeast().untrapped();
 			return true;
 		}

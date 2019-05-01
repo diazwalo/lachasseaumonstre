@@ -2,14 +2,8 @@ package ai.algorithm;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 import ai.comparator.EdgeComparator;
 import ai.graph.Graph;
@@ -42,6 +36,10 @@ public class Kruskal
 		this.listEdge = graph.getListEdge();
 	}
 	
+	/**
+	 * Cette fonction applique l'algorithme de Kruskal sur un objet Graph.
+	 * @return La file des deplacements a executer
+	 */
 	public List<Position> getPath()
 	{
 		List<Position> path = new ArrayList<Position>();
