@@ -15,7 +15,7 @@ import render.text.Hunter;
  * @author nath
  *
  */
-
+ 
 
 public class Case {
 	private CaseType caseType;

@@ -223,7 +223,7 @@ public class GameBeast extends AbstractGame{
 		}
 		else {
 			return false;
-		}
+		} 
 	}
 	
 	/**
