@@ -105,18 +105,20 @@ public abstract class AbstractGame {
 		return tp;
 	}
 	
-	
+	/**
+	 * Verifie si la bete ou le chasseur se trouve sur une case où un piege est actif, l'active et l'enleve	
+	 */
 	public void checkPiege() {
 		if(this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].getBuff().equals(new boolean[] {true,false,false,false})) {
 			this.map.getBeast().setTrapped();
 			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
 		}
-		/*if(this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].getBuff().equals(new boolean[] {false,false,true,false})) {
+		if(this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].getBuff().equals(new boolean[] {false,false,true,false})) {
 			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
-		}*/
-		if(this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBuff().equals(new boolean[] {false,true,false,false})) {
-			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
 		}
+		/*if(this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBuff().equals(new boolean[] {false,true,false,false})) {
+			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
+		}*/
 		if(this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBuff().equals(new boolean[] {false,false,false,true})) {
 			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
 		}
