@@ -103,7 +103,7 @@ Estimation des heures sur le projet :
 [Lien](https://docs.google.com/spreadsheets/d/1WuWRMOKtEFklpOo74Tn_29-D8dcVBh5htOClASj9DFM/edit#gid=1856470417)
 
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=yJjANTtQ66s"><img src="https://img.youtube.com/vi/yJjANTtQ66s/0.jpg" alt="Video resume du developpement"></a>
+  <a href="https://www.youtube.com/watch?v=Mmu9JZva8hE"><img src="https://img.youtube.com/vi/Mmu9JZva8hE/0.jpg" alt="Video resume du developpement"></a>
 </div>
 
 ### Aspects techniques
