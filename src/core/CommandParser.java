@@ -161,7 +161,24 @@ public class CommandParser
 	public void throwWhenStart(String arg)
 	{
 		System.out.println("L'argument " + arg + " n'a pas ete reconnu. \n");
-		System.out.println("TODO : help msg from readme");
+		System.out.println("--width=XX           Modifie la largeur du plateau\r\n" + 
+				"--height=XX          Modifie la hauteur du plateau\r\n" + 
+				"--tp=XX              Indique le nombre de teleportation disponible pour le monstre durant une partie.\r\n" + 
+				"--gamemode=ZZ        Selection du mode de jeu avec pour ZZ les valeurs disponibles suivantes :\r\n" + 
+				"ai        : L'ordinateur joue contre lui meme et controle les deux entites.\r\n" + 
+				"beast     : Le joueur controle le monstre et l'ordinateur controle le chasseur.\r\n" + 
+				"hunter    : Le joueur controle le chasseur et l'ordinateur controle le monstre.\r\n" + 
+				"multi     : Un des deux joueurs controle le monstre et son adversaire controle le chasseur.\r\n" + 
+				"\r\n" + 
+				"--map=AA\r\n" + 
+				"carre     : Un plateau de jeu rectangulaire ou carre selon la largueur/hauteur.\r\n" + 
+				"circular  : Un plateau de jeu circulaire selon la largueur/hauteur.\r\n" + 
+				"\r\n" + 
+				"--trap               Active les pieges sur le plateau\r\n" + 
+				"--camouflage         Active les camouflages sur le plateau\r\n" + 
+				"--ward               Active les balises de vision sur le plateau\r\n" + 
+				"--bait               Active les leurres sur le plateau\r\n" + 
+				"");
 		System.exit(1);
 	}
 	
