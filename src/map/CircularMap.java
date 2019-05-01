@@ -236,4 +236,16 @@ public class CircularMap implements IMap
 		}
 		return affichage;
 	}
+
+	@Override
+	public String gameBeastToString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String gameHunterToString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

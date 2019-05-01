@@ -1,5 +1,11 @@
 package map;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import render.text.Beast;
+import render.text.Hunter;
+
 /**
  * Definit le type de case (obstacle ou sol), un compteur pour
  * du nombre tours depuis le dernier passage de la bete, un boolean qui 
@@ -113,6 +119,54 @@ public class Case {
 	 */
 	public boolean isObstacle() {
 		return this.caseType == CaseType.OBSTACLE;
+	}
+	
+	/**
+	 * Montre la map tel que le joueur doit la voir lorsqu'il joue la Bete
+	 * @param map
+	 * @param posCase
+	 * @return
+	 */
+	public String gameBeastShowView(IMap map, Position posCase) {
+		String res=caseType.toString();
+		if( ! this.buff[0] && ! this.buff[2]) {
+			res=this.toString();
+		}
+		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
+		else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
+		return res;
+	}
+	
+	/**
+	 * Montre la map tel que le joueur doit la voir lorsqu'il joue le chasseur
+	 * @param map
+	 * @param posCase
+	 * @return
+	 */
+	public String gameHunterShowView(IMap map, Position posCase) {
+		String res=caseType.toString();
+		
+		String[] toStringConf=new String[] { "p", "c", "w", "l" };
+		for (int i = 0; i < buff.length; i++) {
+			if(buff[i] && ! this.buff[1] && ! this.buff[3]) res=toStringConf[i];
+		}
+		// TODO : Les cases adjacentes ne sont peut etre pas les bonnes car on ne voit pas la bete meme a cote d'elle ni les traces entre 1 et 4 pas...
+		List<Position> posAdj=map.getHunter().getPos().getAdjacentPosition(map);
+		
+		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
+			
+			for (Position position : posAdj) {
+				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
+					if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
+					if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
+				}else if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
+			}
+		}
+		
+		if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
+			
+		return res;
 	}
 	
 	/**

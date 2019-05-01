@@ -15,7 +15,8 @@ public interface IMap {
 	public void setBeastWalk();
 	public boolean isBeastWin();
 	public boolean isHunterWin();
-	//public void winRefresh();
 	public void setHunterWin(boolean hunterWin);
 	public void setBeastWin(boolean beastWin);
+	public String gameBeastToString();
+	public String gameHunterToString();
 }  

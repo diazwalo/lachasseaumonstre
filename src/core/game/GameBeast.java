@@ -27,18 +27,18 @@ public class GameBeast extends AbstractGame{
 	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqué, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
-		System.out.println(map+" \n");
+		System.out.println(map.gameBeastToString()+" \n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			
 			while(! this.beastTurn()) System.out.println("Mvt Invalide");
 			
-			System.out.println(this.map);
+			System.out.println(this.map.gameBeastToString());
 			Interaction.pressEnter();
 			this.poserPiege();
 			if(! super.map.isBeastWin()) {
 				this.hunterTurn();
-				System.out.println(super.map);
+				System.out.println(super.map.gameBeastToString());
 				Interaction.pressEnter();
 			}
 		}
@@ -188,6 +188,7 @@ public class GameBeast extends AbstractGame{
 	
 	public void poserPiege() {
 		System.out.println("Vous avez encore " + this.map.getBeast().getCamDispo() + " camouflage dispo et " + this.map.getBeast().getBaitDispo() + " leurre dispo.");
+		System.out.println("Saisissez 1 pour poser un piege, 2 pour poser une balise et entrer si vous desirez ne rien poser");
 		String choix=Interaction.askBonus();
 		if(choix.equals("1")) {
 			this.setCamouflage();
