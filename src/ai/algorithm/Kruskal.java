@@ -1,14 +1,22 @@
 package ai.algorithm;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.SortedSet;
 import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import ai.comparator.EdgeComparator;
 import ai.graph.Graph;
 import ai.models.Edge;
+import ai.models.EdgeTmp;
 import ai.models.Node;
+import ai.util.NodeUtil;
 import map.Position;
 
 /**
@@ -38,33 +46,49 @@ public class Kruskal
 	{
 		List<Position> path = new ArrayList<Position>();
 		
-		this.executeKruskal();
-		
+		path.addAll(this.executeKruskal());
+
 		return path;
 	}
 	
-	private void executeKruskal()
+	private List<Position> executeKruskal()
 	{
-		EdgeComparator edgeComparator = new EdgeComparator(this.listEdge);
-		Map<String, Edge> edgeList = new TreeMap<String, Edge>(edgeComparator);
-
-		List<Edge> graphEdge = new ArrayList<>();
+		EdgeComparator edgeComparator = new EdgeComparator();
+		List<EdgeTmp> edgeTmp = new ArrayList<>();
+		List<Position> positions = new ArrayList<>();
+		
+		
+		for (String name : this.listEdge.keySet()) {
+			EdgeTmp edge = new EdgeTmp(
+					name, 
+					this.listEdge.get(name).getNodeOneName(), 
+					this.listEdge.get(name).getNodeTwoName(), 
+					this.listEdge.get(name).getWeight()
+					);
+			edgeTmp.add(edge);
+		}
+		
+		Collections.sort(edgeTmp, edgeComparator);
 		
 		for (String name : this.listNode.keySet()) {
 			this.listNode.get(name).setPrecedent(null);
 		}
-		
-		for (String nameEdge : edgeList.keySet()) {
-			Edge edge = this.listEdge.get(nameEdge);
-			if(this.find(edge.getNodeOneName()) != this.find(edge.getNodeTwoName())) {
-				graphEdge.add(edge);
-				this.union(edge.getNodeOneName(), edge.getNodeTwoName());
+
+		for (int i = 0; i < edgeTmp.size(); i++) {
+			EdgeTmp e = edgeTmp.get(i);
+			if(!this.find(e.getNodeOneName()).equals(this.find(e.getNodeTwoName()))) {
+				Position p = NodeUtil.formatNode(edgeTmp.get(i).getNodeTwoName());
+				positions.add(p);
+				
+				this.union(edgeTmp.get(i).getNodeOneName(), edgeTmp.get(i).getNodeTwoName());
 			}
 		}
+		
+		return positions;
 	}
 	
 	private String find(String name)
-	{
+	{	
 		if(this.listNode.get(name).getPrecedent() == null) {
 			return name;
 		}

@@ -2,23 +2,18 @@ package ai.comparator;
 
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import ai.models.Edge;
+import ai.models.EdgeTmp;
 
-public class EdgeComparator implements Comparator<String>
+public class EdgeComparator implements Comparator<EdgeTmp>
 {
 
-	Map<String, Edge> edgeList;
-	
-	public EdgeComparator(Map<String, Edge> edgeList)
-	{
-		this.edgeList = edgeList;
-	}
-	
 	@Override
-	public int compare(String o1, String o2)
-	{
-		return this.edgeList.get(o1).getWeight() - this.edgeList.get(o2).getWeight();
+	public int compare(EdgeTmp o1, EdgeTmp o2) {
+		return o1.getWeight() - o2.getWeight();
 	}
+
 
 }

@@ -90,10 +90,12 @@ public class Graph {
 
     	for (int i = 0; i < cases.length; i++) {
             for (int j = 0; j < cases[i].length; j++) {
-                Position positionActual = new Position(i, j);
-                List<Position> positions = positionActual.getAdjacentPosition(map);
-                Map<String, Edge> edgeAdjacent = this.positionToEdge(positionActual, positions);
-                edges.putAll(edgeAdjacent);
+            	if(cases[i][j].getCaseType() != CaseType.OBSTACLE) {
+	                Position positionActual = new Position(i, j);
+	                List<Position> positions = positionActual.getAdjacentPosition(map);
+	                Map<String, Edge> edgeAdjacent = this.positionToEdge(positionActual, positions);
+	                edges.putAll(edgeAdjacent);
+            	}
             }
         }
 

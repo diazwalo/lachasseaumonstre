@@ -11,7 +11,7 @@ import java.util.Map;
 public class Node {
 	private int distanceFromOrigin;
 	private Map<String, Node> adjacentNodes;
-	private String precedent;
+	private String precedent = null;
 	
 	/**
 	 * Genere un sommet avec une distance infinie de l'origine et une list de voisin vide.
