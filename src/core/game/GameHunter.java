@@ -85,6 +85,9 @@ public class GameHunter extends AbstractGame {
 	}
 	
 	
+	/**
+	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
+	 */
 	public void poserPiege() {
 		System.out.println("Vous avez encore " + this.map.getHunter().getTrapDispo() + " pieges dispo et " + this.map.getHunter().getWardDispo() + " balises dispo.");
 		System.out.println("Saisissez 1 pour poser un piege, 2 pour poser une balise et entrer si vous desirez ne rien poser");
@@ -100,6 +103,12 @@ public class GameHunter extends AbstractGame {
 		}
 	}
 	
+	
+	/**
+	 * Pose le piege sur la case courante.
+	 * Retourne faux si le joueur n'a plus de piege.
+	 * @return boolean
+	 */
 	public boolean setTrap() {
 		if(this.map.getHunter().canSetTrap()) {
 			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {true,false,false,false});
@@ -110,6 +119,11 @@ public class GameHunter extends AbstractGame {
 		}
 	}
 	
+	/**
+	 * Pose une balsie de vision sur le case courante.
+	 * Retourne faux si le joueur n'a plus de balise.
+	 * @return boolean
+	 */
 	public boolean setWard() {
 		if(this.map.getHunter().canSetWard()) {
 			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {false,false,true,false});

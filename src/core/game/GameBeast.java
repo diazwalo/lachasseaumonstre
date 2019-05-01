@@ -192,6 +192,10 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	
+	
+	/**
+	 * propose au joueur de poser un bonus au choix: un camouflage ou un leurre.
+	 */
 	public void poserPiege() {
 		System.out.println("Vous avez encore " + this.map.getBeast().getCamDispo() + " camouflage dispo et " + this.map.getBeast().getBaitDispo() + " leurre dispo.");
 		System.out.println("Saisissez 1 pour poser un piege, 2 pour poser une balise et entrer si vous desirez ne rien poser");
@@ -207,6 +211,11 @@ public class GameBeast extends AbstractGame{
 		}
 	}
 	
+	/**
+	 * Le joueur active sont camouflage, le chasseur ne peut plus voir les pas de la bete tant que le camouflage est actif.
+	 * Retourne faux si le joueur n'a plus de camouflage
+	 * @return boolean
+	 */
 	public boolean setCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
 			this.map.getHunter().setBlinded();
@@ -217,6 +226,11 @@ public class GameBeast extends AbstractGame{
 		}
 	}
 	
+	/**
+	 * le joueur acitve un leurre sur une case qui affiche un faux nombre de pas sur la case courantr pour le chasseur qui disparait quand le chasseur passe dessus
+	 * Retourne faux si le joueur n'a plus de camouflage
+	 * @return boolean 
+	 */
 	public boolean setBait() {
 		if(this.map.getBeast().canSetBait()) {
 			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,false,false,true});

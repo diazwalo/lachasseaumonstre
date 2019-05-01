@@ -25,14 +25,26 @@ public class Hunter extends Entity {
 		super(posX, posY);
 	}
 
+	/**
+	 * renvoie le nombre de piege disponible
+	 * @return int
+	 */
 	public int getTrapDispo() {
 		return this.trapDispo;
 	}
 	
+	/**
+	 * renvoie le nombre de balise disponible
+	 * @return int
+	 */
 	public int getWardDispo() {
 		return this.wardDispo;
 	}
 	
+	/**
+	 * renvoie si le hunter est aveuglé par le camouflage de la bete
+	 * @return boolean
+	 */
 	public boolean isBlinded() {
 		if(blinded>0) {
 			blinded--;
@@ -41,10 +53,17 @@ public class Hunter extends Entity {
 		return false;
 	}
 	
+	/**
+	 * set le nombre de tour où le chasseur est aveuglé par le camouflage de la bete
+	 */
 	public void setBlinded() {
 		blinded=2;
 	}
 	
+	/**
+	 * renvoie si il est possible de poser un piege et en enleve un si c'est possible
+	 * @return boolean
+	 */
 	public boolean canSetTrap() {
 		if(this.trapDispo > 0) {
 			this.trapDispo--;
@@ -53,6 +72,11 @@ public class Hunter extends Entity {
 		return false;
 	}
 	
+	
+	/**
+	 * renvoie si il est possible de poser une balise et en enleve une si c'est possible
+	 * @return boolean
+	 */
 	public boolean canSetWard() {
 		if(this.wardDispo > 0) {
 			this.wardDispo--;

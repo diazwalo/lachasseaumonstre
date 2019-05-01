@@ -33,10 +33,19 @@ public class Beast extends Entity{
 		this.baitDispo=2;
 	}
 	
+	/**
+	 * Renvoie le nombre de camouflage disponible
+	 * @return int
+	 */
 	public int getCamDispo() {
 		return this.camDispo;
 	}
 
+	
+	/**
+	 * Renvoie le nombre de leurre disponible
+	 * @return int 
+	 */
 	public int getBaitDispo() {
 		return this.baitDispo;
 	} 
@@ -69,6 +78,10 @@ public class Beast extends Entity{
 		this.tp=tp;
 	}
 	
+	/**
+	 * renvoie si il est possible de poser un leurre et en enleve une si c'est possible
+	 * @return boolean
+	 */
 	public boolean canSetBait() {
 		if(this.baitDispo > 0) {
 			this.baitDispo--;
@@ -77,6 +90,10 @@ public class Beast extends Entity{
 		return false;
 	}
 	
+	/**
+	 * renvoie si il est possible de poser un camouflage et en enleve un si c'est possible
+	 * @return boolean
+	 */
 	public boolean canSetCamouflage() {
 		if(this.camDispo > 0) {
 			this.camDispo--;
