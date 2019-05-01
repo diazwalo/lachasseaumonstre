@@ -15,6 +15,7 @@ import map.Mouvment;
 public class Hunter extends Entity {
 	private int trapDispo;
 	private int wardDispo;
+	private int blinded=0;
 	/**
 	 * instancie Hunter a la Position posX, posY
 	 * @param posX
@@ -30,6 +31,18 @@ public class Hunter extends Entity {
 	
 	public int getWardDispo() {
 		return this.wardDispo;
+	}
+	
+	public boolean isBlinded() {
+		if(blinded>0) {
+			blinded--;
+			return true;
+		}
+		return false;
+	}
+	
+	public void setBlinded() {
+		blinded=2;
 	}
 	
 	public boolean canSetTrap() {

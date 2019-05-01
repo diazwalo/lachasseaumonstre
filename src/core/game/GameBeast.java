@@ -30,17 +30,17 @@ public class GameBeast extends AbstractGame{
 		System.out.println(map.gameBeastToString()+" \n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-			
 			while(! this.beastTurn()) System.out.println("Mvt Invalide");
-			
+			this.map.getBeast().untrapped();
 			System.out.println(this.map.gameBeastToString());
 			Interaction.pressEnter();
-			this.poserPiege();
+			this.checkPiege();
 			if(! super.map.isBeastWin()) {
 				this.hunterTurn();
 				System.out.println(super.map.gameBeastToString());
 				Interaction.pressEnter();
 			}
+			this.checkPiege();
 		}
 		this.EndGame();
 	}
@@ -52,13 +52,19 @@ public class GameBeast extends AbstractGame{
 	  */
 	public boolean beastTurn() {
 		boolean mvtValide=false;
-		
-		Mouvment mvt=Interaction.askMouvement();
-		mvtValide=super.map.moveBeast(mvt);
-		
-		this.map.setBeastWalk();
-		super.checkGameStatus();
-		return mvtValide;
+		if(this.map.getBeast().getTrapped()) {
+			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous êtes piegé");
+			mvtValide=true;
+			return mvtValide;
+		}else {
+			this.poserPiege();
+			Mouvment mvt=Interaction.askMouvement();
+			mvtValide=super.map.moveBeast(mvt);
+			
+			this.map.setBeastWalk();
+			super.checkGameStatus();
+			return mvtValide;
+		}
 	}
 	
 	
@@ -203,7 +209,7 @@ public class GameBeast extends AbstractGame{
 	
 	public boolean setCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
-			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,true,false,false});
+			this.map.getHunter().setBlinded();
 			return true;
 		}
 		else {
@@ -220,5 +226,6 @@ public class GameBeast extends AbstractGame{
 			return false;
 		}
 	}
+		
 	
 }

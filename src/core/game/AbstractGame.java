@@ -20,6 +20,7 @@ public abstract class AbstractGame {
 	public abstract void launchGame();
 	public abstract boolean beastTurn();
 	public abstract boolean hunterTurn();
+	public abstract void poserPiege();
 	/*public abstract boolean statusBeastFound();
 	public abstract boolean statusMapDiscovered();
 	public abstract boolean statusBeastblock();*/
@@ -103,6 +104,26 @@ public abstract class AbstractGame {
 		}
 		return tp;
 	}
+	
+	
+	public void checkPiege() {
+		if(this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].getBuff().equals(new boolean[] {true,false,false,false})) {
+			this.map.getBeast().setTrapped();
+			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
+		}
+		/*if(this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].getBuff().equals(new boolean[] {false,false,true,false})) {
+			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
+		}*/
+		if(this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBuff().equals(new boolean[] {false,true,false,false})) {
+			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
+		}
+		if(this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBuff().equals(new boolean[] {false,false,false,true})) {
+			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
+		}
+		
+	}
+	
+	
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire

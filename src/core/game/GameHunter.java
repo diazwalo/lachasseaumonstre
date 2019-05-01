@@ -50,11 +50,12 @@ public class GameHunter extends AbstractGame {
 	  */
 	public boolean hunterTurn() {
 		boolean mvtValide=false;
-		
+		this.poserPiege();
 		Mouvment mvt=Interaction.askMouvement();
 		mvtValide=super.map.moveHunter(mvt);
 		
 		super.checkGameStatus();
+		this.map.getHunter().isBlinded();
 		return mvtValide;
 	}
 	
