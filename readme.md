@@ -55,7 +55,7 @@ sur le casse ou est situe le leurre. Le leurre n'a pas de limite de temps.
 Lancer le jeu :
 
 ```
-jeu.jar --width=20 --height=20 --tp=3 --gamemode=beast --trap --camouflage --ward --bait
+jeu.jar --width=20 --height=20 --tp=3 --gamemode=beast --map=circular --trap --camouflage --ward --bait
 ```
 
 Voici les arguments disponible :
@@ -65,11 +65,14 @@ Voici les arguments disponible :
 --height=XX          Modifie la hauteur du plateau
 --tp=XX              Indique le nombre de teleportation disponible pour le monstre durant une partie.
 --gamemode=ZZ        Selection du mode de jeu avec pour ZZ les valeurs disponibles suivantes :
-
 ai        : L'ordinateur joue contre lui meme et controle les deux entites.
 beast     : Le joueur controle le monstre et l'ordinateur controle le chasseur.
 hunter    : Le joueur controle le chasseur et l'ordinateur controle le monstre.
 multi     : Un des deux joueurs controle le monstre et son adversaire controle le chasseur.
+
+--map=AA
+carre     : Un plateau de jeu rectangulaire ou carre selon la largueur/hauteur.
+circular  : Un plateau de jeu circulaire selon la largueur/hauteur.
 
 --trap               Active les pieges sur le plateau
 --camouflage         Active les camouflages sur le plateau
@@ -81,7 +84,7 @@ Voici les arguments lances par defaut :
 
 
 ```java
-jeu.jar --width=11 --height=11 --tp=3 --gamemode=beast 
+jeu.jar --width=11 --height=11 --tp=3 --gamemode=beast --map=carre 
 ```
 	
 ## Developpement
