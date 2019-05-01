@@ -65,15 +65,22 @@ public class GameHunter extends AbstractGame {
 	public boolean beastTurn() {
 		ArrayList<Mouvment> mvtBeast= super.map.getBeast().getMvtEmptyCase(super.map.getTab());
 
-		if(mvtBeast.size()>0) {
-			while(! super.map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size()))));
-			super.map.setBeastWalk();
-			super.checkGameStatus();
+		if(this.map.getBeast().getTrapped()) {
+			System.out.println("La bete est prise au piege !");
+			this.map.getBeast().untrapped();
 			return true;
 		}
 		else {
-			AbstractGame.gameStatus=GameStatus.BEASTBLOCK;
-			return false;
+			if(mvtBeast.size()>0) {
+				while(! super.map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size()))));
+				super.map.setBeastWalk();
+				super.checkGameStatus();
+				return true;
+			}
+			else {
+				AbstractGame.gameStatus=GameStatus.BEASTBLOCK;
+				return false;
+			}
 		}
 	}
 	
