@@ -13,6 +13,7 @@ public class Config
 	private int height;
 	private GameMode gameMode;
 	private int nbTeleportation;
+	private Map map;
 	
 	private boolean trap;
 	private boolean camouflage;
@@ -36,6 +37,7 @@ public class Config
 		this.height = 11;
 		this.gameMode = GameMode.BEASTvsAI;
 		this.nbTeleportation = 3;
+		this.map = Map.SQUARE;
 
 		this.trap = false;
 		this.camouflage = false;
@@ -113,6 +115,24 @@ public class Config
 	public void setNbTeleportation(int nbTeleportation)
 	{
 		this.nbTeleportation = nbTeleportation;
+	}
+	
+	/**
+	 * Retourne le plateau de jeu utilise pour la future partie.
+	 * @return Map
+	 */
+	public Map getMap()
+	{
+		return this.map;
+	}
+
+	/**
+	 * Definit le plateau de jeu utilise pour la future partie.
+	 * @param map Le plateau de jeu.
+	 */
+	public void setMap(Map map)
+	{
+		this.map = map;
 	}
 
 	/**

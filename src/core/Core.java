@@ -10,21 +10,29 @@ import map.SquareMap;
 
 public class Core {
 	public static void main(String[] args) {
-		/*
-		 * TODO : Map example : 1carre, 2rectangle, etc
-		 */
-		// --width=20 --height=20 --gamemode=beast --trap --bait --camouflage --ward
+		
+		AbstractGame game = null;
+		IMap map = null;
 		
 		CommandParser commandParser = new CommandParser(args);
 		Config config = commandParser.getConfig();
 		
-		IMap map = new SquareMap(config); 
+		switch(config.getMap())
+		{
+		case SQUARE:
+			map = new SquareMap(config);
+			break;
+		case CIRCULAR:
+			map = new CircularMap(config);
+			break;
+		}
+		
 		map.generationMap();
-		AbstractGame game=null;
 		
 		switch(config.getGameMode())
 		{
 		case AIvsAI:
+			//Jalon 2 !
 			//IGame game = new GameAI(map); 
 			break;
 		case BEASTvsAI:
@@ -40,8 +48,6 @@ public class Core {
 		}
 		
 		game.launchGame();
-		//fin du a supprimer
-
-		//TODO : reecritre les tests unitaires ayant besoin de square map
+		
 	}
 }
