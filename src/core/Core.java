@@ -3,6 +3,7 @@ package core;
 import config.Config;
 import core.game.GameHunter;
 import core.game.AbstractGame;
+import core.game.GameBeast;
 import map.CircularMap;
 import map.IMap;
 import map.SquareMap;
@@ -19,6 +20,7 @@ public class Core {
 		
 		IMap map = new SquareMap(config); 
 		map.generationMap();
+		AbstractGame game=null;
 		
 		switch(config.getGameMode())
 		{
@@ -26,10 +28,10 @@ public class Core {
 			//IGame game = new GameAI(map); 
 			break;
 		case BEASTvsAI:
-			//IGame game = new GameBeast(map);
+			game = new GameBeast(map);
 			break;
 		case HUNTERvsAI:
-			//IGame game = new GameHunter(map);
+			game = new GameHunter(map);
 			break;
 		case BEASTvsHUNTER:
 			//Jalon 2 !
@@ -37,8 +39,6 @@ public class Core {
 			break;
 		}
 		
-		//A supprimer une fois les classes finies
-		AbstractGame game = new GameHunter(map);
 		game.launchGame();
 		//fin du a supprimer
 

@@ -25,18 +25,19 @@ public class GameHunter extends AbstractGame {
 	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqué, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
-		System.out.println(map+"\n");
+		System.out.println(map.gameHunterToString()+"\n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			
-			System.out.println(super.map);
+			System.out.println(super.map.gameHunterToString());
 			this.afficherBeastPas();
 			Interaction.pressEnter();
 			
 			if(! super.map.isHunterWin()) {
 				this.beastTurn();
+				System.out.println(super.map.gameHunterToString());
 				System.out.println(super.map);
 				Interaction.pressEnter();
 			}

@@ -185,6 +185,28 @@ public class SquareMap implements IMap {
 		return this.hunter.isPosEnt(this.beast.getPos().getPosX(), this.beast.getPos().getPosY()) || this.beast.getMvtEmptyCase(tab).isEmpty();
 	}*/
 	
+	public String gameBeastToString() {
+		String affichage="";
+		for (int x = 0; x < this.tab.length; x++) {
+			affichage+=" \n|";
+			for (int y = 0; y < this.tab[x].length; y++) {
+				affichage+=" "+this.tab[y][x].gameBeastShowView(this, new Position(y, x))+" |";
+			}
+		}
+		return affichage;
+	}
+	
+	public String gameHunterToString() {
+		String affichage="";
+		for (int x = 0; x < this.tab.length; x++) {
+			affichage+=" \n|";
+			for (int y = 0; y < this.tab[x].length; y++) {
+				affichage+=" "+this.tab[y][x].gameHunterShowView(this, new Position(y, x))+" |";
+			}
+		}
+		return affichage;
+	}
+	
 	/**
 	 * Retourne les La Map sous la forme textuelle d'un tableau avec des obstacles, des buffs, des Entity
 	 */
