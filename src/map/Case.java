@@ -11,7 +11,7 @@ import render.text.Hunter;
  * Definit le type de case (obstacle ou sol), un compteur pour
  * du nombre tours depuis le dernier passage de la bete, un boolean qui 
  * precise si le case est visible pour le chasseur et un tableaux qui defini
- * le buff actif de cete case.
+ * le buff ramassable sur cete case.
  * @author nath
  *
  */
