@@ -7,7 +7,7 @@ import render.text.Beast;
  * @author prognonq
  *
  */
-public class Trap implements Bonus {
+public class Trap implements IBonus {
 	
 	private Position pos;
 	private final String NAME = "Piege";

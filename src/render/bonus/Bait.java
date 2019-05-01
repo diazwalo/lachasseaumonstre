@@ -7,7 +7,7 @@ import render.text.Hunter;
  * @author prognonq
  *
  */
-public class Bait implements Bonus {
+public class Bait implements IBonus {
 	private Position pos;
 	private final String NAME = "leurre";
 	

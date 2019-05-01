@@ -6,7 +6,7 @@ import map.Case;
 import map.CaseType;
 import map.Mouvment;
 import map.Position;
-import render.bonus.Bonus;
+import render.bonus.IBonus;
 
 /**
  * Cette Class defini les caracteristiques d'une Entity
@@ -16,7 +16,7 @@ import render.bonus.Bonus;
 
 public abstract class Entity {
 	private Position pos;
-	private ArrayList<Bonus> inventory = new ArrayList<>();
+	private ArrayList<IBonus> inventory = new ArrayList<>();
 	
 	public Entity(int posX, int posY) {
 		this.pos=new Position(posX, posY);

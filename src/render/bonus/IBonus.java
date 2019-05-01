@@ -1,6 +1,6 @@
 package render.bonus;
 
-public interface Bonus {
+public interface IBonus {
 	public void install(int x , int y);
 	public String getName();
 }
