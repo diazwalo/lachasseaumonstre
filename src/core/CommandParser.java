@@ -2,6 +2,7 @@ package core;
 
 import config.Config;
 import config.GameMode;
+import config.Map;
 
 /**
  * Cette classe va manipuler les arguments passe en ligne de commande lors du lancement du jeu afin de creer la configuration du jeu.
@@ -52,6 +53,9 @@ public class CommandParser
 				break;
 			case "tp":
 				this.config.setNbTeleportation(Integer.valueOf(argumentExploded[1]));
+				break;
+			case "map":
+				this.handleMap(argumentExploded[1]);
 				break;
 			default:
 				this.throwWhenStart(argument);
@@ -125,6 +129,26 @@ public class CommandParser
 			break;
 		default:
 			new IllegalArgumentException("Le mode de jeu " + gameMode + " n'existe pas.");
+			break;
+		}
+	}
+	
+	/**
+	 * Cette fonction analyse le plateau de jeu dans la ligne de commande, le reconnnait et modifie la configuration du jeu.
+	 * @param map Un argument sous la forme --map=XX
+	 */
+	private void handleMap(String map)
+	{
+		switch(map)
+		{
+		case "carre":
+			this.config.setMap(Map.SQUARE);
+			break;
+		case "circular":
+			this.config.setMap(Map.CIRCULAR);
+			break;
+		default:
+			new IllegalArgumentException("Le plateau de jeu " + map + " n'existe pas.");
 			break;
 		}
 	}

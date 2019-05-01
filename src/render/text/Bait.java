@@ -59,4 +59,22 @@ public class Bait implements Bonus {
 		return "B";
 	}
 
+	/**
+	 * retourne la position du leurre
+	 * @return
+	 */
+	public Position getPos() {
+		return pos;
+	}
+	
+	/**
+	 * retourne le nom du Bonus
+	 * @return
+	 */
+	public String getNAME() {
+		return NAME;
+	}
+	
+	
+
 }

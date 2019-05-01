@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import config.GameMode;
+import config.Map;
 import core.CommandParser;
 
 public class CommandParserTest
@@ -85,6 +86,22 @@ public class CommandParserTest
 	}
 	
 	@Test
+	public void testArgsMap()
+	{
+		String[] cmd0 = {};
+		String[] cmd1 = {"--map=circular"};
+		String[] cmd2 = {"--map=circular", "--map=carre"};
+
+		CommandParser commandParser0 = new CommandParser(cmd0);
+		CommandParser commandParser1 = new CommandParser(cmd1);
+		CommandParser commandParser2 = new CommandParser(cmd2);
+
+		assertEquals(Map.SQUARE, commandParser0.getConfig().getMap());
+		assertEquals(Map.CIRCULAR, commandParser1.getConfig().getMap());
+		assertEquals(Map.SQUARE, commandParser2.getConfig().getMap());
+	}
+	
+	@Test
 	public void testArgsTrap()
 	{
 		String[] cmd0 = {};
@@ -155,7 +172,7 @@ public class CommandParserTest
 	@Test
 	public void testArgsFull()
 	{
-		String[] cmd = {"--width=42", "--height=42", "--gamemode=ai", "--ward", "--trap", "--camouflage", "--bait"};
+		String[] cmd = {"--width=42", "--height=42", "--gamemode=ai", "--map=circular", "--ward", "--trap", "--camouflage", "--bait"};
 		
 		CommandParser commandParser0 = new CommandParser(cmd);
 		
@@ -163,6 +180,7 @@ public class CommandParserTest
 		assertEquals(42, commandParser0.getConfig().getHeight());
 		assertEquals(GameMode.AIvsAI, commandParser0.getConfig().getGameMode());
 		assertEquals(3, commandParser0.getConfig().getNbTeleportation());
+		assertEquals(Map.CIRCULAR, commandParser0.getConfig().getMap());
 		assertTrue(commandParser0.getConfig().isWard());
 		assertTrue(commandParser0.getConfig().isTrap());
 		assertTrue(commandParser0.getConfig().isCamouflage());

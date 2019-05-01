@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import config.Config;
 import config.GameMode;
+import config.Map;
 
 public class ConfigTest
 {
@@ -45,6 +46,13 @@ public class ConfigTest
 		this.config.setNbTeleportation(42);
 		assertEquals(this.config.getNbTeleportation(), 42);
 	}
+    
+    @Test
+	public void testMap()
+	{
+		this.config.setMap(Map.CIRCULAR);
+		assertEquals(Map.CIRCULAR, this.config.getMap());
+	}
 	
 	@Test
     public void testTrap()
@@ -79,10 +87,12 @@ public class ConfigTest
     {
     	this.config.setDefaultConfig();
     	
-    	assertEquals(this.config.getWidth(), 11);
-    	assertEquals(this.config.getHeight(), 11);
-    	assertEquals(this.config.getGameMode(), GameMode.BEASTvsAI);
-    	assertEquals(this.config.getNbTeleportation(), 3);
+    	assertEquals(11, this.config.getWidth());
+    	assertEquals(11, this.config.getHeight());
+    	assertEquals(GameMode.BEASTvsAI, this.config.getGameMode());
+    	assertEquals(3, this.config.getNbTeleportation());
+    	assertEquals(Map.SQUARE, this.config.getMap());
+    	
     	assertFalse(this.config.isTrap());
     	assertFalse(this.config.isCamouflage());
     	assertFalse(this.config.isWard());

@@ -3,6 +3,7 @@ package map;
 import java.util.ArrayList;
 import java.util.List;
 
+import interaction.Interaction;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -145,27 +146,32 @@ public class Case {
 	 */
 	public String gameHunterShowView(IMap map, Position posCase) {
 		String res=caseType.toString();
-		
+
 		String[] toStringConf=new String[] { "p", "c", "w", "l" };
 		for (int i = 0; i < buff.length; i++) {
 			if(buff[i] && ! this.buff[1] && ! this.buff[3]) res=toStringConf[i];
 		}
-		// TODO : Les cases adjacentes ne sont peut etre pas les bonnes car on ne voit pas la bete meme a cote d'elle ni les traces entre 1 et 4 pas...
-		List<Position> posAdj=map.getHunter().getPos().getAdjacentPosition(map);
-		
-		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
-			if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
-			
+
+		List<Position> posAdj=posCase.getAdjacentPosition(map);
+
+		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !this.blinded) {
 			for (Position position : posAdj) {
 				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
-					if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
-					if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
-				}else if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
+					if(this.beastWalk==0) {
+						res=map.getBeast().toString();
+					}else {
+						res=this.beastWalk+"";
+					}
+				}
 			}
+		}else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())){
+			res=map.getHunter().toString();
 		}
-		
-		if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
-			
+
+		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
+			res=map.getHunter().toString();
+		}
+
 		return res;
 	}
 	

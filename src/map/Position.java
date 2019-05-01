@@ -123,8 +123,8 @@ public class Position {
 	public void checkPosition(Position p, List<Position> positionAdjacent, IMap sm) {
 		if(p.getPosX() < 0 || p.getPosY() < 0) return;
 		if(p.getPosX() > sm.getTab().length-1 || p.getPosY() > sm.getTab()[p.getPosX()].length-1) return;
-		if(sm.getTab()[p.getPosX()][p.getPosY()] instanceof Case 
-				&& sm.getTab()[p.getPosX()][p.getPosY()].getCaseType().equals(CaseType.SOL)) {
+		
+		if(sm.getTab()[p.getPosX()][p.getPosY()] instanceof Case && sm.getTab()[p.getPosX()][p.getPosY()].getCaseType().equals(CaseType.SOL)) {
 			positionAdjacent.add(p);
 		}
 	}
