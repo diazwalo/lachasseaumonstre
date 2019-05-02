@@ -114,8 +114,16 @@ public class GameHunter extends AbstractGame {
 	public boolean setTrap() {
 		if(this.map.getHunter().canSetTrap()) {
 			this.map.getHunter().canSetTrap();
-			this.map.set//POUR LA SUITEEEEEEEEEEEEEEE
-		}
+			/*
+			 * 
+			 * 
+			 * MLALALLALALALAL
+			 * 
+			 * 
+			 * 
+			 */
+			/*this.map.set*///POUR LA SUITEEEEEEEEEEEEEEE
+		}return true;
 	}
 	
 	/*public boolean setTrap() {
@@ -135,7 +143,7 @@ public class GameHunter extends AbstractGame {
 	 */
 	public boolean setWard() {
 		if(this.map.getHunter().canSetWard()) {
-			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBonus(new boolean[] {false,false,true,false});
+			//this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBonus(new boolean[] {false,false,true,false});
 			return true;
 		}
 		else {
