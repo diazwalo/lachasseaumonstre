@@ -109,7 +109,16 @@ public class GameHunter extends AbstractGame {
 	 * Retourne faux si le joueur n'a plus de piege.
 	 * @return boolean
 	 */
+	
+	
 	public boolean setTrap() {
+		if(this.map.getHunter().canSetTrap()) {
+			this.map.getHunter().canSetTrap();
+			this.map.set//POUR LA SUITEEEEEEEEEEEEEEE
+		}
+	}
+	
+	/*public boolean setTrap() {
 		if(this.map.getHunter().canSetTrap()) {
 			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBonus(new boolean[] {true,false,false,false});
 			return true;
@@ -117,7 +126,7 @@ public class GameHunter extends AbstractGame {
 		else {
 			return false;
 		}
-	}
+	}*/
 	
 	/**
 	 * Pose une balsie de vision sur le case courante.
