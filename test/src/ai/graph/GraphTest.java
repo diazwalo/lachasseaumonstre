@@ -27,14 +27,20 @@ public class GraphTest
     public void beforeTest()
     {    	
     	this.config = new Config();
-        this.config.setWidth(3);
-        this.config.setHeight(3);
+        this.config.setWidth(5);
+        this.config.setHeight(5);
     }
     
     @Test
     public void testGenerateNode()
     {
-    	String[] awaitedPosition = {"0:0", "0:1", "0:2", "1:0", "1:1", "1:2", "2:0", "2:1", "2:2"};
+    	String[] awaitedPosition = {
+    	        "0:0", "0:1", "0:2", "0:3", "0:4",
+                "1:0", "1:1", "1:2", "1:3", "1:4",
+                "2:0", "2:1",        "2:3", "2:4", //There is a blank because there is an obstacle on map
+                "3:0", "3:1", "3:2", "3:3", "3:4",
+                "4:0", "4:1", "4:2", "4:3", "4:4"
+    	};
     	IMap map = new SquareMap(this.config);
     	map.generationMap();
 
@@ -55,11 +61,21 @@ public class GraphTest
     {
     	IMap map = new SquareMap(this.config);
     	map.generationMap();
+    	System.out.println(map);
 
     	Graph graph = new Graph();
     	Map<String, Edge> generatedEdge = graph.generateEdge(map);
-    	
-    	assertEquals(40, generatedEdge.size());
+
+    	//There are 128 edges on a 5x5 graph
+        /* Each numbers show the number of valid movement
+         * 3+5+5+5+3 =21
+         * 5+7+7+7+5 =31
+         * 5+7+0+7+5 =24
+         * 5+7+7+7+5 =31
+         * 3+5+5+5+3 =21
+         * =128
+         */
+    	assertEquals(128, generatedEdge.size());
     }
     
 	@Test
