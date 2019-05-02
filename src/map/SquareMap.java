@@ -1,5 +1,6 @@
 package map;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import config.Config;
@@ -24,8 +25,8 @@ public class SquareMap implements IMap {
 	private Config config;
 	private boolean beastWin;
 	private boolean hunterWin;
-
-
+	private ArrayList<IBonus> bonusActif=new ArrayList<IBonus>();
+	
 	/**
 	 * Construit un tableau de longueur len et de largeur wid et set Beast, Hunter et la Config
 	 * @param len
@@ -276,4 +277,13 @@ public class SquareMap implements IMap {
 		}
 		return affichage;
 	}
+	
+	public ArrayList<IBonus> getBonusActif(){
+		return this.bonusActif;
+	}
+	
+	public void setBonus(IBonus ib) {
+		this.bonusActif.add(ib);
+	}
+	
 }
