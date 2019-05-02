@@ -96,7 +96,7 @@ public class GameHunter extends AbstractGame {
 			this.setTrap();
 		}
 		else if (choix.equals("2")) {
-			this.setWard();
+			this.setWard(); 
 		}
 		else {
 			return;
