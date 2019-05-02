@@ -58,11 +58,11 @@ public class Kruskal
 		
 		for (String name : this.listEdge.keySet()) {
 			EdgeTmp edge = new EdgeTmp(
-					name, 
-					this.listEdge.get(name).getNodeOneName(), 
-					this.listEdge.get(name).getNodeTwoName(), 
-					this.listEdge.get(name).getWeight()
-					);
+				name,
+				this.listEdge.get(name).getNodeOneName(),
+				this.listEdge.get(name).getNodeTwoName(),
+				this.listEdge.get(name).getWeight()
+			);
 			edgeTmp.add(edge);
 		}
 		
@@ -77,7 +77,7 @@ public class Kruskal
 			if(!this.find(e.getNodeOneName()).equals(this.find(e.getNodeTwoName()))) {
 				Position p = NodeUtil.formatNode(edgeTmp.get(i).getNodeTwoName());
 				positions.add(p);
-				
+				System.out.println(p);
 				this.union(edgeTmp.get(i).getNodeOneName(), edgeTmp.get(i).getNodeTwoName());
 			}
 		}
@@ -97,8 +97,9 @@ public class Kruskal
 	{
 		this.listNode.get(x).setPrecedent(this.find(x));
 		this.listNode.get(y).setPrecedent(this.find(y));
-		
-		if(this.listNode.get(x) != this.listNode.get(y)) {
+
+		//if(this.listNode.get(x) != this.listNode.get(y)) {
+		if(!this.listNode.get(x).equals(this.listNode.get(y))) {
 			this.listNode.get(x).setPrecedent(y);
 		}
 	}
