@@ -6,6 +6,9 @@ import config.Config;
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
+import render.bonus.Camouflage;
+import render.bonus.Trap;
+import render.bonus.Ward;
 
 /**
  * Cette classe definit les caracteristique principale de la classe jouable Hunter
@@ -13,8 +16,8 @@ import map.Mouvment;
  *
  */
 public class Hunter extends Entity {
-	private int trapDispo;
-	private int wardDispo;
+	ArrayList<Trap> traps=new ArrayList<Trap>();
+	ArrayList<Ward> wards=new ArrayList<Ward>();
 	private int blinded=0;
 	/**
 	 * instancie Hunter a la Position posX, posY
@@ -23,16 +26,27 @@ public class Hunter extends Entity {
 	 */
 	public Hunter(int posX, int posY, Config config) {
 		super(posX, posY);
-		this.wardDispo=0;
-		this.trapDispo=0;
 	}
 
+	public void addTrap(Trap trp) {
+		this.traps.add(trp);
+	}
+	
+	public void addCamo(Ward wrd) {
+		this.wards.add(wrd);
+	}
+	
+	
 	/**
 	 * renvoie le nombre de piege disponible
 	 * @return int
 	 */
 	public int getTrapDispo() {
-		return this.trapDispo;
+		int res =0;
+		for(Trap t : traps ) {
+			res++;
+		}
+		return res;
 	}
 	
 	/**
@@ -40,7 +54,11 @@ public class Hunter extends Entity {
 	 * @return int
 	 */
 	public int getWardDispo() {
-		return this.wardDispo;
+		int res=0;
+		for(Ward w : wards) {
+			res++;
+		}
+		return res;
 	}
 	
 	/**
@@ -67,8 +85,8 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean canSetTrap() {
-		if(this.trapDispo > 0) {
-			this.trapDispo--;
+		if(getTrapDispo() > 0) {
+			traps.remove(0);
 			return true;
 		}
 		return false;
@@ -80,8 +98,8 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean canSetWard() {
-		if(this.wardDispo > 0) {
-			this.wardDispo--;
+		if(getWardDispo()> 0) {
+			wards.remove(0);
 			return true;
 		}
 		return false;
