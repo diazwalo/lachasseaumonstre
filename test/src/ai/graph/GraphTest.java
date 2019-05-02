@@ -61,7 +61,6 @@ public class GraphTest
     {
     	IMap map = new SquareMap(this.config);
     	map.generationMap();
-    	System.out.println(map);
 
     	Graph graph = new Graph();
     	Map<String, Edge> generatedEdge = graph.generateEdge(map);

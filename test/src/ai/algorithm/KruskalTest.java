@@ -25,8 +25,8 @@ private Config config;
     public void beforeTest()
     {   
 		this.config = new Config();
-        this.config.setWidth(10);
-        this.config.setHeight(10);
+        this.config.setWidth(5);
+        this.config.setHeight(5);
     }
 
 	@Test
