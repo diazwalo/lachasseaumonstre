@@ -84,4 +84,12 @@ public class Ward implements IBonus {
 	public String toString() {
 		return "W";
 	}
+
+	@Override
+	public void nextTurnBonus() {
+		// TODO Auto-generated method stub
+		if(this.timer > 0) {
+			this.refresh();
+		}
+	}
 }

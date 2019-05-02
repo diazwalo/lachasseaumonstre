@@ -21,7 +21,7 @@ public class Case {
 	private CaseType caseType;
 	private int beastWalk;
 	private boolean hideToHunter;
-	private boolean[] buff;
+	private boolean[] bonus;
 	private final int TRACE=5;
 	private boolean blinded;
 	
@@ -46,7 +46,7 @@ public class Case {
 		if(posBeast) this.beastWalk=0;
 		else this.beastWalk=-1;
 		this.hideToHunter=false;
-		this.buff=buff;
+		this.bonus=buff;
 		this.blinded = false;
 	}
 	
@@ -78,8 +78,8 @@ public class Case {
 	 * retourne le tableau de buff actif
 	 * @return boolean[]
 	 */
-	public boolean[] getBuff() {
-		return this.buff;
+	public boolean[] getBonus() {
+		return this.bonus;
 	}
 		
 	/**
@@ -101,8 +101,8 @@ public class Case {
 	 * modifie le tableau de buff en le remplacant par celui en parametre
 	 * @param buff
 	 */
-	public void setBuff(boolean[] buff) {
-		this.buff=buff;
+	public void setBonus(boolean[] bonus) {
+		this.bonus=bonus;
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class Case {
 		if(posBeast) this.setBeastWalk(0);
 		else if(this.beastWalk!=-1) this.setBeastWalk(this.beastWalk+1);
 	}
-	
+
 	/**
 	 * Retourne un boolean qui indique si la case est un obstacle ou non
 	 * @return boolean
@@ -121,7 +121,7 @@ public class Case {
 	public boolean isObstacle() {
 		return this.caseType == CaseType.OBSTACLE;
 	}
-	
+
 	/**
 	 * Montre la map tel que le joueur doit la voir lorsqu'il joue la Bete
 	 * @param map
@@ -130,7 +130,7 @@ public class Case {
 	 */
 	public String gameBeastShowView(IMap map, Position posCase) {
 		String res=caseType.toString();
-		if( ! this.buff[0] && ! this.buff[2]) {
+		if( ! this.bonus[0] && ! this.bonus[2]) {
 			res=this.toString();
 		}
 		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
@@ -148,8 +148,8 @@ public class Case {
 		String res=caseType.toString();
 
 		String[] toStringConf=new String[] { "p", "c", "w", "l" };
-		for (int i = 0; i < buff.length; i++) {
-			if(buff[i] && ! this.buff[1] && ! this.buff[3]) res=toStringConf[i];
+		for (int i = 0; i < bonus.length; i++) {
+			if(bonus[i] && ! this.bonus[1] && ! this.bonus[3]) res=toStringConf[i];
 		}
 
 		List<Position> posAdj=posCase.getAdjacentPosition(map);
@@ -189,8 +189,8 @@ public class Case {
 		if(this.beastWalk>=this.TRACE) res=".";
 		if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
 		String[] toStringConf=new String[] { "p", "c", "w", "l" };
-		for (int i = 0; i < buff.length; i++)
-			if(buff[i]) res=toStringConf[i];
+		for (int i = 0; i < bonus.length; i++)
+			if(bonus[i]) res=toStringConf[i];
 		return res;
 	}
 }

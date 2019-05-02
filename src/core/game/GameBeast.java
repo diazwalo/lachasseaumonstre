@@ -213,7 +213,7 @@ public class GameBeast extends AbstractGame{
 	 */
 	public boolean setBait() {
 		if(this.map.getBeast().canSetBait()) {
-			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBuff(new boolean[] {false,false,false,true});
+			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBonus(new boolean[] {false,false,false,true});
 			
 			
 			return true;

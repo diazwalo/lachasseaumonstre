@@ -23,6 +23,8 @@ public class Hunter extends Entity {
 	 */
 	public Hunter(int posX, int posY, Config config) {
 		super(posX, posY);
+		this.wardDispo=0;
+		this.trapDispo=0;
 	}
 
 	/**
@@ -42,7 +44,7 @@ public class Hunter extends Entity {
 	}
 	
 	/**
-	 * renvoie si le hunter est aveuglé par le camouflage de la bete
+	 * renvoie si le hunter est aveuglï¿½ par le camouflage de la bete
 	 * @return boolean
 	 */
 	public boolean isBlinded() {
@@ -54,7 +56,7 @@ public class Hunter extends Entity {
 	}
 	
 	/**
-	 * set le nombre de tour où le chasseur est aveuglé par le camouflage de la bete
+	 * set le nombre de tour oï¿½ le chasseur est aveuglï¿½ par le camouflage de la bete
 	 */
 	public void setBlinded() {
 		blinded=2;

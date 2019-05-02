@@ -27,7 +27,7 @@ public class Camouflage implements IBonus {
 	}
 	
 	/**
-	 * place ce Bonus a la position données
+	 * place ce Bonus a la position donnï¿½es
 	 */
 	public void install(Position pos) {
 		this.pos = pos;
@@ -58,5 +58,11 @@ public class Camouflage implements IBonus {
 	@Override
 	public String getName() {
 		return this.NAME;
+	}
+
+	@Override
+	public void nextTurnBonus() {
+		// TODO Auto-generated method stub
+		
 	}
 }

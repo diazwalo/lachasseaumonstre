@@ -75,6 +75,12 @@ public class Bait implements IBonus {
 	public String getNAME() {
 		return NAME;
 	}
+
+	@Override
+	public void nextTurnBonus() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

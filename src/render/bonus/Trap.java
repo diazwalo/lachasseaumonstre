@@ -80,5 +80,11 @@ public class Trap implements IBonus {
 	public void isUsed() {
 		this.pos=null;
 	}
+
+	@Override
+	public void nextTurnBonus() {
+		// TODO Auto-generated method stub
+		
+	}
   
 }

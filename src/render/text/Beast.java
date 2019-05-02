@@ -29,8 +29,8 @@ public class Beast extends Entity{
 		super(posX, posY);
 		this.trapped = false;
 		this.tp=config.getNbTeleportation();
-		this.camDispo=2;
-		this.baitDispo=2;
+		this.camDispo=0;
+		this.baitDispo=0;
 	}
 	
 	/**
