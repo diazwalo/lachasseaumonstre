@@ -57,7 +57,7 @@ public class Bait implements IBonus {
 	 * retourne Beast sous la forme textuelle
 	 */
 	public String toString() {
-		return "B";
+		return "b";
 	}
 
 	/**

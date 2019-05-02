@@ -93,7 +93,7 @@ public class SquareMap implements IMap {
 				posTrap=posTrapTempo;
 			}
 		}
-		tab[posTrap.getPosX()][posTrap.getPosY()].setBonus(new boolean[] { true, false, false, false});
+		//tab[posTrap.getPosX()][posTrap.getPosY()].setBonus(new boolean[] { true, false, false, false});
 
 		while(posWard.equals(null)) {
 			int posWardX=r.nextInt(this.tab.length)/2;
@@ -104,7 +104,7 @@ public class SquareMap implements IMap {
 				posWard=posWardTempo;
 			}
 		}
-		tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, false, true, false});
+		//tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, false, true, false});
 
 		while(posBait.equals(null)) {
 			int posBaitX=r.nextInt((this.tab.length)/2)+((this.tab.length)/2);
@@ -115,7 +115,7 @@ public class SquareMap implements IMap {
 				posBait=posBaitTempo;
 			}
 		}
-		tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, false, false, true});
+		//tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, false, false, true});
 
 		while(posCamouflage.equals(null)) {
 			int posCamouflageX=r.nextInt((this.tab.length)/2)+((this.tab.length)/2);
@@ -126,7 +126,7 @@ public class SquareMap implements IMap {
 				posCamouflage=posCamouflageTempo;
 			}
 		}
-		tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, true, false, false});
+		//tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, true, false, false});
 	}
 
 	/**

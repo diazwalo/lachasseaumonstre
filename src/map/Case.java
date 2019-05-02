@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import interaction.Interaction;
+import render.bonus.Bait;
+import render.bonus.Camouflage;
+import render.bonus.Trap;
+import render.bonus.Ward;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -21,7 +25,8 @@ public class Case {
 	private CaseType caseType;
 	private int beastWalk;
 	private boolean hideToHunter;
-	private boolean[] bonus;
+	private boolean[] bonusBeast;
+	private boolean[] bonusHunter;
 	private final int TRACE=5;
 	private boolean blinded;
 	
@@ -32,7 +37,7 @@ public class Case {
 	 * @param posBeast
 	 */
 	public Case(CaseType caseType, boolean posBeast) {
-		this(caseType, posBeast, new boolean[] {false, false, false, false});
+		this(caseType, posBeast, new boolean[] {false, false }, new boolean[] {false, false});
 	}
 	
 	/**
@@ -41,12 +46,13 @@ public class Case {
 	 * @param posBeast
 	 * @param buff
 	 */
-	public Case(CaseType caseType, boolean posBeast, boolean[] buff) {
+	public Case(CaseType caseType, boolean posBeast, boolean[] bonusBeast, boolean[] bonusHunter) {
 		this.caseType=caseType;
 		if(posBeast) this.beastWalk=0;
 		else this.beastWalk=-1;
 		this.hideToHunter=false;
-		this.bonus=buff;
+		this.bonusBeast=bonusBeast;
+		this.bonusHunter=bonusHunter;
 		this.blinded = false;
 	}
 	
@@ -75,11 +81,19 @@ public class Case {
 	}
 	
 	/**
-	 * retourne le tableau de buff actif
+	 * retourne le tableau de buff ramassables sur cette case pour le Hunter
 	 * @return boolean[]
 	 */
-	public boolean[] getBonus() {
-		return this.bonus;
+	public boolean[] getBonusHunter() {
+		return this.bonusHunter;
+	}
+	
+	/**
+	 * retourne le tableau de buff actif ramassables sur cette case pour le HunteBeast
+	 * @return boolean[]
+	 */
+	public boolean[] getBonusBeast() {
+		return this.bonusBeast;
 	}
 		
 	/**
@@ -101,8 +115,16 @@ public class Case {
 	 * modifie le tableau de buff en le remplacant par celui en parametre
 	 * @param buff
 	 */
-	public void setBonus(boolean[] bonus) {
-		this.bonus=bonus;
+	public void setBonusHunter(boolean[] bonusHunter) {
+		this.bonusHunter=bonusHunter;
+	}
+	
+	/**
+	 * modifie le tableau de buff en le remplacant par celui en parametre
+	 * @param buff
+	 */
+	public void setBonusBeast(boolean[] bonusBeast) {
+		this.bonusBeast=bonusBeast;
 	}
 	
 	/**
@@ -130,9 +152,16 @@ public class Case {
 	 */
 	public String gameBeastShowView(IMap map, Position posCase) {
 		String res=caseType.toString();
-		if( ! this.bonus[0] && ! this.bonus[2]) {
+		String[] toStringBonusBeast=new String[] { new Trap().toString(), new Ward().toString()};
+		
+		//TODO : a changer
+		/*if( ! this.bonusHunter[0] && ! this.bonusHunter[1]) {
 			res=this.toString();
+		}*/
+		for (int i = 0; i < bonusBeast.length; i++) {
+			if(this.bonusHunter[i]) res=toStringBonusBeast[i];
 		}
+		
 		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
 		else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
 		return res;
@@ -147,9 +176,10 @@ public class Case {
 	public String gameHunterShowView(IMap map, Position posCase) {
 		String res=caseType.toString();
 
-		String[] toStringConf=new String[] { "p", "c", "w", "l" };
-		for (int i = 0; i < bonus.length; i++) {
-			if(bonus[i] && ! this.bonus[1] && ! this.bonus[3]) res=toStringConf[i];
+		String[] toStringBonusHunter=new String[] { new Bait().toString(), new Camouflage().toString()};
+		
+		for (int i = 0; i < bonusHunter.length; i++) {
+			if(this.bonusHunter[i]) res=toStringBonusHunter[i];
 		}
 
 		List<Position> posAdj=posCase.getAdjacentPosition(map);
@@ -185,12 +215,17 @@ public class Case {
 	 * Renvoie sous forme de chaine de caractere le buff actif sur la Case ou la trace de la bete au cas echeant
 	 */
 	public String toString() {
+		String[] toStringBonusBeast=new String[] { new Trap().toString(), new Ward().toString()};
+		String[] toStringBonusHunter=new String[] { new Bait().toString(), new Camouflage().toString()};
+		
 		String res=caseType.toString();
 		if(this.beastWalk>=this.TRACE) res=".";
 		if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
-		String[] toStringConf=new String[] { "p", "c", "w", "l" };
-		for (int i = 0; i < bonus.length; i++)
-			if(bonus[i]) res=toStringConf[i];
+
+		for (int i = 0; i < this.bonusBeast.length; i++)
+			if(bonusBeast[i]) res=toStringBonusBeast[i];
+		for (int i = 0; i < this.bonusHunter.length; i++)
+			if(bonusHunter[i]) res=toStringBonusHunter[i];
 		return res;
 	}
 }

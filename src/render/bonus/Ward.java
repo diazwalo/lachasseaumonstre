@@ -82,7 +82,7 @@ public class Ward implements IBonus {
 	 * retourne la balise sous la forme textuelle
 	 */
 	public String toString() {
-		return "W";
+		return "w";
 	}
 
 	@Override

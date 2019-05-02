@@ -45,7 +45,6 @@ public class Camouflage implements IBonus {
 	 * retourne la position du camouflage
 	 * @return
 	 */
-
 	public Position getPos() {
 		return pos;
 	}
@@ -54,10 +53,13 @@ public class Camouflage implements IBonus {
 	 * retourne le nom
 	 * @return
 	 */
-
 	@Override
 	public String getName() {
 		return this.NAME;
+	}
+	
+	public String toString() {
+		return "c";
 	}
 
 	@Override

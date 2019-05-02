@@ -80,6 +80,10 @@ public class Trap implements IBonus {
 	public void isUsed() {
 		this.pos=null;
 	}
+	
+	public String toString() {
+		return "t";
+	}
 
 	@Override
 	public void nextTurnBonus() {
