@@ -22,7 +22,7 @@ public class GameHunter extends AbstractGame {
 	}
 	
 	/**
-	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqué, decouverte ou si elle a decouvert toute la map.
+	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloquï¿½, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
 		System.out.println(map.gameHunterToString()+"\n");
@@ -46,7 +46,7 @@ public class GameHunter extends AbstractGame {
 	}
 	
 	/**
-	  * hunterTurn retourne true lorsque le mouvement entré par le joueur est valide et dans ce cas l'effectue. 
+	  * hunterTurn retourne true lorsque le mouvement entrï¿½ par le joueur est valide et dans ce cas l'effectue. 
 	  */
 	public boolean hunterTurn() {
 		boolean mvtValide=false;
@@ -133,69 +133,6 @@ public class GameHunter extends AbstractGame {
 			return false;
 		}
 	}
-	
-	
-	
-	
-	/**
-	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a été trouvé par le chasseur,
-	 * MAPDISCOVERED si la map a été entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloqué.
-	 */
-	/*public void checkGameStatus() {
-		AGame.gameStatus=GameStatus.INGAME;
-		if(super.statusBeastFound()) {
-			AGame.gameStatus=GameStatus.BEASTFOUND;
-			super.map.setHunterWin(true);
-		}
-		else if(super.statusMapDiscovered()) {
-			AGame.gameStatus=GameStatus.MAPDISCOVERED;
-			super.map.setBeastWin(true);
-		}
-		else if(super.statusBeastblock()) {
-			AGame.gameStatus=GameStatus.BEASTBLOCK;
-			super.map.setHunterWin(true);
-		}
-	}*/
-	
-	/**
-	 * statusBastFound retourne true si la bete a été trouvé par le chasseur.
-	 */
-	/*public boolean statusBeastFound() {
-		return super.map.getBeast().isPosEnt(super.map.getHunter().getPos().getPosX(), super.map.getHunter().getPos().getPosY());
-	}*/
-	
-	/**
-	 * statusMapDiscovered retourne true si la bete a entierement exploré la map.
-	 */
-	/*public boolean statusMapDiscovered() {
-		boolean pasBeast=true;
-		for(int i=0; i<super.map.getTab().length; i++) {
-			for (int j=0; j<super.map.getTab().length; j++) {
-				
-				if(super.map.getTab()[i][j].getCaseType()==CaseType.SOL && super.map.getTab()[i][j].getBeastWalk()==-1) 
-					pasBeast=false;
-				}
-		}
-		return pasBeast;
-	}*/
-	
-	/**
-	 * statusBeastblock retourne true si la bete se retrouve bloquee.
-	 */
-	/*public boolean statusBeastblock() {
-		if(super.map.getBeast().getMvtEmptyCase(super.map.getTab()).isEmpty() ) {
-			
-			if(super.map.getBeast().teleportation()) {
-				if(! this.tpBeast()) {
-					return true;
-				}
-			}else {
-				return true;
-			}
-			
-		}
-		return false;
-	}*/
 	
 	/**
 	 * AfficherBeastPas affiche le nombre de pas depuis le dernier passage de la bete sur la case courante du chasseur.

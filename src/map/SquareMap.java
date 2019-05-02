@@ -33,8 +33,8 @@ public class SquareMap implements IMap {
 	 */
 	public SquareMap(Config config) {
 		this.hunter = new Hunter(0, 0, config);
-		int widthTab=config.getWidth()-1;
-		int heightTab=config.getHeight()-1;
+		int widthTab=config.getWidth();
+		int heightTab=config.getHeight();
 		
 		if(widthTab < 5 || heightTab < 5) {
 			widthTab=5;
@@ -86,7 +86,7 @@ public class SquareMap implements IMap {
 			int posTrapY=r.nextInt(this.tab[posTrapX].length)/2;
 			Position posTrapTempo=new Position(posTrapX, posTrapY);
 			/*
-			 * LAAAAA ca peut pas marché le tableau n'est pas encore fait
+			 * LAAAAA ca peut pas marchï¿½ le tableau n'est pas encore fait
 			 */
 			if(! this.tab[posTrapX][posTrapY].isObstacle() && ! this.beast.getPos().equals(posTrapTempo) && ! this.hunter.getPos().equals(posTrapTempo)) {
 				posTrap=posTrapTempo;

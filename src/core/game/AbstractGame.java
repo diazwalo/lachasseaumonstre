@@ -21,19 +21,16 @@ public abstract class AbstractGame {
 	public abstract boolean beastTurn();
 	public abstract boolean hunterTurn();
 	public abstract void poserPiege();
-	/*public abstract boolean statusBeastFound();
-	public abstract boolean statusMapDiscovered();
-	public abstract boolean statusBeastblock();*/
 	
 	/**
-	 * statusBastFound retourne true si la bete a été trouvé par le chasseur.
+	 * statusBastFound retourne true si la bete a ï¿½tï¿½ trouvï¿½ par le chasseur.
 	 */
 	public boolean statusBeastFound() {
 		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
 	}
 	
 	/**
-	 * statusMapDiscovered retourne true si la bete a entierement exploré la map.
+	 * statusMapDiscovered retourne true si la bete a entierement explorï¿½ la map.
 	 */
 	public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
@@ -66,8 +63,8 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a été trouvé par le chasseur,
-	 * MAPDISCOVERED si la map a été entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloqué.
+	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a ï¿½tï¿½ trouvï¿½ par le chasseur,
+	 * MAPDISCOVERED si la map a ï¿½tï¿½ entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloquï¿½.
 	 */
 	public void checkGameStatus() {
 		AbstractGame.gameStatus=GameStatus.INGAME;
@@ -106,7 +103,7 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * Verifie si la bete ou le chasseur se trouve sur une case où un piege est actif, l'active et l'enleve	
+	 * Verifie si la bete ou le chasseur se trouve sur une case oï¿½ un piege est actif, l'active et l'enleve	
 	 */
 	public void checkPiege() {
 		if(this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].getBuff().equals(new boolean[] {true,false,false,false})) {

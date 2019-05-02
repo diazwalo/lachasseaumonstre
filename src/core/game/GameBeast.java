@@ -24,7 +24,7 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	/**
-	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqué, decouverte ou si elle a decouvert toute la map.
+	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloquï¿½, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
 		System.out.println(map.gameBeastToString()+" \n");
@@ -47,13 +47,13 @@ public class GameBeast extends AbstractGame{
 	
 	
 	 /**
-	  * beastTurn retourne true lorsque le mouvement entré par le joueur est valide et dans ce cas l'effectue.
+	  * beastTurn retourne true lorsque le mouvement entrï¿½ par le joueur est valide et dans ce cas l'effectue.
 	  * @return boolean
 	  */
 	public boolean beastTurn() {
 		boolean mvtValide=false;
 		if(this.map.getBeast().getTrapped()) {
-			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous êtes piegé");
+			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous ï¿½tes piegï¿½");
 			mvtValide=true;
 			return mvtValide;
 		}else {
@@ -93,27 +93,7 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	/**
-	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a été trouvé par le chasseur,
-	 * MAPDISCOVERED si la map a été entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloqué.
-	 */
-	/*public void checkGameStatus() {
-		AGame.gameStatus=GameStatus.INGAME;
-		if(super.statusBeastFound()) {
-			AGame.gameStatus=GameStatus.BEASTFOUND;
-			super.map.setHunterWin(true);
-		}
-		else if(super.statusMapDiscovered()) {
-			AGame.gameStatus=GameStatus.MAPDISCOVERED;
-			super.map.setBeastWin(true);
-		}
-		else if(super.statusBeastblock()) {
-			AGame.gameStatus=GameStatus.BEASTBLOCK;
-			super.map.setHunterWin(true);
-		}
-	}*/
-	
-	/**
-	 * statusBastFound retourne true si la bete a été trouvé par le chasseur.
+	 * statusBastFound retourne true si la bete a ï¿½tï¿½ trouvï¿½ par le chasseur.
 	 * @return boolean
 	 */
 	public boolean statusBeastFound() {
@@ -121,7 +101,7 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	/**
-	 * statusMapDiscovered retourne true si la bete a entierement exploré la map.
+	 * statusMapDiscovered retourne true si la bete a entierement explorï¿½ la map.
 	 * @return boolean
 	 */
 	public boolean statusMapDiscovered() {
