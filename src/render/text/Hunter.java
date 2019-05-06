@@ -26,6 +26,7 @@ public class Hunter extends Entity {
 	 */
 	public Hunter(int posX, int posY, Config config) {
 		super(posX, posY);
+		this.traps.add(new Trap(10, 10));
 	}
 
 	public void addTrap(Trap trp) {
@@ -50,11 +51,7 @@ public class Hunter extends Entity {
 	 * @return int
 	 */
 	public int getTrapDispo() {
-		int res =0;
-		for(Trap t : traps ) {
-			res++;
-		}
-		return res;
+		return this.traps.size();
 	}
 	
 	/**
@@ -62,15 +59,11 @@ public class Hunter extends Entity {
 	 * @return int
 	 */
 	public int getWardDispo() {
-		int res=0;
-		for(Ward w : wards) {
-			res++;
-		}
-		return res;
+		return this.wards.size();
 	}
 	
 	/**
-	 * renvoie si le hunter est aveugl� par le camouflage de la bete
+	 * renvoie si le hunter est aveuglee par le camouflage de la bete
 	 * @return boolean
 	 */
 	public boolean isBlinded() {
@@ -82,7 +75,7 @@ public class Hunter extends Entity {
 	}
 	
 	/**
-	 * set le nombre de tour o� le chasseur est aveugl� par le camouflage de la bete
+	 * set le nombre de tour o� le chasseur est aveuglee par le camouflage de la bete
 	 */
 	public void setBlinded() {
 		blinded=2;
@@ -94,13 +87,12 @@ public class Hunter extends Entity {
 	 */
 	public boolean canSetTrap() {
 		if(getTrapDispo() > 0) {
-			traps.remove(0);
+			//traps.remove(0);
 			return true;
 		}
 		return false;
 	}
-	
-	
+
 	/**
 	 * renvoie si il est possible de poser une balise et en enleve une si c'est possible
 	 * @return boolean

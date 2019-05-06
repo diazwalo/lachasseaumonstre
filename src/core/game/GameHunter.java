@@ -37,6 +37,11 @@ public class GameHunter extends AbstractGame {
 			Interaction.pressEnter();
 			
 			if(! super.map.isHunterWin()) {
+				for (int i = 0; i < this.map.getBonusActif().size(); i++) {
+					if(this.map.getBeast().getPos().isPos(this.map.getBonusActif().get(i).getPos().getPosX(), this.map.getBonusActif().get(i).getPos().getPosY())) {
+						this.map.getBeast().setTrapped();
+					}
+				}
 				this.beastTurn();
 				System.out.println(super.map.gameHunterToString());
 				System.out.println(super.map);
@@ -59,7 +64,7 @@ public class GameHunter extends AbstractGame {
 		this.map.getHunter().isBlinded();
 		return mvtValide;
 	}
-	
+
 	/**
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
 	 */
@@ -67,7 +72,10 @@ public class GameHunter extends AbstractGame {
 		ArrayList<Mouvment> mvtBeast= super.map.getBeast().getMvtEmptyCase(super.map.getTab());
 
 		if(this.map.getBeast().getTrapped()) {
-			System.out.println("La bete est prise au piege !"); 
+			System.out.println("La bete est prise au piege !");
+			/*
+			 * TO  DO : ajouter une fct remove dans SquareMap qui retire les bonus actifs
+			 */
 			this.map.getBeast().untrapped();
 			return true;
 		}
@@ -112,25 +120,14 @@ public class GameHunter extends AbstractGame {
 	 */
 	public boolean setTrap() {
 		if(this.map.getHunter().canSetTrap()) {
-			//this.map.getHunter().canSetTrap();
-			/*this.map.set*///POUR LA SUITEEEEEEEEEEEEEEE
-			
 			Position posTrap = this.map.getHunter().getPos();
-			Trap trap = this.map.getHunter().takeTrap();;
-			
+			Trap trap = this.map.getHunter().takeTrap();
+			trap.install(posTrap.getPosX(), posTrap.getPosY());
+			this.map.setBonusActif(trap);
+			this.map.getTab()[posTrap.getPosX()][posTrap.getPosY()].setBonusBeast(new boolean[] {true, false, false,false});
 		}return true;
 	}
-	
-	/*public boolean setTrap() {
-		if(this.map.getHunter().canSetTrap()) {
-			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBonus(new boolean[] {true,false,false,false});
-			return true;
-		}
-		else {
-			return false;
-		}
-	}*/
-	
+
 	/**
 	 * Pose une balsie de vision sur le case courante.
 	 * Retourne faux si le joueur n'a plus de balise.

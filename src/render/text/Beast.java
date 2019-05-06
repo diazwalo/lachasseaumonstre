@@ -37,7 +37,6 @@ public class Beast extends Entity{
 		this.TimeLeftCamouflage=0;
 	}
 	
-	
 	public Camouflage takeCamouflage() {
 		return this.camouflages.remove(0);
 	}

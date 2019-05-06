@@ -63,8 +63,8 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a �t� trouv� par le chasseur,
-	 * MAPDISCOVERED si la map a �t� entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloqu�.
+	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a ete trouvee par le chasseur,
+	 * MAPDISCOVERED si la map a ete entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloquee.
 	 */
 	public void checkGameStatus() {
 		AbstractGame.gameStatus=GameStatus.INGAME;
