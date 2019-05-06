@@ -176,6 +176,14 @@ public class SquareMap implements IMap {
 	public void setBeastWin(boolean beastWin) {
 		this.beastWin=beastWin;
 	}
+	
+	public void setBonusActif(IBonus bonus) {
+		this.bonusActif.add(bonus);
+	}
+	
+	public ArrayList<IBonus> getBonusActif() {
+		return this.bonusActif;
+	}
 
 	/**
 	 * Retourne la Config
@@ -277,13 +285,4 @@ public class SquareMap implements IMap {
 		}
 		return affichage;
 	}
-	
-	public ArrayList<IBonus> getBonusActif(){
-		return this.bonusActif;
-	}
-	
-	public void setBonus(IBonus ib) {
-		this.bonusActif.add(ib);
-	}
-	
 }
