@@ -120,5 +120,9 @@ public class Plateau extends Application{
 	    grid.getChildren().addAll(text);
 	}
 	
+	 public static void main(String[] args) {
+		    Application.launch(args);
+		  }
+	
 	
 }
