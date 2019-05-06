@@ -10,6 +10,7 @@ import map.CaseType;
 import map.IMap;
 import map.Mouvment;
 import map.Position;
+import render.bonus.IBonus;
 
 /**
  * 
@@ -57,7 +58,7 @@ public class GameBeast extends AbstractGame{
 			mvtValide=true;
 			return mvtValide;
 		}else {
-			this.poserPiege();
+			this.poserBonus();
 			Mouvment mvt=Interaction.askMouvement();
 			mvtValide=super.map.moveBeast(mvt);
 			
@@ -176,8 +177,8 @@ public class GameBeast extends AbstractGame{
 	/**
 	 * propose au joueur de poser un bonus au choix: un camouflage ou un leurre.
 	 */
-	public void poserPiege() {
-		System.out.println("Vous avez encore " + this.map.getBeast().getCamDispo() + " camouflage dispo et " + this.map.getBeast().getBaitDispo() + " leurre dispo.");
+	public void poserBonus() {
+		System.out.println("Vous avez encore " + /*this.map.getBeast().getCamDispo() + */" camouflage dispo et " + /*this.map.getBeast().getBaitDispo() +*/ " leurre dispo.");
 		System.out.println("Saisissez 1 pour activer votre camouflage, 2 pour poser un leurre et entrer si vous desirez ne rien poser");
 		String choix=Interaction.askBonus();
 		if(choix.equals("1")) {
@@ -213,8 +214,9 @@ public class GameBeast extends AbstractGame{
 	 */
 	public boolean setBait() {
 		if(this.map.getBeast().canSetBait()) {
-			//this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBonus(new boolean[] {false,false,false,true});
-			
+			IBonus ib = this.map.getBeast().takeBait();
+			ib.install(this.map.getBeast().getPos().getPosX(), this.map.getBeast().getPos().getPosY());
+			this.map.setBonusActif(ib);
 			
 			return true;
 		}
@@ -222,6 +224,6 @@ public class GameBeast extends AbstractGame{
 			return false;
 		}
 	}
-		
+
 	
 }
