@@ -1,6 +1,9 @@
 package map;
 
+import java.util.ArrayList;
+
 import config.Config;
+import render.bonus.IBonus;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -245,6 +248,18 @@ public class CircularMap implements IMap
 
 	@Override
 	public String gameHunterToString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setBonusActif(IBonus bonus) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<IBonus> getBonusActif() {
 		// TODO Auto-generated method stub
 		return null;
 	}
