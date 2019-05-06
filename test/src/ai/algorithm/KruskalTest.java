@@ -12,7 +12,7 @@ import map.IMap;
 import map.SquareMap;
 
 /**
- * TODO : to finish
+ * Ce projet est abandonné car il ne fera pas un bon algo de decouverte de graphe.
  * @author PHPierre
  *
  */
@@ -38,9 +38,6 @@ private Config config;
 		Graph graph = new Graph(map);
 		Kruskal kruskal = new Kruskal(graph);
 		
-		System.out.println(kruskal.getPath().size());
-		//assertEquals(kruskal, kruskal.getPath());
-		
-		//Ceci n'est pas encore finie.
+		kruskal.getPath();
 	}
 }
