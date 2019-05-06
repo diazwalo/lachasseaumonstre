@@ -10,6 +10,8 @@ import map.Mouvment;
 import map.Position;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
+import render.bonus.Trap;
+import render.bonus.Ward;
 
 /**
  * Cette classe definit les caracteristique principale de la classe jouable Beast
@@ -30,10 +32,20 @@ public class Beast extends Entity{
 	 */
 	public Beast(int posX, int posY, Config config) {
 		super(posX, posY);
-		this.trapped = false; 
+		this.trapped = false;
 		this.tp=config.getNbTeleportation();
 		this.TimeLeftCamouflage=0;
 	}
+	
+	
+	public Camouflage takeCamouflage() {
+		return this.camouflages.remove(0);
+	}
+	
+	public Bait takeBait() {
+		return this.baits.remove(0);
+	}
+
 	
 	/**
 	 * Renvoie le nombre de camouflage disponible

@@ -110,8 +110,6 @@ public class GameHunter extends AbstractGame {
 	 * Retourne faux si le joueur n'a plus de piege.
 	 * @return boolean
 	 */
-	
-	
 	public boolean setTrap() {
 		if(this.map.getHunter().canSetTrap()) {
 			//this.map.getHunter().canSetTrap();
