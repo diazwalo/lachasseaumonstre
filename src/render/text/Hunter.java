@@ -36,6 +36,14 @@ public class Hunter extends Entity {
 		this.wards.add(wrd);
 	}
 	
+	public Trap takeTrap() {
+		return this.traps.remove(0);
+	}
+	
+	public Ward takeWard() {
+		return this.wards.remove(0);
+	}
+	
 	
 	/**
 	 * renvoie le nombre de piege disponible
