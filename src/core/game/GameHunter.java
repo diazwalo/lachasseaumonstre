@@ -8,6 +8,7 @@ import map.CaseType;
 import map.IMap;
 import map.Mouvment;
 import map.Position;
+import render.bonus.Trap;
 
 /**
  * 
@@ -50,7 +51,7 @@ public class GameHunter extends AbstractGame {
 	  */
 	public boolean hunterTurn() {
 		boolean mvtValide=false;
-		this.poserPiege();
+		this.poserBonus();
 		Mouvment mvt=Interaction.askMouvement();
 		mvtValide=super.map.moveHunter(mvt);
 		
@@ -88,7 +89,7 @@ public class GameHunter extends AbstractGame {
 	/**
 	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
 	 */
-	public void poserPiege() {
+	public void poserBonus() {
 		System.out.println("Vous avez encore " + this.map.getHunter().getTrapDispo() + " pieges dispo et " + this.map.getHunter().getWardDispo() + " balises dispo.");
 		System.out.println("Saisissez 1 pour poser un piege, 2 pour poser une balise et entrer si vous desirez ne rien poser");
 		String choix=Interaction.askBonus();
@@ -113,16 +114,12 @@ public class GameHunter extends AbstractGame {
 	
 	public boolean setTrap() {
 		if(this.map.getHunter().canSetTrap()) {
-			this.map.getHunter().canSetTrap();
-			/*
-			 * 
-			 * 
-			 * MLALALLALALALAL
-			 * 
-			 * 
-			 * 
-			 */
+			//this.map.getHunter().canSetTrap();
 			/*this.map.set*///POUR LA SUITEEEEEEEEEEEEEEE
+			
+			Position posTrap = this.map.getHunter().getPos();
+			Trap trap = this.map.getHunter().takeTrap();;
+			
 		}return true;
 	}
 	

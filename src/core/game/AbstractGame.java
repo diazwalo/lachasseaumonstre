@@ -20,7 +20,7 @@ public abstract class AbstractGame {
 	public abstract void launchGame();
 	public abstract boolean beastTurn();
 	public abstract boolean hunterTurn();
-	public abstract void poserPiege();
+	public abstract void poserBonus();
 	
 	/**
 	 * statusBastFound retourne true si la bete a �t� trouv� par le chasseur.

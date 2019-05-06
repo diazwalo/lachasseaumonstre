@@ -8,6 +8,8 @@ import map.Case;
 import map.CaseType;
 import map.Mouvment;
 import map.Position;
+import render.bonus.Bait;
+import render.bonus.Camouflage;
 
 /**
  * Cette classe definit les caracteristique principale de la classe jouable Beast
@@ -15,10 +17,11 @@ import map.Position;
  *
  */
 public class Beast extends Entity{
+	private int TimeLeftCamouflage;
+	private ArrayList<Camouflage> camouflages = new ArrayList<>();
+	private ArrayList<Bait> baits = new ArrayList<>();
 	private boolean trapped;
 	private int tp;
-	private int camDispo;
-	private int baitDispo;
 
 	/**
 	 * Instancie Beast a la Position posX, posY
@@ -29,26 +32,17 @@ public class Beast extends Entity{
 		super(posX, posY);
 		this.trapped = false;
 		this.tp=config.getNbTeleportation();
-		this.camDispo=0;
-		this.baitDispo=0;
+		this.TimeLeftCamouflage=0;
 	}
 	
 	/**
 	 * Renvoie le nombre de camouflage disponible
 	 * @return int
 	 */
-	public int getCamDispo() {
-		return this.camDispo;
+	public int getTimeLeftCamouflage() {
+		return this.TimeLeftCamouflage;
 	}
 
-	
-	/**
-	 * Renvoie le nombre de leurre disponible
-	 * @return int 
-	 */
-	public int getBaitDispo() {
-		return this.baitDispo;
-	} 
 	/**
 	 * retourne vrai si la bete est prise au piege
 	 * @return boolean
@@ -83,11 +77,7 @@ public class Beast extends Entity{
 	 * @return boolean
 	 */
 	public boolean canSetBait() {
-		if(this.baitDispo > 0) {
-			this.baitDispo--;
-			return true;
-		}
-		return false;
+		return ! this.baits.isEmpty();
 	}
 	
 	/**
@@ -95,8 +85,8 @@ public class Beast extends Entity{
 	 * @return boolean
 	 */
 	public boolean canSetCamouflage() {
-		if(this.camDispo > 0) {
-			this.camDispo--;
+		if(this.TimeLeftCamouflage > 0) {
+			this.TimeLeftCamouflage--;
 			return true;
 		}
 		return false;
