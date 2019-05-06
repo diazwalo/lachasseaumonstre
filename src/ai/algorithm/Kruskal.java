@@ -10,6 +10,7 @@ import ai.graph.Graph;
 import ai.models.Edge;
 import ai.models.EdgeTmp;
 import ai.models.Node;
+import ai.util.EdgeUtil;
 import ai.util.NodeUtil;
 import map.Position;
 
@@ -40,20 +41,20 @@ public class Kruskal
 	 * Cette fonction applique l'algorithme de Kruskal sur un objet Graph.
 	 * @return La file des deplacements a executer
 	 */
-	public List<Position> getPath()
+	public List<String> getPath()
 	{
-		List<Position> path = new ArrayList<Position>();
+		List<String> path = new ArrayList<String>();
 		
 		path.addAll(this.executeKruskal());
-
+		System.out.println("taille totale " + path.size());
 		return path;
 	}
 	
-	private List<Position> executeKruskal()
+	private List<String> executeKruskal()
 	{
 		EdgeComparator edgeComparator = new EdgeComparator();
 		List<EdgeTmp> edgeTmp = new ArrayList<>();
-		List<Position> positions = new ArrayList<>();
+		List<String> positions = new ArrayList<>();
 		
 		
 		for (String name : this.listEdge.keySet()) {
@@ -75,10 +76,9 @@ public class Kruskal
 		for (int i = 0; i < edgeTmp.size(); i++) {
 			EdgeTmp e = edgeTmp.get(i);
 			if(!this.find(e.getNodeOneName()).equals(this.find(e.getNodeTwoName()))) {
-				Position p = NodeUtil.formatNode(edgeTmp.get(i).getNodeTwoName());
+				String p = EdgeUtil.formatEdge(e.getNodeOneName(), e.getNodeTwoName());
 				positions.add(p);
-				System.out.println(p);
-				this.union(edgeTmp.get(i).getNodeOneName(), edgeTmp.get(i).getNodeTwoName());
+				this.union(e.getNodeOneName(), e.getNodeTwoName());
 			}
 		}
 		
@@ -98,7 +98,6 @@ public class Kruskal
 		this.listNode.get(x).setPrecedent(this.find(x));
 		this.listNode.get(y).setPrecedent(this.find(y));
 
-		//if(this.listNode.get(x) != this.listNode.get(y)) {
 		if(!this.listNode.get(x).equals(this.listNode.get(y))) {
 			this.listNode.get(x).setPrecedent(y);
 		}
