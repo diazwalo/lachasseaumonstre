@@ -184,7 +184,7 @@ public class SquareMap implements IMap {
 	public ArrayList<IBonus> getBonusActif() {
 		return this.bonusActif;
 	}
-
+ 
 	/**
 	 * Retourne la Config
 	 * @return Config

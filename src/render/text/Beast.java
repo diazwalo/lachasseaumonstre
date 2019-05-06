@@ -30,7 +30,7 @@ public class Beast extends Entity{
 	 */
 	public Beast(int posX, int posY, Config config) {
 		super(posX, posY);
-		this.trapped = false;
+		this.trapped = false; 
 		this.tp=config.getNbTeleportation();
 		this.TimeLeftCamouflage=0;
 	}

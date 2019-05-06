@@ -120,7 +120,7 @@ public abstract class AbstractGame {
 			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBonus(new boolean[] {false,false,false,false});
 		}
 		
-	}*/
+	}*/ 
 	
 	
 	
