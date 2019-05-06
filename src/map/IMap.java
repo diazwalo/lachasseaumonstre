@@ -1,5 +1,8 @@
 package map;
 
+import java.util.ArrayList;
+
+import render.bonus.IBonus;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -19,4 +22,6 @@ public interface IMap {
 	public void setBeastWin(boolean beastWin);
 	public String gameBeastToString();
 	public String gameHunterToString();
+	public void setBonusActif(IBonus bonus);
+	public ArrayList<IBonus> getBonusActif();
 }  
