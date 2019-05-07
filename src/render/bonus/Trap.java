@@ -85,6 +85,10 @@ public class Trap implements IBonus {
 		return "t";
 	}
 
+	public void removePosPiege() {
+		this.pos=null;
+	}
+	
 	@Override
 	public void nextTurnBonus() {
 		// TODO Auto-generated method stub
