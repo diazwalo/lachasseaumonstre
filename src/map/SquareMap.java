@@ -184,6 +184,14 @@ public class SquareMap implements IMap {
 	public ArrayList<IBonus> getBonusActif() {
 		return this.bonusActif;
 	}
+	
+	public void removePiege() {
+		for (IBonus ib : this.bonusActif) {
+			if(ib.getPos().equals(null)) {
+				this.bonusActif.remove(ib);
+			}
+		}
+	}
  
 	/**
 	 * Retourne la Config

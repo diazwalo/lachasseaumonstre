@@ -24,4 +24,5 @@ public interface IMap {
 	public String gameHunterToString();
 	public void setBonusActif(IBonus bonus);
 	public ArrayList<IBonus> getBonusActif();
+	public void removePiege();
 }  
