@@ -40,6 +40,7 @@ public class GameHunter extends AbstractGame {
 				for (int i = 0; i < this.map.getBonusActif().size(); i++) {
 					if(this.map.getBeast().getPos().isPos(this.map.getBonusActif().get(i).getPos().getPosX(), this.map.getBonusActif().get(i).getPos().getPosY())) {
 						this.map.getBeast().setTrapped();
+						this.map.removePiege();
 					}
 				}
 				this.beastTurn();

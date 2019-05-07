@@ -56,6 +56,7 @@ public class GameBeast extends AbstractGame{
 		if(this.map.getBeast().getTrapped()) {
 			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous �tes pieg�");
 			mvtValide=true;
+			this.map.getBeast().untrapped();
 			return mvtValide;
 		}else {
 			this.poserBonus();
