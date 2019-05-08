@@ -36,6 +36,14 @@ public class Beast extends Entity{
 		this.tp=config.getNbTeleportation();
 		this.TimeLeftCamouflage=0;
 	}
+
+	public void addToCamouflages(Camouflage cam) {
+		this.camouflages.add(cam);
+	}
+	
+	public void addToBaits(Bait bait) {
+		this.baits.add(bait);
+	}
 	
 	public Camouflage takeCamouflage() {
 		return this.camouflages.remove(0);

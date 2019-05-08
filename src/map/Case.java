@@ -6,6 +6,7 @@ import java.util.List;
 import interaction.Interaction;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
+import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
 import render.text.Beast;
@@ -105,6 +106,13 @@ public class Case {
 	}
 	
 	/**
+	 * Rend aveugle le chasseur 
+	 */
+	public void setBlinded() {
+		this.blinded=true;
+	}
+
+	/**
 	 * passe setHideToHunter a vrai afin que Hunter ne le voit pas
 	 */
 	public void setHideToHunter() {
@@ -125,6 +133,46 @@ public class Case {
 	 */
 	public void setBonusBeast(boolean[] bonusBeast) {
 		this.bonusBeast=bonusBeast;
+	}
+	
+	/**
+	 * Ajoute à l'inventaire du Chasseur, le piège de la Case (s'il y en a un).
+	 * @param hunter
+	 * @param posCase
+	 */
+	public void PickUpBonusHunter(Hunter hunter, Position posCase) {
+		if(hunter.getPos().isPos(posCase.getPosX(), posCase.getPosY())) {
+			//bait puis cam
+			for (int i = 0; i < this.bonusHunter.length; i++) {
+				if(this.bonusHunter[i]) {
+					if(i==0) {
+						hunter.addToTraps(new Trap());
+					}else if(i==1) {
+						hunter.addToWards(new Ward());
+					}
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Ajoute à l'inventaire de la Bete, le piège de la Case (s'il y en a un).
+	 * @param beast
+	 * @param posCase
+	 */
+	public void PickUpBonusBeast(Beast beast, Position posCase) {
+		if(beast.getPos().isPos(posCase.getPosX(), posCase.getPosY())) {
+			//bait puis cam
+			for (int i = 0; i < this.bonusBeast.length; i++) {
+				if(this.bonusHunter[i]) {
+					if(i==0) {
+						beast.addToBaits(new Bait());
+					}else if(i==1) {
+						beast.addToCamouflages(new Camouflage());
+					}
+				}
+			}
+		}
 	}
 	
 	/**
@@ -204,19 +252,13 @@ public class Case {
 
 		return res;
 	}
-	/**
-	 * Rend aveugle le chasseur 
-	 */
-	public void setBlinded() {
-		this.blinded=true;
-	}
 	
 	/**
 	 * Renvoie sous forme de chaine de caractere le buff actif sur la Case ou la trace de la bete au cas echeant
 	 */
 	public String toString() {
-		String[] toStringBonusBeast=new String[] { new Trap().toString(), new Ward().toString()};
-		String[] toStringBonusHunter=new String[] { new Bait().toString(), new Camouflage().toString()};
+		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString()};
+		String[] toStringBonusHunter=new String[] { new Trap().toString(), new Ward().toString()};
 		
 		String res=caseType.toString();
 		if(this.beastWalk>=this.TRACE) res=".";

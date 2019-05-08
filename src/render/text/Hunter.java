@@ -29,11 +29,11 @@ public class Hunter extends Entity {
 		this.traps.add(new Trap(10, 10));
 	}
 
-	public void addTrap(Trap trp) {
+	public void addToTraps(Trap trp) {
 		this.traps.add(trp);
 	}
 	
-	public void addCamo(Ward wrd) {
+	public void addToWards(Ward wrd) {
 		this.wards.add(wrd);
 	}
 	
