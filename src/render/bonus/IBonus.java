@@ -7,4 +7,5 @@ public interface IBonus {
 	public String getName();
 	public void nextTurnBonus();
 	public Position getPos();
+	public void setDiscovered();
 }

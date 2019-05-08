@@ -65,5 +65,12 @@ public class Trap implements IBonus {
 	public String toString() {
 		return "t";
 	}
+
+
+	@Override
+	public void setDiscovered() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

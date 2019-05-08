@@ -92,4 +92,10 @@ public class Ward implements IBonus {
 			this.refresh();
 		}
 	}
+
+	@Override
+	public void setDiscovered() {
+		// TODO Auto-generated method stub
+		
+	}
 }
