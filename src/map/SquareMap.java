@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import config.Config;
+import interaction.Interaction;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
 import render.bonus.IBonus;
@@ -44,8 +45,9 @@ public class SquareMap implements IMap {
 		
 		this.beast = new Beast(widthTab-1, heightTab-1, config);
 		this.tab = new Case[widthTab][heightTab];
-		//ajouter les pieges
-		//this.generationPiege();
+		this.generationMap();
+		this.generationBonus();
+		
 		this.config = config;
 		this.beastWin = false;
 		this.hunterWin = false;
@@ -71,62 +73,48 @@ public class SquareMap implements IMap {
 	 * place les bonus a ramasser sur la map 
 	 */
 	public void generationBonus() {
-		/*
-		 * NORMAL SI CA MARCHE PAS, GENERATION MAP N'A PAS ENCORE ETE FAIT !
-		 */
-		IBonus[] bonus=new IBonus[]{new Trap(), new Ward(), new Bait(), new Camouflage()};
-		Random r=new Random();
-		
-		Position posTrap=null;
-		Position posWard=null;
-		Position posBait=null;
-		Position posCamouflage=null;
+		Position posTrap=this.createPositionTempoFirstBonus(0, new boolean[] { true,  false }, true);
+		this.createPositionTempoSecondBonus(0, new boolean[] { false,  true }, posTrap, true);
+		Position posBait=this.createPositionTempoFirstBonus((this.tab.length)/2, new boolean[] { true,  false }, false);
+		this.createPositionTempoSecondBonus((this.tab.length)/2, new boolean[] { false,  true }, posBait, false);
+	}
 	
-		while(posTrap==null) {
-			int posTrapX=r.nextInt(this.tab.length)/2;
-			int posTrapY=r.nextInt(this.tab[posTrapX].length)/2;
-			Position posTrapTempo=new Position(posTrapX, posTrapY);
-			/*
-			 * LAAAAA ca peut pas march� le tableau n'est pas encore fait
-			 */
-			if(! this.tab[posTrapX][posTrapY].isObstacle() && ! this.beast.getPos().equals(posTrapTempo) && ! this.hunter.getPos().equals(posTrapTempo)) {
-				posTrap=posTrapTempo;
-			}
-		}
-		//tab[posTrap.getPosX()][posTrap.getPosY()].setBonus(new boolean[] { true, false, false, false});
-
-		while(posWard.equals(null)) {
-			int posWardX=r.nextInt(this.tab.length)/2;
-			int posWardY=r.nextInt(this.tab[posWardX].length)/2;
-			Position posWardTempo=new Position(posWardX, posWardY);
+	public Position createPositionTempoFirstBonus(int addToLength, boolean[] tabBonus, boolean bonusHunterOrBeast) {
+		Random r=new Random();
+		Position posBonusFinal=new Position(-1 , -1);
+		
+		while(posBonusFinal.isPos(-1, -1)) {
+			int posBonusX=r.nextInt((this.tab.length)/2+addToLength);
+			int posBonusY=r.nextInt((this.tab[posBonusX].length)/2)+addToLength;
+			Position posBonusTempo=new Position(posBonusX, posBonusY);
 			
-			if(! this.tab[posWardX][posWardY].isObstacle() && ! this.beast.getPos().equals(posWardTempo) && ! ! this.hunter.getPos().equals(posWardTempo) && ! posWard.equals(posTrap)) {
-				posWard=posWardTempo;
+			if(! this.tab[posBonusX][posBonusY].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo)) {
+				posBonusFinal=posBonusTempo;
 			}
 		}
-		//tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, false, true, false});
+		
+		if(bonusHunterOrBeast) tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusHunter(tabBonus);
+		else tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusBeast(tabBonus);
 
-		while(posBait.equals(null)) {
-			int posBaitX=r.nextInt((this.tab.length)/2)+((this.tab.length)/2);
-			int posBaitY=r.nextInt(this.tab[posBaitX].length)/2;
-			Position posBaitTempo=new Position(posBaitX, posBaitY);
-			
-			if(! this.tab[posBaitX][posBaitY].isObstacle() && ! this.beast.getPos().equals(posBaitTempo) && ! ! this.hunter.getPos().equals(posBaitTempo)) {
-				posBait=posBaitTempo;
-			}
-		}
-		//tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, false, false, true});
+		return posBonusFinal;
+	}
+	
+	public void createPositionTempoSecondBonus(int addToLength, boolean[] tabBonus, Position posFirstBonus, boolean bonusHunterOrBeast) {
+		Random r=new Random();
+		Position posBonusFinal=new Position(-1 , -1);
 
-		while(posCamouflage.equals(null)) {
-			int posCamouflageX=r.nextInt((this.tab.length)/2)+((this.tab.length)/2);
-			int posCamouflageY=r.nextInt(this.tab[posCamouflageX].length)/2;
-			Position posCamouflageTempo=new Position(posCamouflageX, posCamouflageY);
-			
-			if(! this.tab[posCamouflageX][posCamouflageY].isObstacle() && ! this.beast.getPos().equals(posCamouflageTempo) && ! ! this.hunter.getPos().equals(posCamouflageTempo) && ! posCamouflage.equals(posBait)) {
-				posCamouflage=posCamouflageTempo;
+		while(posBonusFinal.isPos(-1, -1)) {
+			int posBonusX=r.nextInt((this.tab.length)/2+addToLength);
+			int posBonusY=r.nextInt((this.tab[posBonusX].length)/2)+addToLength;
+			Position posBonusTempo=new Position(posBonusX, posBonusY);
+				
+			if(! this.tab[posBonusX][posBonusY].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo) && ! posBonusFinal.equals(posFirstBonus)) {
+				posBonusFinal=posBonusTempo;
 			}
 		}
-		//tab[posWard.getPosX()][posWard.getPosY()].setBonus(new boolean[] { false, true, false, false});
+		
+		if(bonusHunterOrBeast) tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusHunter(tabBonus);
+		else tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusBeast(tabBonus);
 	}
 
 	/**

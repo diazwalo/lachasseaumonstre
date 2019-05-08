@@ -200,7 +200,7 @@ public class Case {
 	 */
 	public String gameBeastShowView(IMap map, Position posCase) {
 		String res=caseType.toString();
-		String[] toStringBonusBeast=new String[] { new Trap().toString(), new Ward().toString()};
+		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
 		
 		//TODO : a changer
 		/*if( ! this.bonusHunter[0] && ! this.bonusHunter[1]) {
@@ -224,7 +224,7 @@ public class Case {
 	public String gameHunterShowView(IMap map, Position posCase) {
 		String res=caseType.toString();
 
-		String[] toStringBonusHunter=new String[] { new Bait().toString(), new Camouflage().toString()};
+		String[] toStringBonusHunter=new String[] { new Trap().toString(), new Ward().toString() };
 		
 		for (int i = 0; i < bonusHunter.length; i++) {
 			if(this.bonusHunter[i]) res=toStringBonusHunter[i];

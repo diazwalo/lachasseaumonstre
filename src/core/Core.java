@@ -27,7 +27,7 @@ public class Core {
 			break;
 		}
 		
-		map.generationMap();
+		//map.generationMap();
 		
 		switch(config.getGameMode())
 		{
