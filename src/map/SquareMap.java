@@ -193,6 +193,19 @@ public class SquareMap implements IMap {
 		}
 	}
  
+	public void HunterIsNearBait() {
+		for(IBonus ib : this.bonusActif) {
+			
+			if(ib.getClass().isInstance(new Bait())) {
+				if(this.getHunter().getPos().getPosX()-ib.getPos().getPosX()<2 && this.getHunter().getPos().getPosX()-ib.getPos().getPosX()>-2 && 
+						this.getHunter().getPos().getPosY()-ib.getPos().getPosY()<2 && this.getHunter().getPos().getPosY()-ib.getPos().getPosY()>-2 ) {
+					ib.setDiscovered();
+				}
+			}
+		}
+	}
+	
+
 	/**
 	 * Retourne la Config
 	 * @return Config

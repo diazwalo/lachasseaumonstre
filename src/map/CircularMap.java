@@ -269,4 +269,10 @@ public class CircularMap implements IMap
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void HunterIsNearBait() {
+		// TODO Auto-generated method stub
+		
+	}
 }

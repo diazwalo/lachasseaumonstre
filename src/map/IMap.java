@@ -25,4 +25,5 @@ public interface IMap {
 	public void setBonusActif(IBonus bonus);
 	public ArrayList<IBonus> getBonusActif();
 	public void removePiege();
+	public void HunterIsNearBait();
 }  
