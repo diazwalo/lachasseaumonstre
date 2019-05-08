@@ -8,91 +8,62 @@ import render.text.Beast;
  *
  */
 public class Trap implements IBonus {
-	
+
+	private boolean used;
 	private Position pos;
 	private final String NAME = "Piege";
-	private boolean activate;
 	
-	/**
-	 * Instancie Trap
-	 */
+	
 	public Trap() {
 		this.pos = null;
-		this.activate = false;
+		this.used = false;
 	}
 	
-	/**
-	 * Instancie Trap et le place a la position dont l'abscice et l'ordonnee sont donnees en parametre
-	 * @param posX
-	 * @param posY
-	 */
+	
 	public Trap(int posX, int posY) {
 		this();
 		this.pos=new Position(posX, posY);
 	}
 
-	/**
-	 * retourne la position du Bonus courant
-	 * @return Position
-	 */
-	public Position getPos() {
-		return pos;
+
+	public boolean getUsed() {
+		return this.used;
+	}
+	
+	public void setUsed() {
+		this.used=true;
+	}
+	
+	@Override
+	public void install(int x, int y) {
+		// TODO Auto-generated method stub
+		this.pos.setPosX(x);
+		this.pos.setPosY(y);
 	}
 
-	/**
-	 * retourne le nom du Bonus
-	 */
+
 	@Override
 	public String getName() {
+		// TODO Auto-generated method stub
 		return this.NAME;
 	}
 
-	/**
-	 * retourne vrai si le piege est active
-	 * @return boolean
-	 */
-	public boolean getActivate() {
-		return activate;
-	}
-
-	/**
-	 * place ce Bonus a la position d abscice x et d ordonnee y
-	 */
 	@Override
-	public void install(int x, int y) {
-		this.pos = new Position(x ,y);
-	}
-
-	/**
-	 * met la valeur de activate si la bete passe par la
-	 * @param activate
-	 */
-	public void isActivate(Beast b) {
-		if(this.pos.equals(b.getPos())) {
-			this.activate = true;
-			this.isUsed();
-		}
-	}
-	
-	/**
-	 * Enleve le piege de la map si il a ete utilise
-	 */
-	public void isUsed() {
-		this.pos=null;
-	}
-	
-	public String toString() {
-		return "t";
-	}
-
-	public void removePosPiege() {
-		this.pos=null;
+	public Position getPos() {
+		// TODO Auto-generated method stub
+		return this.pos;
 	}
 	
 	@Override
 	public void nextTurnBonus() {
 		// TODO Auto-generated method stub
-		
+		if(getUsed()) {
+			this.pos=null;
+		}
 	}
-  
+	
+	public String toString() {
+		return "t";
+	}
+	
 }
