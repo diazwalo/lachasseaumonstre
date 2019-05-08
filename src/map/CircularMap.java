@@ -263,4 +263,10 @@ public class CircularMap implements IMap
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void removePiege() {
+		// TODO Auto-generated method stub
+		
+	}
 }
