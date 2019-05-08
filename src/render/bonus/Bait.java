@@ -10,12 +10,19 @@ import render.text.Hunter;
 public class Bait implements IBonus {
 	private Position pos;
 	private final String NAME = "leurre";
+	private boolean used;
+	private boolean discovered;
+	private int count;
+	
 	
 	/**
 	 * Instancie Bait
 	 */
 	public Bait() {
 		this.pos = null;
+		this.used=false;
+		this.discovered =false;
+		this.count=0;
 	}
 	
 	/**
@@ -26,6 +33,7 @@ public class Bait implements IBonus {
 	public Bait(int posX, int posY) {
 		this();
 		this.pos=new Position(posX, posY);
+		
 	}
 	
 	/**
@@ -75,10 +83,37 @@ public class Bait implements IBonus {
 	public String getNAME() {
 		return NAME;
 	}
+	
+	
+	public boolean getUsed() {
+		return this.used;
+	}
+	
+	public void setUsed() {
+		this.used =true;
+	}
 
+	public boolean getDiscovered() {
+		return this.discovered;
+	}
+	
+	public void setDiscovered() {
+		this.discovered=true;
+	}
+	
 	@Override
 	public void nextTurnBonus() {
 		// TODO Auto-generated method stub
+		if (this.discovered  && this.count<5) {
+			this.count++;
+		}
+		else if(this.discovered && this.count>4) {
+			this.setUsed();
+		}
+		
+		if(getUsed()) {
+			this.pos=null;
+		}
 		
 	}
 	
