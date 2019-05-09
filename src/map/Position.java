@@ -110,7 +110,7 @@ public class Position {
 		checkPosition(new Position(this.posX-1, this.posY+1), positionAdjacent, sm);
 		checkPosition(new Position(this.posX, this.posY+1), positionAdjacent, sm);
 		checkPosition(new Position(this.posX+1, this.posY+1), positionAdjacent, sm);
-		
+
 		return positionAdjacent;
 	}
 	
@@ -139,5 +139,45 @@ public class Position {
 	 */
 	public String toString() {
 		return "Position : [x:" + this.posX + ",y:" + this.posY + "]";
+	}
+
+	public Position toSouth()
+	{
+		return new Position(this.posX, this.posY+1);
+	}
+
+	public Position toSouthWest()
+	{
+		return new Position(this.posX+1, this.posY-1);
+	}
+
+	public Position toSouthEast()
+	{
+		return new Position(this.posX+1, this.posY+1);
+	}
+
+	public Position toLeft()
+	{
+		return new Position(this.posX-1, this.posY);
+	}
+
+	public Position toRight()
+	{
+		return new Position(this.posX+1, this.posY);
+	}
+
+	public Position toNorth()
+	{
+		return new Position(this.posX, this.posY-1);
+	}
+
+	public Position toNorthWest()
+	{
+		return new Position(this.posX-1, this.posY-1);
+	}
+
+	public Position toNorthEast()
+	{
+		return new Position(this.posX+1, this.posY-1);
 	}
 }
