@@ -39,7 +39,7 @@ public class SquareMap extends AbstractMap {
 		this.beast = new Beast(widthTab-1, heightTab-1, config);
 		this.tab = new Case[widthTab][heightTab];
 		this.generationMap();
-		this.generationBonus();
+		this.generationBonus(widthTab/2);
 
 		this.config = config;
 		this.beastWin = false;
@@ -65,11 +65,12 @@ public class SquareMap extends AbstractMap {
 	/**
 	 * place les bonus a ramasser sur la map
 	 */
-	public final void generationBonus() {
-		Position posTrap=this.createPositionTempoFirstBonus(0, new boolean[] { true,  false }, true);
-		this.createPositionTempoSecondBonus(0, new boolean[] { false,  true }, posTrap, true);
-		Position posBait=this.createPositionTempoFirstBonus((this.tab.length)/2, new boolean[] { true,  false }, false);
-		this.createPositionTempoSecondBonus((this.tab.length)/2, new boolean[] { false,  true }, posBait, false);
+	public final void generationBonus(int middle) {
+		Position posTrap=this.createPositionTempoFirstBonus(0, new boolean[] { true,  false }, false);
+		this.createPositionTempoSecondBonus(0, new boolean[] { false,  true }, posTrap, false);
+		System.out.println("Creation Bonus Hunter");
+		Position posBait=this.createPositionTempoFirstBonus(middle, new boolean[] { true,  false }, true);
+		this.createPositionTempoSecondBonus(middle, new boolean[] { false,  true }, posBait, true);
 	}
 
 }

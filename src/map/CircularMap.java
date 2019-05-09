@@ -67,7 +67,7 @@ public class CircularMap extends AbstractMap
 	}
 
 	@Override
-	public void generationBonus() {
+	public void generationBonus(int middle) {
 
 	}
 

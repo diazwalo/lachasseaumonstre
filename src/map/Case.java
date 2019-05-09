@@ -207,7 +207,7 @@ public class Case {
 			res=this.toString();
 		}*/
 		for (int i = 0; i < bonusBeast.length; i++) {
-			if(this.bonusHunter[i]) res=toStringBonusBeast[i];
+			if(this.bonusBeast[i]) res=toStringBonusBeast[i];
 		}
 		
 		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
@@ -257,7 +257,7 @@ public class Case {
 	 * Renvoie sous forme de chaine de caractere le buff actif sur la Case ou la trace de la bete au cas echeant
 	 */
 	public String toString() {
-		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString()};
+		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
 		String[] toStringBonusHunter=new String[] { new Trap().toString(), new Ward().toString()};
 		
 		String res=caseType.toString();

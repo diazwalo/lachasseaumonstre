@@ -22,44 +22,52 @@ public abstract class AbstractMap
 
     public abstract void generationMap();
 
-    public abstract void generationBonus();
+    public abstract void generationBonus(int middle);
 
-    public final Position createPositionTempoFirstBonus(int addToLength, boolean[] tabBonus, boolean bonusHunterOrBeast) {
+    public final Position createPositionTempoFirstBonus(int middle, boolean[] tabBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
         Position posBonusFinal=new Position(-1 , -1);
 
         while(posBonusFinal.isPos(-1, -1)) {
-            int posBonusX=r.nextInt((this.tab.length)/2+addToLength);
-            int posBonusY=r.nextInt((this.tab[posBonusX].length)/2)+addToLength;
+            int posBonusX=(middle)+r.nextInt((this.tab.length)/2);
+            int posBonusY=(middle)+r.nextInt((this.tab[posBonusX].length)/2);
             Position posBonusTempo=new Position(posBonusX, posBonusY);
 
-            if(! this.tab[posBonusX][posBonusY].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo)) {
+            if(! this.tab[posBonusY][posBonusX].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo)) {
                 posBonusFinal=posBonusTempo;
             }
         }
 
-        if(bonusHunterOrBeast) tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusHunter(tabBonus);
-        else tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusBeast(tabBonus);
+        if(bonusHunterOrBeast) {
+        	tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusBeast(tabBonus);
+        }
+        else {
+        	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusHunter(tabBonus);
+        }
 
         return posBonusFinal;
     }
 
-    public final void createPositionTempoSecondBonus(int addToLength, boolean[] tabBonus, Position posFirstBonus, boolean bonusHunterOrBeast) {
+    public final void createPositionTempoSecondBonus(int middle, boolean[] tabBonus, Position posFirstBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
         Position posBonusFinal=new Position(-1 , -1);
 
         while(posBonusFinal.isPos(-1, -1)) {
-            int posBonusX=r.nextInt((this.tab.length)/2+addToLength);
-            int posBonusY=r.nextInt((this.tab[posBonusX].length)/2)+addToLength;
+            int posBonusX=(middle)+r.nextInt((this.tab.length)/2);
+            int posBonusY=(middle)+r.nextInt((this.tab[posBonusX].length)/2);
             Position posBonusTempo=new Position(posBonusX, posBonusY);
 
-            if(! this.tab[posBonusX][posBonusY].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo) && ! posBonusFinal.equals(posFirstBonus)) {
+            if(! this.tab[posBonusY][posBonusX].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo) && ! posBonusFinal.equals(posFirstBonus)) {
                 posBonusFinal=posBonusTempo;
             }
         }
 
-        if(bonusHunterOrBeast) tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusHunter(tabBonus);
-        else tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusBeast(tabBonus);
+        if(bonusHunterOrBeast)  {
+        	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusBeast(tabBonus);
+        }
+        else {
+        	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusHunter(tabBonus);
+        }
     }
 
     /**

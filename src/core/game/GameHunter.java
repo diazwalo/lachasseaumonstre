@@ -42,7 +42,6 @@ public class GameHunter extends AbstractGame {
 				}
 				this.beastTurn();
 				System.out.println(super.map.gameHunterToString());
-				System.out.println(super.map);
 				Interaction.pressEnter();
 			}
 		}
