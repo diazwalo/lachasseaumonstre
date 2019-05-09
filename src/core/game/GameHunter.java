@@ -90,7 +90,6 @@ public class GameHunter extends AbstractGame {
 		}
 	}
 	
-	
 	/**
 	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
 	 */

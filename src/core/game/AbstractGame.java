@@ -7,6 +7,9 @@ import map.AbstractMap;
 import map.CaseType;
 import map.IMap;
 import map.Position;
+import render.bonus.Bait;
+import render.bonus.Camouflage;
+import render.bonus.Trap;
 
 public abstract class AbstractGame {
 
@@ -102,6 +105,30 @@ public abstract class AbstractGame {
 		}
 		return tp;
 	}
+	
+	public void ramasserBonusBeast() {
+		Position posBeast = this.map.getBeast().getPos();
+		boolean[] tabBeastBonus =this.map.getTab()[posBeast.getPosX()][posBeast.getPosY()].getBonusBeast();
+		if(tabBeastBonus[0]) {
+			this.map.getBeast().addToBaits(new Bait());
+			this.map.getTab()[posBeast.getPosX()][posBeast.getPosY()].setBonusBeast(new boolean[] {false, false});
+		}else if(tabBeastBonus[1]) {
+			this.map.getBeast().addToCamouflages(new Camouflage());
+			this.map.getTab()[posBeast.getPosX()][posBeast.getPosY()].setBonusBeast(new boolean[] {false, false});
+		}
+ 	}
+	
+	public void ramasserBonusHunter() {
+		Position posHunter = this.map.getHunter().getPos();
+		boolean[] tabHunterBonus =this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].getBonusHunter();
+		if(tabHunterBonus[0]) {
+			this.map.getHunter().addToTraps(new Trap());
+			this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].setBonusHunter(new boolean[] {false, false});
+		}else if(tabHunterBonus[1]) {
+			// TO DO ajouter to Ward
+			this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].setBonusHunter(new boolean[] {false, false});
+		}
+ 	}
 	
 	/**
 	 * Verifie si la bete ou le chasseur se trouve sur une case o� un piege est actif, l'active et l'enleve	
