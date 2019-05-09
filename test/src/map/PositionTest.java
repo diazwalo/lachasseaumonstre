@@ -5,14 +5,11 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import map.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import config.Config;
-import map.IMap;
-import map.Mouvment;
-import map.Position;
-import map.SquareMap;
 
 public class PositionTest {
 
@@ -59,7 +56,7 @@ public class PositionTest {
 	@Test
 	public void testCheckPosition() {
 		List<Position> positionAdjacent =new ArrayList<Position>();
-		IMap sm = new SquareMap(this.config);
+        AbstractMap sm = new SquareMap(this.config);
 		sm.generationMap();
 		
 		Position[] tabPosValide=new Position[] {new Position(0, 0), new Position(sm.getTab().length-1, sm.getTab()[0].length-1)};

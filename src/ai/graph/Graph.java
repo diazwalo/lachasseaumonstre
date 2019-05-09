@@ -9,15 +9,12 @@ import ai.models.Edge;
 import ai.models.Node;
 import ai.util.EdgeUtil;
 import ai.util.NodeUtil;
-import map.Case;
-import map.CaseType;
-import map.IMap;
-import map.Position;
+import map.*;
 
 /**
- * Cette classe explore le plateau du jeu afin de le représenter mathématiquement sous forme
- * d'un graphe composé composé de sommets (nodes) et d'arêtes (edges). Une fois sur cette forme, des algorithmes génériques peuvent 
- * être appliqué.
+ * Cette classe explore le plateau du jeu afin de le reprï¿½senter mathï¿½matiquement sous forme
+ * d'un graphe composï¿½ composï¿½ de sommets (nodes) et d'arï¿½tes (edges). Une fois sur cette forme, des algorithmes gï¿½nï¿½riques peuvent 
+ * ï¿½tre appliquï¿½.
  * @author PHPierre
  *
  */
@@ -37,7 +34,7 @@ public class Graph {
      * Execute le processus d'exploration du plateau pour en generer un graphe compose d'aretes et de sommets.
      * @param graph Le plateau de jeu
      */
-    public Graph(IMap graph)
+    public Graph(AbstractMap graph)
     {
     	this.initialze();
     	this.listNode = this.generateNode(graph);
@@ -56,9 +53,9 @@ public class Graph {
     /**
      * Explore un tableau pour creer un diagramme de noeuds
      * @param map Une instance d'une map
-     * @return listNode La liste des cases transformés en sommets
+     * @return listNode La liste des cases transformï¿½s en sommets
      */
-    public Map<String, Node> generateNode(IMap map)
+    public Map<String, Node> generateNode(AbstractMap map)
     {
     	Map<String, Node> listNode = new TreeMap<String, Node>();
     	Case[][] cases = map.getTab();
@@ -83,7 +80,7 @@ public class Graph {
     	return listNode;
     }
     
-    public Map<String, Edge> generateEdge(IMap map)
+    public Map<String, Edge> generateEdge(AbstractMap map)
     {
     	Case[][] cases = map.getTab();
     	Map<String, Edge> edges = new TreeMap<String, Edge>();

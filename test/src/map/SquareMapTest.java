@@ -2,6 +2,7 @@ package src.map;
 
 import static org.junit.Assert.*;
 
+import map.AbstractMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ import render.text.Entity;
 import render.text.Hunter;
 
 public class SquareMapTest {
-	public IMap sm;
+	public AbstractMap sm;
 	public Entity beast;
 	public Entity hunter;
 	private Config config;

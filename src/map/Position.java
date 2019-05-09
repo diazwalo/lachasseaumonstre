@@ -97,7 +97,7 @@ public class Position {
 	 * @param sm
 	 * @return List<Position>
 	 */
-	public List<Position> getAdjacentPosition(IMap sm) {
+	public List<Position> getAdjacentPosition(AbstractMap sm) {
 		List<Position> positionAdjacent =new ArrayList<Position>();
 
 		checkPosition(new Position(this.posX-1, this.posY-1), positionAdjacent, sm);
@@ -120,7 +120,7 @@ public class Position {
 	 * @param positionAdjacent La position est ajoute dedans si elle est accessible
 	 * @param sm Le plateau de jeu
 	 */
-	public void checkPosition(Position p, List<Position> positionAdjacent, IMap sm) {
+	public void checkPosition(Position p, List<Position> positionAdjacent, AbstractMap sm) {
 		if(p.getPosX() < 0 || p.getPosY() < 0) return;
 		if(p.getPosX() > sm.getTab().length-1 || p.getPosY() > sm.getTab()[p.getPosX()].length-1) return;
 		

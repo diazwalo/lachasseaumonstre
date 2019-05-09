@@ -136,7 +136,7 @@ public class Case {
 	}
 	
 	/**
-	 * Ajoute à l'inventaire du Chasseur, le piège de la Case (s'il y en a un).
+	 * Ajoute ï¿½ l'inventaire du Chasseur, le piï¿½ge de la Case (s'il y en a un).
 	 * @param hunter
 	 * @param posCase
 	 */
@@ -156,7 +156,7 @@ public class Case {
 	}
 	
 	/**
-	 * Ajoute à l'inventaire de la Bete, le piège de la Case (s'il y en a un).
+	 * Ajoute ï¿½ l'inventaire de la Bete, le piï¿½ge de la Case (s'il y en a un).
 	 * @param beast
 	 * @param posCase
 	 */
@@ -198,7 +198,7 @@ public class Case {
 	 * @param posCase
 	 * @return
 	 */
-	public String gameBeastShowView(IMap map, Position posCase) {
+	public String gameBeastShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
 		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
 		
@@ -221,7 +221,7 @@ public class Case {
 	 * @param posCase
 	 * @return
 	 */
-	public String gameHunterShowView(IMap map, Position posCase) {
+	public String gameHunterShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
 
 		String[] toStringBonusHunter=new String[] { new Trap().toString(), new Ward().toString() };

@@ -5,11 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import interaction.Interaction;
-import map.Case;
-import map.CaseType;
-import map.IMap;
-import map.Mouvment;
-import map.Position;
+import map.*;
 import render.bonus.IBonus;
 
 /**
@@ -20,7 +16,7 @@ import render.bonus.IBonus;
 
 public class GameBeast extends AbstractGame{
 	
-	public GameBeast(IMap map) {
+	public GameBeast(AbstractMap map) {
 		super(map);
 	}
 	

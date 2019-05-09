@@ -1,4 +1,4 @@
-package IHM;
+/*package IHM;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -126,3 +126,4 @@ public class Plateau extends Application{
 	
 	
 }
+*/

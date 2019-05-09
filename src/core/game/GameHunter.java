@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import interaction.Interaction;
-import map.CaseType;
-import map.IMap;
-import map.Mouvment;
-import map.Position;
+import map.*;
 import render.bonus.Trap;
 
 /**
@@ -18,7 +15,7 @@ import render.bonus.Trap;
 
 public class GameHunter extends AbstractGame {
 	
-	public GameHunter(IMap map) {
+	public GameHunter(AbstractMap map) {
 		super(map);
 	}
 	

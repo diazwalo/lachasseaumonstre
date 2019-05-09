@@ -3,16 +3,17 @@ package core.game;
 import java.util.ArrayList;
 import java.util.Random;
 
+import map.AbstractMap;
 import map.CaseType;
 import map.IMap;
 import map.Position;
 
 public abstract class AbstractGame {
 
-	protected IMap map;
+	protected AbstractMap map;
 	protected static GameStatus gameStatus;
 	
-	public AbstractGame(IMap map) {
+	public AbstractGame(AbstractMap map) {
 		this.map=map;
 		AbstractGame.gameStatus=GameStatus.INGAME;
 	}

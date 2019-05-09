@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import map.AbstractMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +12,6 @@ import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
 import ai.util.NodeUtil;
 import config.Config;
-import map.IMap;
 import map.Position;
 import map.SquareMap;
 
@@ -31,7 +31,7 @@ public class DijkstraTest
 	@Test
 	public void testShortestPath()
 	{
-		IMap map = new SquareMap(this.config);
+        AbstractMap map = new SquareMap(this.config);
 		map.generationMap();
 		
 		Graph graph = new Graph(map);

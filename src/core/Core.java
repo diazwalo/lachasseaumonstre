@@ -5,14 +5,14 @@ import core.game.GameHunter;
 import core.game.AbstractGame;
 import core.game.GameBeast;
 import map.CircularMap;
-import map.IMap;
+import map.AbstractMap;
 import map.SquareMap;
 
 public class Core {
 	public static void main(String[] args) {
-		
+
 		AbstractGame game = null;
-		IMap map = null;
+		AbstractMap map = null;
 		
 		CommandParser commandParser = new CommandParser(args);
 		Config config = commandParser.getConfig();

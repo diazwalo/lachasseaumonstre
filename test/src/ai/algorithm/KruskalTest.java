@@ -2,6 +2,7 @@ package src.ai.algorithm;
 
 import static org.junit.Assert.*;
 
+import map.AbstractMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ private Config config;
 	@Test
 	public void testPath()
 	{
-		IMap map = new SquareMap(this.config);
+        AbstractMap map = new SquareMap(this.config);
 		map.generationMap();
 		
 		Graph graph = new Graph(map);

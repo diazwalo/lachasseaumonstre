@@ -1,4 +1,4 @@
-package src.render.text;
+/*package src.render.text;
 
 import static org.junit.Assert.*;
 
@@ -52,4 +52,4 @@ public class TrapTest {
 		assertNull(piege2.getPos());
 	}
 
-}
+}*/

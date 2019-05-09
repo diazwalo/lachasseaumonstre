@@ -2,6 +2,7 @@ package src.map;
 
 import static org.junit.Assert.*;
 
+import map.AbstractMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +13,7 @@ import map.SquareMap;
 
 public class DeplacementTest {
 
-	private IMap map;
+	private AbstractMap map;
 	private Config config;
 	
 	@Before

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import map.AbstractMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,7 +42,7 @@ public class GraphTest
                 "3:0", "3:1", "3:2", "3:3", "3:4",
                 "4:0", "4:1", "4:2", "4:3", "4:4"
     	};
-    	IMap map = new SquareMap(this.config);
+        AbstractMap map = new SquareMap(this.config);
     	map.generationMap();
 
     	Graph graph = new Graph();
@@ -59,7 +60,7 @@ public class GraphTest
     @Test
     public void testGenerateEdge()
     {
-    	IMap map = new SquareMap(this.config);
+        AbstractMap map = new SquareMap(this.config);
     	map.generationMap();
 
     	Graph graph = new Graph();
