@@ -1,9 +1,13 @@
 package core.game;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import ai.algorithm.Dijkstra;
+import ai.graph.Graph;
+import ai.util.NodeUtil;
 import interaction.Interaction;
 import map.*;
 import render.bonus.IBonus;
@@ -24,6 +28,11 @@ public class GameBeast extends AbstractGame{
 	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqu�, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
+		Graph graph = new Graph(super.map);
+		Dijkstra dijkstra = new Dijkstra(graph);
+		List<Position> path = dijkstra.shortestPathFromTo("A", "B");
+		//cf doc. La fonction renvoit la liste des positions pour se rendre de A a B. (A,B) sont des positions au format texte : cf ai.NodeUtil.formatNode()
+		
 		System.out.println(map.gameBeastToString()+" \n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
