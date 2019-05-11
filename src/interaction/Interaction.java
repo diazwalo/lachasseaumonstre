@@ -111,8 +111,12 @@ public class Interaction {
 		}
 	}
 	
-	public static String askBonus() {
-		Scanner sc= new Scanner(System.in);
-		return sc.nextLine();
+	public static String askBonus(String firstBonus, String secondBonus) {
+		Scanner sc = new Scanner(System.in); 
+		
+		System.out.print("Veuillez saisir \"1\" pour "+ firstBonus +", 2 pour "+ secondBonus +" ou appuyez sur Entrer si vous ne voulez rien faire.");
+		String saisie = sc.nextLine();
+		
+		return saisie;
 	}
 }

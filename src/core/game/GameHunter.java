@@ -96,8 +96,8 @@ public class GameHunter extends AbstractGame {
 	public void poserBonus() {
 		System.out.println("Vous avez encore " + this.map.getHunter().getTrapDispo() + " pieges dispo et " + this.map.getHunter().getWardDispo() + " balises dispo.");
 		System.out.println("Saisissez 1 pour poser un piege, 2 pour poser une balise et entrer si vous desirez ne rien poser");
-		String choix=Interaction.askBonus();
-		if(choix.equals("1")) {
+		//String choix=Interaction.askBonus();
+		/*if(choix.equals("1")) {
 			this.setTrap();
 		}
 		else if (choix.equals("2")) {
@@ -105,7 +105,7 @@ public class GameHunter extends AbstractGame {
 		}
 		else {
 			return;
-		}
+		}*/
 	}
 	
 	

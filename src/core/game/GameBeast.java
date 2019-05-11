@@ -50,7 +50,7 @@ public class GameBeast extends AbstractGame{
 	public boolean beastTurn() {
 		boolean mvtValide=false;
 		if(this.map.getBeast().getTrapped()) {
-			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous �tes pieg�");
+			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
 			mvtValide=true;
 			this.map.getBeast().untrapped();
 			return mvtValide;
@@ -61,6 +61,7 @@ public class GameBeast extends AbstractGame{
 			
 			this.map.setBeastWalk();
 			super.checkGameStatus();
+			super.ramasserBonusBeast();
 			return mvtValide;
 		}
 	}
@@ -86,6 +87,8 @@ public class GameBeast extends AbstractGame{
 		
 		if(mvtHunter.size()>0) super.map.moveHunter(mvtHunter.get(idxMvt));
 		super.checkGameStatus();
+		
+		super.ramasserBonusHunter();
 		
 		return true;
 	}
@@ -175,9 +178,9 @@ public class GameBeast extends AbstractGame{
 	 * propose au joueur de poser un bonus au choix: un camouflage ou un leurre.
 	 */
 	public void poserBonus() {
-		System.out.println("Vous avez encore " + /*this.map.getBeast().getCamDispo() + */" camouflage dispo et " + /*this.map.getBeast().getBaitDispo() +*/ " leurre dispo.");
-		System.out.println("Saisissez 1 pour activer votre camouflage, 2 pour poser un leurre et entrer si vous desirez ne rien poser");
-		String choix=Interaction.askBonus();
+		//System.out.println("Vous avez encore "  +" camouflage dispo et " + /*this.map.getBeast().getBaitDispo() +*/ " leurre dispo.");
+		/*System.out.println("Saisissez 1 pour activer votre camouflage, 2 pour poser un leurre et entrer si vous desirez ne rien poser");
+		
 		if(choix.equals("1")) {
 			this.setCamouflage();
 		}
@@ -186,6 +189,21 @@ public class GameBeast extends AbstractGame{
 		}
 		else {
 			return;
+		}*/
+		String inventory = this.map.getBeast().toStringInventory();
+		if(inventory.length() != 0) {
+			System.out.println(inventory);
+			String choix=Interaction.askBonus("le Camouflage", "le Leure");
+			if(choix.equals("1")) {
+				this.setCamouflage();
+				System.out.println("DEDAAAAAAAAAAAAANS");
+			}
+			else if (choix.equals("2")) {
+				this.setBait();
+			}
+			else {
+				return;
+			}
 		}
 	}
 	
@@ -197,6 +215,8 @@ public class GameBeast extends AbstractGame{
 	public boolean setCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
 			this.map.getHunter().setBlinded();
+			this.map.getBeast().takeCamouflage();
+			System.out.println(this.map.getBeast().canSetCamouflage());
 			return true;
 		}
 		else {

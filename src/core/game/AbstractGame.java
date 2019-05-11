@@ -10,6 +10,7 @@ import map.Position;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
 import render.bonus.Trap;
+import render.bonus.Ward;
 
 public abstract class AbstractGame {
 
@@ -106,7 +107,7 @@ public abstract class AbstractGame {
 		return tp;
 	}
 	
-	public void ramasserBonusBeast() {
+	protected void ramasserBonusBeast() {
 		Position posBeast = this.map.getBeast().getPos();
 		boolean[] tabBeastBonus =this.map.getTab()[posBeast.getPosX()][posBeast.getPosY()].getBonusBeast();
 		if(tabBeastBonus[0]) {
@@ -118,39 +119,17 @@ public abstract class AbstractGame {
 		}
  	}
 	
-	public void ramasserBonusHunter() {
+	protected void ramasserBonusHunter() {
 		Position posHunter = this.map.getHunter().getPos();
 		boolean[] tabHunterBonus =this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].getBonusHunter();
 		if(tabHunterBonus[0]) {
 			this.map.getHunter().addToTraps(new Trap());
 			this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].setBonusHunter(new boolean[] {false, false});
 		}else if(tabHunterBonus[1]) {
-			// TO DO ajouter to Ward
+			this.map.getHunter().addToWards(new Ward());
 			this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].setBonusHunter(new boolean[] {false, false});
 		}
  	}
-	
-	/**
-	 * Verifie si la bete ou le chasseur se trouve sur une case o� un piege est actif, l'active et l'enleve	
-	 */
-	/*public void checkPiege() {
-		if(this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].getBonus().equals(new boolean[] {true,false,false,false})) {
-			this.map.getBeast().setTrapped();
-			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBonus(new boolean[] {false,false,false,false});
-		}
-		if(this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].getBonus().equals(new boolean[] {false,false,true,false})) {
-			this.map.getTab()[this.map.getBeast().getPos().getPosX()][this.map.getBeast().getPos().getPosY()].setBonus(new boolean[] {false,false,false,false});
-		}
-		if(this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBuff().equals(new boolean[] {false,true,false,false})) {
-			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBuff(new boolean[] {false,false,false,false});
-		}
-		if(this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].getBonus().equals(new boolean[] {false,false,false,true})) {
-			this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBonus(new boolean[] {false,false,false,false});
-		}
-		
-	}*/ 
-	
-	
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire

@@ -36,6 +36,23 @@ public class Beast extends Entity{
 		this.tp=config.getNbTeleportation();
 		this.TimeLeftCamouflage=0;
 	}
+	
+	public String toStringInventory() {
+		String cam="", bai="";
+
+		for (Camouflage camouflage : camouflages) {
+			if(! camouflage.equals(null)) {
+				cam="Vous avez un Camouflage ";
+			}
+		}
+		for (Bait bait : baits) {
+			if(! bait.equals(null)) {
+				bai="Vous avez un Leure";
+			}
+		}
+		
+		return cam+bai;
+	}
 
 	public void addToCamouflages(Camouflage cam) {
 		this.camouflages.add(cam);
