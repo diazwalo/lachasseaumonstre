@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Cet algorithme parcours l'ensemble de la carte de jeu afin de passer sur toutes les cases.
+ * @author PHPierre
+ *
+ */
 public class Curiosity
 {
     private Map<String, Node> listNode;
@@ -22,16 +27,16 @@ public class Curiosity
         this.listEdge = graph.getListEdge();
     }
 
-    public List<Position> getPath(String from, String to, AbstractMap sm)
+    public List<Position> getPath(String from, AbstractMap sm)
     {
         boolean toLeft = true;
         Position position = NodeUtil.formatNode(from);
         List<Position> positions = new ArrayList<Position>(listNode.size());
         int size = listNode.size();
         
+        //We delete the start edge.
         this.listNode.remove(from);
         
-        System.out.println(sm);
         for (int i = 0; i < size; i++) {
             List<Position> positionList = position.getAdjacentPosition(sm);
             boolean verticalyDeplacement = false;

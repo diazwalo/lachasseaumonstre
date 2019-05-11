@@ -46,7 +46,7 @@ public class Kruskal
 		List<String> path = new ArrayList<String>();
 		
 		path.addAll(this.executeKruskal());
-		System.out.println("taille totale " + path.size());
+
 		return path;
 	}
 	
