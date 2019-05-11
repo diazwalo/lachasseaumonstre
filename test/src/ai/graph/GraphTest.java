@@ -15,7 +15,6 @@ import ai.models.Edge;
 import ai.models.Node;
 import ai.util.EdgeUtil;
 import config.Config;
-import map.IMap;
 import map.Position;
 import map.SquareMap;
 

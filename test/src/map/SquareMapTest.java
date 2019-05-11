@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import config.Config;
-import map.IMap;
 import map.Mouvment;
 import map.SquareMap;
 import render.text.Beast;

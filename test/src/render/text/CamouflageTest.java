@@ -3,14 +3,10 @@ package src.render.text;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import config.Config;
 import map.Position;
-import render.bonus.Bait;
 import render.bonus.Camouflage;
-import render.text.Hunter;
 
 public class CamouflageTest {
 

@@ -10,8 +10,6 @@ import map.Mouvment;
 import map.Position;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
-import render.bonus.Trap;
-import render.bonus.Ward;
 
 /**
  * Cette classe definit les caracteristique principale de la classe jouable Beast

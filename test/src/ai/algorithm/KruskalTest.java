@@ -1,7 +1,5 @@
 package src.ai.algorithm;
 
-import static org.junit.Assert.*;
-
 import map.AbstractMap;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,11 +7,10 @@ import org.junit.Test;
 import ai.algorithm.Kruskal;
 import ai.graph.Graph;
 import config.Config;
-import map.IMap;
 import map.SquareMap;
 
 /**
- * Ce projet est abandonné car il ne fera pas un bon algo de decouverte de graphe.
+ * Ce projet est abandonne car il ne fera pas un bon algo de decouverte de graphe.
  * @author PHPierre
  *
  */

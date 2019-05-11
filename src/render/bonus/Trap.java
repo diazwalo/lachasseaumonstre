@@ -1,7 +1,6 @@
 package render.bonus;
 
 import map.Position;
-import render.text.Beast;
 
 /**
  * @author prognonq

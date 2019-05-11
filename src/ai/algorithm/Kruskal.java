@@ -11,8 +11,6 @@ import ai.models.Edge;
 import ai.models.EdgeTmp;
 import ai.models.Node;
 import ai.util.EdgeUtil;
-import ai.util.NodeUtil;
-import map.Position;
 
 /**
  * Cette classe est une implementation de l'algorithme de Kruskal.

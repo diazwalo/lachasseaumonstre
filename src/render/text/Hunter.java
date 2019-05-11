@@ -6,7 +6,6 @@ import config.Config;
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
-import render.bonus.Camouflage;
 import render.bonus.Trap;
 import render.bonus.Ward;
 

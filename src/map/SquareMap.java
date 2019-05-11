@@ -1,15 +1,6 @@
 package map;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import config.Config;
-import interaction.Interaction;
-import render.bonus.Bait;
-import render.bonus.Camouflage;
-import render.bonus.IBonus;
-import render.bonus.Trap;
-import render.bonus.Ward;
 import render.text.Beast;
 import render.text.Hunter;
 

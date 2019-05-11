@@ -3,11 +3,9 @@ package src.render.text;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import map.Position;
-import render.bonus.IBonus;
 import render.bonus.Ward;
 
 public class WardTest {

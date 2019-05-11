@@ -5,7 +5,6 @@ import java.util.Random;
 
 import map.AbstractMap;
 import map.CaseType;
-import map.IMap;
 import map.Position;
 import render.bonus.Bait;
 import render.bonus.Camouflage;

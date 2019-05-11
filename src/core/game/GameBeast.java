@@ -3,11 +3,9 @@ package core.game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
-import ai.util.NodeUtil;
 import interaction.Interaction;
 import map.*;
 import render.bonus.IBonus;
