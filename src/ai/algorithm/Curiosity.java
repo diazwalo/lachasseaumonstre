@@ -27,53 +27,84 @@ public class Curiosity
         boolean toLeft = true;
         Position position = NodeUtil.formatNode(from);
         List<Position> positions = new ArrayList<Position>(listNode.size());
+        int size = listNode.size();
+        
+        this.listNode.remove(from);
+        
+        System.out.println(sm);
+        for (int i = 0; i < size; i++) {
+            List<Position> positionList = position.getAdjacentPosition(sm);
+            boolean verticalyDeplacement = false;
+            if(i != 0)
+            {
+                positions.add(position);
+            }
 
-        for (int i = 0; i < listNode.size()-1; i++) {
-            List<Position> positionList = new ArrayList<Position>();
-            positionList.addAll(position.getAdjacentPosition(sm));
-            positions.add(position);
-            System.out.println(position.getAdjacentPosition(sm));
-            if(toLeft) {
-                if(positionList.contains(position.toSouth())) {
-                    position = position.toSouthWest();
-                    continue;
-                } else if (positionList.contains(position.toSouthWest())) {
+            if(cantMooveRight(position) && 
+                    positionList.contains(position.toNorth()) && this.listNode.get(NodeUtil.formatNode(position.toNorth())) != null &&
+                    positionList.contains(position.toNorthWest()) && this.listNode.get(NodeUtil.formatNode(position.toNorthWest())) != null
+                    && this.listNode.get(NodeUtil.formatNode(position.toSouthWest())) == null
+            ) {
+                position = position.toNorth();
+            }else if(toLeft) {
+                if(positionList.contains(position.toSouth()) && this.listNode.get(NodeUtil.formatNode(position.toSouth())) != null) {
                     position = position.toSouth();
-                    continue;
-                } else if(positionList.contains(position.toLeft())) {
-                    System.out.println("Ici");
+                } else if (positionList.contains(position.toSouthWest()) && this.listNode.get(NodeUtil.formatNode(position.toSouthWest())) != null) {
+                    position = position.toSouthWest();
+                } else if(positionList.contains(position.toLeft()) && this.listNode.get(NodeUtil.formatNode(position.toLeft())) != null) {
                     position = position.toLeft();
-                    continue;
-                } else if(positionList.contains(position.toNorthWest())) {
+                } else if(positionList.contains(position.toNorthWest()) && this.listNode.get(NodeUtil.formatNode(position.toNorthWest())) != null) {
                     position = position.toNorthWest();
-                    continue;
-                } else if(positionList.contains(position.toNorth())) {
+                    verticalyDeplacement = true;
+                } else if(positionList.contains(position.toNorth()) && this.listNode.get(NodeUtil.formatNode(position.toNorth())) != null) {
                     position = position.toNorth();
-                    continue;
+                    verticalyDeplacement = true;
                 }
-                toLeft = false;
+
             } else {
-                if(positionList.contains(position.toSouth())) {
-                    position = position.toSouthWest();
-                    continue;
-                } else if (positionList.contains(position.toSouthEast())) {
+                if(positionList.contains(position.toSouth()) && this.listNode.get(NodeUtil.formatNode(position.toSouth())) != null) {
                     position = position.toSouth();
-                    continue;
-                } else if(positionList.contains(position.toRight())) {
-                    position = position.toLeft();
-                    continue;
-                } else if(positionList.contains(position.toNorthEast())) {
-                    position = position.toNorthWest();
-                    continue;
-                } else if(positionList.contains(position.toNorth())) {
+                } else if (positionList.contains(position.toSouthEast()) && this.listNode.get(NodeUtil.formatNode(position.toSouthEast())) != null) {
+                    position = position.toSouthEast();
+                } else if(positionList.contains(position.toRight()) && this.listNode.get(NodeUtil.formatNode(position.toRight())) != null) {
+                    position = position.toRight();
+                } else if(positionList.contains(position.toNorthEast()) && this.listNode.get(NodeUtil.formatNode(position.toNorthEast())) != null) {
+                    position = position.toNorthEast();
+                    verticalyDeplacement = true;
+                } else if(positionList.contains(position.toNorth()) && this.listNode.get(NodeUtil.formatNode(position.toNorth())) != null) {
                     position = position.toNorth();
-                    continue;
-                }
+                    verticalyDeplacement = true;
+                } 
+
+            }
+            
+            
+            if(cantMooveLeft(position) && verticalyDeplacement) {
+                toLeft = false;
+            }
+            
+            if(cantMooveRight(position) &&verticalyDeplacement) {
                 toLeft = true;
             }
+            
+            this.listNode.remove(NodeUtil.formatNode(position));
 
         }
 
         return positions;
+    }
+    
+    private boolean cantMooveRight(Position position)
+    {
+        return this.listNode.get(NodeUtil.formatNode(position.toRight())) == null &&
+                this.listNode.get(NodeUtil.formatNode(position.toSouthEast())) == null &&
+                this.listNode.get(NodeUtil.formatNode(position.toNorthEast())) == null;
+    }
+    
+    private boolean cantMooveLeft(Position position)
+    {
+        return this.listNode.get(NodeUtil.formatNode(position.toLeft())) == null &&
+                this.listNode.get(NodeUtil.formatNode(position.toSouthWest())) == null &&
+                this.listNode.get(NodeUtil.formatNode(position.toNorthWest())) == null;
     }
 }

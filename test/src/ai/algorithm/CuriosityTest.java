@@ -1,11 +1,14 @@
 package src.ai.algorithm;
 
 import ai.algorithm.Curiosity;
-import ai.algorithm.Kruskal;
 import ai.graph.Graph;
 import config.Config;
 import map.AbstractMap;
+import map.Position;
 import map.SquareMap;
+
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,8 +26,8 @@ private Config config;
     public void beforeTest()
     {   
 		this.config = new Config();
-        this.config.setWidth(5);
-        this.config.setHeight(5);
+        this.config.setWidth(10);
+        this.config.setHeight(10);
     }
 
 	@Test
@@ -36,6 +39,8 @@ private Config config;
 		Graph graph = new Graph(map);
 		Curiosity curiosity = new Curiosity(graph);
 		
-		System.out.println(curiosity.getPath("9:9", "0:0", map));
+		List<Position> r = curiosity.getPath("9:9", "0:0", map);
+		System.out.println(r);
+		System.out.println(r.size());
 	}
 }
