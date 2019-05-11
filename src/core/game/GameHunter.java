@@ -1,8 +1,12 @@
 package core.game;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import ai.algorithm.Curiosity;
+import ai.graph.Graph;
+import ai.util.NodeUtil;
 import interaction.Interaction;
 import map.*;
 import render.bonus.Trap;
@@ -23,13 +27,20 @@ public class GameHunter extends AbstractGame {
 	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqu�, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
-		System.out.println(map.gameHunterToString()+"\n");
+		Graph graph = new Graph(super.map);
+		Curiosity curiosity = new Curiosity(graph);
+		List<Position> path = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
+		System.out.println(path); // La liste path contient tout le chemin que la bete devra parcourir pendant le jeu.
+				
+		//System.out.println(map.gameHunterToString()+"\n");
+		System.out.println(map.toString()+"\n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 
 			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
 			
-			System.out.println(super.map.gameHunterToString());
+			//System.out.println(super.map.gameHunterToString());
+			System.out.println(map.toString()+"\n");
 			this.afficherBeastPas();
 			Interaction.pressEnter();
 			
@@ -41,7 +52,8 @@ public class GameHunter extends AbstractGame {
 					}
 				}
 				this.beastTurn();
-				System.out.println(super.map.gameHunterToString());
+				//System.out.println(super.map.gameHunterToString());
+				System.out.println(map.toString()+"\n");
 				Interaction.pressEnter();
 			}
 		}
@@ -66,7 +78,7 @@ public class GameHunter extends AbstractGame {
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
 	 */
 	public boolean beastTurn() {
-		ArrayList<Mouvment> mvtBeast= super.map.getBeast().getMvtEmptyCase(super.map.getTab());
+		List<Mouvment> mvtBeast = super.map.getBeast().getMvtEmptyCase(super.map.getTab());
 
 		if(this.map.getBeast().getTrapped()) {
 			System.out.println("La bete est prise au piege !");
