@@ -1,4 +1,4 @@
-/*package IHM;
+package IHM;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,6 +8,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
@@ -39,8 +40,12 @@ public class Plateau extends Application{
 		Button down = new Button("s");
 		Button left = new Button("q");
 		Button right = new Button("d");
-		Pane vide1 = new Pane();
-		Pane vide2 = new Pane();
+		Label vide1 = new Label(" ");
+		Label vide2 = new Label(" ");
+		Label vide3 = new Label(" ");
+		Label vide4 = new Label(" ");
+		Label vide5 = new Label(" ");
+		Label vide6 = new Label(" ");
 		
 		System.out.println(System.getProperty("user.dir") + "/IHM/Texture/texture.png");
 	    Image img;
@@ -59,9 +64,7 @@ public class Plateau extends Application{
 	 
 	    for (int row = 0; row < (i + 1); row++) {
 	        for (int col = 0; col < (i + 1); col++) {
-	            if (col == 0 && row != i) {
-	                textDisplay(grid, Integer.toString(row), row, col);
-	            } else if (row != i) {
+	    
 	                Rectangle rec = new Rectangle();
 	                rec.setWidth(50);
 	                rec.setHeight(50);
@@ -73,39 +76,56 @@ public class Plateau extends Application{
 	                grid.getChildren().addAll(rec);
 	            }
 	        }
-	        if (row == i) {
-	            for (int col = 0; col < (i + 1); col++) {
-	                if (col == 0) {
-	                    textDisplay(grid, "/", row, col);
-	                } else {
-	                    textDisplay(grid, Integer.toString(col - 1), row, col);
-	                }
-	            }
-	        }
-	    }
+
 	    
 	    
 	    
-	    
-	    
-	    
-	    
-	    
+	    userBonus.setMinSize(150, 500);
+	    userBonus.setEditable(false);
+	    bonusActivate.setMinSize(150, 50);
+	    vide3.setMinSize(30, 500);
+	    vide4.setMinSize(1000, 30);
+	    up.setMinSize(50, 50);
+	    down.setMinSize(50, 50);
+	    left.setMinSize(50, 50);
+	    right.setMinSize(50, 50);
+	    vide1.setMinSize(50, 50);
+	    vide2.setMinSize(50, 50);
+	    vide5.setMinSize(50, 50);
+	    userCommunication.setMinSize(520, 100);
+	    userCommunication.setEditable(false);
+	    vide6.setMinSize(10, 10);
 	    
 	    root.getChildren().add(mapAndBonus);
+	    root.getChildren().add(vide4);
 	    root.getChildren().add(buttonAndText);
 	    mapAndBonus.getChildren().add(grid);
+	    mapAndBonus.getChildren().add(vide3);
 	    mapAndBonus.getChildren().add(bonus);
 	    bonus.getChildren().add(userBonus);
 	    bonus.getChildren().add(bonusActivate);
+	    buttonAndText.getChildren().add(playButton);
+	    buttonAndText.getChildren().add(vide6);
+	    buttonAndText.getChildren().add(userCommunication);
+	    playButton.getChildren().add(topsidePlayButton);
+	    playButton.getChildren().add(sidePlayButton);
+	    topsidePlayButton.getChildren().add(vide1);
+	    topsidePlayButton.getChildren().add(up);
+	    topsidePlayButton.getChildren().add(vide2);
+	    sidePlayButton.getChildren().add(left);
+	    sidePlayButton.getChildren().add(down);
+	    sidePlayButton.getChildren().add(right);
 	    
 	    
-	    Scene scene = new Scene(root, (i+1)*50, (i+1)*50);
+	    
+	    Scene scene = new Scene(root, 750, 700);
 	 
 	    stage.setTitle(
 	            "Grid");
 	    stage.setScene(scene);
 	 
+	    stage.setResizable(false);
+	    
 	    stage.show();
 	 
 	}
@@ -126,4 +146,3 @@ public class Plateau extends Application{
 	
 	
 }
-*/
