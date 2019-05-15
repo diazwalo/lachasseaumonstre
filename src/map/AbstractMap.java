@@ -134,6 +134,10 @@ public abstract class AbstractMap
             }
         }
     }
+    
+    public final void removePiege(IBonus ib) {
+    	this.bonusActif.remove(ib);
+    }
 
     public final void HunterIsNearBait() {
         for(IBonus ib : this.bonusActif) {
@@ -235,13 +239,18 @@ public abstract class AbstractMap
 
     
     public void triggerBonus() {
+    	
     	for(IBonus b : this.bonusActif) {
     		
     		if(b.getPos().equals(this.beast.getPos()) && b instanceof Trap) {
+    			System.out.println("detected");
     			b.setTriggered();
+    			
     		}
     		
     	}
+    	
+    	
     }
     
     
