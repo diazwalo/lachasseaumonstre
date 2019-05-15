@@ -97,7 +97,7 @@ public class Bait implements IBonus {
 		return this.discovered;
 	}
 	
-	public void setDiscovered() {
+	public void setTriggered() {
 		this.discovered=true;
 	}
 	

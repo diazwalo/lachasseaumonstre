@@ -69,7 +69,7 @@ public class Camouflage implements IBonus {
 	}
 
 	@Override
-	public void setDiscovered() {
+	public void setTriggered() {
 		// TODO Auto-generated method stub
 		
 	}
