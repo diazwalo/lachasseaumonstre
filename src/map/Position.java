@@ -230,7 +230,7 @@ public class Position {
 		
 		for(int i = 0; i < allMvt.length; i++) {
 			Mouvment m = Mouvment.valueOf(allMvt[i].name());
-			if(allMvt[i].getMvtX() == p.getPosX() && allMvt[i].getMvtY() == p.getPosY())
+			if(m.getMvtX() == p.getPosX() && m.getMvtY() == p.getPosY())
 			{
 				return allMvt[i];
 			}
