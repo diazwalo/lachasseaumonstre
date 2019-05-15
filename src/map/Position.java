@@ -202,4 +202,39 @@ public class Position {
 		return true;
 	}
 	
+	/**
+	 * Effectue la difference entre deux positions.
+	 * @param currentPosition la position actuelle.
+	 * @param toPosition La position finale.
+	 * @return Une position qui indique la différence.
+	 */
+	public static Position difference(Position currentPosition, Position toPosition)
+	{
+		int newX = toPosition.getPosX() - currentPosition.getPosX();
+		int newY = toPosition.getPosY() - currentPosition.getPosY();
+		
+		return new Position(newX, newY);
+	}
+	
+	/**
+	 * Retourne le mouvement effectué pour se deplacer entre deux positions.
+	 * @param currentPosition La position actuelle.
+	 * @param toPosition la position finale.
+	 * @return Le mouvement pour se deplacer de la position courante à la position finale.
+	 */
+	public static Mouvment toMouvment(Position currentPosition, Position toPosition)
+	{
+		Position p = difference(currentPosition, toPosition);
+
+		Mouvment[] allMvt = Mouvment.values();
+		
+		for(int i = 0; i < allMvt.length; i++) {
+			Mouvment m = Mouvment.valueOf(allMvt[i].name());
+			if(m.getMvtX() == p.getPosX() && m.getMvtY() == p.getPosY())
+			{
+				return allMvt[i];
+			}
+		}
+		return null;
+	}
 }

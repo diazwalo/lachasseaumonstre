@@ -1,7 +1,6 @@
 package ai.algorithm;
 
 import ai.graph.Graph;
-import ai.models.Edge;
 import ai.models.Node;
 import ai.util.NodeUtil;
 import map.AbstractMap;
@@ -19,12 +18,10 @@ import java.util.Map;
 public class Curiosity
 {
     private Map<String, Node> listNode;
-    private Map<String, Edge> listEdge;
 
     public Curiosity(Graph graph)
     {
         this.listNode = graph.getListNode();
-        this.listEdge = graph.getListEdge();
     }
 
     public List<Position> getPath(String from, AbstractMap sm)

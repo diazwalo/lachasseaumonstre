@@ -75,4 +75,36 @@ public class PositionTest {
 		for (Position posValide : tabPosValide) assertTrue(positionAdjacent.contains(posValide));
 		for (Position posInvalide : tabPosInvalide) assertFalse(positionAdjacent.contains(posInvalide));
 	}
+	
+	@Test
+	public void testDifference()
+	{
+		Position p1 = new Position(1, 1);
+		Position p2 = new Position(0, 0);
+		
+		Position difPosition1 = Position.difference(p1, p2);
+		
+		assertEquals(-1, difPosition1.getPosX());
+		assertEquals(-1, difPosition1.getPosY());
+		
+		Position difPosition2 = Position.difference(p2, p1);
+		
+		assertEquals(1, difPosition2.getPosX());
+		assertEquals(1, difPosition2.getPosY());
+	}
+	
+	@Test
+	public void testToMouvment()
+	{
+		Position p1 = new Position(1, 1);
+		Position p2 = new Position(0, 0);
+		
+		Mouvment mouvment1 = Position.toMouvment(p1, p2);
+		
+		assertEquals(Mouvment.NORDOUEST, mouvment1);
+		
+		Mouvment mouvment2 = Position.toMouvment(p2, p1);
+		
+		assertEquals(Mouvment.SUDEST, mouvment2);
+	}
 }

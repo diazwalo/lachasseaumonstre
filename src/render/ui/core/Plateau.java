@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -78,6 +79,7 @@ public class Plateau extends Application{
 	        }
 
 	    
+	    //up.setGraphic(new ImageView(img));
 	    
 	    
 	    userBonus.setMinSize(150, 500);
@@ -85,6 +87,7 @@ public class Plateau extends Application{
 	    bonusActivate.setMinSize(150, 50);
 	    vide3.setMinSize(30, 500);
 	    vide4.setMinSize(1000, 30);
+	    up.setMinSize(50, 50);
 	    up.setMinSize(50, 50);
 	    down.setMinSize(50, 50);
 	    left.setMinSize(50, 50);
