@@ -22,6 +22,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import render.ui.component.PlayButton;
 
 public class Plateau extends Application{
 	public void start(Stage stage) {
@@ -33,6 +34,7 @@ public class Plateau extends Application{
 		VBox playButton = new VBox();
 		HBox sidePlayButton = new HBox();
 		HBox topsidePlayButton = new HBox();
+		//PlayButton playGame = new PlayButton();
 		
 		Button bonusActivate = new Button("Utiliser Bonus");
 		TextField userCommunication = new TextField();
@@ -99,6 +101,7 @@ public class Plateau extends Application{
 	    userCommunication.setEditable(false);
 	    vide6.setMinSize(10, 10);
 	    
+	    //root.getChildren().add(playGame.getCore());
 	    root.getChildren().add(mapAndBonus);
 	    root.getChildren().add(vide4);
 	    root.getChildren().add(buttonAndText);
@@ -127,7 +130,7 @@ public class Plateau extends Application{
 	            "Grid");
 	    stage.setScene(scene);
 	 
-	    stage.setResizable(false);
+	    stage.setResizable(true);
 	    
 	    stage.show();
 	 
