@@ -1,4 +1,4 @@
-package IHM;
+package render.ui.core;
 
 import java.io.File;
 import java.io.FileInputStream;

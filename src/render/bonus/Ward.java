@@ -5,7 +5,7 @@ import map.Position;
 /**
  * @author prognonq
  *
- */
+ */ 
 public class Ward implements IBonus {
 	
 	private int timer;

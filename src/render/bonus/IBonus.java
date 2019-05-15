@@ -9,3 +9,4 @@ public interface IBonus {
 	public Position getPos();
 	public void setTriggered();
 }
+ 

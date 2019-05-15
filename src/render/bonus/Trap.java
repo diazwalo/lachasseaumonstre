@@ -40,7 +40,7 @@ public class Trap implements IBonus {
 		this.pos.setPosY(y);
 	}
 
-
+ 
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
