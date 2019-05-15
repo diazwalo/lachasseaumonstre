@@ -3,6 +3,7 @@ package map;
 import config.Config;
 import render.bonus.Bait;
 import render.bonus.IBonus;
+import render.bonus.Trap;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -140,7 +141,7 @@ public abstract class AbstractMap
             if(ib.getClass().isInstance(new Bait())) {
                 if(this.getHunter().getPos().getPosX()-ib.getPos().getPosX()<2 && this.getHunter().getPos().getPosX()-ib.getPos().getPosX()>-2 &&
                         this.getHunter().getPos().getPosY()-ib.getPos().getPosY()<2 && this.getHunter().getPos().getPosY()-ib.getPos().getPosY()>-2 ) {
-                    ib.setDiscovered();
+                    ib.setTriggered();
                 }
             }
         }
@@ -232,6 +233,18 @@ public abstract class AbstractMap
         return affichage;
     }
 
+    
+    public void triggerBonus() {
+    	for(IBonus b : this.bonusActif) {
+    		
+    		if(b.getPos().equals(this.beast.getPos()) && b instanceof Trap) {
+    			b.setTriggered();
+    		}
+    		
+    	}
+    }
+    
+    
     /**
      * Retourne les La Map sous la forme textuelle d'un tableau avec des obstacles, des buffs, des Entity
      */
