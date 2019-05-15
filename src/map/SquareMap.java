@@ -1,6 +1,7 @@
 package map;
 
 import config.Config;
+import render.bonus.Trap;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -35,6 +36,10 @@ public class SquareMap extends AbstractMap {
 		this.config = config;
 		this.beastWin = false;
 		this.hunterWin = false;
+		
+		
+		//TEST
+		super.setBonusActif(new Trap(9, 9));
 	}
 
 	/**

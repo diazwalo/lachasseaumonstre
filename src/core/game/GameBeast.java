@@ -28,14 +28,20 @@ public class GameBeast extends AbstractGame{
 	public void launchGame() {
 		Graph graph = new Graph(super.map);
 		Dijkstra dijkstra = new Dijkstra(graph);
-		List<Position> path = dijkstra.shortestPathFromTo("A", "B");
+		
+		//List<Position> path = dijkstra.shortestPathFromTo("A", "B");
 		//cf doc. La fonction renvoit la liste des positions pour se rendre de A a B. (A,B) sont des positions au format texte : cf ai.NodeUtil.formatNode()
 		
 		System.out.println(map.gameBeastToString()+" \n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
+			IBonus bo=null;
+			
+			
+			
+			
 			while(! this.beastTurn()) System.out.println("Mvt Invalide");
-			this.map.getBeast().untrapped();
+			//this.map.getBeast().untrapped();			
 			System.out.println(this.map.gameBeastToString());
 			Interaction.pressEnter();
 			//this.checkPiege();
@@ -56,10 +62,30 @@ public class GameBeast extends AbstractGame{
 	  */
 	public boolean beastTurn() {
 		boolean mvtValide=false;
+		IBonus bo=null;
+		
+		for(IBonus ib: this.map.getBonusActif()) {
+			System.out.println(ib.getPos());
+			if(ib.getPos().equals(this.map.getBeast().getPos())) {
+				this.map.getBeast().setTrapped();
+				this.map.triggerBonus();
+				bo=ib;
+			}
+	
+			
+		}
+		
+		
+		
+		System.out.println("EE:"+this.map.getBeast().getTrapped());
 		if(this.map.getBeast().getTrapped()) {
+			System.out.println(this.map.getBeast().getTrapped());
 			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
 			mvtValide=true;
 			this.map.getBeast().untrapped();
+			if(bo!=null) {
+				this.map.removePiege(bo);
+			}
 			return mvtValide;
 		}else {
 			this.poserBonus();
@@ -69,6 +95,7 @@ public class GameBeast extends AbstractGame{
 			this.map.setBeastWalk();
 			super.checkGameStatus();
 			super.ramasserBonusBeast();
+			this.map.triggerBonus();
 			return mvtValide;
 		}
 	}

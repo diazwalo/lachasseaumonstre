@@ -47,7 +47,7 @@ public class GameHunter extends AbstractGame {
 				for (int i = 0; i < this.map.getBonusActif().size(); i++) {
 					if(this.map.getBeast().getPos().isPos(this.map.getBonusActif().get(i).getPos().getPosX(), this.map.getBonusActif().get(i).getPos().getPosY())) {
 						this.map.getBeast().setTrapped();
-						this.map.removePiege();
+						
 					}
 				}
 				this.beastTurn();
@@ -81,9 +81,7 @@ public class GameHunter extends AbstractGame {
 
 		if(this.map.getBeast().getTrapped()) {
 			System.out.println("La bete est prise au piege !");
-			/*
-			 * TO  DO : ajouter une fct remove dans SquareMap qui retire les bonus actifs
-			 */
+			this.map.triggerBonus();
 			this.map.getBeast().untrapped();
 			return true;
 		}
