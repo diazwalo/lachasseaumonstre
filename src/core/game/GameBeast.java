@@ -107,7 +107,7 @@ public class GameBeast extends AbstractGame{
 	 * @return boolean
 	 */
 	public boolean hunterTurn() {
-		ArrayList<Mouvment> mvtHunter=super.map.getHunter().getMvtEmptyCase(super.map.getTab());
+		List<Mouvment> mvtHunter=super.map.getHunter().getMvtEmptyCase(super.map.getTab());
 		int idxMvt=0;
 		
 		if(mvtHunter.size()>0) {
@@ -191,7 +191,7 @@ public class GameBeast extends AbstractGame{
 	 * @return boolean
 	 */
 	public boolean tpBeast(){
-		ArrayList<Position> posDispo=super.map.getBeast().getCaseTp(super.map.getTab(), super.map.getHunter());
+		List<Position> posDispo=super.map.getBeast().getCaseTp(super.map.getTab(), super.map.getHunter());
 		
 		boolean tp=false;
 		int idxPosDispo;
@@ -229,7 +229,7 @@ public class GameBeast extends AbstractGame{
 			System.out.println(inventory);
 			String choix=Interaction.askBonus("le Camouflage", "le Leure");
 			if(choix.equals("1")) {
-				this.setCamouflage();
+				//this.setCamouflage();
 				System.out.println("DEDAAAAAAAAAAAAANS");
 			}
 			else if (choix.equals("2")) {
@@ -246,7 +246,7 @@ public class GameBeast extends AbstractGame{
 	 * Retourne faux si le joueur n'a plus de camouflage
 	 * @return boolean
 	 */
-	public boolean setCamouflage() {
+	/*public boolean setCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
 			this.map.getHunter().setBlinded();
 			this.map.getBeast().takeCamouflage();
@@ -255,8 +255,8 @@ public class GameBeast extends AbstractGame{
 		}
 		else {
 			return false;
-		} 
-	}
+		}
+	}*/
 	
 	/**
 	 * le joueur acitve un leurre sur une case qui affiche un faux nombre de pas sur la case courante pour le chasseur qui disparait quand le chasseur passe dessus

@@ -52,7 +52,7 @@ public class Trap implements IBonus {
 		// TODO Auto-generated method stub
 		return this.pos;
 	}
-	
+
 	@Override
 	public void nextTurnBonus() {
 		// TODO Auto-generated method stub
@@ -60,7 +60,7 @@ public class Trap implements IBonus {
 			this.pos=null;
 		}
 	}
-	
+
 	public String toString() {
 		return "t";
 	}

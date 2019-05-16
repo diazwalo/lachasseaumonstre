@@ -1,6 +1,7 @@
 package render.text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import config.Config;
 import map.Case;
@@ -15,8 +16,8 @@ import render.bonus.Ward;
  *
  */
 public class Hunter extends Entity {
-	ArrayList<Trap> traps=new ArrayList<Trap>();
-	ArrayList<Ward> wards=new ArrayList<Ward>();
+	List<Trap> traps = new ArrayList<Trap>();
+	List<Ward> wards = new ArrayList<Ward>();
 	private int blinded=0;
 	/**
 	 * instancie Hunter a la Position posX, posY
@@ -133,8 +134,8 @@ public class Hunter extends Entity {
 	 * @param tab
 	 * @return ArrayList<Mouvment>
 	 */
-	public ArrayList<Mouvment> getMvtEmptyCase(Case[][] tab) {
-		ArrayList<Mouvment> mouvTab = new ArrayList<>();
+	public List<Mouvment> getMvtEmptyCase(Case[][] tab) {
+		List<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values())
 			if(super.verifDeplacementEntity(tab, m))
 				mouvTab.add(m);
@@ -148,7 +149,7 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity beast) {
-		ArrayList<Mouvment> possible = this.getMvtEmptyCase(tab);
+		List<Mouvment> possible = this.getMvtEmptyCase(tab);
 		for(Mouvment m : possible)
 			if(this.verifDeplacementSpe(tab, m, beast))
 				return false;

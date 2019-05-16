@@ -9,7 +9,7 @@ import render.text.Hunter;
  */
 public class Bait implements IBonus {
 	private Position pos;
-	private final String NAME = "leurre";
+	private final String NAME = "Leurre";
 	private boolean used;
 	private boolean discovered;
 	private int count;

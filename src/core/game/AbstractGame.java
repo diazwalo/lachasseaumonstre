@@ -1,6 +1,7 @@
 package core.game;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import map.AbstractMap;
@@ -91,7 +92,7 @@ public abstract class AbstractGame {
 	 * @return boolean
 	 */
 	public boolean tpBeast(){
-		ArrayList<Position> posDispo=this.map.getBeast().getCaseTp(this.map.getTab(), this.map.getHunter());
+		List<Position> posDispo = this.map.getBeast().getCaseTp(this.map.getTab(), this.map.getHunter());
 		
 		boolean tp=false;
 		int idxPosDispo;
