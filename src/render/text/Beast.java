@@ -18,7 +18,7 @@ import render.bonus.Camouflage;
  *
  */
 public class Beast extends Entity{
-	//private int TimeLeftCamouflage;
+	//private int timeLeftCamouflage;
 	private List<Camouflage> camouflages = new ArrayList<>();
 	private List<Bait> baits = new ArrayList<>();
 	private boolean trapped;
@@ -33,7 +33,7 @@ public class Beast extends Entity{
 		super(posX, posY);
 		this.trapped = false;
 		this.tp=config.getNbTeleportation();
-		//this.TimeLeftCamouflage=0;
+		//this.timeLeftCamouflage=0;
 	}
 	
 	public String toStringInventory() {
@@ -75,7 +75,7 @@ public class Beast extends Entity{
 	 * @return int
 	 */
 	/*public int getTimeLeftCamouflage() {
-		return this.TimeLeftCamouflage;
+		return this.timeLeftCamouflage;
 	}*/
 
 	/**
@@ -119,13 +119,9 @@ public class Beast extends Entity{
 	 * renvoie si il est possible de poser un camouflage et en enleve un si c'est possible
 	 * @return boolean
 	 */
-	/*public boolean canSetCamouflage() {
-		if(this.TimeLeftCamouflage > 0) {
-			this.TimeLeftCamouflage--;
-			return true;
-		}
-		return false;
-	}*/
+	public boolean canSetCamouflage() {
+		return ! this.camouflages.isEmpty();
+	}
 	
 	/**
 	 * verifie si le deplacement souhaite est realisable pour la bete

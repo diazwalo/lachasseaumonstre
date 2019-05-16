@@ -212,25 +212,12 @@ public class GameBeast extends AbstractGame{
 	 * propose au joueur de poser un bonus au choix: un camouflage ou un leurre.
 	 */
 	public void poserBonus() {
-		//System.out.println("Vous avez encore "  +" camouflage dispo et " + /*this.map.getBeast().getBaitDispo() +*/ " leurre dispo.");
-		/*System.out.println("Saisissez 1 pour activer votre camouflage, 2 pour poser un leurre et entrer si vous desirez ne rien poser");
-		
-		if(choix.equals("1")) {
-			this.setCamouflage();
-		}
-		else if (choix.equals("2")) {
-			this.setBait();
-		}
-		else {
-			return;
-		}*/
 		String inventory = this.map.getBeast().toStringInventory();
 		if(inventory.length() != 0) {
 			System.out.println(inventory);
 			String choix=Interaction.askBonus("le Camouflage", "le Leure");
 			if(choix.equals("1")) {
-				//this.setCamouflage();
-				System.out.println("DEDAAAAAAAAAAAAANS");
+				this.setCamouflage();
 			}
 			else if (choix.equals("2")) {
 				this.setBait();
@@ -246,17 +233,15 @@ public class GameBeast extends AbstractGame{
 	 * Retourne faux si le joueur n'a plus de camouflage
 	 * @return boolean
 	 */
-	/*public boolean setCamouflage() {
+	public boolean setCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
 			this.map.getHunter().setBlinded();
 			this.map.getBeast().takeCamouflage();
-			System.out.println(this.map.getBeast().canSetCamouflage());
+			//System.out.println(this.map.getBeast().canSetCamouflage());
 			return true;
 		}
-		else {
-			return false;
-		}
-	}*/
+		return false;
+	}
 	
 	/**
 	 * le joueur acitve un leurre sur une case qui affiche un faux nombre de pas sur la case courante pour le chasseur qui disparait quand le chasseur passe dessus
@@ -271,9 +256,7 @@ public class GameBeast extends AbstractGame{
 			
 			return true;
 		}
-		else {
-			return false;
-		}
+		return false;
 	}
 
 	
