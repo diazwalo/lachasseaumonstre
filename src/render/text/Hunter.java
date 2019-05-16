@@ -67,11 +67,11 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean isBlinded() {
-		if(blinded>0) {
-			blinded--;
-			return true;
-		}
-		return false;
+		return this.blinded>0;
+	}
+	
+	public void decrementBlinded() {
+		this.blinded--;
 	}
 	
 	/**

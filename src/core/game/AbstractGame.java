@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.hamcrest.core.IsInstanceOf;
+
 import map.AbstractMap;
 import map.CaseType;
 import map.Position;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
+import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
 
@@ -28,14 +31,14 @@ public abstract class AbstractGame {
 	public abstract void poserBonus();
 	
 	/**
-	 * statusBastFound retourne true si la bete a �t� trouv� par le chasseur.
+	 * statusBastFound retourne true si la bete a ete trouve par le chasseur.
 	 */
 	public boolean statusBeastFound() {
 		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
 	}
 	
 	/**
-	 * statusMapDiscovered retourne true si la bete a entierement explor� la map.
+	 * statusMapDiscovered retourne true si la bete a entierement explore la map.
 	 */
 	public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
@@ -130,6 +133,21 @@ public abstract class AbstractGame {
 			this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].setBonusHunter(new boolean[] {false, false});
 		}
  	}
+	
+	private boolean isCamouflageActivated() {
+		for (IBonus bonus : this.map.getBonusActif()) {
+			if(bonus instanceof Camouflage && ((Camouflage) bonus).lifetimeOut()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	protected void blindHunter() {
+		if(isCamouflageActivated()) {
+			this.map.getHunter().setBlinded();
+		}
+	}
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire

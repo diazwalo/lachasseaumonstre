@@ -52,6 +52,7 @@ public class GameBeast extends AbstractGame{
 			}
 			//this.checkPiege();
 			this.map.passTurnBonus();
+			System.out.println("Beast aveugle: "+this.map.getHunter().isBlinded());
 		}
 		this.EndGame();
 	}
@@ -234,8 +235,13 @@ public class GameBeast extends AbstractGame{
 	 */
 	public boolean setCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
-			this.map.getHunter().setBlinded();
+			/*this.map.getHunter().setBlinded();*/
+			System.out.println("Activation du camouflage");
+			/*
+			 * TODO : la methode qui suit ne set pas le hunter a blind
+			 */
 			this.map.getBeast().takeCamouflage();
+			super.blindHunter();
 			//System.out.println(this.map.getBeast().canSetCamouflage());
 			return true;
 		}
