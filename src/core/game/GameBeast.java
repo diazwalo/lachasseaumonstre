@@ -51,6 +51,7 @@ public class GameBeast extends AbstractGame{
 				Interaction.pressEnter();
 			}
 			//this.checkPiege();
+			this.map.passTurnBonus();
 		}
 		this.EndGame();
 	}
@@ -66,7 +67,7 @@ public class GameBeast extends AbstractGame{
 		
 		for(IBonus ib: this.map.getBonusActif()) {
 			System.out.println(ib.getPos());
-			if(ib.getPos().equals(this.map.getBeast().getPos())) {
+			if(ib.getPos() != null && ib.getPos().equals(this.map.getBeast().getPos())) {
 				this.map.getBeast().setTrapped();
 				this.map.triggerBonus();
 				bo=ib;
@@ -76,14 +77,12 @@ public class GameBeast extends AbstractGame{
 		}
 		
 		
-		
-		System.out.println("EE:"+this.map.getBeast().getTrapped());
 		if(this.map.getBeast().getTrapped()) {
 			System.out.println(this.map.getBeast().getTrapped());
 			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
 			mvtValide=true;
 			this.map.getBeast().untrapped();
-			if(bo!=null) {
+			if(bo != null) {
 				this.map.removePiege(bo);
 			}
 			return mvtValide;
@@ -95,7 +94,7 @@ public class GameBeast extends AbstractGame{
 			this.map.setBeastWalk();
 			super.checkGameStatus();
 			super.ramasserBonusBeast();
-			this.map.triggerBonus();
+			//this.map.triggerBonus();
 			return mvtValide;
 		}
 	}

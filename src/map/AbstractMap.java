@@ -242,7 +242,7 @@ public abstract class AbstractMap
     	
     	for(IBonus b : this.bonusActif) {
     		
-    		if(b.getPos().equals(this.beast.getPos()) && b instanceof Trap) {
+    		if(b.getPos() != null && b.getPos().equals(this.beast.getPos()) && b instanceof Trap) {
     			System.out.println("detected");
     			b.setTriggered();
     			
@@ -251,6 +251,12 @@ public abstract class AbstractMap
     	}
     	
     	 
+    }
+    
+    public void passTurnBonus() {
+    	for (IBonus iBonus : bonusActif) {
+			iBonus.nextTurnBonus();
+		}
     }
     
     
