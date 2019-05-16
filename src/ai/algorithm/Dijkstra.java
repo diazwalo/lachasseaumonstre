@@ -10,6 +10,7 @@ import ai.models.Node;
 import ai.util.EdgeUtil;
 import ai.util.NodeUtil;
 import map.Position;
+import ai.exception.NodeNotFoundException;
 import ai.graph.Graph;
 
 /**
@@ -40,14 +41,17 @@ public class Dijkstra
 	 * en compte les obstacles.
 	 * @param from L'identifiant de la position de depart.
 	 * @param to L'identifiant de la position finale.
-	 * @return Une liste de positions contenant l;'itineraire a suivre.
+	 * @return Une liste de positions contenant l'itineraire a suivre.
+	 * @throws NodeNotFoundException 
 	 */
 	public List<Position> shortestPathFromTo(String from, String to)
 	{
+		checkIfNodesExist(from, to);
+		
 		List<Position> shortestPath = new ArrayList<Position>();
 		String tmpNode = to;
 		
-		this.executeDijkstra(from);
+		executeDijkstra(from);
 		
 		while(!tmpNode.equals(from))
 		{
@@ -60,6 +64,17 @@ public class Dijkstra
 		return shortestPath;
 	}
 	
+	private void checkIfNodesExist(String from, String to)
+	{
+		if(!this.listNode.containsKey(from)) {
+			throw new NodeNotFoundException(from);
+		}
+		
+		if(!this.listNode.containsKey(to)) {
+			throw new NodeNotFoundException(to);
+		}
+	}
+
 	/**
 	 * Execute l'algorithme de Dijkstra pour chaque sommets.
 	 * @param from
