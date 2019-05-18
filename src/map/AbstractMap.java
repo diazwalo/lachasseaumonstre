@@ -127,7 +127,7 @@ public abstract class AbstractMap
         return this.bonusActif;
     }
 
-    public final void removePiege() {
+    public final void removeBonus() {
         for (IBonus ib : this.bonusActif) {
             if(ib.getPos().equals(null)) {
                 this.bonusActif.remove(ib);
@@ -245,7 +245,6 @@ public abstract class AbstractMap
     		if(b.getPos() != null && b.getPos().equals(this.beast.getPos()) && b instanceof Trap) {
     			System.out.println("detected");
     			b.setTriggered();
-    			
     		}
     		
     	}

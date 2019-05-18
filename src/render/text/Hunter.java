@@ -78,7 +78,7 @@ public class Hunter extends Entity {
 	 * set le nombre de tour o� le chasseur est aveuglee par le camouflage de la bete
 	 */
 	public void setBlinded() {
-		blinded=2;
+		blinded=4;
 	}
 	
 	/**

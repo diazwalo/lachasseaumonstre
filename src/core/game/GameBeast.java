@@ -8,7 +8,9 @@ import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
 import interaction.Interaction;
 import map.*;
+import render.bonus.Camouflage;
 import render.bonus.IBonus;
+import render.bonus.Trap;
 
 /**
  * 
@@ -35,24 +37,18 @@ public class GameBeast extends AbstractGame{
 		System.out.println(map.gameBeastToString()+" \n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-			IBonus bo=null;
-			
-			
-			
 			
 			while(! this.beastTurn()) System.out.println("Mvt Invalide");
-			//this.map.getBeast().untrapped();			
+			this.map.getHunter().decrementBlinded();
 			System.out.println(this.map.gameBeastToString());
 			Interaction.pressEnter();
-			//this.checkPiege();
 			if(! super.map.isBeastWin()) {
 				this.hunterTurn();
 				System.out.println(super.map.gameBeastToString());
 				Interaction.pressEnter();
 			}
-			//this.checkPiege();
 			this.map.passTurnBonus();
-			System.out.println("Beast aveugle: "+this.map.getHunter().isBlinded());
+			
 		}
 		this.EndGame();
 	}
@@ -67,14 +63,12 @@ public class GameBeast extends AbstractGame{
 		IBonus bo=null;
 		
 		for(IBonus ib: this.map.getBonusActif()) {
-			System.out.println(ib.getPos());
-			if(ib.getPos() != null && ib.getPos().equals(this.map.getBeast().getPos())) {
+			if(ib.getPos() != null && ib.getPos().equals(this.map.getBeast().getPos()) && ib  instanceof Trap) {
 				this.map.getBeast().setTrapped();
 				this.map.triggerBonus();
 				bo=ib;
 			}
 	
-			
 		}
 		
 		
@@ -176,11 +170,11 @@ public class GameBeast extends AbstractGame{
 	public void EndGame() {
 		
 		if (super.map.isBeastWin()) {
-			System.out.println(AbstractGame.gameStatus);
+			System.out.println(AbstractGame.gameStatus.getStatus());
 			System.out.println("Victoire de la bete");
 		}
 		else if(super.map.isHunterWin()){
-			System.out.println(AbstractGame.gameStatus);
+			System.out.println(AbstractGame.gameStatus.getStatus());
 			System.out.println("Victoire du Chasseur");
 		}
 	}
@@ -235,12 +229,10 @@ public class GameBeast extends AbstractGame{
 	 */
 	public boolean setCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
-			/*this.map.getHunter().setBlinded();*/
-			System.out.println("Activation du camouflage");
 			/*
 			 * TODO : la methode qui suit ne set pas le hunter a blind
 			 */
-			this.map.getBeast().takeCamouflage();
+			this.map.setBonusActif(this.map.getBeast().takeCamouflage());
 			super.blindHunter();
 			//System.out.println(this.map.getBeast().canSetCamouflage());
 			return true;

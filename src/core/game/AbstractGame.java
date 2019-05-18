@@ -134,19 +134,22 @@ public abstract class AbstractGame {
 		}
  	}
 	
-	private boolean isCamouflageActivated() {
+	/*private boolean isCamouflageActivated() {
 		for (IBonus bonus : this.map.getBonusActif()) {
+			//TEST
+			System.out.println("Bonus Actif: "+bonus);
 			if(bonus instanceof Camouflage && ((Camouflage) bonus).lifetimeOut()) {
 				return true;
 			}
 		}
 		return false;
-	}
+	}*/
 	
 	protected void blindHunter() {
-		if(isCamouflageActivated()) {
+		/*if(isCamouflageActivated()) {
 			this.map.getHunter().setBlinded();
-		}
+		}*/
+		this.map.getHunter().setBlinded();
 	}
 	
 	/**
