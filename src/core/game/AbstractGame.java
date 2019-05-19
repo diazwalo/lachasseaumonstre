@@ -8,6 +8,7 @@ import org.hamcrest.core.IsInstanceOf;
 
 import map.AbstractMap;
 import map.CaseType;
+import map.Mouvment;
 import map.Position;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
@@ -144,12 +145,13 @@ public abstract class AbstractGame {
 	 * Prends la Bete au Piege si elle est sur un IBonus de type Piege
 	 * @return IBonus
 	 */
-	public IBonus setBeastTrapped() {
+	public IBonus checkBeastTrapped() {
 		IBonus res = null;
 		for(IBonus ib: this.map.getBonusActif()) {
 			if(ib.getPos() != null && ib.getPos().equals(this.map.getBeast().getPos()) && ib  instanceof Trap) {
 				this.map.getBeast().setTrapped();
-				this.triggerBonus();
+				//this.triggerBonus();
+				ib.setTriggered();
 				res = ib;
 			}
 		}
@@ -157,16 +159,43 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * 
+	 * Declanche le Bonus si il est de Type Trap
 	 */
 	public void triggerBonus() {
     	for(IBonus b : this.map.getBonusActif()) {
     		if(b.getPos() != null && b.getPos().equals(this.map.getBeast().getPos()) && b instanceof Trap) {
-    			System.out.println("detected");
     			b.setTriggered();
     		}
     	}
     }
+	
+	/**
+	 * Verifie si la bete est sous dans sur une case adjacente a la ward et passe revealed a true si cela s'avere vrai
+	 */
+	public void checkBeastRevealed() {
+		boolean beastStillUnderWard = false;
+		for(IBonus ib: this.map.getBonusActif()) {
+			if(ib.getPos() != null && ib  instanceof Ward) {
+				Position posAdjBeast = this.map.getBeast().getPos();
+				if(ib.getPos().equals(posAdjBeast)) {
+					this.map.getBeast().setRevealedByWard(true);
+					beastStillUnderWard = true;
+				}else {
+					for (Mouvment mouvment : this.map.getBeast().getMvtEmptyCase(this.map.getTab())) {
+						int[] tabPosAdjBeast = posAdjBeast.getModifPosTempo(mouvment.getMvt());
+						if(ib.getPos().equals(new Position(tabPosAdjBeast[0], tabPosAdjBeast[1]))) {
+							this.map.getBeast().setRevealedByWard(true);
+							beastStillUnderWard = true;
+						}
+					}
+				}
+			}
+		}
+		
+		if(! beastStillUnderWard) {
+			this.map.getBeast().setRevealedByWard(false);
+		}
+	}
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire

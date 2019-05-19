@@ -38,12 +38,15 @@ public class GameBeast extends AbstractGame{
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			
-			while(! this.beastTurn()) System.out.println("Mvt Invalide");
-			this.map.getHunter().decrementBlinded();
+			while(! this.beastTurn()) {
+				System.out.println("Mvt Invalide");
+			}
+			
 			System.out.println(this.map.gameBeastToString());
 			Interaction.pressEnter();
 			if(! super.map.isBeastWin()) {
 				this.hunterTurn();
+				this.map.getHunter().decrementBlinded();
 				System.out.println(super.map.gameBeastToString());
 				Interaction.pressEnter();
 			}
@@ -60,12 +63,13 @@ public class GameBeast extends AbstractGame{
 	  */
 	public boolean beastTurn() {
 		boolean mvtValide=false;
-		IBonus bo=super.setBeastTrapped();
+		this.map.getBeast().setUnTrapped();
+		IBonus bo=super.checkBeastTrapped();
 		
 		if(this.map.getBeast().getTrapped()) {
 			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
 			mvtValide=true;
-			this.map.getBeast().untrapped();
+			this.map.getBeast().setUnTrapped();
 			if(bo != null) {
 				this.map.removePiege(bo);
 			}
@@ -114,15 +118,15 @@ public class GameBeast extends AbstractGame{
 	 * statusBastFound retourne true si la bete a �t� trouv� par le chasseur.
 	 * @return boolean
 	 */
-	public boolean statusBeastFound() {
+	/*public boolean statusBeastFound() {
 		return super.map.getBeast().isPosEnt(super.map.getHunter().getPos().getPosX(), super.map.getHunter().getPos().getPosY());
-	}
+	}*/
 	
 	/**
 	 * statusMapDiscovered retourne true si la bete a entierement explore la map.
 	 * @return boolean
 	 */
-	public boolean statusMapDiscovered() {
+	/*public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
 		for(int i=0; i<super.map.getTab().length; i++) {
 			for (int j=0; j<super.map.getTab().length; j++) {
@@ -132,13 +136,13 @@ public class GameBeast extends AbstractGame{
 			}
 		}
 		return pasBeast;
-	}
+	}*/
 	
 	/**
 	 * statusBeastblock retourne true si la bete se retrouve bloquee.
 	 * @return boolean
 	 */
-	public boolean statusBeastblock() {
+	/*public boolean statusBeastblock() {
 		if(super.map.getBeast().getMvtEmptyCase(super.map.getTab()).isEmpty() ) {
 			
 			if(super.map.getBeast().teleportation()) {
@@ -151,7 +155,7 @@ public class GameBeast extends AbstractGame{
 			
 		}
 		return false;
-	}
+	}*/
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
@@ -232,10 +236,10 @@ public class GameBeast extends AbstractGame{
 	 */
 	public boolean setBait() {
 		if(this.map.getBeast().canSetBait()) {
-			IBonus ib = this.map.getBeast().takeBait();
-			ib.install(this.map.getBeast().getPos().getPosX(), this.map.getBeast().getPos().getPosY());
-			this.map.addBonusActif(ib);
-			
+			Position posBait = this.map.getBeast().getPos();
+			IBonus bait = this.map.getBeast().takeBait();
+			bait.install(posBait.getPosX(), posBait.getPosY());
+			this.map.addBonusActif(bait);
 			return true;
 		}
 		return false;

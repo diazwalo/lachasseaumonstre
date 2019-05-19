@@ -8,6 +8,7 @@ import ai.graph.Graph;
 import ai.util.NodeUtil;
 import interaction.Interaction;
 import map.*;
+import render.bonus.IBonus;
 import render.bonus.Trap;
 
 /**
@@ -31,30 +32,26 @@ public class GameHunter extends AbstractGame {
 		//List<Position> path = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
 		//System.out.println(path); // La liste path contient tout le chemin que la bete devra parcourir pendant le jeu.
 				
-		//System.out.println(map.gameHunterToString()+"\n");
+		
 		System.out.println(map.gameHunterToString()+"\n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 
-			while(! this.hunterTurn()) System.out.println("Mvt Invalide");
+			while( ! this.hunterTurn() ) {
+				System.out.println("Mvt Invalide");
+			}
+			this.map.getHunter().decrementBlinded();
 			
-			//System.out.println(super.map.gameHunterToString());
-			System.out.println(map.toString()+"\n");
-			this.afficherBeastPas();
+			System.out.println(map.gameHunterToString()+"\n");
 			Interaction.pressEnter();
 			
 			if(! super.map.isHunterWin()) {
-				for (int i = 0; i < this.map.getBonusActif().size(); i++) {
-					if(this.map.getBeast().getPos().isPos(this.map.getBonusActif().get(i).getPos().getPosX(), this.map.getBonusActif().get(i).getPos().getPosY())) {
-						this.map.getBeast().setTrapped();
-						
-					}
-				}
 				this.beastTurn();
-				//System.out.println(super.map.gameHunterToString());
-				System.out.println(map.toString()+"\n");
+				ramasserBonusBeast();
+				System.out.println(super.map.gameHunterToString());
 				Interaction.pressEnter();
 			}
+			this.map.passTurnBonus();
 		}
 		this.EndGame();
 	}
@@ -69,7 +66,7 @@ public class GameHunter extends AbstractGame {
 		mvtValide=super.map.moveHunter(mvt);
 		
 		super.checkGameStatus();
-		this.map.getHunter().isBlinded();
+		super.ramasserBonusHunter();
 		return mvtValide;
 	}
 
@@ -77,12 +74,13 @@ public class GameHunter extends AbstractGame {
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
 	 */
 	public boolean beastTurn() {
+		this.map.getBeast().setUnTrapped();
+		IBonus bo=super.checkBeastTrapped();
+		
 		List<Mouvment> mvtBeast = super.map.getBeast().getMvtEmptyCase(super.map.getTab());
 
 		if(this.map.getBeast().getTrapped()) {
-			System.out.println("La bete est prise au piege !");
 			super.triggerBonus();
-			this.map.getBeast().untrapped();
 			return true;
 		}
 		else {
@@ -103,7 +101,7 @@ public class GameHunter extends AbstractGame {
 	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
 	 */
 	public void poserBonus() {
-		String inventory = this.map.getBeast().toStringInventory();
+		String inventory = this.map.getHunter().toStringInventory();
 		if(inventory.length() != 0) {
 			System.out.println(inventory);
 			String choix=Interaction.askBonus("la Balise de Vision (1)", "le Piege (2) ");
@@ -121,28 +119,32 @@ public class GameHunter extends AbstractGame {
 	
 	
 	/**
-	 * Pose le piege sur la case courante.
+	 * Active le piege sur la case courante.
 	 * Retourne faux si le joueur n'a plus de piege.
 	 * @return boolean
 	 */
 	public boolean setTrap() {
 		if(this.map.getHunter().canSetTrap()) {
 			Position posTrap = this.map.getHunter().getPos();
-			Trap trap = this.map.getHunter().takeTrap();
+			IBonus trap = this.map.getHunter().takeTrap();
 			trap.install(posTrap.getPosX(), posTrap.getPosY());
 			this.map.addBonusActif(trap);
-			this.map.getTab()[posTrap.getPosX()][posTrap.getPosY()].setBonusBeast(new boolean[] {true, false, false,false});
-		}return true;
+			return true;
+		}
+		return false;
 	}
 
 	/**
-	 * Pose une balsie de vision sur le case courante.
+	 * Active une balsie de vision sur le case courante.
 	 * Retourne faux si le joueur n'a plus de balise.
 	 * @return boolean
 	 */
 	public boolean setWard() {
 		if(this.map.getHunter().canSetWard()) {
-			//this.map.getTab()[this.map.getHunter().getPos().getPosX()][this.map.getHunter().getPos().getPosY()].setBonus(new boolean[] {false,false,true,false});
+			Position posWard = this.map.getHunter().getPos();
+			IBonus ward = this.map.getHunter().takeWard();
+			ward.install(posWard.getPosX(), posWard.getPosY());
+			this.map.addBonusActif(ward);
 			return true;
 		}
 		else {

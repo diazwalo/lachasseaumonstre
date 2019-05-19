@@ -22,6 +22,7 @@ public class Beast extends Entity{
 	private List<Camouflage> camouflages = new ArrayList<>();
 	private List<Bait> baits = new ArrayList<>();
 	private boolean trapped;
+	private boolean revealedByWard;
 	private int tp;
 
 	/**
@@ -32,8 +33,25 @@ public class Beast extends Entity{
 	public Beast(int posX, int posY, Config config) {
 		super(posX, posY);
 		this.trapped = false;
+		this.revealedByWard = false;
 		this.tp=config.getNbTeleportation();
 		//this.timeLeftCamouflage=0;
+	}
+	
+	/**
+	 * Retourne vrai si la Bete est vu grace a la Ward
+	 * @return boolean
+	 */
+	public boolean getRevealedByWard() {
+		return this.revealedByWard;
+	}
+	
+	/**
+	 * Met a la valeur b passee en parametre, revealedByWard
+	 * @param b
+	 */
+	public void setRevealedByWard(boolean b) {
+		this.revealedByWard=b;
 	}
 	
 	/**
@@ -190,7 +208,7 @@ public class Beast extends Entity{
 	/**
 	 * Libere la bete du piege
 	 */
-	public void untrapped() {
+	public void setUnTrapped() {
 		this.trapped = false;
 	}
 	

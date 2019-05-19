@@ -28,7 +28,6 @@ public class Hunter extends Entity {
 	 */
 	public Hunter(int posX, int posY, Config config) {
 		super(posX, posY);
-		this.traps.add(new Trap(10, 10));
 	}
 	
 	/**
@@ -71,6 +70,7 @@ public class Hunter extends Entity {
 	}
 	
 	public Ward takeWard() {
+		System.out.println(this.getWardDispo());
 		return this.wards.remove(0);
 	}
 	
@@ -115,11 +115,7 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean canSetTrap() {
-		if(getTrapDispo() > 0) {
-			//traps.remove(0);
-			return true;
-		}
-		return false;
+		return ! this.traps.isEmpty();
 	}
 
 	/**
@@ -127,11 +123,7 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean canSetWard() {
-		if(getWardDispo()> 0) {
-			wards.remove(0);
-			return true;
-		}
-		return false;
+		return ! this.wards.isEmpty();
 	}
 	
 	

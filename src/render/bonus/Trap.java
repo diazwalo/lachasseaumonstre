@@ -36,8 +36,7 @@ public class Trap implements IBonus {
 	@Override
 	public void install(int x, int y) {
 		// TODO Auto-generated method stub
-		this.pos.setPosX(x);
-		this.pos.setPosY(y);
+		this.pos = new Position(x, y);
 	}
 
  

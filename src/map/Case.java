@@ -226,7 +226,7 @@ public class Case {
 
 		List<Position> posAdj=posCase.getAdjacentPosition(map);
 
-		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !this.blinded) {
+		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !this.blinded && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
 			for (Position position : posAdj) {
 				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
 					if(this.beastWalk==0) {
@@ -242,6 +242,8 @@ public class Case {
 
 		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
 			res=map.getHunter().toString();
+		}else if(map.getBeast().getTrapped() && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			res=map.getBeast().toString();
 		}
 
 		return res;
