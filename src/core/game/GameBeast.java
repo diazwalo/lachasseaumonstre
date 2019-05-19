@@ -34,7 +34,7 @@ public class GameBeast extends AbstractGame{
 		//List<Position> path = dijkstra.shortestPathFromTo("A", "B");
 		//cf doc. La fonction renvoit la liste des positions pour se rendre de A a B. (A,B) sont des positions au format texte : cf ai.NodeUtil.formatNode()
 		
-		System.out.println(map.gameBeastToString()+" \n");
+		System.out.println(map.gameBeastToString()+"\n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			
@@ -55,25 +55,14 @@ public class GameBeast extends AbstractGame{
 	
 	
 	 /**
-	  * beastTurn retourne true lorsque le mouvement entr� par le joueur est valide et dans ce cas l'effectue.
+	  * beastTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue.
 	  * @return boolean
 	  */
 	public boolean beastTurn() {
 		boolean mvtValide=false;
-		IBonus bo=null;
-		
-		for(IBonus ib: this.map.getBonusActif()) {
-			if(ib.getPos() != null && ib.getPos().equals(this.map.getBeast().getPos()) && ib  instanceof Trap) {
-				this.map.getBeast().setTrapped();
-				this.map.triggerBonus();
-				bo=ib;
-			}
-	
-		}
-		
+		IBonus bo=super.setBeastTrapped();
 		
 		if(this.map.getBeast().getTrapped()) {
-			System.out.println(this.map.getBeast().getTrapped());
 			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
 			mvtValide=true;
 			this.map.getBeast().untrapped();
@@ -130,7 +119,7 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	/**
-	 * statusMapDiscovered retourne true si la bete a entierement explor� la map.
+	 * statusMapDiscovered retourne true si la bete a entierement explore la map.
 	 * @return boolean
 	 */
 	public boolean statusMapDiscovered() {
@@ -209,7 +198,7 @@ public class GameBeast extends AbstractGame{
 		String inventory = this.map.getBeast().toStringInventory();
 		if(inventory.length() != 0) {
 			System.out.println(inventory);
-			String choix=Interaction.askBonus("le Camouflage", "le Leure");
+			String choix=Interaction.askBonus("le Camouflage (1)", "le Leure (2)");
 			if(choix.equals("1")) {
 				this.setCamouflage();
 			}
@@ -229,12 +218,8 @@ public class GameBeast extends AbstractGame{
 	 */
 	public boolean setCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
-			/*
-			 * TODO : la methode qui suit ne set pas le hunter a blind
-			 */
-			this.map.setBonusActif(this.map.getBeast().takeCamouflage());
-			super.blindHunter();
-			//System.out.println(this.map.getBeast().canSetCamouflage());
+			this.map.addBonusActif(this.map.getBeast().takeCamouflage());
+			this.map.getHunter().setBlinded();
 			return true;
 		}
 		return false;
@@ -249,7 +234,7 @@ public class GameBeast extends AbstractGame{
 		if(this.map.getBeast().canSetBait()) {
 			IBonus ib = this.map.getBeast().takeBait();
 			ib.install(this.map.getBeast().getPos().getPosX(), this.map.getBeast().getPos().getPosY());
-			this.map.setBonusActif(ib);
+			this.map.addBonusActif(ib);
 			
 			return true;
 		}

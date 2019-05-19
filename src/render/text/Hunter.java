@@ -7,6 +7,8 @@ import config.Config;
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
+import render.bonus.Bait;
+import render.bonus.Camouflage;
 import render.bonus.Trap;
 import render.bonus.Ward;
 
@@ -27,6 +29,33 @@ public class Hunter extends Entity {
 	public Hunter(int posX, int posY, Config config) {
 		super(posX, posY);
 		this.traps.add(new Trap(10, 10));
+	}
+	
+	/**
+	 * Renvoie l'incentaire de la Bete sous la forme d'une chaine de char
+	 * @return String
+	 */
+	public String toStringInventory() {
+		String pie="", war="";
+		
+		for (Trap trap : traps) {
+			if(! trap.equals(null)) {
+				pie="Piege";
+			}
+		}
+		for (Ward ward : wards) {
+			if(! ward.equals(null)) {
+				if(pie.length()!= 0) {
+					war=", Balise de Vision";
+				}else {
+					war="Balise de Vision";
+				}
+			}
+		}
+		if(pie.length()+war.length() != 0) {
+			return "Votre Inventaire: "+pie+war;
+		}
+		return "";
 	}
 
 	public void addToTraps(Trap trp) {

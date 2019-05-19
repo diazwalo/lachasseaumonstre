@@ -36,21 +36,31 @@ public class Beast extends Entity{
 		//this.timeLeftCamouflage=0;
 	}
 	
+	/**
+	 * Renvoie l'incentaire de la Bete sous la forme d'une chaine de char
+	 * @return String
+	 */
 	public String toStringInventory() {
 		String cam="", bai="";
-
+		
 		for (Camouflage camouflage : camouflages) {
 			if(! camouflage.equals(null)) {
-				cam="Vous avez un Camouflage ";
+				cam="Camouflage";
 			}
 		}
 		for (Bait bait : baits) {
 			if(! bait.equals(null)) {
-				bai="Vous avez un Leure";
+				if(cam.length()!= 0) {
+					bai=", Leure";
+				}else {
+					bai="Leure";
+				}
 			}
 		}
-		
-		return cam+bai;
+		if(cam.length()+bai.length() != 0) {
+			return "Votre Inventaire: "+cam+bai;
+		}
+		return "";
 	}
 
 	public void addToCamouflages(Camouflage cam) {

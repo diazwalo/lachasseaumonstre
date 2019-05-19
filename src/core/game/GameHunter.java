@@ -28,11 +28,11 @@ public class GameHunter extends AbstractGame {
 	public void launchGame() {
 		Graph graph = new Graph(super.map);
 		Curiosity curiosity = new Curiosity(graph);
-		List<Position> path = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
-		System.out.println(path); // La liste path contient tout le chemin que la bete devra parcourir pendant le jeu.
+		//List<Position> path = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
+		//System.out.println(path); // La liste path contient tout le chemin que la bete devra parcourir pendant le jeu.
 				
 		//System.out.println(map.gameHunterToString()+"\n");
-		System.out.println(map.toString()+"\n");
+		System.out.println(map.gameHunterToString()+"\n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 
@@ -81,7 +81,7 @@ public class GameHunter extends AbstractGame {
 
 		if(this.map.getBeast().getTrapped()) {
 			System.out.println("La bete est prise au piege !");
-			this.map.triggerBonus();
+			super.triggerBonus();
 			this.map.getBeast().untrapped();
 			return true;
 		}
@@ -103,18 +103,20 @@ public class GameHunter extends AbstractGame {
 	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
 	 */
 	public void poserBonus() {
-		System.out.println("Vous avez encore " + this.map.getHunter().getTrapDispo() + " pieges dispo et " + this.map.getHunter().getWardDispo() + " balises dispo.");
-		System.out.println("Saisissez 1 pour poser un piege, 2 pour poser une balise et entrer si vous desirez ne rien poser");
-		//String choix=Interaction.askBonus();
-		/*if(choix.equals("1")) {
-			this.setTrap();
+		String inventory = this.map.getBeast().toStringInventory();
+		if(inventory.length() != 0) {
+			System.out.println(inventory);
+			String choix=Interaction.askBonus("la Balise de Vision (1)", "le Piege (2) ");
+			if(choix.equals("1")) {
+				this.setWard();
+			}
+			else if (choix.equals("2")) {
+				this.setTrap();
+			}
+			else {
+				return;
+			}
 		}
-		else if (choix.equals("2")) {
-			this.setWard(); 
-		}
-		else {
-			return;
-		}*/
 	}
 	
 	
@@ -128,7 +130,7 @@ public class GameHunter extends AbstractGame {
 			Position posTrap = this.map.getHunter().getPos();
 			Trap trap = this.map.getHunter().takeTrap();
 			trap.install(posTrap.getPosX(), posTrap.getPosY());
-			this.map.setBonusActif(trap);
+			this.map.addBonusActif(trap);
 			this.map.getTab()[posTrap.getPosX()][posTrap.getPosY()].setBonusBeast(new boolean[] {true, false, false,false});
 		}return true;
 	}

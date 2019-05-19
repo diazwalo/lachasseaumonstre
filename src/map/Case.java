@@ -199,10 +199,7 @@ public class Case {
 		String res=caseType.toString();
 		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
 		
-		//TODO : a changer
-		/*if( ! this.bonusHunter[0] && ! this.bonusHunter[1]) {
-			res=this.toString();
-		}*/
+		if(this.beastWalk>=1) res=".";
 		for (int i = 0; i < bonusBeast.length; i++) {
 			if(this.bonusBeast[i]) res=toStringBonusBeast[i];
 		}

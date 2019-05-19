@@ -22,9 +22,15 @@ public abstract class AbstractMap
     private List<IBonus> bonusActif = new ArrayList<IBonus>();
 
     public abstract void generationMap();
-
     public abstract void generationBonus(int middle);
 
+    /**
+     * Place le Premier Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote
+     * @param middle
+     * @param tabBonus
+     * @param bonusHunterOrBeast
+     * @return
+     */
     public final Position createPositionTempoFirstBonus(int middle, boolean[] tabBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
         Position posBonusFinal=new Position(-1 , -1);
@@ -49,6 +55,13 @@ public abstract class AbstractMap
         return posBonusFinal;
     }
 
+    /**
+     * Place le Deuxieme Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote en s'assurant que ce dernier ne soit pas a la position du premier Bonus
+     * @param middle
+     * @param tabBonus
+     * @param posFirstBonus
+     * @param bonusHunterOrBeast
+     */
     public final void createPositionTempoSecondBonus(int middle, boolean[] tabBonus, Position posFirstBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
         Position posBonusFinal=new Position(-1 , -1);
@@ -111,22 +124,41 @@ public abstract class AbstractMap
         return hunterWin;
     }
 
+    /**
+     * Passe hunterWin au Boolean passe en parametre
+     * @param hunterWin
+     */
     public final void setHunterWin(boolean hunterWin) {
         this.hunterWin=hunterWin;
     }
 
+    /**
+     * Passe beastWin au Boolean passe en parametre
+     * @param beastWin
+     */
     public final void setBeastWin(boolean beastWin) {
         this.beastWin=beastWin;
     }
 
-    public final void setBonusActif(IBonus bonus) {
+    /**
+     * Ajoute le IBonus passe en parametre a la Liste de IBonus Actif
+     * @param bonus
+     */
+    public final void addBonusActif(IBonus bonus) {
         this.bonusActif.add(bonus);
     }
 
+    /**
+     * Retourne la Liste de IBonus Actif
+     * @return List<IBonus>
+     */
     public final List<IBonus> getBonusActif() {
         return this.bonusActif;
     }
 
+    /**
+     * Parcourt la Liste de IBonus Actif supprime ceux dont la Position est a null
+     */
     public final void removeBonus() {
         for (IBonus ib : this.bonusActif) {
             if(ib.getPos().equals(null)) {
@@ -135,10 +167,17 @@ public abstract class AbstractMap
         }
     }
     
+    /**
+     * Supprime le IBonus (passe en parametre) de la liste de IBonus Actif
+     * @param ib
+     */
     public final void removePiege(IBonus ib) {
     	this.bonusActif.remove(ib);
     }
 
+    /**
+     * Declanche le Leurre si le Chasseur passe a cote
+     */
     public final void HunterIsNearBait() {
         for(IBonus ib : this.bonusActif) {
 
@@ -210,6 +249,10 @@ public abstract class AbstractMap
                 this.tab[i][j].modifBeastWalk(this.beast.isPosEnt(i, j));
     }
 
+    /**
+     * Retourn la Partie De la maniere ou la Bete doit la voir et ce sous la forme d'une chaine de charactere
+     * @return String
+     */
     public final String gameBeastToString() {
         String affichage="";
         for (int x = 0; x < this.tab.length; x++) {
@@ -221,6 +264,10 @@ public abstract class AbstractMap
         return affichage;
     }
 
+    /**
+     * Retourn la Partie De la maniere ou le Chasseur doit la voir et ce sous la forme d'une chaine de charactere
+     * @return String
+     */
     public final String gameHunterToString() {
         String affichage="";
         for (int x = 0; x < this.tab.length; x++) {
@@ -236,22 +283,10 @@ public abstract class AbstractMap
         }
         return affichage;
     }
-
     
-    public void triggerBonus() {
-    	
-    	for(IBonus b : this.bonusActif) {
-    		
-    		if(b.getPos() != null && b.getPos().equals(this.beast.getPos()) && b instanceof Trap) {
-    			System.out.println("detected");
-    			b.setTriggered();
-    		}
-    		
-    	}
-    	
-    	 
-    }
-    
+    /**
+     * Effectue tout les changement a operer sur les bonus actifs lorsque l'on passe un tour
+     */
     public void passTurnBonus() {
     	for (IBonus iBonus : bonusActif) {
 			iBonus.nextTurnBonus();

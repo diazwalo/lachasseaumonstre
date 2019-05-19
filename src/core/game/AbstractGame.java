@@ -110,6 +110,9 @@ public abstract class AbstractGame {
 		return tp;
 	}
 	
+	/**
+	 * Met le Bonus de la case ou se trouve la Bete dans son inventaire si un Bonus peut etre ramasse sur cette Case
+	 */
 	protected void ramasserBonusBeast() {
 		Position posBeast = this.map.getBeast().getPos();
 		boolean[] tabBeastBonus =this.map.getTab()[posBeast.getPosX()][posBeast.getPosY()].getBonusBeast();
@@ -122,6 +125,9 @@ public abstract class AbstractGame {
 		}
  	}
 	
+	/**
+	 * Met le Bonus de la case ou se trouve le Chasseur dans son inventaire si un Bonus peut etre ramasse sur cette Case
+	 */
 	protected void ramasserBonusHunter() {
 		Position posHunter = this.map.getHunter().getPos();
 		boolean[] tabHunterBonus =this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].getBonusHunter();
@@ -134,23 +140,33 @@ public abstract class AbstractGame {
 		}
  	}
 	
-	/*private boolean isCamouflageActivated() {
-		for (IBonus bonus : this.map.getBonusActif()) {
-			//TEST
-			System.out.println("Bonus Actif: "+bonus);
-			if(bonus instanceof Camouflage && ((Camouflage) bonus).lifetimeOut()) {
-				return true;
+	/**
+	 * Prends la Bete au Piege si elle est sur un IBonus de type Piege
+	 * @return IBonus
+	 */
+	public IBonus setBeastTrapped() {
+		IBonus res = null;
+		for(IBonus ib: this.map.getBonusActif()) {
+			if(ib.getPos() != null && ib.getPos().equals(this.map.getBeast().getPos()) && ib  instanceof Trap) {
+				this.map.getBeast().setTrapped();
+				this.triggerBonus();
+				res = ib;
 			}
 		}
-		return false;
-	}*/
-	
-	protected void blindHunter() {
-		/*if(isCamouflageActivated()) {
-			this.map.getHunter().setBlinded();
-		}*/
-		this.map.getHunter().setBlinded();
+		return res;
 	}
+	
+	/**
+	 * 
+	 */
+	public void triggerBonus() {
+    	for(IBonus b : this.map.getBonusActif()) {
+    		if(b.getPos() != null && b.getPos().equals(this.map.getBeast().getPos()) && b instanceof Trap) {
+    			System.out.println("detected");
+    			b.setTriggered();
+    		}
+    	}
+    }
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
