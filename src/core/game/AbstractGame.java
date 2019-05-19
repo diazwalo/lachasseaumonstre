@@ -150,7 +150,6 @@ public abstract class AbstractGame {
 		for(IBonus ib: this.map.getBonusActif()) {
 			if(ib.getPos() != null && ib.getPos().equals(this.map.getBeast().getPos()) && ib  instanceof Trap) {
 				this.map.getBeast().setTrapped();
-				//this.triggerBonus();
 				ib.setTriggered();
 				res = ib;
 			}

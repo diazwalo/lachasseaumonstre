@@ -82,7 +82,6 @@ public class GameBeast extends AbstractGame{
 			this.map.setBeastWalk();
 			super.checkGameStatus();
 			super.ramasserBonusBeast();
-			//this.map.triggerBonus();
 			return mvtValide;
 		}
 	}
@@ -113,49 +112,6 @@ public class GameBeast extends AbstractGame{
 		
 		return true;
 	}
-	
-	/**
-	 * statusBastFound retourne true si la bete a �t� trouv� par le chasseur.
-	 * @return boolean
-	 */
-	/*public boolean statusBeastFound() {
-		return super.map.getBeast().isPosEnt(super.map.getHunter().getPos().getPosX(), super.map.getHunter().getPos().getPosY());
-	}*/
-	
-	/**
-	 * statusMapDiscovered retourne true si la bete a entierement explore la map.
-	 * @return boolean
-	 */
-	/*public boolean statusMapDiscovered() {
-		boolean pasBeast=true;
-		for(int i=0; i<super.map.getTab().length; i++) {
-			for (int j=0; j<super.map.getTab().length; j++) {
-				if(super.map.getTab()[i][j].getCaseType().equals(CaseType.SOL) && super.map.getTab()[i][j].getBeastWalk()==-1) {
-					pasBeast=false;
-				}
-			}
-		}
-		return pasBeast;
-	}*/
-	
-	/**
-	 * statusBeastblock retourne true si la bete se retrouve bloquee.
-	 * @return boolean
-	 */
-	/*public boolean statusBeastblock() {
-		if(super.map.getBeast().getMvtEmptyCase(super.map.getTab()).isEmpty() ) {
-			
-			if(super.map.getBeast().teleportation()) {
-				if(! this.tpBeast()) {
-					return true;
-				}
-			}else {
-				return true;
-			}
-			
-		}
-		return false;
-	}*/
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
@@ -204,10 +160,10 @@ public class GameBeast extends AbstractGame{
 			System.out.println(inventory);
 			String choix=Interaction.askBonus("le Camouflage (1)", "le Leure (2)");
 			if(choix.equals("1")) {
-				this.setCamouflage();
+				this.actuvateCamouflage();
 			}
 			else if (choix.equals("2")) {
-				this.setBait();
+				this.acctivateBait();
 			}
 			else {
 				return;
@@ -220,7 +176,7 @@ public class GameBeast extends AbstractGame{
 	 * Retourne faux si le joueur n'a plus de camouflage
 	 * @return boolean
 	 */
-	public boolean setCamouflage() {
+	public boolean actuvateCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
 			this.map.addBonusActif(this.map.getBeast().takeCamouflage());
 			this.map.getHunter().setBlinded();
@@ -234,7 +190,7 @@ public class GameBeast extends AbstractGame{
 	 * Retourne faux si le joueur n'a plus de camouflage
 	 * @return boolean 
 	 */
-	public boolean setBait() {
+	public boolean acctivateBait() {
 		if(this.map.getBeast().canSetBait()) {
 			Position posBait = this.map.getBeast().getPos();
 			IBonus bait = this.map.getBeast().takeBait();

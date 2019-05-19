@@ -106,10 +106,10 @@ public class GameHunter extends AbstractGame {
 			System.out.println(inventory);
 			String choix=Interaction.askBonus("la Balise de Vision (1)", "le Piege (2) ");
 			if(choix.equals("1")) {
-				this.setWard();
+				this.activateWard();
 			}
 			else if (choix.equals("2")) {
-				this.setTrap();
+				this.activateTrap();
 			}
 			else {
 				return;
@@ -123,7 +123,7 @@ public class GameHunter extends AbstractGame {
 	 * Retourne faux si le joueur n'a plus de piege.
 	 * @return boolean
 	 */
-	public boolean setTrap() {
+	public boolean activateTrap() {
 		if(this.map.getHunter().canSetTrap()) {
 			Position posTrap = this.map.getHunter().getPos();
 			IBonus trap = this.map.getHunter().takeTrap();
@@ -139,7 +139,7 @@ public class GameHunter extends AbstractGame {
 	 * Retourne faux si le joueur n'a plus de balise.
 	 * @return boolean
 	 */
-	public boolean setWard() {
+	public boolean activateWard() {
 		if(this.map.getHunter().canSetWard()) {
 			Position posWard = this.map.getHunter().getPos();
 			IBonus ward = this.map.getHunter().takeWard();
