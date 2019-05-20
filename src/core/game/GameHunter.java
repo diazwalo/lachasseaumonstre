@@ -8,6 +8,7 @@ import ai.graph.Graph;
 import ai.util.NodeUtil;
 import interaction.Interaction;
 import map.*;
+import render.bonus.Bait;
 import render.bonus.IBonus;
 import render.bonus.Trap;
 
@@ -24,7 +25,7 @@ public class GameHunter extends AbstractGame {
 	}
 	
 	/**
-	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqu�, decouverte ou si elle a decouvert toute la map.
+	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloque, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
 		Graph graph = new Graph(super.map);
@@ -35,8 +36,14 @@ public class GameHunter extends AbstractGame {
 		
 		System.out.println(map.gameHunterToString()+"\n");
 		
+		this.map.getHunter().setBlinded();
+		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-
+			// TEST
+		
+			System.out.println(this.map.getHunter().isBlinded());
+			
+			
 			while( ! this.hunterTurn() ) {
 				System.out.println("Mvt Invalide");
 			}
@@ -151,6 +158,37 @@ public class GameHunter extends AbstractGame {
 			return false;
 		}
 	}
+	
+	/**
+	 * le joueur acitve un leurre sur une case qui affiche un faux nombre de pas sur la case courante pour le chasseur qui disparait quand le chasseur passe dessus
+	 * Retourne faux si le joueur n'a plus de camouflage
+	 * @return boolean 
+	 */
+	public boolean acctivateBait() {
+		Position posBait=this.map.getBeast().getPos();
+		IBonus bait=this.map.getBeast().takeBait();
+		bait.install(posBait.getPosX(), posBait.getPosY());
+		this.map.addBonusActif(bait);
+		
+		//A voir si le traitement de la possibilite de poser le piege se ferai pas ici plutot que dans poserBonusBeast
+		return true;
+		
+	}
+	
+	
+	public void setBonusIA() {
+		IBonus bonus=this.map.getBeast().takeFirstBonus();
+		
+		if (bonus !=null) {
+			
+			if(bonus instanceof Bait) {
+				this.acctivateBait();
+			}
+			
+		}
+		
+	}
+	
 	
 	/**
 	 * AfficherBeastPas affiche le nombre de pas depuis le dernier passage de la bete sur la case courante du chasseur.

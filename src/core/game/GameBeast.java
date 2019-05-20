@@ -8,9 +8,11 @@ import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
 import interaction.Interaction;
 import map.*;
+import render.bonus.Bait;
 import render.bonus.Camouflage;
 import render.bonus.IBonus;
 import render.bonus.Trap;
+import render.bonus.Ward;
 
 /**
  * 
@@ -41,7 +43,7 @@ public class GameBeast extends AbstractGame{
 			while(! this.beastTurn()) {
 				System.out.println("Mvt Invalide");
 			}
-			
+
 			System.out.println(this.map.gameBeastToString());
 			Interaction.pressEnter();
 			if(! super.map.isBeastWin()) {
@@ -100,9 +102,12 @@ public class GameBeast extends AbstractGame{
 			idxMvt=new Random().nextInt(mvtHunter.size()-1);
 		}
 		
-		for (int i = 0; i < mvtHunter.size(); i++) {
-			int[] modifPosTempo=super.map.getHunter().getPos().getModifPosTempo(mvtHunter.get(i).getMvt());
-			if(super.map.getBeast().isPosEnt(modifPosTempo[0], modifPosTempo[1])) idxMvt=i;
+		if(!this.map.getHunter().isBlinded()) {
+		
+			for (int i = 0; i < mvtHunter.size(); i++) {
+				int[] modifPosTempo=super.map.getHunter().getPos().getModifPosTempo(mvtHunter.get(i).getMvt());
+				if(super.map.getBeast().isPosEnt(modifPosTempo[0], modifPosTempo[1])) idxMvt=i;
+			}
 		}
 		
 		if(mvtHunter.size()>0) super.map.moveHunter(mvtHunter.get(idxMvt));
@@ -199,6 +204,52 @@ public class GameBeast extends AbstractGame{
 			return true;
 		}
 		return false;
+	}
+	
+	
+	/**
+	 * Active le piege sur la case courante.
+	 * Retourne faux si le joueur n'a plus de piege.
+	 * @return boolean
+	 */
+	public boolean activateTrap() {
+	
+		Position posTrap=this.map.getHunter().getPos();
+		IBonus trap=this.map.getHunter().takeTrap();
+		trap.install(posTrap.getPosX(), posTrap.getPosY());
+		this.map.addBonusActif(trap);
+		
+		return true;
+	}
+	
+	
+	/**
+	 * Active une balsie de vision sur le case courante.
+	 * Retourne faux si le joueur n'a plus de balise.
+	 * @return boolean
+	 */
+	public boolean activateWard() {
+		Position posWard=this.map.getHunter().getPos();
+		IBonus ward=this.map.getHunter().takeTrap();
+		ward.install(posWard.getPosX(), posWard.getPosY());
+		this.map.addBonusActif(ward);
+		
+		return true;
+	}
+	
+	public void setBonusIA() {
+		IBonus bonus=this.map.getHunter().takeFirstBonus();
+		
+		if (bonus !=null) {
+			
+			if(bonus instanceof Trap) {
+				this.activateTrap();
+			}
+			else if(bonus instanceof Ward) {
+				this.activateWard();
+			}
+		}
+		
 	}
 
 	
