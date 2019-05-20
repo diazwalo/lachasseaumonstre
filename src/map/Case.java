@@ -26,7 +26,7 @@ public class Case {
 	private boolean[] bonusBeast;
 	private boolean[] bonusHunter;
 	private final int TRACE=5;
-	private boolean blinded;
+
 	
 	/**
 	 * Creer une class Case avec en parametre CaseType et posBeast respectivment le type de la case
@@ -51,7 +51,6 @@ public class Case {
 		this.hideToHunter=false;
 		this.bonusBeast=bonusBeast;
 		this.bonusHunter=bonusHunter;
-		this.blinded = false;
 	}
 	
 	/**
@@ -101,13 +100,7 @@ public class Case {
 	public void setBeastWalk(int beastWalk) {
 		this.beastWalk=beastWalk;
 	}
-	
-	/**
-	 * Rend aveugle le chasseur 
-	 */
-	public void setBlinded() {
-		this.blinded=true;
-	}
+
 
 	/**
 	 * passe setHideToHunter a vrai afin que Hunter ne le voit pas
@@ -218,15 +211,20 @@ public class Case {
 	public String gameHunterShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
 
-		String[] toStringBonusHunter=new String[] { new Trap().toString(), new Ward().toString() };
+		/*String[] toStringBonusHunter=new String[] { new Trap().toString(), new Ward().toString() };
 		
 		for (int i = 0; i < bonusHunter.length; i++) {
 			if(this.bonusHunter[i]) res=toStringBonusHunter[i];
+		}*/
+		
+		
+		for (int i = 0; i < bonusHunter.length; i++) {
+			if(this.bonusHunter[i] && !map.getHunter().isBlinded()) res="?";
 		}
 
 		List<Position> posAdj=posCase.getAdjacentPosition(map);
 
-		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !this.blinded && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !map.getHunter().isBlinded() && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
 			for (Position position : posAdj) {
 				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
 					if(this.beastWalk==0) {
@@ -258,7 +256,7 @@ public class Case {
 		
 		String res=caseType.toString();
 		if(this.beastWalk>=this.TRACE) res=".";
-		if(this.beastWalk>0 && this.beastWalk<this.TRACE && !this.blinded) res=this.beastWalk+"";
+		if(this.beastWalk>0 && this.beastWalk<this.TRACE) res=this.beastWalk+"";
 
 		for (int i = 0; i < this.bonusBeast.length; i++)
 			if(bonusBeast[i]) res=toStringBonusBeast[i];

@@ -9,6 +9,7 @@ import map.CaseType;
 import map.Mouvment;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
+import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
 
@@ -18,8 +19,8 @@ import render.bonus.Ward;
  *
  */
 public class Hunter extends Entity {
-	List<Trap> traps = new ArrayList<Trap>();
-	List<Ward> wards = new ArrayList<Ward>();
+	List<IBonus> traps = new ArrayList<>();
+	List<IBonus> wards = new ArrayList<>();
 	private int blinded=0;
 	/**
 	 * instancie Hunter a la Position posX, posY
@@ -30,6 +31,31 @@ public class Hunter extends Entity {
 		super(posX, posY);
 	}
 	
+	
+	/**
+	 * Retourne le premier bonus disponible dans la liste de bonus
+	 * @return IBonus
+	 */
+	public IBonus takeFirstBonus() {
+		IBonus first = null;
+		for (IBonus trap : traps) {
+			first=trap;
+		}
+		for (IBonus ward : wards) {
+			first=ward;
+		}
+		return first;
+	}
+	
+	
+	/**
+	 * fonction test, retourne nb de tours pour lequel le Chasseur est aveugle
+	 * @return int
+	 */
+	public int getBlinded() {
+		return blinded;
+	}
+	
 	/**
 	 * Renvoie l'incentaire de la Bete sous la forme d'une chaine de char
 	 * @return String
@@ -37,12 +63,12 @@ public class Hunter extends Entity {
 	public String toStringInventory() {
 		String pie="", war="";
 		
-		for (Trap trap : traps) {
+		for (IBonus trap : traps) {
 			if(! trap.equals(null)) {
 				pie="Piege";
 			}
 		}
-		for (Ward ward : wards) {
+		for (IBonus ward : wards) {
 			if(! ward.equals(null)) {
 				if(pie.length()!= 0) {
 					war=", Balise de Vision";
@@ -65,11 +91,11 @@ public class Hunter extends Entity {
 		this.wards.add(wrd);
 	}
 	
-	public Trap takeTrap() {
+	public IBonus takeTrap() {
 		return this.traps.remove(0);
 	}
 	
-	public Ward takeWard() {
+	public IBonus takeWard() {
 		System.out.println(this.getWardDispo());
 		return this.wards.remove(0);
 	}
@@ -100,7 +126,9 @@ public class Hunter extends Entity {
 	}
 	
 	public void decrementBlinded() {
-		this.blinded--;
+		
+			this.blinded--;
+		
 	}
 	
 	/**

@@ -11,6 +11,7 @@ import map.Mouvment;
 import map.Position;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
+import render.bonus.IBonus;
 
 /**
  * Cette classe definit les caracteristique principale de la classe jouable Beast
@@ -18,9 +19,8 @@ import render.bonus.Camouflage;
  *
  */
 public class Beast extends Entity{
-	//private int timeLeftCamouflage;
-	private List<Camouflage> camouflages = new ArrayList<>();
-	private List<Bait> baits = new ArrayList<>();
+	private List<IBonus> camouflages = new ArrayList<>();
+	private List<IBonus> baits = new ArrayList<>();
 	private boolean trapped;
 	private boolean revealedByWard;
 	private int tp;
@@ -35,7 +35,21 @@ public class Beast extends Entity{
 		this.trapped = false;
 		this.revealedByWard = false;
 		this.tp=config.getNbTeleportation();
-		//this.timeLeftCamouflage=0;
+	}
+	
+	/**
+	 * Retourne le premier bonus disponible dans l'une des deux listes de bonus
+	 * @return IBonus
+	 */
+	public IBonus takeFirstBonus() {
+		IBonus first = null;
+		for (IBonus bai : baits) {
+			first=bai;
+		}
+		for (IBonus cam : camouflages) {
+			first=cam;
+		}
+		return first;
 	}
 	
 	/**
@@ -61,12 +75,12 @@ public class Beast extends Entity{
 	public String toStringInventory() {
 		String cam="", bai="";
 		
-		for (Camouflage camouflage : camouflages) {
+		for (IBonus camouflage : camouflages) {
 			if(! camouflage.equals(null)) {
 				cam="Camouflage";
 			}
 		}
-		for (Bait bait : baits) {
+		for (IBonus bait : baits) {
 			if(! bait.equals(null)) {
 				if(cam.length()!= 0) {
 					bai=", Leure";
@@ -89,22 +103,13 @@ public class Beast extends Entity{
 		this.baits.add(bait);
 	}
 	
-	public Camouflage takeCamouflage() {
+	public IBonus takeCamouflage() {
 		return this.camouflages.remove(0);
 	}
 	
-	public Bait takeBait() {
+	public IBonus takeBait() {
 		return this.baits.remove(0);
 	}
-
-	
-	/**
-	 * Renvoie le nombre de camouflage disponible
-	 * @return int
-	 */
-	/*public int getTimeLeftCamouflage() {
-		return this.timeLeftCamouflage;
-	}*/
 
 	/**
 	 * retourne vrai si la bete est prise au piege
@@ -121,14 +126,14 @@ public class Beast extends Entity{
 		this.trapped=true;
 	}
 
-	/*
+	/**
 	 * retourn le nombre de tp restant
 	 */
 	public int getTp() {
 		return this.tp;
 	}
 	
-	/*
+	/**
 	 * passe la valeur de tp a celle passee en parametre
 	 */
 	public void setTp(int tp) {

@@ -273,12 +273,9 @@ public abstract class AbstractMap
         for (int x = 0; x < this.tab.length; x++) {
             affichage+=" \n|";
             for (int y = 0; y < this.tab[x].length; y++) {
-                if(this.hunter.isBlinded()) {
-                    this.tab[y][x].setBlinded();
-                    affichage+=" "+this.tab[y][x].gameHunterShowView(this, new Position(y, x))+" |";
-                }else {
-                    affichage+=" "+this.tab[y][x].gameHunterShowView(this, new Position(y, x))+" |";
-                }
+              
+            	affichage+=" "+this.tab[y][x].gameHunterShowView(this, new Position(y, x))+" |";
+                
             }
         }
         return affichage;
