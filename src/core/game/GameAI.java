@@ -1,6 +1,7 @@
 package core.game;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -25,7 +26,7 @@ public class GameAI extends AbstractGame
 	public GameAI(AbstractMap map)
 	{
 		super(map);
-		this.pathHunter = new ArrayList<Position>();
+		this.pathHunter = new LinkedList<Position>();
 		this.r = new Random();
 	}
 
@@ -67,18 +68,22 @@ public class GameAI extends AbstractGame
 	@Override
 	public boolean hunterTurn()
 	{
+		Dijkstra dijkstra;
 		//Hunter turn
 		System.out.println(this.map.toString());
 		
-		if (this.pathHunter.isEmpty()) {
-			Dijkstra dijkstra = new Dijkstra(this.graph);
+		if (this.pathHunter.isEmpty() && hunterTurn == 0) {
+			dijkstra = new Dijkstra(this.graph);
 			String nodeNameFrom = NodeUtil.formatNode(this.map.getHunter().getPos());
 			String nodeNameTo = NodeUtil.formatNode(pathBeast.get(r.nextInt(pathBeast.size())));
+			System.out.println(nodeNameTo);
+			
 			this.pathHunter.addAll(dijkstra.shortestPathFromTo(nodeNameFrom, nodeNameTo));
+			this.hunterTurn = 0;
 		}
-		
-		System.out.println("Monstre veut aller en " +  pathHunter.get(this.hunterTurn));
-		super.map.moveHunter(Position.toMouvment(this.map.getHunter().getPos(), pathHunter.get(this.hunterTurn)));
+
+		super.map.moveHunter(Position.toMouvment(this.map.getHunter().getPos(), pathHunter.get(0)));
+		this.pathHunter.remove(0);
 		this.hunterTurn++;
 		
 		Interaction.pressEnter();

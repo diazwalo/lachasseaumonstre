@@ -35,6 +35,17 @@ public class Dijkstra
 		this.listNode = graph.getListNode();
 		this.listEdge = graph.getListEdge();
 	}
+	
+	
+	public Map<String, Node> getListNode()
+	{
+		return this.listNode;
+	}
+
+	public Map<String, Edge> getListEdge()
+	{
+		return this.listEdge;
+	}
 
 	/**
 	 * Genere le chemin depuis le sommet final et le formate en position pour etre utilisable.
