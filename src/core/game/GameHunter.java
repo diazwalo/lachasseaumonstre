@@ -96,6 +96,9 @@ public class GameHunter extends AbstractGame {
 				while(! super.map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size()))));
 				super.map.setBeastWalk();
 				super.checkGameStatus();
+				
+				setBonusIA();
+				
 				return true;
 			}
 			else {

@@ -113,6 +113,8 @@ public class GameBeast extends AbstractGame{
 		if(mvtHunter.size()>0) super.map.moveHunter(mvtHunter.get(idxMvt));
 		super.checkGameStatus();
 		
+		setBonusIA();
+		
 		super.ramasserBonusHunter();
 		
 		return true;
