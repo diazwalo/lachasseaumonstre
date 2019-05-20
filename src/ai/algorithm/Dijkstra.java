@@ -69,7 +69,7 @@ public class Dijkstra
 		if(!this.listNode.containsKey(from)) {
 			throw new NodeNotFoundException(from);
 		}
-		
+
 		if(!this.listNode.containsKey(to)) {
 			throw new NodeNotFoundException(to);
 		}

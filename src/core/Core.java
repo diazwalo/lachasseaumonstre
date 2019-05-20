@@ -3,6 +3,7 @@ package core;
 import config.Config;
 import core.game.GameHunter;
 import core.game.AbstractGame;
+import core.game.GameAI;
 import core.game.GameBeast;
 import map.CircularMap;
 import map.AbstractMap;
@@ -32,8 +33,7 @@ public class Core {
 		switch(config.getGameMode())
 		{
 		case AIvsAI:
-			//Jalon 2 !
-			//IGame game = new GameAI(map); 
+			game = new GameAI(map); 
 			break;
 		case BEASTvsAI:
 			game = new GameBeast(map);

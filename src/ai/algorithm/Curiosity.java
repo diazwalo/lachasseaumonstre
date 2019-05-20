@@ -8,6 +8,7 @@ import map.AbstractMap;
 import map.Position;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,8 @@ public class Curiosity
 
     public Curiosity(Graph graph)
     {
-        this.listNode = graph.getListNode();
+    	this.listNode = new HashMap<String, Node>();
+        this.listNode.putAll(graph.getListNode());
     }
 
     public List<Position> getPath(String from, AbstractMap sm)
