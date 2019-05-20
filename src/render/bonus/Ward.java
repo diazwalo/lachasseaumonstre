@@ -10,7 +10,7 @@ public class Ward implements IBonus {
 	
 	private int timer;
 	private Position pos;
-	private final String NAME = "Balise";;
+	private final String NAME = "Balise";
 	
 	/**
 	 * Instancie Ward

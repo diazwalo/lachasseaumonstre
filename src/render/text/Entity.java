@@ -1,6 +1,7 @@
 package render.text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import map.Case;
 import map.CaseType;
@@ -16,7 +17,7 @@ import render.bonus.IBonus;
 
 public abstract class Entity {
 	private Position pos;
-	private ArrayList<IBonus> inventory = new ArrayList<>();
+	private List<IBonus> inventory = new ArrayList<>();
 	
 	public Entity(int posX, int posY) {
 		this.pos=new Position(posX, posY);
@@ -67,7 +68,7 @@ public abstract class Entity {
 	
 	public abstract boolean verifDeplacementSpe(Case [][] tab, Mouvment mvt, Entity other);
 	public abstract boolean isLock(Case[][] tab, Entity hunter);
-	public abstract ArrayList<Mouvment> getMvtEmptyCase(Case[][] tab);
+	public abstract List<Mouvment> getMvtEmptyCase(Case[][] tab);
 	
 	/**
 	 * verifie que le deplacement souhaite ne fait pas sortir du tableau ou aller sur un obstacle

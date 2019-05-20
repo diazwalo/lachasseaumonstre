@@ -2,7 +2,7 @@ package src.render.text;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +53,7 @@ public class BeastTest {
 	
 	@Test
 	public void testMvtPossible() {
-		ArrayList<Mouvment> mvtPoss=this.beast.getMvtEmptyCase(caseTab);
+		List<Mouvment> mvtPoss=this.beast.getMvtEmptyCase(caseTab);
 		assertFalse(mvtPoss.contains(Mouvment.NORD));
 		assertFalse(mvtPoss.contains(Mouvment.NORDEST));
 		assertTrue(mvtPoss.contains(Mouvment.EST));

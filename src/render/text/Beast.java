@@ -2,6 +2,7 @@ package render.text;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import config.Config;
 import map.Case;
@@ -17,10 +18,11 @@ import render.bonus.Camouflage;
  *
  */
 public class Beast extends Entity{
-	private int TimeLeftCamouflage;
-	private ArrayList<Camouflage> camouflages = new ArrayList<>();
-	private ArrayList<Bait> baits = new ArrayList<>();
+	//private int timeLeftCamouflage;
+	private List<Camouflage> camouflages = new ArrayList<>();
+	private List<Bait> baits = new ArrayList<>();
 	private boolean trapped;
+	private boolean revealedByWard;
 	private int tp;
 
 	/**
@@ -31,25 +33,52 @@ public class Beast extends Entity{
 	public Beast(int posX, int posY, Config config) {
 		super(posX, posY);
 		this.trapped = false;
+		this.revealedByWard = false;
 		this.tp=config.getNbTeleportation();
-		this.TimeLeftCamouflage=0;
+		//this.timeLeftCamouflage=0;
 	}
 	
+	/**
+	 * Retourne vrai si la Bete est vu grace a la Ward
+	 * @return boolean
+	 */
+	public boolean getRevealedByWard() {
+		return this.revealedByWard;
+	}
+	
+	/**
+	 * Met a la valeur b passee en parametre, revealedByWard
+	 * @param b
+	 */
+	public void setRevealedByWard(boolean b) {
+		this.revealedByWard=b;
+	}
+	
+	/**
+	 * Renvoie l'incentaire de la Bete sous la forme d'une chaine de char
+	 * @return String
+	 */
 	public String toStringInventory() {
 		String cam="", bai="";
-
+		
 		for (Camouflage camouflage : camouflages) {
 			if(! camouflage.equals(null)) {
-				cam="Vous avez un Camouflage ";
+				cam="Camouflage";
 			}
 		}
 		for (Bait bait : baits) {
 			if(! bait.equals(null)) {
-				bai="Vous avez un Leure";
+				if(cam.length()!= 0) {
+					bai=", Leure";
+				}else {
+					bai="Leure";
+				}
 			}
 		}
-		
-		return cam+bai;
+		if(cam.length()+bai.length() != 0) {
+			return "Votre Inventaire: "+cam+bai;
+		}
+		return "";
 	}
 
 	public void addToCamouflages(Camouflage cam) {
@@ -73,9 +102,9 @@ public class Beast extends Entity{
 	 * Renvoie le nombre de camouflage disponible
 	 * @return int
 	 */
-	public int getTimeLeftCamouflage() {
-		return this.TimeLeftCamouflage;
-	}
+	/*public int getTimeLeftCamouflage() {
+		return this.timeLeftCamouflage;
+	}*/
 
 	/**
 	 * retourne vrai si la bete est prise au piege
@@ -119,11 +148,7 @@ public class Beast extends Entity{
 	 * @return boolean
 	 */
 	public boolean canSetCamouflage() {
-		if(this.TimeLeftCamouflage > 0) {
-			this.TimeLeftCamouflage--;
-			return true;
-		}
-		return false;
+		return ! this.camouflages.isEmpty();
 	}
 	
 	/**
@@ -148,10 +173,10 @@ public class Beast extends Entity{
 	/**
 	 * retourne la liste des differents Mouvment possible pour Beast sans se soucier de si il y a le chasseur ou encore si elle a deja marche vers la case visee.
 	 * @param tab
-	 * @return ArrayList<Mouvment>
+	 * @return List<Mouvment>
 	 */
-	public ArrayList<Mouvment> getMvtEmptyCase(Case[][] tab) {
-		ArrayList<Mouvment> mouvTab = new ArrayList<>();
+	public List<Mouvment> getMvtEmptyCase(Case[][] tab) {
+		List<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values()) {
 			int[] modifPosTempo=this.getPos().getModifPosTempo(m.getMvt());
 			
@@ -173,7 +198,7 @@ public class Beast extends Entity{
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity hunter) {
-		ArrayList<Mouvment> possible = this.getMvtEmptyCase(tab);
+		List<Mouvment> possible = this.getMvtEmptyCase(tab);
 		for(Mouvment m : possible)
 			if(this.verifDeplacementSpe(tab, m, hunter))
 				return false;
@@ -183,7 +208,7 @@ public class Beast extends Entity{
 	/**
 	 * Libere la bete du piege
 	 */
-	public void untrapped() {
+	public void setUnTrapped() {
 		this.trapped = false;
 	}
 	
@@ -193,8 +218,8 @@ public class Beast extends Entity{
 	 * @param hunter
 	 * @return ArrayList<Position>
 	 */
-	public ArrayList<Position> getCaseTp(Case[][] tab, Hunter hunter) {
-		ArrayList<Position> ALTab = new ArrayList<>();
+	public List<Position> getCaseTp(Case[][] tab, Hunter hunter) {
+		List<Position> ALTab = new ArrayList<>();
 		
 		for (int i = 0; i < tab.length; i++) {
 			for (int j = 0; j < tab[i].length; j++) {

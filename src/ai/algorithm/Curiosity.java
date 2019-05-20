@@ -1,5 +1,6 @@
 package ai.algorithm;
 
+import ai.exception.NodeNotFoundException;
 import ai.graph.Graph;
 import ai.models.Node;
 import ai.util.NodeUtil;
@@ -26,6 +27,7 @@ public class Curiosity
 
     public List<Position> getPath(String from, AbstractMap sm)
     {
+    	checkIfNodeExist(from);
         boolean toLeft = true;
         Position position = NodeUtil.formatNode(from);
         List<Position> positions = new ArrayList<Position>(listNode.size());
@@ -96,7 +98,14 @@ public class Curiosity
         return positions;
     }
     
-    private boolean cantMooveRight(Position position)
+    private void checkIfNodeExist(String from)
+	{
+		if(!this.listNode.containsKey(from)) {
+			throw new NodeNotFoundException(from);
+		}
+	}
+
+	private boolean cantMooveRight(Position position)
     {
         return this.listNode.get(NodeUtil.formatNode(position.toRight())) == null &&
                 this.listNode.get(NodeUtil.formatNode(position.toSouthEast())) == null &&

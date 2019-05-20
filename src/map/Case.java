@@ -199,10 +199,7 @@ public class Case {
 		String res=caseType.toString();
 		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
 		
-		//TODO : a changer
-		/*if( ! this.bonusHunter[0] && ! this.bonusHunter[1]) {
-			res=this.toString();
-		}*/
+		if(this.beastWalk>=1) res=".";
 		for (int i = 0; i < bonusBeast.length; i++) {
 			if(this.bonusBeast[i]) res=toStringBonusBeast[i];
 		}
@@ -229,7 +226,7 @@ public class Case {
 
 		List<Position> posAdj=posCase.getAdjacentPosition(map);
 
-		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !this.blinded) {
+		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !this.blinded && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
 			for (Position position : posAdj) {
 				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
 					if(this.beastWalk==0) {
@@ -245,6 +242,8 @@ public class Case {
 
 		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
 			res=map.getHunter().toString();
+		}else if(map.getBeast().getTrapped() && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			res=map.getBeast().toString();
 		}
 
 		return res;

@@ -1,11 +1,14 @@
 package render.text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import config.Config;
 import map.Case;
 import map.CaseType;
 import map.Mouvment;
+import render.bonus.Bait;
+import render.bonus.Camouflage;
 import render.bonus.Trap;
 import render.bonus.Ward;
 
@@ -15,8 +18,8 @@ import render.bonus.Ward;
  *
  */
 public class Hunter extends Entity {
-	ArrayList<Trap> traps=new ArrayList<Trap>();
-	ArrayList<Ward> wards=new ArrayList<Ward>();
+	List<Trap> traps = new ArrayList<Trap>();
+	List<Ward> wards = new ArrayList<Ward>();
 	private int blinded=0;
 	/**
 	 * instancie Hunter a la Position posX, posY
@@ -25,7 +28,33 @@ public class Hunter extends Entity {
 	 */
 	public Hunter(int posX, int posY, Config config) {
 		super(posX, posY);
-		this.traps.add(new Trap(10, 10));
+	}
+	
+	/**
+	 * Renvoie l'incentaire de la Bete sous la forme d'une chaine de char
+	 * @return String
+	 */
+	public String toStringInventory() {
+		String pie="", war="";
+		
+		for (Trap trap : traps) {
+			if(! trap.equals(null)) {
+				pie="Piege";
+			}
+		}
+		for (Ward ward : wards) {
+			if(! ward.equals(null)) {
+				if(pie.length()!= 0) {
+					war=", Balise de Vision";
+				}else {
+					war="Balise de Vision";
+				}
+			}
+		}
+		if(pie.length()+war.length() != 0) {
+			return "Votre Inventaire: "+pie+war;
+		}
+		return "";
 	}
 
 	public void addToTraps(Trap trp) {
@@ -41,6 +70,7 @@ public class Hunter extends Entity {
 	}
 	
 	public Ward takeWard() {
+		System.out.println(this.getWardDispo());
 		return this.wards.remove(0);
 	}
 	
@@ -66,18 +96,18 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean isBlinded() {
-		if(blinded>0) {
-			blinded--;
-			return true;
-		}
-		return false;
+		return this.blinded>0;
+	}
+	
+	public void decrementBlinded() {
+		this.blinded--;
 	}
 	
 	/**
 	 * set le nombre de tour o� le chasseur est aveuglee par le camouflage de la bete
 	 */
 	public void setBlinded() {
-		blinded=2;
+		blinded=4;
 	}
 	
 	/**
@@ -85,11 +115,7 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean canSetTrap() {
-		if(getTrapDispo() > 0) {
-			//traps.remove(0);
-			return true;
-		}
-		return false;
+		return ! this.traps.isEmpty();
 	}
 
 	/**
@@ -97,11 +123,7 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean canSetWard() {
-		if(getWardDispo()> 0) {
-			wards.remove(0);
-			return true;
-		}
-		return false;
+		return ! this.wards.isEmpty();
 	}
 	
 	
@@ -133,8 +155,8 @@ public class Hunter extends Entity {
 	 * @param tab
 	 * @return ArrayList<Mouvment>
 	 */
-	public ArrayList<Mouvment> getMvtEmptyCase(Case[][] tab) {
-		ArrayList<Mouvment> mouvTab = new ArrayList<>();
+	public List<Mouvment> getMvtEmptyCase(Case[][] tab) {
+		List<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values())
 			if(super.verifDeplacementEntity(tab, m))
 				mouvTab.add(m);
@@ -148,7 +170,7 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity beast) {
-		ArrayList<Mouvment> possible = this.getMvtEmptyCase(tab);
+		List<Mouvment> possible = this.getMvtEmptyCase(tab);
 		for(Mouvment m : possible)
 			if(this.verifDeplacementSpe(tab, m, beast))
 				return false;

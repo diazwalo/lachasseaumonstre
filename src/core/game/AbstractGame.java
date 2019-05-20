@@ -1,13 +1,18 @@
 package core.game;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import org.hamcrest.core.IsInstanceOf;
 
 import map.AbstractMap;
 import map.CaseType;
+import map.Mouvment;
 import map.Position;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
+import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
 
@@ -27,14 +32,14 @@ public abstract class AbstractGame {
 	public abstract void poserBonus();
 	
 	/**
-	 * statusBastFound retourne true si la bete a �t� trouv� par le chasseur.
+	 * statusBastFound retourne true si la bete a ete trouve par le chasseur.
 	 */
 	public boolean statusBeastFound() {
 		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
 	}
 	
 	/**
-	 * statusMapDiscovered retourne true si la bete a entierement explor� la map.
+	 * statusMapDiscovered retourne true si la bete a entierement explore la map.
 	 */
 	public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
@@ -91,7 +96,7 @@ public abstract class AbstractGame {
 	 * @return boolean
 	 */
 	public boolean tpBeast(){
-		ArrayList<Position> posDispo=this.map.getBeast().getCaseTp(this.map.getTab(), this.map.getHunter());
+		List<Position> posDispo = this.map.getBeast().getCaseTp(this.map.getTab(), this.map.getHunter());
 		
 		boolean tp=false;
 		int idxPosDispo;
@@ -106,6 +111,9 @@ public abstract class AbstractGame {
 		return tp;
 	}
 	
+	/**
+	 * Met le Bonus de la case ou se trouve la Bete dans son inventaire si un Bonus peut etre ramasse sur cette Case
+	 */
 	protected void ramasserBonusBeast() {
 		Position posBeast = this.map.getBeast().getPos();
 		boolean[] tabBeastBonus =this.map.getTab()[posBeast.getPosX()][posBeast.getPosY()].getBonusBeast();
@@ -118,6 +126,9 @@ public abstract class AbstractGame {
 		}
  	}
 	
+	/**
+	 * Met le Bonus de la case ou se trouve le Chasseur dans son inventaire si un Bonus peut etre ramasse sur cette Case
+	 */
 	protected void ramasserBonusHunter() {
 		Position posHunter = this.map.getHunter().getPos();
 		boolean[] tabHunterBonus =this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].getBonusHunter();
@@ -129,6 +140,61 @@ public abstract class AbstractGame {
 			this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].setBonusHunter(new boolean[] {false, false});
 		}
  	}
+	
+	/**
+	 * Prends la Bete au Piege si elle est sur un IBonus de type Piege
+	 * @return IBonus
+	 */
+	public IBonus checkBeastTrapped() {
+		IBonus res = null;
+		for(IBonus ib: this.map.getBonusActif()) {
+			if(ib.getPos() != null && ib.getPos().equals(this.map.getBeast().getPos()) && ib  instanceof Trap) {
+				this.map.getBeast().setTrapped();
+				ib.setTriggered();
+				res = ib;
+			}
+		}
+		return res;
+	}
+	
+	/**
+	 * Declanche le Bonus si il est de Type Trap
+	 */
+	public void triggerBonus() {
+    	for(IBonus b : this.map.getBonusActif()) {
+    		if(b.getPos() != null && b.getPos().equals(this.map.getBeast().getPos()) && b instanceof Trap) {
+    			b.setTriggered();
+    		}
+    	}
+    }
+	
+	/**
+	 * Verifie si la bete est sous dans sur une case adjacente a la ward et passe revealed a true si cela s'avere vrai
+	 */
+	public void checkBeastRevealed() {
+		boolean beastStillUnderWard = false;
+		for(IBonus ib: this.map.getBonusActif()) {
+			if(ib.getPos() != null && ib  instanceof Ward) {
+				Position posAdjBeast = this.map.getBeast().getPos();
+				if(ib.getPos().equals(posAdjBeast)) {
+					this.map.getBeast().setRevealedByWard(true);
+					beastStillUnderWard = true;
+				}else {
+					for (Mouvment mouvment : this.map.getBeast().getMvtEmptyCase(this.map.getTab())) {
+						int[] tabPosAdjBeast = posAdjBeast.getModifPosTempo(mouvment.getMvt());
+						if(ib.getPos().equals(new Position(tabPosAdjBeast[0], tabPosAdjBeast[1]))) {
+							this.map.getBeast().setRevealedByWard(true);
+							beastStillUnderWard = true;
+						}
+					}
+				}
+			}
+		}
+		
+		if(! beastStillUnderWard) {
+			this.map.getBeast().setRevealedByWard(false);
+		}
+	}
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire

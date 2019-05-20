@@ -111,10 +111,16 @@ public class Interaction {
 		}
 	}
 	
+	/**
+	 * Retourne le choix du Bonus du Joueur sous la forme d'une chaine de charactere ( Soit 1, soit 2, ou le reste 
+	 * @param firstBonus
+	 * @param secondBonus
+	 * @return String
+	 */
 	public static String askBonus(String firstBonus, String secondBonus) {
 		Scanner sc = new Scanner(System.in); 
 		
-		System.out.print("Veuillez saisir \"1\" pour "+ firstBonus +", 2 pour "+ secondBonus +" ou appuyez sur Entrer si vous ne voulez rien faire.");
+		System.out.print("Pour "+ firstBonus +", pour "+ secondBonus +", et pour Passer (ENTER):");
 		String saisie = sc.nextLine();
 		
 		return saisie;

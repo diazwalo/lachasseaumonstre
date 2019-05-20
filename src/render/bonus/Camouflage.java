@@ -9,7 +9,8 @@ import map.Position;
 public class Camouflage implements IBonus {
 	
 	private Position pos;
-	private final String NAME = "Piege";
+	/*private int lifetime = 4;*/
+	private final String NAME = "Camouflage";
 
 	/**
 	 * Instancie Camouflage
@@ -17,6 +18,10 @@ public class Camouflage implements IBonus {
 	public Camouflage() {
 		this.pos = null;
 	}
+	
+	/*public void activate() {
+		this.lifetime=4;
+	}*/
 	
 	/**
 	 * place ce Bonus a la position d abscice x et d ordonnee y
@@ -62,15 +67,19 @@ public class Camouflage implements IBonus {
 		return "c";
 	}
 
+	/*public boolean lifetimeOut() {
+		return this.lifetime <= 0;
+	}*/
+	
 	@Override
 	public void nextTurnBonus() {
 		// TODO Auto-generated method stub
-		
+		/*this.lifetime--;*/
 	}
 
 	@Override
 	public void setTriggered() {
 		// TODO Auto-generated method stub
-		
+		// ne sert pas pour ce Bonus
 	}
 }
