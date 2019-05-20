@@ -9,6 +9,7 @@ import ai.util.NodeUtil;
 import interaction.Interaction;
 import map.*;
 import render.bonus.Bait;
+import render.bonus.Camouflage;
 import render.bonus.IBonus;
 import render.bonus.Trap;
 
@@ -130,7 +131,7 @@ public class GameHunter extends AbstractGame {
 	 * Retourne faux si le joueur n'a plus de piege.
 	 * @return boolean
 	 */
-	public boolean activateTrap() {
+	/*public boolean activateTrap() {
 		if(this.map.getHunter().canSetTrap()) {
 			Position posTrap = this.map.getHunter().getPos();
 			IBonus trap = this.map.getHunter().takeTrap();
@@ -139,14 +140,14 @@ public class GameHunter extends AbstractGame {
 			return true;
 		}
 		return false;
-	}
+	}*/
 
 	/**
 	 * Active une balsie de vision sur le case courante.
 	 * Retourne faux si le joueur n'a plus de balise.
 	 * @return boolean
 	 */
-	public boolean activateWard() {
+	/*public boolean activateWard() {
 		if(this.map.getHunter().canSetWard()) {
 			Position posWard = this.map.getHunter().getPos();
 			IBonus ward = this.map.getHunter().takeWard();
@@ -157,14 +158,14 @@ public class GameHunter extends AbstractGame {
 		else {
 			return false;
 		}
-	}
+	}*/
 	
 	/**
 	 * le joueur acitve un leurre sur une case qui affiche un faux nombre de pas sur la case courante pour le chasseur qui disparait quand le chasseur passe dessus
 	 * Retourne faux si le joueur n'a plus de camouflage
 	 * @return boolean 
 	 */
-	public boolean acctivateBait() {
+	/*public boolean activateBait() {
 		Position posBait=this.map.getBeast().getPos();
 		IBonus bait=this.map.getBeast().takeBait();
 		bait.install(posBait.getPosX(), posBait.getPosY());
@@ -173,16 +174,18 @@ public class GameHunter extends AbstractGame {
 		//A voir si le traitement de la possibilite de poser le piege se ferai pas ici plutot que dans poserBonusBeast
 		return true;
 		
-	}
+	}*/
 	
 	
 	public void setBonusIA() {
 		IBonus bonus=this.map.getBeast().takeFirstBonus();
 		
-		if (bonus !=null) {
+		if (bonus != null) {
 			
 			if(bonus instanceof Bait) {
-				this.acctivateBait();
+				super.activateBait();
+			}else if(bonus instanceof Camouflage){
+				super.activateCamouflage();
 			}
 			
 		}

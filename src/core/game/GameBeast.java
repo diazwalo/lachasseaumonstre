@@ -165,10 +165,10 @@ public class GameBeast extends AbstractGame{
 			System.out.println(inventory);
 			String choix=Interaction.askBonus("le Camouflage (1)", "le Leure (2)");
 			if(choix.equals("1")) {
-				this.actuvateCamouflage();
+				this.activateCamouflage();
 			}
 			else if (choix.equals("2")) {
-				this.acctivateBait();
+				this.activateBait();
 			}
 			else {
 				return;
@@ -181,21 +181,21 @@ public class GameBeast extends AbstractGame{
 	 * Retourne faux si le joueur n'a plus de camouflage
 	 * @return boolean
 	 */
-	public boolean actuvateCamouflage() {
+	/*public boolean activateCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
 			this.map.addBonusActif(this.map.getBeast().takeCamouflage());
 			this.map.getHunter().setBlinded();
 			return true;
 		}
 		return false;
-	}
+	}*/
 	
 	/**
 	 * le joueur acitve un leurre sur une case qui affiche un faux nombre de pas sur la case courante pour le chasseur qui disparait quand le chasseur passe dessus
 	 * Retourne faux si le joueur n'a plus de camouflage
 	 * @return boolean 
 	 */
-	public boolean acctivateBait() {
+	/*public boolean activateBait() {
 		if(this.map.getBeast().canSetBait()) {
 			Position posBait = this.map.getBeast().getPos();
 			IBonus bait = this.map.getBeast().takeBait();
@@ -204,7 +204,7 @@ public class GameBeast extends AbstractGame{
 			return true;
 		}
 		return false;
-	}
+	}*/
 	
 	
 	/**
@@ -212,7 +212,7 @@ public class GameBeast extends AbstractGame{
 	 * Retourne faux si le joueur n'a plus de piege.
 	 * @return boolean
 	 */
-	public boolean activateTrap() {
+	/*public boolean activateTrap() {
 	
 		Position posTrap=this.map.getHunter().getPos();
 		IBonus trap=this.map.getHunter().takeTrap();
@@ -220,7 +220,7 @@ public class GameBeast extends AbstractGame{
 		this.map.addBonusActif(trap);
 		
 		return true;
-	}
+	}*/
 	
 	
 	/**
@@ -228,25 +228,25 @@ public class GameBeast extends AbstractGame{
 	 * Retourne faux si le joueur n'a plus de balise.
 	 * @return boolean
 	 */
-	public boolean activateWard() {
+	/*public boolean activateWard() {
 		Position posWard=this.map.getHunter().getPos();
 		IBonus ward=this.map.getHunter().takeTrap();
 		ward.install(posWard.getPosX(), posWard.getPosY());
 		this.map.addBonusActif(ward);
 		
 		return true;
-	}
+	}*/
 	
 	public void setBonusIA() {
 		IBonus bonus=this.map.getHunter().takeFirstBonus();
 		
-		if (bonus !=null) {
+		if (bonus != null) {
 			
 			if(bonus instanceof Trap) {
-				this.activateTrap();
+				super.activateTrap();
 			}
 			else if(bonus instanceof Ward) {
-				this.activateWard();
+				super.activateWard();
 			}
 		}
 		

@@ -211,4 +211,45 @@ public abstract class AbstractGame {
 		}
 		
 	}
+	
+	// TEST
+	
+	public boolean activateCamouflage() {
+		if(this.map.getBeast().canSetCamouflage()) {
+			this.map.addBonusActif(this.map.getBeast().takeCamouflage());
+			this.map.getHunter().setBlinded();
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean activateBait() {
+		if(this.map.getBeast().canSetBait()) {
+			Position posBait = this.map.getBeast().getPos();
+			IBonus bait = this.map.getBeast().takeBait();
+			bait.install(posBait.getPosX(), posBait.getPosY());
+			this.map.addBonusActif(bait);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean activateTrap() {
+		
+		Position posTrap=this.map.getHunter().getPos();
+		IBonus trap=this.map.getHunter().takeTrap();
+		trap.install(posTrap.getPosX(), posTrap.getPosY());
+		this.map.addBonusActif(trap);
+		
+		return true;
+	}
+	
+	public boolean activateWard() {
+		Position posWard=this.map.getHunter().getPos();
+		IBonus ward=this.map.getHunter().takeTrap();
+		ward.install(posWard.getPosX(), posWard.getPosY());
+		this.map.addBonusActif(ward);
+		
+		return true;
+	}
 }
