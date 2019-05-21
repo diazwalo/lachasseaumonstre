@@ -59,7 +59,7 @@ public class Beast extends Entity{
 	public boolean getRevealedByWard() {
 		return this.revealedByWard;
 	}
-	
+	 
 	/**
 	 * Met a la valeur b passee en parametre, revealedByWard
 	 * @param b

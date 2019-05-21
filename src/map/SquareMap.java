@@ -26,7 +26,7 @@ public class SquareMap extends AbstractMap {
 
 		if(widthTab < 5 || heightTab < 5) {
 			widthTab=5;
-			heightTab=5;
+			heightTab=5; 
 		}
 
 		this.beast = new Beast(widthTab-1, heightTab-1, config);

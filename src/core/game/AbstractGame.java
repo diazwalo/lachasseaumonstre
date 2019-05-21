@@ -189,7 +189,7 @@ public abstract class AbstractGame {
 					}
 				}
 			}
-		}
+		} 
 		
 		// TODO : trouver un autre moyen de le faire
 		/*if(! beastStillUnderWard) {

@@ -228,7 +228,7 @@ public class Case {
 		for (int i = 0; i < bonusHunter.length; i++) {
 			if(this.bonusHunter[i] && !map.getHunter().isBlinded()) res="?";
 		}
-
+ 
 		List<Position> posAdj=posCase.getAdjacentPosition(map);
 
 		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !map.getHunter().isBlinded() && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {

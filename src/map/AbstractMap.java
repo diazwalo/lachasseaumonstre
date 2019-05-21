@@ -29,7 +29,7 @@ public abstract class AbstractMap
      * @param middle
      * @param tabBonus
      * @param bonusHunterOrBeast
-     * @return
+     * @return 
      */
     public final Position createPositionTempoFirstBonus(int middle, boolean[] tabBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();

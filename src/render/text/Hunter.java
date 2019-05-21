@@ -115,7 +115,7 @@ public class Hunter extends Entity {
 	 */
 	public int getWardDispo() {
 		return this.wards.size();
-	}
+	} 
 	
 	/**
 	 * renvoie si le hunter est aveuglee par le camouflage de la bete

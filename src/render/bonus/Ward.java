@@ -90,7 +90,7 @@ public class Ward implements IBonus {
 		// TODO Auto-generated method stub
 		if(this.timer > 0) {
 			this.refresh();
-		}
+		} 
 	}
 
 	@Override

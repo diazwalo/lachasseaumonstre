@@ -62,7 +62,7 @@ public class GameHunter extends AbstractGame {
 				super.checkBeastRevealed();
 				System.out.println(super.map.gameHunterToString());
 				Interaction.pressEnter();
-			}
+			} 
 			this.map.passTurnBonus();
 			super.checkBeastRevealed();
 		}
