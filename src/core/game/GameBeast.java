@@ -1,6 +1,5 @@
 package core.game;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -8,8 +7,6 @@ import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
 import interaction.Interaction;
 import map.*;
-import render.bonus.Bait;
-import render.bonus.Camouflage;
 import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;

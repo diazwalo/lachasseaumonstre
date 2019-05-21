@@ -1,10 +1,7 @@
 package core.game;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import org.hamcrest.core.IsInstanceOf;
 
 import map.AbstractMap;
 import map.CaseType;

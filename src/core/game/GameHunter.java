@@ -11,7 +11,6 @@ import map.*;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
 import render.bonus.IBonus;
-import render.bonus.Trap;
 import render.bonus.Ward;
 
 /**
