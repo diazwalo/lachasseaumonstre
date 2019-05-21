@@ -57,7 +57,6 @@ public class Dijkstra
 	 */
 	public List<Position> shortestPathFromTo(String from, String to)
 	{
-		System.out.println("Node"+listNode.size());
 		checkIfNodesExist(from, to);
 		
 		List<Position> shortestPath = new ArrayList<Position>();

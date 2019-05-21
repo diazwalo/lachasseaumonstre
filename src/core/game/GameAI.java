@@ -39,7 +39,6 @@ public class GameAI extends AbstractGame
 		
 		this.pathBeast = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
 
-		System.out.println("lol"+this.graph.getListNode().size());
 		while (AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			this.map.getHunter().decrementBlinded();
 			
@@ -59,7 +58,7 @@ public class GameAI extends AbstractGame
 	public boolean beastTurn()
 	{
 		System.out.println(this.map.toString());
-		
+		System.out.println("DEBUG ON VA : " +  this.pathBeast.get(this.beastTurn));
 		super.map.moveBeast(Position.toMouvment(this.map.getBeast().getPos(), this.pathBeast.get(this.beastTurn)));
 		this.beastTurn++;
 		return true;
@@ -69,14 +68,18 @@ public class GameAI extends AbstractGame
 	public boolean hunterTurn()
 	{
 		Dijkstra dijkstra;
+		String nodeNameTo = null;
+		
 		//Hunter turn
 		System.out.println(this.map.toString());
 		if (this.pathHunter.isEmpty()) {
 			this.graph = new Graph(super.map);
 			dijkstra = new Dijkstra(this.graph);
 			String nodeNameFrom = NodeUtil.formatNode(this.map.getHunter().getPos());
-			String nodeNameTo = NodeUtil.formatNode(pathBeast.get(r.nextInt(pathBeast.size())));
-			System.out.println(nodeNameTo);
+			do {
+				nodeNameTo = NodeUtil.formatNode(pathBeast.get(r.nextInt(pathBeast.size())));
+			}while(nodeNameTo.equals(nodeNameFrom));
+			System.out.println("On va ici : " + nodeNameTo);
 			
 			this.pathHunter.addAll(dijkstra.shortestPathFromTo(nodeNameFrom, nodeNameTo));
 			this.hunterTurn = 0;
