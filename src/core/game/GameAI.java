@@ -26,7 +26,7 @@ public class GameAI extends AbstractGame
 	public GameAI(AbstractMap map)
 	{
 		super(map);
-		this.pathHunter = new LinkedList<Position>();
+		this.pathHunter = new ArrayList<Position>();
 		this.r = new Random();
 	}
 
@@ -48,7 +48,7 @@ public class GameAI extends AbstractGame
 			
 			this.map.setBeastWalk();
 			super.checkGameStatus();
-			//System.out.println("lol"+this.graph.getListNode().size());
+
 			this.hunterTurn();
 		}
 		
@@ -71,8 +71,8 @@ public class GameAI extends AbstractGame
 		Dijkstra dijkstra;
 		//Hunter turn
 		System.out.println(this.map.toString());
-		
-		if (this.pathHunter.isEmpty() && hunterTurn == 0) {
+		if (this.pathHunter.isEmpty()) {
+			this.graph = new Graph(super.map);
 			dijkstra = new Dijkstra(this.graph);
 			String nodeNameFrom = NodeUtil.formatNode(this.map.getHunter().getPos());
 			String nodeNameTo = NodeUtil.formatNode(pathBeast.get(r.nextInt(pathBeast.size())));
@@ -86,7 +86,7 @@ public class GameAI extends AbstractGame
 		this.pathHunter.remove(0);
 		this.hunterTurn++;
 		
-		Interaction.pressEnter();
+		//Interaction.pressEnter();
 		return true;
 	}
 

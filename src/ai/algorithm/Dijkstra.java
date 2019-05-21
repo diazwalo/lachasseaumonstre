@@ -28,7 +28,7 @@ public class Dijkstra
 
 	/**
 	 * Applique l'algorithme de Dijkstra sur un objet Graph.
-	 * @param graph Un graph contenant les aretes et les sommets.
+	 * @param Un graph contenant les aretes et les sommets.
 	 */
 	public Dijkstra(Graph graph)
 	{
@@ -57,6 +57,7 @@ public class Dijkstra
 	 */
 	public List<Position> shortestPathFromTo(String from, String to)
 	{
+		System.out.println("Node"+listNode.size());
 		checkIfNodesExist(from, to);
 		
 		List<Position> shortestPath = new ArrayList<Position>();
