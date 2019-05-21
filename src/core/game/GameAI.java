@@ -49,6 +49,7 @@ public class GameAI extends AbstractGame
 			super.checkGameStatus();
 
 			this.hunterTurn();
+			super.checkGameStatus();
 		}
 		
 		this.EndGame();
@@ -58,8 +59,13 @@ public class GameAI extends AbstractGame
 	public boolean beastTurn()
 	{
 		System.out.println(this.map.toString());
-		System.out.println("DEBUG ON VA : " +  this.pathBeast.get(this.beastTurn));
-		super.map.moveBeast(Position.toMouvment(this.map.getBeast().getPos(), this.pathBeast.get(this.beastTurn)));
+
+		try {
+			super.map.moveBeast(Position.toMouvment(this.map.getBeast().getPos(), this.pathBeast.get(this.beastTurn)));
+		}catch(Exception e) {
+			this.map.setHunterWin(true);
+		}
+		
 		this.beastTurn++;
 		return true;
 	}
