@@ -37,8 +37,6 @@ public class SquareMap extends AbstractMap {
 		this.config = config;
 		this.beastWin = false;
 		this.hunterWin = false;
-		
-		addBonusActif(new Ward(9, 9));
 	}
 
 	/**

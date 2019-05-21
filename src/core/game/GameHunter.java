@@ -12,6 +12,7 @@ import render.bonus.Bait;
 import render.bonus.Camouflage;
 import render.bonus.IBonus;
 import render.bonus.Trap;
+import render.bonus.Ward;
 
 /**
  * 
@@ -33,17 +34,19 @@ public class GameHunter extends AbstractGame {
 		Curiosity curiosity = new Curiosity(graph);
 		//List<Position> path = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
 		//System.out.println(path); // La liste path contient tout le chemin que la bete devra parcourir pendant le jeu.
-				
 		
 		System.out.println(map.gameHunterToString()+"\n");
 		
-		this.map.getHunter().setBlinded();
+		// TEST :
+		this.map.addBonusActif(new Ward(9, 9));
+		this.map.passTurnBonus();
+		super.checkBeastRevealed();
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-			// TEST
-		
-			System.out.println(this.map.getHunter().isBlinded());
-			
+			// TEST : 
+			for (int i = 0; i < this.map.getBonusActif().size(); i++) {
+				System.out.println(this.map.getBonusActif().get(i));
+			}
 			
 			while( ! this.hunterTurn() ) {
 				System.out.println("Mvt Invalide");
@@ -56,16 +59,18 @@ public class GameHunter extends AbstractGame {
 			if(! super.map.isHunterWin()) {
 				this.beastTurn();
 				ramasserBonusBeast();
+				super.checkBeastRevealed();
 				System.out.println(super.map.gameHunterToString());
 				Interaction.pressEnter();
 			}
 			this.map.passTurnBonus();
+			super.checkBeastRevealed();
 		}
 		this.EndGame();
 	}
 	
 	/**
-	  * hunterTurn retourne true lorsque le mouvement entr� par le joueur est valide et dans ce cas l'effectue. 
+	  * hunterTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue. 
 	  */
 	public boolean hunterTurn() {
 		boolean mvtValide=false;
@@ -127,59 +132,10 @@ public class GameHunter extends AbstractGame {
 			}
 		}
 	}
-	
-	
-	/**
-	 * Active le piege sur la case courante.
-	 * Retourne faux si le joueur n'a plus de piege.
-	 * @return boolean
-	 */
-	/*public boolean activateTrap() {
-		if(this.map.getHunter().canSetTrap()) {
-			Position posTrap = this.map.getHunter().getPos();
-			IBonus trap = this.map.getHunter().takeTrap();
-			trap.install(posTrap.getPosX(), posTrap.getPosY());
-			this.map.addBonusActif(trap);
-			return true;
-		}
-		return false;
-	}*/
 
 	/**
-	 * Active une balsie de vision sur le case courante.
-	 * Retourne faux si le joueur n'a plus de balise.
-	 * @return boolean
+	 * Prends un IBonusdans l'inventaire de l'IA (laa Bete) puis l'active
 	 */
-	/*public boolean activateWard() {
-		if(this.map.getHunter().canSetWard()) {
-			Position posWard = this.map.getHunter().getPos();
-			IBonus ward = this.map.getHunter().takeWard();
-			ward.install(posWard.getPosX(), posWard.getPosY());
-			this.map.addBonusActif(ward);
-			return true;
-		}
-		else {
-			return false;
-		}
-	}*/
-	
-	/**
-	 * le joueur acitve un leurre sur une case qui affiche un faux nombre de pas sur la case courante pour le chasseur qui disparait quand le chasseur passe dessus
-	 * Retourne faux si le joueur n'a plus de camouflage
-	 * @return boolean 
-	 */
-	/*public boolean activateBait() {
-		Position posBait=this.map.getBeast().getPos();
-		IBonus bait=this.map.getBeast().takeBait();
-		bait.install(posBait.getPosX(), posBait.getPosY());
-		this.map.addBonusActif(bait);
-		
-		//A voir si le traitement de la possibilite de poser le piege se ferai pas ici plutot que dans poserBonusBeast
-		return true;
-		
-	}*/
-	
-	
 	public void setBonusIA() {
 		IBonus bonus=this.map.getBeast().takeFirstBonus();
 		

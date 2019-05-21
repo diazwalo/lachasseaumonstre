@@ -73,7 +73,7 @@ public class Ward implements IBonus {
 	 */
 	public void refresh() {
 		this.timer--;
-		if(this.timer == 0) {
+		if(this.timer <= 0) {
 			this.pos = null;
 		}
 	}

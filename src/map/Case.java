@@ -4,6 +4,7 @@ import java.util.List;
 
 import render.bonus.Bait;
 import render.bonus.Camouflage;
+import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
 import render.text.Beast;
@@ -217,6 +218,12 @@ public class Case {
 			if(this.bonusHunter[i]) res=toStringBonusHunter[i];
 		}*/
 		
+		for (IBonus bonus : map.getBonusActif()) {
+			if((bonus instanceof Trap || bonus instanceof Ward) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
+				res = bonus.toString();
+			}
+		}
+		
 		
 		for (int i = 0; i < bonusHunter.length; i++) {
 			if(this.bonusHunter[i] && !map.getHunter().isBlinded()) res="?";
@@ -240,7 +247,7 @@ public class Case {
 
 		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
 			res=map.getHunter().toString();
-		}else if(map.getBeast().getTrapped() && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+		}else if((map.getBeast().getTrapped() || map.getBeast().getRevealedByWard()) && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
 			res=map.getBeast().toString();
 		}
 

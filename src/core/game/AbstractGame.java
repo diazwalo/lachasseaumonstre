@@ -191,9 +191,10 @@ public abstract class AbstractGame {
 			}
 		}
 		
-		if(! beastStillUnderWard) {
+		// TODO : trouver un autre moyen de le faire
+		/*if(! beastStillUnderWard) {
 			this.map.getBeast().setRevealedByWard(false);
-		}
+		}*/
 	}
 	
 	/**

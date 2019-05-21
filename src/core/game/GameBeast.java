@@ -42,6 +42,7 @@ public class GameBeast extends AbstractGame{
 			
 			while(! this.beastTurn()) {
 				System.out.println("Mvt Invalide");
+				System.out.println(this.map.getBeast().getRevealedByWard());
 			}
 
 			System.out.println(this.map.gameBeastToString());
@@ -159,7 +160,7 @@ public class GameBeast extends AbstractGame{
 	
 	
 	/**
-	 * propose au joueur de poser un bonus au choix: un camouflage ou un leurre.
+	 * Propose au joueur de poser un bonus au choix: un camouflage ou un leurre.
 	 */
 	public void poserBonus() {
 		String inventory = this.map.getBeast().toStringInventory();
@@ -179,66 +180,8 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	/**
-	 * Le joueur active sont camouflage, le chasseur ne peut plus voir les pas de la bete tant que le camouflage est actif.
-	 * Retourne faux si le joueur n'a plus de camouflage
-	 * @return boolean
+	 * Prends un IBonusdans l'inventaire de l'IA (le Chasseur) puis l'active
 	 */
-	/*public boolean activateCamouflage() {
-		if(this.map.getBeast().canSetCamouflage()) {
-			this.map.addBonusActif(this.map.getBeast().takeCamouflage());
-			this.map.getHunter().setBlinded();
-			return true;
-		}
-		return false;
-	}*/
-	
-	/**
-	 * le joueur acitve un leurre sur une case qui affiche un faux nombre de pas sur la case courante pour le chasseur qui disparait quand le chasseur passe dessus
-	 * Retourne faux si le joueur n'a plus de camouflage
-	 * @return boolean 
-	 */
-	/*public boolean activateBait() {
-		if(this.map.getBeast().canSetBait()) {
-			Position posBait = this.map.getBeast().getPos();
-			IBonus bait = this.map.getBeast().takeBait();
-			bait.install(posBait.getPosX(), posBait.getPosY());
-			this.map.addBonusActif(bait);
-			return true;
-		}
-		return false;
-	}*/
-	
-	
-	/**
-	 * Active le piege sur la case courante.
-	 * Retourne faux si le joueur n'a plus de piege.
-	 * @return boolean
-	 */
-	/*public boolean activateTrap() {
-	
-		Position posTrap=this.map.getHunter().getPos();
-		IBonus trap=this.map.getHunter().takeTrap();
-		trap.install(posTrap.getPosX(), posTrap.getPosY());
-		this.map.addBonusActif(trap);
-		
-		return true;
-	}*/
-	
-	
-	/**
-	 * Active une balsie de vision sur le case courante.
-	 * Retourne faux si le joueur n'a plus de balise.
-	 * @return boolean
-	 */
-	/*public boolean activateWard() {
-		Position posWard=this.map.getHunter().getPos();
-		IBonus ward=this.map.getHunter().takeTrap();
-		ward.install(posWard.getPosX(), posWard.getPosY());
-		this.map.addBonusActif(ward);
-		
-		return true;
-	}*/
-	
 	public void setBonusIA() {
 		IBonus bonus=this.map.getHunter().takeFirstBonus();
 		
