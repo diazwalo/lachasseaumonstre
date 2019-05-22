@@ -147,7 +147,7 @@ public class Case {
 	}
 	
 	/**
-	 * Ajoute � l'inventaire de la Bete, le piege de la Case (s'il y en a un).
+	 * Ajoute a l'inventaire de la Bete, le piege de la Case (s'il y en a un).
 	 * @param beast
 	 * @param posCase
 	 */
@@ -182,6 +182,60 @@ public class Case {
 	public boolean isObstacle() {
 		return this.caseType == CaseType.OBSTACLE;
 	}
+	
+	/**
+	 * Montre la map tel que le joueur doit la voir lorsqu'il joue le chasseur
+	 * @param map
+	 * @param posCase
+	 * @return
+	 */
+	public String gameHunterShowView(AbstractMap map, Position posCase) {
+		String res=caseType.toString();
+		
+		if(! this.getHunterBonusActifToString(map, posCase).equals("")) {
+			res=this.getHunterBonusActifToString(map, posCase);
+		}
+		
+		for (IBonus bonus : map.getBonusActif()) {
+			if(bonus instanceof Bait && ((Bait) bonus).getVisible() && !map.getHunter().isBlinded() && posCase.equals(bonus.getPos())) {
+			
+				Bait b=(Bait)bonus;
+				res=b.getCount()+"";
+			}
+		}
+		
+		
+		/*for (int i = 0; i < bonusHunter.length; i++) {
+			if(this.bonusHunter[i] && !map.getHunter().isBlinded()) res="?";
+		}*/
+		if(! this.getBonusOnCaseNonActifToString(this.bonusHunter).equals("")) {
+			res = this.getBonusOnCaseNonActifToString(this.bonusHunter);
+		}
+ 
+		List<Position> posAdj=posCase.getAdjacentPosition(map);
+
+		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !map.getHunter().isBlinded() && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			for (Position position : posAdj) {
+				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
+					if(this.beastWalk==0) {
+						res=map.getBeast().toString();
+					}else {
+						res=this.beastWalk+"";
+					}
+				}
+			}
+		}else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())){
+			res=map.getHunter().toString();
+		}
+
+		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
+			res=map.getHunter().toString();
+		}else if((map.getBeast().getTrapped() || map.getBeast().getRevealedByWard()) && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			res=map.getBeast().toString();
+		}
+
+		return res;
+	}
 
 	/**
 	 * Montre la map tel que le joueur doit la voir lorsqu'il joue la Bete
@@ -194,22 +248,44 @@ public class Case {
 		
 		if(this.beastWalk>=1) res=".";
 		
-		/*for (IBonus bonus : map.getBonusActif()) {
-			if((bonus instanceof Camouflage || bonus instanceof Bait) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
-				res = bonus.toString();
-			}
-		}*/
 		if(! this.getBeastBonusActifToString(map, posCase).equals("")) {
 			res=this.getBeastBonusActifToString(map, posCase);
 		}
 		
-		for (int i = 0; i < bonusBeast.length; i++) {
-			if(this.bonusBeast[i]) res="?";
+		if(! this.getBonusOnCaseNonActifToString(this.bonusBeast).equals("")) {
+			res = this.getBonusOnCaseNonActifToString(this.bonusBeast);
 		}
 		
 		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
 		else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
 		return res;
+	}
+	
+	/**
+	 * TODO : ajouter la doc
+	 * @param bonus
+	 * @return
+	 */
+	public String getBonusOnCaseNonActifToString(boolean[] bonus) {
+		String res = "";
+		if(this.bonusOnCase(bonus)) {
+			res = "?";
+		}
+		return res;
+	}
+	
+	/**
+	 * TODO : ajouter la doc
+	 * @param bonus
+	 * @return
+	 */
+	public boolean bonusOnCase(boolean[] bonus) {
+		for (int i = 0; i < bonus.length; i++) {
+			if(bonus[i]) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
@@ -272,62 +348,6 @@ public class Case {
 			}
 		}
 		return bonusActif;
-	}
-	
-	/**
-	 * Montre la map tel que le joueur doit la voir lorsqu'il joue le chasseur
-	 * @param map
-	 * @param posCase
-	 * @return
-	 */
-	public String gameHunterShowView(AbstractMap map, Position posCase) {
-		String res=caseType.toString();
-		
-		/*for (IBonus bonus : map.getBonusActif()) {
-			if((bonus instanceof Trap || bonus instanceof Ward) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
-				res = bonus.toString();
-			}
-		}*/
-		if(! this.getHunterBonusActifToString(map, posCase).equals("")) {
-			res=this.getHunterBonusActifToString(map, posCase);
-		}
-		
-		for (IBonus bonus : map.getBonusActif()) {
-			if(bonus instanceof Bait && ((Bait) bonus).getVisible() && !map.getHunter().isBlinded() && posCase.equals(bonus.getPos())) {
-			
-				Bait b=(Bait)bonus;
-				res=b.getCount()+"";
-			}
-		}
-		
-		
-		for (int i = 0; i < bonusHunter.length; i++) {
-			if(this.bonusHunter[i] && !map.getHunter().isBlinded()) res="?";
-		}
- 
-		List<Position> posAdj=posCase.getAdjacentPosition(map);
-
-		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !map.getHunter().isBlinded() && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
-			for (Position position : posAdj) {
-				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
-					if(this.beastWalk==0) {
-						res=map.getBeast().toString();
-					}else {
-						res=this.beastWalk+"";
-					}
-				}
-			}
-		}else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())){
-			res=map.getHunter().toString();
-		}
-
-		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
-			res=map.getHunter().toString();
-		}else if((map.getBeast().getTrapped() || map.getBeast().getRevealedByWard()) && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
-			res=map.getBeast().toString();
-		}
-
-		return res;
 	}
 	
 	/**
