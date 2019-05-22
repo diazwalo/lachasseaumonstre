@@ -33,15 +33,15 @@ public class GameHunter extends AbstractGame {
 		Curiosity curiosity = new Curiosity(graph);
 		//List<Position> path = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
 		//System.out.println(path); // La liste path contient tout le chemin que la bete devra parcourir pendant le jeu.
-		
+		this.updateStartGame();
 		System.out.println(map.gameHunterToString()+"\n");
 		
 		//TEST
 		this.map.addBonusActif(new Bait (2,1));
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
+		
 			
-			this.updateStartGame();
 			
 			/*while( ! this.hunterTurn() ) {
 				System.out.println("Mvt Invalide");
@@ -49,7 +49,7 @@ public class GameHunter extends AbstractGame {
 			this.map.getHunter().decrementBlinded();
 			*/
 			this.hunterTurn();
-			
+			this.updateStartGame();
 			/*System.out.println(map.gameHunterToString()+"\n");
 			Interaction.pressEnter();*/
 			this.endOfTurn();
@@ -85,7 +85,7 @@ public class GameHunter extends AbstractGame {
 		this.poserBonus();
 		
 		do {
-			System.out.println("Veuillez entrer un mouvement valide");
+			//System.out.println("Veuillez entrer un mouvement valide");
 			Mouvment mvt=super.askMouvement();
 			mvtValide=super.map.moveHunter(mvt);
 			
