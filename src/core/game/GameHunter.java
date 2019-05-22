@@ -83,7 +83,7 @@ public class GameHunter extends AbstractGame {
 		*/
 		boolean mvtValide=false;
 		this.poserBonus();
-		
+		 
 		do {
 			//System.out.println("Veuillez entrer un mouvement valide");
 			Mouvment mvt=super.askMouvement();
