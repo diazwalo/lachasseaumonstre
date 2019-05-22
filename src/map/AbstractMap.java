@@ -189,8 +189,9 @@ public abstract class AbstractMap
                     ib.setTriggered();
                     ((Bait) ib).setVisible(true);
                 }
-            }else {
-            	((Bait) ib).setVisible(false);
+                else {
+                	((Bait) ib).setVisible(false);
+                }
             }
         }
     }
