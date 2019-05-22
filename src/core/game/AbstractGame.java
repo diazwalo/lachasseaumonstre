@@ -56,7 +56,7 @@ public abstract class AbstractGame {
 	public boolean statusBeastblock() {
 		if(this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty() ) {
 			
-			if(this.map.getBeast().teleportation()) {
+			if(this.map.getBeast().isTpAvailable()) {
 				if(! this.tpBeast()) {
 					return true;
 				}

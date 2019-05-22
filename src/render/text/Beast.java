@@ -259,7 +259,7 @@ public class Beast extends Entity{
 	 * verifie qu'il reste au moins une tp a la bete puis retourne vrai au cas echeant
 	 * @return boolean
 	 */
-	public boolean teleportation() {
+	public boolean isTpAvailable() {
 		if(this.tp > 0) {
 			this.tp--;
 			return true;
@@ -274,5 +274,4 @@ public class Beast extends Entity{
 	public String toString() {
 		return "B";
 	}
-
 }
