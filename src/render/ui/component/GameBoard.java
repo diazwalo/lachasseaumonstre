@@ -16,7 +16,7 @@ public class GameBoard {
 	Image img;
 	
 	public GameBoard(int size) {
-		try(FileInputStream is = new FileInputStream(new File(System.getProperty("user.dir") + "/IHM/Texture/texture.png"))){
+		try(FileInputStream is = new FileInputStream(new File(System.getProperty("user.dir") + "/IHM/Texture/Ground.png"))){
 	    	img = new Image(is);
 	    } catch (FileNotFoundException e) {
 	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
