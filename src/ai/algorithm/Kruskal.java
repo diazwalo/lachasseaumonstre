@@ -29,6 +29,10 @@ public class Kruskal
 	private Map<String, Node> listNode;
 	private Map<String, Edge> listEdge;
 	
+	/**
+	 * Applique l'algorithme de Kruskal sur un objet Graph. 
+	 * @param graph  Un graph contenant les aretes et les sommets.
+	 */
 	public Kruskal(Graph graph)
 	{
 		this.listNode = graph.getListNode();
@@ -48,6 +52,10 @@ public class Kruskal
 		return path;
 	}
 	
+	/**
+	 * Cette fonction execute l'algorithme de Kruskal et retourne le chemin calculé.
+	 * @return la liste des identifiants du parcours.
+	 */
 	private List<String> executeKruskal()
 	{
 		EdgeComparator edgeComparator = new EdgeComparator();
@@ -83,6 +91,11 @@ public class Kruskal
 		return positions;
 	}
 	
+	/**
+	 * Cette fonction cherche un sommet et retourne son parent.
+	 * @param name L'identifiant du sommet.
+	 * @return Le sommet parent si il existe sinon lui meme.
+	 */
 	private String find(String name)
 	{	
 		if(this.listNode.get(name).getPrecedent() == null) {
@@ -91,6 +104,11 @@ public class Kruskal
 		return this.listNode.get(name).getPrecedent();
 	}
 	
+	/**
+	 * Cette fonction fait l'union entre deux sommets.
+	 * @param x L'identifiant du premier sommet.
+	 * @param y L'identifiant du second sommet.
+	 */
 	private void union(String x, String y)
 	{
 		this.listNode.get(x).setPrecedent(this.find(x));

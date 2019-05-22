@@ -8,7 +8,6 @@ import map.AbstractMap;
 import map.Position;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,12 +20,21 @@ public class Curiosity
 {
     private Map<String, Node> listNode;
 
+    /**
+     * Applique l'algorithme Curiosity sur un objet Graph.
+     * @param graph Un graph contenant les aretes et les sommets.
+     */
     public Curiosity(Graph graph)
     {
-    	this.listNode = new HashMap<String, Node>();
-        this.listNode.putAll(graph.getListNode());
+    	this.listNode = graph.getListNode();
     }
-
+    
+	/**
+	 * Genere le chemin afin de parcourir toute la carte.
+	 * @param from L'identifiant du sommet de départ.
+	 * @param sm Le plateau de jeu
+	 * @return Une liste cotenant parcours de la bete.
+	 */
     public List<Position> getPath(String from, AbstractMap sm)
     {
     	checkIfNodeExist(from);
@@ -100,6 +108,10 @@ public class Curiosity
         return positions;
     }
     
+    /**
+     * Vérifie l'existance du sommet passé en paramètre.
+     * @param from L'identifiant du sommet de départ.
+     */
     private void checkIfNodeExist(String from)
 	{
 		if(!this.listNode.containsKey(from)) {
@@ -107,6 +119,11 @@ public class Curiosity
 		}
 	}
 
+    /**
+     * Vérifie si les trois cases à droite sont indisponile et visité.
+     * @param position La position actuelle.
+     * @return Vrai si les positions sont indisponibles / Faux si il est possible de s'y rendre.
+     */
 	private boolean cantMooveRight(Position position)
     {
         return this.listNode.get(NodeUtil.formatNode(position.toRight())) == null &&
@@ -114,6 +131,11 @@ public class Curiosity
                 this.listNode.get(NodeUtil.formatNode(position.toNorthEast())) == null;
     }
     
+	/**
+	 * Vérifie si les trois cases à gauche sont indisponile et visité.
+	 * @param position La position actuelle.
+	 * @return Vrai si les positions sont indisponibles / Faux si il est possible de s'y rendre.
+	 */
     private boolean cantMooveLeft(Position position)
     {
         return this.listNode.get(NodeUtil.formatNode(position.toLeft())) == null &&

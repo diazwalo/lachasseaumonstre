@@ -36,12 +36,17 @@ public class Dijkstra
 		this.listEdge = graph.getListEdge();
 	}
 	
-	
+	/**
+	 * @return La liste des sommets.
+	 */
 	public Map<String, Node> getListNode()
 	{
 		return this.listNode;
 	}
 
+	/**
+	 * @return La listes des aretes.
+	 */
 	public Map<String, Edge> getListEdge()
 	{
 		return this.listEdge;
@@ -75,6 +80,11 @@ public class Dijkstra
 		return shortestPath;
 	}
 	
+	/**
+	 * Vérifie que les sommets passé en paramètre de shortestPathFromTo existent bien.
+	 * @param from L'identifiant du sommet de départ.
+	 * @param to L'identifiant du sommet de la destination finale.
+	 */
 	private void checkIfNodesExist(String from, String to)
 	{
 		if(!this.listNode.containsKey(from)) {
@@ -88,7 +98,7 @@ public class Dijkstra
 
 	/**
 	 * Execute l'algorithme de Dijkstra pour chaque sommets.
-	 * @param from
+	 * @param from L'identifiant du sommet de départ.
 	 */
 	private void executeDijkstra(String from)
 	{

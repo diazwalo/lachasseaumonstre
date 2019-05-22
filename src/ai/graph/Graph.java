@@ -12,9 +12,9 @@ import ai.util.NodeUtil;
 import map.*;
 
 /**
- * Cette classe explore le plateau du jeu afin de le repr�senter math�matiquement sous forme
- * d'un graphe compos� compos� de sommets (nodes) et d'ar�tes (edges). Une fois sur cette forme, des algorithmes g�n�riques peuvent 
- * �tre appliqu�.
+ * Cette classe explore le plateau du jeu afin de le representer mathematiquement sous forme
+ * d'un graphe compose de sommets (nodes) et d'aretes (edges). Une fois sur cette forme, des algorithmes generiques peuvent 
+ * etre applique.
  * @author PHPierre
  *
  */
@@ -53,7 +53,7 @@ public class Graph {
     /**
      * Explore un tableau pour creer un diagramme de noeuds
      * @param map Une instance d'une map
-     * @return listNode La liste des cases transform�s en sommets
+     * @return listNode La liste des cases transformes en sommets
      */
     public Map<String, Node> generateNode(AbstractMap map)
     {
