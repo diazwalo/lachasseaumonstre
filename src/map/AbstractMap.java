@@ -190,7 +190,7 @@ public abstract class AbstractMap
                     ((Bait) ib).setVisible(true);
                 }
                 else {
-                	((Bait) ib).setVisible(false);
+                	( (Bait) ib).setVisible(false);
                 }
             }
         }
