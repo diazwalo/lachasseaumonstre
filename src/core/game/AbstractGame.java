@@ -237,22 +237,27 @@ public abstract class AbstractGame {
 	} 
 	
 	public boolean activateTrap() {
-		
-		Position posTrap=this.map.getHunter().getPos();
-		IBonus trap=this.map.getHunter().takeTrap();
-		trap.install(posTrap.getPosX(), posTrap.getPosY());
-		this.map.addBonusActif(trap);
-		
-		return true;
+		if(this.map.getHunter().canSetTrap()) {
+			Position posTrap=this.map.getHunter().getPos();
+			IBonus trap=this.map.getHunter().takeTrap();
+			trap.install(posTrap.getPosX(), posTrap.getPosY());
+			this.map.addBonusActif(trap);
+			
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean activateWard() {
-		Position posWard=this.map.getHunter().getPos();
-		IBonus ward=this.map.getHunter().takeWard();
-		ward.install(posWard.getPosX(), posWard.getPosY());
-		this.map.addBonusActif(ward);
-		
-		return true;
+		if(this.map.getHunter().canSetWard()) {
+			Position posWard=this.map.getHunter().getPos();
+			IBonus ward=this.map.getHunter().takeWard();
+			ward.install(posWard.getPosX(), posWard.getPosY());
+			this.map.addBonusActif(ward);
+			
+			return true;
+		}
+		return false;
 	}
 	
 	public Mouvment askMouvement() {

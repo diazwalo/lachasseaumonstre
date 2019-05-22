@@ -100,7 +100,7 @@ public class GameBeast extends AbstractGame{
 			idxMvt=new Random().nextInt(mvtHunter.size()-1);
 		}
 		
-		if(!this.map.getHunter().isBlinded()) {
+		if(! this.map.getHunter().isBlinded()) {
 		
 			for (int i = 0; i < mvtHunter.size(); i++) {
 				int[] modifPosTempo=super.map.getHunter().getPos().getModifPosTempo(mvtHunter.get(i).getMvt());

@@ -191,27 +191,87 @@ public class Case {
 	 */
 	public String gameBeastShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
-		//String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
 		
 		if(this.beastWalk>=1) res=".";
 		
-		for (IBonus bonus : map.getBonusActif()) {
+		/*for (IBonus bonus : map.getBonusActif()) {
 			if((bonus instanceof Camouflage || bonus instanceof Bait) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
 				res = bonus.toString();
 			}
+		}*/
+		if(! this.getBeastBonusActifToString(map, posCase).equals("")) {
+			res=this.getBeastBonusActifToString(map, posCase);
 		}
 		
 		for (int i = 0; i < bonusBeast.length; i++) {
 			if(this.bonusBeast[i]) res="?";
 		}
 		
-		/*for (int i = 0; i < bonusBeast.length; i++) {
-			if(this.bonusBeast[i]) res=toStringBonusBeast[i];
-		}*/
-		
 		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
 		else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
 		return res;
+	}
+	
+	/**
+	 * Retourne le Bonus Actif sur la Case sous la forme d'une Chaine de Characteresi il y en a un et la Chaine Vide sinon (Cela si c'est un Bonus pose par le Chasseur)
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
+	public String getHunterBonusActifToString(AbstractMap map, Position posCase) {
+		String res="";
+		IBonus bonusActif = this.getHunterBonusActifOnCase(map, posCase);
+		if(bonusActif != null) {
+			res = bonusActif.toString();
+		}
+		return res;
+	}
+	
+	/**
+	 * Retourne le Bonus Actif sur la Case sous la forme d'une Chaine de Characteresi il y en a un et la Chaine Vide sinon (Cela si c'est un Bonus pose par la Bete)
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
+	public String getBeastBonusActifToString(AbstractMap map, Position posCase) {
+		String res="";
+		IBonus bonusActif = this.getBeastBonusActifOnCase(map, posCase);
+		if(bonusActif != null) {
+			res = bonusActif.toString();
+		}
+		return res;
+	}
+	
+	/**
+	 * Retourne le Bonus Actif sur la Case si il y en a un et null sinon (Cela si c'est un Bonus pose par le Chasseur)
+	 * @param map
+	 * @param posCase
+	 * @return IBonus
+	 */
+	public IBonus getHunterBonusActifOnCase(AbstractMap map, Position posCase) {
+		IBonus bonusActif = null;
+		for (IBonus bonus : map.getBonusActif()) {
+			if((bonus instanceof Trap || bonus instanceof Ward) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
+				bonusActif = bonus;
+			}
+		}
+		return bonusActif;
+	}
+	
+	/**
+	 * Retourne le Bonus Actif sur la Case si il y en a un et null sinon (Cela si c'est un Bonus pose par la Bete)
+	 * @param map
+	 * @param posCase
+	 * @return IBonus
+	 */
+	public IBonus getBeastBonusActifOnCase(AbstractMap map, Position posCase) {
+		IBonus bonusActif = null;
+		for (IBonus bonus : map.getBonusActif()) {
+			if((bonus instanceof Camouflage || bonus instanceof Bait) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
+				bonusActif = bonus;
+			}
+		}
+		return bonusActif;
 	}
 	
 	/**
@@ -223,10 +283,13 @@ public class Case {
 	public String gameHunterShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
 		
-		for (IBonus bonus : map.getBonusActif()) {
+		/*for (IBonus bonus : map.getBonusActif()) {
 			if((bonus instanceof Trap || bonus instanceof Ward) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
 				res = bonus.toString();
 			}
+		}*/
+		if(! this.getHunterBonusActifToString(map, posCase).equals("")) {
+			res=this.getHunterBonusActifToString(map, posCase);
 		}
 		
 		for (IBonus bonus : map.getBonusActif()) {
