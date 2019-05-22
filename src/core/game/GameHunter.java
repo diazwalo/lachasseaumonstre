@@ -36,7 +36,11 @@ public class GameHunter extends AbstractGame {
 		
 		System.out.println(map.gameHunterToString()+"\n");
 		
+		
+		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
+			
+			
 			
 			while( ! this.hunterTurn() ) {
 				System.out.println("Mvt Invalide");

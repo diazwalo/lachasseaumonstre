@@ -22,7 +22,7 @@ public class Bait implements IBonus {
 		this.pos = null;
 		this.used=false;
 		this.discovered =false;
-		this.count=0;
+		this.count=1;
 	}
 	
 	/**
@@ -101,13 +101,17 @@ public class Bait implements IBonus {
 		this.discovered=true;
 	}
 	
+	public int getCount() {
+		return this.count;
+	}
+	
 	@Override
 	public void nextTurnBonus() {
 		// TODO Auto-generated method stub
-		if (this.discovered  && this.count<5) {
+		if (this.discovered  && this.count<4) {
 			this.count++;
 		}
-		else if(this.discovered && this.count>4) {
+		else if(this.discovered && this.count>3) {
 			this.setUsed();
 		}
 		

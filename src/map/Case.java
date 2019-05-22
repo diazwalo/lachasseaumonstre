@@ -229,6 +229,15 @@ public class Case {
 			}
 		}
 		
+		for (IBonus bonus : map.getBonusActif()) {
+			if(bonus instanceof Bait && ((Bait) bonus).getDiscovered() && posCase.equals(bonus.getPos())) {
+			
+				Bait b=(Bait)bonus;
+				res=b.getCount()+"";
+			}
+		}
+		
+		
 		for (int i = 0; i < bonusHunter.length; i++) {
 			if(this.bonusHunter[i] && !map.getHunter().isBlinded()) res="?";
 		}
