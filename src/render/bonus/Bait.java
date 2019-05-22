@@ -13,6 +13,7 @@ public class Bait implements IBonus {
 	private boolean used;
 	private boolean discovered;
 	private int count;
+	private boolean isVisible;
 	
 	
 	/**
@@ -23,6 +24,7 @@ public class Bait implements IBonus {
 		this.used=false;
 		this.discovered =false;
 		this.count=1;
+		this.isVisible=false;
 	}
 	
 	/**
@@ -103,6 +105,14 @@ public class Bait implements IBonus {
 	
 	public int getCount() {
 		return this.count;
+	}
+	
+	public void setVisible(boolean vis) {
+		this.isVisible=vis;
+	}
+	
+	public boolean getVisible() {
+		return this.isVisible;
 	}
 	
 	@Override

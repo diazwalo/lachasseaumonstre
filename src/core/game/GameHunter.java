@@ -36,29 +36,37 @@ public class GameHunter extends AbstractGame {
 		
 		System.out.println(map.gameHunterToString()+"\n");
 		
-		
+		//TEST
+		this.map.addBonusActif(new Bait (2,1));
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			
 			
 			
-			while( ! this.hunterTurn() ) {
+			/*while( ! this.hunterTurn() ) {
 				System.out.println("Mvt Invalide");
 			}
 			this.map.getHunter().decrementBlinded();
+			*/
+			this.hunterTurn();
 			
-			System.out.println(map.gameHunterToString()+"\n");
-			Interaction.pressEnter();
+			/*System.out.println(map.gameHunterToString()+"\n");
+			Interaction.pressEnter();*/
+			this.endOfTurn();
 			
-			if(! super.map.isHunterWin()) {
+			
+			if(! super.map.isHunterWin() && ! super.map.isBeastWin()) {
 				this.beastTurn();
-				ramasserBonusBeast();
+				//ramasserBonusBeast();
 				super.checkBeastRevealed();
 				System.out.println(super.map.gameHunterToString());
-				Interaction.pressEnter();
+				super.pressEnter();
 			} 
-			this.map.passTurnBonus();
+			/*this.map.passTurnBonus();
 			super.checkBeastRevealed();
+			*/
+			
+			this.updateGame();
 		}
 		this.EndGame();
 	}
@@ -67,16 +75,34 @@ public class GameHunter extends AbstractGame {
 	  * hunterTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue. 
 	  */
 	public boolean hunterTurn() {
-		boolean mvtValide=false;
-		this.poserBonus();
-		Mouvment mvt=Interaction.askMouvement();
-		mvtValide=super.map.moveHunter(mvt);
-		
+		/*boolean mvtValide=false;
+		this.poserBonus();		
 		super.checkGameStatus();
 		super.ramasserBonusHunter();
 		return mvtValide;
+		*/
+		boolean mvtValide=false;
+		this.poserBonus();
+		
+		do {
+			System.out.println("Veuillez entrer un mouvement valide");
+			Mouvment mvt=super.askMouvement();
+			mvtValide=super.map.moveHunter(mvt);
+			
+		}while(! mvtValide);
+		
+		super.checkGameStatus();
+		super.ramasserBonusHunter();
+		//this.map.getHunter().decrementBlinded();
+		return mvtValide;
 	}
+	
 
+	public void endOfTurn() {
+		System.out.println(map.gameHunterToString()+"\n");
+		super.pressEnter();
+	}
+	
 	/**
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
 	 */
@@ -98,6 +124,8 @@ public class GameHunter extends AbstractGame {
 				
 				setBonusIA();
 				
+				ramasserBonusBeast();
+				
 				return true;
 			}
 			else {
@@ -106,6 +134,14 @@ public class GameHunter extends AbstractGame {
 			}
 		}
 	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public void updateGame() {
+		this.map.getHunter().decrementBlinded();
+		this.map.HunterIsNearBait();
+		this.map.passTurnBonus();
+		super.checkBeastRevealed();
+	}
+	
 	
 	/**
 	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision

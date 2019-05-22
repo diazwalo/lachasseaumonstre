@@ -298,6 +298,9 @@ public class Case {
 				Bait b=(Bait)bonus;
 				res=b.getCount()+"";
 			}
+			else {
+				res="";
+			}
 		}
 		
 		

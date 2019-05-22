@@ -187,7 +187,10 @@ public abstract class AbstractMap
                 if(this.getHunter().getPos().getPosX()-ib.getPos().getPosX()<2 && this.getHunter().getPos().getPosX()-ib.getPos().getPosX()>-2 &&
                         this.getHunter().getPos().getPosY()-ib.getPos().getPosY()<2 && this.getHunter().getPos().getPosY()-ib.getPos().getPosY()>-2 ) {
                     ib.setTriggered();
+                    ((Bait) ib).setVisible(true);
                 }
+            }else {
+            	((Bait) ib).setVisible(false);
             }
         }
     }
