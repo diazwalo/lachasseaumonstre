@@ -61,7 +61,6 @@ public class SquareMap extends AbstractMap {
 	public final void generationBonus(int middle) {
 		Position posTrap=this.createPositionTempoFirstBonus(0, new boolean[] { true,  false }, false);
 		this.createPositionTempoSecondBonus(0, new boolean[] { false,  true }, posTrap, false);
-		System.out.println("Creation Bonus Hunter");
 		Position posBait=this.createPositionTempoFirstBonus(middle, new boolean[] { true,  false }, true);
 		this.createPositionTempoSecondBonus(middle, new boolean[] { false,  true }, posBait, true);
 	}
