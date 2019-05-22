@@ -20,6 +20,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import render.ui.component.GameBoard;
+import render.ui.component.Inventory;
 import render.ui.component.PlayButton;
 
 public class Plateau extends Application{
@@ -28,62 +30,24 @@ public class Plateau extends Application{
 		VBox root = new VBox();
 		
 		HBox mapAndBonus = new HBox();
-		GridPane grid = new GridPane();
 		VBox bonus = new VBox();
+		HBox gameButtonAndChat = new HBox();
+		
+		GameBoard board = new GameBoard();
+		Inventory inventaire = new Inventory();
 		
 		PlayButton playButton = new PlayButton();
+		TextField chat = new TextField();
 		
-		Button bonusActivate = new Button("Utiliser Bonus");
-		TextField userCommunication = new TextField();
-		TextField userBonus = new TextField();
-		
-		
-		System.out.println(System.getProperty("user.dir") + "/IHM/Texture/texture.png");
-	    Image img;
-	    try(FileInputStream is = new FileInputStream(new File(System.getProperty("user.dir") + "/IHM/Texture/texture.png"))){
-	    	img = new Image(is);
-	    } catch (FileNotFoundException e) {
-	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
-			e.printStackTrace();
-		} catch (IOException e) {
-	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
-			e.printStackTrace();
-		}
-		
-	    int i = 10;
-	 
-	    for (int row = 0; row < (i + 1); row++) {
-	        for (int col = 0; col < (i + 1); col++) {
-	    
-	                Rectangle rec = new Rectangle();
-	                rec.setWidth(50);
-	                rec.setHeight(50);
-	          
-	                rec.setFill(new ImagePattern(img));
-	               
-	                GridPane.setRowIndex(rec, row);
-	                GridPane.setColumnIndex(rec, col);
-	                grid.getChildren().addAll(rec);
-	            }
-	        }
-
-	    
-	    //up.setGraphic(new ImageView(img));
-	    
-	    
-	    userBonus.setMinSize(150, 500);
-	    userBonus.setEditable(false);
-	    bonusActivate.setMinSize(150, 50);
-	    userCommunication.setMinSize(520, 100);
-	    userCommunication.setEditable(false);
+	    chat.setMinSize(520, 100);
+	    chat.setEditable(false);
 	    
 	    root.getChildren().add(mapAndBonus);
-	    mapAndBonus.getChildren().add(grid);
-	    mapAndBonus.getChildren().add(bonus);
-	    bonus.getChildren().add(userBonus);
-	    bonus.getChildren().add(bonusActivate);
-	    
-	    root.getChildren().add(playButton.getCore());
+	    root.getChildren().add(gameButtonAndChat);
+	    mapAndBonus.getChildren().add(board.getGrid());
+	    mapAndBonus.getChildren().add(inventaire.getCore());
+	    gameButtonAndChat.getChildren().add(playButton.getCore());
+	    gameButtonAndChat.getChildren().add(chat);
 	    
 	    
 	    
