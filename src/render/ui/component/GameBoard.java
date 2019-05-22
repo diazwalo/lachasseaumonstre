@@ -15,7 +15,7 @@ public class GameBoard {
 	GridPane grid = new GridPane();
 	Image img;
 	
-	public GameBoard() {
+	public GameBoard(int size) {
 		try(FileInputStream is = new FileInputStream(new File(System.getProperty("user.dir") + "/IHM/Texture/texture.png"))){
 	    	img = new Image(is);
 	    } catch (FileNotFoundException e) {
@@ -26,10 +26,8 @@ public class GameBoard {
 			e.printStackTrace();
 		}
 		
-	    int i = 10;
-	 
-	    for (int row = 0; row < (i + 1); row++) {
-	        for (int col = 0; col < (i + 1); col++) {
+	    for (int row = 0; row < (size + 1); row++) {
+	        for (int col = 0; col < (size + 1); col++) {
 	    
 	                Rectangle rec = new Rectangle();
 	                rec.setWidth(50);
@@ -46,6 +44,18 @@ public class GameBoard {
 	
 	public GridPane getGrid() {
 		return this.grid;
+	}
+	
+	public void setMaxSize(int maxWidth, int  maxHeight ) {
+		grid.setMaxSize(maxWidth, maxHeight);
+	}
+	
+	public void setMinSize(int minWidth, int  minHeight ) {
+		grid.setMinSize(minWidth, minHeight);
+	}
+	
+	public void setPrefSize(int prefWidth, int  prefHeight ) {
+		grid.setPrefSize(prefWidth, prefHeight);
 	}
 
 }

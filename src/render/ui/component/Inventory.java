@@ -33,6 +33,21 @@ public class Inventory {
 	}
 	
 	
+	public void setMaxSize(int maxWidth, int  maxHeight ) {
+		inventaire.setMaxSize(maxWidth, maxHeight*0.91);
+		bonus.getBouton().setMaxSize(maxWidth, maxHeight*0.09);
+	}
+	
+	public void setMinSize(int minWidth, int  minHeight ) {
+		inventaire.setMinSize(minWidth, minHeight*0.91);
+		bonus.getBouton().setMinSize(minWidth, minHeight*0.09);
+	}
+	
+	public void setPrefSize(int prefWidth, int  prefHeight ) {
+		inventaire.setPrefSize(prefWidth, prefHeight*0.91);
+		bonus.getBouton().setPrefSize(prefWidth, prefHeight*0.9);
+	}
+	
 	
 
 }

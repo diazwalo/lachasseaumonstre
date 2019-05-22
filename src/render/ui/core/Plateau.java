@@ -33,7 +33,7 @@ public class Plateau extends Application{
 		VBox bonus = new VBox();
 		HBox gameButtonAndChat = new HBox();
 		
-		GameBoard board = new GameBoard();
+		GameBoard board = new GameBoard(10);
 		Inventory inventaire = new Inventory();
 		
 		PlayButton playButton = new PlayButton();
