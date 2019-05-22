@@ -175,12 +175,14 @@ public abstract class AbstractGame {
 				Position posAdjBeast = this.map.getBeast().getPos();
 				if(ib.getPos().equals(posAdjBeast)) {
 					this.map.getBeast().setRevealedByWard(true);
+					ib.setTriggered();
 					beastStillUnderWard = true;
 				}else {
-					for (Mouvment mouvment : this.map.getBeast().getMvtEmptyCase(this.map.getTab())) {
+					for (Mouvment mouvment : this.map.getBeast().getMvtCase(this.map.getTab())) {
 						int[] tabPosAdjBeast = posAdjBeast.getModifPosTempo(mouvment.getMvt());
 						if(ib.getPos().equals(new Position(tabPosAdjBeast[0], tabPosAdjBeast[1]))) {
 							this.map.getBeast().setRevealedByWard(true);
+							ib.setTriggered();
 							beastStillUnderWard = true;
 						}
 					}
@@ -189,9 +191,9 @@ public abstract class AbstractGame {
 		} 
 		
 		// TODO : trouver un autre moyen de le faire
-		/*if(! beastStillUnderWard) {
+		if(! beastStillUnderWard) {
 			this.map.getBeast().setRevealedByWard(false);
-		}*/
+		}
 	}
 	
 	/**
@@ -244,7 +246,7 @@ public abstract class AbstractGame {
 	
 	public boolean activateWard() {
 		Position posWard=this.map.getHunter().getPos();
-		IBonus ward=this.map.getHunter().takeTrap();
+		IBonus ward=this.map.getHunter().takeWard();
 		ward.install(posWard.getPosX(), posWard.getPosY());
 		this.map.addBonusActif(ward);
 		

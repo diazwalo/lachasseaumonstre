@@ -10,14 +10,16 @@ public class Ward implements IBonus {
 	
 	private int timer;
 	private Position pos;
+	private boolean triggered;
 	private final String NAME = "Balise";
 	
 	/**
 	 * Instancie Ward
 	 */
 	public Ward() {
-		this.timer = 5;
+		this.timer = 3;
 		this.pos = null;
+		this.triggered = false;
 	}
 	
 	/**
@@ -72,9 +74,11 @@ public class Ward implements IBonus {
 	 * Decremente le rayon du champ de vision de la ward. Si il tombe a zero met la position de la ward a null
 	 */
 	public void refresh() {
-		this.timer--;
-		if(this.timer <= 0) {
-			this.pos = null;
+		if(this.triggered) {
+			this.timer--;
+			if(this.timer <= 0) {
+				this.pos = null;
+			}
 		}
 	}
 	
@@ -90,12 +94,12 @@ public class Ward implements IBonus {
 		// TODO Auto-generated method stub
 		if(this.timer > 0) {
 			this.refresh();
-		} 
+		}
 	}
 
 	@Override
 	public void setTriggered() {
 		// TODO Auto-generated method stub
-		
+		this.triggered = true;
 	}
 }

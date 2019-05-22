@@ -71,7 +71,7 @@ public class GameBeast extends AbstractGame{
 			mvtValide=true;
 			this.map.getBeast().setUnTrapped();
 			if(bo != null) {
-				this.map.removePiege(bo);
+				this.map.removeBonus(bo);
 			}
 			return mvtValide;
 		}else {

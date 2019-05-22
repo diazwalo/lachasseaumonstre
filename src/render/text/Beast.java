@@ -196,6 +196,21 @@ public class Beast extends Entity{
 		return mouvTab;
 	}
 	
+	public List<Mouvment> getMvtCase(Case[][] tab) {
+		List<Mouvment> mouvTab = this.getMvtEmptyCase(tab);
+		for(Mouvment m : Mouvment.values()) {
+			int[] modifPosTempo=this.getPos().getModifPosTempo(m.getMvt());
+			
+			if(super.verifDeplacementOutOfBonds(tab, modifPosTempo) && super.verifDeplacementColisionObstacle(tab, modifPosTempo)) {
+				if(! mouvTab.contains(m)) {
+					mouvTab.add(m);
+				}
+			}
+		}
+		
+		return mouvTab;
+	}
+	
 	/**
 	 * Verfie si la Beast a encore la possibilite de jouer ou non.
 	 * @param tab

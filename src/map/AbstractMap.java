@@ -160,18 +160,20 @@ public abstract class AbstractMap
      * Parcourt la Liste de IBonus Actif supprime ceux dont la Position est a null
      */
     public final void removeBonus() {
+    	List<IBonus> bonusToRemove = new ArrayList<>();
         for (IBonus ib : this.bonusActif) {
-            if(ib.getPos().equals(null)) {
-                this.bonusActif.remove(ib);
+            if(ib.getPos() == null) {
+                bonusToRemove.add(ib);
             }
         }
+        this.bonusActif.removeAll(bonusToRemove);
     }
     
     /**
      * Supprime le IBonus (passe en parametre) de la liste de IBonus Actif
      * @param ib
      */
-    public final void removePiege(IBonus ib) {
+    public final void removeBonus(IBonus ib) {
     	this.bonusActif.remove(ib);
     }
 
@@ -288,6 +290,7 @@ public abstract class AbstractMap
     	for (IBonus iBonus : bonusActif) {
 			iBonus.nextTurnBonus();
 		}
+    	this.removeBonus();
     }
     
     
