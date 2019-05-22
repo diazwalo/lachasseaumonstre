@@ -39,12 +39,12 @@ public class GameBeast extends AbstractGame{
 			
 			while(! this.beastTurn()) {
 				System.out.println("Mvt Invalide");
-				System.out.println(this.map.getBeast().getRevealedByWard());
-			}
+			}super.checkGameStatus();
+			System.out.println("BeastWin: "+super.map.isBeastWin()+", HunterWin: "+super.map.isHunterWin());
 
 			System.out.println(this.map.gameBeastToString());
 			Interaction.pressEnter();
-			if(! super.map.isBeastWin()) {
+			if(! super.map.isBeastWin() && ! super.map.isHunterWin()) {
 				this.hunterTurn();
 				this.map.getHunter().decrementBlinded();
 				System.out.println(super.map.gameBeastToString());

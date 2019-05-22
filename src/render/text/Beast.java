@@ -168,7 +168,6 @@ public class Beast extends Entity{
 		
 		if(valide) {
 			valide=valide && tab[posModif[0]][posModif[1]].getCaseType().equals(CaseType.SOL);
-			valide=valide && !hunter.isPosEnt(posModif[0], posModif[1]);
 			valide=valide && tab[posModif[0]][posModif[1]].getBeastWalk()==-1;
 		}
 		return valide;

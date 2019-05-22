@@ -54,7 +54,7 @@ public abstract class AbstractGame {
 	 * statusBeastblock retourne true si la bete se retrouve bloquee.
 	 */
 	public boolean statusBeastblock() {
-		if(this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty() ) {
+		if(this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty()) {
 			
 			if(this.map.getBeast().isTpAvailable()) {
 				if(! this.tpBeast()) {
