@@ -36,16 +36,7 @@ public class GameHunter extends AbstractGame {
 		
 		System.out.println(map.gameHunterToString()+"\n");
 		
-		// TEST :
-		this.map.addBonusActif(new Ward(9, 9));
-		this.map.passTurnBonus();
-		super.checkBeastRevealed();
-		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-			// TEST : 
-			for (int i = 0; i < this.map.getBonusActif().size(); i++) {
-				System.out.println(this.map.getBonusActif().get(i));
-			}
 			
 			while( ! this.hunterTurn() ) {
 				System.out.println("Mvt Invalide");
