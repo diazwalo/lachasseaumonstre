@@ -29,7 +29,7 @@ public class KeyboardButton {
 		this.bouton = new Button(contenu);
 		bouton.setMaxSize(50, 50);
 		bouton.setMinSize(50,50);
-		this.bouton.setGraphic(new ImageView(img));
+		//this.bouton.setGraphic(new ImageView(img));
 	}
 
 

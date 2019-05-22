@@ -234,7 +234,7 @@ public abstract class AbstractGame {
 			return true;
 		}
 		return false;
-	}
+	} 
 	
 	public boolean activateTrap() {
 		
