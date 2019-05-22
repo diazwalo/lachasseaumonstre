@@ -3,6 +3,7 @@ package core.game;
 import java.util.List;
 import java.util.Random;
 
+import interaction.Interaction;
 import map.AbstractMap;
 import map.CaseType;
 import map.Mouvment;
@@ -157,6 +158,7 @@ public abstract class AbstractGame {
 	/**
 	 * Declanche le Bonus si il est de Type Trap
 	 */
+	//A renomer
 	public void triggerBonus() {
     	for(IBonus b : this.map.getBonusActif()) {
     		if(b.getPos() != null && b.getPos().equals(this.map.getBeast().getPos()) && b instanceof Trap) {
@@ -251,5 +253,13 @@ public abstract class AbstractGame {
 		this.map.addBonusActif(ward);
 		
 		return true;
+	}
+	
+	public Mouvment askMouvement() {
+		return Interaction.askMouvement();
+	}
+	
+	public void pressEnter() {
+		Interaction.pressEnter();
 	}
 }
