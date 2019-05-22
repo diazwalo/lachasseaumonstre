@@ -37,21 +37,26 @@ public class GameBeast extends AbstractGame{
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			
-			while(! this.beastTurn()) {
+			/*while(! this.beastTurn()) {
 				System.out.println("Mvt Invalide");
 			}super.checkGameStatus();
-			System.out.println("BeastWin: "+super.map.isBeastWin()+", HunterWin: "+super.map.isHunterWin());
-
-			System.out.println(this.map.gameBeastToString());
+			*/
+			this.beastTurn();
+			this.updateStartGame();
+			/*System.out.println(this.map.gameBeastToString());
 			Interaction.pressEnter();
+			*/
+			
+			this.endOfTurn();
+			
 			if(! super.map.isBeastWin() && ! super.map.isHunterWin()) {
 				this.hunterTurn();
 				this.map.getHunter().decrementBlinded();
 				System.out.println(super.map.gameBeastToString());
-				Interaction.pressEnter();
+				super.pressEnter();
 			}
 			this.map.passTurnBonus();
-			
+			this.updateEndGame();
 		}
 		this.EndGame();
 	}
@@ -63,30 +68,41 @@ public class GameBeast extends AbstractGame{
 	  */
 	public boolean beastTurn() {
 		boolean mvtValide=false;
-		this.map.getBeast().setUnTrapped();
+	
 		IBonus bo=super.checkBeastTrapped();
 		
-		if(this.map.getBeast().getTrapped()) {
-			System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
-			mvtValide=true;
-			this.map.getBeast().setUnTrapped();
-			if(bo != null) {
-				this.map.removeBonus(bo);
+		do {
+			if(this.map.getBeast().getTrapped()) {
+				System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
+				this.map.getBeast().setUnTrapped();
+				if(bo != null) {
+					this.map.removeBonus(bo);
+				}
+				mvtValide=true;
+			}else {
+				this.poserBonus();
+				Mouvment mvt=super.askMouvement();
+				mvtValide=super.map.moveBeast(mvt);
+				
+				this.map.setBeastWalk();
+				super.checkGameStatus();
+				super.ramasserBonusBeast();
+				
 			}
-			return mvtValide;
-		}else {
-			this.poserBonus();
-			Mouvment mvt=Interaction.askMouvement();
-			mvtValide=super.map.moveBeast(mvt);
-			
-			this.map.setBeastWalk();
-			super.checkGameStatus();
-			super.ramasserBonusBeast();
-			return mvtValide;
-		}
+		}while(! mvtValide);
+		
+		return mvtValide;
 	}
 	
+	public void updateStartGame() {
+		this.map.getHunter().decrementBlinded();
+		this.map.HunterIsNearBait();
+	}
 	
+	public void updateEndGame() {
+		this.map.passTurnBonus();
+		super.checkBeastRevealed();
+	}
 
 	/**
 	 * hunterTurn retourne true lorsque le deplacement du chasseur est valide, c'est a dire si il ne va pas sur un obstacle.
@@ -117,6 +133,11 @@ public class GameBeast extends AbstractGame{
 		
 		return true;
 	}
+	
+	public void endOfTurn() {
+		
+	}
+	
 	
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
