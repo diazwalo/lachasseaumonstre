@@ -26,7 +26,7 @@ public class Case {
 	private boolean hideToHunter;
 	private boolean[] bonusBeast;
 	private boolean[] bonusHunter;
-	private final int TRACE=5;
+	private final int TRACE = 5;
 
 	
 	/**
@@ -147,7 +147,7 @@ public class Case {
 	}
 	
 	/**
-	 * Ajoute � l'inventaire de la Bete, le pi�ge de la Case (s'il y en a un).
+	 * Ajoute � l'inventaire de la Bete, le piege de la Case (s'il y en a un).
 	 * @param beast
 	 * @param posCase
 	 */
@@ -191,12 +191,23 @@ public class Case {
 	 */
 	public String gameBeastShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
-		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
+		//String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
 		
 		if(this.beastWalk>=1) res=".";
-		for (int i = 0; i < bonusBeast.length; i++) {
-			if(this.bonusBeast[i]) res=toStringBonusBeast[i];
+		
+		for (IBonus bonus : map.getBonusActif()) {
+			if((bonus instanceof Camouflage || bonus instanceof Bait) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
+				res = bonus.toString();
+			}
 		}
+		
+		for (int i = 0; i < bonusBeast.length; i++) {
+			if(this.bonusBeast[i]) res="?";
+		}
+		
+		/*for (int i = 0; i < bonusBeast.length; i++) {
+			if(this.bonusBeast[i]) res=toStringBonusBeast[i];
+		}*/
 		
 		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
 		else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
@@ -211,19 +222,12 @@ public class Case {
 	 */
 	public String gameHunterShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
-
-		/*String[] toStringBonusHunter=new String[] { new Trap().toString(), new Ward().toString() };
-		
-		for (int i = 0; i < bonusHunter.length; i++) {
-			if(this.bonusHunter[i]) res=toStringBonusHunter[i];
-		}*/
 		
 		for (IBonus bonus : map.getBonusActif()) {
 			if((bonus instanceof Trap || bonus instanceof Ward) && bonus.getPos() != null && bonus.getPos().equals(posCase)) {
 				res = bonus.toString();
 			}
 		}
-		
 		
 		for (int i = 0; i < bonusHunter.length; i++) {
 			if(this.bonusHunter[i] && !map.getHunter().isBlinded()) res="?";
