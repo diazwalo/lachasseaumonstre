@@ -41,7 +41,7 @@ public class GameHunter extends AbstractGame {
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			
-			
+			this.updateStartGame();
 			
 			/*while( ! this.hunterTurn() ) {
 				System.out.println("Mvt Invalide");
@@ -66,7 +66,7 @@ public class GameHunter extends AbstractGame {
 			super.checkBeastRevealed();
 			*/
 			
-			this.updateGame();
+			this.updateEndGame();
 		}
 		this.EndGame();
 	}
@@ -135,13 +135,17 @@ public class GameHunter extends AbstractGame {
 		}
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public void updateGame() {
+	public void updateStartGame() {
 		this.map.getHunter().decrementBlinded();
 		this.map.HunterIsNearBait();
+	
+	}
+	
+	
+	public void updateEndGame() {
 		this.map.passTurnBonus();
 		super.checkBeastRevealed();
 	}
-	
 	
 	/**
 	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
