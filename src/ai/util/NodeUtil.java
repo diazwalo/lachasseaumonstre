@@ -3,7 +3,7 @@ package ai.util;
 import map.Position;
 
 /**
- * Cette classe contient exclusivement des méthodes statiques qui abordent sur 
+ * Cette classe contient exclusivement des methodes statiques qui abordent sur 
  * la configuration des sommets.
  * @author PHPierre
  *
@@ -13,7 +13,7 @@ public class NodeUtil {
 	public final static String SEPARATOR = ":";
 	
 	/**
-	 * Génère un identifiant pour une position donné du plateau.
+	 * Genere un identifiant pour une position donne du plateau.
 	 * @param position Une position sur le plateau.
 	 * @return L'identifiant du sommet.
 	 */

@@ -3,8 +3,8 @@ package ai.util;
 import map.Position;
 
 /**
- * Cette classe contient exclusivement des méthodes statiques qui abordent 
- * sur la configuration des arêtes.
+ * Cette classe contient exclusivement des methodes statiques qui abordent 
+ * sur la configuration des aretes.
  * @author PHPierre
  */
 public class EdgeUtil {
@@ -12,9 +12,9 @@ public class EdgeUtil {
 	public final static String SEPARATOR = "|";
 	
 	/**
-	 * Génère un identifiant pour relier deux positions du plateau.
+	 * Genere un identifiant pour relier deux positions du plateau.
 	 * @param positionOne Une position du plateau.
-	 * @param positionTwo Une position adjacente à la première sur le plateau.
+	 * @param positionTwo Une position adjacente a la premiere sur le plateau.
 	 * @return L'identifiant du vecteur.
 	 */
     public static String formatEdge(Position positionOne, Position positionTwo)
@@ -23,9 +23,9 @@ public class EdgeUtil {
     }
     
     /**
-     * Génère un identifiant pour relier deux positions du plateau a partir de deux identifiants.
-     * @param s1 Un identifiant représentant la premiere position.
-     * @param s2 Un identifiant représentant la seconde position.
+     * Genere un identifiant pour relier deux positions du plateau a partir de deux identifiants.
+     * @param s1 Un identifiant representant la premiere position.
+     * @param s2 Un identifiant representant la seconde position.
      * @return L'identifiant du vecteur.
      */
     public static String formatEdge(String s1, String s2)

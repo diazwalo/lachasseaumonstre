@@ -1,7 +1,7 @@
 package ai.models;
 
 /**
- * Cette classe défini comment les arêtes dont a besoin la classe Graph sont définies.
+ * Cette classe defini comment les aretes dont a besoin la classe Graph sont definies.
  * @author PHPierre
  *
  */
@@ -13,10 +13,10 @@ public class Edge {
 	private int weight;
 
 	/**
-	 * Créer une arête a partir de deux sommets et de son poids.
+	 * Creer une arete a partir de deux sommets et de son poids.
 	 * @param nodeOneName L'identifiant du premier sommet.
 	 * @param nodeTwoName L'identifiant du second sommet.
-	 * @param weigth Le poids de l'arête
+	 * @param weigth Le poids de l'arete
 	 */
 	public Edge(String nodeOneName, String nodeTwoName, int weigth)
 	{
@@ -26,7 +26,7 @@ public class Edge {
 	}
 	
 	/**
-	 * Créer une arête a partir de deux sommets en fixant son poids a celui par default.
+	 * Creer une arete a partir de deux sommets en fixant son poids a celui par default.
 	 * @param nodeOneName L'identifiant du premier sommet.
 	 * @param nodeTwoName L'identifiant du second sommet.
 	 */
@@ -36,7 +36,7 @@ public class Edge {
 	}
 
 	/**
-	 * Retourne l'identifiant du premier sommet de l'arête.
+	 * Retourne l'identifiant du premier sommet de l'arete.
 	 * @return String
 	 */
 	public String getNodeOneName()
@@ -45,7 +45,7 @@ public class Edge {
 	}
 
 	/**
-	 * Retourne l'identifiant du second sommet de l'arête.
+	 * Retourne l'identifiant du second sommet de l'arete.
 	 * @return String
 	 */
 	public String getNodeTwoName()
@@ -54,7 +54,7 @@ public class Edge {
 	}
 
 	/**
-	 * Retourne le poids de l'arête.
+	 * Retourne le poids de l'arï¿½te.
 	 * @return int
 	 */
 	public int getWeight()

@@ -8,7 +8,6 @@ package config;
  */
 public class Config
 {
-	//private int mod;
 	private int width;
 	private int height;
 	private GameMode gameMode;
@@ -47,7 +46,7 @@ public class Config
 
 	/**
 	 * Retourne la largueur du plateau (axe X).
-	 * @return int
+	 * @return int La largueur du plateau.
 	 */
 	public int getWidth()
 	{
@@ -65,7 +64,7 @@ public class Config
 
 	/**
 	 * Retourne la hauteur du plateay (axe Y).
-	 * @return int
+	 * @return int La hauteur du plateau.
 	 */
 	public int getHeight()
 	{
@@ -83,7 +82,7 @@ public class Config
 	
 	/**
 	 * Retourne le type de mode de jeu de la partie.
-	 * @return GameMode
+	 * @return GameMode Le mode de jeu de la partie.
 	 */
 	public GameMode getGameMode()
 	{
@@ -101,7 +100,7 @@ public class Config
 
 	/**
 	 * Retourne le nombre de teleportation disponible pour le monstre durant la partie.
-	 * @return int
+	 * @return int Le nombre de téléportation autorisé pendant la partie.
 	 */
 	public int getNbTeleportation()
 	{
@@ -119,7 +118,7 @@ public class Config
 	
 	/**
 	 * Retourne le plateau de jeu utilise pour la future partie.
-	 * @return Map
+	 * @return Map Le plateau de jeu de la partie.
 	 */
 	public Map getMap()
 	{
@@ -137,7 +136,7 @@ public class Config
 
 	/**
 	 * Retourne le statut concernant l'utlisation des pieges pendant la partie.
-	 * @return boolean
+	 * @return boolean Le statut des pieges durant la partie.
 	 */
 	public boolean isTrap()
 	{
@@ -146,7 +145,7 @@ public class Config
 
 	/**
 	 * Definit si les pieges sont disponibles ou non.
-	 * @param trap Le statut des pieges
+	 * @param trap Le statut des pieges.
 	 */
 	public void setTrap(boolean trap)
 	{
@@ -155,7 +154,7 @@ public class Config
 
 	/**
 	 * Retourne le statut concernant l'utlisation des camouflages pendant la partie.
-	 * @return boolean
+	 * @return boolean Le statut des camouflages durant la partie.
 	 */
 	public boolean isCamouflage()
 	{
@@ -164,7 +163,7 @@ public class Config
 
 	/**
 	 * Definit si les camouflages sont disponibles ou non.
-	 * @param camouflage Le statut des camouflages
+	 * @param camouflage Le statut des camouflages.
 	 */
 	public void setCamouflage(boolean camouflage)
 	{
@@ -173,7 +172,7 @@ public class Config
 
 	/**
 	 * Retourne le statut concernant l'utlisation des balises de vision pendant la partie.
-	 * @return boolean
+	 * @return boolean Le statut des balises de visions durant la partie.
 	 */
 	public boolean isWard()
 	{
@@ -182,7 +181,7 @@ public class Config
 
 	/**
 	 * Definit si les balises de vision sont disponibles ou non.
-	 * @param ward Le statut des balises de vision
+	 * @param ward Le statut des balises de vision.
 	 */
 	public void setWard(boolean ward)
 	{
@@ -191,7 +190,7 @@ public class Config
 
 	/**
 	 * Retourne le statut concernant l'utlisation des leurres pendant la partie.
-	 * @return boolean
+	 * @return boolean Le statut des leurres durant la partie.
 	 */
 	public boolean isBait()
 	{
@@ -200,7 +199,7 @@ public class Config
 	
 	/**
 	 * Definit si les leurres sont disponibles ou non.
-	 * @param bait Le statut des leurres
+	 * @param bait Le statut des leurres.
 	 */
 	public void setBait(boolean bait)
 	{

@@ -9,6 +9,11 @@ import map.CircularMap;
 import map.AbstractMap;
 import map.SquareMap;
 
+/**
+ * Cette classe est le controlleur d'entree de tout le jeu. Elle choisit les classes
+ * a executer selon le plateau de jeu, le mode de jeu.
+ *
+ */
 public class Core {
 	public static void main(String[] args) {
 
@@ -27,8 +32,6 @@ public class Core {
 			map = new CircularMap(config);
 			break;
 		}
-		
-		//map.generationMap();
 		
 		switch(config.getGameMode())
 		{
