@@ -13,7 +13,7 @@ import java.util.Random;
 
 public abstract class AbstractMap
 {
-    protected Case[][] tab;
+    protected Case[][] tab; 
     protected Hunter hunter;
     protected Beast beast;
     protected Config config;
