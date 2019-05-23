@@ -252,12 +252,48 @@ public class Case {
 			res = this.getBonusOnCaseNonActifToString(this.bonusBeast);
 		}
 		
-		//if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
-		// TODO : appeler la methode getBeastOnCaseBeastModeToString
-		else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
+		if(! this.getBeastOnCaseBeastModeToString(map, posCase).equals("")) {
+			res = this.getBeastOnCaseBeastModeToString(map, posCase);
+		}else if(! this.getHunterOnCaseBeastModeToString(map, posCase).equals("")) {
+			res = this.getHunterOnCaseBeastModeToString(map, posCase);
+		}
+		
 		return res;
 	}
 	
+	/**
+	 * retourne le CHasseur sous la forme d'une Cahaine de Char si ce dernier est sur la Case courante
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
+	public String getHunterOnCaseBeastModeToString(AbstractMap map, Position posCase) {
+		String res = "";
+		if(getHunterOnCaseBeastMode( map, posCase)) {
+			res = map.getHunter().toString();
+		}
+		return res;
+	}
+	
+	/**
+	 * Retourne vrai si le Chasseur est sur la Case courante et faux le cas échéant
+	 * @param map
+	 * @param posCase
+	 * @return boolean
+	 */
+	public boolean getHunterOnCaseBeastMode(AbstractMap map, Position posCase) {
+		if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * retourne la Bete sous la forme d'une Cahaine de Char si cette derniere est sur la Case courante
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
 	public String getBeastOnCaseBeastModeToString(AbstractMap map, Position posCase) {
 		String res = "";
 		if(getBeastOnCaseBeastMode( map, posCase)) {
@@ -266,6 +302,12 @@ public class Case {
 		return res;
 	}
 	
+	/**
+	 * Retourne vrai si la Bete est sur la Case courante et faux le cas échéant
+	 * @param map
+	 * @param posCase
+	 * @return boolean
+	 */
 	public boolean getBeastOnCaseBeastMode(AbstractMap map, Position posCase) {
 		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
 			return true;
@@ -274,9 +316,9 @@ public class Case {
 	}
 	
 	/**
-	 * TODO : ajouter la doc
+	 * Retourne le Bonus a ramasser sous la forme d'une Chaine de Char si la Case en contient un
 	 * @param bonus
-	 * @return
+	 * @return String 
 	 */
 	public String getBonusOnCaseNonActifToString(boolean[] bonus) {
 		String res = "";
@@ -287,9 +329,9 @@ public class Case {
 	}
 	
 	/**
-	 * TODO : ajouter la doc
+	 * retourne vrai si un bonus peut etre ramasse sur cette Case
 	 * @param bonus
-	 * @return
+	 * @return booean
 	 */
 	public boolean bonusOnCase(boolean[] bonus) {
 		for (int i = 0; i < bonus.length; i++) {
