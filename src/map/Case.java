@@ -196,38 +196,32 @@ public class Case {
 			res=this.getHunterBonusActifToString(map, posCase);
 		}
 		
-		for (IBonus bonus : map.getBonusActif()) {
-			if(bonus instanceof Bait && ((Bait) bonus).getVisible() && !map.getHunter().isBlinded() && posCase.equals(bonus.getPos())) {
-			
-				Bait b=(Bait)bonus;
-				res=b.getCount()+"";
-			}
+		if(! this.getBaitOnCaseToString(map, posCase).equals("")) {
+			res = this.getBaitOnCaseToString(map, posCase);
 		}
 		
 		if(! this.getBonusOnCaseNonActifToString(this.bonusHunter).equals("")) {
 			res = this.getBonusOnCaseNonActifToString(this.bonusHunter);
 		}
- 
-		List<Position> posAdj=posCase.getAdjacentPosition(map);
-
-		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !map.getHunter().isBlinded() && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
-			for (Position position : posAdj) {
-				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
-					if(this.beastWalk==0) {
-						res=map.getBeast().toString();
-					}else {
-						res=this.beastWalk+"";
-					}
-				}
-			}
-		}else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())){
-			res=map.getHunter().toString();
+		
+		if(! this.getBeastWalkNearHunterToString(map, posCase).equals("")) {
+			res = this.getBeastWalkNearHunterToString(map, posCase);
+		}
+		
+		if(! this.getBeastNearHunterToString(map, posCase).equals("")) {
+			res = this.getBeastNearHunterToString(map, posCase);
+		}
+		
+		if(! this.getHunterOnCaseToString(map, posCase).equals("")) {
+			res = this.getHunterOnCaseToString(map, posCase);
 		}
 
-		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
-			res=map.getHunter().toString();
-		}else if((map.getBeast().getTrapped() || map.getBeast().getRevealedByWard()) && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
-			res=map.getBeast().toString();
+		if(! this.getBeastIfRevealedToString(map, posCase).equals("")) {
+			res = this.getBeastIfRevealedToString(map, posCase);
+		}
+		
+		if(! this.getEntityOnSameCaseToString(map, posCase).equals("")) {
+			res = this.getEntityOnSameCaseToString(map, posCase);
 		}
 
 		return res;
@@ -254,11 +248,165 @@ public class Case {
 		
 		if(! this.getBeastOnCaseBeastModeToString(map, posCase).equals("")) {
 			res = this.getBeastOnCaseBeastModeToString(map, posCase);
-		}else if(! this.getHunterOnCaseBeastModeToString(map, posCase).equals("")) {
-			res = this.getHunterOnCaseBeastModeToString(map, posCase);
+		}else if(! this.getHunterOnCaseToString(map, posCase).equals("")) {
+			res = this.getHunterOnCaseToString(map, posCase);
 		}
 		
 		return res;
+	}
+	
+	/**
+	 * retourn la Bete sous la forme d'une Chaine de Char si elle est revelee
+	 * @param map
+	 * @param posCase
+	 * @return String 
+	 */
+	public String getBeastIfRevealedToString(AbstractMap map, Position posCase) {
+		String beast = "";
+		if(getBeastIfRevealed(map, posCase) != null) {
+			beast = getBeastIfRevealed(map, posCase).toString();
+		}
+		return beast;
+	}
+	
+	/**
+	 * Retourn la Bete si elle est revelee et null dasn le cas echeant
+	 * @param map
+	 * @param posCase
+	 * @return Beast
+	 */
+	public Beast getBeastIfRevealed(AbstractMap map, Position posCase) {
+		if((map.getBeast().getTrapped() || map.getBeast().getRevealedByWard()) && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			return map.getBeast();
+		}
+		return null;
+	}
+	
+	/**
+	 * Retourne le Chasseur sous la forme d'une Chaine de Char si ce dernier est sur la meme Caseque la Bete est null le cas echeant
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
+	public String getEntityOnSameCaseToString(AbstractMap map, Position posCase) {
+		String entity = "";
+		if(this.getEntityOnSameCase(map, posCase) != null){
+			entity = this.getEntityOnSameCase(map, posCase).toString();
+		}
+		return entity;
+	}
+	
+	/**
+	 * Retourne le Chasseur si ce dernier est sur la meme Case que la Bete et null le cas echenat
+	 * @param map
+	 * @param posCase
+	 * @return Hunter
+	 */
+	public Hunter getEntityOnSameCase(AbstractMap map, Position posCase) {
+		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
+			return map.getHunter();
+		}
+		return null;
+	}
+	
+	/**
+	 * Retourne le nombre de Pas depuis lequel la Bete est passee sure cette Case sous la forme d'une Chaine de Charactere (entre 1 et 4)
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
+	public String getBeastWalkNearHunterToString(AbstractMap map, Position posCase) {
+		String beastWalk = "";
+		if(this.getBeastWalkNearHunter(map, posCase) != -1) {
+			beastWalk= this.getBeastWalkNearHunter(map, posCase)+"";
+		}
+		return beastWalk;
+	}
+	
+	/**
+	 * Retourne le nombre de pas depuis lequel la Bete est passee sur cette Case (entre 1 et 4) ou -1 si ce dernier n'y est pas passe depuis 4 tours
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
+	public int getBeastWalkNearHunter(AbstractMap map, Position posCase) {
+		int beastWalk = -1;
+		List<Position> posAdj=posCase.getAdjacentPosition(map);
+	
+		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !map.getHunter().isBlinded() && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			for (Position position : posAdj) {
+				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
+						beastWalk = this.beastWalk;
+				}
+			}
+		}
+		return beastWalk;
+	}
+	
+	/**
+	 * retourn la bete sous a forme d'une Chaine de Char si cette derniere est proche du Chasseur
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
+	public String getBeastNearHunterToString(AbstractMap map, Position posCase) {
+		String beast = "";
+		if(this.getBeastNearHunter(map, posCase) != null) {
+			beast = this.getBeastNearHunter(map, posCase).toString();
+		}
+		return beast;
+	}
+	
+	/**
+	 * Retourne la Bete si celle ci est sur une case a cote du Chasseur et null le cas echeant
+	 * @param map
+	 * @param posCase
+	 * @return Beast
+	 */
+	public Beast getBeastNearHunter (AbstractMap map, Position posCase) {
+		List<Position> posAdj=posCase.getAdjacentPosition(map);
+		
+		if(this.beastWalk >= 0 && this.beastWalk < this.TRACE && !map.getHunter().isBlinded() && !map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			for (Position position : posAdj) {
+				if(map.getHunter().isPosEnt(position.getPosX(), position.getPosY())) {
+					if(this.beastWalk==0) {
+						return map.getBeast();
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Retourne le compteur du Bait si ce dernier est Active et retourne la Chaine vide ce cas echeant
+	 * @param map
+	 * @param posCase
+	 * @return String
+	 */
+	public String getBaitOnCaseToString(AbstractMap map, Position posCase) {
+		String baitOnCase = "";
+		if(this.getBaitOnCase(map, posCase) != null) {
+			Bait baitTempo = (Bait) (this.getBaitOnCase(map, posCase));
+			baitOnCase = baitTempo.getCount()+"";
+		}
+		return baitOnCase;
+	}
+	
+	/**
+	 * Retourne un Bait si ce dernier est sur la Case Courante et si il est active et null si il n'y en a pas
+	 * @param map
+	 * @param posCase
+	 * @return IBonus
+	 */
+	public IBonus getBaitOnCase(AbstractMap map, Position posCase) {
+		IBonus baitOnCase = null;
+		for (IBonus bonus : map.getBonusActif()) {
+			if(bonus instanceof Bait && ((Bait) bonus).getVisible() && !map.getHunter().isBlinded() && posCase.equals(bonus.getPos())) {
+				baitOnCase = bonus;
+			}
+		}
+		return baitOnCase;
 	}
 	
 	/**
@@ -267,9 +415,9 @@ public class Case {
 	 * @param posCase
 	 * @return String
 	 */
-	public String getHunterOnCaseBeastModeToString(AbstractMap map, Position posCase) {
+	public String getHunterOnCaseToString(AbstractMap map, Position posCase) {
 		String res = "";
-		if(getHunterOnCaseBeastMode( map, posCase)) {
+		if(getHunterOnCase( map, posCase)) {
 			res = map.getHunter().toString();
 		}
 		return res;
@@ -281,7 +429,7 @@ public class Case {
 	 * @param posCase
 	 * @return boolean
 	 */
-	public boolean getHunterOnCaseBeastMode(AbstractMap map, Position posCase) {
+	public boolean getHunterOnCase(AbstractMap map, Position posCase) {
 		if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
 			return true;
 		}
