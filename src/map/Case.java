@@ -424,7 +424,7 @@ public class Case {
 	}
 	
 	/**
-	 * Retourne vrai si le Chasseur est sur la Case courante et faux le cas échéant
+	 * Retourne vrai si le Chasseur est sur la Case courante et faux le cas ï¿½chï¿½ant
 	 * @param map
 	 * @param posCase
 	 * @return boolean
@@ -451,7 +451,7 @@ public class Case {
 	}
 	
 	/**
-	 * Retourne vrai si la Bete est sur la Case courante et faux le cas échéant
+	 * Retourne vrai si la Bete est sur la Case courante et faux le cas ï¿½chï¿½ant
 	 * @param map
 	 * @param posCase
 	 * @return boolean
@@ -559,7 +559,7 @@ public class Case {
 		String[] toStringBonusBeast=new String[] { new Bait().toString(), new Camouflage().toString() };
 		String[] toStringBonusHunter=new String[] { new Trap().toString(), new Ward().toString()};
 		
-		String res=caseType.toString();
+		String res=caseType.getCaseDisplay();
 		if(this.beastWalk>=this.TRACE) res=".";
 		if(this.beastWalk>0 && this.beastWalk<this.TRACE) res=this.beastWalk+"";
 

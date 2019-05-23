@@ -43,6 +43,7 @@ public class GameAI extends AbstractGame
 	@Override
 	public void launchGame()
 	{
+		System.out.println(super.map.getTab()[1][0]);
 		this.graph = new Graph(super.map);
 		Curiosity curiosity = new Curiosity(graph);
 		
