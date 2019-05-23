@@ -7,7 +7,7 @@ public class Interaction {
 	
 	/**
 	 * Retourne le Mouvement saisie par le Joueur
-	 * @return Le Mouvement saisiet
+	 * @return Le Mouvement saisi.
 	 */
 	public static Mouvment askMouvement() {
 		Mouvment res=null;
@@ -26,11 +26,11 @@ public class Interaction {
 	}
 	
 	/**
-	 * boucle pour demander a l'utilisateur de saisir un mouvment valide
+	 * Boucle pour demander a l'utilisateur de saisir un mouvment valide
 	 * @param res Le mouvement a effectuer.
 	 * @param strMvt La liste des touches clavies acceptes.
 	 * @param tabMvt La liste des mouvements acceptes.
-	 * @return Mouvment
+	 * @return Le mouvement de l'utilisateur.
 	 */
 	public static Mouvment getSaisieMvt(Mouvment res, String[] strMvt, Mouvment[] tabMvt) {
 		while(res==null) {
@@ -47,9 +47,9 @@ public class Interaction {
 	}
 	
 	/**
-	 * Retourn toute les Mouvements que le Joueur peut saisir associes au tableau strMvt
+	 * Retourne tous les mouvements que le joueur peut saisir associes au tableau strMvt
 	 * @param strMvt La liste des touches clavies acceptes.
-	 * @return Mouvment[]
+	 * @return Un tableau avec les mouvements disponible.
 	 */
 	public static Mouvment[] getTabMvt(String[] strMvt) {
 		Mouvment[] tabMvt=new Mouvment[12];
@@ -70,7 +70,7 @@ public class Interaction {
 	
 	/**
 	 * Retourne la saisie du Joueur
-	 * @return String
+	 * @return Une variable contenant la saisie de l'utilisateur
 	 */
 	private static String getSaisie() {
 		Scanner sc = new Scanner(System.in); 
@@ -113,9 +113,9 @@ public class Interaction {
 	
 	/**
 	 * Retourne le choix du Bonus du Joueur sous la forme d'une chaine de charactere ( Soit 1, soit 2, ou le reste 
-	 * @param firstBonus
-	 * @param secondBonus
-	 * @return String
+	 * @param firstBonus Le nom du premier bonus.
+	 * @param secondBonus Le nom du second bonus.
+	 * @return La saisie tape par l'utilisateur.
 	 */
 	public static String askBonus(String firstBonus, String secondBonus) {
 		Scanner sc = new Scanner(System.in); 

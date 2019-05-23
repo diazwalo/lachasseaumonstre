@@ -52,14 +52,14 @@ public class CircularMap extends AbstractMap
 							caseType = CaseType.SOL;//SOL
 						}
 						else {
-							caseType = CaseType.VOID;//VOID
+							caseType = CaseType.OBSTACLE;
 						}
 					}else {
 						caseType = CaseType.SOL;
 					}
 					
 				}
-				if(x%3==2 && y%3==2 && ! this.beast.isPosEnt(x, y) && ! this.hunter.isPosEnt(x, y) && caseType != CaseType.VOID) caseType=CaseType.OBSTACLE;
+				if(x%3==2 && y%3==2 && ! this.beast.isPosEnt(x, y) && ! this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
 				
 				this.tab[x][y]=new Case(caseType, posBeast);
 			}

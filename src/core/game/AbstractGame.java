@@ -14,11 +14,17 @@ import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
 
+/**
+ * Cette classe contient la base d'une partie qui sera instancie par une classe enfant.
+ * Elle contient des methodes qui permettent de lier le plateau de jeu aux controles utilisateurs
+ * ainsi que la gestion des bonus disponible pour tous les modes de jeux.
+ *
+ */
 public abstract class AbstractGame {
 
 	protected AbstractMap map;
 	protected static GameStatus gameStatus;
-	
+
 	public AbstractGame(AbstractMap map) {
 		this.map=map;
 		AbstractGame.gameStatus=GameStatus.INGAME;
@@ -30,14 +36,16 @@ public abstract class AbstractGame {
 	public abstract void poserBonus();
 	
 	/**
-	 * statusBastFound retourne true si la bete a ete trouve par le chasseur.
+	 * Affiche le statut si la bete a ete trouve par le chasseur.
+	 * @return Si la bete a ete trouve par le chasseur.
 	 */
 	public boolean statusBeastFound() {
 		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
 	}
 	
 	/**
-	 * statusMapDiscovered retourne true si la bete a entierement explore la map.
+	 * Affiche le statut si la bete a entierement explore la map.
+	 * @return Si la bete a entierement explore la map.
 	 */
 	public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
@@ -52,7 +60,8 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * statusBeastblock retourne true si la bete se retrouve bloquee.
+	 * Affiche le statut si la bete se retrouve bloquee.
+	 * @return Si la bete se retrouve bloquee.
 	 */
 	public boolean statusBeastblock() {
 		if(this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty()) {
@@ -70,8 +79,11 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * checkGameStatus met a jour le status de la partie, INGAME lorsque la partie est toujours en cours, BEASTFOUND lorsque la bete a ete trouvee par le chasseur,
-	 * MAPDISCOVERED si la map a ete entierrement decouverte par la bete et BEASTBLOCK lorsque la bete est bloquee.
+	 * Met a jour le status de la partie, 
+	 * INGAME lorsque la partie est toujours en cours, 
+	 * BEASTFOUND lorsque la bete a ete trouvee par le chasseur,
+	 * MAPDISCOVERED si la map a ete entierrement decouverte par la bete
+	 * BEASTBLOCK lorsque la bete est bloquee.
 	 */
 	public void checkGameStatus() {
 		AbstractGame.gameStatus=GameStatus.INGAME;
@@ -90,8 +102,8 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * Cherche si il existe une Position ou la bete peut etre tp et retourne vrai si cela est fait et faux dans le cas contraire
-	 * @return boolean
+	 * Recherche si il existe une Position ou la bete peut etre tp.
+	 * @return si une/des cases sont disponible a la teleportation.
 	 */
 	public boolean tpBeast(){
 		List<Position> posDispo = this.map.getBeast().getCaseTp(this.map.getTab(), this.map.getHunter());
@@ -141,7 +153,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Prends la Bete au Piege si elle est sur un IBonus de type Piege
-	 * @return IBonus
+	 * @return Le piege qui a piege la bete.
 	 */
 	public IBonus checkBeastTrapped() {
 		IBonus res = null;
@@ -199,7 +211,7 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
+	 * Affiche le gagnant ainsi les raison de la victoire
 	 */
 	public void EndGame() {
 		
@@ -263,7 +275,7 @@ public abstract class AbstractGame {
 	public Mouvment askMouvement() {
 		return Interaction.askMouvement();
 	}
-	
+
 	public void pressEnter() {
 		Interaction.pressEnter();
 	}

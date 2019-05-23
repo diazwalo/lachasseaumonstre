@@ -11,6 +11,15 @@ import ai.util.NodeUtil;
 import map.AbstractMap;
 import map.Position;
 
+/**
+ * Cette classe permet de lancer une partie ou joueront les deux IA ensemble.
+ * Le monstre utilisera l'IA Curiosity pour se deplacer sur tout le plateau.
+ * Le chasseur utilisera l'IA de Dijkstra pour se rendre le plus rapidement possible a certaines cases
+ * du plateau afin de faire la demonstration d'une partie.
+ * Le but de ce mode de jeu est donc uen presentation automatique des fonctionnalites et non une victoire rapide.
+ * @author PHPierre
+ *
+ */
 public class GameAI extends AbstractGame
 {
 
@@ -20,6 +29,10 @@ public class GameAI extends AbstractGame
 	private List<Position> pathBeast;
 	private Random r;
 	
+	/**
+	 * Instancie une partie entre deux intelligences controles par l'ordinateur.
+	 * @param map
+	 */
 	public GameAI(AbstractMap map)
 	{
 		super(map);
@@ -32,7 +45,6 @@ public class GameAI extends AbstractGame
 	{
 		this.graph = new Graph(super.map);
 		Curiosity curiosity = new Curiosity(graph);
-		System.out.println("lol"+this.graph.getListNode().size());
 		
 		this.pathBeast = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
 
