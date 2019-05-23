@@ -204,10 +204,6 @@ public class Case {
 			}
 		}
 		
-		
-		/*for (int i = 0; i < bonusHunter.length; i++) {
-			if(this.bonusHunter[i] && !map.getHunter().isBlinded()) res="?";
-		}*/
 		if(! this.getBonusOnCaseNonActifToString(this.bonusHunter).equals("")) {
 			res = this.getBonusOnCaseNonActifToString(this.bonusHunter);
 		}
@@ -256,9 +252,25 @@ public class Case {
 			res = this.getBonusOnCaseNonActifToString(this.bonusBeast);
 		}
 		
-		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
+		//if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getBeast().toString();
+		// TODO : appeler la methode getBeastOnCaseBeastModeToString
 		else if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) res=map.getHunter().toString();
 		return res;
+	}
+	
+	public String getBeastOnCaseBeastModeToString(AbstractMap map, Position posCase) {
+		String res = "";
+		if(getBeastOnCaseBeastMode( map, posCase)) {
+			res = map.getBeast().toString();
+		}
+		return res;
+	}
+	
+	public boolean getBeastOnCaseBeastMode(AbstractMap map, Position posCase) {
+		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -302,7 +314,7 @@ public class Case {
 		}
 		return res;
 	}
-	
+
 	/**
 	 * Retourne le Bonus Actif sur la Case sous la forme d'une Chaine de Characteresi il y en a un et la Chaine Vide sinon (Cela si c'est un Bonus pose par la Bete)
 	 * @param map
