@@ -279,4 +279,8 @@ public abstract class AbstractGame {
 	public void pressEnter() {
 		Interaction.pressEnter();
 	}
+	
+	public String askBonus(String firstBonus, String secondBonus) {
+		return Interaction.askBonus(firstBonus, secondBonus);
+	}
 }

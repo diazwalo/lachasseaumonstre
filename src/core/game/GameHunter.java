@@ -154,7 +154,7 @@ public class GameHunter extends AbstractGame {
 		String inventory = this.map.getHunter().toStringInventory();
 		if(inventory.length() != 0) {
 			System.out.println(inventory);
-			String choix=Interaction.askBonus("la Balise de Vision (1)", "le Piege (2) ");
+			String choix=super.askBonus("la Balise de Vision (1)", "le Piege (2) ");
 			if(choix.equals("1")) {
 				this.activateWard();
 			}

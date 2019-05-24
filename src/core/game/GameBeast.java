@@ -184,7 +184,7 @@ public class GameBeast extends AbstractGame{
 		String inventory = this.map.getBeast().toStringInventory();
 		if(inventory.length() != 0) {
 			System.out.println(inventory);
-			String choix=Interaction.askBonus("le Camouflage (1)", "le Leure (2)");
+			String choix=super.askBonus("le Camouflage (1)", "le Leure (2)");
 			if(choix.equals("1")) {
 				this.activateCamouflage();
 			}
