@@ -45,7 +45,6 @@ public enum CaseType
 	
 	@Override
 	public String toString() {
-		System.out.println(this.display);
 		return this.display;
 	}
 }
