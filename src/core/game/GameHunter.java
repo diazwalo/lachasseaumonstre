@@ -141,7 +141,7 @@ public class GameHunter extends AbstractGame {
 		
 		if(mvtBeast.size()>1) {
 			System.out.println("in");
-			// le boolean n'est pas réevalué
+			// le boolean n'est pas réevalué 
 			// TODO : mettre a jour le boolean (ou plutot le mettre seulement dans la condition du while)
 			boolean hunterPos = posTpTempo.equals(this.map.getHunter().getPos());
 			while(hunterPos) {

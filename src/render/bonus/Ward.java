@@ -99,7 +99,7 @@ public class Ward implements IBonus {
 
 	@Override
 	public void setTriggered() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		this.triggered = true;
 	}
 }

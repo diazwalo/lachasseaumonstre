@@ -249,15 +249,12 @@ public class Beast extends Entity{
 		
 		for (int i = 0; i < tab.length; i++) {
 			for (int j = 0; j < tab[i].length; j++) {
-				
 				Case caseCour=tab[i][j];
 				if(! caseCour.isObstacle() && (caseCour.getBeastWalk() == -1) && ! hunter.isPosEnt(i, j)) {
 					ALTab.add(new Position(i, j));
 				}
-				
 			}
 		}
-		
 		return ALTab;
 	}
 	

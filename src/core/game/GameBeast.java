@@ -105,7 +105,7 @@ public class GameBeast extends AbstractGame{
 	}
 
 	/**
-	 * hunterTurn retourne true lorsque le deplacement du chasseur est valide, c'est a dire si il ne va pas sur un obstacle.
+	 * hunterTurn retourne true lorsque le deplacement du chasseur est valide, c'est a dire si il ne va pas sur un obstacle. 
 	 * @return boolean
 	 */
 	public boolean hunterTurn() {

@@ -31,7 +31,6 @@ public class Hunter extends Entity {
 		super(posX, posY);
 	}
 	
-	
 	/**
 	 * Retourne le premier bonus disponible dans la liste de bonus
 	 * @return IBonus

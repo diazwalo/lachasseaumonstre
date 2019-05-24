@@ -176,7 +176,7 @@ public abstract class AbstractMap
     public final void removeBonus(IBonus ib) {
     	this.bonusActif.remove(ib);
     }
-
+    
     /**
      * Declanche le Leurre si le Chasseur passe a cote
      */

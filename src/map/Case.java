@@ -18,8 +18,6 @@ import render.text.Hunter;
  * @author nath
  *
  */
- 
-
 public class Case {
 	private CaseType caseType;
 	private int beastWalk;

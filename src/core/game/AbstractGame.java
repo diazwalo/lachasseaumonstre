@@ -121,7 +121,7 @@ public abstract class AbstractGame {
 	/**
 	 * Retourne une Position differente de celle du Chasseur vers laquel la Bete pourra se deplacer sauf si il n'y a que cette Position
 	 * @param posDispo
-	 * @return Position
+	 * @return Position 
 	 */
 	public Position chosePosNotOnHunter(List<Position> posDispo) {
 		int idxPosDispo = new Random().nextInt(posDispo.size());;
