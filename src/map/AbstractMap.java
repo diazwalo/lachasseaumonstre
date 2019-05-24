@@ -180,7 +180,7 @@ public abstract class AbstractMap
     /**
      * Declanche le Leurre si le Chasseur passe a cote
      */
-    public final void HunterIsNearBait() {
+    public final void hunterIsNearBait() {
         for(IBonus ib : this.bonusActif) {
 
             if(ib instanceof Bait) {

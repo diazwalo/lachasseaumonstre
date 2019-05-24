@@ -53,7 +53,7 @@ public class BeastTest {
 	
 	@Test
 	public void testMvtPossible() {
-		List<Mouvment> mvtPoss=this.beast.getMvtEmptyCase(caseTab);
+		List<Mouvment> mvtPoss=this.beast.getMvtToEmptyCase(caseTab);
 		assertFalse(mvtPoss.contains(Mouvment.NORD));
 		assertFalse(mvtPoss.contains(Mouvment.NORDEST));
 		assertTrue(mvtPoss.contains(Mouvment.EST));

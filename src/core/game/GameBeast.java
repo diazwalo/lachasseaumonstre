@@ -58,7 +58,7 @@ public class GameBeast extends AbstractGame{
 			this.map.passTurnBonus();
 			this.updateEndGame();
 		}
-		this.EndGame();
+		this.endGame();
 	}
 	
 	
@@ -74,7 +74,7 @@ public class GameBeast extends AbstractGame{
 		do {
 			if(this.map.getBeast().getTrapped()) {
 				System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
-				this.map.getBeast().setUnTrapped();
+				this.map.getBeast().setUntrapped();
 				if(bo != null) {
 					this.map.removeBonus(bo);
 				}
@@ -96,7 +96,7 @@ public class GameBeast extends AbstractGame{
 	
 	public void updateStartGame() {
 		this.map.getHunter().decrementBlinded();
-		this.map.HunterIsNearBait();
+		this.map.hunterIsNearBait();
 	}
 	
 	public void updateEndGame() {
@@ -109,7 +109,7 @@ public class GameBeast extends AbstractGame{
 	 * @return boolean
 	 */
 	public boolean hunterTurn() {
-		List<Mouvment> mvtHunter=super.map.getHunter().getMvtEmptyCase(super.map.getTab());
+		List<Mouvment> mvtHunter=super.map.getHunter().getMvtToEmptyCase(super.map.getTab());
 		int idxMvt=0;
 		
 		if(mvtHunter.size()>0) {
@@ -127,7 +127,7 @@ public class GameBeast extends AbstractGame{
 		if(mvtHunter.size()>0) super.map.moveHunter(mvtHunter.get(idxMvt));
 		super.checkGameStatus();
 		
-		setBonusIA();
+		setBonusIAHunter();
 		
 		super.ramasserBonusHunter();
 		
@@ -142,7 +142,7 @@ public class GameBeast extends AbstractGame{
 	/**
 	 * EndGame retourne true lorsque le chasseur ou la bete gagne et affiche le gagnant ainsi les raison de la victoire
 	 */
-	public void EndGame() {
+	public void endGame() {
 		
 		if (super.map.isBeastWin()) {
 			System.out.println(AbstractGame.gameStatus.getStatus());
@@ -195,25 +195,5 @@ public class GameBeast extends AbstractGame{
 				return;
 			}
 		}
-	}
-	
-	/**
-	 * Prends un IBonusdans l'inventaire de l'IA (le Chasseur) puis l'active
-	 */
-	public void setBonusIA() {
-		IBonus bonus=this.map.getHunter().takeFirstBonus();
-		
-		if (bonus != null) {
-			
-			if(bonus instanceof Trap) {
-				super.activateTrap();
-			}
-			else if(bonus instanceof Ward) {
-				super.activateWard();
-			}
-		}
-		
-	}
-
-	
+	}	
 }

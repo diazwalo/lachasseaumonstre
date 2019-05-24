@@ -64,7 +64,7 @@ public abstract class AbstractGame {
 	 * @return Si la bete se retrouve bloquee.
 	 */
 	public boolean statusBeastblock() {
-		if(this.map.getBeast().getMvtEmptyCase(this.map.getTab()).isEmpty()) {
+		if(this.map.getBeast().getMvtToEmptyCase(this.map.getTab()).isEmpty()) {
 			
 			if(this.map.getBeast().isTpAvailable()) {
 				if(! this.tpBeast()) {
@@ -103,22 +103,40 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Recherche si il existe une Position ou la bete peut etre tp.
-	 * @return si une/des cases sont disponible a la teleportation.
+	 * @return boolean
 	 */
 	public boolean tpBeast(){
 		List<Position> posDispo = this.map.getBeast().getCaseTp(this.map.getTab(), this.map.getHunter());
 		
-		boolean tp=false;
-		int idxPosDispo;
-		
 		if(posDispo.size()>0) {
-			idxPosDispo=new Random().nextInt(posDispo.size());
-			this.map.getBeast().setPosition(posDispo.get(idxPosDispo));
+			Position posTpTempo = this.chosePosNotOnHunter(posDispo);
+			this.map.getBeast().setPosition(posTpTempo);
 			this.map.setBeastWalk();
 			this.map.getBeast().setTp(this.map.getBeast().getTp()-1);
-			tp=true;
+			return true;
 		}
-		return tp;
+		return false;
+	}
+	
+	/**
+	 * Retourne une Position differente de celle du Chasseur vers laquel la Bete pourra se deplacer sauf si il n'y a que cette Position
+	 * @param posDispo
+	 * @return Position
+	 */
+	public Position chosePosNotOnHunter(List<Position> posDispo) {
+		int idxPosDispo = new Random().nextInt(posDispo.size());;
+		Position posTpTempo = posDispo.get(idxPosDispo);
+		
+		if(posDispo.size()>1) {
+			boolean hunterPos = posTpTempo.equals(this.map.getHunter().getPos());
+			// le boolean n'est pas réevalué
+			// TODO : mettre a jour le boolean (ou plutot le mettre seulement dans la condition du while)
+			while(hunterPos) {
+				idxPosDispo=new Random().nextInt(posDispo.size());
+				posTpTempo = posDispo.get(idxPosDispo);
+			}
+		}
+		return posTpTempo;
 	}
 	
 	/**
@@ -153,7 +171,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Prends la Bete au Piege si elle est sur un IBonus de type Piege
-	 * @return Le piege qui a piege la bete.
+	 * @return IBonus
 	 */
 	public IBonus checkBeastTrapped() {
 		IBonus res = null;
@@ -170,14 +188,15 @@ public abstract class AbstractGame {
 	/**
 	 * Declanche le Bonus si il est de Type Trap
 	 */
-	//A renomer
-	public void triggerBonus() {
+	public void triggerTrap() {
     	for(IBonus b : this.map.getBonusActif()) {
     		if(b.getPos() != null && b.getPos().equals(this.map.getBeast().getPos()) && b instanceof Trap) {
     			b.setTriggered();
     		}
     	}
     }
+	
+	//TODO : Decouper checkBeastRevealed()
 	
 	/**
 	 * Verifie si la bete est sous dans sur une case adjacente a la ward et passe revealed a true si cela s'avere vrai
@@ -192,7 +211,7 @@ public abstract class AbstractGame {
 					ib.setTriggered();
 					beastStillUnderWard = true;
 				}else {
-					for (Mouvment mouvment : this.map.getBeast().getMvtCase(this.map.getTab())) {
+					for (Mouvment mouvment : this.map.getBeast().getMvtToNonObstacleCase(this.map.getTab())) {
 						int[] tabPosAdjBeast = posAdjBeast.getModifPosTempo(mouvment.getMvt());
 						if(ib.getPos().equals(new Position(tabPosAdjBeast[0], tabPosAdjBeast[1]))) {
 							this.map.getBeast().setRevealedByWard(true);
@@ -203,8 +222,6 @@ public abstract class AbstractGame {
 				}
 			}
 		} 
-		
-		// TODO : trouver un autre moyen de le faire
 		if(! beastStillUnderWard) {
 			this.map.getBeast().setRevealedByWard(false);
 		}
@@ -213,7 +230,7 @@ public abstract class AbstractGame {
 	/**
 	 * Affiche le gagnant ainsi les raison de la victoire
 	 */
-	public void EndGame() {
+	public void endGame() {
 		
 		if (this.map.isBeastWin()) {
 			System.out.println("Status: "+AbstractGame.gameStatus.getStatus());
@@ -226,8 +243,10 @@ public abstract class AbstractGame {
 		
 	}
 	
-	// TEST
-	
+	/**
+	 * Retourne vrai si le Camouflage peut etre active et l'active, retourne faux sinon
+	 * @return boolean
+	 */
 	public boolean activateCamouflage() {
 		if(this.map.getBeast().canSetCamouflage()) {
 			this.map.addBonusActif(this.map.getBeast().takeCamouflage());
@@ -237,6 +256,10 @@ public abstract class AbstractGame {
 		return false;
 	}
 	
+	/**
+	 * Retourne vrai si le Leurre peut etre active et l'active, retourne faux sinon
+	 * @return boolean
+	 */
 	public boolean activateBait() {
 		if(this.map.getBeast().canSetBait()) {
 			Position posBait = this.map.getBeast().getPos();
@@ -248,6 +271,10 @@ public abstract class AbstractGame {
 		return false;
 	} 
 	
+	/**
+	 * Retourne vrai si le Piege peut etre active et l'active, retourne faux sinon
+	 * @return
+	 */
 	public boolean activateTrap() {
 		if(this.map.getHunter().canSetTrap()) {
 			Position posTrap=this.map.getHunter().getPos();
@@ -260,6 +287,10 @@ public abstract class AbstractGame {
 		return false;
 	}
 	
+	/**
+	 * Retourne vraisi la Balise peut etre activee, retourne faux sinon
+	 * @return
+	 */
 	public boolean activateWard() {
 		if(this.map.getHunter().canSetWard()) {
 			Position posWard=this.map.getHunter().getPos();
@@ -270,6 +301,39 @@ public abstract class AbstractGame {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Prends un IBonus dans l'inventaire de l'IA (la Bete) puis l'active
+	 */
+	public void setBonusIABeast() {
+		IBonus bonus=this.map.getBeast().takeFirstBonus();
+		
+		if (bonus != null) {
+			if(bonus instanceof Bait) {
+				this.activateBait();
+			}else if(bonus instanceof Camouflage){
+				this.activateCamouflage();
+			}	
+		}	
+	}
+	
+	/**
+	 * Prends un IBonusdans l'inventaire de l'IA (le Chasseur) puis l'active
+	 */
+	public void setBonusIAHunter() {
+		IBonus bonus=this.map.getHunter().takeFirstBonus();
+		
+		if (bonus != null) {
+			
+			if(bonus instanceof Trap) {
+				this.activateTrap();
+			}
+			else if(bonus instanceof Ward) {
+				this.activateWard();
+			}
+		}
+		
 	}
 	
 	public Mouvment askMouvement() {

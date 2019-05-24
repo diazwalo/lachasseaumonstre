@@ -59,6 +59,7 @@ public class GameHunter extends AbstractGame {
 				this.beastTurn();
 				//ramasserBonusBeast();
 				super.checkBeastRevealed();
+				this.updateEndGame();
 				System.out.println(super.map.gameHunterToString());
 				super.pressEnter();
 			} 
@@ -66,26 +67,19 @@ public class GameHunter extends AbstractGame {
 			super.checkBeastRevealed();
 			*/
 			
-			this.updateEndGame();
+			//this.updateEndGame();
 		}
-		this.EndGame();
+		this.endGame();
 	}
 	
 	/**
 	  * hunterTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue. 
 	  */
 	public boolean hunterTurn() {
-		/*boolean mvtValide=false;
-		this.poserBonus();		
-		super.checkGameStatus();
-		super.ramasserBonusHunter();
-		return mvtValide;
-		*/
 		boolean mvtValide=false;
 		this.poserBonus();
 		 
 		do {
-			//System.out.println("Veuillez entrer un mouvement valide");
 			Mouvment mvt=super.askMouvement();
 			mvtValide=super.map.moveHunter(mvt);
 			
@@ -93,7 +87,6 @@ public class GameHunter extends AbstractGame {
 		
 		super.checkGameStatus();
 		super.ramasserBonusHunter();
-		//this.map.getHunter().decrementBlinded();
 		return mvtValide;
 	}
 	
@@ -107,22 +100,27 @@ public class GameHunter extends AbstractGame {
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
 	 */
 	public boolean beastTurn() {
-		this.map.getBeast().setUnTrapped();
+		this.map.getBeast().setUntrapped();
 		IBonus bo=super.checkBeastTrapped();
 		
-		List<Mouvment> mvtBeast = super.map.getBeast().getMvtEmptyCase(super.map.getTab());
+		List<Mouvment> mvtBeastDispo = super.map.getBeast().getMvtToEmptyCase(super.map.getTab());
 
 		if(this.map.getBeast().getTrapped()) {
-			super.triggerBonus();
+			super.triggerTrap();
 			return true;
 		}
 		else {
-			if(mvtBeast.size()>0) {
-				while(! super.map.moveBeast(mvtBeast.get(new Random().nextInt(mvtBeast.size()))));
+			if(mvtBeastDispo.size()>0) {
+				
+				/*while(! super.map.moveBeast(mvtBeastDispo.get(new Random().nextInt(mvtBeastDispo.size()))));*/
+				Mouvment mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
+				while(! super.map.moveBeast(mvtBeast)) {
+					mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
+				}
 				super.map.setBeastWalk();
 				super.checkGameStatus();
 				
-				setBonusIA();
+				setBonusIABeast();
 				
 				ramasserBonusBeast();
 				
@@ -134,10 +132,30 @@ public class GameHunter extends AbstractGame {
 			}
 		}
 	}
+	
+	public Mouvment choseMvtNotOnHunter(List<Mouvment> mvtBeast) {
+		int idxPosDispo = new Random().nextInt(mvtBeast.size());
+		Mouvment mvtTempo = mvtBeast.get(idxPosDispo);
+		int[] posModif = this.map.getHunter().getPos().getModifPosTempo(mvtTempo.getMvt());
+		Position posTpTempo = new Position(posModif[0], posModif[1]);
+		
+		if(mvtBeast.size()>1) {
+			System.out.println("in");
+			// le boolean n'est pas réevalué
+			// TODO : mettre a jour le boolean (ou plutot le mettre seulement dans la condition du while)
+			boolean hunterPos = posTpTempo.equals(this.map.getHunter().getPos());
+			while(hunterPos) {
+				idxPosDispo=new Random().nextInt(mvtBeast.size());
+				mvtTempo = mvtBeast.get(idxPosDispo);
+			}
+		}
+		return mvtTempo;
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void updateStartGame() {
 		this.map.getHunter().decrementBlinded();
-		this.map.HunterIsNearBait();
+		this.map.hunterIsNearBait();
 	
 	}
 	
@@ -164,34 +182,6 @@ public class GameHunter extends AbstractGame {
 			else {
 				return;
 			}
-		}
-	}
-
-	/**
-	 * Prends un IBonusdans l'inventaire de l'IA (laa Bete) puis l'active
-	 */
-	public void setBonusIA() {
-		IBonus bonus=this.map.getBeast().takeFirstBonus();
-		
-		if (bonus != null) {
-			
-			if(bonus instanceof Bait) {
-				super.activateBait();
-			}else if(bonus instanceof Camouflage){
-				super.activateCamouflage();
-			}
-			
-		}
-		
-	}
-	
-	
-	/**
-	 * AfficherBeastPas affiche le nombre de pas depuis le dernier passage de la bete sur la case courante du chasseur.
-	 */
-	public void afficherBeastPas() {
-		if (super.map.getTab()[super.map.getHunter().getPos().getPosX()][super.map.getHunter().getPos().getPosY()].getBeastWalk()>-1) {
-			System.out.println("La bete est passee par ici il y'a "+super.map.getTab()[super.map.getHunter().getPos().getPosX()][super.map.getHunter().getPos().getPosY()].getBeastWalk()+" tours.");
 		}
 	}
 }

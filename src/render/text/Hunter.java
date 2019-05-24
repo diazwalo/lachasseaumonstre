@@ -183,7 +183,7 @@ public class Hunter extends Entity {
 	 * @param tab
 	 * @return ArrayList<Mouvment>
 	 */
-	public List<Mouvment> getMvtEmptyCase(Case[][] tab) {
+	public List<Mouvment> getMvtToEmptyCase(Case[][] tab) {
 		List<Mouvment> mouvTab = new ArrayList<>();
 		for(Mouvment m : Mouvment.values())
 			if(super.verifDeplacementEntity(tab, m))
@@ -198,7 +198,7 @@ public class Hunter extends Entity {
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity beast) {
-		List<Mouvment> possible = this.getMvtEmptyCase(tab);
+		List<Mouvment> possible = this.getMvtToEmptyCase(tab);
 		for(Mouvment m : possible)
 			if(this.verifDeplacementSpe(tab, m, beast))
 				return false;

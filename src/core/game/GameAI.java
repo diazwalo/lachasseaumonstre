@@ -62,7 +62,7 @@ public class GameAI extends AbstractGame
 			super.checkGameStatus();
 		}
 		
-		this.EndGame();
+		this.endGame();
 	}
 
 	@Override
