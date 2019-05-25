@@ -13,6 +13,8 @@ public class CircularMap extends AbstractMap
 		this.beast = new Beast(config.getWidth()-1, config.getHeight()-1, config);
 		this.tab = new Case[config.getWidth()][config.getHeight()];
 		this.config = config;
+		
+		this.generationMap();
 		this.beastWin = false;
 		this.hunterWin = false;
 	}
@@ -33,7 +35,7 @@ public class CircularMap extends AbstractMap
 				boolean posBeast = this.beast.isPosEnt(x, y);
 				CaseType caseType;
 				
-				/*if(y >= preRadius && y < radius+preRadius) {
+				if(y >= preRadius && y < radius+preRadius) {
 					caseType = CaseType.SOL;
 				} else {
 					if(preRadius-x > 0 || (radius+preRadius)-x <= 0)
@@ -58,7 +60,7 @@ public class CircularMap extends AbstractMap
 						caseType = CaseType.SOL;
 					}
 					
-				}*/
+				}
 				caseType = CaseType.SOL;
 				if(x%3==2 && y%3==2 && ! this.beast.isPosEnt(x, y) && ! this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
 				
