@@ -21,15 +21,20 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import render.ui.component.GameBoard;
+import render.ui.component.Home;
 import render.ui.component.Inventory;
 import render.ui.component.PlayButton;
+import render.ui.util.Directory;
 
 public class Plateau extends Application{
 	public void start(Stage stage) {
 		
 		VBox root = new VBox();
 		
-		HBox mapAndBonus = new HBox();
+		Home home = new Home();
+		root.getChildren().add(home.getCore());
+		
+		/*HBox mapAndBonus = new HBox();
 		VBox bonus = new VBox();
 		HBox gameButtonAndChat = new HBox();
 		
@@ -47,20 +52,20 @@ public class Plateau extends Application{
 	    mapAndBonus.getChildren().add(board.getGrid());
 	    mapAndBonus.getChildren().add(inventaire.getCore());
 	    gameButtonAndChat.getChildren().add(playButton.getCore());
-	    gameButtonAndChat.getChildren().add(chat);
-	    
+	    gameButtonAndChat.getChildren().add(chat);*/
 	    
 	    
 	    Scene scene = new Scene(root, 750, 700);
 	 
 	    stage.setTitle("Grid");
 	    stage.setScene(scene);
+	    stage.setMaximized(true);
 	    stage.setResizable(true);
 	    stage.show();
 	 
 	}
 	 
-	private void textDisplay(GridPane grid, String theText, int row, int col) {
+	/*private void textDisplay(GridPane grid, String theText, int row, int col) {
 	    Text text = new Text();
 	    text.setWrappingWidth(50);
 	    text.setText(theText);
@@ -68,11 +73,11 @@ public class Plateau extends Application{
 	    GridPane.setRowIndex(text, row);
 	    GridPane.setColumnIndex(text, col);
 	    grid.getChildren().addAll(text);
+	}*/
+	
+	public static void main(String[] args)
+	{
+		Application.launch(args);
 	}
-	
-	 public static void main(String[] args) {
-		    Application.launch(args);
-		  }
-	
 	
 }

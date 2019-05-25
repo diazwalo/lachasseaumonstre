@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import render.ui.util.Directory;
 
 public class GameBoard {
 	
@@ -16,7 +17,7 @@ public class GameBoard {
 	Image img;
 	
 	public GameBoard(int size) {
-		try(FileInputStream is = new FileInputStream(new File(System.getProperty("user.dir") + "/IHM/Texture/Ground.png"))){
+		try(FileInputStream is = new FileInputStream(new File(Directory.getGameGround()))){
 	    	img = new Image(is);
 	    } catch (FileNotFoundException e) {
 	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");

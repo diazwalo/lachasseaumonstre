@@ -8,6 +8,7 @@ import java.io.IOException;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import render.ui.util.Directory;
 
 public class KeyboardButton {
 	
@@ -17,7 +18,7 @@ public class KeyboardButton {
 	
 	public KeyboardButton(String contenu) {
 	
-	try(FileInputStream is = new FileInputStream(new File(System.getProperty("user.dir") + "/IHM/Texture/texture.png"))){
+	try(FileInputStream is = new FileInputStream(new File(Directory.getGameTexture()))){
 	    	img = new Image(is);
 	    } catch (FileNotFoundException e) {
 	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
