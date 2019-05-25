@@ -61,7 +61,7 @@ public class CircularMap extends AbstractMap
 					}
 					
 				}
-				caseType = CaseType.SOL;
+
 				if(x%3==2 && y%3==2 && ! this.beast.isPosEnt(x, y) && ! this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
 				
 				this.tab[x][y]=new Case(caseType, posBeast);
