@@ -45,15 +45,15 @@ public class GameHunter extends AbstractGame {
 				this.beastTurn();
 				super.checkBeastRevealed();
 				this.updateEndGame();
-				System.out.println(super.map.gameHunterToString());
-				super.pressEnter();
+				this.endOfTurn();
 			} 
 		}
 		this.endGame();
 	}
 	
 	/**
-	  * hunterTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue. 
+	  * hunterTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue.
+	  * @return boolean 
 	  */
 	public boolean hunterTurn() {
 		boolean mvtValide=false;
@@ -75,9 +75,9 @@ public class GameHunter extends AbstractGame {
 		System.out.println(map.gameHunterToString()+"\n");
 		super.pressEnter();
 	}
-	
 	/**
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
+	 * @return boolean
 	 */
 	public boolean beastTurn() {
 		this.map.getBeast().setUntrapped();
@@ -111,6 +111,11 @@ public class GameHunter extends AbstractGame {
 		}
 	}
 	
+	/**
+	 * Choisie un Mouvment qui ne correspond pas a la position du Chasseur
+	 * @param mvtBeast
+	 * @return Mouvment
+	 */
 	public Mouvment choseMvtNotOnHunter(List<Mouvment> mvtBeast) {
 		int idxPosDispo = new Random().nextInt(mvtBeast.size());
 		Mouvment mvtTempo = mvtBeast.get(idxPosDispo);
@@ -118,8 +123,12 @@ public class GameHunter extends AbstractGame {
 		Position posMvtTempo = new Position(posModif[0], posModif[1]);
 		
 		if(mvtBeast.size()>1) {
+			System.out.println("au moins 2 possible");
+			System.out.println("Beast: "+posMvtTempo+", Hunter: "+ this.map.getHunter().getPos());
 			while(posMvtTempo.equals(this.map.getHunter().getPos())) {
-				posModif = this.map.getBeast().getPos().getModifPosTempo(mvtBeast.get(new Random().nextInt(mvtBeast.size())).getMvt());
+				System.out.println("chokapic");
+				mvtTempo = mvtBeast.get(new Random().nextInt(mvtBeast.size()));
+				posModif = this.map.getBeast().getPos().getModifPosTempo(mvtTempo.getMvt());
 				posMvtTempo = new Position(posModif[0], posModif[1]);
 			}
 		}
