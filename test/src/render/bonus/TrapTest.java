@@ -1,3 +1,4 @@
+package src.render.bonus;
 /*package src.render.text;
 
 import static org.junit.Assert.*;
