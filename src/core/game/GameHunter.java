@@ -36,38 +36,18 @@ public class GameHunter extends AbstractGame {
 		this.updateStartGame();
 		System.out.println(map.gameHunterToString()+"\n");
 		
-		//TEST
-		this.map.addBonusActif(new Bait (2,1));
-		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-		
-			
-			
-			/*while( ! this.hunterTurn() ) {
-				System.out.println("Mvt Invalide");
-			}
-			this.map.getHunter().decrementBlinded();
-			*/
 			this.hunterTurn();
 			this.updateStartGame();
-			/*System.out.println(map.gameHunterToString()+"\n");
-			Interaction.pressEnter();*/
 			this.endOfTurn();
-			
 			
 			if(! super.map.isHunterWin() && ! super.map.isBeastWin()) {
 				this.beastTurn();
-				//ramasserBonusBeast();
 				super.checkBeastRevealed();
 				this.updateEndGame();
 				System.out.println(super.map.gameHunterToString());
 				super.pressEnter();
 			} 
-			/*this.map.passTurnBonus();
-			super.checkBeastRevealed();
-			*/
-			
-			//this.updateEndGame();
 		}
 		this.endGame();
 	}
@@ -111,8 +91,6 @@ public class GameHunter extends AbstractGame {
 		}
 		else {
 			if(mvtBeastDispo.size()>0) {
-				
-				/*while(! super.map.moveBeast(mvtBeastDispo.get(new Random().nextInt(mvtBeastDispo.size()))));*/
 				Mouvment mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
 				while(! super.map.moveBeast(mvtBeast)) {
 					mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
@@ -136,17 +114,13 @@ public class GameHunter extends AbstractGame {
 	public Mouvment choseMvtNotOnHunter(List<Mouvment> mvtBeast) {
 		int idxPosDispo = new Random().nextInt(mvtBeast.size());
 		Mouvment mvtTempo = mvtBeast.get(idxPosDispo);
-		int[] posModif = this.map.getHunter().getPos().getModifPosTempo(mvtTempo.getMvt());
-		Position posTpTempo = new Position(posModif[0], posModif[1]);
+		int[] posModif = this.map.getBeast().getPos().getModifPosTempo(mvtTempo.getMvt());
+		Position posMvtTempo = new Position(posModif[0], posModif[1]);
 		
 		if(mvtBeast.size()>1) {
-			System.out.println("in");
-			// le boolean n'est pas réevalué 
-			// TODO : mettre a jour le boolean (ou plutot le mettre seulement dans la condition du while)
-			boolean hunterPos = posTpTempo.equals(this.map.getHunter().getPos());
-			while(hunterPos) {
-				idxPosDispo=new Random().nextInt(mvtBeast.size());
-				mvtTempo = mvtBeast.get(idxPosDispo);
+			while(posMvtTempo.equals(this.map.getHunter().getPos())) {
+				posModif = this.map.getBeast().getPos().getModifPosTempo(mvtBeast.get(new Random().nextInt(mvtBeast.size())).getMvt());
+				posMvtTempo = new Position(posModif[0], posModif[1]);
 			}
 		}
 		return mvtTempo;

@@ -124,14 +124,11 @@ public abstract class AbstractGame {
 	 * @return Position 
 	 */
 	public Position chosePosNotOnHunter(List<Position> posDispo) {
-		int idxPosDispo = new Random().nextInt(posDispo.size());;
+		int idxPosDispo = new Random().nextInt(posDispo.size());
 		Position posTpTempo = posDispo.get(idxPosDispo);
 		
 		if(posDispo.size()>1) {
-			boolean hunterPos = posTpTempo.equals(this.map.getHunter().getPos());
-			// le boolean n'est pas réevalué
-			// TODO : mettre a jour le boolean (ou plutot le mettre seulement dans la condition du while)
-			while(hunterPos) {
+			while(posTpTempo.equals(this.map.getHunter().getPos())) {
 				idxPosDispo=new Random().nextInt(posDispo.size());
 				posTpTempo = posDispo.get(idxPosDispo);
 			}
