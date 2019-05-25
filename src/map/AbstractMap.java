@@ -3,7 +3,6 @@ package map;
 import config.Config;
 import render.bonus.Bait;
 import render.bonus.IBonus;
-import render.bonus.Trap;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -26,9 +25,9 @@ public abstract class AbstractMap
 
     /**
      * Place le Premier Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote
-     * @param middle
-     * @param tabBonus
-     * @param bonusHunterOrBeast
+     * @param middle Le milieu du plateau.
+     * @param tabBonus La configuration des bonus.
+     * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
      * @return 
      */
     public final Position createPositionTempoFirstBonus(int middle, boolean[] tabBonus, boolean bonusHunterOrBeast) {
@@ -57,10 +56,10 @@ public abstract class AbstractMap
 
     /**
      * Place le Deuxieme Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote en s'assurant que ce dernier ne soit pas a la position du premier Bonus
-     * @param middle
-     * @param tabBonus
-     * @param posFirstBonus
-     * @param bonusHunterOrBeast
+     * @param middle Le milieu du plateau.
+     * @param tabBonus La configuration des bonus
+     * @param posFirstBonus La position du premier bonus.
+     * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
      */
     public final void createPositionTempoSecondBonus(int middle, boolean[] tabBonus, Position posFirstBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
@@ -86,7 +85,7 @@ public abstract class AbstractMap
 
     /**
      * Retourne le tableau a deux dimentions de Case
-     * @return Case[][]
+     * @return Le tableau qui forme le tableau de jeu.
      */
     public final Case[][] getTab() {
         return this.tab;
@@ -94,7 +93,7 @@ public abstract class AbstractMap
 
     /**
      * Retourne le Hunter
-     * @return Hunter
+     * @return Toutes les proprietes du chsseur en jeu.
      */
     public Hunter getHunter() {
         return this.hunter;
@@ -102,7 +101,7 @@ public abstract class AbstractMap
 
     /**
      * Retourne la Beast
-     * @return Beast
+     * @return Toutes les proprietes de la bete en jeu.
      */
     public final Beast getBeast() {
         return this.beast;
@@ -110,15 +109,15 @@ public abstract class AbstractMap
 
     /**
      * Retourne si la bete a gagnee
-     * @return boolean
+     * @return Si le monstre a gagne ou non.
      */
     public final boolean isBeastWin() {
         return beastWin;
     }
 
     /**
-     * Retourne si le chasseur a gagn�
-     * @return boolean
+     * Retourne si le chasseur a gagne
+     * @return Si la bete a gagne ou non.
      */
     public final boolean isHunterWin() {
         return hunterWin;
@@ -126,7 +125,7 @@ public abstract class AbstractMap
 
     /**
      * Passe hunterWin au Boolean passe en parametre
-     * @param hunterWin
+     * @param hunterWin Un boolean indiquant si le chasseur a gagne
      */
     public final void setHunterWin(boolean hunterWin) {
         this.hunterWin=hunterWin;
@@ -134,7 +133,7 @@ public abstract class AbstractMap
 
     /**
      * Passe beastWin au Boolean passe en parametre
-     * @param beastWin
+     * @param beastWin Un boolean indiquant si la bete a gagne.
      */
     public final void setBeastWin(boolean beastWin) {
         this.beastWin=beastWin;
@@ -142,7 +141,7 @@ public abstract class AbstractMap
 
     /**
      * Ajoute le IBonus passe en parametre a la Liste de IBonus Actif
-     * @param bonus
+     * @param bonus Le bonus a activer.
      */
     public final void addBonusActif(IBonus bonus) {
         this.bonusActif.add(bonus);
@@ -150,7 +149,7 @@ public abstract class AbstractMap
 
     /**
      * Retourne la Liste de IBonus Actif
-     * @return List<IBonus>
+     * @return La liste des bonus actifs.
      */
     public final List<IBonus> getBonusActif() {
         return this.bonusActif;
@@ -171,7 +170,7 @@ public abstract class AbstractMap
     
     /**
      * Supprime le IBonus (passe en parametre) de la liste de IBonus Actif
-     * @param ib
+     * @param ib Le bonus a supprimer.
      */
     public final void removeBonus(IBonus ib) {
     	this.bonusActif.remove(ib);
@@ -198,8 +197,8 @@ public abstract class AbstractMap
 
 
     /**
-     * Retourne la Config
-     * @return Config
+     * Retourne la Configuration fourni lors de l'instanciation d'un plateau de jeu.
+     * @return Retourne la configuration.
      */
     public final Config getConfig() {
         return this.config;
@@ -207,8 +206,8 @@ public abstract class AbstractMap
 
     /**
      * Teste si le deplacement souhaite pour Beast ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Hunter
-     * @param mvt
-     * @return boolean
+     * @param mvt Le mouvement a tester pour l'entite monstre.
+     * @return Si le monstre peut effectuer ce deplacement.
      */
     public final boolean mvtValideBeast(Mouvment mvt) {
         return this.beast.verifDeplacementSpe(tab, mvt, hunter);
@@ -216,8 +215,8 @@ public abstract class AbstractMap
 
     /**
      * Teste si le deplacement souhaite pour Hunter ne fait pas sortir du tableau ou tomber sur un obstacle ou encore un Beast
-     * @param mvt
-     * @return boolean
+     * @param mvt Le mouvement a tester pour l'entite Chasseur.
+     * @return Si le chasseur peut effectuer ce deplacement.
      */
     public final boolean mvtValideHunter(Mouvment mvt) {
         return this.hunter.verifDeplacementSpe(tab, mvt, beast);
@@ -225,7 +224,7 @@ public abstract class AbstractMap
 
     /**
      * Deplace la Beast avec le Mouvment passe en parametre si ce dernier est possible
-     * @return boolean
+     * @return Si le deplacement a ete correctement effectue.
      */
     public final boolean moveBeast(Mouvment mvt) {
         if(this.mvtValideBeast(mvt)) {
@@ -237,7 +236,7 @@ public abstract class AbstractMap
 
     /**
      * Deplace la Hunter avec le Mouvment passe en parametre si ce dernier est possible
-     * @return boolean
+     * @return Si le deplacement a ete correctement effectue.
      */
     public final boolean moveHunter(Mouvment mvt) {
         if(this.mvtValideHunter(mvt)) {
@@ -256,8 +255,8 @@ public abstract class AbstractMap
     }
 
     /**
-     * Retourn la Partie De la maniere ou la Bete doit la voir et ce sous la forme d'une chaine de charactere
-     * @return String
+     * Retourne la partie de la maniere ou la bete doit la voir et ce sous la forme d'une chaine de charactere
+     * @return Le plateau de jeu vu par la bete.
      */
     public final String gameBeastToString() {
         String affichage="";
@@ -272,7 +271,7 @@ public abstract class AbstractMap
 
     /**
      * Retourn la Partie De la maniere ou le Chasseur doit la voir et ce sous la forme d'une chaine de charactere
-     * @return String
+     * @return Le plateau du jeu vu par le chasseur.
      */
     public final String gameHunterToString() {
         String affichage="";
@@ -299,7 +298,7 @@ public abstract class AbstractMap
     
     
     /**
-     * Retourne les La Map sous la forme textuelle d'un tableau avec des obstacles, des buffs, des Entity
+     * Retourne le plateau de jeu sous la forme textuelle d'un tableau avec des obstacles, des buffs, des Entitys (Mode spectateur).
      */
     public String toString() {
         String affichage="";

@@ -1,8 +1,6 @@
 package map;
 
 import config.Config;
-import render.bonus.Trap;
-import render.bonus.Ward;
 import render.text.Beast;
 import render.text.Hunter;
 
@@ -56,7 +54,7 @@ public class SquareMap extends AbstractMap {
 	}
 
 	/**
-	 * place les bonus a ramasser sur la map de maniere a ce que chaque Entite ait ses Bonus de son Cote
+	 * Place les bonus a ramasser sur la map de maniere a ce que chaque Entite ait ses Bonus de son Cote
 	 */
 	public final void generationBonus(int middle) {
 		Position posTrap=this.createPositionTempoFirstBonus(0, new boolean[] { true,  false }, false);
