@@ -94,11 +94,17 @@ public class GameBeast extends AbstractGame{
 		return mvtValide;
 	}
 	
+	/**
+	 * Applique les mises à jours du plateau necessaires au debut de chaques tours
+	 */
 	public void updateStartGame() {
 		this.map.getHunter().decrementBlinded();
 		this.map.hunterIsNearBait();
 	}
 	
+	/**
+	 * Applique les mises à jours du plateau necessaires à la fin de chaques tours
+	 */
 	public void updateEndGame() {
 		this.map.passTurnBonus();
 		super.checkBeastRevealed();
