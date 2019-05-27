@@ -37,7 +37,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Affiche le statut si la bete a ete trouve par le chasseur.
-	 * @return Si la bete a ete trouve par le chasseur.
+	 * @return boolean 
 	 */
 	public boolean statusBeastFound() {
 		return this.map.getBeast().isPosEnt(this.map.getHunter().getPos().getPosX(), this.map.getHunter().getPos().getPosY());
@@ -45,7 +45,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Affiche le statut si la bete a entierement explore la map.
-	 * @return Si la bete a entierement explore la map.
+	 * @return boolean
 	 */
 	public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
@@ -61,7 +61,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Affiche le statut si la bete se retrouve bloquee.
-	 * @return Si la bete se retrouve bloquee.
+	 * @return boolean
 	 */
 	public boolean statusBeastblock() {
 		if(this.map.getBeast().getMvtToEmptyCase(this.map.getTab()).isEmpty()) {
@@ -270,7 +270,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Retourne vrai si le Piege peut etre active et l'active, retourne faux sinon
-	 * @return
+	 * @return boolean 
 	 */
 	public boolean activateTrap() {
 		if(this.map.getHunter().canSetTrap()) {
@@ -285,8 +285,8 @@ public abstract class AbstractGame {
 	}
 	
 	/**
-	 * Retourne vraisi la Balise peut etre activee, retourne faux sinon
-	 * @return
+	 * Retourne vrai si la Balise peut etre activee, retourne faux sinon
+	 * @return boolean 
 	 */
 	public boolean activateWard() {
 		if(this.map.getHunter().canSetWard()) {
@@ -333,14 +333,27 @@ public abstract class AbstractGame {
 		
 	}
 	
+	/**
+	 * Retourne le Mouvement saisie par le Joueur
+	 * @return Mouvement 
+	 */
 	public Mouvment askMouvement() {
 		return Interaction.askMouvement();
 	}
 
+	/**
+	 * Cette fonction attend que l'utilisateur saisisse le bouton clavier "enter"
+	 */
 	public void pressEnter() {
 		Interaction.pressEnter();
 	}
 	
+	/**
+	 * Retourne le choix du Bonus du Joueur sous la forme d'une chaine de charactere ( Soit 1, soit 2, ou le reste 
+	 * @param String Le nom du premier bonus.
+	 * @param String Le nom du second bonus.
+	 * @return String
+	 */
 	public String askBonus(String firstBonus, String secondBonus) {
 		return Interaction.askBonus(firstBonus, secondBonus);
 	}
