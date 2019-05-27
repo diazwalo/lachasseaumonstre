@@ -123,10 +123,7 @@ public class GameHunter extends AbstractGame {
 		Position posMvtTempo = new Position(posModif[0], posModif[1]);
 		
 		if(mvtBeast.size()>1) {
-			System.out.println("au moins 2 possible");
-			System.out.println("Beast: "+posMvtTempo+", Hunter: "+ this.map.getHunter().getPos());
 			while(posMvtTempo.equals(this.map.getHunter().getPos())) {
-				System.out.println("chokapic");
 				mvtTempo = mvtBeast.get(new Random().nextInt(mvtBeast.size()));
 				posModif = this.map.getBeast().getPos().getModifPosTempo(mvtTempo.getMvt());
 				posMvtTempo = new Position(posModif[0], posModif[1]);
@@ -136,7 +133,7 @@ public class GameHunter extends AbstractGame {
 	}
 	
 	/**
-	 * Applique les mises à jours du plateau necessaires au debut de chaques tours
+	 * Applique les mises ï¿½ jours du plateau necessaires au debut de chaques tours
 	 */
 	public void updateStartGame() {
 		this.map.getHunter().decrementBlinded();
@@ -145,7 +142,7 @@ public class GameHunter extends AbstractGame {
 	}
 	
 	/**
-	 * Applique les mises à jours du plateau necessaires à la fin de chaques tours
+	 * Applique les mises ï¿½ jours du plateau necessaires ï¿½ la fin de chaques tours
 	 */
 	public void updateEndGame() {
 		this.map.passTurnBonus();
