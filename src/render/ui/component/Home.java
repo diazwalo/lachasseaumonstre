@@ -1,5 +1,6 @@
 package render.ui.component;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
@@ -26,6 +27,7 @@ public class Home
 		this.core = new HBox();
 		this.menu = new VBox();
 		
+		//Background
 		Image image = new Image("file:"+Directory.getHomeBackground());
 
 		BackgroundImage background = new BackgroundImage(
@@ -35,28 +37,38 @@ public class Home
 			BackgroundPosition.CENTER,
 			new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true)
 		);
+		this.core.setBackground(new Background(background));
 		
-		HomeButton btn1 = new HomeButton("Ordinateur");
-		btn1.setMinSize(500, 100);
-		
-		HomeButton btn2 = new HomeButton("Chasseur");
-		btn2.setMinSize(500, 100);
-		
-		HomeButton btn3 = new HomeButton("Monstre");
-		btn3.setMinSize(500, 100);
-		
-		HomeButton btn4 = new HomeButton("Dual");
-		btn4.setMinSize(500, 100);
-		
-		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4);
-		this.menu.setAlignment(Pos.CENTER);
+		//Menu Principal
 		
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 		this.menu.setMinHeight(bounds.getHeight());
 		
+		HomeButton btn1 = new HomeButton("Ordinateur");		
+		HomeButton btn2 = new HomeButton("Chasseur");		
+		HomeButton btn3 = new HomeButton("Monstre");		
+		HomeButton btn4 = new HomeButton("Dual");
+		
+		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4);
+		this.menu.setAlignment(Pos.CENTER);
+		
+		HBox horizontalFooter = new HBox();
+		
+		HomeMinButton settings = new HomeMinButton("Settings");
+		settings.setOnAction(e -> { 
+			this.core.getChildren().clear();
+			// On get les elements de settings;
+		});
+		
+		HomeMinButton left = new HomeMinButton("Quitter");
+		left.setOnAction(e -> {System.exit(0);});
+		
+		horizontalFooter.getChildren().addAll(settings, left);
+		horizontalFooter.setPadding(new Insets(50, 0, 0, 0));
+		this.menu.getChildren().add(horizontalFooter);
+		
 		this.core.setAlignment(Pos.CENTER);
-		this.core.setBackground(new Background(background));
 		this.core.getChildren().add(this.menu);
 	}
 
