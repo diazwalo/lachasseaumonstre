@@ -52,8 +52,9 @@ public class GameBeast extends AbstractGame{
 			if(! super.map.isBeastWin() && ! super.map.isHunterWin()) {
 				this.hunterTurn();
 				this.map.getHunter().decrementBlinded();
-				System.out.println(super.map.gameBeastToString());
-				super.pressEnter();
+				//System.out.println(super.map.gameBeastToString());
+				//super.pressEnter();
+				this.endOfTurn();
 			}
 			this.map.passTurnBonus();
 			this.updateEndGame();
@@ -95,7 +96,7 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	/**
-	 * Applique les mises à jours du plateau necessaires au debut de chaques tours
+	 * Applique les mises ï¿½ jours du plateau necessaires au debut de chaques tours
 	 */
 	public void updateStartGame() {
 		this.map.getHunter().decrementBlinded();
@@ -103,7 +104,7 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	/**
-	 * Applique les mises à jours du plateau necessaires à la fin de chaques tours
+	 * Applique les mises ï¿½ jours du plateau necessaires ï¿½ la fin de chaques tours
 	 */
 	public void updateEndGame() {
 		this.map.passTurnBonus();
@@ -140,8 +141,12 @@ public class GameBeast extends AbstractGame{
 		return true;
 	}
 	
+	/**
+	 * Cromfirme la fin du tour de joueur
+	 */
 	public void endOfTurn() {
-		
+		System.out.println(super.map.gameBeastToString());
+		super.pressEnter();
 	}
 	
 	
