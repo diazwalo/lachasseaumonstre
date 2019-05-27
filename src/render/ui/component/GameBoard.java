@@ -19,6 +19,7 @@ public class GameBoard {
 	Image ground;
 	Image obstacle;
 	Image beast;
+	Image hunter;
 	
 	public GameBoard(AbstractMap map) throws FileNotFoundException {
 		FileInputStream is = new FileInputStream(new File(Directory.getGameGround()));
@@ -27,6 +28,9 @@ public class GameBoard {
     	obstacle = new Image(is);
     is  = new FileInputStream(new File(Directory.getGameBeast()));
     	beast = new Image(is);
+    is  = new FileInputStream(new File(Directory.getGameHunter()));
+    	hunter = new Image(is);
+    
 	
     for (int row = 0; row < (map.getTab().length); row++) {
         for (int col = 0; col < (map.getTab()[row].length); col++) {
@@ -44,6 +48,9 @@ public class GameBoard {
                 }
                 if(map.getBeast().getPos().isPos(row, col)) {
                 	rec.setFill(new ImagePattern(beast));
+                }
+                if(map.getHunter().getPos().isPos(row, col)) {
+                	rec.setFill(new ImagePattern(hunter));
                 }
             
                 GridPane.setRowIndex(rec, row);

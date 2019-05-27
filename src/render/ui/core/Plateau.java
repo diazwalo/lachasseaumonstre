@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import config.Config;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,6 +21,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import map.SquareMap;
 import render.ui.component.GameBoard;
 import render.ui.component.Home;
 import render.ui.component.Inventory;
@@ -27,18 +29,18 @@ import render.ui.component.button.PlayButton;
 import render.ui.util.Directory;
 
 public class Plateau extends Application{
-	public void start(Stage stage) {
-		
+	public void start(Stage stage) throws FileNotFoundException {
+	
 		VBox root = new VBox();
 		
 		Home home = new Home();
 		root.getChildren().add(home.getCore());
 		
-		/*HBox mapAndBonus = new HBox();
+	  /*HBox mapAndBonus = new HBox();
 		VBox bonus = new VBox();
 		HBox gameButtonAndChat = new HBox();
 		
-		GameBoard board = new GameBoard(10);
+		GameBoard board = new GameBoard(new SquareMap(new Config()));
 		Inventory inventaire = new Inventory();
 		
 		PlayButton playButton = new PlayButton();
