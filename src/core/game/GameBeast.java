@@ -194,17 +194,37 @@ public class GameBeast extends AbstractGame{
 	public void poserBonus() {
 		String inventory = this.map.getBeast().toStringInventory();
 		if(inventory.length() != 0) {
-			System.out.println(inventory);
-			String choix=super.askBonus("le Camouflage (1)", "le Leure (2)");
-			if(choix.equals("1")) {
-				this.activateCamouflage();
-			}
-			else if (choix.equals("2")) {
-				this.activateBait();
-			}
-			else {
-				return;
-			}
+			String choix = this.askBonusChoice(inventory);
+			this.bonusChoice(choix);
 		}
 	}	
+	
+	
+	/**
+	 * Propose au joueur de choisir quel bonus de son inventaire il veut utiliser
+	 * @param inventory
+	 * @return String
+	 */
+	public String askBonusChoice(String inventory) {
+		System.out.println(inventory);
+		return super.askBonus("le Camouflage (1)", "le Leure (2) ");
+	}
+	
+	
+	/**
+	 * Active le bonus mis en parametre
+	 * @param s
+	 */
+	public void bonusChoice(String s) {
+		if(s.equals("1")) {
+			this.activateCamouflage();
+		}
+		else if (s.equals("2")) {
+			this.activateBait();
+		}
+		else {
+			return;
+		}
+	}
+	
 }

@@ -7,7 +7,7 @@ public class Interaction {
 	
 	/**
 	 * Retourne le Mouvement saisie par le Joueur
-	 * @return Le Mouvement saisi.
+	 * @return Mouvment
 	 */
 	public static Mouvment askMouvement() {
 		Mouvment res=null;
@@ -19,7 +19,7 @@ public class Interaction {
 	
 	/**
 	 * Retourne un tableau contenant des Strings pouvant etre saisies correspondant a un Mouvment
-	 * @return Un tableau avec les combinaisons de touches possible.
+	 * @return String
 	 */
 	public static String[] generateStrMvt() {
 		return new String[] {"z", "s", "d", "q", "zd", "zq", "sd", "sq", "dz", "qz", "ds", "qs"};
@@ -27,10 +27,10 @@ public class Interaction {
 	
 	/**
 	 * Boucle pour demander a l'utilisateur de saisir un mouvment valide
-	 * @param res Le mouvement a effectuer.
-	 * @param strMvt La liste des touches clavies acceptes.
-	 * @param tabMvt La liste des mouvements acceptes.
-	 * @return Le mouvement de l'utilisateur.
+	 * @param Mouvment Le mouvement a effectuer.
+	 * @param String[] La liste des touches clavies acceptes.
+	 * @param Mouvment La liste des mouvements acceptes.
+	 * @return Mouvment
 	 */
 	public static Mouvment getSaisieMvt(Mouvment res, String[] strMvt, Mouvment[] tabMvt) {
 		while(res==null) {
@@ -49,7 +49,7 @@ public class Interaction {
 	/**
 	 * Retourne tous les mouvements que le joueur peut saisir associes au tableau strMvt
 	 * @param strMvt La liste des touches clavies acceptes.
-	 * @return Un tableau avec les mouvements disponible.
+	 * @return Mouvment[]
 	 */
 	public static Mouvment[] getTabMvt(String[] strMvt) {
 		Mouvment[] tabMvt=new Mouvment[12];
@@ -70,7 +70,7 @@ public class Interaction {
 	
 	/**
 	 * Retourne la saisie du Joueur
-	 * @return Une variable contenant la saisie de l'utilisateur
+	 * @return String
 	 */
 	private static String getSaisie() {
 		Scanner sc = new Scanner(System.in); 
@@ -84,7 +84,7 @@ public class Interaction {
 	
 	/**
 	 * Cette fonction mets le programme dans une phase de sommeil pour x secondes.
-	 * @param sec Le nombre de seconde a attendre avant de continuer
+	 * @param  double sec Le nombre de seconde a attendre avant de continuer
 	 * @see http://blog.paumard.org/cours/java-api/chap05-concurrent-premier-thread.html
 	 */
 	public static void waitASec(double sec) {
@@ -112,10 +112,10 @@ public class Interaction {
 	}
 	
 	/**
-	 * Retourne le choix du Bonus du Joueur sous la forme d'une chaine de charactere ( Soit 1, soit 2, ou le reste 
-	 * @param firstBonus Le nom du premier bonus.
-	 * @param secondBonus Le nom du second bonus.
-	 * @return La saisie tape par l'utilisateur.
+	 * Retourne le choix du Bonus du Joueur sous la forme d'une chaine de charactere 
+	 * @param String Le nom du premier bonus.
+	 * @param String Le nom du second bonus.
+	 * @return String 
 	 */
 	public static String askBonus(String firstBonus, String secondBonus) {
 		Scanner sc = new Scanner(System.in); 

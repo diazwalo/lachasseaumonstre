@@ -40,6 +40,9 @@ public class GameAI extends AbstractGame
 		this.r = new Random();
 	}
 
+	/**
+	 * Lance une partie IA beast contre IA hunter
+	 */
 	@Override
 	public void launchGame()
 	{
@@ -64,6 +67,10 @@ public class GameAI extends AbstractGame
 		this.endGame();
 	}
 
+	/**
+	 * L'IA effectue le tour de la bete
+	 * @return boolean
+	 */
 	@Override
 	public boolean beastTurn()
 	{
@@ -79,6 +86,10 @@ public class GameAI extends AbstractGame
 		return true;
 	}
 
+	/**
+	 * L'IA effectue le tour du Chasseur 
+	 * @return boolean
+	 */
 	@Override
 	public boolean hunterTurn()
 	{
