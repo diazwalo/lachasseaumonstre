@@ -19,6 +19,8 @@ public class Directory
 	
 	private static final String GAME_TEXTURE = TEXTURES_FOLDER + "texture.png";
 	
+	private static final String GAME_OBSTACLE = TEXTURES_FOLDER + "obstacle.png";
+	
 	//Getter
 	
 	public static String getHomeBackground()
@@ -34,5 +36,10 @@ public class Directory
 	public static String getGameTexture()
 	{
 		return System.getProperty(Directory.dir) + GAME_TEXTURE;
+	}
+	
+	public static String getGameObstacle()
+	{
+		return System.getProperty(Directory.dir) + GAME_OBSTACLE;
 	}
 }
