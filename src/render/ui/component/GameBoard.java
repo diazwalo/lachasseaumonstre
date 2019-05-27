@@ -9,38 +9,41 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import map.AbstractMap;
+import map.CaseType;
 import render.ui.util.Directory;
 
 public class GameBoard {
 	
 	GridPane grid = new GridPane();
-	Image img;
+	Image ground;
+	Image obstacle;
 	
-	public GameBoard(int size) {
-		try(FileInputStream is = new FileInputStream(new File(Directory.getGameGround()))){
-	    	img = new Image(is);
-	    } catch (FileNotFoundException e) {
-	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
-			e.printStackTrace();
-		} catch (IOException e) {
-	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
-			e.printStackTrace();
-		}
-		
-	    for (int row = 0; row < (size + 1); row++) {
-	        for (int col = 0; col < (size + 1); col++) {
-	    
-	                Rectangle rec = new Rectangle();
-	                rec.setWidth(50);
-	                rec.setHeight(50);
-	          
-	                rec.setFill(new ImagePattern(img));
-	               
-	                GridPane.setRowIndex(rec, row);
-	                GridPane.setColumnIndex(rec, col);
-	                grid.getChildren().addAll(rec);
-	            }
-	        }
+	public GameBoard(AbstractMap map) throws FileNotFoundException {
+		FileInputStream is = new FileInputStream(new File(Directory.getGameGround()));
+    	ground = new Image(is);
+    is  = new FileInputStream(new File(Directory.getGameObstacle()));
+    	obstacle = new Image(is);
+	
+    for (int row = 0; row < (map.getTab().length); row++) {
+        for (int col = 0; col < (map.getTab()[row].length); col++) {
+    
+                Rectangle rec = new Rectangle();
+                rec.setWidth(50);
+                rec.setHeight(50);
+         
+                if(map.getTab()[row][col].getCaseType().equals(CaseType.SOL)) {
+                	rec.setFill(new ImagePattern(ground));
+                }
+                if(map.getTab()[row][col].getCaseType().equals(CaseType.OBSTACLE)) {
+                	rec.setFill(new ImagePattern(obstacle));
+                }
+            
+                GridPane.setRowIndex(rec, row);
+                GridPane.setColumnIndex(rec, col);
+                grid.getChildren().addAll(rec);
+            }
+        }
 	}
 	
 	public GridPane getGrid() {
