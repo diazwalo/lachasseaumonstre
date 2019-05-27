@@ -64,7 +64,7 @@ public class Plateau extends Application{
 	    stage.show();
 	 
 	}
-	 
+	
 	/*private void textDisplay(GridPane grid, String theText, int row, int col) {
 	    Text text = new Text();
 	    text.setWrappingWidth(50);

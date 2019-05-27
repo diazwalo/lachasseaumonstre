@@ -5,6 +5,7 @@ import java.io.File;
 public class Directory
 {
 	//System path
+	private static final String dir = "user.dir";
 	
 	private static final String DS = File.separator;
 	
@@ -22,16 +23,16 @@ public class Directory
 	
 	public static String getHomeBackground()
 	{
-		return System.getProperty("user.dir") + HOME_BACKGROUND;
+		return System.getProperty(Directory.dir) + HOME_BACKGROUND;
 	}
 	
 	public static String getGameGround()
 	{
-		return System.getProperty("user.dir") + GAME_GROUND;
+		return System.getProperty(Directory.dir) + GAME_GROUND;
 	}
 	
 	public static String getGameTexture()
 	{
-		return System.getProperty("user.dir") + GAME_TEXTURE;
+		return System.getProperty(Directory.dir) + GAME_TEXTURE;
 	}
 }
