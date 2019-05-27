@@ -27,7 +27,18 @@ public class Home
 		this.core = new HBox();
 		this.menu = new VBox();
 		
-		//Background
+		this.core.setBackground(getBackground());
+		setHeight();
+		verticalMenu();
+	}
+
+	public HBox getCore()
+	{
+		return this.core;
+	}
+	
+	private Background getBackground()
+	{
 		Image image = new Image("file:"+Directory.getHomeBackground());
 
 		BackgroundImage background = new BackgroundImage(
@@ -37,14 +48,19 @@ public class Home
 			BackgroundPosition.CENTER,
 			new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true)
 		);
-		this.core.setBackground(new Background(background));
 		
-		//Menu Principal
-		
+		return new Background(background);
+	}
+	
+	private void setHeight()
+	{
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 		this.menu.setMinHeight(bounds.getHeight());
-		
+	}
+	
+	private void verticalMenu()
+	{
 		HomeButton btn1 = new HomeButton("Ordinateur");		
 		HomeButton btn2 = new HomeButton("Chasseur");		
 		HomeButton btn3 = new HomeButton("Monstre");		
@@ -58,7 +74,11 @@ public class Home
 		HomeMinButton settings = new HomeMinButton("Settings");
 		settings.setOnAction(e -> { 
 			this.core.getChildren().clear();
-			// On get les elements de settings;
+			this.core.setBackground(getBackground());
+			setHeight();
+			
+			Settings st = new Settings();
+			this.core.getChildren().add(st.getMenu());
 		});
 		
 		HomeMinButton left = new HomeMinButton("Quitter");
@@ -70,10 +90,5 @@ public class Home
 		
 		this.core.setAlignment(Pos.CENTER);
 		this.core.getChildren().add(this.menu);
-	}
-
-	public HBox getCore()
-	{
-		return this.core;
 	}
 }
