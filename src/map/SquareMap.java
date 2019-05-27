@@ -22,11 +22,6 @@ public class SquareMap extends AbstractMap {
 		int widthTab=config.getWidth();
 		int heightTab=config.getHeight();
 
-		if(widthTab < 5 || heightTab < 5) {
-			widthTab=5;
-			heightTab=5; 
-		}
-
 		this.beast = new Beast(widthTab-1, heightTab-1, config);
 		this.tab = new Case[widthTab][heightTab];
 		this.generationMap();

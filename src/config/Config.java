@@ -59,7 +59,9 @@ public class Config
 	 */
 	public void setWidth(int width)
 	{
-		this.width = width;
+		if(this.width < width) {
+			this.width = width;
+		}
 	}
 
 	/**
@@ -77,6 +79,7 @@ public class Config
 	 */
 	public void setHeight(int height)
 	{
+		if(this.height < height)
 		this.height = height;
 	}
 	
