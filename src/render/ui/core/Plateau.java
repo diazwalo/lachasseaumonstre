@@ -59,7 +59,8 @@ public class Plateau extends Application{
 	 
 	    scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
 	    
-	    stage.setTitle("Grid");
+	    stage.setTitle("La chasse aux monstres");
+	    //stage.getIcons().add(new Image("icons/icon.png"));
 	    stage.setScene(scene);
 	    stage.setMaximized(true);
 	    stage.setResizable(true);
