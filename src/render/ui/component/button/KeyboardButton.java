@@ -1,4 +1,4 @@
-package render.ui.component;
+package render.ui.component.button;
 
 import java.io.File;
 import java.io.FileInputStream;

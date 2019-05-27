@@ -1,4 +1,4 @@
-package render.ui.component;
+package render.ui.component.button;
 
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;

@@ -15,6 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import render.ui.component.button.HomeButton;
+import render.ui.component.button.HomeMinButton;
 import render.ui.util.Directory;
 
 public class Home

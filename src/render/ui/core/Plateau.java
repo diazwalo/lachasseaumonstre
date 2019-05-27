@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 import render.ui.component.GameBoard;
 import render.ui.component.Home;
 import render.ui.component.Inventory;
-import render.ui.component.PlayButton;
+import render.ui.component.button.PlayButton;
 import render.ui.util.Directory;
 
 public class Plateau extends Application{
