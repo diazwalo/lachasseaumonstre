@@ -57,6 +57,8 @@ public class Plateau extends Application{
 	    
 	    Scene scene = new Scene(root, 750, 700);
 	 
+	    scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
+	    
 	    stage.setTitle("Grid");
 	    stage.setScene(scene);
 	    stage.setMaximized(true);

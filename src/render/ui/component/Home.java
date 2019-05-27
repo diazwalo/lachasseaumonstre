@@ -1,5 +1,6 @@
 package render.ui.component;
 
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -35,14 +36,26 @@ public class Home
 			new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true)
 		);
 		
-		/*Button btn = new Button("IA vs IA");
-		btn.setMinSize(500, 100);
-		this.menu.getChildren().add(btn);*/
+		HomeButton btn1 = new HomeButton("Ordinateur");
+		btn1.setMinSize(500, 100);
+		
+		HomeButton btn2 = new HomeButton("Chasseur");
+		btn2.setMinSize(500, 100);
+		
+		HomeButton btn3 = new HomeButton("Monstre");
+		btn3.setMinSize(500, 100);
+		
+		HomeButton btn4 = new HomeButton("Dual");
+		btn4.setMinSize(500, 100);
+		
+		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4);
+		this.menu.setAlignment(Pos.CENTER);
 		
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 		this.menu.setMinHeight(bounds.getHeight());
 		
+		this.core.setAlignment(Pos.CENTER);
 		this.core.setBackground(new Background(background));
 		this.core.getChildren().add(this.menu);
 	}
