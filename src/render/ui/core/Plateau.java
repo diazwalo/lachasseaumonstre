@@ -57,12 +57,13 @@ public class Plateau extends Application{
 	    gameButtonAndChat.getChildren().add(chat);*/
 	    
 	    
-	    Scene scene = new Scene(root, 750, 700);
-	 
-	   // scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
+		Scene scene = new Scene(root, 750, 700);
+		 
+	    scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
+	    scene.getStylesheets().add("css/style.css");
 	    
 	    stage.setTitle("La chasse aux monstres");
-	    //stage.getIcons().add(new Image("icons/icon.png"));
+	    stage.getIcons().add(new Image("icons/icon.png"));
 	    stage.setScene(scene);
 	    stage.setMaximized(true);
 	    stage.setResizable(true);

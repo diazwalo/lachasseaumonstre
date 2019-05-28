@@ -18,8 +18,10 @@ public class CelluleTheme extends ListCell<String>
             setText("");
         } else {
             System.out.println("TRANS");
+            setBackground(Background.EMPTY);
             setStyle("-fx-background-color: transparent; -fx-font-family: 'Press Start 2P', cursive; -fx-font-size: 20px; -fx-text-fill: #eee;");
             setText(item);
+            getStyleClass().add("cellule-theme");
         }
 	}
 }
