@@ -66,7 +66,7 @@ public class Plateau extends Application{
 	    stage.getIcons().add(new Image("icons/icon.png"));
 	    stage.setScene(scene);
 	    stage.setMaximized(true);
-	    stage.setResizable(true);
+	    stage.setResizable(false);
 	    stage.show();
 	 
 	}

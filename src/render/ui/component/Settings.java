@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import render.ui.core.Plateau;
 import render.ui.form.box.CheckBoxTheme;
 import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelTheme;
@@ -56,16 +57,40 @@ public class Settings
 		
 		VBox vboxBonus = new VBox();
 		
-		LabelTheme labelBonus = new LabelTheme("Bonus X : ");
-		CheckBoxTheme checkBoxThemeBonus = new CheckBoxTheme();
-		HBox hBoxBonus = new HBox();
-		hBoxBonus.getChildren().addAll(labelBonus, checkBoxThemeBonus);
-		vboxBonus.getChildren().addAll(hBoxBonus);
-				
+		LabelTheme labelBonus1 = new LabelTheme("Bonus X : ");
+		CheckBoxTheme checkBoxThemeBonus1 = new CheckBoxTheme();
+		
+		LabelTheme labelBonus2 = new LabelTheme("Bonus Y : ");
+		CheckBoxTheme checkBoxThemeBonus2 = new CheckBoxTheme();
+		
+		LabelTheme labelBonus3 = new LabelTheme("Bonus Z : ");
+		CheckBoxTheme checkBoxThemeBonus3 = new CheckBoxTheme();
+		
+		LabelTheme labelBonus4 = new LabelTheme("Bonus W : ");
+		CheckBoxTheme checkBoxThemeBonus4 = new CheckBoxTheme();
+		
+		HBox hBoxBonus1 = new HBox();
+		HBox hBoxBonus2 = new HBox();
+		HBox hBoxBonus3 = new HBox();
+		HBox hBoxBonus4 = new HBox();
+		
+		hBoxBonus1.getChildren().addAll(labelBonus1, checkBoxThemeBonus1);
+		hBoxBonus1.setPadding(new Insets(0,0,20,0));
+		hBoxBonus2.getChildren().addAll(labelBonus2, checkBoxThemeBonus2);
+		hBoxBonus2.setPadding(new Insets(0,0,20,0));
+		hBoxBonus3.getChildren().addAll(labelBonus3, checkBoxThemeBonus3);
+		hBoxBonus3.setPadding(new Insets(0,0,20,0));
+		hBoxBonus4.getChildren().addAll(labelBonus4, checkBoxThemeBonus4);
+		hBoxBonus4.setPadding(new Insets(0,0,20,0));
+		vboxBonus.getChildren().addAll(hBoxBonus1, hBoxBonus2, hBoxBonus3, hBoxBonus4);
+		
 		this.menu.getChildren().addAll(vboxWidth, vboxHeight, vboxNbTop, vboxListMap, vboxBonus);
 		
 		HBox horizontalFooter = new HBox();
 		HomeMinButton left = new HomeMinButton("Retour");
+		left.setOnAction(e -> {
+			//new Scene(new Home());
+		});
 		HomeMinButton save = new HomeMinButton("Sauver");
 		
 		horizontalFooter.setAlignment(Pos.CENTER);
