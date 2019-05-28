@@ -1,6 +1,7 @@
 package render.ui.component;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -28,7 +29,20 @@ public class Settings
 		TextFieldTheme textFieldHeight = new TextFieldTheme("xxx");
 		vboxWidth.getChildren().addAll(labelHeight, textFieldHeight);
 		
-		this.menu.getChildren().addAll(vboxWidth, vboxHeight);
+		VBox vboxNbTop = new VBox();
+		LabelTheme labelNbTp = new LabelTheme("Nombre de téléportation pour le monstre :");
+		TextFieldTheme textFieldNbTp = new TextFieldTheme("xxx");
+		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);
+		
+		VBox vboxListMap = new VBox();
+		LabelTheme labelListMap = new LabelTheme("Liste des plateaux :");
+		ComboBox<String> listMap = new ComboBox<String>();
+		listMap.getItems().addAll("Test 1", "Test 2");
+		listMap.getSelectionModel().selectFirst();
+		
+		vboxListMap.getChildren().addAll(labelListMap, listMap);
+				
+		this.menu.getChildren().addAll(vboxWidth, vboxHeight, vboxNbTop, vboxListMap);
 		
 		HBox horizontalFooter = new HBox();
 		HomeMinButton left = new HomeMinButton("Quitter");
