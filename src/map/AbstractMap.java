@@ -1,6 +1,7 @@
 package map;
 
 import config.Config;
+import interaction.Interaction;
 import render.bonus.Bait;
 import render.bonus.IBonus;
 import render.text.Beast;
@@ -21,7 +22,28 @@ public abstract class AbstractMap
     private List<IBonus> bonusActif = new ArrayList<IBonus>();
 
     public abstract void generationMap();
-    public abstract void generationBonus(int middle);
+    
+    /**
+     * Genere les bonus de la Bete et du Chasseur si ces dernier sont demandes dans la Configue, le milieu sert a mettre leurs bonus respectif de leurs cotes)
+     * @param middle
+     */
+    public void generationBonus(int middle) {
+    	Position posTrap = new Position(-1, -1);
+    	Position posBait = new Position(-1, -1);
+    	
+    	if(this.config.isTrap()) {
+    		posTrap=this.createPositionTempoFirstBonus(0, new boolean[] { true,  false }, false);
+    	}
+    	if(this.config.isWard()) {
+    		this.createPositionTempoSecondBonus(0, new boolean[] { false,  true }, posTrap, false);
+    	}
+		if(this.config.isBait()) {
+			posBait=this.createPositionTempoFirstBonus(middle, new boolean[] { true,  false }, true);
+		}
+		if(this.config.isCamouflage()) {
+			this.createPositionTempoSecondBonus(middle, new boolean[] { false,  true }, posBait, true);
+		}
+	}
 
     /**
      * Place le Premier Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote
@@ -259,6 +281,7 @@ public abstract class AbstractMap
      * @return Le plateau de jeu vu par la bete.
      */
     public final String gameBeastToString() {
+    	Interaction.clearScreen();
         String affichage="";
         for (int x = 0; x < this.tab.length; x++) {
             affichage+=" \n|";
@@ -274,6 +297,7 @@ public abstract class AbstractMap
      * @return Le plateau du jeu vu par le chasseur.
      */
     public final String gameHunterToString() {
+    	Interaction.clearScreen();
         String affichage="";
         for (int x = 0; x < this.tab.length; x++) {
             affichage+=" \n|";

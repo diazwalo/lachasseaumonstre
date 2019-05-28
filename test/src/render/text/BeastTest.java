@@ -37,7 +37,7 @@ public class BeastTest {
 	@Test
 	public void testVerifDeplacement() {					
 		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.OUEST, new Hunter(2, 1, config)));
-		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDEST, new Hunter(2, 1, config)));
+		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDEST, new Hunter(2, 1, config)));
 		assertFalse(this.beast.verifDeplacementSpe(caseTab, Mouvment.NORD, new Hunter(2, 1, config)));
 		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.EST, new Hunter(2, 1, config)));
 		assertTrue(this.beast.verifDeplacementSpe(caseTab, Mouvment.SUDOUEST, new Hunter(2, 1, config)));

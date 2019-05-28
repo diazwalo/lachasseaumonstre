@@ -32,9 +32,8 @@ public class WardTest {
 	public void testRefresh() {
 		balise.install(5, 5);
 		balise.refresh();
-		assertEquals(4, balise.getTimer());
+		balise.setTriggered();
 		assertNotNull(balise.getPos());
-		balise.refresh();
 		assertEquals(3, balise.getTimer());
 		balise.refresh();
 		assertEquals(2, balise.getTimer());

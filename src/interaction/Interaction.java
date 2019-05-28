@@ -125,4 +125,13 @@ public class Interaction {
 		
 		return saisie;
 	}
+	
+	/**
+	 * Efface les données a l'ecran
+	 */
+	public static void clearScreen() {
+		for (int i = 0; i < 75; i++) {
+			System.out.println();
+		}
+	}
 }

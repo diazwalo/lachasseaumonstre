@@ -25,7 +25,7 @@ public class SquareMap extends AbstractMap {
 		this.beast = new Beast(widthTab-1, heightTab-1, config);
 		this.tab = new Case[widthTab][heightTab];
 		this.generationMap();
-		this.generationBonus(widthTab/2);
+		super.generationBonus(widthTab/2);
 
 		this.config = config;
 		this.beastWin = false;
@@ -47,15 +47,4 @@ public class SquareMap extends AbstractMap {
 			}
 		}
 	}
-
-	/**
-	 * Place les bonus a ramasser sur la map de maniere a ce que chaque Entite ait ses Bonus de son Cote
-	 */
-	public final void generationBonus(int middle) {
-		Position posTrap=this.createPositionTempoFirstBonus(0, new boolean[] { true,  false }, false);
-		this.createPositionTempoSecondBonus(0, new boolean[] { false,  true }, posTrap, false);
-		Position posBait=this.createPositionTempoFirstBonus(middle, new boolean[] { true,  false }, true);
-		this.createPositionTempoSecondBonus(middle, new boolean[] { false,  true }, posBait, true);
-	}
-
 }

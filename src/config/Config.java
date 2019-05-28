@@ -32,8 +32,8 @@ public class Config
 	 */
 	public void setDefaultConfig()
 	{
-		this.width = 11;
-		this.height = 11;
+		this.width = 8;
+		this.height = 8;
 		this.gameMode = GameMode.BEASTvsAI;
 		this.nbTeleportation = 3;
 		this.map = Map.SQUARE;

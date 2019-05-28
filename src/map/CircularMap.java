@@ -4,17 +4,21 @@ import config.Config;
 import render.text.Beast;
 import render.text.Hunter;
 
-public class CircularMap extends AbstractMap
-{
+public class CircularMap extends AbstractMap {
 	
-	public CircularMap(Config config)
-	{
+	public CircularMap(Config config) {
+		int widthTab=config.getWidth();
+		int heightTab=config.getHeight();
+		
 		this.hunter = new Hunter(0, 0, config);
-		this.beast = new Beast(config.getWidth()-1, config.getHeight()-1, config);
-		this.tab = new Case[config.getWidth()][config.getHeight()];
-		this.config = config;
+		this.beast = new Beast(widthTab-1, heightTab-1, config);
+		this.tab = new Case[widthTab][heightTab];
+		
 		
 		this.generationMap();
+		super.generationBonus(widthTab/2);
+		
+		this.config = config;
 		this.beastWin = false;
 		this.hunterWin = false;
 	}
@@ -22,12 +26,11 @@ public class CircularMap extends AbstractMap
 	/**
 	 * Remplie le tableau en mettant dans les cases soit des Obstacles soit des Sol.
 	 */
-	public void generationMap()
-	{
+	public void generationMap() {
 		// 14 -> 7
 		// 15 -> 7
-		int radius = (int) Math.floor(this.getConfig().getWidth() / 2);
-		int preRadius = (int) Math.ceil(this.getConfig().getWidth() / 2) / 2;
+		int radius = (int) Math.floor(this.tab.length / 2);
+		int preRadius = (int) Math.ceil(this.tab[radius].length / 2) / 2;
 		
 		for (int x = 0; x < this.tab.length; x++) {
 			for (int y = 0; y < this.tab[x].length; y++) {//this.tab[x].length
@@ -68,10 +71,4 @@ public class CircularMap extends AbstractMap
 			}
 		}
 	}
-
-	@Override
-	public void generationBonus(int middle) {
-
-	}
-
 }
