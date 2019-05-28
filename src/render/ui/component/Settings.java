@@ -1,5 +1,6 @@
 package render.ui.component;
 
+import config.Map;
 import javafx.geometry.Insets;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -7,7 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelTheme;
-import render.ui.form.textfield.TextFieldTheme;
+import render.ui.form.text.TextFieldTheme;
 import render.ui.util.Interface;
 
 public class Settings
@@ -37,7 +38,11 @@ public class Settings
 		VBox vboxListMap = new VBox();
 		LabelTheme labelListMap = new LabelTheme("Liste des plateaux :");
 		ComboBox<String> listMap = new ComboBox<String>();
-		listMap.getItems().addAll("Test 1", "Test 2");
+		
+		for (int i = 0; i < Map.values().length; i++) {
+			listMap.getItems().add(Map.values()[i].getName());
+			
+		}
 		listMap.getSelectionModel().selectFirst();
 		
 		vboxListMap.getChildren().addAll(labelListMap, listMap);

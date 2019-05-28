@@ -1,4 +1,4 @@
-package render.ui.form.textfield;
+package render.ui.form.text;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
