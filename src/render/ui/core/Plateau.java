@@ -25,7 +25,7 @@ import map.SquareMap;
 import render.ui.component.GameBoard;
 import render.ui.component.Home;
 import render.ui.component.Inventory;
-import render.ui.component.button.PlayButton;
+import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
 
 public class Plateau extends Application{

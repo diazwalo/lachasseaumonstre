@@ -1,4 +1,4 @@
-package render.ui.component.button;
+package render.ui.form.button;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import render.ui.util.Directory;
 
 public class KeyboardButton {

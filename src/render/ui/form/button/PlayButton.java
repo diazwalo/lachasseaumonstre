@@ -1,4 +1,4 @@
-package render.ui.component.button;
+package render.ui.form.button;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;

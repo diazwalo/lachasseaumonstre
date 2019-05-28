@@ -1,11 +1,13 @@
 package render.ui.component;
 
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import render.ui.component.button.HomeMinButton;
+import render.ui.form.button.HomeMinButton;
+import render.ui.form.label.LabelTheme;
+import render.ui.form.textfield.TextFieldTheme;
+import render.ui.util.Interface;
 
 public class Settings
 {
@@ -14,11 +16,19 @@ public class Settings
 	public Settings()
 	{
 		this.menu = new VBox();
+		Interface.maxHeight(this.menu);
 		
-		Label l1 = new Label("Test");
-		TextField tf1 = new TextField("test");
+		VBox vboxWidth = new VBox();
+		LabelTheme labelWidth = new LabelTheme("Largeur du plateau :");
+		TextFieldTheme textFieldWidth = new TextFieldTheme("xxx");
+		vboxWidth.getChildren().addAll(labelWidth, textFieldWidth);
 		
-		this.menu.getChildren().addAll(l1, tf1);
+		VBox vboxHeight = new VBox();
+		LabelTheme labelHeight = new LabelTheme("Hauteur du plateau :");
+		TextFieldTheme textFieldHeight = new TextFieldTheme("xxx");
+		vboxWidth.getChildren().addAll(labelHeight, textFieldHeight);
+		
+		this.menu.getChildren().addAll(vboxWidth, vboxHeight);
 		
 		HBox horizontalFooter = new HBox();
 		HomeMinButton left = new HomeMinButton("Quitter");

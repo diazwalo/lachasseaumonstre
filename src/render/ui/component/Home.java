@@ -2,10 +2,7 @@ package render.ui.component;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -13,11 +10,10 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import render.ui.component.button.HomeButton;
-import render.ui.component.button.HomeMinButton;
+import render.ui.form.button.HomeButton;
+import render.ui.form.button.HomeMinButton;
 import render.ui.util.Directory;
+import render.ui.util.Interface;
 
 public class Home
 {
@@ -30,7 +26,7 @@ public class Home
 		this.menu = new VBox();
 		
 		this.core.setBackground(getBackground());
-		setHeight();
+		Interface.maxHeight(this.menu);
 		verticalMenu();
 	}
 
@@ -54,13 +50,6 @@ public class Home
 		return new Background(background);
 	}
 	
-	private void setHeight()
-	{
-		Screen screen = Screen.getPrimary();
-		Rectangle2D bounds = screen.getVisualBounds();
-		this.menu.setMinHeight(bounds.getHeight());
-	}
-	
 	private void verticalMenu()
 	{
 		HomeButton btn1 = new HomeButton("Ordinateur");		
@@ -77,7 +66,6 @@ public class Home
 		settings.setOnAction(e -> { 
 			this.core.getChildren().clear();
 			this.core.setBackground(getBackground());
-			setHeight();
 			
 			Settings st = new Settings();
 			this.core.getChildren().add(st.getMenu());
