@@ -6,6 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import render.ui.form.box.CheckBoxTheme;
 import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelTheme;
 import render.ui.form.text.ComboBoxTheme;
@@ -47,8 +48,15 @@ public class Settings
 		listMap.getSelectionModel().selectFirst();
 		
 		vboxListMap.getChildren().addAll(labelListMap, listMap);
+		
+		VBox vboxBonus = new VBox();
+		LabelTheme labelBonus = new LabelTheme("Bonus X : ");
+		CheckBoxTheme checkBoxThemeBonus = new CheckBoxTheme();
+		HBox hBoxBonus = new HBox();
+		hBoxBonus.getChildren().addAll(labelBonus, checkBoxThemeBonus);
+		vboxBonus.getChildren().addAll(hBoxBonus);
 				
-		this.menu.getChildren().addAll(vboxWidth, vboxHeight, vboxNbTop, vboxListMap);
+		this.menu.getChildren().addAll(vboxWidth, vboxHeight, vboxNbTop, vboxListMap, vboxBonus);
 		
 		HBox horizontalFooter = new HBox();
 		HomeMinButton left = new HomeMinButton("Quitter");
