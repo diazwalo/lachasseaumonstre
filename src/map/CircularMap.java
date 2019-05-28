@@ -7,6 +7,7 @@ import render.text.Hunter;
 public class CircularMap extends AbstractMap {
 	
 	public CircularMap(Config config) {
+		this.config = config;
 		int widthTab=config.getWidth();
 		int heightTab=config.getHeight();
 		
@@ -14,11 +15,9 @@ public class CircularMap extends AbstractMap {
 		this.beast = new Beast(widthTab-1, heightTab-1, config);
 		this.tab = new Case[widthTab][heightTab];
 		
-		
 		this.generationMap();
 		super.generationBonus(widthTab/2);
 		
-		this.config = config;
 		this.beastWin = false;
 		this.hunterWin = false;
 	}

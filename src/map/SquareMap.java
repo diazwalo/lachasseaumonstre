@@ -18,6 +18,7 @@ public class SquareMap extends AbstractMap {
 	 * @param wid
 	 */
 	public SquareMap(Config config) {
+		this.config = config;
 		this.hunter = new Hunter(0, 0, config);
 		int widthTab=config.getWidth();
 		int heightTab=config.getHeight();
@@ -27,7 +28,6 @@ public class SquareMap extends AbstractMap {
 		this.generationMap();
 		super.generationBonus(widthTab/2);
 
-		this.config = config;
 		this.beastWin = false;
 		this.hunterWin = false;
 	}
