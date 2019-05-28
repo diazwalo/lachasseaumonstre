@@ -30,8 +30,7 @@ public class Config
 	/**
 	 * Restaure la configuration par default.
 	 */
-	public void setDefaultConfig()
-	{
+	public void setDefaultConfig() {
 		this.width = 8;
 		this.height = 8;
 		this.gameMode = GameMode.BEASTvsAI;

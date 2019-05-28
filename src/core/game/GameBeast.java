@@ -1,5 +1,6 @@
 package core.game;
  
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -18,29 +19,23 @@ import render.bonus.Ward;
  */
 
 public class GameBeast extends AbstractGame{
+	private List<Position> pathHunter;
 	
 	public GameBeast(AbstractMap map) {
 		super(map);
 	}
 	
 	/**
-	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloqu�, decouverte ou si elle a decouvert toute la map.
+	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloque, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
-		Graph graph = new Graph(super.map);
-		Dijkstra dijkstra = new Dijkstra(graph);
-		
-		//List<Position> path = dijkstra.shortestPathFromTo("A", "B");
-		//cf doc. La fonction renvoit la liste des positions pour se rendre de A a B. (A,B) sont des positions au format texte : cf ai.NodeUtil.formatNode()
 		
 		System.out.println(map.gameBeastToString()+"\n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			
-			
 			this.beastTurn();
 			this.updateStartGame();
-		
 			
 			this.endOfTurn();
 			
@@ -54,7 +49,7 @@ public class GameBeast extends AbstractGame{
 			this.updateEndGame();
 		}
 		this.endGame();
-	}
+	} 
 	
 	
 	 /**
@@ -90,7 +85,7 @@ public class GameBeast extends AbstractGame{
 	}
 	
 	/**
-	 * Applique les mises � jours du plateau necessaires au debut de chaques tours
+	 * Applique les mises a jours du plateau necessaires au debut de chaques tours
 	 */
 	public void updateStartGame() {
 		this.map.getHunter().decrementBlinded();

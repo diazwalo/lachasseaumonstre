@@ -29,10 +29,6 @@ public class GameHunter extends AbstractGame {
 	 * LaunchGame lance la partie, celle-ci s'arrete lorsque la bete est bloque, decouverte ou si elle a decouvert toute la map.
 	 */
 	public void launchGame() {
-		Graph graph = new Graph(super.map);
-		Curiosity curiosity = new Curiosity(graph);
-		//List<Position> path = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
-		//System.out.println(path); // La liste path contient tout le chemin que la bete devra parcourir pendant le jeu.
 		this.updateStartGame();
 		System.out.println(map.gameHunterToString()+"\n");
 		
@@ -46,7 +42,7 @@ public class GameHunter extends AbstractGame {
 				super.checkBeastRevealed();
 				this.updateEndGame();
 				this.endOfTurn();
-			} 
+			}
 		}
 		this.endGame();
 	}

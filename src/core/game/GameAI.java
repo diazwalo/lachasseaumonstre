@@ -112,14 +112,12 @@ public class GameAI extends AbstractGame
 
 		super.map.moveHunter(Position.toMouvment(this.map.getHunter().getPos(), pathHunter.get(0)));
 		this.pathHunter.remove(0);
-		
-		//Interaction.pressEnter();
+
 		return true;
 	}
 
 	@Override
-	public void poserBonus()
-	{
+	public void poserBonus() {
 		// TODO Auto-generated method stub
 	}
 
