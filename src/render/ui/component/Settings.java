@@ -2,6 +2,7 @@ package render.ui.component;
 
 import config.Map;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -21,20 +22,24 @@ public class Settings
 	{
 		this.menu = new VBox();
 		Interface.maxHeight(this.menu);
+		this.menu.setAlignment(Pos.CENTER);
 		
 		VBox vboxWidth = new VBox();
 		LabelTheme labelWidth = new LabelTheme("Largeur du plateau :");
 		TextFieldTheme textFieldWidth = new TextFieldTheme("xxx");
+		vboxWidth.setPadding(new Insets(0,0,20,0));
 		vboxWidth.getChildren().addAll(labelWidth, textFieldWidth);
 		
 		VBox vboxHeight = new VBox();
 		LabelTheme labelHeight = new LabelTheme("Hauteur du plateau :");
 		TextFieldTheme textFieldHeight = new TextFieldTheme("xxx");
-		vboxWidth.getChildren().addAll(labelHeight, textFieldHeight);
+		vboxHeight.setPadding(new Insets(0,0,20,0));
+		vboxHeight.getChildren().addAll(labelHeight, textFieldHeight);
 		
 		VBox vboxNbTop = new VBox();
 		LabelTheme labelNbTp = new LabelTheme("Nombre de téléportation pour le monstre :");
 		TextFieldTheme textFieldNbTp = new TextFieldTheme("xxx");
+		vboxNbTop.setPadding(new Insets(0,0,20,0));
 		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);
 		
 		VBox vboxListMap = new VBox();
@@ -46,10 +51,11 @@ public class Settings
 		}
 		
 		listMap.getSelectionModel().selectFirst();
-		
+		vboxListMap.setPadding(new Insets(0,0,20,0));
 		vboxListMap.getChildren().addAll(labelListMap, listMap);
 		
 		VBox vboxBonus = new VBox();
+		
 		LabelTheme labelBonus = new LabelTheme("Bonus X : ");
 		CheckBoxTheme checkBoxThemeBonus = new CheckBoxTheme();
 		HBox hBoxBonus = new HBox();
@@ -59,9 +65,10 @@ public class Settings
 		this.menu.getChildren().addAll(vboxWidth, vboxHeight, vboxNbTop, vboxListMap, vboxBonus);
 		
 		HBox horizontalFooter = new HBox();
-		HomeMinButton left = new HomeMinButton("Quitter");
+		HomeMinButton left = new HomeMinButton("Retour");
 		HomeMinButton save = new HomeMinButton("Sauver");
 		
+		horizontalFooter.setAlignment(Pos.CENTER);
 		horizontalFooter.getChildren().addAll(left, save);
 		horizontalFooter.setPadding(new Insets(50, 0, 0, 0));
 		this.menu.getChildren().add(horizontalFooter);

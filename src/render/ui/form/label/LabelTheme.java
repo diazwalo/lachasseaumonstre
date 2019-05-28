@@ -1,7 +1,6 @@
 package render.ui.form.label;
 
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
 
 public class LabelTheme extends Label
 {

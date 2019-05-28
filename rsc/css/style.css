@@ -1,3 +1,19 @@
-.cellule-theme {
+.list-view{
+    -fx-background-color: #bbb;
+    -fx-border-color: #eee;
+}
+
+.combo-box .cell{
+    -fx-text-fill: #eee;
+}
+
+
+.check-box .box {
 	-fx-background-color: transparent;
+	-fx-border-color:#eee;
+	-fx-border-radius:3px; 
+}
+
+.check-box:selected .mark {
+	-fx-background-color: white;
 }
