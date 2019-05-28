@@ -3,7 +3,6 @@ package render.ui.component;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;

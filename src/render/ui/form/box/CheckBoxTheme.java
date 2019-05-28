@@ -1,10 +1,6 @@
 package render.ui.form.box;
 
-import config.Map;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import render.ui.form.label.LabelTheme;
 
 public class CheckBoxTheme extends CheckBox{
 	public CheckBoxTheme() {

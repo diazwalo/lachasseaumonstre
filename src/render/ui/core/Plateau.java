@@ -32,9 +32,10 @@ public class Plateau extends Application{
 	public void start(Stage stage) throws FileNotFoundException {
 	
 		VBox root = new VBox();
+		VBox rootSettings = new VBox();
 		
 		Home home = new Home();
-		root.getChildren().add(home.getCore());
+		rootSettings.getChildren().add(home.getCore());
 		
 	  /*HBox mapAndBonus = new HBox();
 		VBox bonus = new VBox();
@@ -57,14 +58,15 @@ public class Plateau extends Application{
 	    gameButtonAndChat.getChildren().add(chat);*/
 	    
 	    
-		Scene scene = new Scene(root, 750, 700);
-		 
-	    scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
-	    scene.getStylesheets().add("css/style.css");
+		Scene sceneHome = new Scene(root, 750, 700);
+		Scene sceneSettings = new Scene(rootSettings, 750, 700);
+
+		sceneSettings.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
+		sceneSettings.getStylesheets().add("css/style.css");
 	    
 	    stage.setTitle("La chasse aux monstres");
 	    stage.getIcons().add(new Image("icons/icon.png"));
-	    stage.setScene(scene);
+	    stage.setScene(sceneSettings);
 	    stage.setMaximized(true);
 	    stage.setResizable(false);
 	    stage.show();
