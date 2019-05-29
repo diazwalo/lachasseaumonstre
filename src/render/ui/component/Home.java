@@ -12,6 +12,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
 import render.ui.form.button.HomeMinButton;
