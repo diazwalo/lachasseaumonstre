@@ -46,13 +46,13 @@ public class Settings
 		
 		VBox vboxHeight = new VBox();
 		LabelTheme labelHeight = new LabelTheme("Hauteur du plateau :");
-		Spinner<Integer> textFieldHeight = new SpinnerTheme(Config.minSize, Config.maxSize, config.getHeight());
+		SpinnerTheme textFieldHeight = new SpinnerTheme(Config.minSize, Config.maxSize, config.getHeight());
 		vboxHeight.setPadding(new Insets(0,0,20,0));
 		vboxHeight.getChildren().addAll(labelHeight, textFieldHeight);
 		
 		VBox vboxNbTop = new VBox();
 		LabelTheme labelNbTp = new LabelTheme("Nombre de téléportation pour le monstre :");
-		Spinner<Integer> textFieldNbTp = new SpinnerTheme(Config.minTp, Config.maxTp, config.getNbTeleportation());
+		SpinnerTheme textFieldNbTp = new SpinnerTheme(Config.minTp, Config.maxTp, config.getNbTeleportation());
 		vboxNbTop.setPadding(new Insets(0,0,20,0));
 		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);
 		

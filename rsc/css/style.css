@@ -1,5 +1,9 @@
 @import url("fonts.css");
 
+/*
+	Original classes, attributes & values are available here
+	https://gist.github.com/tmazeika/c90c03c645d18722ddb0
+*/
 .list-view{
     -fx-background-color: #bbb;
     -fx-border-color: #eee;
@@ -18,4 +22,38 @@
 
 .check-box:selected .mark {
 	-fx-background-color: white;
+}
+
+/* SPINNER */
+
+.spinner .text-field{
+    -fx-text-fill: #fff;
+    -fx-background-color: transparent; 
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: transparent;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #fff;
+}
+
+
+.spinner .increment-arrow-button:hover:pressed,
+.spinner .decrement-arrow-button:hover:pressed,
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-body-color: transparent;
+}
+
+.spinner .increment-arrow-button:hover .increment-arrow,
+.spinner .decrement-arrow-button:hover .decrement-arrow {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+}
+
+.spinner .increment-arrow-button .increment-arrow, .decrement-arrow {
+    -fx-background-color: #fff;
 }
