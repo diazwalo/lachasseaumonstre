@@ -96,7 +96,7 @@ public class GameAI extends AbstractGame
 	{
 		Dijkstra dijkstra;
 		String nodeNameTo = null;
-		this.setBonusIAHunter(); 
+		this.setBonusIAHunter();  
 		//Hunter turn
 		System.out.println(this.map.toString());
 		

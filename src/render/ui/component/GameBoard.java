@@ -4,13 +4,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import map.AbstractMap;
 import map.CaseType;
+import render.ui.core.Window;
 import render.ui.util.Directory;
+import render.ui.util.Interface;
 
 public class GameBoard {
 	
@@ -20,7 +23,7 @@ public class GameBoard {
 	Image beast;
 	Image hunter;
 	
-	public GameBoard(AbstractMap map) throws FileNotFoundException {
+	public GameBoard(Window window, AbstractMap map) throws FileNotFoundException {
 		FileInputStream is = new FileInputStream(new File(Directory.getGameGround()));
     	ground = new Image(is);
     is  = new FileInputStream(new File(Directory.getGameObstacle()));
@@ -57,6 +60,10 @@ public class GameBoard {
                 grid.getChildren().addAll(rec);
             }
         }
+    
+    	Scene scene = new Scene(this.grid, Interface.getSize().getWidth(), Interface.getSize().getHeight());
+    	scene.getStylesheets().add("css/style.css");
+    	window.stage.setScene(scene);
 	}
 	
 	public GridPane getGrid() {
