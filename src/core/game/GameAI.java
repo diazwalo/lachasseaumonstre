@@ -74,6 +74,7 @@ public class GameAI extends AbstractGame
 	@Override
 	public boolean beastTurn()
 	{
+		this.setBonusIABeast();
 		System.out.println(this.map.toString());
 
 		try {
@@ -95,7 +96,7 @@ public class GameAI extends AbstractGame
 	{
 		Dijkstra dijkstra;
 		String nodeNameTo = null;
-		
+		this.setBonusIAHunter(); 
 		//Hunter turn
 		System.out.println(this.map.toString());
 		
