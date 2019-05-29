@@ -31,6 +31,4 @@ public class HomeButton extends Button
 		
 		return dropShadow;
 	}
-
-	
 }
