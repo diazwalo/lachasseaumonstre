@@ -23,10 +23,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import map.SquareMap;
 import render.ui.component.GameBoard;
-import render.ui.component.Home;
 import render.ui.component.Inventory;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
+import render.ui.view.Home;
 
 public class Window extends Application
 {

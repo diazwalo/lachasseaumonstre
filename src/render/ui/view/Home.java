@@ -1,4 +1,4 @@
-package render.ui.component;
+package render.ui.view;
 
 import config.Config;
 import javafx.geometry.Insets;
