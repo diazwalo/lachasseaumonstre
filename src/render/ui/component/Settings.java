@@ -107,6 +107,8 @@ public class Settings
 			config.setWidth(textFieldWidth.getValue());
 			config.setHeight(textFieldHeight.getValue());
 			config.setNbTeleportation(textFieldNbTp.getValue());
+			// TODO : Ca marche pas mais trkl pierre y gere
+			config.setMap(Map.valueOf(listMap.getValue()));
 			config.setTrap(checkBoxThemeTrap.isSelected());
 			config.setWard(checkBoxThemeWard.isSelected());
 			config.setBait(checkBoxThemeBait.isSelected());
