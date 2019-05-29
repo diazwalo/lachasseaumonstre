@@ -1,5 +1,7 @@
 package render.ui.view;
 
+import com.sun.rowset.internal.InsertRow;
+
 import config.Config;
 import config.Map;
 import javafx.geometry.Insets;
@@ -68,16 +70,20 @@ public class Settings
 		
 		VBox vboxBonus = new VBox();
 		
-		LabelTheme labelTrap = new LabelTheme("Piege : ");
+		LabelTheme labelTrap = new LabelTheme("Activer les pieges");
+		labelTrap.setPadding(new Insets(6, 0, 0, 0));
 		CheckBoxTheme checkBoxThemeTrap = new CheckBoxTheme(config.isTrap());
 		
-		LabelTheme labelWard = new LabelTheme("Balise de Vision : ");
+		LabelTheme labelWard = new LabelTheme("Activer les balises de vision");
+		labelWard.setPadding(new Insets(6, 0, 0, 0));
 		CheckBoxTheme checkBoxThemeWard = new CheckBoxTheme(config.isWard());
 		
-		LabelTheme labelBait = new LabelTheme("Leurre : ");
+		LabelTheme labelBait = new LabelTheme("Activer les Leurres");
+		labelBait.setPadding(new Insets(6, 0, 0, 0));
 		CheckBoxTheme checkBoxThemeBait = new CheckBoxTheme(config.isBait());
 		
-		LabelTheme labelCamouflage = new LabelTheme("Camouflage : ");
+		LabelTheme labelCamouflage = new LabelTheme("Activer les camouflage");
+		labelCamouflage.setPadding(new Insets(6, 0, 0, 0));
 		CheckBoxTheme checkBoxThemeCamouflage = new CheckBoxTheme(config.isCamouflage());
 		
 		HBox hBoxBonus1 = new HBox();
@@ -85,13 +91,13 @@ public class Settings
 		HBox hBoxBonus3 = new HBox();
 		HBox hBoxBonus4 = new HBox();
 		
-		hBoxBonus1.getChildren().addAll(labelTrap, checkBoxThemeTrap);
+		hBoxBonus1.getChildren().addAll(checkBoxThemeTrap, labelTrap);
 		hBoxBonus1.setPadding(new Insets(0,0,20,0));
-		hBoxBonus2.getChildren().addAll(labelWard, checkBoxThemeWard);
+		hBoxBonus2.getChildren().addAll(checkBoxThemeWard, labelWard);
 		hBoxBonus2.setPadding(new Insets(0,0,20,0));
-		hBoxBonus3.getChildren().addAll(labelBait, checkBoxThemeBait);
+		hBoxBonus3.getChildren().addAll(checkBoxThemeBait, labelBait);
 		hBoxBonus3.setPadding(new Insets(0,0,20,0));
-		hBoxBonus4.getChildren().addAll(labelCamouflage, checkBoxThemeCamouflage);
+		hBoxBonus4.getChildren().addAll(checkBoxThemeCamouflage, labelCamouflage);
 		hBoxBonus4.setPadding(new Insets(0,0,20,0));
 		vboxBonus.getChildren().addAll(hBoxBonus1, hBoxBonus2, hBoxBonus3, hBoxBonus4);
 		
