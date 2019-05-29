@@ -1,5 +1,6 @@
 package render.ui.component;
 
+import config.Config;
 import core.game.GameStatus;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -42,7 +43,8 @@ public class EndScreen {
 		Label txtEnd = new LabelThemeVariableSize(gameStatue.getStatus(), 40);
 		Button next = new HomeMinButton("Suivant");
 		next.setOnAction(e -> { 
-			Home home = new Home(this.window);
+			//On devra faire un this.config (donc l'avoir comme attribut)
+			Home home = new Home(this.window, new Config());
 		});
 		
 		if(statue == null) {

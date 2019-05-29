@@ -5,8 +5,6 @@ import config.Map;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import render.ui.core.Window;
@@ -44,13 +42,13 @@ public class Settings
 		
 		VBox vboxHeight = new VBox();
 		LabelTheme labelHeight = new LabelTheme("Hauteur du plateau :");
-		TextFieldTheme textFieldHeight = new TextFieldTheme("xxx");
+		TextFieldTheme textFieldHeight = new TextFieldTheme(config.getHeight()+"");
 		vboxHeight.setPadding(new Insets(0,0,20,0));
 		vboxHeight.getChildren().addAll(labelHeight, textFieldHeight);
 		
 		VBox vboxNbTop = new VBox();
 		LabelTheme labelNbTp = new LabelTheme("Nombre de téléportation pour le monstre :");
-		TextFieldTheme textFieldNbTp = new TextFieldTheme("xxx");
+		TextFieldTheme textFieldNbTp = new TextFieldTheme(config.getNbTeleportation()+"");
 		vboxNbTop.setPadding(new Insets(0,0,20,0));
 		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);
 		
@@ -68,30 +66,30 @@ public class Settings
 		
 		VBox vboxBonus = new VBox();
 		
-		LabelTheme labelBonus1 = new LabelTheme("Bonus X : ");
-		CheckBoxTheme checkBoxThemeBonus1 = new CheckBoxTheme();
+		LabelTheme labelTrap = new LabelTheme("Piege : ");
+		CheckBoxTheme checkBoxThemeTrap = new CheckBoxTheme(config.isTrap());
 		
-		LabelTheme labelBonus2 = new LabelTheme("Bonus Y : ");
-		CheckBoxTheme checkBoxThemeBonus2 = new CheckBoxTheme();
+		LabelTheme labelWard = new LabelTheme("Balise de Vision : ");
+		CheckBoxTheme checkBoxThemeWard = new CheckBoxTheme(config.isWard());
 		
-		LabelTheme labelBonus3 = new LabelTheme("Bonus Z : ");
-		CheckBoxTheme checkBoxThemeBonus3 = new CheckBoxTheme();
+		LabelTheme labelBait = new LabelTheme("Leurre : ");
+		CheckBoxTheme checkBoxThemeBait = new CheckBoxTheme(config.isBait());
 		
-		LabelTheme labelBonus4 = new LabelTheme("Bonus W : ");
-		CheckBoxTheme checkBoxThemeBonus4 = new CheckBoxTheme();
+		LabelTheme labelCamouflage = new LabelTheme("Camouflage : ");
+		CheckBoxTheme checkBoxThemeCamouflage = new CheckBoxTheme(config.isCamouflage());
 		
 		HBox hBoxBonus1 = new HBox();
 		HBox hBoxBonus2 = new HBox();
 		HBox hBoxBonus3 = new HBox();
 		HBox hBoxBonus4 = new HBox();
 		
-		hBoxBonus1.getChildren().addAll(labelBonus1, checkBoxThemeBonus1);
+		hBoxBonus1.getChildren().addAll(labelTrap, checkBoxThemeTrap);
 		hBoxBonus1.setPadding(new Insets(0,0,20,0));
-		hBoxBonus2.getChildren().addAll(labelBonus2, checkBoxThemeBonus2);
+		hBoxBonus2.getChildren().addAll(labelWard, checkBoxThemeWard);
 		hBoxBonus2.setPadding(new Insets(0,0,20,0));
-		hBoxBonus3.getChildren().addAll(labelBonus3, checkBoxThemeBonus3);
+		hBoxBonus3.getChildren().addAll(labelBait, checkBoxThemeBait);
 		hBoxBonus3.setPadding(new Insets(0,0,20,0));
-		hBoxBonus4.getChildren().addAll(labelBonus4, checkBoxThemeBonus4);
+		hBoxBonus4.getChildren().addAll(labelCamouflage, checkBoxThemeCamouflage);
 		hBoxBonus4.setPadding(new Insets(0,0,20,0));
 		vboxBonus.getChildren().addAll(hBoxBonus1, hBoxBonus2, hBoxBonus3, hBoxBonus4);
 		
@@ -103,6 +101,13 @@ public class Settings
 			new Home(this.window, config);
 		});
 		HomeMinButton save = new HomeMinButton("Sauver");
+		save.setOnAction(e -> {
+			config.setTrap(checkBoxThemeTrap.isSelected());
+			config.setWard(checkBoxThemeWard.isSelected());
+			config.setBait(checkBoxThemeBait.isSelected());
+			config.setCamouflage(checkBoxThemeCamouflage.isSelected());
+			new Home(this.window, config);
+		});
 		
 		horizontalFooter.setAlignment(Pos.CENTER);
 		horizontalFooter.getChildren().addAll(left, save);

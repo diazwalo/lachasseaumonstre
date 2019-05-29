@@ -59,7 +59,7 @@ public class Window extends Application
 	    mapAndBonus.getChildren().add(inventaire.getCore());
 	    gameButtonAndChat.getChildren().add(playButton.getCore());
 	    gameButtonAndChat.getChildren().add(chat);*/
-	    
+
 	    stage.setTitle("La chasse aux monstres");
 	    stage.getIcons().add(new Image("icons/icon.png"));
 	    stage.setMaximized(true);
