@@ -6,8 +6,11 @@ package config;
  * @author PHPierre
  *
  */
-public class Config
-{
+public class Config {
+	public static final int minSize = 8;
+	public static final int maxSize = 20;
+	public static final int minTp = 0;
+	public static final int maxTp = 5;
 	private int width;
 	private int height;
 	private GameMode gameMode;
@@ -22,8 +25,7 @@ public class Config
 	/**
 	 * Instancie une nouvelle configuration qui applique la configuration par default.
 	 */
-	public Config()
-	{
+	public Config() {
 		this.setDefaultConfig();
 	}
 	
@@ -31,10 +33,10 @@ public class Config
 	 * Restaure la configuration par default.
 	 */
 	public void setDefaultConfig() {
-		this.width = 8;
-		this.height = 8;
+		this.width = Config.minSize;
+		this.height = Config.minSize;
 		this.gameMode = GameMode.BEASTvsAI;
-		this.nbTeleportation = 3;
+		this.nbTeleportation = Config.minTp;
 		this.map = Map.SQUARE;
 
 		this.trap = false;

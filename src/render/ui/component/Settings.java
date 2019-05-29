@@ -5,6 +5,7 @@ import config.Map;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Spinner;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import render.ui.core.Window;
@@ -12,6 +13,7 @@ import render.ui.form.box.CheckBoxTheme;
 import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelTheme;
 import render.ui.form.text.ComboBoxTheme;
+import render.ui.form.text.SpinnerTheme;
 import render.ui.form.text.TextFieldTheme;
 import render.ui.util.Interface;
 
@@ -36,19 +38,19 @@ public class Settings
 		
 		VBox vboxWidth = new VBox();
 		LabelTheme labelWidth = new LabelTheme("Largeur du plateau :");
-		TextFieldTheme textFieldWidth = new TextFieldTheme(config.getWidth() + "");
+		Spinner<Integer> textFieldWidth = new SpinnerTheme(Config.minSize, Config.maxSize, config.getWidth());
 		vboxWidth.setPadding(new Insets(0,0,20,0));
 		vboxWidth.getChildren().addAll(labelWidth, textFieldWidth);
 		
 		VBox vboxHeight = new VBox();
 		LabelTheme labelHeight = new LabelTheme("Hauteur du plateau :");
-		TextFieldTheme textFieldHeight = new TextFieldTheme(config.getHeight()+"");
+		Spinner<Integer> textFieldHeight = new SpinnerTheme(Config.minSize, Config.maxSize, config.getHeight());
 		vboxHeight.setPadding(new Insets(0,0,20,0));
 		vboxHeight.getChildren().addAll(labelHeight, textFieldHeight);
 		
 		VBox vboxNbTop = new VBox();
 		LabelTheme labelNbTp = new LabelTheme("Nombre de téléportation pour le monstre :");
-		TextFieldTheme textFieldNbTp = new TextFieldTheme(config.getNbTeleportation()+"");
+		Spinner<Integer> textFieldNbTp = new SpinnerTheme(Config.minTp, Config.maxTp, config.getNbTeleportation());
 		vboxNbTop.setPadding(new Insets(0,0,20,0));
 		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);
 		
@@ -102,6 +104,9 @@ public class Settings
 		});
 		HomeMinButton save = new HomeMinButton("Sauver");
 		save.setOnAction(e -> {
+			config.setWidth(textFieldWidth.getValue());
+			config.setHeight(textFieldHeight.getValue());
+			config.setNbTeleportation(textFieldNbTp.getValue());
 			config.setTrap(checkBoxThemeTrap.isSelected());
 			config.setWard(checkBoxThemeWard.isSelected());
 			config.setBait(checkBoxThemeBait.isSelected());
