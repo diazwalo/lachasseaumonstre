@@ -35,8 +35,9 @@ public class Home
 		verticalMenu();
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		//scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
+		
 		scene.getStylesheets().add("css/style.css");
+		scene.getStylesheets().add("css/fonts.css");
 		
 		window.stage.setScene(scene);
 	}
