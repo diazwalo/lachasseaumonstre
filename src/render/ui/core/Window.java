@@ -1,31 +1,9 @@
 package render.ui.core;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import config.Config;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import map.SquareMap;
-import render.ui.component.GameBoard;
-import render.ui.component.Inventory;
-import render.ui.form.button.PlayButton;
-import render.ui.util.Directory;
 import render.ui.view.Home;
 
 public class Window extends Application
@@ -33,12 +11,10 @@ public class Window extends Application
 	public Stage stage;
 	Config config = new Config();
 	
-	public void start(Stage stage) throws FileNotFoundException {
+	public void start(Stage stage) {
 		this.stage = stage;
 		
-		VBox root = new VBox();
-		
-		Home home = new Home(this, config);
+		new Home(this, config);
 		
 	  /*HBox mapAndBonus = new HBox();
 		VBox bonus = new VBox();

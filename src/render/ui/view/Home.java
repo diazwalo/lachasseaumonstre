@@ -4,19 +4,11 @@ import config.Config;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
 import render.ui.form.button.HomeMinButton;
-import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public class Home
@@ -39,9 +31,7 @@ public class Home
 		verticalMenu();
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		
 		scene.getStylesheets().add("css/style.css");
-		//scene.getStylesheets().add("css/fonts.css");
 		
 		window.stage.setScene(scene);
 	}
@@ -60,12 +50,7 @@ public class Home
 		
 		HomeMinButton settings = new HomeMinButton("Settings");
 		settings.setOnAction(e -> { 
-			//this.core.getChildren()
-			//this.core.setBackground(getBackground());
-			
-			//Settings st = new Settings();
-			//this.core.getChildren().add(st.getMenu());
-			Settings st = new Settings(this.window, this.config);
+			new Settings(this.window, this.config);
 		});
 		
 		HomeMinButton left = new HomeMinButton("Quitter");

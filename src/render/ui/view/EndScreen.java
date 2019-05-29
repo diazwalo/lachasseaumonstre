@@ -44,7 +44,7 @@ public class EndScreen {
 		Button next = new HomeMinButton("Suivant");
 		next.setOnAction(e -> { 
 			//On devra faire un this.config (donc l'avoir comme attribut)
-			Home home = new Home(this.window, new Config());
+			new Home(this.window, new Config());
 		});
 		
 		if(statue == null) {
