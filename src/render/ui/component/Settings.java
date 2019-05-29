@@ -109,7 +109,7 @@ public class Settings
 		this.menu.getChildren().add(horizontalFooter);
 		this.core.getChildren().add(this.menu);
 		
-		Scene scene = new Scene(this.core);
+		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		//scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
 		scene.getStylesheets().add("css/style.css");
 		

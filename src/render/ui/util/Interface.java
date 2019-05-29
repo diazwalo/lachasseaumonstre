@@ -14,11 +14,17 @@ public class Interface
 {
 	public static VBox maxHeight(VBox vbox)
 	{
-		Screen screen = Screen.getPrimary();
-		Rectangle2D bounds = screen.getVisualBounds();
-		vbox.setMinHeight(bounds.getHeight());
+		vbox.setMinHeight(getSize().getHeight());
 		
 		return vbox;
+	}
+	
+	public static Rectangle2D getSize()
+	{
+		Screen screen = Screen.getPrimary();
+		Rectangle2D bounds = screen.getVisualBounds();
+		
+		return bounds;
 	}
 	
 	public static Background getBackground()

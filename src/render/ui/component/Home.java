@@ -34,7 +34,7 @@ public class Home
 		Interface.maxHeight(this.menu);
 		verticalMenu();
 		
-		Scene scene = new Scene(this.core, 750, 700);
+		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		//scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
 		scene.getStylesheets().add("css/style.css");
 		
@@ -55,7 +55,7 @@ public class Home
 		
 		HomeMinButton settings = new HomeMinButton("Settings");
 		settings.setOnAction(e -> { 
-			//this.core.getChildren().clear();
+			//this.core.getChildren()
 			//this.core.setBackground(getBackground());
 			
 			//Settings st = new Settings();
