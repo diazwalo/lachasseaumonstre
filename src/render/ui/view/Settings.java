@@ -48,7 +48,7 @@ public class Settings
 		vboxHeight.getChildren().addAll(labelHeight, textFieldHeight);
 		
 		VBox vboxNbTop = new VBox();
-		LabelTheme labelNbTp = new LabelTheme("Nombre de téléportation pour le monstre :");
+		LabelTheme labelNbTp = new LabelTheme("Nombre de teleportation pour le monstre :");
 		SpinnerTheme textFieldNbTp = new SpinnerTheme(Config.minTp, Config.maxTp, config.getNbTeleportation());
 		vboxNbTop.setPadding(new Insets(0,0,20,0));
 		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);

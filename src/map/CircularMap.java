@@ -21,7 +21,7 @@ public class CircularMap extends AbstractMap {
 		this.beastWin = false;
 		this.hunterWin = false;
 	}
-	
+
 	/**
 	 * Remplie le tableau en mettant dans les cases soit des Obstacles soit des Sol.
 	 */

@@ -1,11 +1,18 @@
 package render.ui.view;
 
+import java.io.FileNotFoundException;
+
 import config.Config;
+import config.Map;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import map.AbstractMap;
+import map.CircularMap;
+import map.SquareMap;
+import render.ui.component.GameBoard;
 import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
 import render.ui.form.button.HomeMinButton;
@@ -42,6 +49,22 @@ public class Home
 		HomeButton btn2 = new HomeButton("Chasseur");		
 		HomeButton btn3 = new HomeButton("Monstre");		
 		HomeButton btn4 = new HomeButton("Dual");
+		
+		//TEST
+		btn2.setOnAction(e -> {
+			AbstractMap map = null;
+			if(this.config.getMap().equals(Map.SQUARE)) {
+				map = new SquareMap(this.config);
+			}else if(this.config.getMap().equals(Map.CIRCULAR)) {
+				map = new CircularMap(this.config);
+			}
+			try {
+				new GameBoard(window, map);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		
 		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4);
 		this.menu.setAlignment(Pos.CENTER);

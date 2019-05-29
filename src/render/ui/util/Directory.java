@@ -11,6 +11,8 @@ public class Directory
 	
 	private static final String TEXTURES_FOLDER = DS + "rsc" + DS + "textures" + DS;
 	
+	private static final String ICONS_FOLDER = DS + "rsc" + DS + "icons" + DS;
+	
 	//Textures path
 	
 	private static final String HOME_BACKGROUND = TEXTURES_FOLDER + "background.gif";
@@ -25,7 +27,15 @@ public class Directory
 	
 	private static final String GAME_HUNTER = TEXTURES_FOLDER + "hunter.png";
 	
+	//Icons path
+	
+	private static final String ICON = ICONS_FOLDER + "icon.png";
+	
 	//Getter
+	
+	public static String getIcon() {
+		return Directory.ICON;
+	}
 	
 	public static String getHomeBackground()
 	{

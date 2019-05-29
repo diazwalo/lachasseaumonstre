@@ -4,6 +4,7 @@ import config.Config;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import render.ui.util.Directory;
 import render.ui.view.Home;
 
 public class Window extends Application
@@ -37,7 +38,7 @@ public class Window extends Application
 	    gameButtonAndChat.getChildren().add(chat);*/
 
 	    stage.setTitle("La chasse aux monstres");
-	    stage.getIcons().add(new Image("icons/icon.png"));
+	    //stage.getIcons().add(new Image(Directory.getIcon()));
 	    stage.setMaximized(true);
 	    stage.setResizable(false);
 	    stage.show();
