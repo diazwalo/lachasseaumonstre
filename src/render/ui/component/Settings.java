@@ -3,11 +3,12 @@ package render.ui.component;
 import config.Map;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import render.ui.core.Plateau;
+import render.ui.core.Window;
 import render.ui.form.box.CheckBoxTheme;
 import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelTheme;
@@ -17,12 +18,21 @@ import render.ui.util.Interface;
 
 public class Settings
 {
+	private Window window;
+	
+	private HBox core;
 	private VBox menu;
 	
-	public Settings()
+	public Settings(Window window)
 	{
+		this.window = window;
+		
+		this.core = new HBox();
 		this.menu = new VBox();
+		
 		Interface.maxHeight(this.menu);
+		this.core.setBackground(Interface.getBackground());
+		this.core.setAlignment(Pos.CENTER);
 		this.menu.setAlignment(Pos.CENTER);
 		
 		VBox vboxWidth = new VBox();
@@ -89,7 +99,7 @@ public class Settings
 		HBox horizontalFooter = new HBox();
 		HomeMinButton left = new HomeMinButton("Retour");
 		left.setOnAction(e -> {
-			//new Scene(new Home());
+			new Home(this.window);
 		});
 		HomeMinButton save = new HomeMinButton("Sauver");
 		
@@ -97,11 +107,13 @@ public class Settings
 		horizontalFooter.getChildren().addAll(left, save);
 		horizontalFooter.setPadding(new Insets(50, 0, 0, 0));
 		this.menu.getChildren().add(horizontalFooter);
+		this.core.getChildren().add(this.menu);
+		
+		Scene scene = new Scene(this.core);
+		//scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
+		scene.getStylesheets().add("css/style.css");
+		
+		window.stage.setScene(scene);
+		window.stage.setMaximized(true);
 	}
-	
-	public VBox getMenu()
-	{
-		return this.menu;
-	}
-	
 }

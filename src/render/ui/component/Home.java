@@ -2,6 +2,7 @@ package render.ui.component;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -10,6 +11,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
 import render.ui.form.button.HomeMinButton;
 import render.ui.util.Directory;
@@ -19,35 +21,24 @@ public class Home
 {
 	private HBox core;
 	private VBox menu;
+	private Window window;
 	
-	public Home()
+	public Home(Window window)
 	{
+		this.window = window;
+		
 		this.core = new HBox();
 		this.menu = new VBox();
 		
-		this.core.setBackground(getBackground());
+		this.core.setBackground(Interface.getBackground());
 		Interface.maxHeight(this.menu);
 		verticalMenu();
-	}
-
-	public HBox getCore()
-	{
-		return this.core;
-	}
-	
-	private Background getBackground()
-	{
-		Image image = new Image("file:"+Directory.getHomeBackground());
-
-		BackgroundImage background = new BackgroundImage(
-			image, 
-			BackgroundRepeat.NO_REPEAT, 
-			BackgroundRepeat.NO_REPEAT, 
-			BackgroundPosition.CENTER,
-			new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true)
-		);
 		
-		return new Background(background);
+		Scene scene = new Scene(this.core, 750, 700);
+		//scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
+		scene.getStylesheets().add("css/style.css");
+		
+		window.stage.setScene(scene);
 	}
 	
 	private void verticalMenu()
@@ -64,11 +55,12 @@ public class Home
 		
 		HomeMinButton settings = new HomeMinButton("Settings");
 		settings.setOnAction(e -> { 
-			this.core.getChildren().clear();
-			this.core.setBackground(getBackground());
+			//this.core.getChildren().clear();
+			//this.core.setBackground(getBackground());
 			
-			Settings st = new Settings();
-			this.core.getChildren().add(st.getMenu());
+			//Settings st = new Settings();
+			//this.core.getChildren().add(st.getMenu());
+			Settings st = new Settings(this.window);
 		});
 		
 		HomeMinButton left = new HomeMinButton("Quitter");

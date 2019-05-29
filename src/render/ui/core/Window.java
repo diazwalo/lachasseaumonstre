@@ -28,14 +28,16 @@ import render.ui.component.Inventory;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
 
-public class Plateau extends Application{
-	public void start(Stage stage) throws FileNotFoundException {
+public class Window extends Application
+{
+	public Stage stage;
 	
-		VBox root = new VBox();
-		VBox rootSettings = new VBox();
+	public void start(Stage stage) throws FileNotFoundException {
+		this.stage = stage;
 		
-		Home home = new Home();
-		rootSettings.getChildren().add(home.getCore());
+		VBox root = new VBox();
+		
+		Home home = new Home(this);
 		
 	  /*HBox mapAndBonus = new HBox();
 		VBox bonus = new VBox();
@@ -57,20 +59,12 @@ public class Plateau extends Application{
 	    gameButtonAndChat.getChildren().add(playButton.getCore());
 	    gameButtonAndChat.getChildren().add(chat);*/
 	    
-	    
-		Scene sceneHome = new Scene(root, 750, 700);
-		Scene sceneSettings = new Scene(rootSettings, 750, 700);
-
-		sceneSettings.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
-		sceneSettings.getStylesheets().add("css/style.css");
-	    
 	    stage.setTitle("La chasse aux monstres");
 	    stage.getIcons().add(new Image("icons/icon.png"));
-	    stage.setScene(sceneSettings);
 	    stage.setMaximized(true);
 	    stage.setResizable(false);
 	    stage.show();
-	 
+	    
 	}
 	
 	/*private void textDisplay(GridPane grid, String theText, int row, int col) {
