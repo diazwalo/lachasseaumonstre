@@ -1,5 +1,6 @@
 package render.ui.component;
 
+import config.Config;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -22,10 +23,12 @@ public class Home
 	private HBox core;
 	private VBox menu;
 	private Window window;
+	Config config;
 	
-	public Home(Window window)
+	public Home(Window window, Config config)
 	{
 		this.window = window;
+		this.config = config;
 		
 		this.core = new HBox();
 		this.menu = new VBox();
@@ -37,7 +40,7 @@ public class Home
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		
 		scene.getStylesheets().add("css/style.css");
-		scene.getStylesheets().add("css/fonts.css");
+		//scene.getStylesheets().add("css/fonts.css");
 		
 		window.stage.setScene(scene);
 	}
@@ -61,7 +64,7 @@ public class Home
 			
 			//Settings st = new Settings();
 			//this.core.getChildren().add(st.getMenu());
-			Settings st = new Settings(this.window);
+			Settings st = new Settings(this.window, this.config);
 		});
 		
 		HomeMinButton left = new HomeMinButton("Quitter");

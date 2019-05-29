@@ -31,13 +31,14 @@ import render.ui.util.Directory;
 public class Window extends Application
 {
 	public Stage stage;
+	Config config = new Config();
 	
 	public void start(Stage stage) throws FileNotFoundException {
 		this.stage = stage;
 		
 		VBox root = new VBox();
 		
-		Home home = new Home(this);
+		Home home = new Home(this, config);
 		
 	  /*HBox mapAndBonus = new HBox();
 		VBox bonus = new VBox();

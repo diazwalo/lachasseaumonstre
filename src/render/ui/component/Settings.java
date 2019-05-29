@@ -1,5 +1,6 @@
 package render.ui.component;
 
+import config.Config;
 import config.Map;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -23,7 +24,7 @@ public class Settings
 	private HBox core;
 	private VBox menu;
 	
-	public Settings(Window window)
+	public Settings(Window window, Config config)
 	{
 		this.window = window;
 		
@@ -37,7 +38,7 @@ public class Settings
 		
 		VBox vboxWidth = new VBox();
 		LabelTheme labelWidth = new LabelTheme("Largeur du plateau :");
-		TextFieldTheme textFieldWidth = new TextFieldTheme("xxx");
+		TextFieldTheme textFieldWidth = new TextFieldTheme(config.getWidth() + "");
 		vboxWidth.setPadding(new Insets(0,0,20,0));
 		vboxWidth.getChildren().addAll(labelWidth, textFieldWidth);
 		
@@ -99,7 +100,7 @@ public class Settings
 		HBox horizontalFooter = new HBox();
 		HomeMinButton left = new HomeMinButton("Retour");
 		left.setOnAction(e -> {
-			new Home(this.window);
+			new Home(this.window, config);
 		});
 		HomeMinButton save = new HomeMinButton("Sauver");
 		
