@@ -21,4 +21,14 @@ public enum Map
 	{
 		return this.name;
 	}
+	
+	public static Map getMap(String name)
+	{
+		for (Map map : Map.values()) {
+            if (name.equals(map.getName())) {
+                return map;
+            }
+        }
+        return null;
+	}
 }

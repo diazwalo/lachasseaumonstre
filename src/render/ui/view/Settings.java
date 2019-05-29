@@ -1,7 +1,5 @@
 package render.ui.view;
 
-import com.sun.rowset.internal.InsertRow;
-
 import config.Config;
 import config.Map;
 import javafx.geometry.Insets;
@@ -16,7 +14,6 @@ import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelTheme;
 import render.ui.form.text.ComboBoxTheme;
 import render.ui.form.text.SpinnerTheme;
-import render.ui.form.text.TextFieldTheme;
 import render.ui.util.Interface;
 
 public class Settings
@@ -61,29 +58,33 @@ public class Settings
 		ComboBoxTheme listMap = new ComboBoxTheme();
 		
 		for (int i = 0; i < Map.values().length; i++) {
-			listMap.getItems().addAll(Map.values()[i].getName());		
+			listMap.getItems().addAll(Map.values()[i].getName());
+			
+			if(config.getMap().equals(Map.values()[i]))
+			{
+				listMap.getSelectionModel().select(i);
+			}
 		}
 		
-		listMap.getSelectionModel().selectFirst();
 		vboxListMap.setPadding(new Insets(0,0,20,0));
 		vboxListMap.getChildren().addAll(labelListMap, listMap);
 		
 		VBox vboxBonus = new VBox();
 		
 		LabelTheme labelTrap = new LabelTheme("Activer les pieges");
-		labelTrap.setPadding(new Insets(6, 0, 0, 0));
+		labelTrap.setPadding(new Insets(6, 0, 0, 10));
 		CheckBoxTheme checkBoxThemeTrap = new CheckBoxTheme(config.isTrap());
 		
 		LabelTheme labelWard = new LabelTheme("Activer les balises de vision");
-		labelWard.setPadding(new Insets(6, 0, 0, 0));
+		labelWard.setPadding(new Insets(6, 0, 0, 10));
 		CheckBoxTheme checkBoxThemeWard = new CheckBoxTheme(config.isWard());
 		
-		LabelTheme labelBait = new LabelTheme("Activer les Leurres");
-		labelBait.setPadding(new Insets(6, 0, 0, 0));
+		LabelTheme labelBait = new LabelTheme("Activer les leurres");
+		labelBait.setPadding(new Insets(6, 0, 0, 10));
 		CheckBoxTheme checkBoxThemeBait = new CheckBoxTheme(config.isBait());
 		
-		LabelTheme labelCamouflage = new LabelTheme("Activer les camouflage");
-		labelCamouflage.setPadding(new Insets(6, 0, 0, 0));
+		LabelTheme labelCamouflage = new LabelTheme("Activer les camouflages");
+		labelCamouflage.setPadding(new Insets(6, 0, 0, 10));
 		CheckBoxTheme checkBoxThemeCamouflage = new CheckBoxTheme(config.isCamouflage());
 		
 		HBox hBoxBonus1 = new HBox();
@@ -113,12 +114,12 @@ public class Settings
 			config.setWidth(textFieldWidth.getValue());
 			config.setHeight(textFieldHeight.getValue());
 			config.setNbTeleportation(textFieldNbTp.getValue());
-			// TODO : Ca marche pas mais trkl pierre y gere
-			config.setMap(Map.valueOf(listMap.getValue()));
+			config.setMap(Map.getMap(listMap.getValue()));
 			config.setTrap(checkBoxThemeTrap.isSelected());
 			config.setWard(checkBoxThemeWard.isSelected());
 			config.setBait(checkBoxThemeBait.isSelected());
 			config.setCamouflage(checkBoxThemeCamouflage.isSelected());
+			
 			new Home(this.window, config);
 		});
 		
@@ -129,7 +130,6 @@ public class Settings
 		this.core.getChildren().add(this.menu);
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		//scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Press+Start+2P");
 		scene.getStylesheets().add("css/style.css");
 		
 		window.stage.setScene(scene);
