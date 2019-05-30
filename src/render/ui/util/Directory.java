@@ -27,6 +27,8 @@ public class Directory
 	
 	private static final String GAME_HUNTER = TEXTURES_FOLDER + "hunter.png";
 	
+	private static final String GAME_BONUS = TEXTURES_FOLDER + "bonus.png";
+	
 	//Icons path
 	
 	private static final String ICON = ICONS_FOLDER + "icon.png";
@@ -65,5 +67,10 @@ public class Directory
 	public static String getGameHunter()
 	{
 		return System.getProperty(Directory.dir) + GAME_HUNTER;
+	}
+	
+	public static String getGameBonus()
+	{
+		return System.getProperty(Directory.dir) + GAME_BONUS;
 	}
 }
