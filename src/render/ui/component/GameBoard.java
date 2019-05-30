@@ -13,6 +13,10 @@ import map.AbstractMap;
 import map.Case;
 import map.CaseType;
 import map.Position;
+import render.bonus.Bait;
+import render.bonus.IBonus;
+import render.bonus.Trap;
+import render.bonus.Ward;
 import render.ui.core.Window;
 import render.ui.util.Directory;
 import render.ui.util.Interface;
@@ -25,9 +29,27 @@ public class GameBoard {
 	Image beast;
 	Image hunter;
 	Image bonus;
+	Image trap;
+	Image ward;
+	Image bait;
+	Image traceUn;
+	Image traceDeux;
+	Image traceTrois;
+	Image traceQuatre;
 
 	public GameBoard(Window window, AbstractMap map) throws FileNotFoundException {
-		System.out.println(map.getTab().length);
+		//TEST 
+		/**
+		 * pour voir si on peut afficher corectement les bonus actifs
+		 */
+		map.addBonusActif(new Trap(6, 7));
+		map.addBonusActif(new Ward(7, 6));
+		Bait baitTest = new Bait(1, 1);
+		baitTest.setVisible(true);
+		map.addBonusActif(baitTest);
+		
+		// TODO : tout ca est a deplacer dans les instances respective (beast, hunter, les diff bonus, l'enum CaseType)
+		
 		FileInputStream is = new FileInputStream(new File(Directory.getGameGround()));
 		ground = new Image(is);
 		is  = new FileInputStream(new File(Directory.getGameObstacle()));
@@ -38,6 +60,22 @@ public class GameBoard {
 		hunter = new Image(is);
 		is = new FileInputStream(new File(Directory.getGameBonus()));
 		bonus = new Image(is);
+		
+		is = new FileInputStream(new File(Directory.getGameTrap()));
+		trap = new Image(is);
+		is = new FileInputStream(new File(Directory.getGameWard()));
+		ward = new Image(is);
+		is = new FileInputStream(new File(Directory.getGameBait()));
+		bait = new Image(is);
+		
+		is = new FileInputStream(new File(Directory.getGameTraceUn()));
+		traceUn = new Image(is);
+		is = new FileInputStream(new File(Directory.getGameTraceDeux()));
+		traceDeux = new Image(is);
+		is = new FileInputStream(new File(Directory.getGameTraceTrois()));
+		traceTrois = new Image(is);
+		is = new FileInputStream(new File(Directory.getGameTraceQuatre()));
+		traceQuatre = new Image(is);
 
 
 		for (int row = 0; row < (map.getTab().length); row++) {
@@ -68,7 +106,7 @@ public class GameBoard {
 				// Je ne sais pas si ca va bien la mais bon pour le test ca ira
 				/**
 				 * 
-				 * TODO : OK DONC CA MARCHE SAUF QU4IL FAUT FAIRE CA A CHAQUE TOUT DONC FAIRE UNE FCT QUI SOCCUPE QUE DE CA
+				 * TODO : OK DONC CA MARCHE SAUF QU IL FAUT FAIRE CA A CHAQUE TOUR DONC FAIRE UNE FCT QUI SOCCUPE QUE DE CA
 				 * AH ET CA C EST LE FONCTIONNEMENT DE GAMEHUNTER DONC FAUDRA BIEN SEPARER POUR BEAST ET IA
 				 * 
 				 */
@@ -82,12 +120,26 @@ public class GameBoard {
 
 				if(caseCour.getHunterBonusActifOnCase(map, posCase) != null) {
 					//afficher la texture du bonus actif
-					rec.setFill(new ImagePattern(ground));
+					IBonus bonusActif = caseCour.getHunterBonusActifOnCase(map, posCase);
+					if(bonusActif instanceof Trap) {
+						rec.setFill(new ImagePattern(trap));
+					}else if(bonusActif instanceof Ward) {
+						rec.setFill(new ImagePattern(ward));
+					}
 				}
 
 				if(caseCour.getBaitOnCase(map, posCase) != null) {
+					//rec.setFill(new ImagePattern(bait));
 					// afficher le Bait
-					rec.setFill(new ImagePattern(ground));
+					Bait baitOnCase = (Bait) (caseCour.getBaitOnCase(map, posCase));
+					int cptBait = baitOnCase.getCount();
+					Image[] tabImage = new Image[] {traceUn, traceDeux, traceTrois, traceQuatre};
+					int[] tabCptBait = new int[] {1, 2, 3, 4};
+					for (int i = 0; i < tabCptBait.length; i++) {
+						if(i == cptBait) {
+							rec.setFill(new ImagePattern(tabImage[i]));
+						}
+					}
 				}
 
 				if(caseCour.bonusOnCase(caseCour.getBonusHunter())) {
