@@ -1,590 +1,668 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="map.CircularMap" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/map/CircularMap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="423" width="202" x="2412" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="interaction.Interaction" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/interaction/Interaction.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="291" x="480" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="ai.util.EdgeUtil" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/ai/util/EdgeUtil.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="197" x="811" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="map.Case" project="lachasseaumonstre" file="/lachasseaumonstre/src/map/Case.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="423" width="240" x="1912" y="817"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="ai.models.EdgeTmp" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/ai/models/EdgeTmp.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="182" x="1048" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="core.CommandParser" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/core/CommandParser.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="215" x="2157" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <enumeration id="7" language="java" name="map.Mouvment" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/map/Mouvment.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="143" x="1270" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <class id="8" language="java" name="ai.graph.Graph" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/ai/graph/Graph.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="302" x="3419" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="data.score.Score" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/data/score/Score.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="387" width="180" x="3326" y="817"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="10" language="java" name="map.IMap" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/map/IMap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="202" x="3084" y="817"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <enumeration id="11" language="java" name="core.game.GameStatus" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/core/game/GameStatus.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="178" x="4020" y="817"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <class id="12" language="java" name="ai.util.NodeUtil" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/ai/util/NodeUtil.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="158" x="1453" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="map.SquareMap" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/map/SquareMap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="423" width="202" x="2654" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="render.text.Entity" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/render/text/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="303" x="2896" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="ai.algorithm.Dijkstra" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/ai/algorithm/Dijkstra.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="258" x="3979" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="16" language="java" name="config.Config" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/config/Config.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="549" width="180" x="2192" y="817"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="17" language="java" name="core.game.AbstractGame" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/core/game/AbstractGame.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="180" x="4277" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="18" language="java" name="map.Position" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/map/Position.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="254" x="4639" y="817"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="19" language="java" name="render.bonus.Bait" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/render/bonus/Bait.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="128" x="4616" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="20" language="java" name="ai.comparator.EdgeComparator" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/ai/comparator/EdgeComparator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="181" x="1651" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="21" language="java" name="render.text.Beast" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/render/text/Beast.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="423" width="296" x="2412" y="817"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="22" language="java" name="ai.algorithm.Kruskal" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/ai/algorithm/Kruskal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="178" x="3761" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="23" language="java" name="render.bonus.Trap" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/render/bonus/Trap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="133" x="4933" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <enumeration id="24" language="java" name="config.GameMode" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/config/GameMode.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="172" x="2759" y="1406"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <enumeration id="25" language="java" name="map.CaseType" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/map/CaseType.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="134" x="1912" y="1406"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <class id="26" language="java" name="ai.models.Node" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/ai/models/Node.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="231" x="3546" y="817"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <enumeration id="27" language="java" name="config.Map" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/config/Map.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="119" x="2192" y="1406"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <class id="28" language="java" name="core.Core" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/core/Core.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="113" x="1872" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="29" language="java" name="render.bonus.Camouflage" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/render/bonus/Camouflage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="92" x="2025" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="30" language="java" name="render.bonus.IBonus" project="lachasseaumonstre" 
+  <interface id="1" language="java" name="render.bonus.IBonus" project="lachasseaumonstre" 
     file="/lachasseaumonstre/src/render/bonus/IBonus.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="109" x="4933" y="817"/>    
+    <position height="-1" width="-1" x="328" y="292"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="31" language="java" name="data.score.ScoreManagement" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/data/score/ScoreManagement.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="140" x="3239" y="354"/>    
+  <class id="2" language="java" name="render.bonus.Bait" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/render/bonus/Bait.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="89" y="71"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="32" language="java" name="render.bonus.Ward" project="lachasseaumonstre" 
+  <class id="3" language="java" name="render.bonus.Camouflage" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/render/bonus/Camouflage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="306" y="-17"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="render.bonus.Trap" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/render/bonus/Trap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="92" y="494"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="render.bonus.Ward" project="lachasseaumonstre" 
     file="/lachasseaumonstre/src/render/bonus/Ward.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="109" x="4784" y="354"/>    
+    <position height="-1" width="-1" x="326" y="611"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="33" language="java" name="core.game.GameHunter" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/core/game/GameHunter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="141" x="4238" y="817"/>    
+  <class id="6" language="java" name="map.AbstractMap" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/map/AbstractMap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1204" y="226"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="34" language="java" name="render.text.Hunter" project="lachasseaumonstre" 
-    file="/lachasseaumonstre/src/render/text/Hunter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="296" x="2748" y="817"/>    
+  <class id="7" language="java" name="map.CircularMap" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/map/CircularMap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1316" y="-192"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="35" language="java" name="core.game.GameBeast" project="lachasseaumonstre" 
+  <class id="8" language="java" name="map.SquareMap" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/map/SquareMap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1087" y="-192"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="map.Position" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/map/Position.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="824" y="306"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="10" language="java" name="map.Mouvment" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/map/Mouvment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="839" y="-130"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="11" language="java" name="map.CaseType" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/map/CaseType.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="680" y="1163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="12" language="java" name="map.Case" project="lachasseaumonstre" file="/lachasseaumonstre/src/map/Case.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1053" y="1166"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="core.Core" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/core/Core.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2266" y="252"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="core.CommandParser" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/core/CommandParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2326" y="442"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="core.game.AbstractGame" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/core/game/AbstractGame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2012" y="456"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="core.game.GameAI" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/core/game/GameAI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1800" y="-122"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="core.game.GameBeast" project="lachasseaumonstre" 
     file="/lachasseaumonstre/src/core/game/GameBeast.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="180" x="4419" y="817"/>    
+    <position height="-1" width="-1" x="2098" y="-58"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="36" language="java" name="ai.models.Edge" project="lachasseaumonstre" 
+  <class id="18" language="java" name="core.game.GameHunter" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/core/game/GameHunter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1832" y="990"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="19" language="java" name="core.game.GameStatus" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/core/game/GameStatus.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1744" y="622"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="20" language="java" name="config.Config" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/config/Config.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2682" y="118"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="21" language="java" name="config.GameMode" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/config/GameMode.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2686" y="582"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="22" language="java" name="config.Map" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/config/Map.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2678" y="-334"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <package id="23" language="java" name="render.bonus" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/render/bonus" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="542" x="-42" y="-569"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="24" language="java" name="map" project="lachasseaumonstre" file="/lachasseaumonstre/src/map" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="72" width="767" x="680" y="-561"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="25" language="java" name="core" project="lachasseaumonstre" file="/lachasseaumonstre/src/core" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="56" width="867" x="1582" y="-545"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="26" language="java" name="config" project="lachasseaumonstre" file="/lachasseaumonstre/src/config" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2680" y="-510"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="27" language="java" name="render.text.Beast" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/render/text/Beast.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-282" y="-220"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="render.text.Entity" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/render/text/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-308" y="302"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="render.text.Hunter" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/render/text/Hunter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-308" y="752"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="30" language="java" name="ai" project="lachasseaumonstre" file="/lachasseaumonstre/src/ai" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="1176" width="1326" x="-526" y="1321"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="31" language="java" name="ai.algorithm.Curiosity" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/algorithm/Curiosity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-274" y="1546"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="ai.algorithm.Dijkstra" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/algorithm/Dijkstra.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="50" y="1578"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="ai.algorithm.Kruskal" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/algorithm/Kruskal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="412" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="ai.graph.Graph" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/graph/Graph.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="32" y="1946"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="ai.models.Edge" project="lachasseaumonstre" 
     file="/lachasseaumonstre/src/ai/models/Edge.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="153" x="3827" y="817"/>    
+    <position height="-1" width="-1" x="458" y="1954"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="37">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="38" name="listEdge"/>      
-      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="36" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="41" name="listNode"/>      
-      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
+  <class id="36" language="java" name="ai.models.Node" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/models/Node.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-363" y="1933"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="ai.models.EdgeTmp" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/models/EdgeTmp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="638" y="1952"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="ai.util.EdgeUtil" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/util/EdgeUtil.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-188" y="2290"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="ai.util.NodeUtil" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/util/NodeUtil.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="14" y="2294"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="ai.exception.NodeNotFoundException" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/exception/NodeNotFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="356" y="2294"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="ai.comparator.EdgeComparator" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/ai/comparator/EdgeComparator.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="578" y="2298"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="42" language="java" name="render.text" project="lachasseaumonstre" 
+    file="/lachasseaumonstre/src/render/text" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="60" width="397" x="-496" y="-573"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
   <association id="43">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="44" name="map"/>      
-      <multiplicity id="45" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="47" name="hunter"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="34" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="49">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="50" name="caseType"/>      
-      <multiplicity id="51" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="53" name="listNode"/>      
-      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="55">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="56" name="hunter"/>      
-      <multiplicity id="57" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="34" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="58">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="10"/>  
-  </realization>  
-  <association id="59">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="60" name="beast"/>      
-      <multiplicity id="61" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="62">    
-    <end type="SOURCE" refId="35"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <association id="63">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="64" name="adjacentNodes"/>      
-      <multiplicity id="65" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="67" name="listEdge"/>      
-      <multiplicity id="68" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="36" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="69">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="70" name="pos"/>      
-      <multiplicity id="71" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="72">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <realization id="73">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="10"/>  
-  </realization>  
-  <association id="74">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="75" name="scoreList"/>      
-      <multiplicity id="76" minimum="0" maximum="2147483647"/>    
+      <attribute id="44" name="pos"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="77">    
+  <association id="46">    
     <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="78" name="gameMode"/>      
-      <multiplicity id="79" minimum="0" maximum="1"/>    
+      <attribute id="47" name="pathHunter"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="80">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="81" name="inventory"/>      
-      <multiplicity id="82" minimum="0" maximum="2147483647"/>    
+  <association id="49">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="50" name="camouflages"/>      
+      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="30" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="83">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="30"/>  
-  </realization>  
-  <association id="84">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="85" name="tab"/>      
-      <multiplicity id="86" minimum="0" maximum="2147483647"/>    
+  <association id="52">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="53" name="pathBeast"/>      
+      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="87">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="88" name="gameMode"/>      
-      <multiplicity id="89" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="90">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="91" name="pos"/>      
-      <multiplicity id="92" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="93">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="30"/>  
-  </realization>  
-  <association id="94">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="95" name="listEdge"/>      
-      <multiplicity id="96" minimum="0" maximum="2147483647"/>    
+  <association id="55">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="56" name="listNode"/>      
+      <multiplicity id="57" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="36" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="97">    
-    <end type="SOURCE" refId="34"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <association id="98">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="99" name="beast"/>      
-      <multiplicity id="100" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="101">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="102" name="map"/>      
-      <multiplicity id="103" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="104">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="105" name="config"/>      
-      <multiplicity id="106" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="107">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="108" name="config"/>      
-      <multiplicity id="109" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="110">    
+  <association id="58">    
     <end type="SOURCE" refId="32" navigable="false">      
-      <attribute id="111" name="pos"/>      
-      <multiplicity id="112" minimum="0" maximum="1"/>    
+      <attribute id="59" name="listNode"/>      
+      <multiplicity id="60" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="36" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="113">    
+  <association id="61">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="62" name="adjacentNodes"/>      
+      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="65" name="graph"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="68" name="hunter"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="71">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="114" name="gameStatus"/>      
-      <multiplicity id="115" minimum="0" maximum="1"/>    
+      <attribute id="72" name="pathHunter"/>      
+      <multiplicity id="73" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="75" name="listEdge"/>      
+      <multiplicity id="76" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="78" name="baits"/>      
+      <multiplicity id="79" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="81" name="config"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="84" name="listNode"/>      
+      <multiplicity id="85" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="86">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="87">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="88" name="inventory"/>      
+      <multiplicity id="89" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="91" name="caseType"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="116">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="117" name="pos"/>      
-      <multiplicity id="118" minimum="0" maximum="1"/>    
+  <association id="93">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="94" name="gameMode"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="119">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="120" name="config"/>      
-      <multiplicity id="121" minimum="0" maximum="1"/>    
+  <association id="96">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="97" name="pos"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="122">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="123" name="listNode"/>      
-      <multiplicity id="124" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="125">    
-    <end type="SOURCE" refId="33"/>    
-    <end type="TARGET" refId="17"/>  
+  <generalization id="99">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="28"/>  
   </generalization>  
-  <association id="126">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="127" name="tab"/>      
-      <multiplicity id="128" minimum="0" maximum="2147483647"/>    
+  <association id="100">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="101" name="map"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="129">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="30"/>  
+  <realization id="103">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
   </realization>  
+  <association id="104">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="105" name="beast"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="107">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="108" name="listEdge"/>      
+      <multiplicity id="109" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="110">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="111">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="112" name="listNode"/>      
+      <multiplicity id="113" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="115" name="tab"/>      
+      <multiplicity id="116" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="118" name="wards"/>      
+      <multiplicity id="119" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="120">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="121">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="122" name="bonusActif"/>      
+      <multiplicity id="123" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="125" name="pos"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="127">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <generalization id="128">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <association id="129">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="130" name="listEdge"/>      
+      <multiplicity id="131" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="132">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="133" name="traps"/>      
+      <multiplicity id="134" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="135">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="136" name="pos"/>      
+      <multiplicity id="137" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="138">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="139" name="pos"/>      
+      <multiplicity id="140" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="141">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="142" name="gameStatus"/>      
+      <multiplicity id="143" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="144">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <generalization id="145">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <association id="146">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="147" name="config"/>      
+      <multiplicity id="148" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="149">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="150" name="map"/>      
+      <multiplicity id="151" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="152">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
