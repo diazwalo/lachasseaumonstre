@@ -136,7 +136,7 @@ public class GameBoard {
 					Image[] tabImage = new Image[] {traceUn, traceDeux, traceTrois, traceQuatre};
 					int[] tabCptBait = new int[] {1, 2, 3, 4};
 					for (int i = 0; i < tabCptBait.length; i++) {
-						if(i == cptBait) {
+						if(tabCptBait[i] == cptBait) {
 							rec.setFill(new ImagePattern(tabImage[i]));
 						}
 					}
