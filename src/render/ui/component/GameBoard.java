@@ -1,5 +1,6 @@
 package render.ui.component;
 
+import java.awt.Label;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,6 +8,7 @@ import java.io.FileNotFoundException;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import map.AbstractMap;
@@ -22,7 +24,7 @@ import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public class GameBoard {
-
+	HBox hBox = new HBox();
 	GridPane grid = new GridPane();
 	Image ground;
 	Image obstacle;
@@ -42,11 +44,6 @@ public class GameBoard {
 		/**
 		 * pour voir si on peut afficher corectement les bonus actifs
 		 */
-		map.addBonusActif(new Trap(6, 7));
-		map.addBonusActif(new Ward(7, 6));
-		Bait baitTest = new Bait(1, 1);
-		baitTest.setVisible(true);
-		map.addBonusActif(baitTest);
 		
 		// TODO : tout ca est a deplacer dans les instances respective (beast, hunter, les diff bonus, l'enum CaseType)
 		
@@ -184,6 +181,8 @@ public class GameBoard {
 		Scene scene = new Scene(this.grid, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add("css/style.css");
 		window.stage.setScene(scene);
+		
+		hBox.getChildren().addAll(this.grid, this.grid);
 	}
 
 	public GridPane getGrid() {
