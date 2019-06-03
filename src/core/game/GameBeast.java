@@ -118,45 +118,4 @@ public class GameBeast extends AbstractGame{
 		}
 		return tp;
 	}
-	
-	
-	
-	/**
-	 * Propose au joueur de poser un bonus au choix: un camouflage ou un leurre.
-	 */
-	public void poserBonus() {
-		String inventory = this.map.getBeast().toStringInventory();
-		if(inventory.length() != 0) {
-			String choix = this.askBonusChoice(inventory);
-			this.bonusChoice(choix);
-		}
-	}
-	
-	/**
-	 * Propose au joueur de choisir quel bonus de son inventaire il veut utiliser
-	 * @param inventory
-	 * @return String
-	 */
-	public String askBonusChoice(String inventory) {
-		System.out.println(inventory);
-		return super.askBonus("le Camouflage (1)", "le Leure (2) ");
-	}
-	
-	
-	/**
-	 * Active le bonus mis en parametre
-	 * @param s
-	 */
-	public void bonusChoice(String s) {
-		if(s.equals("1")) {
-			this.activateCamouflage();
-		}
-		else if (s.equals("2")) {
-			this.activateBait();
-		}
-		else {
-			return;
-		}
-	}
-	
 }

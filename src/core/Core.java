@@ -2,6 +2,7 @@ package core;
 
 import config.Config;
 import core.game.GameHunter;
+import core.game.GameMulti;
 import core.game.AbstractGame;
 import core.game.GameAI;
 import core.game.GameBeast;
@@ -45,8 +46,7 @@ public class Core {
 			game = new GameHunter(map);
 			break;
 		case BEASTvsHUNTER:
-			//Jalon 2 !
-			//IGame game = new GameHunter(map);
+			game = new GameMulti(map);
 			break;
 		}
 		

@@ -103,42 +103,4 @@ public class GameHunter extends AbstractGame {
 		}
 		return mvtTempo;
 	}
-	
-	/**
-	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
-	 */
-	public void poserBonus() {
-		String inventory = this.map.getHunter().toStringInventory();
-		if(inventory.length() != 0) {
-			String choix =this.askBonusChoice(inventory);
-			this.bonusChoice(choix);
-		}
-	}
-	
-	/**
-	 * Propose au joueur de choisir quel bonus de son inventaire il veut utiliser
-	 * @param inventory
-	 * @return String
-	 */
-	public String askBonusChoice(String inventory) {
-		System.out.println(inventory);
-		return super.askBonus("la Balise de Vision (1)", "le Piege (2) ");
-	}
-	
-	
-	/**
-	 * Active le bonus mis en parametre
-	 * @param s
-	 */
-	public void bonusChoice(String s) {
-		if(s.equals("1")) {
-			this.activateWard();
-		}
-		else if (s.equals("2")) {
-			this.activateTrap();
-		}
-		else {
-			return;
-		}
-	}
 }

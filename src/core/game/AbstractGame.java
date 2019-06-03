@@ -31,7 +31,6 @@ public abstract class AbstractGame {
 	}
 
 	public abstract void launchGame();
-	public abstract void poserBonus();
 	
 	/**
 	 * Affiche le statut si la bete a ete trouve par le chasseur.
@@ -362,8 +361,7 @@ public abstract class AbstractGame {
 	  */
 	public boolean hunterTurnPlayer() {
 		boolean mvtValide=false;
-		this.poserBonus();
-		 
+		this.poserBonusHunter();
 		do {
 			Mouvment mvt=askMouvement();
 			mvtValide=map.moveHunter(mvt);
@@ -393,7 +391,7 @@ public abstract class AbstractGame {
 				}
 				mvtValide=true;
 			}else {
-				this.poserBonus();
+				this.poserBonusBeast();
 				Mouvment mvt=askMouvement();
 				mvtValide=map.moveBeast(mvt);
 				
@@ -430,5 +428,79 @@ public abstract class AbstractGame {
 	public void endOfTurn(String affichage) {
 		System.out.println(affichage+"\n");
 		pressEnter();
+	}
+	
+	/**
+	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
+	 */
+	public void poserBonusHunter() {
+		String inventory = this.map.getHunter().toStringInventory();
+		if(inventory.length() != 0) {
+			String choix =this.askBonusChoiceHunter(inventory);
+			this.bonusChoiceHunter(choix);
+		}
+	}
+	
+	/**
+	 * Propose au joueur de choisir quel bonus de son inventaire il veut utiliser
+	 * @param inventory
+	 * @return String
+	 */
+	public String askBonusChoiceHunter(String inventory) {
+		System.out.println(inventory);
+		return this.askBonus("la Balise de Vision (1)", "le Piege (2) ");
+	}
+	
+	/**
+	 * Active le bonus mis en parametre
+	 * @param s
+	 */
+	public void bonusChoiceHunter(String s) {
+		if(s.equals("1")) {
+			this.activateWard();
+		}
+		else if (s.equals("2")) {
+			this.activateTrap();
+		}
+		else {
+			return;
+		}
+	}
+	
+	/**
+	 * Propose au joueur de poser un bonus au choix: un camouflage ou un leurre.
+	 */
+	public void poserBonusBeast() {
+		String inventory = this.map.getBeast().toStringInventory();
+		if(inventory.length() != 0) {
+			String choix = this.askBonusChoiceBeast(inventory);
+			this.bonusChoiceBeast(choix);
+		}
+	}
+	
+	/**
+	 * Propose au joueur de choisir quel bonus de son inventaire il veut utiliser
+	 * @param inventory
+	 * @return String
+	 */
+	public String askBonusChoiceBeast(String inventory) {
+		System.out.println(inventory);
+		return this.askBonus("le Camouflage (1)", "le Leure (2) ");
+	}
+	
+	/**
+	 * Active le bonus mis en parametre
+	 * @param s
+	 */
+	public void bonusChoiceBeast(String s) {
+		if(s.equals("1")) {
+			this.activateCamouflage();
+		}
+		else if (s.equals("2")) {
+			this.activateBait();
+		}
+		else {
+			return;
+		}
 	}
 }

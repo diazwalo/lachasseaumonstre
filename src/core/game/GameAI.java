@@ -114,10 +114,4 @@ public class GameAI extends AbstractGame
 
 		return true;
 	}
-
-	@Override
-	public void poserBonus() {
-		// TODO Auto-generated method stub
-	}
-
 }

@@ -127,7 +127,7 @@ public class Interaction {
 	}
 	
 	/**
-	 * Efface les données a l'ecran
+	 * Efface les donnï¿½es a l'ecran
 	 */
 	public static void clearScreen() {
 		for (int i = 0; i < 75; i++) {
