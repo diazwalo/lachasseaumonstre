@@ -1,10 +1,7 @@
 package render.ui.component;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -18,9 +15,7 @@ import render.bonus.Bait;
 import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
-import render.ui.core.Window;
 import render.ui.util.Directory;
-import render.ui.util.Interface;
 
 public class GameBoard {
 	HBox hBox = new HBox();

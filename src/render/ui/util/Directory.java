@@ -1,7 +1,5 @@
 package render.ui.util;
 
-import java.io.File;
-
 public class Directory
 {
 	//region system
@@ -14,10 +12,12 @@ public class Directory
 	
 	private static final String CSS_FOLDER = "css" + DS;
 	
+	@SuppressWarnings("unused")
 	private static final String FONTS_FOLDER = "fonts" + DS;
 	
 	private static final String ICONS_FOLDER = "icons" + DS;
 	
+	@SuppressWarnings("unused")
 	private static final String SOUNDS_FOLDER = "sounds" + DS;
 	
 	private static final String TEXTURES_FOLDER = "textures" + DS;

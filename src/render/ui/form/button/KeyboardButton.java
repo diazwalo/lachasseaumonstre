@@ -1,10 +1,5 @@
 package render.ui.form.button;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import render.ui.util.Directory;
