@@ -71,7 +71,6 @@ public class GameAI extends AbstractGame
 	 * L'IA effectue le tour de la bete
 	 * @return boolean
 	 */
-	@Override
 	public boolean beastTurn()
 	{
 		this.setBonusIABeast();
@@ -91,7 +90,6 @@ public class GameAI extends AbstractGame
 	 * L'IA effectue le tour du Chasseur 
 	 * @return boolean
 	 */
-	@Override
 	public boolean hunterTurn()
 	{
 		Dijkstra dijkstra;

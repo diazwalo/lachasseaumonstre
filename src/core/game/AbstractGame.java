@@ -31,8 +31,6 @@ public abstract class AbstractGame {
 	}
 
 	public abstract void launchGame();
-	public abstract boolean beastTurn();
-	public abstract boolean hunterTurn();
 	public abstract void poserBonus();
 	
 	/**
@@ -356,5 +354,81 @@ public abstract class AbstractGame {
 	 */
 	public String askBonus(String firstBonus, String secondBonus) {
 		return Interaction.askBonus(firstBonus, secondBonus);
+	}
+	
+	/**
+	  * hunterTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue.
+	  * @return boolean 
+	  */
+	public boolean hunterTurnPlayer() {
+		boolean mvtValide=false;
+		this.poserBonus();
+		 
+		do {
+			Mouvment mvt=askMouvement();
+			mvtValide=map.moveHunter(mvt);
+			
+		}while(! mvtValide);
+		
+		checkGameStatus();
+		ramasserBonusHunter();
+		return mvtValide;
+	}
+	
+	/**
+	 * beastTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue.
+	 * @return boolean
+	 */
+	public boolean beastTurnPlayer() {
+		boolean mvtValide=false;
+	
+		IBonus bo=this.checkBeastTrapped();
+		
+		do {
+			if(this.map.getBeast().getTrapped()) {
+				System.out.println("Vous ne pouvez pas jouer ce tour ci car vous etes piege");
+				this.map.getBeast().setUntrapped();
+				if(bo != null) {
+					this.map.removeBonus(bo);
+				}
+				mvtValide=true;
+			}else {
+				this.poserBonus();
+				Mouvment mvt=askMouvement();
+				mvtValide=map.moveBeast(mvt);
+				
+				this.map.setBeastWalk();
+				checkGameStatus();
+				ramasserBonusBeast();
+				
+			}
+		}while(! mvtValide);
+		
+		return mvtValide;
+	}
+	
+	/**
+	 * Applique les mises a jours du plateau necessaires au debut de chaques tours
+	 */
+	public void updateStartGame() {
+		this.map.getHunter().decrementBlinded();
+		this.map.hunterIsNearBait();
+	
+	}
+	
+	/**
+	 * Applique les mises a jours du plateau necessaires ï¿½ la fin de chaques tours
+	 */
+	public void updateEndGame() {
+		this.map.passTurnBonus();
+		checkBeastRevealed();
+	}
+	
+	/**
+	 * confirme la fin du tour au joueur
+	 */
+	public void endOfTurn(String affichage) {
+		System.out.println(affichage+"\n");
+		pressEnter();
 	}
 }

@@ -33,44 +33,20 @@ public class GameHunter extends AbstractGame {
 		System.out.println(map.gameHunterToString()+"\n");
 		
 		while(AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-			this.hunterTurn();
+			this.hunterTurnPlayer();
 			this.updateStartGame();
-			this.endOfTurn();
+			this.endOfTurn(super.map.gameHunterToString());
 			
 			if(! super.map.isHunterWin() && ! super.map.isBeastWin()) {
 				this.beastTurn();
 				super.checkBeastRevealed();
 				this.updateEndGame();
-				this.endOfTurn();
+				this.endOfTurn(super.map.gameHunterToString());
 			}
 		}
 		this.endGame();
 	}
 	
-	/**
-	  * hunterTurn retourne true lorsque le mouvement entre par le joueur est valide et dans ce cas l'effectue.
-	  * @return boolean 
-	  */
-	public boolean hunterTurn() {
-		boolean mvtValide=false;
-		this.poserBonus();
-		 
-		do {
-			Mouvment mvt=super.askMouvement();
-			mvtValide=super.map.moveHunter(mvt);
-			
-		}while(! mvtValide);
-		
-		super.checkGameStatus();
-		super.ramasserBonusHunter();
-		return mvtValide;
-	}
-	
-
-	public void endOfTurn() {
-		System.out.println(map.gameHunterToString()+"\n");
-		super.pressEnter();
-	}
 	/**
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
 	 * @return boolean
@@ -129,23 +105,6 @@ public class GameHunter extends AbstractGame {
 	}
 	
 	/**
-	 * Applique les mises � jours du plateau necessaires au debut de chaques tours
-	 */
-	public void updateStartGame() {
-		this.map.getHunter().decrementBlinded();
-		this.map.hunterIsNearBait();
-	
-	}
-	
-	/**
-	 * Applique les mises � jours du plateau necessaires � la fin de chaques tours
-	 */
-	public void updateEndGame() {
-		this.map.passTurnBonus();
-		super.checkBeastRevealed();
-	}
-	
-	/**
 	 * Propose au joueur d'utiliser un bonus au choix: un piege ou une balise de vision
 	 */
 	public void poserBonus() {
@@ -155,7 +114,6 @@ public class GameHunter extends AbstractGame {
 			this.bonusChoice(choix);
 		}
 	}
-	
 	
 	/**
 	 * Propose au joueur de choisir quel bonus de son inventaire il veut utiliser
@@ -183,5 +141,4 @@ public class GameHunter extends AbstractGame {
 			return;
 		}
 	}
-	
 }
