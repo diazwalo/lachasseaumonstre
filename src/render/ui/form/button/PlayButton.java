@@ -41,32 +41,6 @@ public class PlayButton {
 		this.bottomLeftBtn = new KeyboardButton("sq");
 		
 		
-		/*
-		this.topside.setPadding(new Insets(0, 50, 0, 50));
-		
-		this.topside.getChildren().addAll(
-			this.upLeftBtn.getBouton(),
-			this.topBtn.getBouton(),
-			this.upRightBtn.getBouton()
-		);
-		
-		this.middle.getChildren().addAll(
-				this.leftBtn.getBouton(),
-				this.rightBtn.getBouton()
-				
-			);
-	
-		this.bottom.getChildren().addAll(
-			this.bottomLeftBtn.getBouton(),
-			this.bottomBtn.getBouton(),
-			this.bottomRightBtn.getBouton()
-		);
-		
-		
-		this.core.getChildren().add(topside);
-		this.core.getChildren().add(middle);
-		this.core.getChildren().add(bottom);
-		*/
 		
 		panal.add(this.upLeftBtn.getBouton(), 0, 0);
 		panal.add(this.topBtn.getBouton(), 1, 0);
