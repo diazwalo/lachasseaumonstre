@@ -46,32 +46,20 @@ public class GameBoard {
 
 		// TODO : tout ca est a deplacer dans les instances respective (beast, hunter, les diff bonus, l'enum CaseType)
 
-		FileInputStream is = new FileInputStream(new File(Directory.GAME_GROUND));
-		ground = new Image(is);
-		is  = new FileInputStream(new File(Directory.GAME_OBSTACLE));
-		obstacle = new Image(is);
-		is  = new FileInputStream(new File(Directory.GAME_HUNTER));
-		beast = new Image(is);
-		is  = new FileInputStream(new File(Directory.GAME_HUNTER));
-		hunter = new Image(is);
-		is = new FileInputStream(new File(Directory.GAME_BONUS));
-		bonus = new Image(is);
+		ground = new Image(Directory.GAME_GROUND);
+		obstacle = new Image(Directory.GAME_GROUND);
+		beast = new Image(Directory.GAME_HUNTER);
+		hunter = new Image(Directory.GAME_HUNTER);
+		bonus = new Image(Directory.GAME_BONUS);
 
-		is = new FileInputStream(new File(Directory.GAME_TRAP));
-		trap = new Image(is);
-		is = new FileInputStream(new File(Directory.GAME_WARD));
-		ward = new Image(is);
-		is = new FileInputStream(new File(Directory.GAME_BAIT));
-		bait = new Image(is);
+		trap = new Image(Directory.GAME_TRAP);
+		ward = new Image(Directory.GAME_WARD);
+		bait = new Image(Directory.GAME_BAIT);
 
-		is = new FileInputStream(new File(Directory.GAME_TRACE_UN));
-		traceUn = new Image(is);
-		is = new FileInputStream(new File(Directory.GAME_TRACE_DEUX));
-		traceDeux = new Image(is);
-		is = new FileInputStream(new File(Directory.GAME_TRACE_TROIS));
-		traceTrois = new Image(is);
-		is = new FileInputStream(new File(Directory.GAME_TRACE_QUATRE));
-		traceQuatre = new Image(is);
+		traceUn = new Image(Directory.GAME_TRACE_UN);
+		traceDeux = new Image(Directory.GAME_TRACE_DEUX);
+		traceTrois = new Image(Directory.GAME_TRACE_TROIS);
+		traceQuatre = new Image(Directory.GAME_TRACE_QUATRE);
 
 
 		for (int row = 0; row < (map.getTab().length); row++) {

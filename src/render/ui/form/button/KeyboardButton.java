@@ -18,16 +18,8 @@ public class KeyboardButton {
 	
 	
 	public KeyboardButton(String contenu) {
-	
-	try(FileInputStream is = new FileInputStream(new File(Directory.GAME_TEXTURE))){
-	    	img = new Image(is);
-	    } catch (FileNotFoundException e) {
-	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
-			e.printStackTrace();
-		} catch (IOException e) {
-	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
-			e.printStackTrace();
-		}
+    	img = new Image(Directory.GAME_TEXTURE);
+
 		this.bouton = new Button(contenu);
 		bouton.setMaxSize(50, 50);
 		bouton.setMinSize(50,50);
