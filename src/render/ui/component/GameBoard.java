@@ -47,8 +47,8 @@ public class GameBoard {
 		// TODO : tout ca est a deplacer dans les instances respective (beast, hunter, les diff bonus, l'enum CaseType)
 
 		ground = new Image(Directory.GAME_GROUND);
-		obstacle = new Image(Directory.GAME_GROUND);
-		beast = new Image(Directory.GAME_HUNTER);
+		obstacle = new Image(Directory.GAME_OBSTACLE);
+		beast = new Image(Directory.GAME_BEAST);
 		hunter = new Image(Directory.GAME_HUNTER);
 		bonus = new Image(Directory.GAME_BONUS);
 
