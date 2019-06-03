@@ -59,7 +59,7 @@ public class Home
 				map = new CircularMap(this.config);
 			}
 			try {
-				new GameBoard(window, map);
+				new Game(window, map);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

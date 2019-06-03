@@ -1,8 +1,11 @@
 package render.ui.form.button;
 
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import render.ui.core.Window;
 
 public class PlayButton {
 	
@@ -20,6 +23,8 @@ public class PlayButton {
 	private KeyboardButton bottomRightBtn;
 	private KeyboardButton bottomLeftBtn;
 	
+	private GridPane panal = new GridPane();
+	
 	public PlayButton() {
 		this.core = new VBox();
 		this.topside = new HBox();
@@ -36,7 +41,7 @@ public class PlayButton {
 		this.bottomLeftBtn = new KeyboardButton("sq");
 		
 		
-		
+		/*
 		this.topside.setPadding(new Insets(0, 50, 0, 50));
 		
 		this.topside.getChildren().addAll(
@@ -61,6 +66,18 @@ public class PlayButton {
 		this.core.getChildren().add(topside);
 		this.core.getChildren().add(middle);
 		this.core.getChildren().add(bottom);
+		*/
+		
+		panal.add(this.upLeftBtn.getBouton(), 0, 0);
+		panal.add(this.topBtn.getBouton(), 1, 0);
+		panal.add(this.upRightBtn.getBouton(), 2, 0);
+		panal.add(this.leftBtn.getBouton(), 0, 1);
+		panal.add(this.rightBtn.getBouton(), 2, 1);
+		panal.add(this.bottomLeftBtn.getBouton(), 0, 2);
+		panal.add(this.bottomBtn.getBouton(), 1, 2);
+		panal.add(this.bottomRightBtn.getBouton(), 2, 2);
+		
+		core.getChildren().addAll(panal);
 	}
 
 	public VBox getCore() {

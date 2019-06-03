@@ -39,7 +39,7 @@ public class GameBoard {
 	Image traceTrois;
 	Image traceQuatre;
 
-	public GameBoard(Window window, AbstractMap map) throws FileNotFoundException {
+	public GameBoard(AbstractMap map) throws FileNotFoundException {
 		//TEST 
 		/**
 		 * pour voir si on peut afficher corectement les bonus actifs
@@ -178,11 +178,8 @@ public class GameBoard {
 			}
 		}
 
-		Scene scene = new Scene(this.grid, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		scene.getStylesheets().add("css/style.css");
-		window.stage.setScene(scene);
+	
 		
-		hBox.getChildren().addAll(this.grid, this.grid);
 	}
 
 	public GridPane getGrid() {
