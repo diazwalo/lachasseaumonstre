@@ -411,7 +411,6 @@ public abstract class AbstractGame {
 	public void updateStartGame() {
 		this.map.getHunter().decrementBlinded();
 		this.map.hunterIsNearBait();
-	
 	}
 	
 	/**
