@@ -23,7 +23,7 @@ public class CommandParserTest
 		CommandParser commandParser1 = new CommandParser(cmd1);
 		CommandParser commandParser2 = new CommandParser(cmd2);
 		
-		assertEquals(commandParser0.getConfig().getWidth(), 11);
+		assertEquals(commandParser0.getConfig().getWidth(), 5);
 		assertEquals(commandParser1.getConfig().getWidth(), 42);
 		assertEquals(commandParser2.getConfig().getWidth(), 42);
 	}
@@ -39,7 +39,7 @@ public class CommandParserTest
 		CommandParser commandParser1 = new CommandParser(cmd1);
 		CommandParser commandParser2 = new CommandParser(cmd2);
 		
-		assertEquals(commandParser0.getConfig().getHeight(), 11);
+		assertEquals(commandParser0.getConfig().getHeight(), 5);
 		assertEquals(commandParser1.getConfig().getHeight(), 42);
 		assertEquals(commandParser2.getConfig().getHeight(), 42);
 	}
@@ -80,7 +80,7 @@ public class CommandParserTest
 		CommandParser commandParser1 = new CommandParser(cmd1);
 		CommandParser commandParser2 = new CommandParser(cmd2);
 
-		assertEquals(commandParser0.getConfig().getNbTeleportation(), 3);
+		assertEquals(commandParser0.getConfig().getNbTeleportation(), 2);
 		assertEquals(commandParser1.getConfig().getNbTeleportation(), 42);
 		assertEquals(commandParser2.getConfig().getNbTeleportation(), 42);
 	}
@@ -179,7 +179,7 @@ public class CommandParserTest
 		assertEquals(42, commandParser0.getConfig().getWidth());
 		assertEquals(42, commandParser0.getConfig().getHeight());
 		assertEquals(GameMode.AIvsAI, commandParser0.getConfig().getGameMode());
-		assertEquals(3, commandParser0.getConfig().getNbTeleportation());
+		assertEquals(2, commandParser0.getConfig().getNbTeleportation());
 		assertEquals(Map.CIRCULAR, commandParser0.getConfig().getMap());
 		assertTrue(commandParser0.getConfig().isWard());
 		assertTrue(commandParser0.getConfig().isTrap());

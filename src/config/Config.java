@@ -7,7 +7,7 @@ package config;
  *
  */
 public class Config {
-	public static final int minSize = 8;
+	public static final int minSize = 5;
 	public static final int maxSize = 20;
 	public static final int minTp = 0;
 	public static final int maxTp = 5;
@@ -36,7 +36,7 @@ public class Config {
 		this.width = Config.minSize;
 		this.height = Config.minSize;
 		this.gameMode = GameMode.BEASTvsAI;
-		this.nbTeleportation = Config.minTp;
+		this.nbTeleportation = (Config.minTp+Config.maxTp)/2;
 		this.map = Map.SQUARE;
 
 		this.trap = false;

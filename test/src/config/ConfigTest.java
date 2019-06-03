@@ -87,10 +87,10 @@ public class ConfigTest
     {
     	this.config.setDefaultConfig();
     	
-    	assertEquals(11, this.config.getWidth());
-    	assertEquals(11, this.config.getHeight());
+    	assertEquals(5, this.config.getWidth());
+    	assertEquals(5, this.config.getHeight());
     	assertEquals(GameMode.BEASTvsAI, this.config.getGameMode());
-    	assertEquals(3, this.config.getNbTeleportation());
+    	assertEquals(2, this.config.getNbTeleportation());
     	assertEquals(Map.SQUARE, this.config.getMap());
     	
     	assertFalse(this.config.isTrap());
