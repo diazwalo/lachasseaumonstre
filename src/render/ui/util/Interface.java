@@ -29,7 +29,7 @@ public class Interface
 	
 	public static Background getBackground()
 	{
-		Image image = new Image("file:"+Directory.getHomeBackground());
+		Image image = new Image(Directory.HOME_BACKGROUND);
 
 		BackgroundImage background = new BackgroundImage(
 			image, 

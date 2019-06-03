@@ -12,6 +12,7 @@ import render.ui.component.GameBoard;
 import render.ui.component.Inventory;
 import render.ui.core.Window;
 import render.ui.form.button.PlayButton;
+import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public class Game {
@@ -44,7 +45,7 @@ public class Game {
 		
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		scene.getStylesheets().add("css/style.css");
+		scene.getStylesheets().add(Directory.STYLE_CSS);
 		window.stage.setScene(scene);
 	}
 }

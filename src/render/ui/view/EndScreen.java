@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import render.ui.core.Window;
 import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelThemeVariableSize;
+import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public class EndScreen {
@@ -54,7 +55,7 @@ public class EndScreen {
 		}
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		scene.getStylesheets().add("css/style.css");
+		scene.getStylesheets().add(Directory.STYLE_CSS);
 		
 		window.stage.setScene(scene);
 	}

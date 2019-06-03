@@ -16,6 +16,7 @@ import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelTheme;
 import render.ui.form.text.ComboBoxTheme;
 import render.ui.form.text.SpinnerTheme;
+import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public class Settings
@@ -154,7 +155,7 @@ public class Settings
 		this.core.getChildren().add(this.menu);
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		scene.getStylesheets().add("css/style.css");
+		scene.getStylesheets().add(Directory.STYLE_CSS);
 		
 		window.stage.setScene(scene);
 		window.stage.setMaximized(true);

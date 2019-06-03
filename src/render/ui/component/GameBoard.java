@@ -1,6 +1,5 @@
 package render.ui.component;
 
-import java.awt.Label;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,31 +46,31 @@ public class GameBoard {
 
 		// TODO : tout ca est a deplacer dans les instances respective (beast, hunter, les diff bonus, l'enum CaseType)
 
-		FileInputStream is = new FileInputStream(new File(Directory.getGameGround()));
+		FileInputStream is = new FileInputStream(new File(Directory.GAME_GROUND));
 		ground = new Image(is);
-		is  = new FileInputStream(new File(Directory.getGameObstacle()));
+		is  = new FileInputStream(new File(Directory.GAME_OBSTACLE));
 		obstacle = new Image(is);
-		is  = new FileInputStream(new File(Directory.getGameBeast()));
+		is  = new FileInputStream(new File(Directory.GAME_HUNTER));
 		beast = new Image(is);
-		is  = new FileInputStream(new File(Directory.getGameHunter()));
+		is  = new FileInputStream(new File(Directory.GAME_HUNTER));
 		hunter = new Image(is);
-		is = new FileInputStream(new File(Directory.getGameBonus()));
+		is = new FileInputStream(new File(Directory.GAME_BONUS));
 		bonus = new Image(is);
 
-		is = new FileInputStream(new File(Directory.getGameTrap()));
+		is = new FileInputStream(new File(Directory.GAME_TRAP));
 		trap = new Image(is);
-		is = new FileInputStream(new File(Directory.getGameWard()));
+		is = new FileInputStream(new File(Directory.GAME_WARD));
 		ward = new Image(is);
-		is = new FileInputStream(new File(Directory.getGameBait()));
+		is = new FileInputStream(new File(Directory.GAME_BAIT));
 		bait = new Image(is);
 
-		is = new FileInputStream(new File(Directory.getGameTraceUn()));
+		is = new FileInputStream(new File(Directory.GAME_TRACE_UN));
 		traceUn = new Image(is);
-		is = new FileInputStream(new File(Directory.getGameTraceDeux()));
+		is = new FileInputStream(new File(Directory.GAME_TRACE_DEUX));
 		traceDeux = new Image(is);
-		is = new FileInputStream(new File(Directory.getGameTraceTrois()));
+		is = new FileInputStream(new File(Directory.GAME_TRACE_TROIS));
 		traceTrois = new Image(is);
-		is = new FileInputStream(new File(Directory.getGameTraceQuatre()));
+		is = new FileInputStream(new File(Directory.GAME_TRACE_QUATRE));
 		traceQuatre = new Image(is);
 
 

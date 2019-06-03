@@ -4,113 +4,67 @@ import java.io.File;
 
 public class Directory
 {
-	//System path
-	private static final String dir = "user.dir";
+	//region system
 	
-	private static final String DS = File.separator;
+	private static final String DS = "/";
 	
-	private static final String TEXTURES_FOLDER = DS + "rsc" + DS + "textures" + DS;
+	//endregion
 	
-	private static final String ICONS_FOLDER = DS + "rsc" + DS + "icons" + DS;
+	//region folder
 	
-	//Textures path
+	private static final String CSS_FOLDER = "css" + DS;
 	
-	private static final String HOME_BACKGROUND = TEXTURES_FOLDER + "background.gif";
+	private static final String FONTS_FOLDER = "fonts" + DS;
 	
-	private static final String GAME_GROUND = TEXTURES_FOLDER + "ground.png";
+	private static final String ICONS_FOLDER = "icons" + DS;
 	
-	private static final String GAME_TEXTURE = TEXTURES_FOLDER + "texture.png";
+	private static final String SOUNDS_FOLDER = "sounds" + DS;
 	
-	private static final String GAME_OBSTACLE = TEXTURES_FOLDER + "obstacle.png";
+	private static final String TEXTURES_FOLDER = "textures" + DS;
 	
-	private static final String GAME_BEAST = TEXTURES_FOLDER + "beast.png";
+	//endregion
 	
-	private static final String GAME_HUNTER = TEXTURES_FOLDER + "hunter.png";
+	//region css
 	
-	private static final String GAME_BONUS = TEXTURES_FOLDER + "bonus.png";
+	public static final String STYLE_CSS = CSS_FOLDER + "style.css";
 	
-	private static final String GAME_TRAP = TEXTURES_FOLDER + "trap.png";
+	//endregion
 	
-	private static final String GAME_WARD = TEXTURES_FOLDER + "ward.png";
+	//region icons
 	
-	private static final String GAME_BAIT = TEXTURES_FOLDER + "bait.png";
+	public static final String ICON = ICONS_FOLDER + "icon.png";
 	
-	private static final String GAME_TRACE_UN = TEXTURES_FOLDER + "traceUn.png";
+	//endregion
 	
-	private static final String GAME_TRACE_DEUX = TEXTURES_FOLDER + "traceDeux.png";
+	//region textures
 	
-	private static final String GAME_TRACE_TROIS = TEXTURES_FOLDER + "traceTrois.png";
+	public static final String HOME_BACKGROUND = TEXTURES_FOLDER + "background.gif";
 	
-	private static final String GAME_TRACE_QUATRE = TEXTURES_FOLDER + "traceQuatre.png";
+	public static final String GAME_GROUND = TEXTURES_FOLDER + "ground.png";
 	
-	//Icons path
+	public static final String GAME_TEXTURE = TEXTURES_FOLDER + "texture.png";
 	
-	private static final String ICON = ICONS_FOLDER + "icon.png";
+	public static final String GAME_OBSTACLE = TEXTURES_FOLDER + "obstacle.png";
 	
-	//Getter
+	public static final String GAME_BEAST = TEXTURES_FOLDER + "beast.png";
 	
-	public static String getIcon() {
-		return Directory.ICON;
-	}
+	public static final String GAME_HUNTER = TEXTURES_FOLDER + "hunter.png";
 	
-	public static String getHomeBackground()
-	{
-		return System.getProperty(Directory.dir) + HOME_BACKGROUND;
-	}
+	public static final String GAME_BONUS = TEXTURES_FOLDER + "bonus.png";
 	
-	public static String getGameGround()
-	{
-		return System.getProperty(Directory.dir) + GAME_GROUND;
-	}
+	public static final String GAME_TRAP = TEXTURES_FOLDER + "trap.png";
 	
-	public static String getGameTexture()
-	{
-		return System.getProperty(Directory.dir) + GAME_TEXTURE;
-	}
+	public static final String GAME_WARD = TEXTURES_FOLDER + "ward.png";
 	
-	public static String getGameObstacle()
-	{
-		return System.getProperty(Directory.dir) + GAME_OBSTACLE;
-	}
+	public static final String GAME_BAIT = TEXTURES_FOLDER + "bait.png";
 	
-	public static String getGameBeast()
-	{
-		return System.getProperty(Directory.dir) + GAME_BEAST;
-	}
+	public static final String GAME_TRACE_UN = TEXTURES_FOLDER + "traceUn.png";
 	
-	public static String getGameHunter(){
-		return System.getProperty(Directory.dir) + GAME_HUNTER;
-	}
+	public static final String GAME_TRACE_DEUX = TEXTURES_FOLDER + "traceDeux.png";
 	
-	public static String getGameBonus(){
-		return System.getProperty(Directory.dir) + GAME_BONUS;
-	}
+	public static final String GAME_TRACE_TROIS = TEXTURES_FOLDER + "traceTrois.png";
 	
-	public static String getGameTrap(){
-		return System.getProperty(Directory.dir) + GAME_TRAP;
-	}
-	
-	public static String getGameWard(){
-		return System.getProperty(Directory.dir) + GAME_WARD;
-	}
-	
-	public static String getGameBait(){
-		return System.getProperty(Directory.dir) + GAME_BAIT;
-	}
-	
-	public static String getGameTraceUn() {
-		return System.getProperty(Directory.dir) + GAME_TRACE_UN;
-	}
-	
-	public static String getGameTraceDeux() {
-		return System.getProperty(Directory.dir) + GAME_TRACE_DEUX;
-	}
-	
-	public static String getGameTraceTrois() {
-		return System.getProperty(Directory.dir) + GAME_TRACE_TROIS;
-	}
-	
-	public static String getGameTraceQuatre() {
-		return System.getProperty(Directory.dir) + GAME_TRACE_QUATRE;
-	}
+	public static final String GAME_TRACE_QUATRE = TEXTURES_FOLDER + "traceQuatre.png";
+
+	//endregion
 }

@@ -12,10 +12,10 @@ import javafx.scene.layout.VBox;
 import map.AbstractMap;
 import map.CircularMap;
 import map.SquareMap;
-import render.ui.component.GameBoard;
 import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
 import render.ui.form.button.HomeMinButton;
+import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public class Home
@@ -38,7 +38,7 @@ public class Home
 		verticalMenu();
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		scene.getStylesheets().add("css/style.css");
+		scene.getStylesheets().add(Directory.STYLE_CSS);
 		
 		window.stage.setScene(scene);
 	}
@@ -61,7 +61,6 @@ public class Home
 			try {
 				new Game(window, map);
 			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});

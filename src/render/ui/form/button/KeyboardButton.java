@@ -19,7 +19,7 @@ public class KeyboardButton {
 	
 	public KeyboardButton(String contenu) {
 	
-	try(FileInputStream is = new FileInputStream(new File(Directory.getGameTexture()))){
+	try(FileInputStream is = new FileInputStream(new File(Directory.GAME_TEXTURE))){
 	    	img = new Image(is);
 	    } catch (FileNotFoundException e) {
 	    	img = new Image("https://www.iut-info.univ-lille.fr/~casiez/M2105/TP/TP4EvenementsListView/folder.png");
