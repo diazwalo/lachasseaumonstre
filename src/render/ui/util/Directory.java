@@ -58,6 +58,8 @@ public class Directory
 	
 	public static final String GAME_BAIT = TEXTURES_FOLDER + "bait.png";
 	
+	public static final String GAME_CAMOUFLAGE = TEXTURES_FOLDER + "camouflage.png";
+	
 	public static final String GAME_TRACE_ONE = TEXTURES_FOLDER + "traceUn.png";
 	
 	public static final String GAME_TRACE_TWO = TEXTURES_FOLDER + "traceDeux.png";
@@ -65,6 +67,8 @@ public class Directory
 	public static final String GAME_TRACE_THREE = TEXTURES_FOLDER + "traceTrois.png";
 	
 	public static final String GAME_TRACE_FOUR = TEXTURES_FOLDER + "traceQuatre.png";
+	
+	public static final String GAME_TRACE_PAS = TEXTURES_FOLDER + "tracePas.png";
 	
 	public static final String KEYBOARD_UP_LEFT = TEXTURES_FOLDER + "upLeft.png";
 	
@@ -81,6 +85,7 @@ public class Directory
 	public static final String KEYBOARD_DOWN = TEXTURES_FOLDER + "down.png";
 
 	public static final String KEYBOARD_DOWN_RIGHT = TEXTURES_FOLDER + "downRight.png";
+	
 	
 	//endregion
 }
