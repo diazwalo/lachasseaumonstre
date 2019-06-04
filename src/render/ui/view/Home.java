@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import map.AbstractMap;
 import map.CircularMap;
 import map.SquareMap;
+import render.ui.component.gamePlay.GamePlayBeast;
 import render.ui.component.gamePlay.GamePlayHunter;
 import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
@@ -61,6 +62,22 @@ public class Home
 			}
 			try {
 				new Game(window, map, new GamePlayHunter(map));
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
+		btn3.setOnAction(e -> {
+			//Faire une fct juste pour ca
+			AbstractMap map = null;
+			if(this.config.getMap().equals(Map.SQUARE)) {
+				map = new SquareMap(this.config);
+			}else if(this.config.getMap().equals(Map.CIRCULAR)) {
+				map = new CircularMap(this.config);
+			}
+			// justqu'a la
+			try {
+				new Game(window, map, new GamePlayBeast(map));
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}

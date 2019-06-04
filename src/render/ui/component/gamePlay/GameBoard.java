@@ -74,13 +74,16 @@ public class GameBoard {
 				Case caseCour = map.getTab()[row][col];
 				Position posCase= new Position(row, col);
 
-				map.getHunter().getMvtToEmptyCase(map.getTab());
-
+				this.paintRectangleHunterView(rec, caseCour, map, row, col, posCase);
+				
+				GridPane.setRowIndex(rec, row);
+				GridPane.setColumnIndex(rec, col);
+				grid.getChildren().addAll(rec);
 			}
-		}	
+		}
 	}
 
-	private void paintRectangleBeastView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
+	private void paintRectangleHunterView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
 			rec.setFill(new ImagePattern(obstacle));
 		}else if(caseCour.getCaseType().equals(CaseType.SOL)) {
@@ -137,9 +140,6 @@ public class GameBoard {
 			// afficher une image du chasseur attrapant la bete ou juste le chasseur
 			rec.setFill(new ImagePattern(hunter));
 		}
-		if(map.getBeast().getPos().isPos(row, col)) {
-			rec.setFill(new ImagePattern(beast));
-		}
 	}
 
 	public void refreshBeastView(AbstractMap map) {
@@ -151,11 +151,42 @@ public class GameBoard {
 				
 				Case caseCour = map.getTab()[row][col];
 				Position posCase= new Position(row, col);
+				
 				this.paintRectangleBeastView(rec, caseCour, map, row, col, posCase);
+				
 				GridPane.setRowIndex(rec, row);
 				GridPane.setColumnIndex(rec, col);
 				grid.getChildren().addAll(rec);
 			}
+		}
+	}
+	
+	private void paintRectangleBeastView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
+		if(caseCour.isObstacle()) {
+			rec.setFill(new ImagePattern(obstacle));
+		}else if(caseCour.getCaseType().equals(CaseType.SOL)) {
+			rec.setFill(new ImagePattern(ground));
+		}
+		if(caseCour.getBeastWalk()>=1) {
+			//afficher une case avec des pas
+		}
+		
+		if(caseCour.getHunterBonusActifOnCase(map, posCase) != null) {
+			IBonus bonusActif = caseCour.getHunterBonusActifOnCase(map, posCase);
+			if(bonusActif instanceof Bait) {
+				rec.setFill(new ImagePattern(bait));
+			}
+		}
+		
+		if(caseCour.bonusOnCase(caseCour.getBonusHunter())) {
+			//afficher un ?
+			rec.setFill(new ImagePattern(bonus));
+		}
+		
+		if(caseCour.getBeastOnCaseBeastMode(map, posCase)) {
+			rec.setFill(new ImagePattern(beast));
+		}else if(caseCour.getHunterOnCase(map, posCase)) {
+			rec.setFill(new ImagePattern(hunter));
 		}
 	}
 }

@@ -8,6 +8,7 @@ public class GamePlayHunter extends GameBoard{
 	
 	public GamePlayHunter(AbstractMap map) throws FileNotFoundException {
 		super(map);
+		super.refreshHunterView(map);
 	}
 	
 	public void launchGame() {
