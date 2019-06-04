@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import map.AbstractMap;
@@ -40,9 +41,17 @@ public class Game {
 		this.plateau = gameType;
 		
 		//Example : this.gamePad.getMouvment();
+		Button nextTurn = new Button("Tour suivant");
+		nextTurn.setOnAction(e -> {
+			if(nextTurn.isDisable()) {
+				nextTurn.setDisable(false);
+			} else {
+				nextTurn.setDisable(true);
+			}
+		});
 		
 		this.core.getChildren().addAll(top , bottom);
-		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore());
+		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn);
 		this.bottom.getChildren().addAll(gamePad.getCore());
 		
 		this.core.setAlignment(Pos.CENTER);
