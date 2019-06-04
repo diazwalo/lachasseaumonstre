@@ -9,7 +9,6 @@ public class GamePlayBeast extends GameBoard{
 	public GamePlayBeast(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshBeastView(map);
-		// TODO Auto-generated constructor stub
 	}
 
 }
