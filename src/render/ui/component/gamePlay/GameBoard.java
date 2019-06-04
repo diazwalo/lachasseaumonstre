@@ -260,8 +260,6 @@ public abstract class GameBoard {
 
 				this.paintRectangleBeastView(rec, caseCour, map, huntPos[0]+mouv[0], huntPos[1]+mouv[1], posCase);
 			}
-
-
 		}
 	}
 }
