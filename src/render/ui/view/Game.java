@@ -104,6 +104,7 @@ public class Game {
 		gameType.setInventory(this.inventaire);
 		gameType.setPlayButton(this.gamePad);
 		this.plateau = gameType;
+		plateau.setFog(map);
 		
 		nextTurn = new Button("Tour suivant");
 		nextTurn.setDisable(true);
