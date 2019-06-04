@@ -9,8 +9,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import map.AbstractMap;
 import render.ui.component.Chat;
-import render.ui.component.GameBoard;
 import render.ui.component.Inventory;
+import render.ui.component.gamePlay.GameBoard;
 import render.ui.core.Window;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
@@ -28,7 +28,7 @@ public class Game {
 	Chat chat;
 	
 	
-	public Game(Window window, AbstractMap map) throws FileNotFoundException {
+	public Game(Window window, AbstractMap map, GameBoard gameType) throws FileNotFoundException {
 		
 		this.bottom = new HBox();
 		this.top = new HBox();
@@ -37,7 +37,7 @@ public class Game {
 		this.gamePad = new PlayButton();
 		this.inventaire = new Inventory();
 		this.chat = new Chat();
-		this.plateau = new GameBoard(map);
+		this.plateau = gameType;
 		
 		//Example : this.gamePad.getMouvment();
 		

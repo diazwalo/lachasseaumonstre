@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import map.AbstractMap;
 import map.CircularMap;
 import map.SquareMap;
+import render.ui.component.gamePlay.GamePlayHunter;
 import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
 import render.ui.form.button.HomeMinButton;
@@ -59,7 +60,7 @@ public class Home
 				map = new CircularMap(this.config);
 			}
 			try {
-				new Game(window, map);
+				new Game(window, map, new GamePlayHunter(map));
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}
