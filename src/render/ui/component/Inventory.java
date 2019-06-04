@@ -20,7 +20,7 @@ public class Inventory {
 	}
 
 	public Inventory() {
-		// TODO Auto-generated constructor stub
+		this.core = new GridPane();
 	}
 
 	public GridPane getCore() {

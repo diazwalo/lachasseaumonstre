@@ -43,15 +43,17 @@ public class Game {
 		//Example : this.gamePad.getMouvment();
 		Button nextTurn = new Button("Tour suivant");
 		nextTurn.setOnAction(e -> {
-			if(nextTurn.isDisable()) {
-				nextTurn.setDisable(false);
-			} else {
-				nextTurn.setDisable(true);
-			}
+			nextTurn.setDisable(true);
 		});
 		
+		Button lol = new Button("Activer tour suivant");
+		lol.setOnAction(e -> {
+			nextTurn.setDisable(false);
+		});
+	
+		
 		this.core.getChildren().addAll(top , bottom);
-		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn);
+		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn, lol);
 		this.bottom.getChildren().addAll(gamePad.getCore());
 		
 		this.core.setAlignment(Pos.CENTER);
