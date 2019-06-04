@@ -90,8 +90,8 @@ public abstract class GameBoard {
 				rec.setWidth(50);
 				rec.setHeight(50);
 
-				Case caseCour = map.getTab()[row][col];
-				Position posCase= new Position(row, col);
+				Case caseCour = map.getTab()[col][row];
+				Position posCase= new Position(col, row);
 
 				this.paintRectangleHunterView(rec, caseCour, map, row, col, posCase);
 				
@@ -168,8 +168,8 @@ public abstract class GameBoard {
 				rec.setWidth(50);
 				rec.setHeight(50);
 				
-				Case caseCour = map.getTab()[row][col];
-				Position posCase= new Position(row, col);
+				Case caseCour = map.getTab()[col][row];
+				Position posCase= new Position(col, row);
 				
 				this.paintRectangleBeastView(rec, caseCour, map, row, col, posCase);
 				
