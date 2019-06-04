@@ -265,7 +265,6 @@ public class GameBoard {
 
 	}
 
-
 	public void refreshBeastView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
 			for (int col = 0; col < (map.getTab()[row].length); col++) {
