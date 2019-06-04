@@ -20,8 +20,15 @@ public class GamePlayHunter extends GameBoard{
 	
 	public void launchGame() {
 		while(ag.gameStatus.equals(GameStatus.INGAME)) {
-			Mouvment mvt = 
-			while(! ag.map.moveHunter(super.playButton.getMouvment()));
+			boolean mvtValide = false;
+			while(! mvtValide) {
+				Mouvment mvt = null;
+				while(mvt == null) {
+					mvt = super.playButton.getMouvment();
+				}
+				System.out.println(mvt);
+				mvtValide = ag.map.moveHunter(mvt);
+			}
 			ag.checkGameStatus();
 			ag.ramasserBonusHunter();
 			super.refreshBeastView(ag.map);

@@ -23,7 +23,7 @@ public class PlayButton {
 	private KeyboardButton bottomRightBtn;
 	private KeyboardButton bottomLeftBtn;
 	
-	private Mouvment mouvment;
+	private Mouvment mouvment = null;
 	
 	private GridPane panal = new GridPane();
 	
