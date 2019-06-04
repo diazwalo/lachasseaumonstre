@@ -14,6 +14,8 @@ import render.bonus.Bait;
 import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
+import render.ui.component.Inventory;
+import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
 
 public class GameBoard {
@@ -30,6 +32,8 @@ public class GameBoard {
 	protected Image traceDeux;
 	protected Image traceTrois;
 	protected Image traceQuatre;
+	protected PlayButton playButton;
+	protected Inventory inventory;
 
 	public GameBoard(AbstractMap map) throws FileNotFoundException {
 		ground = new Image(Directory.GAME_GROUND);
@@ -48,6 +52,14 @@ public class GameBoard {
 		traceQuatre = new Image(Directory.GAME_TRACE_FOUR);
 	}
 
+	public void setPlayButton(PlayButton pb) {
+		this.playButton = pb;
+	}
+	
+	public void setInventory(Inventory i) {
+		this.inventory = i;
+	}
+	
 	public GridPane getGrid() {
 		return this.grid;
 	}

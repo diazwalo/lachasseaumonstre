@@ -38,6 +38,9 @@ public class Game {
 		this.gamePad = new PlayButton();
 		this.inventaire = new Inventory();
 		this.chat = new Chat();
+		
+		gameType.setInventory(this.inventaire);
+		gameType.setPlayButton(this.gamePad);
 		this.plateau = gameType;
 		
 		//Example : this.gamePad.getMouvment();
