@@ -19,6 +19,10 @@ public class Inventory {
 		System.out.println("Taille de l'inventaire : " + entity.getInventory().size());
 	}
 
+	public Inventory() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public GridPane getCore() {
 		return core;
 	}
