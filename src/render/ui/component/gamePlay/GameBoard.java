@@ -67,8 +67,10 @@ public abstract class GameBoard {
 		
 	}
 	
-	public abstract void play(Mouvment mouvment);
-
+	public abstract boolean play(Mouvment mouvment);
+	public abstract boolean useBonus(IBonus bonus);
+	public abstract void next();
+	
 	public void setPlayButton(PlayButton pb) {
 		this.playButton = pb;
 	}

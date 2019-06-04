@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 import map.AbstractMap;
 import map.Mouvment;
+import render.bonus.IBonus;
 
 public class GamePlayIA extends GameBoard{
 
@@ -13,7 +14,18 @@ public class GamePlayIA extends GameBoard{
 	}
 
 	@Override
-	public void play(Mouvment mouvment) {
+	public boolean play(Mouvment mouvment) {
+		return false;
+	}
+
+	@Override
+	public boolean useBonus(IBonus bonus) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void next() {
 		// TODO Auto-generated method stub
 		
 	}

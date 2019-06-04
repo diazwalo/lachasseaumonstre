@@ -42,36 +42,51 @@ public class Game {
 		this.gamePad = new PlayButton();
 		
 		this.gamePad.topBtn.getBouton().setOnAction(e -> {
-			gameType.play(Mouvment.NORD);
-			
+			if(gameType.play(Mouvment.NORD)) {
+				this.gamePad.desactivateButton();
+			}
 		});
 		
 		this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
-			gameType.play(Mouvment.NORDOUEST);
+			if(gameType.play(Mouvment.NORDOUEST)) {
+				this.gamePad.desactivateButton();
+			}
 		});
 		
 		this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
-			gameType.play(Mouvment.NORDEST);
+			if(gameType.play(Mouvment.NORDEST)) {
+				this.gamePad.desactivateButton();
+			}
 		});
 		
 		this.gamePad.leftBtn.getBouton().setOnAction(e -> {
-			gameType.play(Mouvment.OUEST);
+			if(gameType.play(Mouvment.OUEST)) {
+				this.gamePad.desactivateButton();
+			}
 		});
 		
 		this.gamePad.rightBtn.getBouton().setOnAction(e -> {
-			gameType.play(Mouvment.EST);
+			if(gameType.play(Mouvment.EST)) {
+				this.gamePad.desactivateButton();
+			}
 		});
 		
 		this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
-			gameType.play(Mouvment.SUD);
+			if(gameType.play(Mouvment.SUD)) {
+				this.gamePad.desactivateButton();
+			}
 		});
 		
 		this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
-			gameType.play(Mouvment.SUDOUEST);
+			if(gameType.play(Mouvment.SUDOUEST)) {
+				this.gamePad.desactivateButton();
+			}
 		});
 		
 		this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
-			gameType.play(Mouvment.SUDEST);
+			if(gameType.play(Mouvment.SUDEST)) {
+				this.gamePad.desactivateButton();
+			}
 		});
 		
 		if(gameType instanceof GamePlayHunter) {

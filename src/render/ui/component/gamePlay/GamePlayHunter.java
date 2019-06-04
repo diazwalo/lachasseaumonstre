@@ -19,13 +19,23 @@ public class GamePlayHunter extends GameBoard
 		
 	}
 	
-	public void play(Mouvment mouvment) {
-		ag.map.moveHunter(mouvment);
-		super.refreshHunterView(super.map);
+	public boolean play(Mouvment mouvment) {
+		if(ag.map.moveHunter(mouvment)) {
+			super.refreshHunterView(super.map);
+			return true;
+		}
+		return false;
 	}
 	
-	public void useBonus(IBonus bonus)
+	public boolean useBonus(IBonus bonus)
 	{
+		return false;
+		
+	}
+
+	@Override
+	public void next() {
+		// TODO Auto-generated method stub
 		
 	}
 
