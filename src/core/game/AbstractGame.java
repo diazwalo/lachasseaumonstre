@@ -22,7 +22,7 @@ import render.bonus.Ward;
  */
 public abstract class AbstractGame {
 
-	protected AbstractMap map;
+	public AbstractMap map;
 	public static GameStatus gameStatus;
 
 	public AbstractGame(AbstractMap map) {
@@ -136,7 +136,7 @@ public abstract class AbstractGame {
 	/**
 	 * Met le Bonus de la case ou se trouve la Bete dans son inventaire si un Bonus peut etre ramasse sur cette Case
 	 */
-	protected void ramasserBonusBeast() {
+	public void ramasserBonusBeast() {
 		Position posBeast = this.map.getBeast().getPos();
 		boolean[] tabBeastBonus =this.map.getTab()[posBeast.getPosX()][posBeast.getPosY()].getBonusBeast();
 		if(tabBeastBonus[0]) {
@@ -151,7 +151,7 @@ public abstract class AbstractGame {
 	/**
 	 * Met le Bonus de la case ou se trouve le Chasseur dans son inventaire si un Bonus peut etre ramasse sur cette Case
 	 */
-	protected void ramasserBonusHunter() {
+	public void ramasserBonusHunter() {
 		Position posHunter = this.map.getHunter().getPos();
 		boolean[] tabHunterBonus =this.map.getTab()[posHunter.getPosX()][posHunter.getPosY()].getBonusHunter();
 		if(tabHunterBonus[0]) {

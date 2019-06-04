@@ -64,5 +64,7 @@ public class Game {
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
 		window.stage.setScene(scene);
+		
+		gameType.launchGame();
 	}
 }

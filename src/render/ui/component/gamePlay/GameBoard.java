@@ -18,7 +18,7 @@ import render.ui.component.Inventory;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
 
-public class GameBoard {
+public abstract class GameBoard {
 	protected GridPane grid = new GridPane();
 	protected Image ground;
 	protected Image obstacle;
@@ -51,6 +51,8 @@ public class GameBoard {
 		traceTrois = new Image(Directory.GAME_TRACE_THREE);
 		traceQuatre = new Image(Directory.GAME_TRACE_FOUR);
 	}
+	
+	public abstract void launchGame();
 
 	public void setPlayButton(PlayButton pb) {
 		this.playButton = pb;

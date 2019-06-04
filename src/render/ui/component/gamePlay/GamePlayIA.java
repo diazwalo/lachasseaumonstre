@@ -10,5 +10,11 @@ public class GamePlayIA extends GameBoard{
 		super(map);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public void launchGame() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
