@@ -10,5 +10,8 @@ public class GamePlayBeast extends GameBoard{
 		super(map);
 		super.refreshBeastView(map);
 	}
-
+	
+	public void launchGame() {
+		
+	}
 }
