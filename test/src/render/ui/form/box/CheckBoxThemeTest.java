@@ -1,4 +1,4 @@
-package src.render.ui.form;
+package src.render.ui.form.box;
 
 import static org.junit.Assert.*;
 
