@@ -32,6 +32,8 @@ public class Game {
 	GameBoard plateau; 
 	Chat chat;
 	
+	Button nextTurn;
+	
 	
 	public Game(Window window, AbstractMap map, GameBoard gameType) throws FileNotFoundException {
 		
@@ -43,49 +45,49 @@ public class Game {
 		
 		this.gamePad.topBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.NORD)) {
-				this.gamePad.desactivateButton();
+				userAction();
 			}
 		});
 		
 		this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.NORDOUEST)) {
-				this.gamePad.desactivateButton();
+				userAction();
 			}
 		});
 		
 		this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.NORDEST)) {
-				this.gamePad.desactivateButton();
+				userAction();
 			}
 		});
 		
 		this.gamePad.leftBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.OUEST)) {
-				this.gamePad.desactivateButton();
+				userAction();
 			}
 		});
 		
 		this.gamePad.rightBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.EST)) {
-				this.gamePad.desactivateButton();
+				userAction();
 			}
 		});
 		
 		this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.SUD)) {
-				this.gamePad.desactivateButton();
+				userAction();
 			}
 		});
 		
 		this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.SUDOUEST)) {
-				this.gamePad.desactivateButton();
+				userAction();
 			}
 		});
 		
 		this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.SUDEST)) {
-				this.gamePad.desactivateButton();
+				userAction();
 			}
 		});
 		
@@ -103,13 +105,16 @@ public class Game {
 		gameType.setPlayButton(this.gamePad);
 		this.plateau = gameType;
 		
-		Button nextTurn = new Button("Tour suivant");
+		nextTurn = new Button("Tour suivant");
+		nextTurn.setDisable(true);
+		
 		nextTurn.setOnAction(e -> {
 			nextTurn.setDisable(true);
 		});
 		
-		Button lol = new Button("Activer tour suivant");
+		Button lol = new Button("Je joue l'IA");
 		lol.setOnAction(e -> {
+			this.gamePad.activateButton();
 			nextTurn.setDisable(false);
 		});
 	
@@ -123,5 +128,11 @@ public class Game {
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
 		window.stage.setScene(scene);
+	}
+	
+	public void userAction()
+	{
+		this.gamePad.desactivateButton();
+		nextTurn.setDisable(false);
 	}
 }
