@@ -39,6 +39,8 @@ public class Game {
 		this.chat = new Chat();
 		this.plateau = new GameBoard(map);
 		
+		//Example : this.gamePad.getMouvment();
+		
 		this.core.getChildren().addAll(top , bottom);
 		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore());
 		this.bottom.getChildren().addAll(gamePad.getCore());

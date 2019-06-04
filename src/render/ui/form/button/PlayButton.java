@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import map.Mouvment;
 import render.ui.util.Directory;
 
 public class PlayButton {
@@ -22,6 +23,8 @@ public class PlayButton {
 	private KeyboardButton bottomRightBtn;
 	private KeyboardButton bottomLeftBtn;
 	
+	private Mouvment mouvment;
+	
 	private GridPane panal = new GridPane();
 	
 	public PlayButton() {
@@ -39,6 +42,8 @@ public class PlayButton {
 		this.bottomRightBtn = new KeyboardButton(new Image(Directory.KEYBOARD_DOWN_RIGHT));
 		this.bottomLeftBtn = new KeyboardButton(new Image(Directory.KEYBOARD_DOWN_LEFT));
 		
+		captureButtons();
+		
 		panal.add(this.upLeftBtn.getBouton(), 0, 0);
 		panal.add(this.topBtn.getBouton(), 1, 0);
 		panal.add(this.upRightBtn.getBouton(), 2, 0);
@@ -49,6 +54,49 @@ public class PlayButton {
 		panal.add(this.bottomRightBtn.getBouton(), 2, 2);
 		
 		core.getChildren().addAll(panal);
+	}
+
+	private void captureButtons() {
+		
+		this.topBtn.getBouton().setOnAction(e -> {
+			this.mouvment = Mouvment.NORD;
+		});
+		
+		this.upLeftBtn.getBouton().setOnAction(e -> {
+			this.mouvment = Mouvment.NORDOUEST;
+		});
+		
+		this.upRightBtn.getBouton().setOnAction(e -> {
+			this.mouvment = Mouvment.NORDEST;
+		});
+		
+		this.leftBtn.getBouton().setOnAction(e -> {
+			this.mouvment = Mouvment.OUEST;
+		});
+		
+		this.rightBtn.getBouton().setOnAction(e -> {
+			this.mouvment = Mouvment.EST;
+		});
+		
+		this.bottomBtn.getBouton().setOnAction(e -> {
+			this.mouvment = Mouvment.SUD;
+		});
+		
+		this.bottomLeftBtn.getBouton().setOnAction(e -> {
+			this.mouvment = Mouvment.SUDOUEST;
+		});
+		
+		this.bottomRightBtn.getBouton().setOnAction(e -> {
+			this.mouvment = Mouvment.SUDEST;
+		});
+		
+	}
+	
+	public Mouvment getMouvment()
+	{
+		Mouvment m = this.mouvment;
+		this.mouvment = null;
+		return m;
 	}
 
 	public VBox getCore() {
