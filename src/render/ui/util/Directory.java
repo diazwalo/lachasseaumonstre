@@ -58,13 +58,29 @@ public class Directory
 	
 	public static final String GAME_BAIT = TEXTURES_FOLDER + "bait.png";
 	
-	public static final String GAME_TRACE_UN = TEXTURES_FOLDER + "traceUn.png";
+	public static final String GAME_TRACE_ONE = TEXTURES_FOLDER + "traceUn.png";
 	
-	public static final String GAME_TRACE_DEUX = TEXTURES_FOLDER + "traceDeux.png";
+	public static final String GAME_TRACE_TWO = TEXTURES_FOLDER + "traceDeux.png";
 	
-	public static final String GAME_TRACE_TROIS = TEXTURES_FOLDER + "traceTrois.png";
+	public static final String GAME_TRACE_THREE = TEXTURES_FOLDER + "traceTrois.png";
 	
-	public static final String GAME_TRACE_QUATRE = TEXTURES_FOLDER + "traceQuatre.png";
+	public static final String GAME_TRACE_FOUR = TEXTURES_FOLDER + "traceQuatre.png";
+	
+	public static final String KEYBOARD_UP_LEFT = TEXTURES_FOLDER + "upLeft.png";
+	
+	public static final String KEYBOARD_UP = TEXTURES_FOLDER + "up.png";
+	
+	public static final String KEYBOARD_UP_RIGHT = TEXTURES_FOLDER + "upRight.png";
+	
+	public static final String KEYBOARD_LEFT = TEXTURES_FOLDER + "left.png";
+	
+	public static final String KEYBOARD_RIGHT = TEXTURES_FOLDER + "right.png";
+	
+	public static final String KEYBOARD_DOWN_LEFT = TEXTURES_FOLDER + "downLeft.png";
+	
+	public static final String KEYBOARD_DOWN = TEXTURES_FOLDER + "down.png";
 
+	public static final String KEYBOARD_DOWN_RIGHT = TEXTURES_FOLDER + "downRight.png";
+	
 	//endregion
 }

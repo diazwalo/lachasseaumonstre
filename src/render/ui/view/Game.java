@@ -3,6 +3,7 @@ package render.ui.view;
 
 import java.io.FileNotFoundException;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -33,7 +34,6 @@ public class Game {
 		this.top = new HBox();
 		this.core = new VBox();
 		
-		
 		this.gamePad = new PlayButton();
 		this.inventaire = new Inventory();
 		this.chat = new Chat();
@@ -43,6 +43,7 @@ public class Game {
 		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore());
 		this.bottom.getChildren().addAll(gamePad.getCore());
 		
+		this.core.setAlignment(Pos.CENTER);
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);

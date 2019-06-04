@@ -1,8 +1,10 @@
 package render.ui.form.button;
 
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import render.ui.util.Directory;
 
 public class PlayButton {
 	
@@ -28,16 +30,14 @@ public class PlayButton {
 		this.bottom = new HBox();
 		this.middle = new HBox();
 		
-		this.topBtn  = new KeyboardButton("z");
-		this.leftBtn  = new KeyboardButton("q");
-		this.rightBtn  = new KeyboardButton("d");
-		this.bottomBtn  = new KeyboardButton("s");
-		this.upRightBtn = new KeyboardButton("zd");
-		this.upLeftBtn = new KeyboardButton("zq");
-		this.bottomRightBtn = new KeyboardButton("sd");
-		this.bottomLeftBtn = new KeyboardButton("sq");
-		
-		
+		this.topBtn  = new KeyboardButton(new Image(Directory.KEYBOARD_UP));
+		this.leftBtn  = new KeyboardButton(new Image(Directory.KEYBOARD_LEFT));
+		this.rightBtn  = new KeyboardButton(new Image(Directory.KEYBOARD_RIGHT));
+		this.bottomBtn  = new KeyboardButton(new Image(Directory.KEYBOARD_DOWN));
+		this.upRightBtn = new KeyboardButton(new Image(Directory.KEYBOARD_UP_RIGHT));
+		this.upLeftBtn = new KeyboardButton(new Image(Directory.KEYBOARD_UP_LEFT));
+		this.bottomRightBtn = new KeyboardButton(new Image(Directory.KEYBOARD_DOWN_RIGHT));
+		this.bottomLeftBtn = new KeyboardButton(new Image(Directory.KEYBOARD_DOWN_LEFT));
 		
 		panal.add(this.upLeftBtn.getBouton(), 0, 0);
 		panal.add(this.topBtn.getBouton(), 1, 0);

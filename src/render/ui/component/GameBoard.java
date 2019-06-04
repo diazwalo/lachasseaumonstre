@@ -51,10 +51,10 @@ public class GameBoard {
 		ward = new Image(Directory.GAME_WARD);
 		bait = new Image(Directory.GAME_BAIT);
 
-		traceUn = new Image(Directory.GAME_TRACE_UN);
-		traceDeux = new Image(Directory.GAME_TRACE_DEUX);
-		traceTrois = new Image(Directory.GAME_TRACE_TROIS);
-		traceQuatre = new Image(Directory.GAME_TRACE_QUATRE);
+		traceUn = new Image(Directory.GAME_TRACE_ONE);
+		traceDeux = new Image(Directory.GAME_TRACE_TWO);
+		traceTrois = new Image(Directory.GAME_TRACE_THREE);
+		traceQuatre = new Image(Directory.GAME_TRACE_FOUR);
 
 
 		for (int row = 0; row < (map.getTab().length); row++) {

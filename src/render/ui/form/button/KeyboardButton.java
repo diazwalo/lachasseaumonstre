@@ -2,23 +2,29 @@ package render.ui.form.button;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import render.ui.util.Directory;
+import javafx.scene.image.ImageView;
 
 public class KeyboardButton {
 	
 	private Button bouton;
 	private Image img;
 	
-	
-	
-	
 	public KeyboardButton(String contenu) {
-    	img = new Image(Directory.GAME_TEXTURE);
-
 		this.bouton = new Button(contenu);
 		bouton.setMaxSize(50, 50);
 		bouton.setMinSize(50,50);
-		//this.bouton.setGraphic(new ImageView(img));
+	}
+	
+	public KeyboardButton(Image image) {
+		this.bouton = new Button();
+		bouton.setMaxSize(50, 50);
+		bouton.setMinSize(50,50);
+		
+		ImageView iv = new ImageView(image);
+		iv.setFitWidth(50);
+		iv.setFitHeight(50);
+		
+		this.bouton.setGraphic(iv);
 	}
 
 
