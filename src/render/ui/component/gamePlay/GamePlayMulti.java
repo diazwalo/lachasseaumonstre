@@ -3,6 +3,7 @@ package render.ui.component.gamePlay;
 import java.io.FileNotFoundException;
 
 import map.AbstractMap;
+import map.Mouvment;
 
 public class GamePlayMulti extends GameBoard{
 
@@ -12,7 +13,7 @@ public class GamePlayMulti extends GameBoard{
 	}
 
 	@Override
-	public void launchGame() {
+	public void play(Mouvment mouvment) {
 		// TODO Auto-generated method stub
 		
 	}

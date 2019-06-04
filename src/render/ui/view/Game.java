@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import map.AbstractMap;
+import map.Mouvment;
 import render.ui.component.Chat;
 import render.ui.component.Inventory;
 import render.ui.component.gamePlay.GameBoard;
@@ -39,6 +40,39 @@ public class Game {
 		this.core = new VBox();
 		
 		this.gamePad = new PlayButton();
+		
+		this.gamePad.topBtn.getBouton().setOnAction(e -> {
+			gameType.play(Mouvment.NORD);
+			
+		});
+		
+		this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
+			gameType.play(Mouvment.NORDOUEST);
+		});
+		
+		this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
+			gameType.play(Mouvment.NORDEST);
+		});
+		
+		this.gamePad.leftBtn.getBouton().setOnAction(e -> {
+			gameType.play(Mouvment.OUEST);
+		});
+		
+		this.gamePad.rightBtn.getBouton().setOnAction(e -> {
+			gameType.play(Mouvment.EST);
+		});
+		
+		this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
+			gameType.play(Mouvment.SUD);
+		});
+		
+		this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
+			gameType.play(Mouvment.SUDOUEST);
+		});
+		
+		this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
+			gameType.play(Mouvment.SUDEST);
+		});
 		
 		if(gameType instanceof GamePlayHunter) {
 			System.out.println("inventaire Hunter");

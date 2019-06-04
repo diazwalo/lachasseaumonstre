@@ -40,8 +40,12 @@ public abstract class GameBoard {
 	protected PlayButton playButton;
 	protected Inventory inventory;
 	protected Image fog;
+	
+	protected AbstractMap map;
 
 	public GameBoard(AbstractMap map) throws FileNotFoundException {
+		this.map = map;
+		
 		ground = new Image(Directory.GAME_GROUND);
 		obstacle = new Image(Directory.GAME_OBSTACLE);
 		beast = new Image(Directory.GAME_BEAST);
@@ -62,6 +66,8 @@ public abstract class GameBoard {
 		camouflage =new Image(Directory.GAME_CAMOUFLAGE);
 		
 	}
+	
+	public abstract void play(Mouvment mouvment);
 
 	public void setPlayButton(PlayButton pb) {
 		this.playButton = pb;

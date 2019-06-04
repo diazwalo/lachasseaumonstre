@@ -3,6 +3,7 @@ package render.ui.component.gamePlay;
 import java.io.FileNotFoundException;
 
 import map.AbstractMap;
+import map.Mouvment;
 
 public class GamePlayBeast extends GameBoard{
 	
@@ -11,7 +12,9 @@ public class GamePlayBeast extends GameBoard{
 		super.refreshBeastView(map);
 	}
 	
-	public void launchGame() {
+	@Override
+	public void play(Mouvment mouvment) {
+		// TODO Auto-generated method stub
 		
 	}
 }
