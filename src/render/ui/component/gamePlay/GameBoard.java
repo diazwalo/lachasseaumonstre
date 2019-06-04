@@ -110,6 +110,7 @@ public abstract class GameBoard {
 				GridPane.setRowIndex(rec, row);
 				GridPane.setColumnIndex(rec, col);
 				grid.getChildren().addAll(rec);
+				this.setFog(map);
 			}
 		}
 	}
