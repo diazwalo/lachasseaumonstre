@@ -2,6 +2,8 @@ package render.ui.component.gamePlay;
 
 import java.io.FileNotFoundException;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
@@ -9,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 import map.AbstractMap;
 import map.Case;
 import map.CaseType;
+import map.Mouvment;
 import map.Position;
 import render.bonus.Bait;
 import render.bonus.IBonus;
@@ -34,6 +37,7 @@ public abstract class GameBoard {
 	protected Image traceQuatre;
 	protected PlayButton playButton;
 	protected Inventory inventory;
+	protected Image fog;
 
 	public GameBoard(AbstractMap map) throws FileNotFoundException {
 		ground = new Image(Directory.GAME_GROUND);
@@ -41,6 +45,7 @@ public abstract class GameBoard {
 		beast = new Image(Directory.GAME_BEAST);
 		hunter = new Image(Directory.GAME_HUNTER);
 		bonus = new Image(Directory.GAME_BONUS);
+		fog  = new Image(Directory.GAME_FOG);
 
 		trap = new Image(Directory.GAME_TRAP);
 		ward = new Image(Directory.GAME_WARD);
@@ -201,6 +206,57 @@ public abstract class GameBoard {
 			rec.setFill(new ImagePattern(beast));
 		}else if(caseCour.getHunterOnCase(map, posCase)) {
 			rec.setFill(new ImagePattern(hunter));
+		}
+	}
+	
+	public Rectangle getNode (final int row, final int column, GridPane gridPane) {
+		Node result = null;
+		ObservableList<Node> childrens = gridPane.getChildren();
+
+		for (Node node : childrens) {
+			if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+				result = node;
+				break;
+			}
+		}
+
+		return (Rectangle)result;
+	}
+
+	public void setFog(AbstractMap map) {
+
+		int[] huntPos = map.getHunter().getPos().getTabPosition();
+
+		for (int row = 0; row < (map.getTab().length); row++) {
+			for (int col = 0; col < (map.getTab()[row].length); col++) {
+				Case caseCour = map.getTab()[row][col];
+				if(huntPos[0] == row && huntPos[1] == col) {
+					this.getNode(row, col, this.getGrid()).setFill(new ImagePattern(hunter));
+				}else if(caseCour.isObstacle()){
+					this.getNode(row, col, this.getGrid()).setFill(new ImagePattern(obstacle));
+				}else {
+					this.getNode(row, col, this.getGrid()).setFill(new ImagePattern(fog));
+				}
+
+			}
+		}
+
+		if(!map.getHunter().isBlinded()) {
+
+			if(map.getBeast().getRevealedByWard()) {
+				int[] beastPos = map.getBeast().getPos().getTabPosition();
+				this.getNode(beastPos[0], beastPos[1], this.getGrid()).setFill(new ImagePattern(beast));
+			}
+			for(Mouvment m : map.getHunter().getMvtToEmptyCase(map.getTab())) {
+				int[] mouv = m.getMvt();
+				Rectangle rec  = this.getNode(huntPos[0]+mouv[0], huntPos[1]+mouv[1], this.getGrid());
+				Case caseCour = map.getTab()[huntPos[0]+mouv[0]][huntPos[1]+mouv[1]];
+				Position posCase= new Position(huntPos[0]+mouv[0], huntPos[1]+mouv[1]);
+
+				this.paintRectangleBeastView(rec, caseCour, map, huntPos[0]+mouv[0], huntPos[1]+mouv[1], posCase);
+			}
+
+
 		}
 	}
 }

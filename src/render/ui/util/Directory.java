@@ -50,6 +50,8 @@ public class Directory
 	
 	public static final String GAME_HUNTER = TEXTURES_FOLDER + "hunter.png";
 	
+	public static final String GAME_FOG = TEXTURES_FOLDER + "fog.png";
+	
 	public static final String GAME_BONUS = TEXTURES_FOLDER + "bonus.png";
 	
 	public static final String GAME_TRAP = TEXTURES_FOLDER + "trap.png";
