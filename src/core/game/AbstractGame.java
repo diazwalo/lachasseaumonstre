@@ -23,7 +23,7 @@ import render.bonus.Ward;
 public abstract class AbstractGame {
 
 	protected AbstractMap map;
-	protected static GameStatus gameStatus;
+	public static GameStatus gameStatus;
 
 	public AbstractGame(AbstractMap map) {
 		this.map=map;
