@@ -96,10 +96,12 @@ public class Beast extends Entity{
 	}
 
 	public void addToCamouflages(Camouflage cam) {
+		super.inventory.add(cam);
 		this.camouflages.add(cam);
 	}
 	
 	public void addToBaits(Bait bait) {
+		super.inventory.add(bait);
 		this.baits.add(bait);
 	}
 	

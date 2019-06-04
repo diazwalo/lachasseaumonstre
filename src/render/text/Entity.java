@@ -17,7 +17,7 @@ import render.bonus.IBonus;
 
 public abstract class Entity {
 	private Position pos;
-	private List<IBonus> inventory = new ArrayList<>();
+	protected List<IBonus> inventory = new ArrayList<>();
 	
 	public Entity(int posX, int posY) {
 		this.pos=new Position(posX, posY);
@@ -45,6 +45,16 @@ public abstract class Entity {
 		
 	}
 	
+	
+	/**
+	 * Retourne l'inventaire de l'entite.
+	 * @return L'inventaire du l'entite qui contient les bonus.
+	 */
+	public List<IBonus> getInventory()
+	{
+		return inventory;
+	}
+
 	/**
 	 * retourne sous la forme textuelle l inventaire
 	 */
