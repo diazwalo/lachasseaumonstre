@@ -137,6 +137,28 @@ public class PlayButton {
 		upLeftBtn.getBouton().setMaxSize(prefWidth, prefHeight );
 	}
 	
+	public void desactivateButton()
+	{
+		this.topBtn.getBouton().setDisable(true);
+		this.leftBtn.getBouton().setDisable(true);
+		this.rightBtn.getBouton().setDisable(true);
+		this.bottomBtn.getBouton().setDisable(true);
+		this.bottomLeftBtn.getBouton().setDisable(true);
+		this.bottomRightBtn.getBouton().setDisable(true);
+		this.upRightBtn.getBouton().setDisable(true);
+		this.upLeftBtn.getBouton().setDisable(true);
+	}
 	
+	public void activateButton()
+	{
+		this.topBtn.getBouton().setDisable(false);
+		this.leftBtn.getBouton().setDisable(false);
+		this.rightBtn.getBouton().setDisable(false);
+		this.bottomBtn.getBouton().setDisable(false);
+		this.bottomLeftBtn.getBouton().setDisable(false);
+		this.bottomRightBtn.getBouton().setDisable(false);
+		this.upRightBtn.getBouton().setDisable(false);
+		this.upLeftBtn.getBouton().setDisable(false);
+	}
 
 }

@@ -1,11 +1,8 @@
 package render.ui.component;
 
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import render.ui.core.Window;
 import render.ui.form.button.KeyboardButton;
-import render.ui.util.Interface;
 
 public class Inventory {
 
