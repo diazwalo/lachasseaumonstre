@@ -31,10 +31,12 @@ public abstract class GameBoard {
 	protected Image trap;
 	protected Image ward;
 	protected Image bait;
+	protected Image camouflage;
 	protected Image traceUn;
 	protected Image traceDeux;
 	protected Image traceTrois;
 	protected Image traceQuatre;
+	protected Image tracePas;
 	protected PlayButton playButton;
 	protected Inventory inventory;
 	protected Image fog;
@@ -55,9 +57,11 @@ public abstract class GameBoard {
 		traceDeux = new Image(Directory.GAME_TRACE_TWO);
 		traceTrois = new Image(Directory.GAME_TRACE_THREE);
 		traceQuatre = new Image(Directory.GAME_TRACE_FOUR);
+		
+		tracePas = new Image(Directory.GAME_TRACE_PAS);
+		camouflage =new Image(Directory.GAME_CAMOUFLAGE);
+		
 	}
-	
-	public abstract void launchGame();
 
 	public void setPlayButton(PlayButton pb) {
 		this.playButton = pb;
@@ -188,6 +192,7 @@ public abstract class GameBoard {
 		}
 		if(caseCour.getBeastWalk()>=1) {
 			//afficher une case avec des pas
+			rec.setFill(new ImagePattern(tracePas));
 		}
 		
 		if(caseCour.getHunterBonusActifOnCase(map, posCase) != null) {
