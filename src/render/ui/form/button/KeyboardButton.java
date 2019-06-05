@@ -8,21 +8,22 @@ public class KeyboardButton {
 	
 	private Button bouton;
 	private Image img;
+	private int size = 150;
 	
 	public KeyboardButton(String contenu) {
 		this.bouton = new Button(contenu);
-		bouton.setMaxSize(50, 50);
-		bouton.setMinSize(50,50);
+		bouton.setMaxSize(size, size);
+		bouton.setMinSize(size, size);
 	}
 	
 	public KeyboardButton(Image image) {
 		this.bouton = new Button();
-		bouton.setMaxSize(50, 50);
-		bouton.setMinSize(50,50);
+		bouton.setMaxSize(size, size);
+		bouton.setMinSize(size, size);
 		
 		ImageView iv = new ImageView(image);
-		iv.setFitWidth(50);
-		iv.setFitHeight(50);
+		iv.setFitWidth(size);
+		iv.setFitHeight(size);
 		
 		this.bouton.setGraphic(iv);
 	}

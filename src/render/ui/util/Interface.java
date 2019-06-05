@@ -41,4 +41,13 @@ public class Interface
 		
 		return new Background(background);
 	}
+	
+	public static double calculCaseSize(int width, int height)
+	{
+		int mapSize = (width > height) ? width : height;
+		
+		double heightScreen = Interface.getSize().getHeight();
+		
+		return heightScreen / mapSize;
+	}
 }

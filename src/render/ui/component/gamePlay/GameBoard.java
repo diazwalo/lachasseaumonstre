@@ -21,6 +21,7 @@ import render.ui.component.Inventory;
 import render.ui.core.Window;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
+import render.ui.util.Interface;
 
 public abstract class GameBoard {
 	protected GridPane grid = new GridPane();
@@ -45,6 +46,8 @@ public abstract class GameBoard {
 	protected AbstractMap map;
 
 	public Window window;
+	
+	private final double size;
 
 	public void setWindow(Window window)
 	{
@@ -73,6 +76,7 @@ public abstract class GameBoard {
 		tracePas = new Image(Directory.GAME_TRACE_PAS);
 		camouflage =new Image(Directory.GAME_CAMOUFLAGE);
 		
+		this.size = Interface.calculCaseSize(map.getTab().length, map.getTab()[0].length);
 	}
 
 	public abstract boolean play(Mouvment mouvment);
@@ -107,8 +111,8 @@ public abstract class GameBoard {
 		for (int row = 0; row < (map.getTab().length); row++) {
 			for (int col = 0; col < (map.getTab()[row].length); col++) {
 				Rectangle rec = new Rectangle();
-				rec.setWidth(50);
-				rec.setHeight(50);
+				rec.setWidth(size);
+				rec.setHeight(size);
 
 				Case caseCour = map.getTab()[col][row];
 				Position posCase= new Position(col, row);
@@ -186,8 +190,8 @@ public abstract class GameBoard {
 		for (int row = 0; row < (map.getTab().length); row++) {
 			for (int col = 0; col < (map.getTab()[row].length); col++) {
 				Rectangle rec = new Rectangle();
-				rec.setWidth(50);
-				rec.setHeight(50);
+				rec.setWidth(size);
+				rec.setHeight(size);
 				
 				Case caseCour = map.getTab()[col][row];
 				Position posCase= new Position(col, row);
