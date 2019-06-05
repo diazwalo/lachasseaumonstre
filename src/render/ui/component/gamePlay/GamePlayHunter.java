@@ -22,7 +22,8 @@ public class GamePlayHunter extends GameBoard
 	}
 
 	public boolean play(Mouvment mouvment) {
-		if(! this.ag.gameStatus.equals(GameStatus.INGAME)) {
+		System.out.println(this.ag.gameStatus);
+		if(this.ag.gameStatus.equals(GameStatus.INGAME)) {
 			if(ag.map.moveHunter(mouvment)) {
 				ag.checkGameStatus();
 				ag.ramasserBonusHunter();
@@ -45,10 +46,11 @@ public class GamePlayHunter extends GameBoard
 	@Override
 	public void next() {
 		// TODO Auto-generated method stub
-		if(! this.ag.gameStatus.equals(GameStatus.INGAME)) {
+		if(this.ag.gameStatus.equals(GameStatus.INGAME)) {
 			((GameHunter)ag).beastTurn();
 			ag.checkBeastRevealed();
 			ag.updateEndGame();
+			super.refreshHunterView(super.map);
 		}else {
 			EndScreen es =new EndScreen(window);
 			es.setEndScreen(ag.gameStatus, 1);

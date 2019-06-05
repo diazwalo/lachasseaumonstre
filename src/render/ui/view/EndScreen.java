@@ -22,8 +22,6 @@ public class EndScreen {
 		this.window = window;
 		this.core = new VBox();
 		this.core.setBackground(Interface.getBackground());
-		// A appeler apres l'appel du constructeur
-		setEndScreen(GameStatus.MAPDISCOVERED, 1);
 		this.core.setAlignment(Pos.CENTER);
 	}
 	
