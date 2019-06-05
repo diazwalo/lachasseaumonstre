@@ -114,13 +114,15 @@ public abstract class GameBoard {
 				rec.setWidth(size);
 				rec.setHeight(size);
 
-				Case caseCour = map.getTab()[col][row];
-				Position posCase= new Position(col, row);
-
-				this.paintRectangleHunterView(rec, caseCour, map, row, col, posCase);
+				System.out.println("Col: "+col+", Lig: "+row+".");
 				
-				GridPane.setRowIndex(rec, row);
-				GridPane.setColumnIndex(rec, col);
+				Case caseCour = map.getTab()[row][col];
+				Position posCase= new Position(row, col);
+
+				this.paintRectangleHunterView(rec, caseCour, map, col, row, posCase);
+				
+				GridPane.setRowIndex(rec, col);
+				GridPane.setColumnIndex(rec, row);
 				grid.getChildren().addAll(rec);
 				
 			}
