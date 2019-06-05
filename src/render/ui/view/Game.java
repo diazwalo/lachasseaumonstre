@@ -25,7 +25,7 @@ public class Game {
 
 	HBox top;
 	HBox bottom;
-	VBox core;
+	HBox core;
 	
 	PlayButton gamePad;
 	Inventory inventaire;
@@ -39,7 +39,7 @@ public class Game {
 		
 		this.bottom = new HBox();
 		this.top = new HBox();
-		this.core = new VBox();
+		this.core = new HBox();
 		
 		this.gamePad = new PlayButton();
 		
@@ -115,7 +115,7 @@ public class Game {
 			nextTurn.setDisable(false);
 		});
 
-		this.core.getChildren().addAll(top , bottom);
+		this.core.getChildren().addAll(bottom, top);
 		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn);
 		this.bottom.getChildren().addAll(gamePad.getCore());
 		
