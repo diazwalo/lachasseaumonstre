@@ -22,7 +22,6 @@ public class GamePlayHunter extends GameBoard
 	}
 
 	public boolean play(Mouvment mouvment) {
-		System.out.println(this.ag.gameStatus);
 		if(this.ag.gameStatus.equals(GameStatus.INGAME)) {
 			if(ag.map.moveHunter(mouvment)) {
 				ag.checkGameStatus();

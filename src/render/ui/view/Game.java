@@ -45,49 +45,49 @@ public class Game {
 		
 		this.gamePad.topBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.NORD)) {
-				userAction();
+				userAction(map);
 			}
 		});
 		
 		this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.NORDOUEST)) {
-				userAction();
+				userAction(map);
 			}
 		});
 		
 		this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.NORDEST)) {
-				userAction();
+				userAction(map);
 			}
 		});
 		
 		this.gamePad.leftBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.OUEST)) {
-				userAction();
+				userAction(map);
 			}
 		});
 		
 		this.gamePad.rightBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.EST)) {
-				userAction();
+				userAction(map);
 			}
 		});
 		
 		this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.SUD)) {
-				userAction();
+				userAction(map);
 			}
 		});
 		
 		this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.SUDOUEST)) {
-				userAction();
+				userAction(map);
 			}
 		});
 		
 		this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
 			if(gameType.play(Mouvment.SUDEST)) {
-				userAction();
+				userAction(map);
 			}
 		});
 		
@@ -114,16 +114,9 @@ public class Game {
 			this.gamePad.activateButton();
 			nextTurn.setDisable(false);
 		});
-		
-		/*Button lol = new Button("Je joue l'IA");
-		lol.setOnAction(e -> {
-			this.gamePad.activateButton();
-			nextTurn.setDisable(false);
-		});*/
-	
-		
+
 		this.core.getChildren().addAll(top , bottom);
-		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn/*, lol*/);
+		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn);
 		this.bottom.getChildren().addAll(gamePad.getCore());
 		
 		this.core.setAlignment(Pos.CENTER);
@@ -133,8 +126,9 @@ public class Game {
 		window.stage.setScene(scene);
 	}
 	
-	public void userAction()
+	public void userAction(AbstractMap map)
 	{
+		this.inventaire.putInInventory(map.getHunter());
 		this.gamePad.desactivateButton();
 		nextTurn.setDisable(false);
 	}

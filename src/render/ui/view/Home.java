@@ -54,6 +54,8 @@ public class Home
 		
 		//TEST
 		btn2.setOnAction(e -> {
+			System.out.println(config.getWidth());
+			System.out.println(config.getHeight());
 			AbstractMap map = null;
 			if(this.config.getMap().equals(Map.SQUARE)) {
 				map = new SquareMap(this.config);

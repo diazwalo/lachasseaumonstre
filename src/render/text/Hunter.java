@@ -29,6 +29,13 @@ public class Hunter extends Entity {
 		super(posX, posY);
 	}
 	
+	public List<IBonus> getTraps() {
+		return this.traps;
+	}
+	public List<IBonus> getWards() {
+		return this.wards;
+	}
+	
 	/**
 	 * Retourne le premier bonus disponible dans la liste de bonus
 	 * @return IBonus

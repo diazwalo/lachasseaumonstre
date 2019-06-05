@@ -19,7 +19,7 @@ import render.bonus.IBonus;
  *
  */
 public class Beast extends Entity{
-	private List<IBonus> camouflages = new ArrayList<>();
+	public List<IBonus> camouflages = new ArrayList<>();
 	private List<IBonus> baits = new ArrayList<>();
 	private boolean trapped;
 	private boolean revealedByWard;
@@ -35,6 +35,13 @@ public class Beast extends Entity{
 		this.trapped = false;
 		this.revealedByWard = false;
 		this.tp=config.getNbTeleportation();
+	}
+	
+	public List<IBonus> getCamouflages() {
+		return this.camouflages;
+	}
+	public List<IBonus> getbaits() {
+		return this.baits;
 	}
 	
 	/**

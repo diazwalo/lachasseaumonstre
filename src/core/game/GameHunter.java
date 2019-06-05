@@ -68,6 +68,8 @@ public class GameHunter extends AbstractGame {
 					mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
 				}
 				super.map.setBeastWalk();
+				//TEST ////////////
+				System.out.println("SetBeastPas : "+this.map.getBeast().getPos());
 				super.checkGameStatus();
 				
 				setBonusIABeast();
