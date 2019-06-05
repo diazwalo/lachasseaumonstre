@@ -18,6 +18,7 @@ import render.bonus.IBonus;
 import render.bonus.Trap;
 import render.bonus.Ward;
 import render.ui.component.Inventory;
+import render.ui.core.Window;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
 
@@ -43,6 +44,13 @@ public abstract class GameBoard {
 	
 	protected AbstractMap map;
 
+	public Window window;
+
+	public void setWindow(Window window)
+	{
+		this.window = window;
+	}
+	
 	public GameBoard(AbstractMap map) throws FileNotFoundException {
 		this.map = map;
 		

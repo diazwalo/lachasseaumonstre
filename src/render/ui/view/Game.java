@@ -92,10 +92,8 @@ public class Game {
 		});
 		
 		if(gameType instanceof GamePlayHunter) {
-			System.out.println("inventaire Hunter");
 			this.inventaire = new Inventory(map.getHunter());
 		}else if(gameType instanceof GamePlayBeast) {
-			System.out.println("inventaire Beast");
 			this.inventaire = new Inventory(map.getBeast());
 		}
 		
@@ -104,6 +102,7 @@ public class Game {
 		gameType.setInventory(this.inventaire);
 		gameType.setPlayButton(this.gamePad);
 		this.plateau = gameType;
+		this.plateau.setWindow(window);
 		
 		
 		nextTurn = new Button("Tour suivant");
@@ -111,17 +110,20 @@ public class Game {
 		
 		nextTurn.setOnAction(e -> {
 			nextTurn.setDisable(true);
-		});
-		
-		Button lol = new Button("Je joue l'IA");
-		lol.setOnAction(e -> {
+			gameType.next();
 			this.gamePad.activateButton();
 			nextTurn.setDisable(false);
 		});
+		
+		/*Button lol = new Button("Je joue l'IA");
+		lol.setOnAction(e -> {
+			this.gamePad.activateButton();
+			nextTurn.setDisable(false);
+		});*/
 	
 		
 		this.core.getChildren().addAll(top , bottom);
-		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn, lol);
+		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn/*, lol*/);
 		this.bottom.getChildren().addAll(gamePad.getCore());
 		
 		this.core.setAlignment(Pos.CENTER);

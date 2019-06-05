@@ -57,6 +57,9 @@ public class EndScreen {
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
 		
+		System.out.println(scene);
+		System.out.println(window);
+		
 		window.stage.setScene(scene);
 	}
 	

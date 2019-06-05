@@ -379,7 +379,7 @@ public abstract class AbstractGame {
 	 */
 	public boolean beastTurnPlayer() {
 		boolean mvtValide=false;
-	
+
 		IBonus bo=this.checkBeastTrapped();
 		
 		do {

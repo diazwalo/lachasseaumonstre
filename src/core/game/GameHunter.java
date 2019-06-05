@@ -46,7 +46,7 @@ public class GameHunter extends AbstractGame {
 		}
 		this.endGame();
 	}
-	
+
 	/**
 	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
 	 * @return boolean
