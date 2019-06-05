@@ -27,21 +27,21 @@ public abstract class AbstractMap
      * Genere les bonus de la Bete et du Chasseur si ces dernier sont demandes dans la Configue, le milieu sert a mettre leurs bonus respectif de leurs cotes)
      * @param middle
      */
-    public void generationBonus(int middle) {
+    public void generationBonus(/*int middle*/) {
     	Position posTrap = new Position(-1, -1);
     	Position posBait = new Position(-1, -1);
     	
     	if(this.config.isTrap()) {
-    		posTrap=this.createPositionTempoFirstBonus(0, new boolean[] { true,  false }, false);
+    		posTrap=this.createPositionTempoFirstBonus(0, 0, new boolean[] { true,  false }, false);
     	}
     	if(this.config.isWard()) {
-    		this.createPositionTempoSecondBonus(0, new boolean[] { false,  true }, posTrap, false);
+    		this.createPositionTempoSecondBonus(0, 0, new boolean[] { false,  true }, posTrap, false);
     	}
 		if(this.config.isBait()) {
-			posBait=this.createPositionTempoFirstBonus(middle, new boolean[] { true,  false }, true);
+			posBait=this.createPositionTempoFirstBonus((this.tab.length)-1, (this.tab[0].length)-1, new boolean[] { true,  false }, true);
 		}
 		if(this.config.isCamouflage()) {
-			this.createPositionTempoSecondBonus(middle, new boolean[] { false,  true }, posBait, true);
+			this.createPositionTempoSecondBonus((this.tab.length)-1, (this.tab[0].length)-1, new boolean[] { false,  true }, posBait, true);
 		}
 	}
 
@@ -52,13 +52,20 @@ public abstract class AbstractMap
      * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
      * @return 
      */
-    public final Position createPositionTempoFirstBonus(int middle, boolean[] tabBonus, boolean bonusHunterOrBeast) {
+    public final Position createPositionTempoFirstBonus(int idxWidth, int idxHeight, boolean[] tabBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
         Position posBonusFinal=new Position(-1 , -1);
 
         while(posBonusFinal.isPos(-1, -1)) {
-            int posBonusX=(middle)+r.nextInt((this.tab.length)/2);
-            int posBonusY=(middle)+r.nextInt((this.tab[posBonusX].length)/2);
+        	
+            int posBonusX=idxWidth+r.nextInt((this.tab.length/2)-1);
+            int posBonusY=idxHeight+r.nextInt((this.tab[0].length/2)-1);
+            
+            if(idxWidth != 0 || idxHeight != 0) {
+            	posBonusX=idxWidth-r.nextInt(idxWidth/2);
+            	posBonusY=idxHeight-r.nextInt(idxHeight/2);
+            }
+            
             Position posBonusTempo=new Position(posBonusX, posBonusY);
 
             if(! this.tab[posBonusY][posBonusX].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo)) {
@@ -83,13 +90,19 @@ public abstract class AbstractMap
      * @param posFirstBonus La position du premier bonus.
      * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
      */
-    public final void createPositionTempoSecondBonus(int middle, boolean[] tabBonus, Position posFirstBonus, boolean bonusHunterOrBeast) {
+    public final void createPositionTempoSecondBonus(int idxWidth, int idxHeight, boolean[] tabBonus, Position posFirstBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
         Position posBonusFinal=new Position(-1 , -1);
 
         while(posBonusFinal.isPos(-1, -1)) {
-            int posBonusX=(middle)+r.nextInt((this.tab.length)/2);
-            int posBonusY=(middle)+r.nextInt((this.tab[posBonusX].length)/2);
+            int posBonusX=idxHeight+r.nextInt(this.tab.length/2);
+            int posBonusY=idxHeight+r.nextInt(this.tab[0].length/2);
+            
+            if(idxWidth != 0 || idxHeight != 0) {
+            	posBonusX=idxWidth-r.nextInt(idxWidth/2);
+            	posBonusY=idxHeight-r.nextInt(idxHeight/2);
+            }
+            
             Position posBonusTempo=new Position(posBonusX, posBonusY);
 
             if(! this.tab[posBonusY][posBonusX].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo) && ! posBonusFinal.equals(posFirstBonus)) {

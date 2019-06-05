@@ -16,7 +16,7 @@ public class CircularMap extends AbstractMap {
 		this.tab = new Case[widthTab][heightTab];
 		
 		this.generationMap();
-		super.generationBonus(widthTab/2);
+		super.generationBonus(/*widthTab/2*/);
 		
 		this.beastWin = false;
 		this.hunterWin = false;

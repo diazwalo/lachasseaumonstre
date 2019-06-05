@@ -54,6 +54,14 @@ public class Inventory {
 			buttonBonus.setGraphic(new ImageView(Directory.GAME_WARD));
 		}
 	}*/
+	
+	public void setBonusAble() {
+		//if()
+	}
+	
+	public void setBonusDisable() {
+		
+	}
 
 	public GridPane getCore() {
 		return core;
