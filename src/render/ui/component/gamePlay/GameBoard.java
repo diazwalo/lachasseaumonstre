@@ -74,19 +74,19 @@ public abstract class GameBoard {
 		camouflage =new Image(Directory.GAME_CAMOUFLAGE);
 		
 	}
-	
+
 	public abstract boolean play(Mouvment mouvment);
 	public abstract boolean useBonus(IBonus bonus);
 	public abstract void next();
-	
+
 	public void setPlayButton(PlayButton pb) {
 		this.playButton = pb;
 	}
-	
+
 	public void setInventory(Inventory i) {
 		this.inventory = i;
 	}
-	
+
 	public GridPane getGrid() {
 		return this.grid;
 	}

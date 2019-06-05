@@ -19,71 +19,41 @@ import render.ui.util.Directory;
 public class Inventory {
 
 	private GridPane core;
-	public List<IBonus> inventory = new ArrayList<>();
 	
 	public Inventory(Entity entity) {
 		this.core = new GridPane();
-		List<IBonus> inventory = new ArrayList<>();
-		/*if(entity instanceof Beast) {
-			System.out.println("dedans");
-			Beast b = (Beast)entity;
-			inventory.addAll(b.getCamouflages());
-			inventory.addAll(b.getbaits());
-		}else if (entity instanceof Hunter) {
-			Hunter h = (Hunter)entity;
-			inventory.addAll(h.getTraps());
-			inventory.addAll(h.getWards());
-		}
-
-		for (int i = 0; i < inventory.size(); i++) {
-			IBonus bonus = inventory.get(i);
-		
-			Button buttonBonus = new Button();
+		Button buttonBonus = new Button();
+		if(entity instanceof Beast) {
+			buttonBonus.setGraphic(new ImageView(Directory.GAME_BAIT));
+			buttonBonus.setDisable(true);
+			core.add(buttonBonus, 0, 0);
 			
-			if(bonus instanceof Trap) {
-				buttonBonus.setGraphic(new ImageView(Directory.GAME_TRAP));
-			}else if(bonus instanceof Ward) {
-				buttonBonus.setGraphic(new ImageView(Directory.GAME_WARD));
-			}else if(bonus instanceof Bait) {
-				buttonBonus.setGraphic(new ImageView(Directory.GAME_BAIT));
-			}else if(bonus instanceof Camouflage) {
-				buttonBonus.setGraphic(new ImageView(Directory.GAME_CAMOUFLAGE));
-			}
-			this.core.add(buttonBonus, 0, i);
+			buttonBonus = new Button();
+			buttonBonus.setGraphic(new ImageView(Directory.GAME_CAMOUFLAGE));
+			buttonBonus.setDisable(true);
+			core.add(buttonBonus, 0, 1);
+		}else if (entity instanceof Hunter) {
+			buttonBonus.setGraphic(new ImageView(Directory.GAME_TRAP));
+			buttonBonus.setDisable(true);
+			core.add(buttonBonus, 0, 0);
+			
+			buttonBonus = new Button();
+			buttonBonus.setGraphic(new ImageView(Directory.GAME_WARD));
+			buttonBonus.setDisable(true);
+			core.add(buttonBonus, 0, 1);
 		}
-		
-		System.out.println("Taille de l'inventaire : " + entity.getInventory().size());*/
 	}
 	
-	public void putInInventory(Entity entity) {
+	/*public void putInInventory(Entity entity) {
+		Button buttonBonus = new Button();
 		if(entity instanceof Beast) {
-			System.out.println("dedans");
-			Beast b = (Beast)entity;
-			inventory.addAll(b.getCamouflages());
-			inventory.addAll(b.getbaits());
+			buttonBonus.setGraphic(new ImageView(Directory.GAME_BAIT));
+			buttonBonus.setGraphic(new ImageView(Directory.GAME_CAMOUFLAGE));
 		}else if (entity instanceof Hunter) {
-			Hunter h = (Hunter)entity;
-			inventory.addAll(h.getTraps());
-			inventory.addAll(h.getWards());
+			buttonBonus.setGraphic(new ImageView(Directory.GAME_TRAP));
+			buttonBonus.setGraphic(new ImageView(Directory.GAME_WARD));
 		}
-
-		for (int i = 0; i < inventory.size(); i++) {
-			IBonus bonus = inventory.get(i);
-		
-			Button buttonBonus = new Button();
-			
-			if(bonus instanceof Trap) {
-				buttonBonus.setGraphic(new ImageView(Directory.GAME_TRAP));
-			}else if(bonus instanceof Ward) {
-				buttonBonus.setGraphic(new ImageView(Directory.GAME_WARD));
-			}else if(bonus instanceof Bait) {
-				buttonBonus.setGraphic(new ImageView(Directory.GAME_BAIT));
-			}else if(bonus instanceof Camouflage) {
-				buttonBonus.setGraphic(new ImageView(Directory.GAME_CAMOUFLAGE));
-			}
-			this.core.add(buttonBonus, 0, i);
-		}
-	}
+	}*/
 
 	public GridPane getCore() {
 		return core;

@@ -128,7 +128,7 @@ public class Game {
 	
 	public void userAction(AbstractMap map)
 	{
-		this.inventaire.putInInventory(map.getHunter());
+		//this.inventaire.putInInventory(map.getHunter());
 		this.gamePad.desactivateButton();
 		nextTurn.setDisable(false);
 	}
