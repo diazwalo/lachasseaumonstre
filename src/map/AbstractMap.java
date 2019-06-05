@@ -57,24 +57,37 @@ public abstract class AbstractMap
         Position posBonusFinal=new Position(-1 , -1);
 
         while(posBonusFinal.isPos(-1, -1)) {
-        	
+        	System.out.println("i"+idxWidth);
+        	System.out.println("i"+idxHeight);
             int posBonusX=idxWidth+r.nextInt((this.tab.length/2)-1);
             int posBonusY=idxHeight+r.nextInt((this.tab[0].length/2)-1);
             
+            System.out.println("p"+posBonusX);
+            System.out.println("p"+posBonusY);
+            System.out.println("-------------------------");
+            
             if(idxWidth != 0 || idxHeight != 0) {
-            	posBonusX=idxWidth-r.nextInt(idxWidth/2);
-            	posBonusY=idxHeight-r.nextInt(idxHeight/2);
+            	System.out.println("in");
+            	posBonusY=idxWidth-r.nextInt(idxWidth/2);
+            	posBonusX=idxHeight-r.nextInt(idxHeight/2);
             }
             
+            System.out.println("r"+posBonusX);
+            System.out.println("r"+posBonusY);
+            System.out.println("-------------------------");
+            
             Position posBonusTempo=new Position(posBonusX, posBonusY);
-
-            if(! this.tab[posBonusY][posBonusX].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo)) {
+            System.out.println(this.tab[posBonusY]);
+            System.out.println(this.tab[posBonusY][posBonusX]);
+            if(! this.tab[posBonusY][posBonusX].isObstacle() && 
+            		! this.beast.getPos().equals(posBonusTempo) && 
+            		! this.hunter.getPos().equals(posBonusTempo)) {
                 posBonusFinal=posBonusTempo;
             }
         }
 
         if(bonusHunterOrBeast) {
-        	tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusBeast(tabBonus);
+        	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusBeast(tabBonus);
         }
         else {
         	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusHunter(tabBonus);
@@ -99,8 +112,8 @@ public abstract class AbstractMap
             int posBonusY=idxHeight+r.nextInt(this.tab[0].length/2);
             
             if(idxWidth != 0 || idxHeight != 0) {
-            	posBonusX=idxWidth-r.nextInt(idxWidth/2);
-            	posBonusY=idxHeight-r.nextInt(idxHeight/2);
+            	posBonusY=idxWidth-r.nextInt(idxWidth/2);
+            	posBonusX=idxHeight-r.nextInt(idxHeight/2);
             }
             
             Position posBonusTempo=new Position(posBonusX, posBonusY);
@@ -114,7 +127,7 @@ public abstract class AbstractMap
         	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusBeast(tabBonus);
         }
         else {
-        	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusHunter(tabBonus);
+        	tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusHunter(tabBonus);
         }
     }
 
