@@ -248,7 +248,7 @@ public abstract class AbstractGamePlay {
 		ObservableList<Node> childrens = gridPane.getChildren();
 
 		for (Node node : childrens) {
-			if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+			if(gridPane.getRowIndex(node) == column && gridPane.getColumnIndex(node) == row) {
 				result = node;
 				break;
 			}

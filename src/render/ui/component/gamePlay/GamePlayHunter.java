@@ -18,6 +18,7 @@ public class GamePlayHunter extends AbstractGamePlay
 	public GamePlayHunter(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshHunterView(map);
+		super.setFog(map);
 		ag = new GameHunter(map);
 	}
 
@@ -28,7 +29,7 @@ public class GamePlayHunter extends AbstractGamePlay
 				ag.ramasserBonusHunter();
 				
 				ag.updateStartGame();
-				super.refreshHunterView(super.map);
+				super.setFog(super.map);
 				return true;
 			}
 			return false;
@@ -50,7 +51,7 @@ public class GamePlayHunter extends AbstractGamePlay
 			((GameHunter)ag).beastTurn();
 			ag.checkBeastRevealed();
 			ag.updateEndGame();
-			super.refreshHunterView(super.map);
+			super.setFog(super.map);
 		}else {
 			EndScreen es =new EndScreen(window);
 			es.setEndScreen(ag.gameStatus, ag.map.isHunterWin());
