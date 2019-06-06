@@ -190,8 +190,8 @@ public class Case {
 	public String gameHunterShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
 		
-		if(! this.getFogOnCase(map, posCase).equals("")) {
-			res= this.getFogOnCase(map, posCase);
+		if(! this.getFogOnCaseToString(map, posCase).equals("")) {
+			res= this.getFogOnCaseToString(map, posCase);
 		}
 		
 		if(! this.getHunterBonusActifToString(map, posCase).equals("")) {
@@ -252,7 +252,9 @@ public class Case {
 		
 		if(! this.getBeastOnCaseBeastModeToString(map, posCase).equals("")) {
 			res = this.getBeastOnCaseBeastModeToString(map, posCase);
-		}else if(! this.getHunterOnCaseToString(map, posCase).equals("")) {
+		}
+		
+		if(! this.getHunterOnCaseToString(map, posCase).equals("")) {
 			res = this.getHunterOnCaseToString(map, posCase);
 		}
 		
@@ -556,20 +558,19 @@ public class Case {
 		return bonusActif;
 	}
 	
-	
 	/**
 	 * Retourne vrai si il doit y avoir du brouillard sur la case
 	 * @param map
 	 * @param posCase
 	 * @return boolean
 	 */
-	public String getFogOnCase(AbstractMap map, Position posCase) {
+	public boolean getFogOnCase(AbstractMap map, Position posCase) {
 		Position posHunter=map.getHunter().getPos();
-		String res="";
+		boolean fogOnCase = false;
 		IBonus ibonus=null;
 		
 		if (!posCase.getAdjacentPosition(map).contains(posHunter)) {
-			res= "~";
+			fogOnCase = true;
 		}
 		
 		for(IBonus ib : map.getBonusActif()) {
@@ -579,11 +580,24 @@ public class Case {
 		if(ibonus!=null) {
 			
 			if(posCase.getAdjacentPosition(map).contains(ibonus.getPos())) {
-				res="";
+				fogOnCase = false;
 			}
 			
 		}
-		
+		return fogOnCase;
+	}
+	
+	/**
+	 * Retourne la chaine de charactere associee au brouillard si cette derniere doit etre placee sur la case ou la chaine vide sinon
+	 * @param map
+	 * @param posCase
+	 * @return boolean
+	 */
+	public String getFogOnCaseToString(AbstractMap map, Position posCase) {
+		String res="";
+		if(this.getFogOnCase(map, posCase)) {
+			res = "~";
+		}
 		return res;
 	}
 	

@@ -132,6 +132,10 @@ public abstract class AbstractGamePlay {
 		}else if(caseCour.getCaseType().equals(CaseType.SOL)) {
 			rec.setFill(new ImagePattern(ground));
 		}
+		
+		if(caseCour.getFogOnCase(map, posCase)) {
+			rec.setFill(new ImagePattern(fog));
+		}
 
 		if(caseCour.getHunterBonusActifOnCase(map, posCase) != null) {
 			IBonus bonusActif = caseCour.getHunterBonusActifOnCase(map, posCase);
@@ -155,12 +159,10 @@ public abstract class AbstractGamePlay {
 		}
 
 		if(caseCour.bonusOnCase(caseCour.getBonusHunter())) {
-			//afficher un ?
 			rec.setFill(new ImagePattern(bonus));
 		}
 
 		if(caseCour.getBeastWalkNearHunter(map, posCase) != -1) {
-			//afficher les pas de la beast
 			int beastWalk = caseCour.getBeastWalkNearHunter(map, posCase);
 			
 			Image[] tabImage = new Image[] {traceUn, traceDeux, traceTrois, traceQuatre};
@@ -170,26 +172,21 @@ public abstract class AbstractGamePlay {
 					rec.setFill(new ImagePattern(tabImage[i]));
 				}
 			}
-			//rec.setFill(new ImagePattern(ground));
 		}
 
 		if(caseCour.getBeastNearHunter(map, posCase) != null) {
-			//afficher la beast
 			rec.setFill(new ImagePattern(beast));
 		}
 
 		if(caseCour.getHunterOnCase(map, posCase)) {
-			//affiche le Hunter
 			rec.setFill(new ImagePattern(hunter));
 		}
 
 		if(caseCour.getBeastIfRevealed(map, posCase) != null) {
-			//affiche la Beast
 			rec.setFill(new ImagePattern(beast));
 		}
 
 		if(caseCour.getEntityOnSameCase(map, posCase) != null) {
-			// afficher une image du chasseur attrapant la bete ou juste le chasseur
 			rec.setFill(new ImagePattern(hunter));
 		}
 	}
@@ -220,7 +217,6 @@ public abstract class AbstractGamePlay {
 			rec.setFill(new ImagePattern(ground));
 		}
 		if(caseCour.getBeastWalk()>=1) {
-			//afficher une case avec des pas
 			rec.setFill(new ImagePattern(tracePas));
 		}
 		
@@ -232,63 +228,36 @@ public abstract class AbstractGamePlay {
 		}
 		
 		if(caseCour.bonusOnCase(caseCour.getBonusHunter())) {
-			//afficher un ?
 			rec.setFill(new ImagePattern(bonus));
 		}
 		
 		if(caseCour.getBeastOnCaseBeastMode(map, posCase)) {
 			rec.setFill(new ImagePattern(beast));
-		}else if(caseCour.getHunterOnCase(map, posCase)) {
+		}
+		
+		if(caseCour.getHunterOnCase(map, posCase)) {
 			rec.setFill(new ImagePattern(hunter));
 		}
 	}
 	
+	/**
+	 * Retourne le rectangle se trouvant a la case d'indice row, col, dans le gridpane
+	 * @param row
+	 * @param column
+	 * @param gridPane
+	 * @return Rectangle
+	 */
 	public Rectangle getNode (final int row, final int column, GridPane gridPane) {
 		Node result = null;
 		ObservableList<Node> childrens = gridPane.getChildren();
 
 		for (Node node : childrens) {
-			if(gridPane.getRowIndex(node) == column && gridPane.getColumnIndex(node) == row) {
+			if(GridPane.getRowIndex(node) == column && GridPane.getColumnIndex(node) == row) {
 				result = node;
 				break;
 			}
 		}
 
 		return (Rectangle)result;
-	}
-
-	public void setFog(AbstractMap map) {
-
-		int[] huntPos = map.getHunter().getPos().getTabPosition();
-
-		for (int row = 0; row < (map.getTab().length); row++) {
-			for (int col = 0; col < (map.getTab()[row].length); col++) {
-				Case caseCour = map.getTab()[row][col];
-				if(huntPos[0] == row && huntPos[1] == col) {
-					this.getNode(row, col, this.getGrid()).setFill(new ImagePattern(hunter));
-				}else if(caseCour.isObstacle()){
-					this.getNode(row, col, this.getGrid()).setFill(new ImagePattern(obstacle));
-				}else {
-					this.getNode(row, col, this.getGrid()).setFill(new ImagePattern(fog));
-				}
-
-			}
-		}
-
-		if(!map.getHunter().isBlinded()) {
-
-			if(map.getBeast().getRevealedByWard()) {
-				int[] beastPos = map.getBeast().getPos().getTabPosition();
-				this.getNode(beastPos[0], beastPos[1], this.getGrid()).setFill(new ImagePattern(beast));
-			}
-			for(Mouvment m : map.getHunter().getMvtToEmptyCase(map.getTab())) {
-				int[] mouv = m.getMvt();
-				Rectangle rec  = this.getNode(huntPos[0]+mouv[0], huntPos[1]+mouv[1], this.getGrid());
-				Case caseCour = map.getTab()[huntPos[0]+mouv[0]][huntPos[1]+mouv[1]];
-				Position posCase= new Position(huntPos[0]+mouv[0], huntPos[1]+mouv[1]);
-
-				this.paintRectangleBeastView(rec, caseCour, map, huntPos[0]+mouv[0], huntPos[1]+mouv[1], posCase);
-			}
-		}
 	}
 }

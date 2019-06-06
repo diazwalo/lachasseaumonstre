@@ -129,8 +129,8 @@ public class Game {
 				((GamePlayHunter)(gameType)).ag.map.getHunter().putItAllInInventory();
 				listInventory = ((GamePlayHunter)(gameType)).ag.map.getHunter().getInventory();
 			}else if(gameType instanceof GamePlayBeast) {
-				((GamePlayBeast)(gameType)).ag.map.getHunter().putItAllInInventory();
-				listInventory = ((GamePlayBeast)(gameType)).ag.map.getHunter().getInventory();
+				((GamePlayBeast)(gameType)).ag.map.getBeast().putItAllInInventory();
+				listInventory = ((GamePlayBeast)(gameType)).ag.map.getBeast().getInventory();
 			}
 			
 			 
@@ -151,7 +151,6 @@ public class Game {
 	
 	public void userAction(AbstractMap map)
 	{
-		//this.inventaire.putInInventory(map.getHunter());
 		this.gamePad.desactivateButton();
 		nextTurn.setDisable(false);
 	}

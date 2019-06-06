@@ -19,7 +19,7 @@ import render.bonus.IBonus;
  *
  */
 public class Beast extends Entity{
-	public List<IBonus> camouflages = new ArrayList<>();
+	private List<IBonus> camouflages = new ArrayList<>();
 	private List<IBonus> baits = new ArrayList<>();
 	private boolean trapped;
 	private boolean revealedByWard;
@@ -107,11 +107,11 @@ public class Beast extends Entity{
 	 */
 	public void putItAllInInventory() {
 		List<IBonus> addition = new ArrayList<>();
-		for (IBonus b : this.baits) {
-			addition.add(b);
+		for (IBonus t : this.baits) {
+			addition.add(t);
 		}
-		for (IBonus c : camouflages) {
-			addition.add(c);
+		for (IBonus w : this.camouflages) {
+			addition.add(w);
 		}
 		super.inventory = addition;
 	}

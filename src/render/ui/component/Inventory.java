@@ -6,7 +6,6 @@ import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import map.AbstractMap;
 import render.bonus.Bait;
 import render.bonus.Camouflage;
 import render.bonus.IBonus;
@@ -16,6 +15,7 @@ import render.text.Beast;
 import render.text.Entity;
 import render.text.Hunter;
 import render.ui.component.gamePlay.AbstractGamePlay;
+import render.ui.component.gamePlay.GamePlayBeast;
 import render.ui.component.gamePlay.GamePlayHunter;
 import render.ui.util.Directory;
 
@@ -37,12 +37,16 @@ public class Inventory {
 			topButton.setDisable(true);
 			core.add(topButton, 0, 0);
 			topButton.setOnAction(e -> {
+				topButton.setDisable(true);
+				((GamePlayBeast)(gameType)).ag.bonusChoiceBeast("2");
 			});
 			
 			botButton.setGraphic(new ImageView(Directory.GAME_CAMOUFLAGE));
 			botButton.setDisable(true);
 			core.add(botButton, 0, 1);
 			botButton.setOnAction(e -> {
+				botButton.setDisable(true);
+				((GamePlayBeast)(gameType)).ag.bonusChoiceBeast("1");
 			});
 			
 		}else if (entity instanceof Hunter) {
@@ -52,6 +56,7 @@ public class Inventory {
 			topButton.setDisable(true);
 			core.add(topButton, 0, 0);
 			topButton.setOnAction(e -> {
+				topButton.setDisable(true);
 				((GamePlayHunter)(gameType)).ag.bonusChoiceHunter("2");
 			});
 			
@@ -59,6 +64,7 @@ public class Inventory {
 			botButton.setDisable(true);
 			core.add(botButton, 0, 1);
 			botButton.setOnAction(e -> {
+				botButton.setDisable(true);
 				((GamePlayHunter)(gameType)).ag.bonusChoiceHunter("1");
 			});
 		}
@@ -69,7 +75,8 @@ public class Inventory {
 		for (IBonus b : listIBonus) {
 			if(b instanceof Bait || b instanceof Trap) {
 				topButton.setDisable(false);
-			}else if(b instanceof Camouflage || b instanceof Ward) {
+			}
+			if(b instanceof Camouflage || b instanceof Ward) {
 				botButton.setDisable(false);
 			}
 		}
