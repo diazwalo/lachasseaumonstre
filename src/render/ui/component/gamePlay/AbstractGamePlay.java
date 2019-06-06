@@ -23,7 +23,7 @@ import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
 import render.ui.util.Interface;
 
-public abstract class GameBoard {
+public abstract class AbstractGamePlay {
 	protected GridPane grid = new GridPane();
 	protected Image ground;
 	protected Image obstacle;
@@ -54,7 +54,7 @@ public abstract class GameBoard {
 		this.window = window;
 	}
 	
-	public GameBoard(AbstractMap map) throws FileNotFoundException {
+	public AbstractGamePlay(AbstractMap map) throws FileNotFoundException {
 		this.map = map;
 		
 		ground = new Image(Directory.GAME_GROUND);
@@ -80,7 +80,6 @@ public abstract class GameBoard {
 	}
 
 	public abstract boolean play(Mouvment mouvment);
-	public abstract boolean useBonus(IBonus bonus);
 	public abstract void next();
 
 	public void setPlayButton(PlayButton pb) {

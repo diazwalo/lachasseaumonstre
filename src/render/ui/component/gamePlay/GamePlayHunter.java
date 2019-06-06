@@ -11,7 +11,7 @@ import render.bonus.IBonus;
 import render.ui.core.Window;
 import render.ui.view.EndScreen;
 
-public class GamePlayHunter extends GameBoard
+public class GamePlayHunter extends AbstractGamePlay
 {
 	public AbstractGame ag;
 	

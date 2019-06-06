@@ -15,7 +15,7 @@ import map.Mouvment;
 import render.bonus.IBonus;
 import render.ui.component.Chat;
 import render.ui.component.Inventory;
-import render.ui.component.gamePlay.GameBoard;
+import render.ui.component.gamePlay.AbstractGamePlay;
 import render.ui.component.gamePlay.GamePlayBeast;
 import render.ui.component.gamePlay.GamePlayHunter;
 import render.ui.core.Window;
@@ -32,13 +32,13 @@ public class Game {
 	
 	PlayButton gamePad;
 	Inventory inventaire;
-	GameBoard plateau; 
+	AbstractGamePlay plateau; 
 	Chat chat;
 	
 	Button nextTurn;
 	
 	
-	public Game(Window window, AbstractMap map, GameBoard gameType) throws FileNotFoundException {
+	public Game(Window window, AbstractMap map, AbstractGamePlay gameType) throws FileNotFoundException {
 		
 		this.left = new VBox();
 		this.middle = new VBox();

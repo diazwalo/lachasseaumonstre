@@ -15,7 +15,7 @@ import render.bonus.Ward;
 import render.text.Beast;
 import render.text.Entity;
 import render.text.Hunter;
-import render.ui.component.gamePlay.GameBoard;
+import render.ui.component.gamePlay.AbstractGamePlay;
 import render.ui.component.gamePlay.GamePlayHunter;
 import render.ui.util.Directory;
 
@@ -25,7 +25,7 @@ public class Inventory {
 	public Button topButton;
 	public Button botButton;
 	
-	public Inventory(Entity entity, GameBoard gameType) {
+	public Inventory(Entity entity, AbstractGamePlay gameType) {
 		this.core = new GridPane();
 		topButton = new Button();
 		botButton = new Button();

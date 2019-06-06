@@ -6,7 +6,7 @@ import map.AbstractMap;
 import map.Mouvment;
 import render.bonus.IBonus;
 
-public class GamePlayMulti extends GameBoard{
+public class GamePlayMulti extends AbstractGamePlay{
 
 	public GamePlayMulti(AbstractMap map) throws FileNotFoundException {
 		super(map);
@@ -15,12 +15,6 @@ public class GamePlayMulti extends GameBoard{
 
 	@Override
 	public boolean play(Mouvment mouvment) {
-		return false;
-	}
-
-	@Override
-	public boolean useBonus(IBonus bonus) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
