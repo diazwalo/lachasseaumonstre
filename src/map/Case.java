@@ -185,10 +185,14 @@ public class Case {
 	 * Montre la map tel que le joueur doit la voir lorsqu'il joue le chasseur
 	 * @param map
 	 * @param posCase
-	 * @return
+	 * @return String
 	 */
 	public String gameHunterShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
+		
+		if(! this.getFogOnCase(map, posCase).equals("")) {
+			res= this.getFogOnCase(map, posCase);
+		}
 		
 		if(! this.getHunterBonusActifToString(map, posCase).equals("")) {
 			res=this.getHunterBonusActifToString(map, posCase);
@@ -221,6 +225,8 @@ public class Case {
 		if(! this.getEntityOnSameCaseToString(map, posCase).equals("")) {
 			res = this.getEntityOnSameCaseToString(map, posCase);
 		}
+		
+		
 
 		return res;
 	}
@@ -268,7 +274,7 @@ public class Case {
 	}
 	
 	/**
-	 * Retourn la Bete si elle est revelee et null dasn le cas echeant
+	 * Retourn la Bete si elle est revelee et null dans le cas echeant
 	 * @param map
 	 * @param posCase
 	 * @return Beast
@@ -549,6 +555,38 @@ public class Case {
 		}
 		return bonusActif;
 	}
+	
+	
+	/**
+	 * Retourne vrai si il doit y avoir du brouillard sur la case
+	 * @param map
+	 * @param posCase
+	 * @return boolean
+	 */
+	public String getFogOnCase(AbstractMap map, Position posCase) {
+		Position posHunter=map.getHunter().getPos();
+		String res="";
+		IBonus ibonus=null;
+		
+		if (!posCase.getAdjacentPosition(map).contains(posHunter)) {
+			res= "~";
+		}
+		
+		for(IBonus ib : map.getBonusActif()) {
+			if(ib instanceof Ward) ibonus =ib;
+		}
+		
+		if(ibonus!=null) {
+			
+			if(posCase.getAdjacentPosition(map).contains(ibonus.getPos())) {
+				res="";
+			}
+			
+		}
+		
+		return res;
+	}
+	
 	
 	/**
 	 * Renvoie sous forme de chaine de caractere le buff actif sur la Case ou la trace de la bete au cas echeant
