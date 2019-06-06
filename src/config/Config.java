@@ -79,6 +79,15 @@ public class Config
 			int width, int height, int nbTeleportation, int indexMap, 
 			boolean trap, boolean camouflage, boolean ward, boolean bait)
 	{
+		this.width = width;
+		this.height = height;
+		this.nbTeleportation = nbTeleportation;
+		this.map = Map.values()[indexMap];
+		this.trap = trap;
+		this.camouflage = camouflage;
+		this.ward = ward;
+		this.bait = bait;
+		
 		this.prefs.putInt("width", width);
 		this.prefs.putInt("height", height);
 		this.prefs.putInt("tp", nbTeleportation);

@@ -8,9 +8,6 @@ import map.AbstractMap;
 
 public class Score
 {
-
-	public final static int SCORE_MAX = 10000;
-	private final int NB_Case;
     /*
      * 1 : joueur vs IA chasseur
      * 2 : joueur vs IA monstre
@@ -28,15 +25,16 @@ public class Score
 
     private LocalDate date;
     
-    public Score(GameMode gamemode, String p1, String p2, AbstractMap map) {
+    public Score(GameMode gamemode, String p1, String p2, int nbMouvment1, double nbMouvment2, AbstractMap map) {
     	this.player1 = p1;
     	this.player2 = p2;
-    	this.scorePlayer1 = Score.SCORE_MAX;
-    	this.scorePlayer2 = 0;
     	this.date = LocalDate.now();
-    	Graph squellete = new Graph();
-    	squellete.generateEdge(map);
-    	this.NB_Case = squellete.getListEdge().size();
+    	
+    	Graph graph = new Graph();
+    	int size = graph.getListNode().size();
+    	
+    	this.scorePlayer1 = (nbMouvment1*100)/size;
+    	this.scorePlayer2 = (nbMouvment2*100)/size;
     }
     
 
@@ -98,13 +96,6 @@ public class Score
     public void setDate(LocalDate date)
     {
         this.date = date;
-    }
-    
-    public void editScore() {
-    	this.scorePlayer2 = this.scorePlayer2 + (double)(1/this.NB_Case);
-    	this.scorePlayer1 = this.scorePlayer1 - this.scorePlayer2;
-    }
-    
-    
+    } 
     
 }

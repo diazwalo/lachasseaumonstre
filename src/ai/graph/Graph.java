@@ -23,7 +23,7 @@ public class Graph {
     private Map<String, Edge> listEdge;
     
     /**
-     * Initialise un graph vide, utilise seulement pour les unitaires.
+     * Initialise un graph vide, utilise seulement pour les tests unitaires.
      */
     public Graph()
     {

@@ -3,8 +3,7 @@ package data.score;
 import java.util.List;
 
 /**
- * Cette classe s'occupe de traiter les nouveaux scores. Elle lit le fichier de score, ajoute un score si il entre dans les
- * 10 meilleurs et sauvegarde le fichier.
+ * Cette classe s'occupe de traiter les nouveaux scores. Elle lit le fichier de score, ajoute un score et sauvegarde le fichier.
  * @author PHPierre
  *
  */
@@ -14,7 +13,7 @@ public class ScoreManagement
 	
 	public ScoreManagement()
 	{
-		this.loadScore();
+		//this.loadScore();
 	}
 	
 	public void addScore()
