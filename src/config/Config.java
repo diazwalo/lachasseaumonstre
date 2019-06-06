@@ -25,6 +25,8 @@ public class Config
 	private boolean camouflage;
 	private boolean ward;
 	private boolean bait;
+	
+	private Preferences prefs;
 
 	/**
 	 * Instancie une nouvelle configuration qui applique la configuration par default.
@@ -54,7 +56,7 @@ public class Config
 	 */
 	public void loadLastSave()
 	{
-		Preferences prefs = Preferences.userRoot().node("lachasseauxmonstres_settings");
+		this.prefs = Preferences.userRoot().node("lachasseauxmonstres_settings");
 		this.width = prefs.getInt("width", this.getWidth());
 		this.height = prefs.getInt("height", this.getHeight());
 		this.nbTeleportation = prefs.getInt("tp", this.getNbTeleportation());
@@ -71,6 +73,21 @@ public class Config
 		this.camouflage = prefs.getBoolean("camouflage", this.isCamouflage());
 		this.ward = prefs.getBoolean("ward", this.isWard());
 		this.bait = prefs.getBoolean("bait", this.isBait());
+	}
+	
+	public boolean saveConfig(
+			int width, int height, int nbTeleportation, int indexMap, 
+			boolean trap, boolean camouflage, boolean ward, boolean bait)
+	{
+		this.prefs.putInt("width", width);
+		this.prefs.putInt("height", height);
+		this.prefs.putInt("tp", nbTeleportation);
+		this.prefs.putInt("map", indexMap);
+		this.prefs.putBoolean("trap", trap);
+		this.prefs.putBoolean("ward", ward);	
+		this.prefs.putBoolean("bait", bait);
+		this.prefs.putBoolean("camouflage", camouflage);
+		return true;
 	}
 
 	/**

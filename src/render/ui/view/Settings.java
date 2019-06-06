@@ -1,7 +1,5 @@
 package render.ui.view;
 
-import java.util.prefs.Preferences;
-
 import config.Config;
 import config.Map;
 import javafx.geometry.Insets;
@@ -27,9 +25,7 @@ public class Settings
 	private VBox menu;
 	
 	public Settings(Window window, Config config)
-	{
-		Preferences prefs = Preferences.userRoot().node("lachasseauxmonstres_settings");
-		
+	{		
 		this.window = window;
 		
 		this.core = new HBox();
@@ -117,29 +113,16 @@ public class Settings
 		HomeMinButton save = new HomeMinButton("Sauver");
 		save.setOnAction(e -> {
 			
-			prefs.putInt("width", textFieldWidth.getValue());
-			config.setWidth(textFieldWidth.getValue());
-			
-			prefs.putInt("height", textFieldHeight.getValue());
-			config.setHeight(textFieldHeight.getValue());
-			
-			prefs.putInt("tp", textFieldNbTp.getValue());
-			config.setNbTeleportation(textFieldNbTp.getValue());
-			
-			prefs.putInt("map", Map.getMap(listMap.getValue()).ordinal());
-			config.setMap(Map.getMap(listMap.getValue()));
-			
-			prefs.putBoolean("trap", checkBoxThemeTrap.isSelected());
-			config.setTrap(checkBoxThemeTrap.isSelected());
-			
-			prefs.putBoolean("ward", checkBoxThemeWard.isSelected());
-			config.setWard(checkBoxThemeWard.isSelected());
-			
-			prefs.putBoolean("bait", checkBoxThemeBait.isSelected());
-			config.setBait(checkBoxThemeBait.isSelected());
-			
-			prefs.putBoolean("camouflage", checkBoxThemeCamouflage.isSelected());
-			config.setCamouflage(checkBoxThemeCamouflage.isSelected());
+			config.saveConfig(
+				textFieldWidth.getValue(), 
+				textFieldHeight.getValue(), 
+				textFieldNbTp.getValue(), 
+				Map.getMap(listMap.getValue()).ordinal(), 
+				checkBoxThemeTrap.isSelected(), 
+				checkBoxThemeCamouflage.isSelected(), 
+				checkBoxThemeWard.isSelected(), 
+				checkBoxThemeBait.isSelected()
+			);
 			
 			new Home(this.window, config);
 		});
