@@ -121,8 +121,11 @@ public class Game {
 			nextTurn.setDisable(true);
 			gameType.next();
 			this.gamePad.activateButton();
-			// TODO : Ca marche pas... enfin les buttons ne s'activent pas pour l'inventaire
-			inventaire.setBonusAble(((GamePlayHunter)(gameType)).ag.map.getHunter().getInventory());
+			
+			((GamePlayHunter)(gameType)).ag.map.getHunter().putItAllInInventory();
+			
+			List<IBonus> listInventory = ((GamePlayHunter)(gameType)).ag.map.getHunter().getInventory();
+			inventaire.setBonusAble(listInventory);
 		});
 
 		this.left.getChildren().addAll(gamePad.getCore(), nextTurn);

@@ -26,6 +26,7 @@ public class GamePlayHunter extends GameBoard
 			if(ag.map.moveHunter(mouvment)) {
 				ag.checkGameStatus();
 				ag.ramasserBonusHunter();
+				
 				ag.updateStartGame();
 				super.refreshHunterView(super.map);
 				return true;

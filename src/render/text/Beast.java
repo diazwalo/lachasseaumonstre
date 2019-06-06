@@ -101,14 +101,26 @@ public class Beast extends Entity{
 		}
 		return "";
 	}
+	
+	/**
+	 * reinitialise l'inventaire (avec possiblement les 2 bonus)
+	 */
+	public void putItAllInInventory() {
+		List<IBonus> addition = new ArrayList<>();
+		for (IBonus b : this.baits) {
+			addition.add(b);
+		}
+		for (IBonus c : camouflages) {
+			addition.add(c);
+		}
+		super.inventory = addition;
+	}
 
 	public void addToCamouflages(Camouflage cam) {
-		super.inventory.add(cam);
 		this.camouflages.add(cam);
 	}
 	
 	public void addToBaits(Bait bait) {
-		super.inventory.add(bait);
 		this.baits.add(bait);
 	}
 	

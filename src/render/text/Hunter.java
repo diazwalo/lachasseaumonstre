@@ -86,6 +86,20 @@ public class Hunter extends Entity {
 		}
 		return "";
 	}
+	
+	/**
+	 * reinitialise l'inventaire (avec possiblement les 2 bonus)
+	 */
+	public void putItAllInInventory() {
+		List<IBonus> addition = new ArrayList<>();
+		for (IBonus t : this.traps) {
+			addition.add(t);
+		}
+		for (IBonus w : this.wards) {
+			addition.add(w);
+		}
+		super.inventory = addition;
+	}
 
 	public void addToTraps(Trap trp) {
 		this.traps.add(trp);
@@ -100,7 +114,6 @@ public class Hunter extends Entity {
 	}
 	
 	public IBonus takeWard() {
-		System.out.println(this.getWardDispo());
 		return this.wards.remove(0);
 	}
 	

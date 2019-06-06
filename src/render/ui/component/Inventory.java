@@ -37,14 +37,12 @@ public class Inventory {
 			topButton.setDisable(true);
 			core.add(topButton, 0, 0);
 			topButton.setOnAction(e -> {
-				//si on l'active, il faut poser un bait
 			});
 			
 			botButton.setGraphic(new ImageView(Directory.GAME_CAMOUFLAGE));
 			botButton.setDisable(true);
 			core.add(botButton, 0, 1);
 			botButton.setOnAction(e -> {
-				//si on l'active, il faut poser un camouflage
 			});
 			
 		}else if (entity instanceof Hunter) {
@@ -54,7 +52,6 @@ public class Inventory {
 			topButton.setDisable(true);
 			core.add(topButton, 0, 0);
 			topButton.setOnAction(e -> {
-				//si on l'active, il faut poser un trap
 				((GamePlayHunter)(gameType)).ag.bonusChoiceHunter("2");
 			});
 			
@@ -62,7 +59,6 @@ public class Inventory {
 			botButton.setDisable(true);
 			core.add(botButton, 0, 1);
 			botButton.setOnAction(e -> {
-				//si on l'active, il faut poser un ward
 				((GamePlayHunter)(gameType)).ag.bonusChoiceHunter("1");
 			});
 		}
@@ -72,9 +68,9 @@ public class Inventory {
 		this.setBonusDisable();
 		for (IBonus b : listIBonus) {
 			if(b instanceof Bait || b instanceof Trap) {
-				topButton.setDisable(true);
+				topButton.setDisable(false);
 			}else if(b instanceof Camouflage || b instanceof Ward) {
-				topButton.setDisable(true);
+				botButton.setDisable(false);
 			}
 		}
 	}
