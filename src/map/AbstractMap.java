@@ -57,8 +57,8 @@ public abstract class AbstractMap
         Position posBonusFinal=new Position(-1 , -1);
 
         while(posBonusFinal.isPos(-1, -1)) {
-            int posBonusX=idxWidth+r.nextInt((this.tab.length/2)-1);
-            int posBonusY=idxHeight+r.nextInt((this.tab[0].length/2)-1);
+            int posBonusX=idxWidth+r.nextInt((this.tab.length/2));
+            int posBonusY=idxHeight+r.nextInt((this.tab[0].length/2));
             
             if(idxWidth != 0 || idxHeight != 0) {
             	posBonusY=idxWidth-r.nextInt(idxWidth/2);

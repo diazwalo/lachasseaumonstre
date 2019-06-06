@@ -88,9 +88,8 @@ public class Config
 		this.ward = ward;
 		this.bait = bait;
 		
-		//Virgil : Je met la la width a la min size pour pas que ca bug
-		this.prefs.putInt("width", MINSIZE/*width*/);
-		this.prefs.putInt("height", MINSIZE/*height*/);
+		this.prefs.putInt("width", width);
+		this.prefs.putInt("height", height);
 		this.prefs.putInt("tp", nbTeleportation);
 		this.prefs.putInt("map", indexMap);
 		this.prefs.putBoolean("trap", trap);
