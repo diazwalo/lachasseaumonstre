@@ -46,7 +46,7 @@ public class Interface
 	{
 		int mapSize = (width > height) ? width : height;
 		
-		double heightScreen = Interface.getSize().getHeight();
+		double heightScreen = Interface.getSize().getHeight() - 100;  // Don't gameboard use fullscreen
 		
 		return heightScreen / mapSize;
 	}

@@ -3,10 +3,12 @@ package render.ui.view;
 
 import java.io.FileNotFoundException;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import map.AbstractMap;
 import map.Mouvment;
 import render.ui.component.Chat;
@@ -21,8 +23,9 @@ import render.ui.util.Interface;
 
 public class Game {
 
-	HBox top;
-	HBox bottom;
+	VBox left;
+	VBox middle;
+	VBox right;
 	HBox core;
 	
 	PlayButton gamePad;
@@ -35,9 +38,15 @@ public class Game {
 	
 	public Game(Window window, AbstractMap map, GameBoard gameType) throws FileNotFoundException {
 		
-		this.bottom = new HBox();
-		this.top = new HBox();
+		this.left = new VBox();
+		this.middle = new VBox();
+		this.right = new VBox();
 		this.core = new HBox();
+		
+		this.left.setAlignment(Pos.CENTER);
+		this.middle.setAlignment(Pos.CENTER);
+		this.middle.setPadding(new Insets(15));
+		this.right.setAlignment(Pos.CENTER);
 		
 		this.gamePad = new PlayButton();
 		
@@ -112,9 +121,10 @@ public class Game {
 			this.gamePad.activateButton();
 		});
 
-		this.core.getChildren().addAll(bottom, top);
-		this.top.getChildren().addAll(plateau.getGrid(), inventaire.getCore(), nextTurn);
-		this.bottom.getChildren().addAll(gamePad.getCore());
+		this.left.getChildren().addAll(gamePad.getCore(), nextTurn);
+		this.middle.getChildren().addAll(plateau.getGrid());
+		this.right.getChildren().addAll(inventaire.getCore());
+		this.core.getChildren().addAll(left, middle, right);
 		
 		this.core.setAlignment(Pos.CENTER);
 		

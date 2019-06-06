@@ -8,7 +8,7 @@ public class KeyboardButton {
 	
 	private Button bouton;
 	private Image img;
-	private int size = 150;
+	private int size = 115;
 	
 	public KeyboardButton(String contenu) {
 		this.bouton = new Button(contenu);
