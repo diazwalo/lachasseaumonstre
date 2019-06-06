@@ -47,7 +47,7 @@ public abstract class AbstractGame {
 	public boolean statusMapDiscovered() {
 		boolean pasBeast=true;
 		for(int i=0; i<this.map.getTab().length; i++) {
-			for (int j=0; j<this.map.getTab().length; j++) {
+			for (int j=0; j<this.map.getTab()[i].length; j++) {
 				
 				if(this.map.getTab()[i][j].getCaseType()==CaseType.SOL && this.map.getTab()[i][j].getBeastWalk()==-1) 
 					pasBeast=false;

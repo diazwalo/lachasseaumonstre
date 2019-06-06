@@ -3,12 +3,10 @@ package render.ui.view;
 
 import java.io.FileNotFoundException;
 
-import core.game.GameHunter;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import map.AbstractMap;
 import map.Mouvment;
 import render.ui.component.Chat;

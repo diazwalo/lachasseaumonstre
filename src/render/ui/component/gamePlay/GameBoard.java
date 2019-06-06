@@ -162,7 +162,16 @@ public abstract class GameBoard {
 
 		if(caseCour.getBeastWalkNearHunter(map, posCase) != -1) {
 			//afficher les pas de la beast
-			rec.setFill(new ImagePattern(ground));
+			int beastWalk = caseCour.getBeastWalkNearHunter(map, posCase);
+			
+			Image[] tabImage = new Image[] {traceUn, traceDeux, traceTrois, traceQuatre};
+			int[] tabCptBait = new int[] {1, 2, 3, 4};
+			for (int i = 0; i < tabCptBait.length; i++) {
+				if(tabCptBait[i] == beastWalk) {
+					rec.setFill(new ImagePattern(tabImage[i]));
+				}
+			}
+			//rec.setFill(new ImagePattern(ground));
 		}
 
 		if(caseCour.getBeastNearHunter(map, posCase) != null) {
