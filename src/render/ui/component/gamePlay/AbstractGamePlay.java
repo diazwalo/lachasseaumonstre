@@ -178,15 +178,11 @@ public abstract class AbstractGamePlay {
 			rec.setFill(new ImagePattern(beast));
 		}
 
-		if(caseCour.getHunterOnCase(map, posCase)) {
-			rec.setFill(new ImagePattern(hunter));
-		}
-
 		if(caseCour.getBeastIfRevealed(map, posCase) != null) {
 			rec.setFill(new ImagePattern(beast));
 		}
-
-		if(caseCour.getEntityOnSameCase(map, posCase) != null) {
+		
+		if(caseCour.getHunterOnCase(map, posCase)) {
 			rec.setFill(new ImagePattern(hunter));
 		}
 	}
@@ -220,14 +216,14 @@ public abstract class AbstractGamePlay {
 			rec.setFill(new ImagePattern(tracePas));
 		}
 		
-		if(caseCour.getHunterBonusActifOnCase(map, posCase) != null) {
-			IBonus bonusActif = caseCour.getHunterBonusActifOnCase(map, posCase);
+		if(caseCour.getBeastBonusActifOnCase(map, posCase) != null) {
+			IBonus bonusActif = caseCour.getBeastBonusActifOnCase(map, posCase);
 			if(bonusActif instanceof Bait) {
 				rec.setFill(new ImagePattern(bait));
 			}
 		}
 		
-		if(caseCour.bonusOnCase(caseCour.getBonusHunter())) {
+		if(caseCour.bonusOnCase(caseCour.getBonusBeast())) {
 			rec.setFill(new ImagePattern(bonus));
 		}
 		

@@ -32,7 +32,7 @@ public class GamePlayHunter extends AbstractGamePlay{
 			return false;
 		}else {
 			EndScreen es =new EndScreen(super.window);
-			es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin());
+			es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig());
 			return false;
 		}
 	}
@@ -50,7 +50,7 @@ public class GamePlayHunter extends AbstractGamePlay{
 			super.refreshHunterView(map);
 		}else {
 			EndScreen es =new EndScreen(window);
-			es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin());
+			es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig());
 		}
 	}
 

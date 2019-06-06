@@ -38,19 +38,19 @@ public class Settings
 		
 		VBox vboxWidth = new VBox();
 		LabelTheme labelWidth = new LabelTheme("Largeur du plateau :");
-		Spinner<Integer> textFieldWidth = new SpinnerTheme(Config.minSize, Config.maxSize, config.getWidth());
+		Spinner<Integer> textFieldWidth = new SpinnerTheme(Config.MINSIZE, Config.MAXSIZE, config.getWidth());
 		vboxWidth.setPadding(new Insets(0,0,20,0));
 		vboxWidth.getChildren().addAll(labelWidth, textFieldWidth);
 		
 		VBox vboxHeight = new VBox();
 		LabelTheme labelHeight = new LabelTheme("Hauteur du plateau :");
-		SpinnerTheme textFieldHeight = new SpinnerTheme(Config.minSize, Config.maxSize, config.getHeight());
+		SpinnerTheme textFieldHeight = new SpinnerTheme(Config.MINSIZE, Config.MAXSIZE, config.getHeight());
 		vboxHeight.setPadding(new Insets(0,0,20,0));
 		vboxHeight.getChildren().addAll(labelHeight, textFieldHeight);
 		
 		VBox vboxNbTop = new VBox();
 		LabelTheme labelNbTp = new LabelTheme("Nombre de teleportation pour le monstre :");
-		SpinnerTheme textFieldNbTp = new SpinnerTheme(Config.minTp, Config.maxTp, config.getNbTeleportation());
+		SpinnerTheme textFieldNbTp = new SpinnerTheme(Config.MINTP, Config.MAXTP, config.getNbTeleportation());
 		vboxNbTop.setPadding(new Insets(0,0,20,0));
 		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);
 		

@@ -30,7 +30,7 @@ public class EndScreen {
 	 * @param gameStatue
 	 * @param victory
 	 */
-	public void setEndScreen(GameStatus gameStatue, boolean victory) {
+	public void setEndScreen(GameStatus gameStatue, boolean victory, Config config) {
 		Label statue = null;
 		
 		if(victory) {
@@ -43,7 +43,7 @@ public class EndScreen {
 		Button next = new HomeMinButton("Suivant");
 		next.setOnAction(e -> { 
 			//On devra faire un this.config (donc l'avoir comme attribut)
-			new Home(this.window, new Config());
+			new Home(this.window, config);
 		});
 		
 		if(statue == null) {
@@ -54,10 +54,7 @@ public class EndScreen {
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
-		
-		System.out.println(scene);
-		System.out.println(window);
-		
+
 		window.stage.setScene(scene);
 	}
 	

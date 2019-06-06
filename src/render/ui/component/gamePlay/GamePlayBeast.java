@@ -32,13 +32,9 @@ public class GamePlayBeast extends AbstractGamePlay{
 				}
 				return true;
 			}else if(ag.map.moveBeast(mouvment)) {
-				
 				this.map.setBeastWalk();
 				ag.checkGameStatus();
 				ag.ramasserBonusBeast();
-				//System.out.println("Inventaire Beast : "+this.map.getBeast().getInventory().size());
-				//System.out.println("Inventaire Hunter: "+this.map.getHunter().getInventory().size());
-					
 			}else {
 				return false;
 			}
@@ -48,7 +44,7 @@ public class GamePlayBeast extends AbstractGamePlay{
 			return true;
 		}else {
 			EndScreen es =new EndScreen(super.window);
-			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin());
+			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig());
 			return false;
 		}
 	}
@@ -63,7 +59,7 @@ public class GamePlayBeast extends AbstractGamePlay{
 			super.refreshBeastView(super.map);
 		}else {
 			EndScreen es =new EndScreen(window);
-			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin());
+			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig());
 		}
 	}
 }

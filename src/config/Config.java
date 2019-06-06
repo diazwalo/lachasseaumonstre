@@ -10,10 +10,10 @@ import java.util.prefs.Preferences;
  */
 public class Config
 {
-	public static final int minSize = 5;
-	public static final int maxSize = 20;
-	public static final int minTp = 0;
-	public static final int maxTp = 5;
+	public static final int MINSIZE = 5;
+	public static final int MAXSIZE = 20;
+	public static final int MINTP = 0;
+	public static final int MAXTP = 5;
 	
 	private int width;
 	private int height;
@@ -39,10 +39,10 @@ public class Config
 	 * Restaure la configuration par default.
 	 */
 	public void setDefaultConfig() {
-		this.width = Config.minSize;
-		this.height = Config.minSize;
+		this.width = Config.MINSIZE;
+		this.height = Config.MINSIZE;
 		this.gameMode = GameMode.BEASTvsAI;
-		this.nbTeleportation = (Config.minTp+Config.maxTp)/2;
+		this.nbTeleportation = (Config.MINTP+Config.MAXTP)/2;
 		this.map = Map.SQUARE;
 
 		this.trap = false;
@@ -88,8 +88,9 @@ public class Config
 		this.ward = ward;
 		this.bait = bait;
 		
-		this.prefs.putInt("width", width);
-		this.prefs.putInt("height", height);
+		//Virgil : Je met la la width a la min size pour pas que ca bug
+		this.prefs.putInt("width", MINSIZE/*width*/);
+		this.prefs.putInt("height", MINSIZE/*height*/);
 		this.prefs.putInt("tp", nbTeleportation);
 		this.prefs.putInt("map", indexMap);
 		this.prefs.putBoolean("trap", trap);
