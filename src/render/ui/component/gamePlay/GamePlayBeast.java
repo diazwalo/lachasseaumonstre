@@ -3,6 +3,7 @@ package render.ui.component.gamePlay;
 import java.io.FileNotFoundException;
 
 import core.game.AbstractGame;
+import core.game.GameBeast;
 import core.game.GameHunter;
 import core.game.GameStatus;
 import map.AbstractMap;
@@ -17,24 +18,37 @@ public class GamePlayBeast extends AbstractGamePlay{
 		super(map);
 		super.refreshBeastView(map);
 		super.refreshBeastView(map);
-		ag = new GameHunter(map);
+		ag = new GameBeast(map);
+		ag.map.setBeastWalk();
 	}
 	
 	@Override
 	public boolean play(Mouvment mouvment) {
-		if(this.ag.gameStatus.equals(GameStatus.INGAME)) {
-			if(ag.map.moveHunter(mouvment)) {
-				ag.checkGameStatus();
-				ag.ramasserBonusHunter();
-				
-				ag.updateStartGame();
-				super.refreshHunterView(super.map);
+		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && this.ag.gameStatus.equals(GameStatus.INGAME)) {
+			IBonus bo=ag.checkBeastTrapped();
+			if(super.map.getBeast().getTrapped()) {
+				super.map.getBeast().setUntrapped();
+				if(bo != null) {
+					this.map.removeBonus(bo);
+				}
 				return true;
+			}else if(ag.map.moveBeast(mouvment)) {
+				
+				this.map.setBeastWalk();
+				ag.checkGameStatus();
+				ag.ramasserBonusBeast();
+				System.out.println("Inventaire: "+this.map.getBeast().getInventory().size());
+					
+			}else {
+				return false;
 			}
-			return false;
+				
+			ag.updateStartGame();
+			super.refreshBeastView(super.map);
+			return true;
 		}else {
 			EndScreen es =new EndScreen(super.window);
-			es.setEndScreen(ag.gameStatus, ag.map.isHunterWin());
+			es.setEndScreen(ag.gameStatus, ag.map.isBeastWin());
 			return false;
 		}
 	}
@@ -42,6 +56,15 @@ public class GamePlayBeast extends AbstractGamePlay{
 	@Override
 	public void next() {
 		// TODO Auto-generated method stub
-		
+		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && this.ag.gameStatus.equals(GameStatus.INGAME)) {
+			((GameBeast)ag).hunterTurn();
+			ag.checkBeastRevealed();
+			ag.updateEndGame();
+			ag.checkGameStatus();
+			super.refreshBeastView(super.map);
+		}else {
+			EndScreen es =new EndScreen(window);
+			es.setEndScreen(ag.gameStatus, ag.map.isBeastWin());
+		}
 	}
 }

@@ -206,8 +206,8 @@ public abstract class AbstractGamePlay {
 				
 				this.paintRectangleBeastView(rec, caseCour, map, col, row, posCase);
 				
-				GridPane.setRowIndex(rec, row);
-				GridPane.setColumnIndex(rec, col);
+				GridPane.setRowIndex(rec, col);
+				GridPane.setColumnIndex(rec, row);
 				grid.getChildren().addAll(rec);
 			}
 		}

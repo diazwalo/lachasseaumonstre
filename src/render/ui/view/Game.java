@@ -2,6 +2,7 @@ package render.ui.view;
 
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.geometry.Insets;
@@ -122,9 +123,17 @@ public class Game {
 			gameType.next();
 			this.gamePad.activateButton();
 			
-			((GamePlayHunter)(gameType)).ag.map.getHunter().putItAllInInventory();
+			List<IBonus> listInventory = new ArrayList<>();
 			
-			List<IBonus> listInventory = ((GamePlayHunter)(gameType)).ag.map.getHunter().getInventory();
+			if(gameType instanceof GamePlayHunter) {
+				((GamePlayHunter)(gameType)).ag.map.getHunter().putItAllInInventory();
+				listInventory = ((GamePlayHunter)(gameType)).ag.map.getHunter().getInventory();
+			}else if(gameType instanceof GamePlayBeast) {
+				((GamePlayBeast)(gameType)).ag.map.getHunter().putItAllInInventory();
+				listInventory = ((GamePlayBeast)(gameType)).ag.map.getHunter().getInventory();
+			}
+			
+			 
 			inventaire.setBonusAble(listInventory);
 		});
 

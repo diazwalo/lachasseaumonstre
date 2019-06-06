@@ -22,7 +22,7 @@ public class GamePlayHunter extends AbstractGamePlay
 	}
 
 	public boolean play(Mouvment mouvment) {
-		if(this.ag.gameStatus.equals(GameStatus.INGAME)) {
+		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && this.ag.gameStatus.equals(GameStatus.INGAME)) {
 			if(ag.map.moveHunter(mouvment)) {
 				ag.checkGameStatus();
 				ag.ramasserBonusHunter();
@@ -46,7 +46,7 @@ public class GamePlayHunter extends AbstractGamePlay
 	@Override
 	public void next() {
 		// TODO Auto-generated method stub
-		if(this.ag.gameStatus.equals(GameStatus.INGAME)) {
+		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && this.ag.gameStatus.equals(GameStatus.INGAME)) {
 			((GameHunter)ag).beastTurn();
 			ag.checkBeastRevealed();
 			ag.updateEndGame();

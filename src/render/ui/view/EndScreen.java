@@ -35,7 +35,7 @@ public class EndScreen {
 		
 		if(victory) {
 			statue = new LabelThemeVariableSize("Victoire !", 40);
-		}else if(victory) {
+		}else if(!victory) {
 			statue = new LabelThemeVariableSize("Defaite...", 40);
 		}
 		
