@@ -1,16 +1,20 @@
 package config;
 
+import java.util.prefs.Preferences;
+
 /**
  * 
  * Cette classe gere la configuration de la partie qui va etre instancie.
  * @author PHPierre
  *
  */
-public class Config {
+public class Config
+{
 	public static final int minSize = 5;
 	public static final int maxSize = 20;
 	public static final int minTp = 0;
 	public static final int maxTp = 5;
+	
 	private int width;
 	private int height;
 	private GameMode gameMode;
@@ -43,6 +47,30 @@ public class Config {
 		this.camouflage = false;
 		this.ward = false;
 		this.bait = false;
+	}
+	
+	/**
+	 * Applique à la configuration existante les valeurs de dernière partie avant l'extinction du programme.
+	 */
+	public void loadLastSave()
+	{
+		Preferences prefs = Preferences.userRoot().node("lachasseauxmonstres_settings");
+		this.width = prefs.getInt("width", this.getWidth());
+		this.height = prefs.getInt("height", this.getHeight());
+		this.nbTeleportation = prefs.getInt("tp", this.getNbTeleportation());
+
+		int mapIndex = prefs.getInt("map", 0);
+		for (int i = 0; i < Map.values().length; i++) {
+			if(mapIndex == i) {
+				this.map = Map.values()[i];
+				break;
+			}
+		}
+		
+		this.trap = prefs.getBoolean("trap", this.isTrap());
+		this.camouflage = prefs.getBoolean("camouflage", this.isCamouflage());
+		this.ward = prefs.getBoolean("ward", this.isWard());
+		this.bait = prefs.getBoolean("bait", this.isBait());
 	}
 
 	/**

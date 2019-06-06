@@ -10,10 +10,12 @@ import render.ui.view.Home;
 public class Window extends Application
 {
 	public Stage stage;
-	Config config = new Config();
+	public Config config;
 	
 	public void start(Stage stage) {
 		this.stage = stage;
+		this.config = new Config();
+		this.config.loadLastSave();
 		
 		new Home(this, config);
 

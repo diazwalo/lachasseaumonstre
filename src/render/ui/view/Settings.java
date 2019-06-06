@@ -42,19 +42,19 @@ public class Settings
 		
 		VBox vboxWidth = new VBox();
 		LabelTheme labelWidth = new LabelTheme("Largeur du plateau :");
-		Spinner<Integer> textFieldWidth = new SpinnerTheme(Config.minSize, Config.maxSize, prefs.getInt("width", config.getWidth()));
+		Spinner<Integer> textFieldWidth = new SpinnerTheme(Config.minSize, Config.maxSize, config.getWidth());
 		vboxWidth.setPadding(new Insets(0,0,20,0));
 		vboxWidth.getChildren().addAll(labelWidth, textFieldWidth);
 		
 		VBox vboxHeight = new VBox();
 		LabelTheme labelHeight = new LabelTheme("Hauteur du plateau :");
-		SpinnerTheme textFieldHeight = new SpinnerTheme(Config.minSize, Config.maxSize, prefs.getInt("height", config.getHeight()));
+		SpinnerTheme textFieldHeight = new SpinnerTheme(Config.minSize, Config.maxSize, config.getHeight());
 		vboxHeight.setPadding(new Insets(0,0,20,0));
 		vboxHeight.getChildren().addAll(labelHeight, textFieldHeight);
 		
 		VBox vboxNbTop = new VBox();
 		LabelTheme labelNbTp = new LabelTheme("Nombre de teleportation pour le monstre :");
-		SpinnerTheme textFieldNbTp = new SpinnerTheme(Config.minTp, Config.maxTp, prefs.getInt("height", config.getNbTeleportation()));
+		SpinnerTheme textFieldNbTp = new SpinnerTheme(Config.minTp, Config.maxTp, config.getNbTeleportation());
 		vboxNbTop.setPadding(new Insets(0,0,20,0));
 		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);
 		
@@ -65,13 +65,9 @@ public class Settings
 		for (int i = 0; i < Map.values().length; i++) {
 			listMap.getItems().addAll(Map.values()[i].getName());
 			
-			if(prefs.getInt("map", -1) == -1) {
-				if(config.getMap().equals(Map.values()[i]))
-				{
-					listMap.getSelectionModel().select(i);
-				}
-			} else {
-				listMap.getSelectionModel().select(prefs.getInt("map", -1));
+			if(config.getMap().equals(Map.values()[i]))
+			{
+				listMap.getSelectionModel().select(i);
 			}
 		}
 		
@@ -82,19 +78,19 @@ public class Settings
 		
 		LabelTheme labelTrap = new LabelTheme("Activer les pieges");
 		labelTrap.setPadding(new Insets(6, 0, 0, 10));
-		CheckBoxTheme checkBoxThemeTrap = new CheckBoxTheme(prefs.getBoolean("trap", config.isTrap()));
+		CheckBoxTheme checkBoxThemeTrap = new CheckBoxTheme(config.isTrap());
 		
 		LabelTheme labelWard = new LabelTheme("Activer les balises de vision");
 		labelWard.setPadding(new Insets(6, 0, 0, 10));
-		CheckBoxTheme checkBoxThemeWard = new CheckBoxTheme(prefs.getBoolean("ward", config.isWard()));
+		CheckBoxTheme checkBoxThemeWard = new CheckBoxTheme(config.isWard());
 		
 		LabelTheme labelBait = new LabelTheme("Activer les leurres");
 		labelBait.setPadding(new Insets(6, 0, 0, 10));
-		CheckBoxTheme checkBoxThemeBait = new CheckBoxTheme(prefs.getBoolean("bait", config.isBait()));
+		CheckBoxTheme checkBoxThemeBait = new CheckBoxTheme(config.isBait());
 		
 		LabelTheme labelCamouflage = new LabelTheme("Activer les camouflages");
 		labelCamouflage.setPadding(new Insets(6, 0, 0, 10));
-		CheckBoxTheme checkBoxThemeCamouflage = new CheckBoxTheme(prefs.getBoolean("camouflage", config.isCamouflage()));
+		CheckBoxTheme checkBoxThemeCamouflage = new CheckBoxTheme(config.isCamouflage());
 		
 		HBox hBoxBonus1 = new HBox();
 		HBox hBoxBonus2 = new HBox();
