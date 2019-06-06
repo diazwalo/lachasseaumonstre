@@ -13,39 +13,32 @@ public class Score
      * 2 : joueur vs IA monstre
      * 3 : joueur vs joueur
      */
-    private GameMode gameMode;
+    //private GameMode gameMode;
 
     private String player1;
 
     private String player2;
 
-    private double scorePlayer1;
+    private int nbMouvment1;
 
-    private double scorePlayer2;
+    private int nbMouvment2;
+    
+    private int size;
 
     private LocalDate date;
     
-    public Score(GameMode gamemode, String p1, String p2, int nbMouvment1, double nbMouvment2, AbstractMap map) {
+    public Score(String p1, String p2, int nbMouvment1, int nbMouvment2, int size, LocalDate date) {
     	this.player1 = p1;
     	this.player2 = p2;
-    	this.date = LocalDate.now();
-    	
-    	Graph graph = new Graph();
-    	int size = graph.getListNode().size();
-    	
-    	this.scorePlayer1 = (nbMouvment1*100)/size;
-    	this.scorePlayer2 = (nbMouvment2*100)/size;
+    	this.nbMouvment1 = nbMouvment1;
+    	this.nbMouvment2 = nbMouvment2;//(nbMouvment2*100)/size
+    	this.size = size; 	
+    	this.date = date;   	
     }
     
-
-    public GameMode getGameMode()
-    {
-        return this.gameMode;
-    }
-
-    public void setGameMode(GameMode gameMode)
-    {
-        this.gameMode = gameMode;
+    public Score(String p1, String p2, int nbMouvment1, int nbMouvment2, int size) {
+    	this(p1, p2, nbMouvment1, nbMouvment2, size, LocalDate.now());
+    	
     }
 
     public String getPlayer1()
@@ -68,27 +61,37 @@ public class Score
         this.player2 = player2;
     }
 
-    public double getScorePlayer1()
-    {
-        return this.scorePlayer1;
-    }
+    public int getNbMouvment1()
+	{
+		return this.nbMouvment1;
+	}
 
-    public void setScorePlayer1(int scorePlayer1)
-    {
-        this.scorePlayer1 = scorePlayer1;
-    }
+	public void setNbMouvment1(int nbMouvment1)
+	{
+		this.nbMouvment1 = nbMouvment1;
+	}
 
-    public double getScorePlayer2()
-    {
-        return this.scorePlayer2;
-    }
+	public int getNbMouvment2()
+	{
+		return this.nbMouvment2;
+	}
 
-    public void setScorePlayer2(int getScorePlayer2)
-    {
-        this.scorePlayer2 = getScorePlayer2;
-    }
+	public void setNbMouvment2(int nbMouvment2)
+	{
+		this.nbMouvment2 = nbMouvment2;
+	}
 
-    public LocalDate getDate()
+	public int getSize()
+	{
+		return size;
+	}
+
+	public void setSize(int size)
+	{
+		this.size = size;
+	}
+
+	public LocalDate getDate()
     {
         return this.date;
     }
