@@ -13,7 +13,7 @@ import render.ui.view.EndScreen;
 
 public class GamePlayHunter extends GameBoard
 {
-	private AbstractGame ag;
+	public AbstractGame ag;
 	
 	public GamePlayHunter(AbstractMap map) throws FileNotFoundException {
 		super(map);

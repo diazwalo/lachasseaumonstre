@@ -2,6 +2,7 @@ package render.ui.view;
 
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import map.AbstractMap;
 import map.Mouvment;
+import render.bonus.IBonus;
 import render.ui.component.Chat;
 import render.ui.component.Inventory;
 import render.ui.component.gamePlay.GameBoard;
@@ -99,9 +101,9 @@ public class Game {
 		});
 		
 		if(gameType instanceof GamePlayHunter) {
-			this.inventaire = new Inventory(map.getHunter());
+			this.inventaire = new Inventory(map.getHunter(), gameType);
 		}else if(gameType instanceof GamePlayBeast) {
-			this.inventaire = new Inventory(map.getBeast());
+			this.inventaire = new Inventory(map.getBeast(), gameType);
 		}
 		
 		this.chat = new Chat();
@@ -119,6 +121,8 @@ public class Game {
 			nextTurn.setDisable(true);
 			gameType.next();
 			this.gamePad.activateButton();
+			// TODO : Ca marche pas... enfin les buttons ne s'activent pas pour l'inventaire
+			inventaire.setBonusAble(((GamePlayHunter)(gameType)).ag.map.getHunter().getInventory());
 		});
 
 		this.left.getChildren().addAll(gamePad.getCore(), nextTurn);
