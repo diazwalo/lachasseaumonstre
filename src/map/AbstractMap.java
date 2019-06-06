@@ -24,10 +24,9 @@ public abstract class AbstractMap
     public abstract void generationMap();
     
     /**
-     * Genere les bonus de la Bete et du Chasseur si ces dernier sont demandes dans la Configue, le milieu sert a mettre leurs bonus respectif de leurs cotes)
-     * @param middle
+     * Genere les bonus de la Bete et du Chasseur si ces dernier sont demandes dans la Configue,les bonus sont places respectif de leurs cotes)
      */
-    public void generationBonus(/*int middle*/) {
+    public void generationBonus() {
     	Position posTrap = new Position(-1, -1);
     	Position posBait = new Position(-1, -1);
     	
@@ -47,38 +46,26 @@ public abstract class AbstractMap
 
     /**
      * Place le Premier Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote
-     * @param middle Le milieu du plateau.
+     * @param place sur la largeure de l'entitee
+     * @param place sur la longueur de l'entitee
      * @param tabBonus La configuration des bonus.
      * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
-     * @return 
+     * @return Position
      */
     public final Position createPositionTempoFirstBonus(int idxWidth, int idxHeight, boolean[] tabBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
         Position posBonusFinal=new Position(-1 , -1);
 
         while(posBonusFinal.isPos(-1, -1)) {
-        	System.out.println("i"+idxWidth);
-        	System.out.println("i"+idxHeight);
             int posBonusX=idxWidth+r.nextInt((this.tab.length/2)-1);
             int posBonusY=idxHeight+r.nextInt((this.tab[0].length/2)-1);
             
-            System.out.println("p"+posBonusX);
-            System.out.println("p"+posBonusY);
-            System.out.println("-------------------------");
-            
             if(idxWidth != 0 || idxHeight != 0) {
-            	System.out.println("in");
             	posBonusY=idxWidth-r.nextInt(idxWidth/2);
             	posBonusX=idxHeight-r.nextInt(idxHeight/2);
             }
             
-            System.out.println("r"+posBonusX);
-            System.out.println("r"+posBonusY);
-            System.out.println("-------------------------");
-            
             Position posBonusTempo=new Position(posBonusX, posBonusY);
-            System.out.println(this.tab[posBonusY]);
-            System.out.println(this.tab[posBonusY][posBonusX]);
             if(! this.tab[posBonusY][posBonusX].isObstacle() && 
             		! this.beast.getPos().equals(posBonusTempo) && 
             		! this.hunter.getPos().equals(posBonusTempo)) {
@@ -98,7 +85,8 @@ public abstract class AbstractMap
 
     /**
      * Place le Deuxieme Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote en s'assurant que ce dernier ne soit pas a la position du premier Bonus
-     * @param middle Le milieu du plateau.
+     * @param place sur la largeure de l'entitee
+     * @param place sur la longueur de l'entitee
      * @param tabBonus La configuration des bonus
      * @param posFirstBonus La position du premier bonus.
      * @param bonusHunterOrBeast True pour la bete, false pour le monstre.

@@ -33,7 +33,7 @@ public class GamePlayHunter extends GameBoard
 			return false;
 		}else {
 			EndScreen es =new EndScreen(super.window);
-			es.setEndScreen(ag.gameStatus, 2);
+			es.setEndScreen(ag.gameStatus, ag.map.isHunterWin());
 			return false;
 		}
 	}
@@ -52,7 +52,7 @@ public class GamePlayHunter extends GameBoard
 			super.refreshHunterView(super.map);
 		}else {
 			EndScreen es =new EndScreen(window);
-			es.setEndScreen(ag.gameStatus, 1);
+			es.setEndScreen(ag.gameStatus, ag.map.isHunterWin());
 		}
 	}
 

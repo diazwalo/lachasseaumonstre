@@ -110,7 +110,6 @@ public class Game {
 			nextTurn.setDisable(true);
 			gameType.next();
 			this.gamePad.activateButton();
-			nextTurn.setDisable(false);
 		});
 
 		this.core.getChildren().addAll(bottom, top);

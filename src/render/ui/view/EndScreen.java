@@ -30,12 +30,12 @@ public class EndScreen {
 	 * @param gameStatue
 	 * @param victory
 	 */
-	public void setEndScreen(GameStatus gameStatue, int victory) {
+	public void setEndScreen(GameStatus gameStatue, boolean victory) {
 		Label statue = null;
 		
-		if(victory == 1) {
+		if(victory) {
 			statue = new LabelThemeVariableSize("Victoire !", 40);
-		}else if(victory == 2) {
+		}else if(victory) {
 			statue = new LabelThemeVariableSize("Defaite...", 40);
 		}
 		

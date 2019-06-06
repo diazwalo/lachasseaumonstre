@@ -16,7 +16,7 @@ public class CircularMap extends AbstractMap {
 		this.tab = new Case[widthTab][heightTab];
 		
 		this.generationMap();
-		super.generationBonus(/*widthTab/2*/);
+		super.generationBonus();
 		
 		this.beastWin = false;
 		this.hunterWin = false;
@@ -26,13 +26,11 @@ public class CircularMap extends AbstractMap {
 	 * Remplie le tableau en mettant dans les cases soit des Obstacles soit des Sol.
 	 */
 	public void generationMap() {
-		// 14 -> 7
-		// 15 -> 7
 		int radius = (int) Math.floor(this.tab.length / 2);
 		int preRadius = (int) Math.ceil(this.tab[radius].length / 2) / 2;
 		
 		for (int x = 0; x < this.tab.length; x++) {
-			for (int y = 0; y < this.tab[x].length; y++) {//this.tab[x].length
+			for (int y = 0; y < this.tab[x].length; y++) {
 
 				boolean posBeast = this.beast.isPosEnt(x, y);
 				CaseType caseType;
@@ -53,7 +51,7 @@ public class CircularMap extends AbstractMap {
 							}
 							
 							this.beast.setPosition(new Position(x, y));
-							caseType = CaseType.SOL;//SOL
+							caseType = CaseType.SOL;
 						}
 						else {
 							caseType = CaseType.OBSTACLE;

@@ -26,7 +26,7 @@ public class SquareMap extends AbstractMap {
 		this.beast = new Beast(widthTab-1, heightTab-1, config);
 		this.tab = new Case[widthTab][heightTab];
 		this.generationMap();
-		super.generationBonus(/*widthTab/2*/);
+		super.generationBonus();
 
 		this.beastWin = false;
 		this.hunterWin = false;
