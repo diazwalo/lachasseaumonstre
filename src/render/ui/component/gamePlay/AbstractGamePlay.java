@@ -105,6 +105,26 @@ public abstract class AbstractGamePlay {
 	public void setPrefSize(int prefWidth, int  prefHeight ) {
 		grid.setPrefSize(prefWidth, prefHeight);
 	}
+	
+	public void refreshIAView(AbstractMap map) {
+		for (int row = 0; row < (map.getTab().length); row++) {
+			for (int col = 0; col < (map.getTab()[row].length); col++) {
+				Rectangle rec = new Rectangle();
+				rec.setWidth(size);
+				rec.setHeight(size);
+				
+				Case caseCour = map.getTab()[row][col];
+				Position posCase= new Position(row, col);
+
+				this.paintRectangleIAView(rec, caseCour, map, col, row, posCase);
+				
+				GridPane.setRowIndex(rec, col);
+				GridPane.setColumnIndex(rec, row);
+				grid.getChildren().addAll(rec);
+				
+			}
+		}
+	}
 
 	public void refreshHunterView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
@@ -122,6 +142,25 @@ public abstract class AbstractGamePlay {
 				GridPane.setColumnIndex(rec, row);
 				grid.getChildren().addAll(rec);
 				
+			}
+		}
+	}
+	
+	public void refreshBeastView(AbstractMap map) {
+		for (int row = 0; row < (map.getTab().length); row++) {
+			for (int col = 0; col < (map.getTab()[row].length); col++) {
+				Rectangle rec = new Rectangle();
+				rec.setWidth(size);
+				rec.setHeight(size);
+				
+				Case caseCour = map.getTab()[row][col];
+				Position posCase= new Position(row, col);
+				
+				this.paintRectangleBeastView(rec, caseCour, map, col, row, posCase);
+				
+				GridPane.setRowIndex(rec, col);
+				GridPane.setColumnIndex(rec, row);
+				grid.getChildren().addAll(rec);
 			}
 		}
 	}
@@ -186,25 +225,6 @@ public abstract class AbstractGamePlay {
 			rec.setFill(new ImagePattern(hunter));
 		}
 	}
-
-	public void refreshBeastView(AbstractMap map) {
-		for (int row = 0; row < (map.getTab().length); row++) {
-			for (int col = 0; col < (map.getTab()[row].length); col++) {
-				Rectangle rec = new Rectangle();
-				rec.setWidth(size);
-				rec.setHeight(size);
-				
-				Case caseCour = map.getTab()[row][col];
-				Position posCase= new Position(row, col);
-				
-				this.paintRectangleBeastView(rec, caseCour, map, col, row, posCase);
-				
-				GridPane.setRowIndex(rec, col);
-				GridPane.setColumnIndex(rec, row);
-				grid.getChildren().addAll(rec);
-			}
-		}
-	}
 	
 	private void paintRectangleBeastView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
@@ -220,6 +240,45 @@ public abstract class AbstractGamePlay {
 			IBonus bonusActif = caseCour.getBeastBonusActifOnCase(map, posCase);
 			if(bonusActif instanceof Bait) {
 				rec.setFill(new ImagePattern(bait));
+			}
+		}
+		
+		if(caseCour.bonusOnCase(caseCour.getBonusBeast())) {
+			rec.setFill(new ImagePattern(bonus));
+		}
+		
+		if(caseCour.getBeastOnCaseBeastMode(map, posCase)) {
+			rec.setFill(new ImagePattern(beast));
+		}
+		
+		if(caseCour.getHunterOnCase(map, posCase)) {
+			rec.setFill(new ImagePattern(hunter));
+		}
+	}
+	
+	public void paintRectangleIAView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
+		if(caseCour.isObstacle()) {
+			rec.setFill(new ImagePattern(obstacle));
+		}else if(caseCour.getCaseType().equals(CaseType.SOL)) {
+			rec.setFill(new ImagePattern(ground));
+		}
+		if(caseCour.getBeastWalk()>=1) {
+			rec.setFill(new ImagePattern(tracePas));
+		}
+		
+		if(caseCour.getBeastBonusActifOnCase(map, posCase) != null) {
+			IBonus bonusActif = caseCour.getBeastBonusActifOnCase(map, posCase);
+			if(bonusActif instanceof Bait) {
+				rec.setFill(new ImagePattern(bait));
+			}
+		}
+		
+		if(caseCour.getHunterBonusActifOnCase(map, posCase) != null) {
+			IBonus bonusActif = caseCour.getHunterBonusActifOnCase(map, posCase);
+			if(bonusActif instanceof Trap) {
+				rec.setFill(new ImagePattern(trap));
+			}else if(bonusActif instanceof Ward) {
+				rec.setFill(new ImagePattern(ward));
 			}
 		}
 		

@@ -52,90 +52,20 @@ public class Game {
 		this.right.setAlignment(Pos.CENTER);
 		
 		this.gamePad = new PlayButton();
+		this.setEventMouvmentButton(map);
 		
-		this.gamePad.topBtn.getBouton().setOnAction(e -> {
-			if(gameType.play(Mouvment.NORD)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
-			if(gameType.play(Mouvment.NORDOUEST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
-			if(gameType.play(Mouvment.NORDEST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.leftBtn.getBouton().setOnAction(e -> {
-			if(gameType.play(Mouvment.OUEST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.rightBtn.getBouton().setOnAction(e -> {
-			if(gameType.play(Mouvment.EST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
-			if(gameType.play(Mouvment.SUD)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
-			if(gameType.play(Mouvment.SUDOUEST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
-			if(gameType.play(Mouvment.SUDEST)) {
-				userAction(map);
-			}
-		});
-		
-		if(gameType instanceof GamePlayHunter) {
-			this.inventaire = new Inventory(map.getHunter(), gameType);
-		}else if(gameType instanceof GamePlayBeast) {
-			this.inventaire = new Inventory(map.getBeast(), gameType);
-		}
-		
-		this.chat = new Chat();
-		
-		gameType.setInventory(this.inventaire);
-		gameType.setPlayButton(this.gamePad);
 		this.plateau = gameType;
 		this.plateau.setWindow(window);
-		
+		this.setInventory();
 		
 		nextTurn = new Button("Tour suivant");
 		nextTurn.setDisable(true);
+		this.setEventNextTurnButton();
 		
-		nextTurn.setOnAction(e -> {
-			nextTurn.setDisable(true);
-			gameType.next();
-			this.gamePad.activateButton();
-			
-			List<IBonus> listInventory = new ArrayList<>();
-			
-			if(gameType instanceof GamePlayHunter) {
-				((GamePlayHunter)(gameType)).ag.map.getHunter().putItAllInInventory();
-				listInventory = ((GamePlayHunter)(gameType)).ag.map.getHunter().getInventory();
-			}else if(gameType instanceof GamePlayBeast) {
-				((GamePlayBeast)(gameType)).ag.map.getBeast().putItAllInInventory();
-				listInventory = ((GamePlayBeast)(gameType)).ag.map.getBeast().getInventory();
-			}
-			
-			 
-			inventaire.setBonusAble(listInventory);
-		});
+		this.chat = new Chat();
+		
+		this.plateau.setInventory(this.inventaire);
+		this.plateau.setPlayButton(this.gamePad);
 
 		this.left.getChildren().addAll(gamePad.getCore(), nextTurn);
 		this.middle.getChildren().addAll(plateau.getGrid());
@@ -149,9 +79,93 @@ public class Game {
 		window.stage.setScene(scene);
 	}
 	
+	public void setInventory() {
+		if(this.plateau instanceof GamePlayHunter) {
+			GamePlayHunter g = ((GamePlayHunter)(this.plateau));
+			this.inventaire = new Inventory(g.ag.map.getHunter(), this.plateau);
+		}else if(this.plateau instanceof GamePlayBeast) {
+			GamePlayBeast g = ((GamePlayBeast)(this.plateau));
+			this.inventaire = new Inventory(g.ag.map.getBeast(), this.plateau);
+		}
+	}
+	
 	public void userAction(AbstractMap map)
 	{
 		this.gamePad.desactivateButton();
 		nextTurn.setDisable(false);
+	}
+	
+	public void setEventNextTurnButton() {
+		nextTurn = new Button("Tour suivant");
+		nextTurn.setDisable(true);
+		
+		nextTurn.setOnAction(e -> {
+			nextTurn.setDisable(true);
+			this.plateau.next();
+			this.gamePad.activateButton();
+			
+			List<IBonus> listInventory = new ArrayList<>();
+			
+			if(this.plateau instanceof GamePlayHunter) {
+				((GamePlayHunter)(this.plateau)).ag.map.getHunter().putItAllInInventory();
+				listInventory = ((GamePlayHunter)(this.plateau)).ag.map.getHunter().getInventory();
+			}else if(this.plateau instanceof GamePlayBeast) {
+				((GamePlayBeast)(this.plateau)).ag.map.getBeast().putItAllInInventory();
+				listInventory = ((GamePlayBeast)(this.plateau)).ag.map.getBeast().getInventory();
+			}
+			
+			 
+			inventaire.setBonusAble(listInventory);
+		});
+	}
+	
+	public void setEventMouvmentButton(AbstractMap map) {
+		this.gamePad.topBtn.getBouton().setOnAction(e -> {
+			if(this.plateau.play(Mouvment.NORD)) {
+				userAction(map);
+			}
+		});
+		
+		this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
+			if(this.plateau.play(Mouvment.NORDOUEST)) {
+				userAction(map);
+			}
+		});
+		
+		this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
+			if(this.plateau.play(Mouvment.NORDEST)) {
+				userAction(map);
+			}
+		});
+		
+		this.gamePad.leftBtn.getBouton().setOnAction(e -> {
+			if(this.plateau.play(Mouvment.OUEST)) {
+				userAction(map);
+			}
+		});
+		
+		this.gamePad.rightBtn.getBouton().setOnAction(e -> {
+			if(this.plateau.play(Mouvment.EST)) {
+				userAction(map);
+			}
+		});
+		
+		this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
+			if(this.plateau.play(Mouvment.SUD)) {
+				userAction(map);
+			}
+		});
+		
+		this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
+			if(this.plateau.play(Mouvment.SUDOUEST)) {
+				userAction(map);
+			}
+		});
+		
+		this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
+			if(this.plateau.play(Mouvment.SUDEST)) {
+				userAction(map);
+			}
+		});
 	}
 }

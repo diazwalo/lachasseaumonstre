@@ -16,7 +16,6 @@ public class GamePlayBeast extends AbstractGamePlay{
 	public GamePlayBeast(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshBeastView(map);
-		super.refreshBeastView(map);
 		ag = new GameBeast(map);
 		ag.map.setBeastWalk();
 	}

@@ -14,6 +14,8 @@ import map.CircularMap;
 import map.SquareMap;
 import render.ui.component.gamePlay.GamePlayBeast;
 import render.ui.component.gamePlay.GamePlayHunter;
+import render.ui.component.gamePlay.GamePlayIA;
+import render.ui.component.gamePlay.GamePlayMulti;
 import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
 import render.ui.form.button.HomeMinButton;
@@ -47,19 +49,22 @@ public class Home
 	
 	private void verticalMenu()
 	{
-		HomeButton btn1 = new HomeButton("Ordinateur");		
+		HomeButton btn1 = new HomeButton("Dual");		
 		HomeButton btn2 = new HomeButton("Chasseur");		
 		HomeButton btn3 = new HomeButton("Monstre");		
-		HomeButton btn4 = new HomeButton("Dual");
+		HomeButton btn4 = new HomeButton("Ordinateur");
 		
-		//TEST
-		btn2.setOnAction(e -> {
-			AbstractMap map = null;
-			if(this.config.getMap().equals(Map.SQUARE)) {
-				map = new SquareMap(this.config);
-			}else if(this.config.getMap().equals(Map.CIRCULAR)) {
-				map = new CircularMap(this.config);
+		btn1.setOnAction(e -> {
+			AbstractMap map = this.getMapForm();
+			try {
+				new Game(window, map, new GamePlayMulti(map));
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
 			}
+		});
+		
+		btn2.setOnAction(e -> {
+			AbstractMap map = this.getMapForm();
 			try {
 				new Game(window, map, new GamePlayHunter(map));
 			} catch (FileNotFoundException e1) {
@@ -68,16 +73,18 @@ public class Home
 		});
 		
 		btn3.setOnAction(e -> {
-			//Faire une fct juste pour ca
-			AbstractMap map = null;
-			if(this.config.getMap().equals(Map.SQUARE)) {
-				map = new SquareMap(this.config);
-			}else if(this.config.getMap().equals(Map.CIRCULAR)) {
-				map = new CircularMap(this.config);
-			}
-			// justqu'a la
+			AbstractMap map = this.getMapForm();
 			try {
 				new Game(window, map, new GamePlayBeast(map));
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
+		});
+
+		btn4.setOnAction(e -> {
+			AbstractMap map = this.getMapForm();
+			try {
+				new Game(window, map, new GamePlayIA(map));
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}
@@ -102,5 +109,17 @@ public class Home
 		
 		this.core.setAlignment(Pos.CENTER);
 		this.core.getChildren().add(this.menu);
+	}
+	
+	public AbstractMap getMapForm() {
+		AbstractMap map = null;
+		
+		if(this.config.getMap().equals(Map.SQUARE)) {
+			map = new SquareMap(this.config);
+		}else if(this.config.getMap().equals(Map.CIRCULAR)) {
+			map = new CircularMap(this.config);
+		}
+
+		return map;
 	}
 }
