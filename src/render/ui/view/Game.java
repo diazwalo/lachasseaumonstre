@@ -19,6 +19,7 @@ import render.ui.component.Inventory;
 import render.ui.component.gamePlay.AbstractGamePlay;
 import render.ui.component.gamePlay.GamePlayBeast;
 import render.ui.component.gamePlay.GamePlayHunter;
+import render.ui.component.gamePlay.GamePlayIA;
 import render.ui.core.Window;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
@@ -40,30 +41,31 @@ public class Game {
 	
 	
 	public Game(Window window, AbstractMap map, AbstractGamePlay gameType) throws FileNotFoundException {
-		
+
 		this.left = new VBox();
 		this.middle = new VBox();
 		this.right = new VBox();
 		this.core = new HBox();
-		
+
 		this.left.setAlignment(Pos.CENTER);
 		this.middle.setAlignment(Pos.CENTER);
 		this.middle.setPadding(new Insets(15));
 		this.right.setAlignment(Pos.CENTER);
-		
+
 		this.gamePad = new PlayButton();
-		this.setEventMouvmentButton(map);
-		
+		this.setEventMouvmentButton(map, gameType);
+
 		this.plateau = gameType;
 		this.plateau.setWindow(window);
 		this.setInventory();
-		
+
 		nextTurn = new Button("Tour suivant");
 		nextTurn.setDisable(true);
 		this.setEventNextTurnButton();
-		
-		this.chat = new Chat();
-		
+
+		this.setScene(window);
+		/*this.chat = new Chat();
+
 		this.plateau.setInventory(this.inventaire);
 		this.plateau.setPlayButton(this.gamePad);
 
@@ -71,14 +73,38 @@ public class Game {
 		this.middle.getChildren().addAll(plateau.getGrid());
 		this.right.getChildren().addAll(inventaire.getCore());
 		this.core.getChildren().addAll(left, middle, right);
-		
+
 		this.core.setAlignment(Pos.CENTER);
-		
+
+		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
+		scene.getStylesheets().add(Directory.STYLE_CSS);
+		window.stage.setScene(scene);*/
+	}
+
+	public void setScene(Window window) {
+		this.chat = new Chat();
+
+		if(! (this.plateau instanceof GamePlayIA)) {
+			this.plateau.setInventory(this.inventaire);
+			this.right.getChildren().addAll(inventaire.getCore());
+			this.left.getChildren().addAll(gamePad.getCore());
+		}
+		//this.plateau.setInventory(this.inventaire);
+		this.plateau.setPlayButton(this.gamePad);
+
+		//this.left.getChildren().addAll(gamePad.getCore(), nextTurn);
+		this.middle.getChildren().addAll(plateau.getGrid());
+		//this.right.getChildren().addAll(inventaire.getCore());
+		this.left.getChildren().addAll(nextTurn);
+		this.core.getChildren().addAll(left, middle, right);
+
+		this.core.setAlignment(Pos.CENTER);
+
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
 		window.stage.setScene(scene);
 	}
-	
+
 	public void setInventory() {
 		if(this.plateau instanceof GamePlayHunter) {
 			GamePlayHunter g = ((GamePlayHunter)(this.plateau));
@@ -97,75 +123,83 @@ public class Game {
 	
 	public void setEventNextTurnButton() {
 		nextTurn = new Button("Tour suivant");
-		nextTurn.setDisable(true);
-		
-		nextTurn.setOnAction(e -> {
+		if( this.plateau instanceof GamePlayIA ) {
+			nextTurn.setDisable(false);
+			nextTurn.setOnAction(e -> {
+				this.plateau.next();
+			});
+		}else {
 			nextTurn.setDisable(true);
-			this.plateau.next();
-			this.gamePad.activateButton();
-			
-			List<IBonus> listInventory = new ArrayList<>();
-			
-			if(this.plateau instanceof GamePlayHunter) {
-				((GamePlayHunter)(this.plateau)).ag.map.getHunter().putItAllInInventory();
-				listInventory = ((GamePlayHunter)(this.plateau)).ag.map.getHunter().getInventory();
-			}else if(this.plateau instanceof GamePlayBeast) {
-				((GamePlayBeast)(this.plateau)).ag.map.getBeast().putItAllInInventory();
-				listInventory = ((GamePlayBeast)(this.plateau)).ag.map.getBeast().getInventory();
-			}
-			
-			 
-			inventaire.setBonusAble(listInventory);
-		});
+			nextTurn.setOnAction(e -> {
+				nextTurn.setDisable(true);
+				this.plateau.next();
+				this.gamePad.activateButton();
+				
+				List<IBonus> listInventory = new ArrayList<>();
+				
+				if(this.plateau instanceof GamePlayHunter) {
+					((GamePlayHunter)(this.plateau)).ag.map.getHunter().putItAllInInventory();
+					listInventory = ((GamePlayHunter)(this.plateau)).ag.map.getHunter().getInventory();
+				}else if(this.plateau instanceof GamePlayBeast) {
+					((GamePlayBeast)(this.plateau)).ag.map.getBeast().putItAllInInventory();
+					listInventory = ((GamePlayBeast)(this.plateau)).ag.map.getBeast().getInventory();
+				}
+				
+				 
+				inventaire.setBonusAble(listInventory);
+			});
+		}
 	}
 	
-	public void setEventMouvmentButton(AbstractMap map) {
-		this.gamePad.topBtn.getBouton().setOnAction(e -> {
-			if(this.plateau.play(Mouvment.NORD)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
-			if(this.plateau.play(Mouvment.NORDOUEST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
-			if(this.plateau.play(Mouvment.NORDEST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.leftBtn.getBouton().setOnAction(e -> {
-			if(this.plateau.play(Mouvment.OUEST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.rightBtn.getBouton().setOnAction(e -> {
-			if(this.plateau.play(Mouvment.EST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
-			if(this.plateau.play(Mouvment.SUD)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
-			if(this.plateau.play(Mouvment.SUDOUEST)) {
-				userAction(map);
-			}
-		});
-		
-		this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
-			if(this.plateau.play(Mouvment.SUDEST)) {
-				userAction(map);
-			}
-		});
+	public void setEventMouvmentButton(AbstractMap map, AbstractGamePlay gameType) {
+		if(! (gameType instanceof GamePlayIA)) {
+			this.gamePad.topBtn.getBouton().setOnAction(e -> {
+				if(this.plateau.play(Mouvment.NORD)) {
+					userAction(map);
+				}
+			});
+			
+			this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
+				if(this.plateau.play(Mouvment.NORDOUEST)) {
+					userAction(map);
+				}
+			});
+			
+			this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
+				if(this.plateau.play(Mouvment.NORDEST)) {
+					userAction(map);
+				}
+			});
+			
+			this.gamePad.leftBtn.getBouton().setOnAction(e -> {
+				if(this.plateau.play(Mouvment.OUEST)) {
+					userAction(map);
+				}
+			});
+			
+			this.gamePad.rightBtn.getBouton().setOnAction(e -> {
+				if(this.plateau.play(Mouvment.EST)) {
+					userAction(map);
+				}
+			});
+			
+			this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
+				if(this.plateau.play(Mouvment.SUD)) {
+					userAction(map);
+				}
+			});
+			
+			this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
+				if(this.plateau.play(Mouvment.SUDOUEST)) {
+					userAction(map);
+				}
+			});
+			
+			this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
+				if(this.plateau.play(Mouvment.SUDEST)) {
+					userAction(map);
+				}
+			});
+		}
 	}
 }
