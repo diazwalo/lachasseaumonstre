@@ -7,6 +7,8 @@ import config.Map;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import map.AbstractMap;
@@ -49,10 +51,10 @@ public class Home
 	
 	private void verticalMenu()
 	{
-		HomeButton btn1 = new HomeButton("Dual");		
-		HomeButton btn2 = new HomeButton("Chasseur");		
-		HomeButton btn3 = new HomeButton("Monstre");		
-		HomeButton btn4 = new HomeButton("Ordinateur");
+		HomeButton btn1 = new HomeButton(" Dual");		
+		HomeButton btn2 = new HomeButton(" Chasseur", new Image("icons/gun.png"));		
+		HomeButton btn3 = new HomeButton(" Monstre", new Image("icons/beast.png"));		
+		HomeButton btn4 = new HomeButton(" Ordinateur", new Image("icons/ai.png"));
 		
 		btn1.setOnAction(e -> {
 			AbstractMap map = this.getMapForm();
@@ -95,7 +97,7 @@ public class Home
 		
 		HBox horizontalFooter = new HBox();
 		
-		HomeMinButton settings = new HomeMinButton("Settings");
+		HomeMinButton settings = new HomeMinButton(" Settings", new Image("icons/gear.png"));
 		settings.setOnAction(e -> { 
 			new Settings(this.window, this.config);
 		});
