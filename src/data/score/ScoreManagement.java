@@ -16,6 +16,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  * Cette classe s'occupe de traiter les nouveaux scores. Elle lit le fichier de score, ajoute un score et sauvegarde le fichier.
  * @author PHPierre
@@ -118,5 +121,16 @@ public class ScoreManagement
 	{
 		File f = new File("data/ai_score.score");
 		return f.delete();
+	}
+
+	public ObservableList<Score> getScoreObservbleList()
+	{
+		ObservableList<Score> list = FXCollections.observableArrayList();
+		
+		for (Score score : this.scoreList) {
+			list.add(score);
+		}
+		
+		return list;
 	}
 }
