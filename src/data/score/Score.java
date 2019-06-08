@@ -2,10 +2,6 @@ package data.score;
 
 import java.time.LocalDate;
 
-import ai.graph.Graph;
-import config.GameMode;
-import map.AbstractMap;
-
 public class Score
 {
     /*
@@ -37,7 +33,9 @@ public class Score
     	this.nbMouvment1 = nbMouvment1;
     	this.nbMouvment2 = nbMouvment2;
     	this.size = size; 	
-    	this.date = date;   	
+    	this.date = date;
+    	
+    	calcScore();
     }
     
     public Score(String p1, String p2, int nbMouvment1, int nbMouvment2, int size) {

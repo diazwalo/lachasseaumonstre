@@ -7,12 +7,15 @@ import data.score.Score;
 import data.score.ScoreFile;
 import data.score.ScoreManagement;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import render.ui.core.Window;
 import render.ui.form.button.HomeButton;
@@ -22,20 +25,26 @@ import render.ui.util.Interface;
 public class Stats
 {
 	VBox core;
+	HBox tab;
 	TabPane tabPane;
 	
 	public Stats(Window window, Config config)
 	{
 		this.core = new VBox();
 		this.core.setBackground(Interface.getBackground());
+		this.core.setAlignment(Pos.CENTER);
 		
 		buildTabPane();
+		this.tab = new HBox(this.tabPane);
+		this.tab.setAlignment(Pos.CENTER);
+		this.tab.setPadding(new Insets(0,0, 50, 0));
+
 		HomeButton back = new HomeButton("Retour");
 		back.setOnAction(e -> {
 			new Home(window, config);
 		});
 		
-		this.core.getChildren().addAll(this.tabPane, back);
+		this.core.getChildren().addAll(this.tab, back);
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
@@ -53,7 +62,10 @@ public class Stats
 		Tab tabBeast = new Tab("Monstre");
 		Tab tabAI = new Tab("Ordinateur");
 		
-		tabMulti.setContent(buildTab(ScoreFile.AI));
+		tabMulti.setContent(buildTab(ScoreFile.MULTI));
+		tabHunter.setContent(buildTab(ScoreFile.BEAST));
+		tabBeast.setContent(buildTab(ScoreFile.HUNTER));
+		tabAI.setContent(buildTab(ScoreFile.AI));
 		
 		this.tabPane.getTabs().addAll(tabMulti, tabHunter, tabBeast, tabAI);
 	}
@@ -61,6 +73,7 @@ public class Stats
 	private TableView<Score> buildTab(ScoreFile path)
 	{
 		TableView<Score> tabContent = new TableView<Score>();
+		tabContent.setPrefWidth(1000);
 		
 		TableColumn<Score, String> col1 = new TableColumn<Score, String>("Joueur 1");
 		TableColumn<Score, String> col2 = new TableColumn<Score, String>("Joueur 2");

@@ -4,11 +4,9 @@ package src.render.bonus;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import config.Config;
-import config.Map;
 import map.AbstractMap;
 import map.Position;
 import map.SquareMap;

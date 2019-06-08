@@ -2,7 +2,6 @@ package render.ui.form.button;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import map.Mouvment;
 import render.ui.util.Directory;
@@ -10,9 +9,6 @@ import render.ui.util.Directory;
 public class PlayButton {
 	
 	private VBox core;
-	private HBox topside;
-	private HBox middle;
-	private HBox bottom;
 	
 	public KeyboardButton topBtn;
 	public KeyboardButton leftBtn;
@@ -29,9 +25,6 @@ public class PlayButton {
 	
 	public PlayButton() {
 		this.core = new VBox();
-		this.topside = new HBox();
-		this.bottom = new HBox();
-		this.middle = new HBox();
 		
 		this.topBtn  = new KeyboardButton(new Image(Directory.KEYBOARD_UP));
 		this.leftBtn  = new KeyboardButton(new Image(Directory.KEYBOARD_LEFT));

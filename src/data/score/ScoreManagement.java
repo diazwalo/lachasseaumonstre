@@ -130,7 +130,6 @@ public class ScoreManagement
 		ObservableList<Score> list = FXCollections.observableArrayList();
 		
 		for (Score score : this.scoreList) {
-			score.calcScore();
 			list.add(score);
 		}
 		
