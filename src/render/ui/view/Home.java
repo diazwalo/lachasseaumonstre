@@ -51,7 +51,7 @@ public class Home
 	
 	private void verticalMenu()
 	{
-		HomeButton btn1 = new HomeButton(" Dual");		
+		HomeButton btn1 = new HomeButton(" Dual", new Image("icons/multi.png"));		
 		HomeButton btn2 = new HomeButton(" Chasseur", new Image("icons/gun.png"));		
 		HomeButton btn3 = new HomeButton(" Monstre", new Image("icons/beast.png"));		
 		HomeButton btn4 = new HomeButton(" Ordinateur", new Image("icons/ai.png"));
@@ -92,17 +92,22 @@ public class Home
 			}
 		});
 		
-		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4);
-		this.menu.setAlignment(Pos.CENTER);
 		
 		HBox horizontalFooter = new HBox();
+		HomeButton stats = new HomeButton("Statistiques", new Image("icons/chart.png"));
+		stats.setOnAction(e -> { 
+			// TODO
+		});
+		
+		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4, stats);
+		this.menu.setAlignment(Pos.CENTER);
 		
 		HomeMinButton settings = new HomeMinButton(" Settings", new Image("icons/gear.png"));
 		settings.setOnAction(e -> { 
 			new Settings(this.window, this.config);
 		});
 		
-		HomeMinButton left = new HomeMinButton("Quitter");
+		HomeMinButton left = new HomeMinButton(" Quitter", new Image("icons/exit.png"));
 		left.setOnAction(e -> {System.exit(0);});
 		
 		horizontalFooter.getChildren().addAll(settings, left);
