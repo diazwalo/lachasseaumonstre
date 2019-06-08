@@ -1,5 +1,9 @@
 @font-face {
   font-family: 'Press Start 2P';
   src: url(../fonts/PressStart2P-Regular.ttf);
+}
 
+@font-face {
+  font-family: 'FontAwesome';
+  src: url(../fonts/faw.ttf);
 }
