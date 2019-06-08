@@ -114,7 +114,7 @@ public abstract class AbstractGame {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Retourne une Position differente de celle du Chasseur vers laquel la Bete pourra se deplacer sauf si il n'y a que cette Position
 	 * @param posDispo

@@ -24,10 +24,10 @@ public class GameAI extends AbstractGame
 {
 
 	private int beastTurn = 0;
-	private Graph graph;
-	private List<Position> pathHunter;
-	private List<Position> pathBeast;
-	private Random r;
+	public Graph graph;
+	public List<Position> pathHunter;
+	public List<Position> pathBeast;
+	public Random r;
 	
 	/**
 	 * Instancie une partie entre deux intelligences controles par l'ordinateur.
@@ -51,8 +51,10 @@ public class GameAI extends AbstractGame
 		
 		this.pathBeast = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
 
+		System.out.println(this.map);
+		
 		while (AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-			this.map.getHunter().decrementBlinded();
+			/*this.map.getHunter().decrementBlinded();
 			
 			//Beast turn
 			this.beastTurn();
@@ -61,7 +63,16 @@ public class GameAI extends AbstractGame
 			super.checkGameStatus();
 
 			this.hunterTurn();
-			super.checkGameStatus();
+			super.checkGameStatus();*/
+			System.out.println(this.map);
+			
+			this.beastTurn();
+			this.updateStartGame();
+			
+			System.out.println(this.map);
+			
+			this.updateEndGame();
+			
 		}
 		
 		this.endGame();
@@ -74,7 +85,6 @@ public class GameAI extends AbstractGame
 	public boolean beastTurn()
 	{
 		this.setBonusIABeast();
-		System.out.println(this.map.toString());
 
 		try {
 			super.map.moveBeast(Position.toMouvment(this.map.getBeast().getPos(), this.pathBeast.get(this.beastTurn)));
@@ -96,7 +106,6 @@ public class GameAI extends AbstractGame
 		String nodeNameTo = null;
 		this.setBonusIAHunter();  
 		//Hunter turn
-		System.out.println(this.map.toString());
 		
 		if (this.pathHunter.isEmpty()) {
 			this.graph = new Graph(super.map);
