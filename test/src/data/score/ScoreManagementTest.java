@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import data.score.Score;
+import data.score.ScoreFile;
 import data.score.ScoreManagement;
 
 public class ScoreManagementTest
@@ -34,7 +35,7 @@ public class ScoreManagementTest
 	public void resetTest()
 	{
 		ScoreManagement sm = new ScoreManagement();		
-		assertTrue(sm.resetScore("data/ai_score.score"));
+		assertTrue(sm.resetScore(ScoreFile.AI));
 	}
 	
 	@Test
@@ -43,9 +44,9 @@ public class ScoreManagementTest
 		ScoreManagement sm = new ScoreManagement();
 		sm.addAllScore(this.scores);
 		
-		sm.saveScore("data/ai_score.score");
+		sm.saveScore(ScoreFile.AI);
 		
-		File f = new File("data/ai_score.score");
+		File f = new File(ScoreFile.AI.getPath());
 		
 		assertTrue(f.exists());
 		assertFalse(f.isDirectory());
@@ -55,12 +56,12 @@ public class ScoreManagementTest
 	public void testLoadAIScore()
 	{
 		ScoreManagement sm = new ScoreManagement();
-		sm.resetScore("data/ai_score.score");
+		sm.resetScore(ScoreFile.AI);
 		sm.addAllScore(this.scores);
-		sm.saveScore("data/ai_score.score");
+		sm.saveScore(ScoreFile.AI);
 		
 		sm = new ScoreManagement();
-		sm.loadScore("data/ai_score.score");
+		sm.loadScore(ScoreFile.AI);
 		
 		assertEquals(3, sm.getScore().size());
 		
@@ -77,17 +78,17 @@ public class ScoreManagementTest
 		Score s4 = new Score("IA Dijkstra", "IA Curiosity", 1, 2, 50);
 		
 		ScoreManagement sm = new ScoreManagement();	
-		sm.resetScore("data/ai_score.score");
+		sm.resetScore(ScoreFile.AI);
 		
 		sm.addAllScore(this.scores);
-		sm.saveScore("data/ai_score.score");
+		sm.saveScore(ScoreFile.AI);
 		
 		sm = new ScoreManagement();
 		sm.addScore(s4);
-		sm.saveScore("data/ai_score.score");
+		sm.saveScore(ScoreFile.AI);
 		
 		sm = new ScoreManagement();
-		sm.loadScore("data/ai_score.score");
+		sm.loadScore(ScoreFile.AI);
 		
 		assertEquals(4, sm.getScore().size());
 	}

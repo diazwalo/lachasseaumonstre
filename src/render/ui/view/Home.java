@@ -93,9 +93,9 @@ public class Home
 		
 		
 		HBox horizontalFooter = new HBox();
-		HomeButton stats = new HomeButton("Statistiques", new Image("icons/chart.png"));
+		HomeButton stats = new HomeButton(" Statistiques", new Image("icons/chart.png"));
 		stats.setOnAction(e -> { 
-			new Stats(window);
+			new Stats(this.window, this.config);
 		});
 		
 		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4, stats);

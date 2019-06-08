@@ -7,12 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -50,14 +47,14 @@ public class ScoreManagement
 		this.scoreList.addAll(scores);
 	}
 	
-	public void loadScore(String fileName)
+	public void loadScore(ScoreFile path)
 	{
 		String[] explode;
 		String line;
 		
-		createFile(fileName);
+		createFile(path);
 		
-		try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+		try(BufferedReader br = new BufferedReader(new FileReader(path.getPath()))) {
 
 			line = br.readLine();
 			while(line != null) {
@@ -86,9 +83,9 @@ public class ScoreManagement
 		}
 	}
 	
-	public void saveScore(String fileName)
+	public void saveScore(ScoreFile scoreFile)
 	{
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName, true))) {
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(scoreFile.getPath(), true))) {
 			
 			for(Score score : this.scoreList)
 			{
@@ -109,17 +106,22 @@ public class ScoreManagement
 	
 	public void createDataFolder()
 	{
-		new File("data/");
+		new File(ScoreFile.FOLDER.getPath());
 	}
 	
-	public void createFile(String fileName)
+	public void createFile(ScoreFile path)
 	{
-		new File("data/" + fileName);
+		File f = new File(path.getPath());
+		try {
+			f.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public boolean resetScore(String fileName)
+	public boolean resetScore(ScoreFile path)
 	{
-		File f = new File("data/ai_score.score");
+		File f = new File(path.getPath());
 		return f.delete();
 	}
 
@@ -128,6 +130,7 @@ public class ScoreManagement
 		ObservableList<Score> list = FXCollections.observableArrayList();
 		
 		for (Score score : this.scoreList) {
+			score.calcScore();
 			list.add(score);
 		}
 		

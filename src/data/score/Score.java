@@ -27,11 +27,15 @@ public class Score
 
     private LocalDate date;
     
+    private int score1;
+    
+    private int score2;
+    
     public Score(String p1, String p2, int nbMouvment1, int nbMouvment2, int size, LocalDate date) {
     	this.player1 = p1;
     	this.player2 = p2;
     	this.nbMouvment1 = nbMouvment1;
-    	this.nbMouvment2 = nbMouvment2;//(nbMouvment2*100)/size
+    	this.nbMouvment2 = nbMouvment2;
     	this.size = size; 	
     	this.date = date;   	
     }
@@ -100,5 +104,11 @@ public class Score
     {
         this.date = date;
     } 
+    
+    public void calcScore()
+    {
+    	this.score1 = (nbMouvment1*100)/size;
+    	this.score2 = (nbMouvment2*100)/size;
+    }
     
 }
