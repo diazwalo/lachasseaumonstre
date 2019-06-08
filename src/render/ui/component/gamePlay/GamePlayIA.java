@@ -2,6 +2,9 @@ package render.ui.component.gamePlay;
 
 import java.io.FileNotFoundException;
 
+import ai.algorithm.Curiosity;
+import ai.graph.Graph;
+import ai.util.NodeUtil;
 import core.game.AbstractGame;
 import core.game.GameAI;
 import core.game.GameBeast;
@@ -19,7 +22,11 @@ public class GamePlayIA extends AbstractGamePlay{
 	public GamePlayIA(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshBeastView(map);
-		ag = new GameBeast(map);
+		ag = new GameAI(map);
+		((GameAI)this.ag).graph = new Graph(super.map);
+		Curiosity curiosity = new Curiosity(((GameAI)this.ag).graph);
+		
+		((GameAI)this.ag).pathBeast = curiosity.getPath(NodeUtil.formatNode(this.map.getBeast().getPos()), super.map);
 		ag.map.setBeastWalk();
 	}
 
@@ -56,6 +63,12 @@ public class GamePlayIA extends AbstractGamePlay{
 				es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig());
 			}
 			
+		}
+		
+		if(this.entityTurn == 1) {
+			this.entityTurn = 2;
+		}else {
+			this.entityTurn = 1;
 		}
 	}
 	

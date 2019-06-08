@@ -345,7 +345,7 @@ public abstract class AbstractMap
             for (int y = 0; y < this.tab[x].length; y++) {
                 if(this.beast.isPosEnt(y, x)) affichage+=" "+this.beast.toString()+" |";
                 else if(this.hunter.isPosEnt(y, x)) affichage+=" "+this.hunter.toString()+" |";
-                else affichage+=" "+this.tab[y][x].toString()+" |";
+                else affichage+=" "+this.tab[x/*y*/][y/*x*/].toString()+" |";
             }
         }
         return affichage;

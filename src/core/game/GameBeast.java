@@ -44,14 +44,6 @@ public class GameBeast extends AbstractGame{
 		}
 		this.endGame();
 	}
-	
-	/**
-	 * Applique les mises a jours du plateau necessaires au debut de chaques tours
-	 */
-	public void updateStartGame() {
-		this.map.getHunter().decrementBlinded();
-		this.map.hunterIsNearBait();
-	}
 
 	/**
 	 * hunterTurn retourne true lorsque le deplacement du chasseur est valide, c'est a dire si il ne va pas sur un obstacle. 
@@ -96,26 +88,5 @@ public class GameBeast extends AbstractGame{
 			System.out.println(AbstractGame.gameStatus.getStatus());
 			System.out.println("Victoire du Chasseur");
 		}
-	}
-	
-	
-	/**
-	 * Cherche si il existe une Position ou la bete peut etre tp et retourne vrai si cela est fait et faux dans le cas contraire
-	 * @return boolean
-	 */
-	public boolean tpBeast(){
-		List<Position> posDispo=super.map.getBeast().getCaseTp(super.map.getTab(), super.map.getHunter());
-		
-		boolean tp=false;
-		int idxPosDispo;
-		
-		if(posDispo.size()>0) {
-			idxPosDispo=new Random().nextInt(posDispo.size());
-			super.map.getBeast().setPosition(posDispo.get(idxPosDispo));
-			super.map.setBeastWalk();
-			super.map.getBeast().setTp(super.map.getBeast().getTp()-1);
-			tp=true;
-		}
-		return tp;
 	}
 }
