@@ -111,4 +111,14 @@ public class Score
     	this.score2 = (nbMouvment2*100)/size;
     }
     
+    public int getScore1()
+    {
+    	return this.score1;
+    }
+    
+    public int getScore2()
+    {
+    	return this.score2;
+    }
+    
 }

@@ -1,5 +1,7 @@
 package render.ui.view;
 
+import java.time.LocalDate;
+
 import config.Config;
 import data.score.Score;
 import data.score.ScoreFile;
@@ -59,20 +61,26 @@ public class Stats
 	private TableView<Score> buildTab(ScoreFile path)
 	{
 		TableView<Score> tabContent = new TableView<Score>();
+		
 		TableColumn<Score, String> col1 = new TableColumn<Score, String>("Joueur 1");
 		TableColumn<Score, String> col2 = new TableColumn<Score, String>("Joueur 2");
 		TableColumn<Score, Integer> col3 = new TableColumn<Score, Integer>("Nombre de deplacement du joueur 1");
 		TableColumn<Score, Integer> col4 = new TableColumn<Score, Integer>("Nombre de deplacement du joueur 2");
 		TableColumn<Score, Integer> col5 = new TableColumn<Score, Integer>("Taille du plateau");
-		TableColumn<Score, Integer> col6 = new TableColumn<Score, Integer>("Score");
+		TableColumn<Score, LocalDate> col6 = new TableColumn<Score, LocalDate>("Date");
+		TableColumn<Score, Integer> col7 = new TableColumn<Score, Integer>("Score du joueur 1");
+		TableColumn<Score, Integer> col8 = new TableColumn<Score, Integer>("Score du joueur 2");
 		
-		col1.setCellValueFactory(new PropertyValueFactory<>("player1"));
-		col2.setCellValueFactory(new PropertyValueFactory<>("player2"));
-		col3.setCellValueFactory(new PropertyValueFactory<>("nbMouvment1"));
-		col4.setCellValueFactory(new PropertyValueFactory<>("nbMouvment2"));
-		col5.setCellValueFactory(new PropertyValueFactory<>("size"));
+		col1.setCellValueFactory(new PropertyValueFactory<Score, String>("player1"));
+		col2.setCellValueFactory(new PropertyValueFactory<Score, String>("player2"));
+		col3.setCellValueFactory(new PropertyValueFactory<Score, Integer>("nbMouvment1"));
+		col4.setCellValueFactory(new PropertyValueFactory<Score, Integer>("nbMouvment2"));
+		col5.setCellValueFactory(new PropertyValueFactory<Score, Integer>("size"));
+		col6.setCellValueFactory(new PropertyValueFactory<Score, LocalDate>("date"));
+		col7.setCellValueFactory(new PropertyValueFactory<Score, Integer>("score1"));
+		col8.setCellValueFactory(new PropertyValueFactory<Score, Integer>("score2"));
 		
-		//col6.setSortType(TableColumn.SortType.DESCENDING);
+		col7.setSortType(TableColumn.SortType.DESCENDING);
 		
 		ScoreManagement sm = new ScoreManagement();
 		sm.loadScore(path);
@@ -80,7 +88,7 @@ public class Stats
 		ObservableList<Score> list = sm.getScoreObservbleList();
 		tabContent.setItems(list);
 		
-		tabContent.getColumns().addAll(col1, col2, col3, col4, col5, col6);
+		tabContent.getColumns().addAll(col1, col2, col3, col4, col5, col6, col7, col8);
 		return tabContent;
 	}
 
