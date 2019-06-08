@@ -2,6 +2,7 @@ package data.score;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -41,11 +42,17 @@ public class ScoreManagement
 		this.scoreList.add(s);
 	}
 	
+	public void addAllScore(List<Score> scores)
+	{
+		this.scoreList.addAll(scores);
+	}
+	
 	public void loadScore(String fileName)
 	{
 		String[] explode;
 		String line;
-		ScoreManagement sm = new ScoreManagement();
+		
+		createFile(fileName);
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 
@@ -65,7 +72,7 @@ public class ScoreManagement
 					Integer.parseInt(explode[4]),
 					date
 				);
-				sm.addScore(s);
+				addScore(s);
 				line = br.readLine();
 			}
 		} catch(FileNotFoundException e) {
@@ -78,7 +85,7 @@ public class ScoreManagement
 	
 	public void saveScore(String fileName)
 	{
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName, true))) {
 			
 			for(Score score : this.scoreList)
 			{
@@ -99,11 +106,17 @@ public class ScoreManagement
 	
 	public void createDataFolder()
 	{
-		
+		new File("data/");
 	}
 	
-	public void createCSVFile()
+	public void createFile(String fileName)
 	{
-		
+		new File("data/" + fileName);
+	}
+
+	public boolean resetScore(String fileName)
+	{
+		File f = new File("data/ai_score.score");
+		return f.delete();
 	}
 }
