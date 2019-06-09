@@ -3,6 +3,9 @@ package core.game;
 import java.util.List;
 import java.util.Random;
 
+import data.score.Score;
+import data.score.ScoreFile;
+import data.score.ScoreManagement;
 import interaction.Interaction;
 import map.AbstractMap;
 import map.CaseType;
@@ -24,6 +27,9 @@ public abstract class AbstractGame {
 
 	public AbstractMap map;
 	public static GameStatus gameStatus;
+	
+	protected int nbTurnEntityOne = 0;
+	protected int nbTurnEntityTwo = 0;
 
 	public AbstractGame(AbstractMap map) {
 		this.map=map;
@@ -402,6 +408,7 @@ public abstract class AbstractGame {
 			}
 		}while(! mvtValide);
 		
+		this.nbTurnEntityOne++;
 		return mvtValide;
 	}
 
@@ -522,5 +529,19 @@ public abstract class AbstractGame {
 		else {
 			return;
 		}
+	}
+	
+	/**
+	 * Sauvegarde les scores de la partie de la partie en cours durablement.
+	 * @param scoreFile Le fichier correspondant au type de la partie.
+	 * @param s L'objet score contenant les informations a sauvegarder.
+	 */
+	protected void saveScore(ScoreFile scoreFile, Score s)
+	{
+		ScoreManagement sm = new ScoreManagement();
+		s.setSize((this.map.getConfig().getWidth() * this.map.getConfig().getHeight()));
+		
+		sm.addScore(s);
+		sm.saveScore(scoreFile);
 	}
 }

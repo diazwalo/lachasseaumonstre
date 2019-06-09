@@ -38,9 +38,14 @@ public class Score
     	calcScore();
     }
     
-    public Score(String p1, String p2, int nbMouvment1, int nbMouvment2, int size) {
+    public Score(String p1, String p2, int nbMouvment1, int nbMouvment2, int size)
+    {
     	this(p1, p2, nbMouvment1, nbMouvment2, size, LocalDate.now());
-    	
+    }
+    
+    public Score(String p1, String p2)
+    {
+    	this(p1, p2, 0, 0, 0);
     }
 
     public String getPlayer1()
@@ -91,6 +96,7 @@ public class Score
 	public void setSize(int size)
 	{
 		this.size = size;
+		calcScore();
 	}
 
 	public LocalDate getDate()

@@ -3,6 +3,8 @@ package core.game;
 import java.util.List;
 import java.util.Random;
 
+import data.score.Score;
+import data.score.ScoreFile;
 import map.*;
 import render.bonus.IBonus;
 
@@ -71,7 +73,7 @@ public class GameBeast extends AbstractGame{
 		setBonusIAHunter();
 		
 		super.ramasserBonusHunter();
-		
+		super.nbTurnEntityTwo++;
 		return true;
 	}
 	
@@ -88,5 +90,12 @@ public class GameBeast extends AbstractGame{
 			System.out.println(AbstractGame.gameStatus.getStatus());
 			System.out.println("Victoire du Chasseur");
 		}
+		buildScore();
+	}
+	
+	public void buildScore()
+	{
+		Score s = new Score("Joueur", "IA Dijkstra");
+		super.saveScore(ScoreFile.BEAST, s);
 	}
 }
