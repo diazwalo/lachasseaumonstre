@@ -71,8 +71,8 @@ public class Stats
 		Tab tabAI = new Tab("Ordinateur");
 		
 		tabMulti.setContent(buildTab(ScoreFile.MULTI));
-		tabHunter.setContent(buildTab(ScoreFile.BEAST));
-		tabBeast.setContent(buildTab(ScoreFile.HUNTER));
+		tabHunter.setContent(buildTab(ScoreFile.HUNTER));
+		tabBeast.setContent(buildTab(ScoreFile.BEAST));
 		tabAI.setContent(buildTab(ScoreFile.AI));
 		
 		this.tabPane.getTabs().addAll(tabMulti, tabHunter, tabBeast, tabAI);

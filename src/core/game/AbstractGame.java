@@ -531,6 +531,16 @@ public abstract class AbstractGame {
 		}
 	}
 	
+	public void incrementNbTurnEntityOne()
+	{
+		this.nbTurnEntityOne++;
+	}
+	
+	public void incrementNbTurnEntityTwo()
+	{
+		this.nbTurnEntityTwo++;
+	}
+	
 	/**
 	 * Sauvegarde les scores de la partie de la partie en cours durablement.
 	 * @param scoreFile Le fichier correspondant au type de la partie.
@@ -539,6 +549,8 @@ public abstract class AbstractGame {
 	public void saveScore(ScoreFile scoreFile, Score s)
 	{
 		ScoreManagement sm = new ScoreManagement();
+		s.setNbMouvment1(nbTurnEntityOne);
+		s.setNbMouvment1(nbTurnEntityTwo);
 		s.setSize((this.map.getConfig().getWidth() * this.map.getConfig().getHeight()));
 		
 		sm.addScore(s);

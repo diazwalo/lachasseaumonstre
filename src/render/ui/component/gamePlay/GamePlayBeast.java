@@ -40,11 +40,13 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 			}else {
 				return false;
 			}
-				
+			ag.incrementNbTurnEntityOne();	
 			ag.updateStartGame();
 			super.refreshBeastView(super.map);
 			return true;
 		}else {
+			buildScore();
+			
 			EndScreen es =new EndScreen(super.window);
 			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), null);
 			return false;
@@ -55,11 +57,14 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 	public void next() {
 		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			((GameBeast)ag).hunterTurn();
+			ag.incrementNbTurnEntityTwo();
 			ag.checkBeastRevealed();
 			ag.updateEndGame();
 			ag.checkGameStatus();
 			super.refreshBeastView(super.map);
 		}else {
+			buildScore();
+			
 			EndScreen es =new EndScreen(window);
 			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), null);
 		}

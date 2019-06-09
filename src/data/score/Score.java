@@ -45,7 +45,7 @@ public class Score
     
     public Score(String p1, String p2)
     {
-    	this(p1, p2, 0, 0, 0);
+    	this(p1, p2, 1, 1, 1);
     }
 
     public String getPlayer1()
