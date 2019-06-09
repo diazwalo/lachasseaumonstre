@@ -114,7 +114,13 @@ public class Game {
 			nextTurn.setOnAction(e -> {
 				this.plateau.next();
 			});
-		}else {
+		}else if(this.plateau instanceof GamePlayMulti) {
+			nextTurn.setDisable(false);
+			nextTurn.setOnAction(e -> {
+				this.plateau.next();
+			});
+		}
+		else {
 			nextTurn.setDisable(true);
 			nextTurn.setOnAction(e -> {
 				nextTurn.setDisable(true);
