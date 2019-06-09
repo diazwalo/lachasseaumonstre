@@ -7,8 +7,6 @@ import ai.graph.Graph;
 import ai.util.NodeUtil;
 import core.game.AbstractGame;
 import core.game.GameAI;
-import core.game.GameBeast;
-import core.game.GameHunter;
 import core.game.GameStatus;
 import map.AbstractMap;
 import map.Mouvment;
@@ -21,7 +19,7 @@ public class GamePlayIA extends AbstractGamePlay{
 
 	public GamePlayIA(AbstractMap map) throws FileNotFoundException {
 		super(map);
-		super.refreshBeastView(map);
+		super.refreshIAView(map);
 		ag = new GameAI(map);
 		((GameAI)this.ag).graph = new Graph(super.map);
 		Curiosity curiosity = new Curiosity(((GameAI)this.ag).graph);
@@ -45,6 +43,7 @@ public class GamePlayIA extends AbstractGamePlay{
 				ag.checkBeastRevealed();
 				ag.updateEndGame();
 				ag.checkGameStatus();
+				ag.ramasserBonusBeast();
 				super.refreshIAView(super.map);
 			}else {
 				EndScreen es =new EndScreen(window);
@@ -57,7 +56,9 @@ public class GamePlayIA extends AbstractGamePlay{
 				((GameAI)ag).beastTurn();
 				ag.checkBeastRevealed();
 				ag.updateEndGame();
+				this.map.setBeastWalk();
 				ag.checkGameStatus();
+				ag.ramasserBonusBeast();
 				super.refreshIAView(map);
 			}else {
 				EndScreen es =new EndScreen(window);
