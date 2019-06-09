@@ -552,7 +552,7 @@ public abstract class AbstractGame {
 	{
 		ScoreManagement sm = new ScoreManagement();
 		s.setNbMouvment1(nbTurnEntityOne);
-		s.setNbMouvment1(nbTurnEntityTwo);
+		s.setNbMouvment2(nbTurnEntityTwo);
 		s.setSize((this.map.getConfig().getWidth() * this.map.getConfig().getHeight()));
 		
 		sm.addScore(s);

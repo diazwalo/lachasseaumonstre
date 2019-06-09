@@ -58,7 +58,6 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 	public void next() {
 		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			((GameBeast)ag).hunterTurn();
-			ag.incrementNbTurnEntityTwo();
 			ag.checkBeastRevealed();
 			ag.updateEndGame();
 			ag.checkGameStatus();
