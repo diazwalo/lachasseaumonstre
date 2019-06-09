@@ -100,5 +100,9 @@ public class Directory
 	
 	public static final String DEFEAT_SOUND = SOUNDS_FOLDER + "defeat.mp3";
 	
+	public static final String GAMEPLAY_RULES =  TEXTURES_FOLDER + "rules_gameplay.png";
+	
+	public static final String BONUS_RULES =  TEXTURES_FOLDER + "rules_bonus.png";
+	
 	//endregion
 }

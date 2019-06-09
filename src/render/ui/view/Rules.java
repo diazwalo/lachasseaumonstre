@@ -35,12 +35,12 @@ public class Rules {
 		regles = new Pane();
 		core = new VBox();
 		upside = new HBox();
-		pages = new String[] {Directory.GAME_TRACE_PAS, Directory.GAME_BAIT};
+		pages = new String[] {Directory.GAMEPLAY_RULES, Directory.BONUS_RULES};
 		before = new Button("<-");
 		next = new Button("->");
 		window = win;
 		retour = new Button("Retour");
-		rec = new Rectangle(100,100);
+		rec = new Rectangle(900,750);
 		compteur = new Label(index+1+"/"+pages.length);
 		rec.setFill(new ImagePattern(new Image(pages[index])));
 		

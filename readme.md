@@ -5,8 +5,13 @@
 La chasse au monstre est un jeu se jouant a 0, 1 joueur contre l'ordinateur ou 2 joueurs en duel.
 
 Il existe deux rôles jouables :
-- Le chasseur
-- Le monstre
+- Le chasseur :
+
+<img src="rsc/textures/hunter.png" alt="Image de la map">
+
+- Le monstre :
+
+<img src="rsc/textures/beast.png" alt="Image de la map">
 
 Les deux joueurs apparaissent sur un plateau à deux endroits différant.
 
@@ -14,10 +19,14 @@ Chaque joueur a un objectif propre :
 	
 - La bête doit parcourir toutes les cases du plateau tout en ayant comme contrainte de ne pouvoir passer
 qu'une seule fois sur chaque case du plateau. Elle a sa disposition un nombre de teleportation afin de l'aider en case
-de blocage.
+de blocage. Elle pourra voirs le casses sur lesquelles elle est deja passé grace au trace de pas laissé sur les cases :
+
+<center><img src="rsc/textures/ground.png" alt="Image de la map">  <img src="rsc/textures/arrow.png" alt="Image de la map">  <img src="rsc/textures/tracePas.png" alt="Image de la map"></center>
 
 - Le chasseur lui doit trouver la bête avec pour seule indiction, le temps écoule entre le passage de la bête 
-et celui du chasseur sur les cases ou le chasseur passe.
+et celui du chasseur sur les cases ou le chasseur passe. Les cases seront numerotées en fonction du temps écoulé.
+
+<center><img src="rsc/textures/ground.png" alt="Image de la map">  <img src="rsc/textures/arrow.png" alt="Image de la map">  <img src="rsc/textures/traceUn.png" alt="Image de la map"></center>
 
 ### Les Bonus
 
@@ -29,23 +38,31 @@ La disposition de ces pieges est situe sur la distance moyenne de chaque cote du
 
 Voici la liste des objets disponible ainsi qu'un petit guide de leur utilisation :
 
-- Les pieges
+- Les pieges :
 
+<center><img src="rsc/textures/trap.png" alt="Image de la map"> </center>
+ 
 Seul le chasseur peut utiliser cet objet, le piege n'est pas visible par le monstre. Une information avec la position du piege
 lorsqu'il est activ est disponible pour le chasseur si un intru se presente sur celle-ci. Le piege disparait ensuite.
 La bete se voit privee de ses deplacements le tour suivant du deplacement sur la cage du piege.
 
-- La balise de vision 
+- La balise de vision :
 
-Seul le chasseur peut utiliser cet objet, elle eclaire une partie du plateau suivant la formule (taille/10) arrondi a
-l'entier superieur.
+<center><img src="rsc/textures/ward.png" alt="Image de la map"> </center>
 
-- Le camouflage
+Seul le chasseur peut utiliser cet objet, elle eclaire les huits cases autour d'elle et revele  le monstre si il passe dans son champs d'action,
+Une fois activer la balises reste sur le terrain 3 tours mais peut etre detruite par le monstre si il passe dessus.
+
+- Le camouflage :
+
+<center><img src="rsc/textures/camouflage.png" alt="Image de la map"> </center>
 
 Seul le monstre peut utiliser cet objet, elle octroie a la bete la capacite d'effacer ses traces de pas a condition.
 De ce fait, elle ne peut pas se deplacer durant ce tour.
 
-- Les leurres
+- Les leurres :
+
+<center><img src="rsc/textures/bait.png" alt="Image de la map"> </center>
 
 Seul le monstre peut utiliser cet objet, le monstre pose une copie de lui sur une case qui reste jusqu'au moment ou le chasseur passe
 sur le casse ou est situe le leurre. Le leurre n'a pas de limite de temps.
@@ -131,8 +148,8 @@ Pour le moment, le jeu implemente deux algorithme pour les IA :
 Pour l'interface homme machine nous avons décidé de diviser notre intreface en trois. Tous d'abord la partie centrale  de l'écran qui affichera la monde  ou le joueuer devra se deplacer, la partie inférieur de l'écran qui elle, aura a charge de gerer les action de l'utilisateur et de pouvoir lui communiquer des informations et la partie droite de l'ecran qui elle aura pour but d'afficher les bonus et de pouvoir les selectionner.
 
 <div align="center">
-	<img src="IHM/Maquette/Exemple_Map.png" alt="Image de la map" />
-	<img src="IHM/Maquette/Interface_IHM.png" alt="Image de l'interface" />
+	<img src="IHM/Maquette/Exemple_Map.png" alt="Image de la map" >
+	<img src="IHM/Maquette/Interface_IHM.png" alt="Image de l'interface" //>
 </div>
 
 - La partie inférieur de l'écran :
