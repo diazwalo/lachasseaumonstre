@@ -63,6 +63,7 @@ public class Game {
 		nextTurn.setDisable(true);
 		this.setEventNextTurnButton();
 
+		this.core.setBackground(Interface.getBackground(Directory.GAME_BACKGROUND));
 		this.setScene(window);
 	}
 

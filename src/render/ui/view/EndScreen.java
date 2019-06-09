@@ -21,7 +21,7 @@ public class EndScreen {
 		// TODO Auto-generated constructor stub
 		this.window = window;
 		this.core = new VBox();
-		this.core.setBackground(Interface.getBackground(Directory.HOME_BACKGROUND));
+		
 		this.core.setAlignment(Pos.CENTER);
 	}
 	
@@ -36,8 +36,10 @@ public class EndScreen {
 		if(s == null) {
 			if(victory) {
 				statue = new LabelThemeVariableSize("Victoire !", 40);
+				this.core.setBackground(Interface.getBackground(Directory.WIN_BACKGROUND));
 			}else if(!victory) {
 				statue = new LabelThemeVariableSize("Defaite...", 40);
+				this.core.setBackground(Interface.getBackground(Directory.LOOSE_BACKGROUND));
 			}
 		}else {
 			statue = new LabelThemeVariableSize("Victoire "+s+" !", 40);
