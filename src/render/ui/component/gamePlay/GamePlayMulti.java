@@ -12,8 +12,9 @@ import render.ui.view.EndScreen;
 
 public class GamePlayMulti extends AbstractGamePlay{
 	public AbstractGame ag;
+	//1 si c'est au tour du Chasseur et a 2 si c'est au tour de la Bete
 	int entityTurn = 1;
-	
+
 	public GamePlayMulti(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshTransitionView(map);

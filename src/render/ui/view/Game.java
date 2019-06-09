@@ -20,6 +20,7 @@ import render.ui.component.gamePlay.AbstractGamePlay;
 import render.ui.component.gamePlay.GamePlayBeast;
 import render.ui.component.gamePlay.GamePlayHunter;
 import render.ui.component.gamePlay.GamePlayIA;
+import render.ui.component.gamePlay.GamePlayMulti;
 import render.ui.core.Window;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
@@ -93,6 +94,9 @@ public class Game {
 			this.inventaire = new Inventory(g.ag.map.getHunter(), this.plateau);
 		}else if(this.plateau instanceof GamePlayBeast) {
 			GamePlayBeast g = ((GamePlayBeast)(this.plateau));
+			this.inventaire = new Inventory(g.ag.map.getBeast(), this.plateau);
+		}else if(this.plateau instanceof GamePlayMulti) {
+			GamePlayMulti g = ((GamePlayMulti)(this.plateau));
 			this.inventaire = new Inventory(g.ag.map.getBeast(), this.plateau);
 		}
 	}

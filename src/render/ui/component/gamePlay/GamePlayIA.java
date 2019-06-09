@@ -43,7 +43,7 @@ public class GamePlayIA extends AbstractGamePlay{
 				ag.checkBeastRevealed();
 				ag.updateEndGame();
 				ag.checkGameStatus();
-				ag.ramasserBonusBeast();
+				ag.ramasserBonusHunter();
 				super.refreshIAView(super.map);
 			}else {
 				EndScreen es =new EndScreen(window);
