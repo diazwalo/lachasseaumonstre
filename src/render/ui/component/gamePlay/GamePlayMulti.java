@@ -93,7 +93,6 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 
 	@Override
 	public void next() {
-		
 		super.refreshTransitionView(map);
 	}
 	

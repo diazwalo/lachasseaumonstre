@@ -134,19 +134,16 @@ public class Game {
 				this.plateau.next();
 			});
 		}else if(this.plateau instanceof GamePlayMulti) {
-			nextTurn.setDisable(false);
+			nextTurn.setDisable(true);
 			nextTurn.setOnAction(e -> {
-				this.gamePad.activateButton();
-				this.plateau.next();
-				
-			/*	
-				if(this.beastTurn.isDisabled()) {
+				if(playerTurn==0) {
+					this.plateau.next();
 					this.beastTurn.setDisable(false);
-				}
-				else if (this.hunterTurn.isDisabled()) {
+				}else if(playerTurn==1) {
+					this.plateau.next();
 					this.hunterTurn.setDisable(false);
 				}
-			*/	
+				this.nextTurn.setDisable(true);
 			}); 
 		}
 		else {
@@ -226,22 +223,23 @@ public class Game {
 	}
 	
 	public void setEntityTurnButton() {
-		
+		this.beastTurn.setDisable(true);
 		this.beastTurn.setOnAction(e -> {
 			if(playerTurn==0) {
 				((GamePlayMulti) (this.plateau)).setView(playerTurn);
 				playerTurn=(playerTurn+1)%2;
-			//	this.beastTurn.setDisable(true);
-				
+				this.beastTurn.setDisable(true);
+				this.gamePad.activateButton();
 			}
 		});
 		
+		this.beastTurn.setDisable(true);
 		this.hunterTurn.setOnAction(e -> {
 			if(playerTurn==1) {
 				((GamePlayMulti) (this.plateau)).setView(playerTurn);
 				playerTurn=(playerTurn+1)%2;
-			//	this.hunterTurn.setDisable(true);
-				
+				this.hunterTurn.setDisable(true);
+				this.gamePad.activateButton();
 			}
 		});
 		
