@@ -376,6 +376,8 @@ public abstract class AbstractGame {
 		
 		checkGameStatus();
 		ramasserBonusHunter();
+		
+		this.nbTurnEntityOne++;
 		return mvtValide;
 	}
 	

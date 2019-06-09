@@ -4,8 +4,12 @@ import java.util.List;
 import java.util.Random;
 
 import ai.algorithm.Curiosity;
+import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
 import ai.util.NodeUtil;
+import data.score.IScore;
+import data.score.Score;
+import data.score.ScoreFile;
 import interaction.Interaction;
 import map.*;
 import render.bonus.Bait;
@@ -19,7 +23,7 @@ import render.bonus.Ward;
  * 
  */
 
-public class GameHunter extends AbstractGame {
+public class GameHunter extends AbstractGame implements IScore{
 	
 	public GameHunter(AbstractMap map) {
 		super(map);
@@ -73,7 +77,7 @@ public class GameHunter extends AbstractGame {
 				setBonusIABeast();
 				
 				ramasserBonusBeast();
-				
+				super.nbTurnEntityTwo++;
 				return true;
 			}
 			else {
@@ -81,6 +85,13 @@ public class GameHunter extends AbstractGame {
 				return false;
 			}
 		}
+	}
+	
+	@Override
+	public void buildScore()
+	{
+		Score s = new Score("Joueur", Curiosity.NAME);
+		super.saveScore(ScoreFile.AI, s);
 	}
 	
 	/**

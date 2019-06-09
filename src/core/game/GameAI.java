@@ -8,10 +8,14 @@ import ai.algorithm.Curiosity;
 import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
 import ai.util.NodeUtil;
+import data.score.IScore;
+import data.score.Score;
+import data.score.ScoreFile;
 import map.AbstractMap;
 import map.Mouvment;
 import map.Position;
 import render.bonus.IBonus;
+import src.ai.algorithm.DijkstraTest;
 
 /**
  * Cette classe permet de lancer une partie ou joueront les deux IA ensemble.
@@ -22,7 +26,7 @@ import render.bonus.IBonus;
  * @author PHPierre
  *
  */
-public class GameAI extends AbstractGame
+public class GameAI extends AbstractGame implements IScore
 {
 
 	private int beastTurn = 0;
@@ -76,7 +80,7 @@ public class GameAI extends AbstractGame
 			this.updateEndGame();
 			
 		}
-		
+		buildScore();
 		this.endGame();
 	}
 
@@ -114,6 +118,7 @@ public class GameAI extends AbstractGame
 			}
 		}
 		
+		super.incrementNbTurnEntityOne();
 		this.beastTurn++;
 		return true;
 	}
@@ -143,6 +148,7 @@ public class GameAI extends AbstractGame
 		super.map.moveHunter(Position.toMouvment(this.map.getHunter().getPos(), pathHunter.get(0)));
 		this.pathHunter.remove(0);
 
+		super.incrementNbTurnEntityTwo();
 		return true;
 	}
 	
@@ -180,5 +186,12 @@ public class GameAI extends AbstractGame
 				return false;
 			}
 		}
+	}
+	
+	@Override
+	public void buildScore()
+	{
+		Score s = new Score(Curiosity.NAME, Dijkstra.NAME);
+		super.saveScore(ScoreFile.AI, s);
 	}
 }

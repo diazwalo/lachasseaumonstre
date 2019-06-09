@@ -3,6 +3,7 @@ package core.game;
 import java.util.List;
 import java.util.Random;
 
+import ai.algorithm.Dijkstra;
 import data.score.IScore;
 import data.score.Score;
 import data.score.ScoreFile;
@@ -96,7 +97,7 @@ public class GameBeast extends AbstractGame implements IScore{
 	
 	public void buildScore()
 	{
-		Score s = new Score("Joueur", "IA Dijkstra");
+		Score s = new Score("Joueur", Dijkstra.NAME);
 		super.saveScore(ScoreFile.BEAST, s);
 	}
 }
