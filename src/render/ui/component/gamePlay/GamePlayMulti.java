@@ -5,12 +5,15 @@ import java.io.FileNotFoundException;
 import core.game.AbstractGame;
 import core.game.GameMulti;
 import core.game.GameStatus;
+import data.score.IScore;
+import data.score.Score;
+import data.score.ScoreFile;
 import map.AbstractMap;
 import map.Mouvment;
 import render.bonus.IBonus;
 import render.ui.view.EndScreen;
 
-public class GamePlayMulti extends AbstractGamePlay{
+public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	public AbstractGame ag;
 	int entityTurn = 1;
 	
@@ -40,6 +43,7 @@ public class GamePlayMulti extends AbstractGamePlay{
 					}else if(ag.map.moveBeast(mouvment)) {
 						this.map.setBeastWalk();
 						ag.checkGameStatus();
+						ag.incrementNbTurnEntityTwo();
 						ag.ramasserBonusBeast();
 					}else {
 						return false;
@@ -56,6 +60,7 @@ public class GamePlayMulti extends AbstractGamePlay{
 					if(ag.map.moveHunter(mouvment)) {
 						ag.checkGameStatus();
 						ag.ramasserBonusHunter();
+						ag.incrementNbTurnEntityOne();
 						
 						ag.updateStartGame();
 						super.refreshHunterView(map);
@@ -65,9 +70,10 @@ public class GamePlayMulti extends AbstractGamePlay{
 				}
 
 			}else {
+				buildScore();
 				
 				if(super.map.isBeastWin()) {
-				
+					
 					EndScreen es =new EndScreen(super.window);
 					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), " de la bete ");
 				}
@@ -85,6 +91,13 @@ public class GamePlayMulti extends AbstractGamePlay{
 	public void next() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void buildScore()
+	{
+		Score s = new Score("Joueur 1", "Joueur 2");
+		ag.saveScore(ScoreFile.MULTI, s);
 	}
 	
 }
