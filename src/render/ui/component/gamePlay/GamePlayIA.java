@@ -46,7 +46,6 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 				((GameAI)ag).hunterTurn();
 				ag.checkBeastRevealed();
 				ag.updateEndGame();
-				ag.incrementNbTurnEntityOne();
 				ag.checkGameStatus();
 				ag.ramasserBonusHunter();
 				super.refreshIAView(super.map);
@@ -66,7 +65,6 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 			if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 				((GameAI)ag).beastTurn();
 				ag.checkBeastRevealed();
-				ag.incrementNbTurnEntityTwo();
 				ag.updateEndGame();
 				this.map.setBeastWalk();
 				ag.checkGameStatus();
