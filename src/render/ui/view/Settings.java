@@ -24,6 +24,11 @@ public class Settings
 	private HBox core;
 	private VBox menu;
 	
+	/**
+	 * Créer une view pour choisir la configuration du jeu.
+	 * @param window La Window du jeu.
+	 * @param config La configuration du jeu.
+	 */
 	public Settings(Window window, Config config)
 	{		
 		this.window = window;
@@ -39,18 +44,21 @@ public class Settings
 		VBox vboxWidth = new VBox();
 		LabelTheme labelWidth = new LabelTheme("Largeur du plateau :");
 		Spinner<Integer> textFieldWidth = new SpinnerTheme(Config.MINSIZE, Config.MAXSIZE, config.getWidth());
+		//textFieldWidth.setEditable(true);
 		vboxWidth.setPadding(new Insets(0,0,20,0));
 		vboxWidth.getChildren().addAll(labelWidth, textFieldWidth);
 		
 		VBox vboxHeight = new VBox();
 		LabelTheme labelHeight = new LabelTheme("Hauteur du plateau :");
 		SpinnerTheme textFieldHeight = new SpinnerTheme(Config.MINSIZE, Config.MAXSIZE, config.getHeight());
+		//textFieldHeight.setEditable(true);
 		vboxHeight.setPadding(new Insets(0,0,20,0));
 		vboxHeight.getChildren().addAll(labelHeight, textFieldHeight);
 		
 		VBox vboxNbTop = new VBox();
 		LabelTheme labelNbTp = new LabelTheme("Nombre de teleportation pour le monstre :");
 		SpinnerTheme textFieldNbTp = new SpinnerTheme(Config.MINTP, Config.MAXTP, config.getNbTeleportation());
+		//textFieldNbTp.setEditable(true);
 		vboxNbTop.setPadding(new Insets(0,0,20,0));
 		vboxNbTop.getChildren().addAll(labelNbTp, textFieldNbTp);
 		
@@ -109,7 +117,6 @@ public class Settings
 		HomeMinButton reset = new HomeMinButton("Reset");
 		reset.setOnAction(e -> {
 			config.setDefaultConfig();
-			//textFieldWidth.setEditable(true);
 			textFieldWidth.getValueFactory().setValue(Config.MINSIZE);
 			textFieldHeight.getValueFactory().setValue(Config.MINSIZE);
 			textFieldNbTp.getValueFactory().setValue((Config.MINTP+Config.MAXTP)/2);
