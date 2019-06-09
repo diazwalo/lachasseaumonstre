@@ -5,7 +5,7 @@ public enum GameStatus {
 	BEASTFOUND("Le chasseur a trouve la bete"), 
 	MAPDISCOVERED("La map a ete decouverte par la bete"), 
 	BEASTBLOCK("La bete est bloquee");
-	
+
 	private String status;
 	
 	private GameStatus(String status) {

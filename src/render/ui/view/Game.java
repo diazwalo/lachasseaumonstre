@@ -118,7 +118,7 @@ public class Game {
 			nextTurn.setDisable(false);
 			nextTurn.setOnAction(e -> {
 				this.plateau.next();
-			});
+			}); 
 		}
 		else {
 			nextTurn.setDisable(true);
