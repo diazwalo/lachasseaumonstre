@@ -12,9 +12,8 @@ import render.ui.view.EndScreen;
 
 public class GamePlayMulti extends AbstractGamePlay{
 	public AbstractGame ag;
-	//1 si c'est au tour du Chasseur et a 2 si c'est au tour de la Bete
 	int entityTurn = 1;
-
+	
 	public GamePlayMulti(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshTransitionView(map);
@@ -63,22 +62,23 @@ public class GamePlayMulti extends AbstractGamePlay{
 						return true;
 					}
 					return false;
-					
-					 
-					
 				}
-				
-				
+
 			}else {
 				
-				EndScreen es =new EndScreen(super.window);
-				es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), null);
+				if(super.map.isBeastWin()) {
+				
+					EndScreen es =new EndScreen(super.window);
+					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), " de la bete ");
+				}
+				else {
+					
+					EndScreen es =new EndScreen(super.window);
+					es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), " du chasseur ");
+				}
 				return false;
 				
 			}
-		
-		
-
 	}
 
 	@Override
