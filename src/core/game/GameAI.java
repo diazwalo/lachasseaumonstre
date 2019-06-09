@@ -133,7 +133,7 @@ public class GameAI extends AbstractGame implements IScore
 		String nodeNameTo = null;
 		this.setBonusIAHunter();  
 		//Hunter turn
-		
+
 		if (this.pathHunter.isEmpty()) {
 			this.graph = new Graph(super.map);
 			dijkstra = new Dijkstra(this.graph);

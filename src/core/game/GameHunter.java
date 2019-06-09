@@ -48,6 +48,8 @@ public class GameHunter extends AbstractGame implements IScore{
 				this.endOfTurn(super.map.gameHunterToString());
 			}
 		}
+		
+		buildScore();
 		this.endGame();
 	}
 
@@ -91,7 +93,7 @@ public class GameHunter extends AbstractGame implements IScore{
 	public void buildScore()
 	{
 		Score s = new Score("Joueur", Curiosity.NAME);
-		super.saveScore(ScoreFile.AI, s);
+		super.saveScore(ScoreFile.HUNTER, s);
 	}
 	
 	/**

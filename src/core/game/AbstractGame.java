@@ -3,6 +3,7 @@ package core.game;
 import java.util.List;
 import java.util.Random;
 
+import config.GameMode;
 import data.score.Score;
 import data.score.ScoreFile;
 import data.score.ScoreManagement;
@@ -551,8 +552,13 @@ public abstract class AbstractGame {
 	public void saveScore(ScoreFile scoreFile, Score s)
 	{
 		ScoreManagement sm = new ScoreManagement();
-		s.setNbMouvment1(nbTurnEntityOne);
-		s.setNbMouvment2(nbTurnEntityTwo);
+		
+		if(this.map.getConfig().getGameMode().equals(GameMode.BEASTvsHUNTER)) {
+			int rest = this.nbTurnEntityOne%2;
+			this.nbTurnEntityOne = this.nbTurnEntityOne/2 + rest;
+		}
+		s.setNbMouvment1(this.nbTurnEntityOne);
+		s.setNbMouvment2(this.nbTurnEntityTwo);
 		s.setSize((this.map.getConfig().getWidth() * this.map.getConfig().getHeight()));
 		
 		sm.addScore(s);

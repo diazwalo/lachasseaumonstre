@@ -74,6 +74,7 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 				}
 
 			}else {
+				System.out.println("c");
 				buildScore();
 				
 				if(super.map.isBeastWin()) {
@@ -111,6 +112,7 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	@Override
 	public void buildScore()
 	{
+		System.out.println("d");
 		Score s = new Score("Joueur 1", "Joueur 2");
 		ag.saveScore(ScoreFile.MULTI, s);
 	}
