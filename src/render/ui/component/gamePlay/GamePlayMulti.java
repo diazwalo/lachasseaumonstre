@@ -51,7 +51,7 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 					}else {
 						return false;
 					}
-					super.refreshHunterView(map);
+					super.refreshBeastView(super.map);
 					ag.updateStartGame();
 					
 					return true;
@@ -65,8 +65,8 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 						ag.incrementNbTurnEntityOne();
 						
 						ag.updateStartGame();
-						super.refreshBeastView(super.map);
 						
+						super.refreshHunterView(map);
 						entityTurn=(entityTurn+1)%2;
 						return true;
 					}
@@ -94,12 +94,19 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	@Override
 	public void next() {
 		
-		if(entityTurn==0) {
+		super.refreshTransitionView(map);
+	}
+	
+	
+	public void setView(int playerTurn) {
+		
+		if(playerTurn==0) {
 			super.refreshBeastView(super.map);
 		}
 		else {
 			super.refreshHunterView(map);
 		}
+		
 	}
 	
 	@Override

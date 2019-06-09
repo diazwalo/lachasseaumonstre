@@ -40,6 +40,10 @@ public class Game {
 	
 	Button nextTurn;
 	
+	Button beastTurn;
+	Button hunterTurn;	
+	int playerTurn=1;
+	
 	
 	public Game(Window window, AbstractMap map, AbstractGamePlay gameType) throws FileNotFoundException {
 
@@ -54,6 +58,9 @@ public class Game {
 		this.right.setAlignment(Pos.CENTER);
 
 		this.gamePad = new PlayButton();
+		if(gameType instanceof GamePlayMulti) {
+			this.gamePad.desactivateButton();
+		}
 		this.setEventMouvmentButton(map, gameType);
 
 		this.plateau = gameType;
@@ -70,8 +77,20 @@ public class Game {
 
 	public void setScene(Window window) {
 		this.chat = new Chat();
-
-		if(! (this.plateau instanceof GamePlayIA)) {
+		
+		
+		if(this.plateau instanceof GamePlayMulti) {
+			beastTurn=new Button ("Tour de la bete ");
+			hunterTurn=new Button ("Tour du chasseur ");
+			this.setEntityTurnButton();
+			this.plateau.setInventory(this.inventaire);
+			this.right.getChildren().addAll(inventaire.getCore());
+			this.left.getChildren().addAll(gamePad.getCore(),this.beastTurn,this.hunterTurn);
+			
+			
+			
+		}
+		else if(! (this.plateau instanceof GamePlayIA)) {
 			this.plateau.setInventory(this.inventaire);
 			this.right.getChildren().addAll(inventaire.getCore());
 			this.left.getChildren().addAll(gamePad.getCore());
@@ -117,7 +136,17 @@ public class Game {
 		}else if(this.plateau instanceof GamePlayMulti) {
 			nextTurn.setDisable(false);
 			nextTurn.setOnAction(e -> {
+				this.gamePad.activateButton();
 				this.plateau.next();
+				
+			/*	
+				if(this.beastTurn.isDisabled()) {
+					this.beastTurn.setDisable(false);
+				}
+				else if (this.hunterTurn.isDisabled()) {
+					this.hunterTurn.setDisable(false);
+				}
+			*/	
 			}); 
 		}
 		else {
@@ -193,5 +222,29 @@ public class Game {
 				}
 			});
 		}
+		
 	}
+	
+	public void setEntityTurnButton() {
+		
+		this.beastTurn.setOnAction(e -> {
+			if(playerTurn==0) {
+				((GamePlayMulti) (this.plateau)).setView(playerTurn);
+				playerTurn=(playerTurn+1)%2;
+			//	this.beastTurn.setDisable(true);
+				
+			}
+		});
+		
+		this.hunterTurn.setOnAction(e -> {
+			if(playerTurn==1) {
+				((GamePlayMulti) (this.plateau)).setView(playerTurn);
+				playerTurn=(playerTurn+1)%2;
+			//	this.hunterTurn.setDisable(true);
+				
+			}
+		});
+		
+	}
+	
 }
