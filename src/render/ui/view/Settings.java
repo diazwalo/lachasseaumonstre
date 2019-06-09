@@ -106,6 +106,20 @@ public class Settings
 		this.menu.getChildren().addAll(vboxWidth, vboxHeight, vboxNbTop, vboxListMap, vboxBonus);
 		
 		HBox horizontalFooter = new HBox();
+		HomeMinButton reset = new HomeMinButton("Reset");
+		reset.setOnAction(e -> {
+			config.setDefaultConfig();
+			//textFieldWidth.setEditable(true);
+			textFieldWidth.getValueFactory().setValue(Config.MINSIZE);
+			textFieldHeight.getValueFactory().setValue(Config.MINSIZE);
+			textFieldNbTp.getValueFactory().setValue((Config.MINTP+Config.MAXTP)/2);
+			listMap.getSelectionModel().select(0);
+			checkBoxThemeTrap.setSelected(false);
+			checkBoxThemeWard.setSelected(false);
+			checkBoxThemeBait.setSelected(false);
+			checkBoxThemeCamouflage.setSelected(false);
+		});
+		
 		HomeMinButton left = new HomeMinButton("Retour");
 		left.setOnAction(e -> {
 			new Home(this.window, config);
@@ -128,7 +142,7 @@ public class Settings
 		});
 		
 		horizontalFooter.setAlignment(Pos.CENTER);
-		horizontalFooter.getChildren().addAll(left, save);
+		horizontalFooter.getChildren().addAll(reset, left, save);
 		horizontalFooter.setPadding(new Insets(50, 0, 0, 0));
 		this.menu.getChildren().add(horizontalFooter);
 		this.core.getChildren().add(this.menu);
