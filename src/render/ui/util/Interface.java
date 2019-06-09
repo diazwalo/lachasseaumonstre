@@ -27,9 +27,9 @@ public class Interface
 		return bounds;
 	}
 	
-	public static Background getBackground()
+	public static Background getBackground(String path)
 	{
-		Image image = new Image(Directory.HOME_BACKGROUND);
+		Image image = new Image(path);
 
 		BackgroundImage background = new BackgroundImage(
 			image, 

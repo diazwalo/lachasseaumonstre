@@ -38,7 +38,7 @@ public class Home
 		this.core = new HBox();
 		this.menu = new VBox();
 		
-		this.core.setBackground(Interface.getBackground());
+		this.core.setBackground(Interface.getBackground(Directory.HOME_BACKGROUND));
 		Interface.maxHeight(this.menu);
 		verticalMenu();
 		

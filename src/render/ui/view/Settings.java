@@ -37,7 +37,7 @@ public class Settings
 		this.menu = new VBox();
 		
 		Interface.maxHeight(this.menu);
-		this.core.setBackground(Interface.getBackground());
+		this.core.setBackground(Interface.getBackground(Directory.HOME_BACKGROUND));
 		this.core.setAlignment(Pos.CENTER);
 		this.menu.setAlignment(Pos.CENTER);
 		
