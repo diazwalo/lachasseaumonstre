@@ -18,6 +18,8 @@ import java.util.Map;
  */
 public class Curiosity
 {
+	public final static String NAME = "IA Curiosity";
+	
     private Map<String, Node> listNode;
 
     /**

@@ -2,6 +2,7 @@ package render.ui.component.gamePlay;
 
 import java.io.FileNotFoundException;
 
+import ai.algorithm.Dijkstra;
 import core.game.AbstractGame;
 import core.game.GameBeast;
 import core.game.GameStatus;
@@ -73,7 +74,7 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 	@Override
 	public void buildScore()
 	{
-		Score s = new Score("Joueur", "IA Dijkstra");
+		Score s = new Score("Joueur", Dijkstra.NAME);
 		ag.saveScore(ScoreFile.BEAST, s);
 	}
 }

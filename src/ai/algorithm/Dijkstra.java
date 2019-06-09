@@ -23,6 +23,8 @@ import ai.graph.Graph;
  */
 public class Dijkstra
 {
+	public final static String NAME = "IA Dijkstra";
+	
 	private Map<String, Node> listNode;
 	private Map<String, Edge> listEdge;
 

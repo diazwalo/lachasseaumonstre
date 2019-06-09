@@ -3,16 +3,20 @@ package render.ui.component.gamePlay;
 import java.io.FileNotFoundException;
 
 import ai.algorithm.Curiosity;
+import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
 import ai.util.NodeUtil;
 import core.game.AbstractGame;
 import core.game.GameAI;
 import core.game.GameStatus;
+import data.score.IScore;
+import data.score.Score;
+import data.score.ScoreFile;
 import map.AbstractMap;
 import map.Mouvment;
 import render.ui.view.EndScreen;
 
-public class GamePlayIA extends AbstractGamePlay{
+public class GamePlayIA extends AbstractGamePlay implements IScore{
 	public AbstractGame ag;
 	//1 si c'est au tour du Chasseur et a 2 si c'est au tour de la Bete
 	int entityTurn = 1;
@@ -42,10 +46,13 @@ public class GamePlayIA extends AbstractGamePlay{
 				((GameAI)ag).hunterTurn();
 				ag.checkBeastRevealed();
 				ag.updateEndGame();
+				ag.incrementNbTurnEntityOne();
 				ag.checkGameStatus();
 				ag.ramasserBonusHunter();
 				super.refreshIAView(super.map);
 			}else {
+				buildScore();
+				
 				EndScreen es =new EndScreen(window);
 				if(ag.map.isBeastWin()) {
 					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), "de la Bete");
@@ -59,12 +66,15 @@ public class GamePlayIA extends AbstractGamePlay{
 			if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 				((GameAI)ag).beastTurn();
 				ag.checkBeastRevealed();
+				ag.incrementNbTurnEntityTwo();
 				ag.updateEndGame();
 				this.map.setBeastWalk();
 				ag.checkGameStatus();
 				ag.ramasserBonusBeast();
 				super.refreshIAView(map);
 			}else {
+				buildScore();
+				
 				EndScreen es =new EndScreen(window);
 				if(ag.map.isHunterWin()) {
 					es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), "du Chasseur");
@@ -80,6 +90,13 @@ public class GamePlayIA extends AbstractGamePlay{
 		}else {
 			this.entityTurn = 1;
 		}
+	}
+	
+	@Override
+	public void buildScore()
+	{
+		Score s = new Score(Curiosity.NAME, Dijkstra.NAME);
+		ag.saveScore(ScoreFile.AI, s);
 	}
 	
 }
