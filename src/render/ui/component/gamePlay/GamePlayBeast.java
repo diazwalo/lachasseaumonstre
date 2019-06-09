@@ -5,12 +5,15 @@ import java.io.FileNotFoundException;
 import core.game.AbstractGame;
 import core.game.GameBeast;
 import core.game.GameStatus;
+import data.score.IScore;
+import data.score.Score;
+import data.score.ScoreFile;
 import map.AbstractMap;
 import map.Mouvment;
 import render.bonus.IBonus;
 import render.ui.view.EndScreen;
 
-public class GamePlayBeast extends AbstractGamePlay{
+public class GamePlayBeast extends AbstractGamePlay implements IScore{
 	public AbstractGame ag;
 	
 	public GamePlayBeast(AbstractMap map) throws FileNotFoundException {
@@ -60,5 +63,12 @@ public class GamePlayBeast extends AbstractGamePlay{
 			EndScreen es =new EndScreen(window);
 			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), null);
 		}
+	}
+
+	@Override
+	public void buildScore()
+	{
+		Score s = new Score("Joueur", "IA Dijkstra");
+		ag.saveScore(ScoreFile.BEAST, s);
 	}
 }

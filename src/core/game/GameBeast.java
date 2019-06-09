@@ -3,6 +3,7 @@ package core.game;
 import java.util.List;
 import java.util.Random;
 
+import data.score.IScore;
 import data.score.Score;
 import data.score.ScoreFile;
 import map.*;
@@ -14,7 +15,7 @@ import render.bonus.IBonus;
  * 
  */
 
-public class GameBeast extends AbstractGame{
+public class GameBeast extends AbstractGame implements IScore{
 	private List<Position> pathHunter;
 	
 	public GameBeast(AbstractMap map) {

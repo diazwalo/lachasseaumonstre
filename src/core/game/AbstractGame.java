@@ -536,7 +536,7 @@ public abstract class AbstractGame {
 	 * @param scoreFile Le fichier correspondant au type de la partie.
 	 * @param s L'objet score contenant les informations a sauvegarder.
 	 */
-	protected void saveScore(ScoreFile scoreFile, Score s)
+	public void saveScore(ScoreFile scoreFile, Score s)
 	{
 		ScoreManagement sm = new ScoreManagement();
 		s.setSize((this.map.getConfig().getWidth() * this.map.getConfig().getHeight()));
