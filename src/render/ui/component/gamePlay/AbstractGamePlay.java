@@ -164,6 +164,23 @@ public abstract class AbstractGamePlay {
 			}
 		}
 	}
+	
+	
+	public void refreshTransitionView(AbstractMap map) {
+		for (int row = 0; row < (map.getTab().length); row++) {
+			for (int col = 0; col < (map.getTab()[row].length); col++) {
+				Rectangle rec = new Rectangle();
+				rec.setWidth(size);
+				rec.setHeight(size);
+				
+				this.paintTransitionView(rec);
+				
+				GridPane.setRowIndex(rec, col);
+				GridPane.setColumnIndex(rec, row);
+				grid.getChildren().addAll(rec);
+			}
+		}
+	}
 
 	private void paintRectangleHunterView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
@@ -226,6 +243,7 @@ public abstract class AbstractGamePlay {
 		}
 	}
 	
+
 	private void paintRectangleBeastView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
 			rec.setFill(new ImagePattern(obstacle));
@@ -296,6 +314,10 @@ public abstract class AbstractGamePlay {
 		if(caseCour.getHunterOnCase(map, posCase)) {
 			rec.setFill(new ImagePattern(hunter));
 		}
+	}
+	
+	private void paintTransitionView(Rectangle rec) {
+		rec.setFill(new ImagePattern(fog));
 	}
 	
 	/**
