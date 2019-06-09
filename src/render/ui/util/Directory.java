@@ -88,6 +88,17 @@ public class Directory
 
 	public static final String KEYBOARD_DOWN_RIGHT = TEXTURES_FOLDER + "downRight.png";
 	
+	public static final String GAME_BACKGROUND = TEXTURES_FOLDER + "game.gif";
+	
+	public static final String WIN_BACKGROUND = TEXTURES_FOLDER + "victory.gif";
+	
+	public static final String LOOSE_BACKGROUND = TEXTURES_FOLDER + "defeat.gif";
+	
+	public static final String VICTORY_SOUND = SOUNDS_FOLDER + "victory.mp3";
+	
+	public static final String GAME_SOUND = SOUNDS_FOLDER + "game.mp3";
+	
+	public static final String DEFEAT_SOUND = SOUNDS_FOLDER + "defeat.mp3";
 	
 	//endregion
 }

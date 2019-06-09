@@ -33,10 +33,14 @@ public class EndScreen {
 	public void setEndScreen(GameStatus gameStatue, boolean victory, Config config, String s) {
 		Label statue = null;
 		
-		if(victory) {
-			statue = new LabelThemeVariableSize("Victoire !", 40);
-		}else if(!victory) {
-			statue = new LabelThemeVariableSize("Defaite...", 40);
+		if(s == null) {
+			if(victory) {
+				statue = new LabelThemeVariableSize("Victoire !", 40);
+			}else if(!victory) {
+				statue = new LabelThemeVariableSize("Defaite...", 40);
+			}
+		}else {
+			statue = new LabelThemeVariableSize("Victoire "+s+" !", 40);
 		}
 		
 		Label txtEnd = new LabelThemeVariableSize(gameStatue.getStatus(), 40);

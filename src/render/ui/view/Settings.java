@@ -23,6 +23,8 @@ public class Settings
 	
 	private HBox core;
 	private VBox menu;
+	private VBox topmenu;
+	private VBox botmenu;
 	
 	/**
 	 * Créer une view pour choisir la configuration du jeu.
@@ -35,11 +37,15 @@ public class Settings
 		
 		this.core = new HBox();
 		this.menu = new VBox();
+		this.topmenu = new VBox();
+		this.botmenu = new VBox();
 		
 		Interface.maxHeight(this.menu);
 		this.core.setBackground(Interface.getBackground(Directory.HOME_BACKGROUND));
 		this.core.setAlignment(Pos.CENTER);
 		this.menu.setAlignment(Pos.CENTER);
+		this.topmenu.setAlignment(Pos.CENTER);
+		this.botmenu.setAlignment(Pos.CENTER);
 		
 		VBox vboxWidth = new VBox();
 		LabelTheme labelWidth = new LabelTheme("Largeur du plateau :");
@@ -151,8 +157,9 @@ public class Settings
 		horizontalFooter.setAlignment(Pos.CENTER);
 		horizontalFooter.getChildren().addAll(reset, left, save);
 		horizontalFooter.setPadding(new Insets(50, 0, 0, 0));
-		this.menu.getChildren().add(horizontalFooter);
-		this.core.getChildren().add(this.menu);
+		this.botmenu.getChildren().add(horizontalFooter);
+		this.menu.getChildren().addAll(this.topmenu, this.botmenu);
+		this.core.getChildren().addAll(this.menu);
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
