@@ -64,21 +64,6 @@ public class Game {
 		this.setEventNextTurnButton();
 
 		this.setScene(window);
-		/*this.chat = new Chat();
-
-		this.plateau.setInventory(this.inventaire);
-		this.plateau.setPlayButton(this.gamePad);
-
-		this.left.getChildren().addAll(gamePad.getCore(), nextTurn);
-		this.middle.getChildren().addAll(plateau.getGrid());
-		this.right.getChildren().addAll(inventaire.getCore());
-		this.core.getChildren().addAll(left, middle, right);
-
-		this.core.setAlignment(Pos.CENTER);
-
-		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		scene.getStylesheets().add(Directory.STYLE_CSS);
-		window.stage.setScene(scene);*/
 	}
 
 	public void setScene(Window window) {
@@ -89,12 +74,8 @@ public class Game {
 			this.right.getChildren().addAll(inventaire.getCore());
 			this.left.getChildren().addAll(gamePad.getCore());
 		}
-		//this.plateau.setInventory(this.inventaire);
 		this.plateau.setPlayButton(this.gamePad);
-
-		//this.left.getChildren().addAll(gamePad.getCore(), nextTurn);
 		this.middle.getChildren().addAll(plateau.getGrid());
-		//this.right.getChildren().addAll(inventaire.getCore());
 		this.left.getChildren().addAll(nextTurn);
 		this.core.getChildren().addAll(left, middle, right);
 

@@ -243,9 +243,12 @@ public abstract class AbstractGamePlay {
 			}
 		}
 		
-		if(caseCour.bonusOnCase(caseCour.getBonusBeast())) {
+		/**
+		 * a decommenter si on a reussia faire utiliser les bonus par les IA et qu'on veut les voirent les ramasser
+		 */
+		/*if(caseCour.bonusOnCase(caseCour.getBonusBeast())) {
 			rec.setFill(new ImagePattern(bonus));
-		}
+		}*/
 		
 		if(caseCour.getBeastOnCaseBeastMode(map, posCase)) {
 			rec.setFill(new ImagePattern(beast));
