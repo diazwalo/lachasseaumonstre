@@ -31,7 +31,7 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 			if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 				
 				if(entityTurn==1) {
-					entityTurn=(entityTurn+1)%2;
+					
 					
 					IBonus bo=ag.checkBeastTrapped();
 					if(super.map.getBeast().getTrapped()) {
@@ -45,17 +45,18 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 						ag.checkGameStatus();
 						ag.incrementNbTurnEntityTwo();
 						ag.ramasserBonusBeast();
+						entityTurn=(entityTurn+1)%2;
 					}else {
 						return false;
 					}
-					
+					super.refreshHunterView(map);
 					ag.updateStartGame();
-					super.refreshBeastView(super.map);
+					
 					return true;
 				}
 				
 				else {
-					entityTurn=(entityTurn+1)%2;
+					
 					
 					if(ag.map.moveHunter(mouvment)) {
 						ag.checkGameStatus();
@@ -63,7 +64,9 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 						ag.incrementNbTurnEntityOne();
 						
 						ag.updateStartGame();
-						super.refreshHunterView(map);
+						super.refreshBeastView(super.map);
+						
+						entityTurn=(entityTurn+1)%2;
 						return true;
 					}
 					return false;
