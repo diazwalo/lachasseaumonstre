@@ -43,7 +43,7 @@ public class GamePlayBeast extends AbstractGamePlay{
 			return true;
 		}else {
 			EndScreen es =new EndScreen(super.window);
-			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig());
+			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), null);
 			return false;
 		}
 	}
@@ -58,7 +58,7 @@ public class GamePlayBeast extends AbstractGamePlay{
 			super.refreshBeastView(super.map);
 		}else {
 			EndScreen es =new EndScreen(window);
-			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig());
+			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), null);
 		}
 	}
 }

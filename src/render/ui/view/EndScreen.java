@@ -30,7 +30,7 @@ public class EndScreen {
 	 * @param gameStatue
 	 * @param victory
 	 */
-	public void setEndScreen(GameStatus gameStatue, boolean victory, Config config) {
+	public void setEndScreen(GameStatus gameStatue, boolean victory, Config config, String s) {
 		Label statue = null;
 		
 		if(victory) {

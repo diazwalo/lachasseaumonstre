@@ -47,7 +47,11 @@ public class GamePlayIA extends AbstractGamePlay{
 				super.refreshIAView(super.map);
 			}else {
 				EndScreen es =new EndScreen(window);
-				es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig());
+				if(ag.map.isBeastWin()) {
+					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), "de la Bete");
+				}else {
+					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), "du Chasseur");
+				}
 			}
 			
 		}else if(entityTurn == 2) {
@@ -62,7 +66,11 @@ public class GamePlayIA extends AbstractGamePlay{
 				super.refreshIAView(map);
 			}else {
 				EndScreen es =new EndScreen(window);
-				es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig());
+				if(ag.map.isHunterWin()) {
+					es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), "du Chasseur");
+				}else {
+					es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), "de la Bete");
+				}
 			}
 			
 		}
