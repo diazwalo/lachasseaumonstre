@@ -75,6 +75,18 @@ public class Config
 		this.bait = prefs.getBoolean("bait", this.isBait());
 	}
 	
+	/**
+	 * Modifie la configuration du jeu actuelle.
+	 * @param width La largeur du plateau de jeu.
+	 * @param height La hauteur du plateau de jeu.
+	 * @param nbTeleportation Le nombre de téléportation de la partie pour la bete.
+	 * @param indexMap L'index du plateau de jeu.
+	 * @param trap Le statut des pieges durant la partie.
+	 * @param camouflage Le statut des camouflages durant la partie.
+	 * @param ward Le statut des balises de visions durant la partie.
+	 * @param bait Le statut des leurres durant la partie.
+	 * @return Un boolean confirman la sauvegarde de la partie.
+	 */
 	public boolean saveConfig(
 			int width, int height, int nbTeleportation, int indexMap, 
 			boolean trap, boolean camouflage, boolean ward, boolean bait)

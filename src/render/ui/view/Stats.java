@@ -28,6 +28,11 @@ public class Stats
 	HBox tab;
 	TabPane tabPane;
 	
+	/**
+	 * Créer une view affichant la page des scores du jeu.
+	 * @param window La Window du jeu.
+	 * @param config La configuration du jeu.
+	 */
 	public Stats(Window window, Config config)
 	{
 		this.core = new VBox();
@@ -53,6 +58,9 @@ public class Stats
 		window.stage.setMaximized(true);	
 	}
 
+	/**
+	 * Construit tout le tableau des scores avec les onglets et son contenu.
+	 */
 	private void buildTabPane()
 	{
 		this.tabPane = new TabPane();
@@ -70,6 +78,11 @@ public class Stats
 		this.tabPane.getTabs().addAll(tabMulti, tabHunter, tabBeast, tabAI);
 	}
 	
+	/**
+	 * Contruit un onglet de notre tableau en créant les colonnes et en les remplissants.
+	 * @param path Le chemin vers le fichier des scores pour l'onglet.
+	 * @return L'onglet construit avec toutes les données.
+	 */
 	private TableView<Score> buildTab(ScoreFile path)
 	{
 		TableView<Score> tabContent = new TableView<Score>();
