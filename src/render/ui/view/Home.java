@@ -98,7 +98,13 @@ public class Home
 			new Stats(this.window, this.config);
 		});
 		
-		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4, stats);
+		HomeButton regles = new HomeButton(" Regles", new Image("icons/chart.png"));
+		regles.setOnAction(e -> { 
+			new Rules(this.window);
+		});
+		
+		
+		this.menu.getChildren().addAll(btn1, btn2, btn3, btn4, stats, regles);
 		this.menu.setAlignment(Pos.CENTER);
 		
 		HomeMinButton settings = new HomeMinButton(" Settings", new Image("icons/gear.png"));

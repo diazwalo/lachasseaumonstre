@@ -70,6 +70,7 @@ public class Inventory {
 		}
 	}
 	
+	
 	public void setBonusAble(List<IBonus> listIBonus) {
 		this.setBonusDisable();
 		for (IBonus b : listIBonus) {
