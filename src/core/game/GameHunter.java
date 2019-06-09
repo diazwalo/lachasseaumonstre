@@ -88,7 +88,7 @@ public class GameHunter extends AbstractGame {
 	 * @param mvtBeast
 	 * @return Mouvment
 	 */
-	public Mouvment choseMvtNotOnHunter(List<Mouvment> mvtBeast) {
+	/*public Mouvment choseMvtNotOnHunter(List<Mouvment> mvtBeast) {
 		int idxPosDispo = new Random().nextInt(mvtBeast.size());
 		Mouvment mvtTempo = mvtBeast.get(idxPosDispo);
 		int[] posModif = this.map.getBeast().getPos().getModifPosTempo(mvtTempo.getMvt());
@@ -102,5 +102,5 @@ public class GameHunter extends AbstractGame {
 			}
 		}
 		return mvtTempo;
-	}
+	}*/
 }

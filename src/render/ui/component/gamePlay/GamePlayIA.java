@@ -57,6 +57,7 @@ public class GamePlayIA extends AbstractGamePlay{
 				((GameAI)ag).beastTurn();
 				ag.checkBeastRevealed();
 				ag.updateEndGame();
+				ag.checkGameStatus();
 				super.refreshIAView(map);
 			}else {
 				EndScreen es =new EndScreen(window);

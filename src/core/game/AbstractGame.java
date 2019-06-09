@@ -404,6 +404,27 @@ public abstract class AbstractGame {
 		
 		return mvtValide;
 	}
+
+	/**
+	 * Choisie un Mouvment qui ne correspond pas a la position du Chasseur
+	 * @param mvtBeast
+	 * @return Mouvment
+	 */
+	public Mouvment choseMvtNotOnHunter(List<Mouvment> mvtBeast) {
+		int idxPosDispo = new Random().nextInt(mvtBeast.size());
+		Mouvment mvtTempo = mvtBeast.get(idxPosDispo);
+		int[] posModif = this.map.getBeast().getPos().getModifPosTempo(mvtTempo.getMvt());
+		Position posMvtTempo = new Position(posModif[0], posModif[1]);
+		
+		if(mvtBeast.size()>1) {
+			while(posMvtTempo.equals(this.map.getHunter().getPos())) {
+				mvtTempo = mvtBeast.get(new Random().nextInt(mvtBeast.size()));
+				posModif = this.map.getBeast().getPos().getModifPosTempo(mvtTempo.getMvt());
+				posMvtTempo = new Position(posModif[0], posModif[1]);
+			}
+		}
+		return mvtTempo;
+	}
 	
 	/**
 	 * Applique les mises a jours du plateau necessaires au debut de chaques tours

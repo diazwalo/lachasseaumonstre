@@ -9,7 +9,9 @@ import ai.algorithm.Dijkstra;
 import ai.graph.Graph;
 import ai.util.NodeUtil;
 import map.AbstractMap;
+import map.Mouvment;
 import map.Position;
+import render.bonus.IBonus;
 
 /**
  * Cette classe permet de lancer une partie ou joueront les deux IA ensemble.
@@ -89,7 +91,27 @@ public class GameAI extends AbstractGame
 		try {
 			super.map.moveBeast(Position.toMouvment(this.map.getBeast().getPos(), this.pathBeast.get(this.beastTurn)));
 		}catch(Exception e) {
-			this.map.setHunterWin(true);
+			//this.map.setHunterWin(true);
+			// trouver ou effectuer le checkBeastPas
+			List<Mouvment> mvtBeastDispo = super.map.getBeast().getMvtToEmptyCase(super.map.getTab());
+			if(mvtBeastDispo.size()>0) {
+				Mouvment mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
+				while(! super.map.moveBeast(mvtBeast)) {
+					mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
+				}
+				super.map.setBeastWalk();
+				super.checkGameStatus();
+				
+				setBonusIABeast();
+				
+				ramasserBonusBeast();
+				
+				return true;
+			}
+			else {
+				AbstractGame.gameStatus=GameStatus.BEASTBLOCK;
+				return false;
+			}
 		}
 		
 		this.beastTurn++;
@@ -122,5 +144,41 @@ public class GameAI extends AbstractGame
 		this.pathHunter.remove(0);
 
 		return true;
+	}
+	
+	/**
+	 * beastTurn retourne true lorsque le mouvement de la bete et valide, cependant si la fonction retourne false alors l'I.A n'a plus de mouvment disponible
+	 * @return boolean
+	 */
+	public boolean beastTurnIfNoChoice() {
+		this.map.getBeast().setUntrapped();
+		IBonus bo=super.checkBeastTrapped();
+		
+		List<Mouvment> mvtBeastDispo = super.map.getBeast().getMvtToEmptyCase(super.map.getTab());
+
+		if(this.map.getBeast().getTrapped()) {
+			super.triggerTrap();
+			return true;
+		}
+		else {
+			if(mvtBeastDispo.size()>0) {
+				Mouvment mvtBeast = super.choseMvtNotOnHunter(mvtBeastDispo);
+				while(! super.map.moveBeast(mvtBeast)) {
+					mvtBeast = super.choseMvtNotOnHunter(mvtBeastDispo);
+				}
+				super.map.setBeastWalk();
+				super.checkGameStatus();
+				
+				setBonusIABeast();
+				
+				ramasserBonusBeast();
+				
+				return true;
+			}
+			else {
+				AbstractGame.gameStatus=GameStatus.BEASTBLOCK;
+				return false;
+			}
+		}
 	}
 }
