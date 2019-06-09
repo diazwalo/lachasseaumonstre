@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import core.game.AbstractGame;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -132,6 +133,7 @@ public class Game {
 			nextTurn.setDisable(false);
 			nextTurn.setOnAction(e -> {
 				this.plateau.next();
+				this.EndOfGame();
 			});
 		}else if(this.plateau instanceof GamePlayMulti) {
 			nextTurn.setDisable(true);
@@ -144,6 +146,7 @@ public class Game {
 					this.hunterTurn.setDisable(false);
 				}
 				this.nextTurn.setDisable(true);
+				this.EndOfGame();
 			}); 
 		}
 		else {
@@ -163,7 +166,7 @@ public class Game {
 					listInventory = ((GamePlayBeast)(this.plateau)).ag.map.getBeast().getInventory();
 				}
 				
-				 
+				this.EndOfGame();
 				inventaire.setBonusAble(listInventory);
 			});
 		}
@@ -174,48 +177,56 @@ public class Game {
 			this.gamePad.topBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORD)) {
 					userAction(map);
+					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORDOUEST)) {
 					userAction(map);
+					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORDEST)) {
 					userAction(map);
+					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.leftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.OUEST)) {
 					userAction(map);
+					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.rightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.EST)) {
 					userAction(map);
+					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUD)) {
 					userAction(map);
+					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUDOUEST)) {
 					userAction(map);
+					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUDEST)) {
 					userAction(map);
+					this.EndOfGame();
 				}
 			});
 		}
@@ -242,7 +253,18 @@ public class Game {
 				this.gamePad.activateButton();
 			}
 		});
-		
 	}
 	
+	public void EndOfGame() {
+		if(this.plateau.map.isBeastWin()) {
+			
+			EndScreen es =new EndScreen(plateau.window);
+			es.setEndScreen(AbstractGame.gameStatus, this.plateau.map.isBeastWin(), this.plateau.map.getConfig(), " de la bete ");
+		}
+		else if(this.plateau.map.isHunterWin()){
+			
+			EndScreen es =new EndScreen(plateau.window);
+			es.setEndScreen(AbstractGame.gameStatus, this.plateau.map.isHunterWin(), this.plateau.map.getConfig(), " du chasseur ");
+		}
+	}
 }

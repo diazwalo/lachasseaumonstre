@@ -43,7 +43,7 @@ public abstract class AbstractGamePlay {
 	protected Inventory inventory;
 	protected Image fog;
 	
-	protected AbstractMap map;
+	public AbstractMap map;
 
 	public Window window;
 	
