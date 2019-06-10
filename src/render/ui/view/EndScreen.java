@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import render.ui.core.Window;
 import render.ui.form.button.HomeMinButton;
@@ -14,15 +15,14 @@ import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public class EndScreen {
-	private VBox core;
+	private HBox core;
+	private VBox center;
 	private Window window;
 	
 	public EndScreen(Window window) {
-		// TODO Auto-generated constructor stub
 		this.window = window;
-		this.core = new VBox();
-		
-		this.core.setAlignment(Pos.CENTER);
+		this.center = new VBox();
+		this.core = new HBox();
 	}
 	
 	/**
@@ -30,10 +30,10 @@ public class EndScreen {
 	 * @param gameStatue
 	 * @param victory
 	 */
-	public void setEndScreen(GameStatus gameStatue, boolean victory, Config config, String s) {
+	public void setEndScreen(GameStatus gameStatue, boolean victory, Config config, String entityWinner) {
 		Label statue = null;
 		
-		if(s == null) {
+		if(entityWinner == null) {
 			if(victory) {
 				statue = new LabelThemeVariableSize("Victoire !", 40);
 				this.core.setBackground(Interface.getBackground(Directory.WIN_BACKGROUND));
@@ -42,7 +42,8 @@ public class EndScreen {
 				this.core.setBackground(Interface.getBackground(Directory.LOOSE_BACKGROUND));
 			}
 		}else {
-			statue = new LabelThemeVariableSize("Victoire "+s+" !", 40);
+			this.core.setBackground(Interface.getBackground(Directory.WIN_BACKGROUND));
+			statue = new LabelThemeVariableSize("Victoire "+entityWinner+" !", 40);
 		}
 		
 		Label txtEnd = new LabelThemeVariableSize(gameStatue.getStatus(), 40);
@@ -53,15 +54,22 @@ public class EndScreen {
 		});
 		
 		if(statue == null) {
-			core.getChildren().addAll(txtEnd, new LabelThemeVariableSize("", 40), next);
+			center.getChildren().addAll(txtEnd, new LabelThemeVariableSize("", 40), next);
 		}else {
-			core.getChildren().addAll(statue, new LabelThemeVariableSize("", 40), txtEnd, new LabelThemeVariableSize("", 40), next);
+			center.getChildren().addAll(statue, new LabelThemeVariableSize("", 40), txtEnd, new LabelThemeVariableSize("", 40), next);
 		}
+		
+		this.core.getChildren().add(this.center);
+		this.core.setAlignment(Pos.CENTER);
+		this.center.setAlignment(Pos.CENTER);
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
-
 		window.stage.setScene(scene);
+		/*Scene scene = new Scene(this.center, Interface.getSize().getWidth(), Interface.getSize().getHeight());
+		scene.getStylesheets().add(Directory.STYLE_CSS);
+
+		window.stage.setScene(scene);*/
 	}
 	
 }

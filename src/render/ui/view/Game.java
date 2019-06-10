@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import core.game.AbstractGame;
+import core.game.GameStatus;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -256,15 +257,22 @@ public class Game {
 	}
 	
 	public void EndOfGame() {
-		if(this.plateau.map.isBeastWin()) {
+		if(! AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
+			
+			boolean victory = this.plateau.map.isHunterWin();
+			String entityWinner = null;
+			if(this.plateau instanceof GamePlayBeast) {
+				victory = this.plateau.map.isBeastWin();
+			}else if((this.plateau instanceof GamePlayMulti) || (this.plateau instanceof GamePlayIA)) {
+				if(this.plateau.map.isBeastWin()) {
+					entityWinner = "de la Bete";
+				}else if(this.plateau.map.isHunterWin()) {
+					entityWinner = "du Chasseur";
+				}
+			}
 			
 			EndScreen es =new EndScreen(plateau.window);
-			es.setEndScreen(AbstractGame.gameStatus, this.plateau.map.isBeastWin(), this.plateau.map.getConfig(), " de la bete ");
-		}
-		else if(this.plateau.map.isHunterWin()){
-			
-			EndScreen es =new EndScreen(plateau.window);
-			es.setEndScreen(AbstractGame.gameStatus, this.plateau.map.isHunterWin(), this.plateau.map.getConfig(), " du chasseur ");
+			es.setEndScreen(AbstractGame.gameStatus, victory, this.plateau.map.getConfig(), entityWinner);
 		}
 	}
 }

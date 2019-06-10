@@ -39,7 +39,6 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 
 	@Override
 	public void next() {
-		// TODO Auto-generated method stub
 		if(entityTurn == 1) {
 			
 			if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
@@ -49,7 +48,7 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 				ag.checkGameStatus();
 				ag.ramasserBonusHunter();
 				super.refreshIAView(super.map);
-			}else {
+			}/*else {
 				buildScore();
 				
 				EndScreen es =new EndScreen(window);
@@ -58,7 +57,7 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 				}else {
 					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), "du Chasseur");
 				}
-			}
+			}*/
 			
 		}else if(entityTurn == 2) {
 			
