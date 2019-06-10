@@ -41,7 +41,6 @@ public class TrapTest {
 	@Test
 	public void testIsUsed() {
 		assertNotNull(piege2.getPos());
-		System.out.println(piege2.getPos().toString());
 		piege2.setTriggered();
 		piege2.nextTurnBonus();
 		assertNull(piege2.getPos());

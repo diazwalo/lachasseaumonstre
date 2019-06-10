@@ -55,8 +55,6 @@ public class CircularMapTest {
 		assertFalse(cm.mvtValideHunter(Mouvment.OUEST));
 		assertTrue(cm.mvtValideHunter(Mouvment.SUD));
 		assertTrue(cm.mvtValideHunter(Mouvment.EST));
-
-		System.out.println(cm.toString());
 	}
 	
 	@Test

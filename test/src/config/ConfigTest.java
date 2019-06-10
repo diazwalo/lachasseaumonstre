@@ -23,28 +23,28 @@ public class ConfigTest
     public void testWidth()
     {
     	this.config.setWidth(42);
-    	assertEquals(this.config.getWidth(), 42);
+    	assertEquals(42, this.config.getWidth());
     }
 	
 	@Test
     public void testHeight()
     {
     	this.config.setHeight(42);
-    	assertEquals(this.config.getHeight(), 42);
+    	assertEquals(42, this.config.getHeight());
     }
 	
 	@Test
     public void testGameMode()
     {
     	this.config.setGameMode(GameMode.AIvsAI);
-    	assertEquals(this.config.getGameMode(), GameMode.AIvsAI);
+    	assertEquals(GameMode.AIvsAI, this.config.getGameMode());
     }
 
     @Test
 	public void testNbTeleportation()
 	{
 		this.config.setNbTeleportation(42);
-		assertEquals(this.config.getNbTeleportation(), 42);
+		assertEquals(42, this.config.getNbTeleportation());
 	}
     
     @Test

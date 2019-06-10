@@ -16,7 +16,7 @@ public class NodeTest
 		Node node = new Node();
 		node.setDistanceFromOrigin(10);
 		
-		assertEquals(node.getDistanceFromOrigin(), 10);
+		assertEquals(10, node.getDistanceFromOrigin());
 	}
 	
 	@Test

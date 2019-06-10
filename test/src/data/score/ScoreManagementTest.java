@@ -9,6 +9,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import ai.algorithm.Curiosity;
+import ai.algorithm.Dijkstra;
 import data.score.Score;
 import data.score.ScoreFile;
 import data.score.ScoreManagement;
@@ -22,9 +24,9 @@ public class ScoreManagementTest
 	{
 		this.scores = new ArrayList<Score>();
 		
-		Score s1 = new Score("IA Dijkstra", "IA Curiosity", 17, 18, 50);
-		Score s2 = new Score("IA Dijkstra", "IA Curiosity", 33, 34, 50);
-		Score s3 = new Score("IA Dijkstra", "IA Curiosity", 33, 34, 120);
+		Score s1 = new Score(Dijkstra.NAME, Curiosity.NAME, 17, 18, 50);
+		Score s2 = new Score(Dijkstra.NAME, Curiosity.NAME, 33, 34, 50);
+		Score s3 = new Score(Dijkstra.NAME, Curiosity.NAME, 33, 34, 120);
 		
 		this.scores.add(s1);
 		this.scores.add(s2);
@@ -65,8 +67,8 @@ public class ScoreManagementTest
 		
 		assertEquals(3, sm.getScore().size());
 		
-		assertEquals("IA Dijkstra", sm.getScore().get(0).getPlayer1());
-		assertEquals("IA Curiosity", sm.getScore().get(0).getPlayer2());
+		assertEquals(Dijkstra.NAME, sm.getScore().get(0).getPlayer1());
+		assertEquals(Curiosity.NAME, sm.getScore().get(0).getPlayer2());
 		assertEquals(17, sm.getScore().get(0).getNbMouvment1());
 		assertEquals(18, sm.getScore().get(0).getNbMouvment2());
 		assertEquals(50, sm.getScore().get(0).getSize());
@@ -75,7 +77,7 @@ public class ScoreManagementTest
 	@Test
 	public void testWriteNewAIScore()
 	{
-		Score s4 = new Score("IA Dijkstra", "IA Curiosity", 1, 2, 50);
+		Score s4 = new Score(Dijkstra.NAME, Curiosity.NAME, 1, 2, 50);
 		
 		ScoreManagement sm = new ScoreManagement();	
 		sm.resetScore(ScoreFile.AI);

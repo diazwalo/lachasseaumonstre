@@ -43,7 +43,7 @@ public class DijkstraTest
 		List<Position> shortestPath = dijkstra.shortestPathFromTo(nodeNameHunter, nodeNameBeast);
 		
 		//On verifie que la taille du chemin est bien le plus court
-		assertEquals(shortestPath.size(), 10);
+		assertEquals(10, shortestPath.size());
 		
 		//On verifie desormais si on atteind bien notre point final
 		Position destination = new Position(9, 9);

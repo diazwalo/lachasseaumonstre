@@ -53,7 +53,7 @@ public class GraphTest
 			i++;
 		}
     	
-    	assertEquals(awaitedPosition.length, generatedNode.size());
+    	assertEquals(24, generatedNode.size());
     }
     
     @Test
@@ -107,8 +107,8 @@ public class GraphTest
         assertEquals(createdEdge.size(), positionArround.size());
         
         String name = EdgeUtil.formatEdge(positionActual, pOne);
-        assertEquals(createdEdge.get(name).getNodeOneName(), "1:1");
-        assertEquals(createdEdge.get(name).getNodeTwoName(), "0:0");
+        assertEquals("1:1", createdEdge.get(name).getNodeOneName());
+        assertEquals("0:0", createdEdge.get(name).getNodeTwoName());
         assertTrue(createdEdge.containsKey(name));
 	}
 

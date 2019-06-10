@@ -23,9 +23,9 @@ public class CommandParserTest
 		CommandParser commandParser1 = new CommandParser(cmd1);
 		CommandParser commandParser2 = new CommandParser(cmd2);
 		
-		assertEquals(commandParser0.getConfig().getWidth(), 5);
-		assertEquals(commandParser1.getConfig().getWidth(), 42);
-		assertEquals(commandParser2.getConfig().getWidth(), 42);
+		assertEquals(5, commandParser0.getConfig().getWidth());
+		assertEquals(42, commandParser1.getConfig().getWidth());
+		assertEquals(42, commandParser2.getConfig().getWidth());
 	}
 	
 	@Test
@@ -39,9 +39,9 @@ public class CommandParserTest
 		CommandParser commandParser1 = new CommandParser(cmd1);
 		CommandParser commandParser2 = new CommandParser(cmd2);
 		
-		assertEquals(commandParser0.getConfig().getHeight(), 5);
-		assertEquals(commandParser1.getConfig().getHeight(), 42);
-		assertEquals(commandParser2.getConfig().getHeight(), 42);
+		assertEquals(5, commandParser0.getConfig().getHeight());
+		assertEquals(42, commandParser1.getConfig().getHeight());
+		assertEquals(42, commandParser2.getConfig().getHeight());
 	}
 	
 	@Test
@@ -61,12 +61,12 @@ public class CommandParserTest
 		CommandParser commandParser4 = new CommandParser(cmd4);
 		CommandParser commandParser5 = new CommandParser(cmd5);
 		
-		assertEquals(commandParser0.getConfig().getGameMode(), GameMode.BEASTvsAI);
-		assertEquals(commandParser1.getConfig().getGameMode(), GameMode.AIvsAI);
-		assertEquals(commandParser2.getConfig().getGameMode(), GameMode.BEASTvsAI);
-		assertEquals(commandParser3.getConfig().getGameMode(), GameMode.HUNTERvsAI);
-		assertEquals(commandParser4.getConfig().getGameMode(), GameMode.BEASTvsHUNTER);
-		assertEquals(commandParser5.getConfig().getGameMode(), GameMode.BEASTvsHUNTER);
+		assertEquals(GameMode.BEASTvsAI, commandParser0.getConfig().getGameMode());
+		assertEquals(GameMode.AIvsAI, commandParser1.getConfig().getGameMode());
+		assertEquals(GameMode.BEASTvsAI, commandParser2.getConfig().getGameMode());
+		assertEquals(GameMode.HUNTERvsAI, commandParser3.getConfig().getGameMode());
+		assertEquals(GameMode.BEASTvsHUNTER, commandParser4.getConfig().getGameMode());
+		assertEquals(GameMode.BEASTvsHUNTER, commandParser5.getConfig().getGameMode());
 	}
 
 	@Test
@@ -80,9 +80,9 @@ public class CommandParserTest
 		CommandParser commandParser1 = new CommandParser(cmd1);
 		CommandParser commandParser2 = new CommandParser(cmd2);
 
-		assertEquals(commandParser0.getConfig().getNbTeleportation(), 2);
-		assertEquals(commandParser1.getConfig().getNbTeleportation(), 42);
-		assertEquals(commandParser2.getConfig().getNbTeleportation(), 42);
+		assertEquals(2, commandParser0.getConfig().getNbTeleportation());
+		assertEquals(42, commandParser1.getConfig().getNbTeleportation());
+		assertEquals(42, commandParser2.getConfig().getNbTeleportation());
 	}
 	
 	@Test

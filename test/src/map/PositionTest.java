@@ -33,7 +33,7 @@ public class PositionTest {
 
 	@Test
 	public void testPosition() {
-		assertArrayEquals(this.position.getTabPosition(), new int[] {2, 1});
+		assertArrayEquals(new int[] {2, 1}, this.position.getTabPosition());
 	}
 	
 	@Test
