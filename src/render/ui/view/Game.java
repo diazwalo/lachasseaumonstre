@@ -115,15 +115,18 @@ public class Game {
 		});
 		
 		scene.setOnKeyReleased(e -> {
-			actionKey(keyCapture.toLowerCase());
-			e.consume();
-			keyCapture = "";
+			if(this.gamePad.isActivated()) {
+				actionKey(keyCapture.toLowerCase());
+				e.consume();
+				keyCapture = "";
+			}
 		});
 	}
 	
 	private void actionKey(String keyCapture)
 	{
-		if(keyCapture == " ") {
+		if(keyCapture == " " && this.gamePad.isActivated()) {
+			System.out.println("Jamais ca va la dedans car il ne capture pas un espace (mais son code je crois");
 			this.plateau.next();
 			return;
 		}
@@ -137,9 +140,12 @@ public class Game {
 		}
 		
 		System.out.println("Mouvement calcule " + mouv);
-		if(mouv != null && this.plateau.play(mouv)) {
-			userAction(this.plateau.map);
-			this.plateau.next();
+		if(this.gamePad.isActivated()) {
+			if(mouv != null && this.plateau.play(mouv)) {
+				userAction(this.plateau.map);
+				this.gamePad.desactivateButton();
+				//this.plateau.next();
+			}
 		}
 	}
 

@@ -19,12 +19,16 @@ public class PlayButton {
 	public KeyboardButton bottomRightBtn;
 	public KeyboardButton bottomLeftBtn;
 	
+	public boolean activate;
+	
 	private Mouvment mouvment = null;
 	
 	private GridPane panal = new GridPane();
 	
 	public PlayButton() {
 		this.core = new VBox();
+		
+		this.activate = true;
 		
 		this.topBtn  = new KeyboardButton(new Image(Directory.KEYBOARD_UP));
 		this.leftBtn  = new KeyboardButton(new Image(Directory.KEYBOARD_LEFT));
@@ -102,6 +106,8 @@ public class PlayButton {
 		this.bottomRightBtn.getBouton().setDisable(true);
 		this.upRightBtn.getBouton().setDisable(true);
 		this.upLeftBtn.getBouton().setDisable(true);
+		
+		this.activate = false;
 	}
 	
 	public void activateButton()
@@ -114,6 +120,12 @@ public class PlayButton {
 		this.bottomRightBtn.getBouton().setDisable(false);
 		this.upRightBtn.getBouton().setDisable(false);
 		this.upLeftBtn.getBouton().setDisable(false);
+		
+		this.activate = true;
+	}
+	
+	public boolean isActivated() {
+		return this.activate;
 	}
 
 }
