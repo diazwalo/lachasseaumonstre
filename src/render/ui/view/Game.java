@@ -7,6 +7,7 @@ import java.util.List;
 
 import core.game.AbstractGame;
 import core.game.GameStatus;
+import interaction.Interaction;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -41,10 +42,11 @@ public class Game {
 	Chat chat;
 	
 	Button nextTurn;
-	
 	Button beastTurn;
 	Button hunterTurn;	
+	
 	int playerTurn=1;
+	String keyCapture = "";
 	
 	
 	public Game(Window window, AbstractMap map, AbstractGamePlay gameType) throws FileNotFoundException {
@@ -107,6 +109,38 @@ public class Game {
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
 		window.stage.setScene(scene);
+		
+		scene.setOnKeyPressed(e -> {
+			keyCapture = keyCapture + e.getCode().name();
+		});
+		
+		scene.setOnKeyReleased(e -> {
+			actionKey(keyCapture.toLowerCase());
+			e.consume();
+			keyCapture = "";
+		});
+	}
+	
+	private void actionKey(String keyCapture)
+	{
+		if(keyCapture == " ") {
+			this.plateau.next();
+			return;
+		}
+		String[] strMouvment = Interaction.generateStrMvt();
+		Mouvment[] tabMvt= Interaction.getTabMvt(strMouvment);
+		Mouvment mouv = null;
+
+		System.out.println("Capture " + keyCapture);
+		for (int idx = 0; idx < strMouvment.length; idx++) {
+			if(strMouvment[idx].equals(keyCapture)) mouv=tabMvt[idx];
+		}
+		
+		System.out.println("Mouvement calcule " + mouv);
+		if(mouv != null && this.plateau.play(mouv)) {
+			userAction(this.plateau.map);
+			this.plateau.next();
+		}
 	}
 
 	public void setInventory() {
