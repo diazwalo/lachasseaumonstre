@@ -17,6 +17,11 @@ import render.ui.view.EndScreen;
 public class GamePlayBeast extends AbstractGamePlay implements IScore{
 	public AbstractGame ag;
 	
+	/**
+	 * Instancie un GamePlayBeast;
+	 * @param map
+	 * @throws FileNotFoundException
+	 */
 	public GamePlayBeast(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshBeastView(map);
@@ -24,6 +29,9 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 		ag.map.setBeastWalk();
 	}
 	
+	/**
+	 * Execute un tour de jeu. Renvoie true si le tour c'est passer comme prevue, renvoie false si c'est la fin de la partie
+	 */
 	@Override
 	public boolean play(Mouvment mouvment) {
 		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
@@ -53,7 +61,10 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 			return false;
 		}
 	}
-
+	
+	/**
+	 * Fais passer la partie au tour suivant
+	 */
 	@Override
 	public void next() {
 		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
@@ -69,7 +80,10 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 			es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), null);
 		}
 	}
-
+	
+	/**
+	 * Crée un score et le sauvegarde
+	 */
 	@Override
 	public void buildScore()
 	{

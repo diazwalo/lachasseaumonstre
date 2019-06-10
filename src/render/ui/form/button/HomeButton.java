@@ -13,6 +13,11 @@ public class HomeButton extends Button
     private static final String HOVER = "-fx-background-color: rgba(255, 255, 255, 0.3);";
     private static final String STYLE = "-fx-font-family: 'Press Start 2P', cursive; -fx-font-size: 40px; -fx-text-fill: #eee; -fx-background-radius: 40px;";
 	
+    /**
+     * Instacie un HomeButtons
+     * @param value
+     * @param image
+     */
     public HomeButton(String value, Image image)
 	{
 		super(value);
@@ -31,11 +36,20 @@ public class HomeButton extends Button
 		}
 	}
     
+    /**
+     * Instancie un HomeButton
+     * @param value
+     */
 	public HomeButton(String value)
 	{
 		this(value, null);
 	}
 	
+	
+	/**
+	 * Retourne le DropShadow du HomeButtons
+	 * @return
+	 */
 	public DropShadow getShadow()
 	{
 		DropShadow dropShadow = new DropShadow();

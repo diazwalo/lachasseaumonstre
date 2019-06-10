@@ -12,12 +12,18 @@ import javafx.stage.Screen;
 
 public class Interface
 {
+	/**
+	 * Configure la taille minimale d'une VBox
+	 * @param vbox
+	 * @return
+	 */
 	public static VBox maxHeight(VBox vbox)
 	{
 		vbox.setMinHeight(getSize().getHeight());
 		
 		return vbox;
 	}
+	
 	
 	public static Rectangle2D getSize()
 	{
@@ -27,6 +33,11 @@ public class Interface
 		return bounds;
 	}
 	
+	/**
+	 * Retourne l'image de fond l'interface
+	 * @param path
+	 * @return
+	 */
 	public static Background getBackground(String path)
 	{
 		Image image = new Image(path);
@@ -42,6 +53,12 @@ public class Interface
 		return new Background(background);
 	}
 	
+	/**
+	 * Calcul la taille des optimal des case
+	 * @param width
+	 * @param height
+	 * @return
+	 */
 	public static double calculCaseSize(int width, int height)
 	{
 		int mapSize = (width > height) ? width : height;

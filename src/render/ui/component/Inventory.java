@@ -26,6 +26,13 @@ public class Inventory {
 	public Button topButton;
 	public Button botButton;
 	
+	
+	/**
+	 * Instancie  l'Inventory
+	 * @param entity
+	 * @param gameType
+	 */
+	
 	public Inventory(Entity entity, AbstractGamePlay gameType) {
 		/**
 		 * Le plus propre
@@ -48,6 +55,13 @@ public class Inventory {
 			this.setInventory(entity, gameType, ag);
 		}
 	}
+	
+	/**
+	 * Initialise l'inventaire
+	 * @param entity
+	 * @param gameType
+	 * @param ag
+	 */
 	
 	public void setInventory(Entity entity, AbstractGamePlay gameType, AbstractGame ag) {
 		this.core = new GridPane();
@@ -95,6 +109,10 @@ public class Inventory {
 		}
 	}
 	
+	/**
+	 * Rend la liste de bonus passez en paramètre disponible pour l'utilisater
+	 * @param listIBonus
+	 */
 	public void setBonusAble(List<IBonus> listIBonus) {
 		this.setBonusDisable();
 		for (IBonus b : listIBonus) {
@@ -107,10 +125,18 @@ public class Inventory {
 		}
 	}
 	
+	/**
+	 * Rend les bonus indisponible pour l'utilisateur
+	 */
 	public void setBonusDisable() {
 		botButton.setDisable(true);
 		topButton.setDisable(true);
 	}
+	
+	/**
+	 * Retoune le Node principale de l'objet
+	 * @return
+	 */
 	
 	public GridPane getCore() {
 		return core;

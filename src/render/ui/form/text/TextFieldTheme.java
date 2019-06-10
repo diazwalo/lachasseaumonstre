@@ -13,6 +13,10 @@ import javafx.scene.paint.Paint;
 
 public class TextFieldTheme extends TextField
 {
+	/**
+	 * Instancie le TextFieldTheme
+	 * @param value
+	 */
 	public TextFieldTheme(String value)
 	{
 		super(value);

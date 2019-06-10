@@ -48,6 +48,13 @@ public class Game {
 	int playerTurn=1;
 	String keyCapture = "";
 	
+	/**
+	 * Crée une vue pour une partie
+	 * @param window
+	 * @param map
+	 * @param gameType
+	 * @throws FileNotFoundException
+	 */
 	
 	public Game(Window window, AbstractMap map, AbstractGamePlay gameType) throws FileNotFoundException {
 
@@ -79,6 +86,10 @@ public class Game {
 		this.setScene(window);
 	}
 
+	/**
+	 * Initialise la fenetre, initiale tous les nodes et leur comportement
+	 * @param window
+	 */
 	public void setScene(Window window) {
 		this.chat = new Chat();
 		
@@ -149,6 +160,9 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Initialise l'inventaire
+	 */
 	public void setInventory() {
 		if(this.plateau instanceof GamePlayHunter) {
 			GamePlayHunter g = ((GamePlayHunter)(this.plateau));
@@ -163,12 +177,19 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Desactive le PlayButton de la Game et active le bouton pour passer le tour
+	 * @param map
+	 */
 	public void userAction(AbstractMap map)
 	{
 		this.gamePad.desactivateButton();
 		nextTurn.setDisable(false);
 	}
 	
+	/**
+	 * Initialise l'evenement du bouton pour passer au tour suivant
+	 */
 	public void setEventNextTurnButton() {
 		nextTurn = new Button("Tour suivant");
 		if( this.plateau instanceof GamePlayIA ) {
@@ -214,6 +235,11 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Initiase les evenement pour les bouton de mouvement
+	 * @param map
+	 * @param gameType
+	 */
 	public void setEventMouvmentButton(AbstractMap map, AbstractGamePlay gameType) {
 		if(! (gameType instanceof GamePlayIA)) {
 			this.gamePad.topBtn.getBouton().setOnAction(e -> {
@@ -275,6 +301,9 @@ public class Game {
 		
 	}
 	
+	/**
+	 * Determine quelle entité doit joué
+	 */
 	public void setEntityTurnButton() {
 		this.beastTurn.setDisable(true);
 		this.beastTurn.setOnAction(e -> {
@@ -302,7 +331,10 @@ public class Game {
 			}
 		});
 	}
-
+	
+	/**
+	 * Affiche l'ecran de fin jeu en fonction de la victoire ou de la defaite
+	 */
 	public void EndOfGame() {
 		if(! AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			

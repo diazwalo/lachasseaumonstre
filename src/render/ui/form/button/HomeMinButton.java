@@ -6,6 +6,11 @@ import javafx.scene.image.ImageView;
 public class HomeMinButton extends HomeButton
 {
 
+	/**
+	 * Instancie le HomeMinButton
+	 * @param value
+	 * @param image
+	 */
 	public HomeMinButton(String value, Image image)
 	{
 		super(value);
@@ -20,6 +25,10 @@ public class HomeMinButton extends HomeButton
 		super.setMinSize(250, 100);
 	}
 	
+	/**
+	 * Instancie le HomeMinButton
+	 * @param value
+	 */
 	public HomeMinButton(String value)
 	{
 		this(value, null);

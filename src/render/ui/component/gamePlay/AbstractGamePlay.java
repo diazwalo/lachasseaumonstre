@@ -49,11 +49,20 @@ public abstract class AbstractGamePlay {
 	
 	private final double size;
 
+	/**
+	 * initialise la window de l'AbstractGame avec celle passer en paramètre
+	 * @param window
+	 */
 	public void setWindow(Window window)
 	{
 		this.window = window;
 	}
 	
+	/**
+	 * Instancie l'AbstractGamePlay
+	 * @param map
+	 * @throws FileNotFoundException
+	 */
 	public AbstractGamePlay(AbstractMap map) throws FileNotFoundException {
 		this.map = map;
 		
@@ -82,30 +91,62 @@ public abstract class AbstractGamePlay {
 	public abstract boolean play(Mouvment mouvment);
 	public abstract void next();
 
+	
+	/**
+	 * Intialise le PlayButton avec celui passer en paramètres
+	 * @param pb
+	 */
 	public void setPlayButton(PlayButton pb) {
 		this.playButton = pb;
 	}
 
+	/**
+	 * Initialise l'Inventory avec celui passer en paramètres
+	 * @param i
+	 */
 	public void setInventory(Inventory i) {
 		this.inventory = i;
 	}
 
+	/**
+	 * Retourne le GridPane d'AbstracrGame
+	 * @return
+	 */
 	public GridPane getGrid() {
 		return this.grid;
 	}
 
+	/**
+	 * Configure la taille maximal d'abstractGame
+	 * @param maxWidth
+	 * @param maxHeight
+	 */
 	public void setMaxSize(int maxWidth, int  maxHeight ) {
 		grid.setMaxSize(maxWidth, maxHeight);
 	}
 
+	/**
+	 * Configure la taille minimal d'abstractGame
+	 * @param minWidth
+	 * @param minHeight
+	 */
 	public void setMinSize(int minWidth, int  minHeight ) {
 		grid.setMinSize(minWidth, minHeight);
 	}
 
+	/**
+	 * Configure la taille optimal d'abstractGame
+	 * @param prefWidth
+	 * @param prefHeight
+	 */
 	public void setPrefSize(int prefWidth, int  prefHeight ) {
 		grid.setPrefSize(prefWidth, prefHeight);
 	}
 	
+	/**
+	 * Adapte le GridPane pour qu'il soit conforme a vision d'une inteligence artificielle
+	 * @param map
+	 */
 	public void refreshIAView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
 			for (int col = 0; col < (map.getTab()[row].length); col++) {
@@ -126,6 +167,10 @@ public abstract class AbstractGamePlay {
 		}
 	}
 
+	/**
+	 * Adapte le GridPane pour qu'il soit conforme a vision du chasseur
+	 * @param map
+	 */
 	public void refreshHunterView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
 			for (int col = 0; col < (map.getTab()[row].length); col++) {
@@ -146,6 +191,10 @@ public abstract class AbstractGamePlay {
 		}
 	}
 	
+	/**
+	 * Adapte le GridPane pour qu'il soit conforme a vision de la bete
+	 * @param map
+	 */
 	public void refreshBeastView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
 			for (int col = 0; col < (map.getTab()[row].length); col++) {
@@ -165,7 +214,10 @@ public abstract class AbstractGamePlay {
 		}
 	}
 	
-	
+	/**
+	 * Adapte le GridPane pour qu'elles soit adequat à la vue de transition
+	 * @param map
+	 */
 	public void refreshTransitionView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
 			for (int col = 0; col < (map.getTab()[row].length); col++) {
@@ -182,6 +234,15 @@ public abstract class AbstractGamePlay {
 		}
 	}
 
+	/**
+	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue du chasseur
+	 * @param rec
+	 * @param caseCour
+	 * @param map
+	 * @param row
+	 * @param col
+	 * @param posCase
+	 */
 	private void paintRectangleHunterView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
 			rec.setFill(new ImagePattern(obstacle));
@@ -244,6 +305,15 @@ public abstract class AbstractGamePlay {
 	}
 	
 
+	/**
+	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue de la bete
+	 * @param rec
+	 * @param caseCour
+	 * @param map
+	 * @param row
+	 * @param col
+	 * @param posCase
+	 */
 	private void paintRectangleBeastView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
 			rec.setFill(new ImagePattern(obstacle));
@@ -274,6 +344,15 @@ public abstract class AbstractGamePlay {
 		}
 	}
 	
+	/**
+	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue de l'intelligence artificielle
+	 * @param rec
+	 * @param caseCour
+	 * @param map
+	 * @param row
+	 * @param col
+	 * @param posCase
+	 */
 	public void paintRectangleIAView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
 			rec.setFill(new ImagePattern(obstacle));

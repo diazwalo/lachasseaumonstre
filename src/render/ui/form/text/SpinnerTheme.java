@@ -11,6 +11,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 public class SpinnerTheme extends Spinner<Integer>{
+	/**
+	 * Instancie le SpinnerTheme
+	 * @param min
+	 * @param max
+	 * @param init
+	 */
 	public SpinnerTheme(int min, int max, int init) {
 		super(min, max, init);
 		super.setStyle("-fx-background-color: transparent; -fx-font-family: 'Press Start 2P', cursive; -fx-font-size: 20px; -fx-text-fill: #eee;");

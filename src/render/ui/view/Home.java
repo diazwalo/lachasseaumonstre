@@ -30,6 +30,11 @@ public class Home
 	private Window window;
 	Config config;
 	
+	/**
+	 * Crée une vue pour l'accueil
+	 * @param window
+	 * @param config
+	 */
 	public Home(Window window, Config config)
 	{
 		this.window = window;
@@ -48,6 +53,10 @@ public class Home
 		window.stage.setScene(scene);
 	}
 	
+	
+	/**
+	 * Intialise le menu 
+	 */
 	private void verticalMenu()
 	{
 		HomeButton btn1 = new HomeButton(" Dual", new Image("icons/multi.png"));		
@@ -123,6 +132,10 @@ public class Home
 		this.core.getChildren().add(this.menu);
 	}
 	
+	/**
+	 * Renvoie la forme de la map selectionner dans les setting du menu
+	 * @return
+	 */
 	public AbstractMap getMapForm() {
 		AbstractMap map = null;
 		

@@ -17,12 +17,20 @@ import render.ui.view.EndScreen;
 public class GamePlayHunter extends AbstractGamePlay implements IScore{
 	public AbstractGame ag;
 	
+	/**
+	 * Instancie un GamePlayBeast;
+	 * @param map
+	 * @throws FileNotFoundException
+	 */
 	public GamePlayHunter(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshHunterView(map);
 		ag = new GameHunter(map);
 	}
-
+	
+	/**
+	 *  Execute un tour de jeu. Renvoie true si le tour c'est passer comme prevue, renvoie false si c'est la fin de la partie
+	 */
 	public boolean play(Mouvment mouvment) {
 		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			if(ag.map.moveHunter(mouvment)) {
@@ -48,6 +56,9 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 		return false;
 	}
 
+	/**
+	 * Fais passer la partie au tour suivant
+	 */
 	@Override
 	public void next() {
 		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
@@ -63,6 +74,9 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 		}
 	}
 
+	/**
+	 * Crée un score et le sauvegarde
+	 */
 	@Override
 	public void buildScore()
 	{

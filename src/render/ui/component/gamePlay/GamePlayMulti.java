@@ -17,6 +17,11 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	public AbstractGame ag;
 	int entityTurn = 1;
 	
+	/**
+	 * nstancie un GamePlayMulti;
+	 * @param map
+	 * @throws FileNotFoundException
+	 */
 	public GamePlayMulti(AbstractMap map) throws FileNotFoundException {
 		super(map);
 		super.refreshTransitionView(map);
@@ -26,7 +31,9 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	}
 
 	
-	
+	/**
+	 *  Execute un tour de jeu. Renvoie true si le tour c'est passer comme prevue, renvoie false si c'est la fin de la partie
+	 */
 	@Override
 	public boolean play(Mouvment mouvment) {
 	
@@ -77,7 +84,9 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 				return false;
 			}
 	}
-
+	/**
+	 * Fais passer la partie au tour suivant
+	 */
 	@Override
 	public void next() {
 		super.refreshTransitionView(map);
@@ -95,6 +104,9 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 		
 	}
 	
+	/**
+	 * Crée un score et le sauvegarde
+	 */
 	@Override
 	public void buildScore()
 	{

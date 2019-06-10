@@ -4,6 +4,10 @@ import javafx.scene.control.Label;
 
 public class LabelTheme extends Label
 {
+	/**
+	 * Instancie le LabelTheme
+	 * @param value
+	 */
 	public LabelTheme(String value)
 	{
 		super(value);

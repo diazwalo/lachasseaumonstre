@@ -25,6 +25,9 @@ public class PlayButton {
 	
 	private GridPane panal = new GridPane();
 	
+	/**
+	 * Instancie le PlayButton
+	 */
 	public PlayButton() {
 		this.core = new VBox();
 		
@@ -51,17 +54,30 @@ public class PlayButton {
 		core.getChildren().addAll(panal);
 	}
 	
+	/**
+	 * Retourne le mouvement indiquer par le PlayButton
+	 * @return
+	 */
 	public Mouvment getMouvment()
 	{
 		Mouvment m = this.mouvment;
 		this.mouvment = null;
 		return m;
 	}
-
+	
+	/**
+	 * Renvoie le Node principale de PlayButton
+	 * @return
+	 */
 	public VBox getCore() {
 		return core;
 	}
 	
+	/**
+	 * Definie la taille maximum du PlayButton
+	 * @param maxWidth
+	 * @param maxHeight
+	 */
 	public void setMaxSize(int maxWidth, int  maxHeight ) {
 		topBtn.getBouton().setMaxSize(maxWidth, maxHeight);
 		leftBtn.getBouton().setMaxSize(maxWidth, maxHeight);
@@ -73,6 +89,11 @@ public class PlayButton {
 		upLeftBtn.getBouton().setMaxSize(maxWidth, maxHeight);
 	}
 	
+	/**
+	 * Definie la taille minimale du PlayButton
+	 * @param minWidth
+	 * @param minHeight
+	 */
 	public void setMinSize(int minWidth, int  minHeight ) {
 		topBtn.getBouton().setMaxSize(minWidth, minHeight );
 		leftBtn.getBouton().setMaxSize(minWidth, minHeight );
@@ -85,6 +106,11 @@ public class PlayButton {
 		
 	}
 	
+	/**
+	 * Definie la taille optimale du PlayButton
+	 * @param prefWidth
+	 * @param prefHeight
+	 */
 	public void setPrefSize(int prefWidth, int  prefHeight ) {
 		topBtn.getBouton().setMaxSize(prefWidth, prefHeight );
 		leftBtn.getBouton().setMaxSize(prefWidth, prefHeight );
@@ -96,6 +122,9 @@ public class PlayButton {
 		upLeftBtn.getBouton().setMaxSize(prefWidth, prefHeight );
 	}
 	
+	/**
+	 * Rend le PlayButton inutilisable pour l'utisateur
+	 */
 	public void desactivateButton()
 	{
 		this.topBtn.getBouton().setDisable(true);
@@ -110,6 +139,9 @@ public class PlayButton {
 		this.activate = false;
 	}
 	
+	/**
+	 * Rend le PlayButton utilisable pour l'utilisateur
+	 */
 	public void activateButton()
 	{
 		this.topBtn.getBouton().setDisable(false);
@@ -124,6 +156,10 @@ public class PlayButton {
 		this.activate = true;
 	}
 	
+	/**
+	 * Renvois si le PlayButton est utilisable on non pour l'utilisateur
+	 * @return
+	 */
 	public boolean isActivated() {
 		return this.activate;
 	}

@@ -31,6 +31,10 @@ public class Rules {
 	private Label compteur;
 	private Rectangle rec;
 
+	/**
+	 * Crée une vue pour les régles
+	 * @param win
+	 */
 	public Rules(Window win) {
 		regles = new Pane();
 		core = new VBox();

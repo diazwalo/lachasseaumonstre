@@ -5,6 +5,9 @@ import javafx.scene.layout.Background;
 
 public class CelluleTheme extends ListCell<String>
 {
+	/**
+	 Instancie le CelluleTheme
+	 */
 	public void updateItem(String item, boolean empty)
 	{
 		super.updateItem(item, empty);
