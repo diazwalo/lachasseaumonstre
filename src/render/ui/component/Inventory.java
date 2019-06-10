@@ -1,8 +1,8 @@
 package render.ui.component;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import core.game.AbstractGame;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -17,6 +17,7 @@ import render.text.Hunter;
 import render.ui.component.gamePlay.AbstractGamePlay;
 import render.ui.component.gamePlay.GamePlayBeast;
 import render.ui.component.gamePlay.GamePlayHunter;
+import render.ui.component.gamePlay.GamePlayMulti;
 import render.ui.util.Directory;
 
 public class Inventory {
@@ -26,11 +27,35 @@ public class Inventory {
 	public Button botButton;
 	
 	public Inventory(Entity entity, AbstractGamePlay gameType) {
+		/**
+		 * Le plus propre
+		 */
+		
+		/*this.core = new GridPane();
+		topButton = new Button();
+		botButton = new Button();*/
+		
+		AbstractGame ag = null;
+		if(gameType instanceof GamePlayHunter) {
+			ag =((GamePlayHunter)(gameType)).ag;
+		}else if(gameType instanceof GamePlayBeast) {
+			ag =((GamePlayBeast)(gameType)).ag;
+		}else if(gameType instanceof GamePlayMulti) {
+			ag =((GamePlayMulti)(gameType)).ag;
+		}
+		
+		if(ag != null) {
+			this.setInventory(entity, gameType, ag);
+		}
+	}
+	
+	public void setInventory(Entity entity, AbstractGamePlay gameType, AbstractGame ag) {
 		this.core = new GridPane();
 		topButton = new Button();
 		botButton = new Button();
 		
 		if(entity instanceof Beast) {
+			System.out.println("youhou c'est une instance de bete");
 			entity = (Beast)(entity);
 			
 			topButton.setGraphic(new ImageView(Directory.GAME_BAIT));
@@ -38,7 +63,7 @@ public class Inventory {
 			core.add(topButton, 0, 0);
 			topButton.setOnAction(e -> {
 				topButton.setDisable(true);
-				((GamePlayBeast)(gameType)).ag.bonusChoiceBeast("2");
+				ag.bonusChoiceBeast("2");
 			});
 			
 			botButton.setGraphic(new ImageView(Directory.GAME_CAMOUFLAGE));
@@ -46,10 +71,10 @@ public class Inventory {
 			core.add(botButton, 0, 1);
 			botButton.setOnAction(e -> {
 				botButton.setDisable(true);
-				((GamePlayBeast)(gameType)).ag.bonusChoiceBeast("1");
+				ag.bonusChoiceBeast("1");
 			});
-			
 		}else if (entity instanceof Hunter) {
+			System.out.println("youhou c'est une instance de chasseur");
 			entity = (Hunter)(entity);
 			
 			topButton.setGraphic(new ImageView(Directory.GAME_TRAP));
@@ -57,7 +82,7 @@ public class Inventory {
 			core.add(topButton, 0, 0);
 			topButton.setOnAction(e -> {
 				topButton.setDisable(true);
-				((GamePlayHunter)(gameType)).ag.bonusChoiceHunter("2");
+				ag.bonusChoiceHunter("2");
 			});
 			
 			botButton.setGraphic(new ImageView(Directory.GAME_WARD));
@@ -65,11 +90,10 @@ public class Inventory {
 			core.add(botButton, 0, 1);
 			botButton.setOnAction(e -> {
 				botButton.setDisable(true);
-				((GamePlayHunter)(gameType)).ag.bonusChoiceHunter("1");
+				ag.bonusChoiceHunter("1");
 			});
 		}
 	}
-	
 	
 	public void setBonusAble(List<IBonus> listIBonus) {
 		this.setBonusDisable();

@@ -74,21 +74,7 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 				}
 
 			}else {
-				/*System.out.println("c");
-				buildScore();
-				
-				if(super.map.isBeastWin()) {
-					
-					EndScreen es =new EndScreen(super.window);
-					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), " de la bete ");
-				}
-				else {
-					
-					EndScreen es =new EndScreen(super.window);
-					es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), " du chasseur ");
-				}*/
 				return false;
-				
 			}
 	}
 

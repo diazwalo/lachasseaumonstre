@@ -157,8 +157,9 @@ public class Game {
 			GamePlayBeast g = ((GamePlayBeast)(this.plateau));
 			this.inventaire = new Inventory(g.ag.map.getBeast(), this.plateau);
 		}else if(this.plateau instanceof GamePlayMulti) {
+			System.out.println("mais nan !?");
 			GamePlayMulti g = ((GamePlayMulti)(this.plateau));
-			this.inventaire = new Inventory(g.ag.map.getBeast(), this.plateau);
+			this.inventaire = new Inventory(g.ag.map.getHunter(), this.plateau);
 		}
 	}
 	
@@ -279,23 +280,29 @@ public class Game {
 		this.beastTurn.setOnAction(e -> {
 			if(playerTurn==0) {
 				((GamePlayMulti) (this.plateau)).setView(playerTurn);
+				//le plus propre
+				//this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).ag.map.getBeast(), this.plateau, ((GamePlayMulti)(this.plateau)).ag);
+				//le moins propre
+				this.inventaire = new Inventory(((GamePlayMulti)(this.plateau)).ag.map.getBeast(), this.plateau);
 				playerTurn=(playerTurn+1)%2;
 				this.beastTurn.setDisable(true);
 				this.gamePad.activateButton();
 			}
 		});
-		
+
 		this.beastTurn.setDisable(true);
 		this.hunterTurn.setOnAction(e -> {
 			if(playerTurn==1) {
 				((GamePlayMulti) (this.plateau)).setView(playerTurn);
+				//this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).ag.map.getHunter(), this.plateau, ((GamePlayMulti)(this.plateau)).ag);
+				this.inventaire = new Inventory(((GamePlayMulti)(this.plateau)).ag.map.getHunter(), this.plateau);
 				playerTurn=(playerTurn+1)%2;
 				this.hunterTurn.setDisable(true);
 				this.gamePad.activateButton();
 			}
 		});
 	}
-	
+
 	public void EndOfGame() {
 		if(! AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 			
