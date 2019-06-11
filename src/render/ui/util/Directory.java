@@ -40,6 +40,8 @@ public class Directory
 	
 	public static final String HOME_BACKGROUND = TEXTURES_FOLDER + "background.gif";
 	
+	public static final String ALT_BACKGROUND = TEXTURES_FOLDER + "background_alt.jpg";
+	
 	public static final String GAME_GROUND = TEXTURES_FOLDER + "ground.png";
 	
 	public static final String GAME_TEXTURE = TEXTURES_FOLDER + "texture.png";

@@ -62,8 +62,8 @@ public class Home
 			media = new Media(getClass().getClassLoader().getResource("sounds/game.mp3").toURI().toString());
 			mp= new MediaPlayer(media);
 			mp.play();
+			mp.setCycleCount(MediaPlayer.INDEFINITE);
 		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
