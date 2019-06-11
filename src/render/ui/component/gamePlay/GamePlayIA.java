@@ -48,16 +48,7 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 				ag.checkGameStatus();
 				ag.ramasserBonusHunter();
 				super.refreshIAView(super.map);
-			}/*else {
-				buildScore();
-				
-				EndScreen es =new EndScreen(window);
-				if(ag.map.isBeastWin()) {
-					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), "de la Bete");
-				}else {
-					es.setEndScreen(AbstractGame.gameStatus, ag.map.isBeastWin(), this.ag.map.getConfig(), "du Chasseur");
-				}
-			}*/
+			}
 			
 		}else if(entityTurn == 2) {
 			
