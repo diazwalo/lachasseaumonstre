@@ -49,10 +49,10 @@ public class Game {
 	String keyCapture = "";
 	
 	/**
-	 * Cr�e une vue pour une partie
-	 * @param window
-	 * @param map
-	 * @param gameType
+	 * Cree une vue pour une partie
+	 * @param window Le core de l'ihm
+	 * @param map Le plateau de jeu de la partie.
+	 * @param gameType Le mode de jeu de la partie.
 	 * @throws FileNotFoundException
 	 */
 	
@@ -149,17 +149,14 @@ public class Game {
 		Mouvment[] tabMvt= Interaction.getTabMvt(strMouvment);
 		Mouvment mouv = null;
 
-		System.out.println("Capture " + keyCapture);
 		for (int idx = 0; idx < strMouvment.length; idx++) {
 			if(strMouvment[idx].equals(keyCapture)) mouv=tabMvt[idx];
 		}
 		
-		System.out.println("Mouvement calcule " + mouv);
 		if(this.gamePad.isActivated()) {
 			if(mouv != null && this.plateau.play(mouv)) {
 				userAction();
 				this.gamePad.desactivateButton();
-				//this.plateau.next();
 			}
 		}
 	}
