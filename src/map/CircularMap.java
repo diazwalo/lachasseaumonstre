@@ -26,8 +26,14 @@ public class CircularMap extends AbstractMap {
 	 * Remplie le tableau en mettant dans les cases soit des Obstacles soit des Sol.
 	 */
 	public void generationMap() {
+		
+		Position lastGround = new Position(0, 0);
+		boolean hunterIsPlaced = false;
+		
 		int radius = (int) Math.floor(this.tab.length / 2);
 		int preRadius = (int) Math.ceil(this.tab[radius].length / 2) / 2;
+		
+		
 		
 		for (int x = 0; x < this.tab.length; x++) {
 			for (int y = 0; y < this.tab[x].length; y++) {
@@ -45,12 +51,6 @@ public class CircularMap extends AbstractMap {
 							((radius+preRadius <= x) && preRadius >= y && (radius+preRadius+y > x)) ||
 							((radius+preRadius <= x && radius+preRadius <= y) && ((x+y) <= (this.tab.length + (Math.floor(2*this.tab.length/3)))))
 							) {
-							
-							if(this.hunter.isPosEnt(0, 0)) {
-								this.hunter.setPosition(new Position(x, y));
-							}
-							
-							this.beast.setPosition(new Position(x, y));
 							caseType = CaseType.SOL;
 						}
 						else {
@@ -65,7 +65,22 @@ public class CircularMap extends AbstractMap {
 				if(x%3==2 && y%3==2 && ! this.beast.isPosEnt(x, y) && ! this.hunter.isPosEnt(x, y)) caseType=CaseType.OBSTACLE;
 				
 				this.tab[x][y]=new Case(caseType, posBeast);
+				
+				// On pose le chasseur a la premiere case qui est parcouru et n'a pas d'obstacle.
+				if(this.tab[x][y].getCaseType() != CaseType.OBSTACLE && !hunterIsPlaced)
+				{
+					this.hunter.setPosition(new Position(x, y));
+					hunterIsPlaced = true;
+				}
+				
+				if(this.tab[x][y].getCaseType() != CaseType.OBSTACLE)
+				{
+					lastGround = new Position(x, y);
+				}
 			}
 		}
+		
+		//On pose la bete a la derniere position explore qui ne contient pas d'obstacle.
+		this.beast.setPosition(lastGround);
 	}
 }
