@@ -82,7 +82,7 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 	}
 	
 	/**
-	 * Crée un score et le sauvegarde
+	 * Cree un score et le sauvegarde
 	 */
 	@Override
 	public void buildScore()

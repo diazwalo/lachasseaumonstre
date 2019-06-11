@@ -50,7 +50,7 @@ public abstract class AbstractGamePlay {
 	private final double size;
 
 	/**
-	 * initialise la window de l'AbstractGame avec celle passer en paramètre
+	 * initialise la window de l'AbstractGame avec celle passer en paramï¿½tre
 	 * @param window
 	 */
 	public void setWindow(Window window)
@@ -93,7 +93,7 @@ public abstract class AbstractGamePlay {
 
 	
 	/**
-	 * Intialise le PlayButton avec celui passer en paramètres
+	 * Intialise le PlayButton avec celui passer en paramï¿½tres
 	 * @param pb
 	 */
 	public void setPlayButton(PlayButton pb) {
@@ -101,7 +101,7 @@ public abstract class AbstractGamePlay {
 	}
 
 	/**
-	 * Initialise l'Inventory avec celui passer en paramètres
+	 * Initialise l'Inventory avec celui passer en paramï¿½tres
 	 * @param i
 	 */
 	public void setInventory(Inventory i) {
@@ -110,7 +110,7 @@ public abstract class AbstractGamePlay {
 
 	/**
 	 * Retourne le GridPane d'AbstracrGame
-	 * @return
+	 * @return GridPane
 	 */
 	public GridPane getGrid() {
 		return this.grid;
@@ -215,7 +215,7 @@ public abstract class AbstractGamePlay {
 	}
 	
 	/**
-	 * Adapte le GridPane pour qu'elles soit adequat à la vue de transition
+	 * Adapte le GridPane pour qu'elles soit adequat ï¿½ la vue de transition
 	 * @param map
 	 */
 	public void refreshTransitionView(AbstractMap map) {

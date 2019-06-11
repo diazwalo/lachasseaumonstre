@@ -30,6 +30,7 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 	
 	/**
 	 *  Execute un tour de jeu. Renvoie true si le tour c'est passer comme prevue, renvoie false si c'est la fin de la partie
+	 *  @return boolean
 	 */
 	public boolean play(Mouvment mouvment) {
 		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
@@ -51,10 +52,10 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 			return false;
 		}
 	}
-
+	/*
 	public boolean useBonus(IBonus bonus) {
 		return false;
-	}
+	}*/
 
 	/**
 	 * Fais passer la partie au tour suivant
@@ -75,7 +76,7 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 	}
 
 	/**
-	 * Crée un score et le sauvegarde
+	 * Crï¿½e un score et le sauvegarde
 	 */
 	@Override
 	public void buildScore()
