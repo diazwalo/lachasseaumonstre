@@ -1,6 +1,7 @@
 package render.ui.view;
 
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 
 import config.Config;
 import config.Map;
@@ -10,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import map.AbstractMap;
 import map.CircularMap;
 import map.SquareMap;
@@ -51,6 +54,20 @@ public class Home
 		scene.getStylesheets().add(Directory.STYLE_CSS);
 		
 		window.stage.setScene(scene);
+		
+	
+		Media media;
+		MediaPlayer mp;
+		try {
+			media = new Media(getClass().getResource("/sounds/game.mp3").toURI().toString());
+			mp= new MediaPlayer(media);
+			mp.play();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	
