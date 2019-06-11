@@ -49,7 +49,7 @@ public class Game {
 	String keyCapture = "";
 	
 	/**
-	 * Crée une vue pour une partie
+	 * Crï¿½e une vue pour une partie
 	 * @param window
 	 * @param map
 	 * @param gameType
@@ -88,7 +88,7 @@ public class Game {
 
 	/**
 	 * Initialise la fenetre, initiale tous les nodes et leur comportement
-	 * @param window
+	 * @param window Le core de l'ihm.
 	 */
 	public void setScene(Window window) {
 		this.chat = new Chat();
@@ -134,13 +134,17 @@ public class Game {
 		});
 	}
 	
+	/**
+	 * Cette fonction recupere les boutons appuyes par l'utilisateur et regarde si il reconnait un mouvement.
+	 * @param keyCapture Les touches appuyes par l'utilisateur.
+	 */
 	private void actionKey(String keyCapture)
 	{
-		if(keyCapture == " " && this.gamePad.isActivated()) {
-			System.out.println("Jamais ca va la dedans car il ne capture pas un espace (mais son code je crois");
+		if(keyCapture.equals(" ") && this.gamePad.isActivated()) {
 			this.plateau.next();
 			return;
 		}
+		
 		String[] strMouvment = Interaction.generateStrMvt();
 		Mouvment[] tabMvt= Interaction.getTabMvt(strMouvment);
 		Mouvment mouv = null;
@@ -153,7 +157,7 @@ public class Game {
 		System.out.println("Mouvement calcule " + mouv);
 		if(this.gamePad.isActivated()) {
 			if(mouv != null && this.plateau.play(mouv)) {
-				userAction(this.plateau.map);
+				userAction();
 				this.gamePad.desactivateButton();
 				//this.plateau.next();
 			}
@@ -179,9 +183,8 @@ public class Game {
 	
 	/**
 	 * Desactive le PlayButton de la Game et active le bouton pour passer le tour
-	 * @param map
 	 */
-	public void userAction(AbstractMap map)
+	public void userAction()
 	{
 		this.gamePad.desactivateButton();
 		nextTurn.setDisable(false);
@@ -244,56 +247,56 @@ public class Game {
 		if(! (gameType instanceof GamePlayIA)) {
 			this.gamePad.topBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORD)) {
-					userAction(map);
+					userAction();
 					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORDOUEST)) {
-					userAction(map);
+					userAction();
 					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORDEST)) {
-					userAction(map);
+					userAction();
 					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.leftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.OUEST)) {
-					userAction(map);
+					userAction();
 					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.rightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.EST)) {
-					userAction(map);
+					userAction();
 					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUD)) {
-					userAction(map);
+					userAction();
 					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUDOUEST)) {
-					userAction(map);
+					userAction();
 					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUDEST)) {
-					userAction(map);
+					userAction();
 					this.EndOfGame();
 				}
 			});
@@ -302,7 +305,7 @@ public class Game {
 	}
 	
 	/**
-	 * Determine quelle entité doit joué
+	 * Determine quelle entite doit jouer
 	 */
 	public void setEntityTurnButton() {
 		this.beastTurn.setDisable(true);
