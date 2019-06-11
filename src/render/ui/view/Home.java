@@ -34,7 +34,7 @@ public class Home
 	Config config;
 	
 	/**
-	 * Crée une vue pour l'accueil
+	 * Crï¿½e une vue pour l'accueil
 	 * @param window
 	 * @param config
 	 */
@@ -59,7 +59,7 @@ public class Home
 		Media media;
 		MediaPlayer mp;
 		try {
-			media = new Media(getClass().getResource("/sounds/game.mp3").toURI().toString());
+			media = new Media(getClass().getClassLoader().getResource("sounds/game.mp3").toURI().toString());
 			mp= new MediaPlayer(media);
 			mp.play();
 		} catch (URISyntaxException e) {
