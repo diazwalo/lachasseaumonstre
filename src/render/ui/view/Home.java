@@ -58,15 +58,10 @@ public class Home
 	
 		Media media;
 		MediaPlayer mp;
-		try {
-			media = new Media(getClass().getClassLoader().getResource("sounds/game.mp3").toURI().toString());
-			mp= new MediaPlayer(media);
-			mp.play();
-			mp.setCycleCount(MediaPlayer.INDEFINITE);
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		
+		media = new Media(getClass().getClassLoader().getResource(Directory.SOUND_GAME).toString());
+		mp= new MediaPlayer(media);
+		mp.play();
+		mp.setCycleCount(MediaPlayer.INDEFINITE);
 		
 	}
 	
@@ -124,7 +119,7 @@ public class Home
 			new Stats(this.window, this.config);
 		});
 		
-		HomeButton regles = new HomeButton(" Regles", new Image("icons/chart.png"));
+		HomeButton regles = new HomeButton(" Regles", new Image("icons/rules.png"));
 		regles.setOnAction(e -> { 
 			new Rules(this.window);
 		});

@@ -17,7 +17,6 @@ public class Directory
 	
 	private static final String ICONS_FOLDER = "icons" + DS;
 	
-	@SuppressWarnings("unused")
 	private static final String SOUNDS_FOLDER = "sounds" + DS;
 	
 	private static final String TEXTURES_FOLDER = "textures" + DS;
@@ -34,6 +33,12 @@ public class Directory
 	
 	public static final String ICON = ICONS_FOLDER + "icon.png";
 	
+	//endregion
+	
+	//region icons
+	
+	public static final String SOUND_GAME = SOUNDS_FOLDER + "game.mp3";
+		
 	//endregion
 	
 	//region textures

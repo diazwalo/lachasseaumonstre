@@ -83,6 +83,7 @@ public class Stats
 	 * @param path Le chemin vers le fichier des scores pour l'onglet.
 	 * @return L'onglet construit avec toutes les données.
 	 */
+	@SuppressWarnings("unchecked")
 	private TableView<Score> buildTab(ScoreFile path)
 	{
 		TableView<Score> tabContent = new TableView<Score>();
