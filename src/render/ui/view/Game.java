@@ -1,7 +1,5 @@
 package render.ui.view;
 
-
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,14 +46,13 @@ public class Game {
 	String keyCapture = "";
 	
 	/**
-	 * Cree une vue pour une partie
-	 * @param window Le core de l'ihm
+	 * Cree une vue pour une partie avec le plateau de jeu, les boutons, et son inventaire.
+	 * @param window Le core de l'ihm.
 	 * @param map Le plateau de jeu de la partie.
 	 * @param gameType Le mode de jeu de la partie.
-	 * @throws FileNotFoundException
 	 */
 	
-	public Game(Window window, AbstractMap map, AbstractGamePlay gameType) throws FileNotFoundException {
+	public Game(Window window, AbstractMap map, AbstractGamePlay gameType){
 
 		this.left = new VBox();
 		this.middle = new VBox();
@@ -86,7 +83,7 @@ public class Game {
 	}
 
 	/**
-	 * Initialise la fenetre, initiale tous les nodes et leur comportement
+	 * Initialise la fenetre, initiale tous les widgets et leurs comportements.
 	 * @param window Le core de l'ihm.
 	 */
 	public void setScene(Window window) {
@@ -158,7 +155,7 @@ public class Game {
 	}
 
 	/**
-	 * Initialise l'inventaire
+	 * Initialise l'inventaire.
 	 */
 	public void setInventory() {
 		if(this.plateau instanceof GamePlayHunter) {
@@ -174,7 +171,7 @@ public class Game {
 	}
 	
 	/**
-	 * Desactive le PlayButton de la Game et active le bouton pour passer le tour
+	 * Desactive le PlayButton de la Game et active le bouton pour passer le tour.
 	 */
 	public void userAction()
 	{
@@ -184,7 +181,7 @@ public class Game {
 	}
 	
 	/**
-	 * Initialise l'evenement du bouton pour passer au tour suivant
+	 * Initialise l'evenement du bouton pour passer au tour suivant.
 	 */
 	public void setEventNextTurnButton() {
 		nextTurn = new Button("Tour suivant");
@@ -248,9 +245,9 @@ public class Game {
 	}
 
 	/**
-	 * Initiase les evenement pour les bouton de mouvement
-	 * @param map
-	 * @param gameType
+	 * Initialise les evenements pour les boutons de mouvements.
+	 * @param map Le plateau de jeu de la partie actuelle.
+	 * @param gameType Le mode de jeu actuel.
 	 */
 	public void setEventMouvmentButton(AbstractMap map, AbstractGamePlay gameType) {
 		if(! (gameType instanceof GamePlayIA)) {
@@ -306,7 +303,7 @@ public class Game {
 	}
 	
 	/**
-	 * Determine quelle entite doit jouer
+	 * Determine quelle entite doit jouer.
 	 */
 	public void setEntityTurnButton() {
 		this.beastTurn.setDisable(true);
@@ -338,7 +335,7 @@ public class Game {
 	}
 
 	/**
-	 * Affiche l'ecran de fin jeu en fonction de la victoire ou de la defaite
+	 * Affiche l'ecran de fin jeu en fonction de la victoire ou de la defaite.
 	 */
 	public void EndOfGame() {
 		if(! AbstractGame.gameStatus.equals(GameStatus.INGAME)) {

@@ -56,7 +56,7 @@ public class Home
 		
 		window.stage.setScene(scene);
 		
-		window.media = new Media(getClass().getClassLoader().getResource(Directory.SOUND_GAME).toString());
+		window.media = new Media(getClass().getClassLoader().getResource(Directory.GAME_SOUND).toString());
 		window.mp= new MediaPlayer(window.media);
 		window.mp.play();
 		window.mp.setCycleCount(MediaPlayer.INDEFINITE);
