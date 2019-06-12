@@ -15,7 +15,7 @@ import render.text.Beast;
 
 public class TrapTest {
 
-	private Beast bete;
+	
 	private Trap piege;
 	private Trap piege2;
 	private AbstractMap sm;
@@ -25,7 +25,7 @@ public class TrapTest {
 		piege = new Trap();
 		piege2 = new Trap(5 , 4 );
 		sm = new SquareMap(new Config());
-		bete = new Beast(5, 4 , new Config());
+		
     }
 
 	@Test
@@ -47,16 +47,6 @@ public class TrapTest {
 	}
 	
 	
-	@Test 
-	public void testIsActivated() {
-		piege.install(6, 7);
-		sm.addBonusActif(piege);
-		/*piege.isActivate(bete);
-		assertFalse(piege.getActivate());
-		assertNotNull(piege.getPos());
-		piege2.isActivate(bete);
-		assertTrue(piege2.getActivate());
-		assertNull(piege2.getPos());*/
-	}
+
 
 }
