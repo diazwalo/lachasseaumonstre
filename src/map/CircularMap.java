@@ -4,8 +4,17 @@ import config.Config;
 import render.text.Beast;
 import render.text.Hunter;
 
-public class CircularMap extends AbstractMap {
+/**
+ * Cette classe est un second de plateau de jeu pour jouer au jue. Il a une forme plus ou moins circulaire selon la congiruation lance.
+ * @author PHPierre
+ */
+public class CircularMap extends AbstractMap
+{
 	
+	/**
+	 * Construit et configure le plateau de jeu de maniere circulaire avec les informations de la configuration.
+	 * @param config
+	 */
 	public CircularMap(Config config) {
 		this.config = config;
 		int widthTab=config.getWidth();
