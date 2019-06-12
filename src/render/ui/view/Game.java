@@ -361,5 +361,6 @@ public class Game {
 	private void manageScore()
 	{
 		((IScore) this.plateau).buildScore();
+		//new askPseudo(plateau.window);
 	}
 }
