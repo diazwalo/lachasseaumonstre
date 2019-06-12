@@ -19,8 +19,8 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 	
 	/**
 	 * Instancie un GamePlayBeast;
-	 * @param map
-	 * @throws FileNotFoundException
+	 * @param map la map de la partie en cours
+	 * @throws FileNotFoundException exception se declachant si il ne trouve pas les texture voulu
 	 */
 	public GamePlayBeast(AbstractMap map) throws FileNotFoundException {
 		super(map);

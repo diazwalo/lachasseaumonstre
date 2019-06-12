@@ -17,9 +17,9 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	int entityTurn;
 	
 	/**
-	 * nstancie un GamePlayMulti;
-	 * @param map
-	 * @throws FileNotFoundException
+	 * Instancie un GamePlayMulti;
+	 * @param map la map de la partie en cours
+	 * @throws FileNotFoundException exception se declachant si il ne trouve pas les texture voulu
 	 */
 	public GamePlayMulti(AbstractMap map) throws FileNotFoundException {
 		super(map);
@@ -104,7 +104,7 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	}
 	
 	/**
-	 * Cr�e un score et le sauvegarde
+	 * Cree un score et le sauvegarde
 	 */
 	@Override
 	public void buildScore()

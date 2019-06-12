@@ -254,8 +254,8 @@ public class Game {
 
 	/**
 	 * Initiase les evenement pour les bouton de mouvement
-	 * @param map
-	 * @param gameType
+	 * @param map la map de la partie voulu
+	 * @param gameType le type de gameplay
 	 */
 	public void setEventMouvmentButton(AbstractMap map, AbstractGamePlay gameType) {
 		if(! (gameType instanceof GamePlayIA)) {
