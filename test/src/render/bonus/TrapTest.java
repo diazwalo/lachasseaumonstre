@@ -26,7 +26,7 @@ public class TrapTest {
 		piege2 = new Trap(5 , 4 );
 		sm = new SquareMap(new Config());
 		
-    }
+    } 
 
 	@Test
 	public void testInstall() {
