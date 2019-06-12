@@ -33,68 +33,74 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	 */
 	@Override
 	public boolean play(Mouvment mouvment) {
-	
-			if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-				
-				if(entityTurn==0) {
-					ag.updateStartGame();
-					IBonus bo=ag.checkBeastTrapped();
-					if(super.map.getBeast().getTrapped()) {
-						
-						if(bo != null) {
-							this.ag.triggerTrap();
-							this.map.removeBonus(bo);
-							entityTurn=(entityTurn+1)%2;
-							ag.updateEndGame();
-							super.refreshBeastView(super.map);
-						}
-						
-						return true;
-					}else if(ag.map.moveBeast(mouvment)) {
-						this.map.setBeastWalk();
-						ag.checkGameStatus();
-						ag.incrementNbTurnEntityTwo();
-						ag.ramasserBonusBeast();
+		
+		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
+			
+			if(entityTurn==0) {
+				ag.updateStartGame();
+				IBonus bo=ag.checkBeastTrapped();
+				if(super.map.getBeast().getTrapped()) {
+					
+					if(bo != null) {
+						this.ag.triggerTrap();
+						this.map.removeBonus(bo);
 						entityTurn=(entityTurn+1)%2;
 						ag.updateEndGame();
 						super.refreshBeastView(super.map);
-						return true;
 					}
 					
-					//TEST
+					return true;
+				}else if(ag.map.moveBeast(mouvment)) {
+					this.map.setBeastWalk();
+					ag.checkGameStatus();
+					ag.incrementNbTurnEntityTwo();
+					ag.ramasserBonusBeast();
+					entityTurn=(entityTurn+1)%2;
 					ag.updateEndGame();
 					
-					return false;
+					bo=ag.checkBeastTrapped();
+					if(super.map.getBeast().getTrapped()) {
+						this.ag.triggerTrap();
+					}
+					
+					super.refreshBeastView(super.map);
+					return true;
 				}
 				
-				else {
-					//ag.updateEndGame();
-					ag.updateStartGame();
-					if(ag.map.moveHunter(mouvment)) {
-						ag.checkGameStatus();
-						ag.ramasserBonusHunter();
-						ag.incrementNbTurnEntityOne();
-						
-						
-						//TEST
-						//ag.updateEndGame();
-						
-						super.refreshHunterView(map);
-						entityTurn=(entityTurn+1)%2;
-						
-						if(super.map.getBeast().getTrapped()) {
-							super.map.getBeast().setUntrapped();
-						}
-						
-						return true;
-					}
-					return false;
-				}
-
-			}else {
+				//TEST
+				ag.updateEndGame();
+				
 				return false;
 			}
-	}
+			
+			else {
+				//ag.updateEndGame();
+				ag.updateStartGame();
+				if(ag.map.moveHunter(mouvment)) {
+					ag.checkGameStatus();
+					ag.ramasserBonusHunter();
+					ag.incrementNbTurnEntityOne();
+					
+					
+					//TEST
+					//ag.updateEndGame();
+					
+					super.refreshHunterView(map);
+					entityTurn=(entityTurn+1)%2;
+					
+					if(super.map.getBeast().getTrapped()) {
+						super.map.getBeast().setUntrapped();
+					}
+					
+					return true;
+				}
+				return false;
+			}
+
+		}else {
+			return false;
+		}
+}
 	/**
 	 * Fais passer la partie au tour suivant
 	 */
