@@ -68,7 +68,7 @@ public abstract class AbstractMap
             }
             
             Position posBonusTempo=new Position(posBonusX, posBonusY);
-            if(! this.tab[posBonusY][posBonusX].isObstacle() && 
+            if(! this.tab[posBonusTempo.getPosY()][posBonusTempo.getPosX()].isObstacle() && 
             		! this.beast.getPos().equals(posBonusTempo) && 
             		! this.hunter.getPos().equals(posBonusTempo)) {
                 posBonusFinal=posBonusTempo;
@@ -108,7 +108,10 @@ public abstract class AbstractMap
 
             Position posBonusTempo=new Position(posBonusX, posBonusY);
 
-            if(! this.tab[posBonusY][posBonusX].isObstacle() && ! this.beast.getPos().equals(posBonusTempo) && ! this.hunter.getPos().equals(posBonusTempo) && ! posBonusFinal.equals(posFirstBonus)) {
+            if(! this.tab[posBonusTempo.getPosY()][posBonusTempo.getPosX()].isObstacle() && 
+            		! this.beast.getPos().equals(posBonusTempo) && 
+            		! this.hunter.getPos().equals(posBonusTempo) && 
+            		! posBonusFinal.equals(posFirstBonus)) {
                 posBonusFinal=posBonusTempo;
             }
         }
@@ -337,7 +340,6 @@ public abstract class AbstractMap
     	this.removeBonus();
     }
     
-    
     /**
      * Retourne le plateau de jeu sous la forme textuelle d'un tableau avec des obstacles, des buffs, des Entitys (Mode spectateur).
      */
@@ -346,8 +348,8 @@ public abstract class AbstractMap
         for (int x = 0; x < this.tab.length; x++) {
             affichage+=" \n|";
             for (int y = 0; y < this.tab[x].length; y++) {
-                if(this.beast.isPosEnt(y, x)) affichage+=" "+this.beast.toString()+" |";
-                else if(this.hunter.isPosEnt(y, x)) affichage+=" "+this.hunter.toString()+" |";
+                if(this.beast.isPosEnt(x, y)) affichage+=" "+this.beast.toString()+" |";
+                else if(this.hunter.isPosEnt(x, y)) affichage+=" "+this.hunter.toString()+" |";
                 else affichage+=" "+this.tab[x/*y*/][y/*x*/].toString()+" |";
             }
         }

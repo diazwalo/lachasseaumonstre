@@ -74,10 +74,15 @@ public class GameAI extends AbstractGame implements IScore
 			
 			this.beastTurn();
 			this.updateStartGame();
+			this.checkGameStatus();
+			this.map.setBeastWalk();
 			
 			System.out.println(this.map);
+			this.hunterTurn();
 			
+			this.checkGameStatus();
 			this.updateEndGame();
+			//this.map.setBeastWalk();
 			
 		}
 		buildScore();
@@ -95,9 +100,10 @@ public class GameAI extends AbstractGame implements IScore
 		try {
 			super.map.moveBeast(Position.toMouvment(this.map.getBeast().getPos(), this.pathBeast.get(this.beastTurn)));
 		}catch(Exception e) {
-			//this.map.setHunterWin(true);
+			this.map.setHunterWin(true);
+			
 			// trouver ou effectuer le checkBeastPas
-			List<Mouvment> mvtBeastDispo = super.map.getBeast().getMvtToEmptyCase(super.map.getTab());
+			/*List<Mouvment> mvtBeastDispo = super.map.getBeast().getMvtToEmptyCase(super.map.getTab());
 			if(mvtBeastDispo.size()>0) {
 				Mouvment mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
 				while(! super.map.moveBeast(mvtBeast)) {
@@ -115,7 +121,7 @@ public class GameAI extends AbstractGame implements IScore
 			else {
 				AbstractGame.gameStatus=GameStatus.BEASTBLOCK;
 				return false;
-			}
+			}*/
 		}
 		
 		super.incrementNbTurnEntityOne();
