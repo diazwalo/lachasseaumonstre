@@ -14,8 +14,8 @@ public class Interface
 {
 	/**
 	 * Configure la taille minimale d'une VBox
-	 * @param vbox
-	 * @return
+	 * @param vbox la vbox a modifier
+	 * @return VBox
 	 */
 	public static VBox maxHeight(VBox vbox)
 	{
@@ -35,8 +35,8 @@ public class Interface
 	
 	/**
 	 * Retourne l'image de fond l'interface
-	 * @param path
-	 * @return
+	 * @param path le chemin de la texture
+	 * @return Background
 	 */
 	public static Background getBackground(String path)
 	{
@@ -55,9 +55,9 @@ public class Interface
 	
 	/**
 	 * Calcul la taille des optimal des case
-	 * @param width
-	 * @param height
-	 * @return
+	 * @param width la largeur voulue
+	 * @param height la longueur voulue
+	 * @return double
 	 */
 	public static double calculCaseSize(int width, int height)
 	{

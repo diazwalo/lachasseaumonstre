@@ -29,8 +29,8 @@ public class Inventory {
 	
 	/**
 	 * Instancie  l'Inventory
-	 * @param entity
-	 * @param gameType
+	 * @param entity l'entite a qui doit appartenir l'inventaire
+	 * @param gameType le type de gameplay
 	 */
 	
 	public Inventory(Entity entity, AbstractGamePlay gameType) {
@@ -58,9 +58,9 @@ public class Inventory {
 	
 	/**
 	 * Initialise l'inventaire
-	 * @param entity
-	 * @param gameType
-	 * @param ag
+	 * @param entity l'entite a qui appartient l'inventaire
+	 * @param gameType le gameplay de la partie
+	 * @param ag le type de partie
 	 */
 	
 	public void setInventory(Entity entity, AbstractGamePlay gameType, AbstractGame ag) {
@@ -108,8 +108,8 @@ public class Inventory {
 	}
 	
 	/**
-	 * Rend la liste de bonus passez en param�tre disponible pour l'utilisater
-	 * @param listIBonus
+	 * Rend la liste de bonus passez en parametre disponible pour l'utilisater
+	 * @param listIBonus la liste des bonus disponible
 	 */
 	public void setBonusAble(List<IBonus> listIBonus) {
 		this.setBonusDisable();
@@ -133,7 +133,7 @@ public class Inventory {
 
 	/**
 	 * Retoune le Node principale de l'objet
-	 * @return
+	 * @return GridPane
 	 */
 	
 	public GridPane getCore() {

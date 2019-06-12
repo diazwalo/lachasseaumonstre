@@ -4,8 +4,8 @@ public class LabelThemeVariableSize extends LabelTheme{
 
 	/**
 	 * Instancie le LabelThemeVariableSize
-	 * @param value
-	 * @param size
+	 * @param value le texte a afficher dans le label
+	 * @param size la taille du label
 	 */
 	public LabelThemeVariableSize(String value, int size) {
 		super(value);

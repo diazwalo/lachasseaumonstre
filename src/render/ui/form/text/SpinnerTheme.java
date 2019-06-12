@@ -13,9 +13,9 @@ import javafx.scene.paint.Paint;
 public class SpinnerTheme extends Spinner<Integer>{
 	/**
 	 * Instancie le SpinnerTheme
-	 * @param min
-	 * @param max
-	 * @param init
+	 * @param min la taille maximal
+	 * @param max la taille minimal
+	 * @param init la taille de base
 	 */
 	public SpinnerTheme(int min, int max, int init) {
 		super(min, max, init);

@@ -5,7 +5,7 @@ import javafx.scene.control.CheckBox;
 public class CheckBoxTheme extends CheckBox{
 	/**
 	 * Instancie la CheckBoxTheme
-	 * @param check
+	 * @param check determine si il est selectionner ou non
 	 */
 	public CheckBoxTheme(boolean check) {
 		super();

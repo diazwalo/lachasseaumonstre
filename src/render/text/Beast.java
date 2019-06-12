@@ -27,8 +27,9 @@ public class Beast extends Entity{
 
 	/**
 	 * Instancie Beast a la Position posX, posY
-	 * @param posX
-	 * @param posY
+	 * @param posX la position souhaiter en X
+	 * @param posY la position souhaiter en Y
+	 * @param config la config de la partie
 	 */
 	public Beast(int posX, int posY, Config config) {
 		super(posX, posY);
@@ -69,7 +70,7 @@ public class Beast extends Entity{
 	 
 	/**
 	 * Met a la valeur b passee en parametre, revealedByWard
-	 * @param b
+	 * @param b boolean determinant si la bete est reveler ou non 
 	 */
 	public void setRevealedByWard(boolean b) {
 		this.revealedByWard=b;
@@ -149,6 +150,7 @@ public class Beast extends Entity{
 
 	/**
 	 * retourn le nombre de tp restant
+	 * @return le nombre de teleportation
 	 */
 	public int getTp() {
 		return this.tp;
@@ -156,6 +158,7 @@ public class Beast extends Entity{
 	
 	/**
 	 * passe la valeur de tp a celle passee en parametre
+	 * @param tp le nombre de tp voulu
 	 */
 	public void setTp(int tp) {
 		this.tp=tp;
@@ -197,8 +200,8 @@ public class Beast extends Entity{
 	
 	/**
 	 * retourne la liste des differents Mouvment possible pour Beast sans se soucier de si il y a le chasseur.
-	 * @param tab
-	 * @return List<Mouvment>
+	 * @param tab le tableau de case de la map de la partie jouee
+	 * @return List
 	 */
 	public List<Mouvment> getMvtToEmptyCase(Case[][] tab) {
 		List<Mouvment> mouvTab = new ArrayList<>();
@@ -218,8 +221,8 @@ public class Beast extends Entity{
 	
 	/**
 	 * retourne la liste des differents Mouvment possible pour Beast sans se soucier de si il y a le chasseur ou encore si elle a deja marche vers la case visee.
-	 * @param tab
-	 * @return List<Mouvment>
+	 * @param tab la tableau de case de la map de la partie
+	 * @return List
 	 */
 	public List<Mouvment> getMvtToNonObstacleCase(Case[][] tab) {
 		List<Mouvment> mouvTab = this.getMvtToEmptyCase(tab);
@@ -238,8 +241,8 @@ public class Beast extends Entity{
 	
 	/**
 	 * Verfie si la Beast a encore la possibilite de jouer ou non.
-	 * @param tab
-	 * @param hunter
+	 * @param tab le table de case de la map de la partie
+	 * @param hunter le chasseur de la partie
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity hunter) {
@@ -261,9 +264,9 @@ public class Beast extends Entity{
 	
 	/**
 	 * Retourne une ArrayList contenant les position sur lesquel la Bete peut se teleporter
-	 * @param tab
-	 * @param hunter
-	 * @return ArrayList<Position>
+	 * @param tab le tableau de case de la map de la partie
+	 * @param hunter le chasseur de la partie
+	 * @return ArrayList
 	 */
 	public List<Position> getCaseTp(Case[][] tab, Hunter hunter) {
 		List<Position> ALTab = new ArrayList<>();

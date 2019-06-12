@@ -6,7 +6,7 @@ public class LabelTheme extends Label
 {
 	/**
 	 * Instancie le LabelTheme
-	 * @param value
+	 * @param value le texte a afficher dans le label
 	 */
 	public LabelTheme(String value)
 	{

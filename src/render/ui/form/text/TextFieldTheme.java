@@ -15,7 +15,7 @@ public class TextFieldTheme extends TextField
 {
 	/**
 	 * Instancie le TextFieldTheme
-	 * @param value
+	 * @param value le texte a afficher
 	 */
 	public TextFieldTheme(String value)
 	{

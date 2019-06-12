@@ -18,11 +18,11 @@ import render.bonus.IBonus;
 public abstract class Entity {
 	private Position pos;
 	protected List<IBonus> inventory = new ArrayList<>();
-	
+
 	public Entity(int posX, int posY) {
 		this.pos=new Position(posX, posY);
 	}
-	
+
 	public void setPosition(Position posTarget) {
 		this.pos.setPosX(posTarget.getPosX());
 		this.pos.setPosY(posTarget.getPosY());
@@ -35,17 +35,17 @@ public abstract class Entity {
 	public Position getPos() {
 		return this.pos;
 	}
-	
+
 	/**
 	 * deplace la position selon le Mouvment mvt
-	 * @param mvt
+	 * @param mvt le mouvement a effectuer
 	 */
 	public void setPos(Mouvment mvt) {
 		this.pos.movePosition(mvt);
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Retourne l'inventaire de l'entite.
 	 * @return L'inventaire du l'entite qui contient les bonus.
@@ -67,19 +67,21 @@ public abstract class Entity {
 			}
 		}
 	}
-	
+
 	/**
 	 * Determine si la position donnee en parametre est similaire a celle courante
+	 * @param posX la position a chercher en x
+	 * @param posY la position a chercher en y
 	 * @return boolean
 	 */
 	public boolean isPosEnt(int posX, int posY) {
 		return this.pos.isPos(posX, posY);
 	}
-	
+
 	public abstract boolean verifDeplacementSpe(Case [][] tab, Mouvment mvt, Entity other);
 	public abstract boolean isLock(Case[][] tab, Entity hunter);
 	public abstract List<Mouvment> getMvtToEmptyCase(Case[][] tab);
-	
+
 	/**
 	 * verifie que le deplacement souhaite ne fait pas sortir du tableau ou aller sur un obstacle
 	 * @param tab
@@ -89,28 +91,28 @@ public abstract class Entity {
 	protected boolean verifDeplacementEntity(Case [][] tab, Mouvment mvt ) {
 		int[] posModif=this.pos.getModifPosTempo(mvt.getMvt());
 		boolean valide=this.verifDeplacementOutOfBonds(tab, posModif);
-		
+
 		if(valide) {
 			valide=valide && this.verifDeplacementColisionObstacle(tab, posModif);
 		}
-		
+
 		return valide;
 	}
-	
+
 	/**
 	 * verifie que le deplacement ne vas pas faire sortir du plateau
-	 * @param tab
-	 * @param posModif
-	 * @return boolean
+	 * @param tab la tableau de case de la map de la partie
+	 * @param posModif les coordonnes de l'entite post deplacement
+	 * @return boolean 
 	 */
 	public boolean verifDeplacementOutOfBonds(Case[][] tab, int[] posModif) {
 		return posModif[0]>-1 && posModif[1]>-1 && posModif[0]<tab.length && posModif[1]<tab[posModif[0]].length;
 	}
-	
+
 	/**
 	 * verifie que le deplacement ne vas pas faire tomber sur un obstacle
-	 * @param tab
-	 * @param posModif
+	 * @param tab le tableau de case de la map de la partier
+	 * @param posModif les coordonees post deplacement
 	 * @return boolean
 	 */
 	public boolean verifDeplacementColisionObstacle(Case[][] tab, int[] posModif) {

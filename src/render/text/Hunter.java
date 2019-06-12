@@ -22,8 +22,9 @@ public class Hunter extends Entity {
 	private int blinded=0;
 	/**
 	 * instancie Hunter a la Position posX, posY
-	 * @param posX
-	 * @param posY
+	 * @param posX la position voulu en x
+	 * @param posY la position voulu en y
+	 * @param config la configuration de la partie
 	 */
 	public Hunter(int posX, int posY, Config config) {
 		super(posX, posY);
@@ -197,8 +198,8 @@ public class Hunter extends Entity {
 	
 	/**
 	 * retourne la liste des differents Mouvment possible pour Hunter.
-	 * @param tab
-	 * @return ArrayList<Mouvment>
+	 * @param tab la tableau de case de la map de la partie
+	 * @return ArrayList
 	 */
 	public List<Mouvment> getMvtToEmptyCase(Case[][] tab) {
 		List<Mouvment> mouvTab = new ArrayList<>();
@@ -210,8 +211,8 @@ public class Hunter extends Entity {
 	
 	/**
 	 * Verfie si le Hunter a encore la possibilite de jouer ou non.
-	 * @param tab
-	 * @param hunter
+	 * @param tab la tableau de case de la map de la partie
+	 * @param beast le hunter de la partie
 	 * @return boolean
 	 */
 	public boolean isLock(Case[][] tab, Entity beast) {
