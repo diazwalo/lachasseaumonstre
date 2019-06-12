@@ -24,6 +24,11 @@ public class Window extends Application
 		
 		new Home(this, config);
 
+		media = new Media(getClass().getClassLoader().getResource(Directory.GAME_SOUND).toString());
+		mp= new MediaPlayer(media);
+		mp.play();
+		mp.setCycleCount(MediaPlayer.INDEFINITE);
+		
 	    stage.setTitle("La chasse aux monstres");
 	    stage.getIcons().add(new Image(Directory.ICON));
 	    stage.setMaximized(true);
