@@ -32,7 +32,8 @@ public class Camouflage implements IBonus {
 	}
 	
 	/**
-	 * place ce Bonus a la position donn�es
+	 * place ce Bonus a la position donnees
+	 * @param pos La position ou le bonus doit etre installer
 	 */
 	public void install(Position pos) {
 		this.pos = pos;
@@ -48,7 +49,7 @@ public class Camouflage implements IBonus {
 	
 	/**
 	 * retourne la position du camouflage
-	 * @return
+	 * @return Une position
 	 */
 	public Position getPos() {
 		return pos;
@@ -56,7 +57,7 @@ public class Camouflage implements IBonus {
 
 	/**
 	 * retourne le nom
-	 * @return
+	 * @return un String avec le nom de l'objet
 	 */
 	@Override
 	public String getName() {

@@ -23,8 +23,8 @@ public class Trap implements IBonus {
 	
 	/**
 	 * Instancie le trap en le posant au coordonées x y données
-	 * @param posX
-	 * @param posY
+	 * @param posX les coordonees de la map au point x
+	 * @param posY les coordonnes de la map au point y
 	 */
 	
 	public Trap(int posX, int posY) {
@@ -35,7 +35,7 @@ public class Trap implements IBonus {
 
 	/**
 	 *  Revoie le boolean determinant  si le trap est utilisé ou non
-	 * @return
+	 * @return un boolean 
 	 */
 	public boolean getUsed() {
 		return this.used;

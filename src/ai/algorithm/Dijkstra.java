@@ -30,7 +30,7 @@ public class Dijkstra
 
 	/**
 	 * Applique l'algorithme de Dijkstra sur un objet Graph.
-	 * @param Un graph contenant les aretes et les sommets.
+	 * @param graph Un graph contenant les aretes et les sommets.
 	 */
 	public Dijkstra(Graph graph)
 	{
@@ -60,7 +60,7 @@ public class Dijkstra
 	 * @param from L'identifiant de la position de depart.
 	 * @param to L'identifiant de la position finale.
 	 * @return Une liste de positions contenant l'itineraire a suivre.
-	 * @throws NodeNotFoundException 
+	 * @throws NodeNotFoundException  peut causer cette exception si le sommet n'a pas étit trouver
 	 */
 	public List<Position> shortestPathFromTo(String from, String to)
 	{

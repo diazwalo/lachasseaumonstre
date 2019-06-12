@@ -481,8 +481,9 @@ public class Case {
 		}
 		return res;
 	}
+
 	
-	/**
+	 /**
 	 * retourne vrai si un bonus peut etre ramasse sur cette Case
 	 * @param bonus
 	 * @return booean

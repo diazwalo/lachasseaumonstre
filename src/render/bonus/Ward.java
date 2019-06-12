@@ -7,12 +7,12 @@ import map.Position;
  *
  */ 
 public class Ward implements IBonus {
-	
+
 	private int timer;
 	private Position pos;
 	private boolean triggered;
 	private final String NAME = "Balise";
-	
+
 	/**
 	 * Instancie Ward
 	 */
@@ -21,27 +21,27 @@ public class Ward implements IBonus {
 		this.pos = null;
 		this.triggered = false;
 	}
-	
+
 	/**
 	 * Instancie Ward et le place a la position dont l'abscice et l'ordonnee sont donnees en parametre
-	 * @param posX
-	 * @param posY
+	 * @param posX	s
+	 * @param posY	les coordonnees du point y sur la map
 	 */
 	public Ward(int posX, int posY) {
 		this();
 		this.pos=new Position(posX, posY);
 	}
-	
+
 	/**
 	 * retourne le nom du Bonus
 	 */
 	public String getName() {
 		return NAME;
 	}
-	
+
 	/**
-	 * retourne la position du Bonus courant
-	 * @return Position
+	 * Revoin le temps de vie de la ward
+	 * @return un int
 	 */
 	public int getTimer() {
 		return timer;
@@ -49,15 +49,16 @@ public class Ward implements IBonus {
 
 	/**
 	 * retourne la position du Bonus courant
-	 * @return Position
+	 * @return Position une position
 	 */
 	public Position getPos() {
 		return pos;
 	}
 
+
 	/**
 	 * met pour la valeur de radius le parametre qui defini le champ de vision de la balise de vision
-	 * @param radius
+	 * @param time Le temps de vie de la ward
 	 */
 	public void setTimer(int time) {
 		this.timer = time;
@@ -69,7 +70,7 @@ public class Ward implements IBonus {
 	public void install(int x , int y) {
 		this.pos = new Position(x ,y);
 	}
-	
+
 	/**
 	 * Decremente le rayon du champ de vision de la ward. Si il tombe a zero met la position de la ward a null
 	 */
@@ -81,7 +82,7 @@ public class Ward implements IBonus {
 			}
 		}
 	}
-	
+
 	/**
 	 * retourne la balise sous la forme textuelle
 	 */
