@@ -160,13 +160,13 @@ public class Game {
 	public void setInventory() {
 		if(this.plateau instanceof GamePlayHunter) {
 			GamePlayHunter g = ((GamePlayHunter)(this.plateau));
-			this.inventaire = new Inventory(g.ag.map.getHunter(), this.plateau);
+			this.inventaire = new Inventory(g.getGame().map.getHunter(), this.plateau);
 		}else if(this.plateau instanceof GamePlayBeast) {
 			GamePlayBeast g = ((GamePlayBeast)(this.plateau));
-			this.inventaire = new Inventory(g.ag.map.getBeast(), this.plateau);
+			this.inventaire = new Inventory(g.getGame().map.getBeast(), this.plateau);
 		}else if(this.plateau instanceof GamePlayMulti) {
 			GamePlayMulti g = ((GamePlayMulti)(this.plateau));
-			this.inventaire = new Inventory(g.ag.map.getHunter(), this.plateau);
+			this.inventaire = new Inventory(g.getGame().map.getHunter(), this.plateau);
 		}
 	}
 	
@@ -226,11 +226,11 @@ public class Game {
 		List<IBonus> listInventory = new ArrayList<>();
 		
 		if(this.plateau instanceof GamePlayHunter) {
-			((GamePlayHunter)(this.plateau)).ag.map.getHunter().putItAllInInventory();
-			listInventory = ((GamePlayHunter)(this.plateau)).ag.map.getHunter().getInventory();
+			((GamePlayHunter)(this.plateau)).getGame().map.getHunter().putItAllInInventory();
+			listInventory = ((GamePlayHunter)(this.plateau)).getGame().map.getHunter().getInventory();
 		}else if(this.plateau instanceof GamePlayBeast) {
-			((GamePlayBeast)(this.plateau)).ag.map.getBeast().putItAllInInventory();
-			listInventory = ((GamePlayBeast)(this.plateau)).ag.map.getBeast().getInventory();
+			((GamePlayBeast)(this.plateau)).getGame().map.getBeast().putItAllInInventory();
+			listInventory = ((GamePlayBeast)(this.plateau)).getGame().map.getBeast().getInventory();
 		}else if(this.plateau instanceof GamePlayMulti) {
 			if(this.playerTurn == 1) {
 				((GamePlayMulti)(this.plateau)).ag.map.getBeast().putItAllInInventory();
@@ -339,14 +339,14 @@ public class Game {
 	 */
 	public void EndOfGame() {
 		if(! AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-			boolean victory = this.plateau.map.isHunterWin();
+			boolean victory = this.plateau.getMap().isHunterWin();
 			String entityWinner = null;
 			if(this.plateau instanceof GamePlayBeast) {
-				victory = this.plateau.map.isBeastWin();
+				victory = this.plateau.getMap().isBeastWin();
 			}else if((this.plateau instanceof GamePlayMulti) || (this.plateau instanceof GamePlayIA)) {
-				if(this.plateau.map.isBeastWin()) {
+				if(this.plateau.getMap().isBeastWin()) {
 					entityWinner = "de la Bete";
-				}else if(this.plateau.map.isHunterWin()) {
+				}else if(this.plateau.getMap().isHunterWin()) {
 					entityWinner = "du Chasseur";
 				}
 			}
@@ -354,7 +354,7 @@ public class Game {
 			manageScore();
 			
 			EndScreen es =new EndScreen(plateau.window);
-			es.setEndScreen(AbstractGame.gameStatus, victory, this.plateau.map.getConfig(), entityWinner);
+			es.setEndScreen(AbstractGame.gameStatus, victory, this.plateau.getMap().getConfig(), entityWinner);
 		}
 	}
 

@@ -44,11 +44,11 @@ public class Inventory {
 		
 		AbstractGame ag = null;
 		if(gameType instanceof GamePlayHunter) {
-			ag =((GamePlayHunter)(gameType)).ag;
+			ag =((GamePlayHunter)(gameType)).getGame();
 		}else if(gameType instanceof GamePlayBeast) {
-			ag =((GamePlayBeast)(gameType)).ag;
+			ag =((GamePlayBeast)(gameType)).getGame();
 		}else if(gameType instanceof GamePlayMulti) {
-			ag =((GamePlayMulti)(gameType)).ag;
+			ag =((GamePlayMulti)(gameType)).getGame();
 		}
 		
 		if(ag != null) {

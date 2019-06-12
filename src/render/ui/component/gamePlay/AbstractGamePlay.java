@@ -2,6 +2,7 @@ package render.ui.component.gamePlay;
 
 import java.io.FileNotFoundException;
 
+import core.game.AbstractGame;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -24,6 +25,10 @@ import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public abstract class AbstractGamePlay {
+	
+	protected AbstractGame ag;
+	protected AbstractMap map;
+	
 	protected GridPane grid = new GridPane();
 	protected Image ground;
 	protected Image obstacle;
@@ -42,8 +47,6 @@ public abstract class AbstractGamePlay {
 	protected PlayButton playButton;
 	protected Inventory inventory;
 	protected Image fog;
-	
-	public AbstractMap map;
 
 	public Window window;
 	
@@ -419,5 +422,23 @@ public abstract class AbstractGamePlay {
 		}
 
 		return (Rectangle)result;
+	}
+	
+	/**
+	 * Retourne la game en cours
+	 * @return La partie en cours.
+	 */
+	public AbstractGame getGame()
+	{
+		return this.ag;
+	}
+	
+	/**
+	 * Retourne Le plateau de jeu.
+	 * @return L platerau de jeu de la partie en cours.
+	 */
+	public AbstractMap getMap()
+	{
+		return this.map;
 	}
 }

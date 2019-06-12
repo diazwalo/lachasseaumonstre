@@ -14,9 +14,7 @@ import map.Mouvment;
 import render.bonus.IBonus;
 import render.ui.view.EndScreen;
 
-public class GamePlayHunter extends AbstractGamePlay implements IScore{
-	public AbstractGame ag;
-	
+public class GamePlayHunter extends AbstractGamePlay implements IScore{	
 	/**
 	 * Instancie un GamePlayBeast;
 	 * @param map la map de la partie en cours

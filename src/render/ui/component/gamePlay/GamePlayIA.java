@@ -17,7 +17,6 @@ import map.Mouvment;
 import render.ui.view.EndScreen;
 
 public class GamePlayIA extends AbstractGamePlay implements IScore{
-	public AbstractGame ag;
 	//1 si c'est au tour du Chasseur et a 2 si c'est au tour de la Bete
 	int entityTurn;
 
