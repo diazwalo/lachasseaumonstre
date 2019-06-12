@@ -44,7 +44,7 @@ public class Game {
 	
 	int playerTurn=1;
 	String keyCapture = "";
-	
+
 	/**
 	 * Cree une vue pour une partie avec le plateau de jeu, les boutons, et son inventaire.
 	 * @param window Le core de l'ihm.
@@ -166,8 +166,6 @@ public class Game {
 			this.inventaire = new Inventory(g.getGame().map.getBeast(), this.plateau);
 		}else if(this.plateau instanceof GamePlayMulti) {
 			GamePlayMulti g = ((GamePlayMulti)(this.plateau));
-			System.out.println(g.getGame());
-			System.out.println(g.getGame().map.getHunter());
 			this.inventaire = new Inventory(g.getGame().map.getHunter(), this.plateau);
 		}
 	}
@@ -205,11 +203,12 @@ public class Game {
 					this.plateau.next();
 					this.hunterTurn.setDisable(false);
 				}
+				
+				this.inventaire.setBonusDisable();
 				this.nextTurn.setDisable(true);
 				
 				this.EndOfGame();
 			});
-			this.inventaire.setBonusDisable();
 		}else {
 			
 			nextTurn.setDisable(true);

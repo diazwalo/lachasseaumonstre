@@ -26,7 +26,6 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 		super.refreshTransitionView(map);
 		ag= new GameMulti(map);
 		ag.map.setBeastWalk();
-		
 	}
 
 	/**
@@ -38,13 +37,16 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 			if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
 				
 				if(entityTurn==0) {
-					
+					ag.updateStartGame();
 					IBonus bo=ag.checkBeastTrapped();
 					if(super.map.getBeast().getTrapped()) {
 						super.map.getBeast().setUntrapped();
 						if(bo != null) {
+							this.ag.triggerTrap();
 							this.map.removeBonus(bo);
 							entityTurn=(entityTurn+1)%2;
+							ag.updateEndGame();
+							super.refreshBeastView(super.map);
 						}
 						return true;
 					}else if(ag.map.moveBeast(mouvment)) {
@@ -53,23 +55,28 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 						ag.incrementNbTurnEntityTwo();
 						ag.ramasserBonusBeast();
 						entityTurn=(entityTurn+1)%2;
-					}else {
-						return false;
+						ag.updateEndGame();
+						super.refreshBeastView(super.map);
+						return true;
 					}
-					super.refreshBeastView(super.map);
-					ag.updateStartGame();
 					
-					return true;
+					//TEST
+					ag.updateEndGame();
+					
+					return false;
 				}
 				
 				else {
-
+					//ag.updateEndGame();
+					ag.updateStartGame();
 					if(ag.map.moveHunter(mouvment)) {
 						ag.checkGameStatus();
 						ag.ramasserBonusHunter();
 						ag.incrementNbTurnEntityOne();
 						
-						ag.updateStartGame();
+						
+						//TEST
+						//ag.updateEndGame();
 						
 						super.refreshHunterView(map);
 						entityTurn=(entityTurn+1)%2;
@@ -108,7 +115,6 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	@Override
 	public void buildScore()
 	{
-		System.out.println("d");
 		Score s = new Score("Joueur 1", "Joueur 2");
 		ag.saveScore(ScoreFile.MULTI, s);
 	}
