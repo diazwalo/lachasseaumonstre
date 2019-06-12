@@ -352,17 +352,8 @@ public class Game {
 				}
 			}
 			
-			manageScore();
-			
 			EndScreen es =new EndScreen(plateau.window);
-			es.setEndScreen(AbstractGame.gameStatus, victory, this.plateau.getMap().getConfig(), entityWinner);
+			es.setEndScreen(AbstractGame.gameStatus, victory, this.plateau, entityWinner);
 		}
-	}
-
-	// Regarde ca virgil, quelle si beau code sans instanceOf xD
-	private void manageScore()
-	{
-		((IScore) this.plateau).buildScore();
-		//new askPseudo(plateau.window);
 	}
 }

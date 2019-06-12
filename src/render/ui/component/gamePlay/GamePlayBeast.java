@@ -74,9 +74,9 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 	 * Cree un score et le sauvegarde
 	 */
 	@Override
-	public void buildScore()
+	public void buildScore(String username)
 	{
-		Score s = new Score("Joueur", Dijkstra.NAME);
+		Score s = new Score(username, Dijkstra.NAME);
 		ag.saveScore(ScoreFile.BEAST, s);
 	}
 }

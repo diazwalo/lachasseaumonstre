@@ -70,7 +70,7 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 	}
 
 	@Override
-	public void buildScore()
+	public void buildScore(String username)
 	{
 		Score s = new Score(Curiosity.NAME, Dijkstra.NAME);
 		ag.saveScore(ScoreFile.AI, s);

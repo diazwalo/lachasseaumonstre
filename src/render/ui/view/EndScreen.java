@@ -2,6 +2,7 @@ package render.ui.view;
 
 import config.Config;
 import core.game.GameStatus;
+import data.score.IScore;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import render.ui.component.gamePlay.AbstractGamePlay;
 import render.ui.core.Window;
 import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelThemeVariableSize;
@@ -17,6 +19,8 @@ import render.ui.util.Directory;
 import render.ui.util.Interface;
 
 public class EndScreen {
+	
+	private AbstractGamePlay plateau;
 	private HBox core;
 	private VBox center;
 	private Window window;
@@ -33,9 +37,10 @@ public class EndScreen {
 	 * @param gameStatue  l'etat  de la partie courante
 	 * @param victory determine si le joueur a gagner
 	 * @param config la config de la partie en cours
-	 * @param entityWinner l'entité a avoir gagner
+	 * @param entityWinner l'entitï¿½ a avoir gagner
 	 */
-	public void setEndScreen(GameStatus gameStatue, boolean victory, Config config, String entityWinner) {
+	public void setEndScreen(GameStatus gameStatue, boolean victory, AbstractGamePlay plateau, String entityWinner) {
+		this.plateau = plateau;
 		Label statue = null;
 
 		if(entityWinner == null) {
@@ -78,7 +83,7 @@ public class EndScreen {
 			window.mp= new MediaPlayer(window.media);
 			window.mp.play();
 			window.mp.setCycleCount(MediaPlayer.INDEFINITE);
-			new Home(this.window, config);
+			new askPseudo(this.window, plateau);
 		});
 
 		if(statue == null) {
@@ -94,10 +99,6 @@ public class EndScreen {
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
 		scene.getStylesheets().add(Directory.STYLE_CSS);
 		window.stage.setScene(scene);
-		/*Scene scene = new Scene(this.center, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		scene.getStylesheets().add(Directory.STYLE_CSS);
-
-		window.stage.setScene(scene);*/
 	}
-
+	
 }

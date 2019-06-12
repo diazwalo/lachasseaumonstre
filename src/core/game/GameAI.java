@@ -85,7 +85,7 @@ public class GameAI extends AbstractGame implements IScore
 			//this.map.setBeastWalk();
 			
 		}
-		buildScore();
+		buildScore("");
 		this.endGame();
 	}
 
@@ -195,7 +195,7 @@ public class GameAI extends AbstractGame implements IScore
 	}
 	
 	@Override
-	public void buildScore()
+	public void buildScore(String username)
 	{
 		Score s = new Score(Curiosity.NAME, Dijkstra.NAME);
 		super.saveScore(ScoreFile.AI, s);

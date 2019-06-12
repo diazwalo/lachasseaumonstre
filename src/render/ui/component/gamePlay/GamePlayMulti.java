@@ -119,7 +119,7 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	 * Cree un score et le sauvegarde
 	 */
 	@Override
-	public void buildScore()
+	public void buildScore(String username)
 	{
 		Score s = new Score("Joueur 1", "Joueur 2");
 		ag.saveScore(ScoreFile.MULTI, s);

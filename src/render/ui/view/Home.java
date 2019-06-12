@@ -56,7 +56,6 @@ public class Home
 		
 		window.stage.setScene(scene);
 		
-	
 	}
 	
 	

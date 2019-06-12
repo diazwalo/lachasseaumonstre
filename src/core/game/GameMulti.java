@@ -38,7 +38,7 @@ public class GameMulti extends AbstractGame implements IScore{
 			this.aToiDeJouer("du Chasseur");
 			System.out.println(map.gameHunterToString()+"\n");
 		}
-		buildScore();
+		buildScore("");
 		this.endGame();
 	}
 	
@@ -54,7 +54,7 @@ public class GameMulti extends AbstractGame implements IScore{
 	}
 	
 	@Override
-	public void buildScore()
+	public void buildScore(String username)
 	{
 		Score s = new Score("Joueur 1", "Joueur 2");
 		super.saveScore(ScoreFile.MULTI, s);

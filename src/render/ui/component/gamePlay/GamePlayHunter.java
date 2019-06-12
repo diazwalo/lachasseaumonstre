@@ -63,9 +63,9 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 	 * Cr�e un score et le sauvegarde
 	 */
 	@Override
-	public void buildScore()
+	public void buildScore(String username)
 	{
-		Score s = new Score("Joueur", Curiosity.NAME);
+		Score s = new Score(username, Curiosity.NAME);
 		ag.saveScore(ScoreFile.HUNTER, s);
 	}
 }

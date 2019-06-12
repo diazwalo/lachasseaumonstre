@@ -92,10 +92,10 @@ public class GameBeast extends AbstractGame implements IScore{
 			System.out.println(AbstractGame.gameStatus.getStatus());
 			System.out.println("Victoire du Chasseur");
 		}
-		buildScore();
+		buildScore("");
 	}
 	
-	public void buildScore()
+	public void buildScore(String username)
 	{
 		Score s = new Score("Joueur", Dijkstra.NAME);
 		super.saveScore(ScoreFile.BEAST, s);
