@@ -18,7 +18,6 @@ import javafx.scene.layout.VBox;
 import map.AbstractMap;
 import map.Mouvment;
 import render.bonus.IBonus;
-import render.ui.component.Chat;
 import render.ui.component.Inventory;
 import render.ui.component.gamePlay.AbstractGamePlay;
 import render.ui.component.gamePlay.GamePlayBeast;
@@ -40,7 +39,6 @@ public class Game {
 	PlayButton gamePad;
 	Inventory inventaire;
 	AbstractGamePlay plateau; 
-	Chat chat;
 	
 	Button nextTurn;
 	Button beastTurn;
@@ -92,9 +90,6 @@ public class Game {
 	 * @param window Le core de l'ihm.
 	 */
 	public void setScene(Window window) {
-		this.chat = new Chat();
-		
-		
 		if(this.plateau instanceof GamePlayMulti) {
 			beastTurn=new Button ("Tour de la bete ");
 			hunterTurn=new Button ("Tour du chasseur ");
