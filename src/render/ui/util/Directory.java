@@ -112,7 +112,9 @@ public class Directory
 	public static final String BONUS_RULES =  TEXTURES_FOLDER + "rules_bonus.png";
 	
 	public static final String GAME_BEAST_TRAPPED = TEXTURES_FOLDER + "beastTrap.png";
-	;
+	
 	public static final String GAME_LEAVE = TEXTURES_FOLDER + "leave.png";
+	
+	public static final String NEXT_TURN = TEXTURES_FOLDER + "next_turn.png";
 	//endregion
 }

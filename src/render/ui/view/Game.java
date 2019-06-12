@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import map.AbstractMap;
@@ -23,6 +24,7 @@ import render.ui.component.gamePlay.GamePlayHunter;
 import render.ui.component.gamePlay.GamePlayIA;
 import render.ui.component.gamePlay.GamePlayMulti;
 import render.ui.core.Window;
+import render.ui.form.button.HomeButton;
 import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
 import render.ui.util.Interface;
@@ -38,13 +40,15 @@ public class Game {
 	Inventory inventaire;
 	AbstractGamePlay plateau; 
 	
-	Button nextTurn;
-	Button beastTurn;
-	Button hunterTurn;	
+	HomeButton nextTurn;
+	HomeButton beastTurn;
+	HomeButton hunterTurn;	
 	
 	int playerTurn=1;
 	String keyCapture = "";
 
+
+	
 	/**
 	 * Cree une vue pour une partie avec le plateau de jeu, les boutons, et son inventaire.
 	 * @param window Le core de l'ihm.
@@ -74,7 +78,7 @@ public class Game {
 		this.plateau.setWindow(window);
 		this.setInventory();
 
-		nextTurn = new Button("Tour suivant");
+		nextTurn = new HomeButton("Tour suivant");
 		nextTurn.setDisable(true);
 		this.setEventNextTurnButton();
 
@@ -88,8 +92,8 @@ public class Game {
 	 */
 	public void setScene(Window window) {
 		if(this.plateau instanceof GamePlayMulti) {
-			beastTurn=new Button ("Tour de la bete ");
-			hunterTurn=new Button ("Tour du chasseur ");
+			beastTurn=new HomeButton ("Tour de la bete ");
+			hunterTurn=new HomeButton ("Tour du chasseur ");
 			this.setEntityTurnButton();
 			this.plateau.setInventory(this.inventaire);
 			this.right.getChildren().addAll(inventaire.getCore());
@@ -184,7 +188,7 @@ public class Game {
 	 * Initialise l'evenement du bouton pour passer au tour suivant.
 	 */
 	public void setEventNextTurnButton() {
-		nextTurn = new Button("Tour suivant");
+		nextTurn = new HomeButton("Tour suivant");
 		if( this.plateau instanceof GamePlayIA ) {
 			
 			nextTurn.setDisable(false);
