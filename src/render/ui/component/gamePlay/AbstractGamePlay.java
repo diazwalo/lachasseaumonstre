@@ -50,6 +50,7 @@ public abstract class AbstractGamePlay {
 	protected PlayButton playButton;
 	protected Inventory inventory;
 	protected Image fog;
+	protected Image beastTrap;
 
 	public Window window;
 	
@@ -78,6 +79,7 @@ public abstract class AbstractGamePlay {
 		hunter = new Image(Directory.GAME_HUNTER);
 		bonus = new Image(Directory.GAME_BONUS);
 		fog  = new Image(Directory.GAME_FOG);
+		beastTrap = new Image(Directory.GAME_BEAST_TRAPPED);
 
 		trap = new Image(Directory.GAME_TRAP);
 		ward = new Image(Directory.GAME_WARD);
@@ -202,6 +204,7 @@ public abstract class AbstractGamePlay {
 	 * @param map Le plateau de jeu.
 	 */
 	public void refreshBeastView(AbstractMap map) {
+		
 		for (int row = 0; row < (map.getTab().length); row++) {
 			for (int col = 0; col < (map.getTab()[row].length); col++) {
 				Rectangle rec = new Rectangle();
@@ -263,7 +266,12 @@ public abstract class AbstractGamePlay {
 		if(caseCour.getHunterBonusActifOnCase(map, posCase) != null) {
 			IBonus bonusActif = caseCour.getHunterBonusActifOnCase(map, posCase);
 			if(bonusActif instanceof Trap) {
-				rec.setFill(new ImagePattern(trap));
+				if(map.getBeast().getTrapped()) {
+					rec.setFill(new ImagePattern(beastTrap));
+				}
+				else {
+					rec.setFill(new ImagePattern(trap));
+				}
 			}else if(bonusActif instanceof Ward) {
 				rec.setFill(new ImagePattern(ward));
 			}
@@ -279,6 +287,8 @@ public abstract class AbstractGamePlay {
 					rec.setFill(new ImagePattern(tabImage[i]));
 				}
 			}
+	
+			
 		}
 
 		if(caseCour.bonusOnCase(caseCour.getBonusHunter())) {
@@ -298,11 +308,21 @@ public abstract class AbstractGamePlay {
 		}
 
 		if(caseCour.getBeastNearHunter(map, posCase) != null) {
-			rec.setFill(new ImagePattern(beast));
+			if(map.getBeast().getTrapped()) {
+				rec.setFill(new ImagePattern(beastTrap));
+			}
+			else {
+				rec.setFill(new ImagePattern(beast));
+			}
 		}
 
 		if(caseCour.getBeastIfRevealed(map, posCase) != null) {
-			rec.setFill(new ImagePattern(beast));
+			if(map.getBeast().getTrapped()) {
+				rec.setFill(new ImagePattern(beastTrap));
+			}
+			else {
+				rec.setFill(new ImagePattern(beast));
+			}
 		}
 		
 		if(caseCour.getHunterOnCase(map, posCase)) {
@@ -342,7 +362,12 @@ public abstract class AbstractGamePlay {
 		}
 		
 		if(caseCour.getBeastOnCaseBeastMode(map, posCase)) {
-			rec.setFill(new ImagePattern(beast));
+			if(map.getBeast().getTrapped()) {
+				rec.setFill(new ImagePattern(beastTrap));
+			}
+			else {
+				rec.setFill(new ImagePattern(beast));
+			}
 		}
 		
 		if(caseCour.getHunterOnCase(map, posCase)) {
