@@ -54,7 +54,7 @@ public class Game {
 	 * @param window Le core de l'ihm
 	 * @param map Le plateau de jeu de la partie.
 	 * @param gameType Le mode de jeu de la partie.
-	 * @throws FileNotFoundException
+	 * @throws FileNotFoundException exception se declachant si il ne trouve pas les texture voulu
 	 */
 	
 	public Game(Window window, AbstractMap map, AbstractGamePlay gameType) throws FileNotFoundException {
