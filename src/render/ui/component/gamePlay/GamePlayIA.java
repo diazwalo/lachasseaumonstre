@@ -48,6 +48,10 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 				ag.checkGameStatus();
 				ag.ramasserBonusHunter();
 				super.refreshIAView(super.map);
+			}else {
+				System.out.println(super.map.isBeastWin());
+				System.out.println(super.map.isHunterWin());
+				System.out.println(AbstractGame.gameStatus);
 			}
 		}else if(entityTurn == 2) {
 			
@@ -58,7 +62,7 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 				this.map.setBeastWalk();
 				ag.checkGameStatus();
 				ag.ramasserBonusBeast();
-				super.refreshIAView(map);
+				super.refreshIAView(super.map);
 			}
 		}
 		

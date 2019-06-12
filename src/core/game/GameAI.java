@@ -100,30 +100,9 @@ public class GameAI extends AbstractGame implements IScore
 		try {
 			super.map.moveBeast(Position.toMouvment(this.map.getBeast().getPos(), this.pathBeast.get(this.beastTurn)));
 		}catch(Exception e) {
-			this.map.setHunterWin(true);
-			
-			// trouver ou effectuer le checkBeastPas
-			/*List<Mouvment> mvtBeastDispo = super.map.getBeast().getMvtToEmptyCase(super.map.getTab());
-			if(mvtBeastDispo.size()>0) {
-				Mouvment mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
-				while(! super.map.moveBeast(mvtBeast)) {
-					mvtBeast = this.choseMvtNotOnHunter(mvtBeastDispo);
-				}
-				super.map.setBeastWalk();
-				super.checkGameStatus();
-				
-				setBonusIABeast();
-				
-				ramasserBonusBeast();
-				
-				return true;
-			}
-			else {
-				AbstractGame.gameStatus=GameStatus.BEASTBLOCK;
-				return false;
-			}*/
+			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
-		
 		super.incrementNbTurnEntityOne();
 		this.beastTurn++;
 		return true;

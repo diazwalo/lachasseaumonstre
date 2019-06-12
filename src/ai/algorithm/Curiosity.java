@@ -55,7 +55,7 @@ public class Curiosity
             {
                 positions.add(position);
             }
-
+            System.out.println(position);
             if(cantMooveRight(position) && 
                     positionList.contains(position.toNorth()) && this.listNode.get(NodeUtil.formatNode(position.toNorth())) != null &&
                     positionList.contains(position.toNorthWest()) && this.listNode.get(NodeUtil.formatNode(position.toNorthWest())) != null
@@ -76,7 +76,6 @@ public class Curiosity
                     position = position.toNorth();
                     verticalyDeplacement = true;
                 }
-
             } else {
                 if(positionList.contains(position.toSouth()) && this.listNode.get(NodeUtil.formatNode(position.toSouth())) != null) {
                     position = position.toSouth();
@@ -90,8 +89,9 @@ public class Curiosity
                 } else if(positionList.contains(position.toNorth()) && this.listNode.get(NodeUtil.formatNode(position.toNorth())) != null) {
                     position = position.toNorth();
                     verticalyDeplacement = true;
-                } 
-
+                } else {
+                	position = position.toLeft();
+                }
             }
             
             
