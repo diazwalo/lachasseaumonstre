@@ -73,7 +73,7 @@ public class EndScreen {
 		Button next = new HomeMinButton("Suivant");
 		next.setOnAction(e -> { 
 			//On devra faire un this.config (donc l'avoir comme attribut)
-			window.mp.stop();
+			window.mp.stop(); 
 			new Home(this.window, config);
 		});
 
