@@ -59,15 +59,16 @@ public abstract class AbstractMap
         Position posBonusFinal=new Position(-1 , -1);
 
         while(posBonusFinal.isPos(-1, -1)) {
-            int posBonusX=idxWidth+r.nextInt((this.tab.length/2));
-            int posBonusY=idxHeight+r.nextInt((this.tab[0].length/2));
-            
+            int posBonusX = idxWidth + r.nextInt(((this.tab[0].length-1)/2));
+            int posBonusY = idxHeight + r.nextInt(((this.tab.length-1)/2));
+
             if(idxWidth != 0 || idxHeight != 0) {
             	posBonusY=idxWidth-r.nextInt(idxWidth/2);
             	posBonusX=idxHeight-r.nextInt(idxHeight/2);
             }
             
             Position posBonusTempo=new Position(posBonusX, posBonusY);
+
             if(! this.tab[posBonusTempo.getPosY()][posBonusTempo.getPosX()].isObstacle() && 
             		! this.beast.getPos().equals(posBonusTempo) && 
             		! this.hunter.getPos().equals(posBonusTempo)) {
@@ -98,8 +99,8 @@ public abstract class AbstractMap
         Position posBonusFinal=new Position(-2 , -2);
 
         while(posBonusFinal.isPos(-2, -2)) {
-            int posBonusX=idxHeight+r.nextInt(this.tab.length/2);
-            int posBonusY=idxHeight+r.nextInt(this.tab[0].length/2);
+            int posBonusX = idxHeight + r.nextInt((this.tab[0].length-1)/2);
+            int posBonusY = idxHeight + r.nextInt((this.tab.length-1)/2);
 
             if(idxWidth != 0 || idxHeight != 0) {
             	posBonusY=idxWidth-r.nextInt(idxWidth/2);
@@ -119,7 +120,7 @@ public abstract class AbstractMap
         if(bonusHunterOrBeast)  {
         	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusBeast(tabBonus);
         }else {
-        	tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusHunter(tabBonus);
+        	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusHunter(tabBonus);
         }
     }
 
