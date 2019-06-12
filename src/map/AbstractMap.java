@@ -44,10 +44,12 @@ public abstract class AbstractMap
 		}
 	}
 
+
+    
     /**
      * Place le Premier Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote
-     * @param place sur la largeure de l'entitee
-     * @param place sur la longueur de l'entitee
+     * @param idxWidth place sur la largeure de l'entitee
+     * @param idxHeight place sur la longueur de l'entitee
      * @param tabBonus La configuration des bonus.
      * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
      * @return Position
@@ -85,8 +87,8 @@ public abstract class AbstractMap
 
     /**
      * Place le Deuxieme Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote en s'assurant que ce dernier ne soit pas a la position du premier Bonus
-     * @param place sur la largeure de l'entitee
-     * @param place sur la longueur de l'entitee
+     * @param idxWidth place sur la largeure de l'entitee
+     * @param idxHeight place sur la longueur de l'entitee
      * @param tabBonus La configuration des bonus
      * @param posFirstBonus La position du premier bonus.
      * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
@@ -263,6 +265,7 @@ public abstract class AbstractMap
 
     /**
      * Deplace la Beast avec le Mouvment passe en parametre si ce dernier est possible
+     * @param mvt Le moovement a effectue par le bete
      * @return Si le deplacement a ete correctement effectue.
      */
     public final boolean moveBeast(Mouvment mvt) {
@@ -275,6 +278,7 @@ public abstract class AbstractMap
 
     /**
      * Deplace la Hunter avec le Mouvment passe en parametre si ce dernier est possible
+     * @param mvt Le moovement a effectue par le chasseur
      * @return Si le deplacement a ete correctement effectue.
      */
     public final boolean moveHunter(Mouvment mvt) {

@@ -13,9 +13,8 @@ import render.text.Hunter;
 public class SquareMap extends AbstractMap {
 
 	/**
-	 * Construit un tableau de longueur len et de largeur wid et set Beast, Hunter et la Config
-	 * @param len
-	 * @param wid
+	 * Construit un tableau en fonction des information de la config
+	 * @param config la configuration de la partie
 	 */
 	public SquareMap(Config config) {
 		this.config = config;

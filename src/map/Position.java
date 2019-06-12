@@ -15,8 +15,8 @@ public class Position {
 	
 	/**
 	 * associe a la composante x et y les valeurs en parametre rexpectivement posX et posY
-	 * @param posX
-	 * @param posY
+	 * @param posX les coordonnées en x
+	 * @param posY les coordonnées en y
 	 */
 	public Position(int posX, int posY) {
 		this.posX=posX;
@@ -25,7 +25,7 @@ public class Position {
 	
 	/**
 	 * Retourne la composante sur X de la Position
-	 * @return int
+	 * @return int la position en x
 	 */
 	public int getPosX() {
 		return this.posX;
@@ -33,7 +33,7 @@ public class Position {
 	
 	/**
 	 * Retourne la composante sur Y de la Position
-	 * @return int
+	 * @return int la position en y
 	 */
 	public int getPosY() {
 		return this.posY;
@@ -41,7 +41,7 @@ public class Position {
 
 	/**
 	 * Modifie la composante sur X de la Position Courante en lui associant la valeur ud parametre posX
-	 * @param posX
+	 * @param posX la nouvelle position en x
 	 */
 	public void setPosX(int posX) {
 		this.posX=posX;
@@ -49,7 +49,7 @@ public class Position {
 	
 	/**
 	 *  Modifie la composante sur Y de la Position Courante en lui associant la valeur ud parametre posY
-	 *  @param posY
+	 *  @param posY la nouvelle position en y
 	 */
 	public void setPosY(int posY) {
 		this.posY=posY;
@@ -57,9 +57,9 @@ public class Position {
 	
 	/**
 	 * Determine si l'Entity est a la position donnee en Parametre
-	 * @param posX
-	 * @param posY
-	 * @return boolean
+	 * @param posX la position en x
+	 * @param posY la position en y
+	 * @return boolean determinant si il est bien au position donne
 	 */
 	public boolean isPos(int posX, int posY) {
 		return this.posX==posX && this.posY==posY;
@@ -67,7 +67,7 @@ public class Position {
 		
 	/**
 	 * deplace la Position courante en lui applicant le Mouvment mvt passe en parametre
-	 * @param mvt
+	 * @param mvt Le mouvement a executer
 	 */
 	public void movePosition(Mouvment mvt) {
 		int[] tabMvt=mvt.getMvt();
@@ -77,7 +77,7 @@ public class Position {
 	
 	/**
 	 * Renvoie un tableau d'entier contenant les deux composantes sous la forme{coord x , coord y}
-	 * @return int[]
+	 * @return int[] le tableau de coordonné
 	 */
 	public int[] getTabPosition() {
 		return new int[] {this.posX ,this.posY};
@@ -85,8 +85,8 @@ public class Position {
 
 	/**
 	 * retourne la position telle qu elle serait si le Mouvment mvt etait applique
-	 * @param mvt
-	 * @return int[]
+	 * @param mvt le mouvement a excuter
+	 * @return int[] les coordonne post mouvement
 	 */
 	public int[] getModifPosTempo(int[] mvt) {
 		return new int[] {(this.posX+(mvt[0])) ,(this.posY+(mvt[1]))};
@@ -94,8 +94,8 @@ public class Position {
 	
 	/**
 	 * retourn la liste des Positions reliees a la Position courante
-	 * @param sm
-	 * @return List<Position>
+	 * @param sm la map de jeu 
+	 * @return List des position adjacente
 	 */
 	public List<Position> getAdjacentPosition(AbstractMap sm) {
 		List<Position> positionAdjacent =new ArrayList<Position>();

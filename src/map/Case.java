@@ -30,18 +30,20 @@ public class Case {
 	/**
 	 * Creer une class Case avec en parametre CaseType et posBeast respectivment le type de la case
 	 * et si la bete est passe sur la case, instansie par defaut les buff a false.
-	 * @param caseType
-	 * @param posBeast
+	 * @param caseType le type de case voulue
+	 * @param posBeast la position de la bete dans la partie
 	 */
 	public Case(CaseType caseType, boolean posBeast) {
 		this(caseType, posBeast, new boolean[] {false, false }, new boolean[] {false, false});
 	}
 	
 	/**
-	 * Meme principe que le premier constructeur avec les tableau de buff souhaite en parametre
-	 * @param caseType
-	 * @param posBeast
-	 * @param buff
+	 * Creer une class Case avec en parametre CaseType et posBeast respectivment le type de la case
+	 * et si la bete est passe sur la case, instansie par defaut les bonus a false.
+	 * @param caseType le type de case souhaiter
+	 * @param posBeast la position de la bete
+	 * @param bonusBeast le bonus disponible pour la bete
+	 * @param bonusHunter le bonus disponible pour le chasseur
 	 */
 	public Case(CaseType caseType, boolean posBeast, boolean[] bonusBeast, boolean[] bonusHunter) {
 		this.caseType=caseType;
@@ -94,7 +96,7 @@ public class Case {
 		
 	/**
 	 * passe beastWalk a la valeur passee en parametre
-	 * @param beastWalk
+	 * @param beastWalk le nombre de tour ou la bete et passer sur la case
 	 */
 	public void setBeastWalk(int beastWalk) {
 		this.beastWalk=beastWalk;
@@ -109,25 +111,25 @@ public class Case {
 	}
 	
 	/**
-	 * modifie le tableau de buff en le remplacant par celui en parametre
-	 * @param buff
+	 * modifie le tableau de bonus en le remplacant par celui en parametre
+	 * @param bonusHunter un tableau contenant tous les bonus du chasseur
 	 */
 	public void setBonusHunter(boolean[] bonusHunter) {
 		this.bonusHunter=bonusHunter;
 	}
 	
 	/**
-	 * modifie le tableau de buff en le remplacant par celui en parametre
-	 * @param buff
+	 * modifie le tableau de bonus en le remplacant par celui en parametre
+	 * @param bonusBeast un tableau contenant tous les bonus de la bete
 	 */
 	public void setBonusBeast(boolean[] bonusBeast) {
 		this.bonusBeast=bonusBeast;
 	}
 	
 	/**
-	 * Ajoute ï¿½ l'inventaire du Chasseur, le piï¿½ge de la Case (s'il y en a un).
-	 * @param hunter
-	 * @param posCase
+	 * Ajoute a l'inventaire du Chasseur, le piee de la Case (s'il y en a un).
+	 * @param hunter la chasseur de la partie
+	 * @param posCase la position de la case sur laquel le chasseur est.
 	 */
 	public void PickUpBonusHunter(Hunter hunter, Position posCase) {
 		if(hunter.getPos().isPos(posCase.getPosX(), posCase.getPosY())) {
@@ -145,9 +147,9 @@ public class Case {
 	}
 	
 	/**
-	 * Ajoute a l'inventaire de la Bete, le piege de la Case (s'il y en a un).
-	 * @param beast
-	 * @param posCase
+	 * Ajoute a l'inventaire de la Bete, le bonus de la Case (s'il y en a un).
+	 * @param beast la bete de la partie
+	 * @param posCase la case courante
 	 */
 	public void PickUpBonusBeast(Beast beast, Position posCase) {
 		if(beast.getPos().isPos(posCase.getPosX(), posCase.getPosY())) {
@@ -166,7 +168,7 @@ public class Case {
 	
 	/**
 	 * Passe beastWalk a 0 cette case correspond a la position de la bete ou incremente beastWalk si Beast est deja passe ici
-	 * @param posBeast
+	 * @param posBeast un boolean si la case courante est la case ou est situe la bete
 	 */
 	public void modifBeastWalk(boolean posBeast) {
 		if(posBeast) this.setBeastWalk(0);
@@ -183,9 +185,9 @@ public class Case {
 	
 	/**
 	 * Montre la map tel que le joueur doit la voir lorsqu'il joue le chasseur
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map la map de la partie en cour
+	 * @param posCase la position de la case courante
+	 * @return String la vue du chasseur sous forme textuelle
 	 */
 	public String gameHunterShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
@@ -233,9 +235,9 @@ public class Case {
 
 	/**
 	 * Montre la map tel que le joueur doit la voir lorsqu'il joue la Bete
-	 * @param map
-	 * @param posCase
-	 * @return
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String la vue de la bete sous forme textuelle
 	 */
 	public String gameBeastShowView(AbstractMap map, Position posCase) {
 		String res=caseType.toString();
@@ -263,9 +265,9 @@ public class Case {
 	
 	/**
 	 * retourn la Bete sous la forme d'une Chaine de Char si elle est revelee
-	 * @param map
-	 * @param posCase
-	 * @return String 
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String  le bete sous forme textuelle
 	 */
 	public String getBeastIfRevealedToString(AbstractMap map, Position posCase) {
 		String beast = "";
@@ -277,9 +279,9 @@ public class Case {
 	
 	/**
 	 * Retourn la Bete si elle est revelee et null dans le cas echeant
-	 * @param map
-	 * @param posCase
-	 * @return Beast
+	 * @param map la map de  la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return Beast la bete de la partie
 	 */
 	public Beast getBeastIfRevealed(AbstractMap map, Position posCase) {
 		if((map.getBeast().getTrapped() || map.getBeast().getRevealedByWard()) && map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
@@ -290,9 +292,9 @@ public class Case {
 	
 	/**
 	 * Retourne le Chasseur sous la forme d'une Chaine de Char si ce dernier est sur la meme Caseque la Bete est null le cas echeant
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String la version textuelle de l'entité
 	 */
 	public String getEntityOnSameCaseToString(AbstractMap map, Position posCase) {
 		String entity = "";
@@ -304,9 +306,9 @@ public class Case {
 	
 	/**
 	 * Retourne le Chasseur si ce dernier est sur la meme Case que la Bete et null le cas echenat
-	 * @param map
-	 * @param posCase
-	 * @return Hunter
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return Hunter le chasseur de la partie
 	 */
 	public Hunter getEntityOnSameCase(AbstractMap map, Position posCase) {
 		if(map.getBeast().getPos().equals(map.getHunter().getPos()) && map.getHunter().getPos().equals(posCase)) {
@@ -317,9 +319,9 @@ public class Case {
 	
 	/**
 	 * Retourne le nombre de Pas depuis lequel la Bete est passee sure cette Case sous la forme d'une Chaine de Charactere (entre 1 et 4)
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String le normbre de tour que la bete est passer la case
 	 */
 	public String getBeastWalkNearHunterToString(AbstractMap map, Position posCase) {
 		String beastWalk = "";
@@ -331,9 +333,9 @@ public class Case {
 	
 	/**
 	 * Retourne le nombre de pas depuis lequel la Bete est passee sur cette Case (entre 1 et 4) ou -1 si ce dernier n'y est pas passe depuis 4 tours
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String le normbre de tour que la bete est passer la case
 	 */
 	public int getBeastWalkNearHunter(AbstractMap map, Position posCase) {
 		int beastWalk = -1;
@@ -351,9 +353,9 @@ public class Case {
 	
 	/**
 	 * retourn la bete sous a forme d'une Chaine de Char si cette derniere est proche du Chasseur
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map  la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String la bete de la partie
 	 */
 	public String getBeastNearHunterToString(AbstractMap map, Position posCase) {
 		String beast = "";
@@ -365,9 +367,9 @@ public class Case {
 	
 	/**
 	 * Retourne la Bete si celle ci est sur une case a cote du Chasseur et null le cas echeant
-	 * @param map
-	 * @param posCase
-	 * @return Beast
+	 * @param map  la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return Beast la bete de la partie
 	 */
 	public Beast getBeastNearHunter (AbstractMap map, Position posCase) {
 		List<Position> posAdj=posCase.getAdjacentPosition(map);
@@ -386,9 +388,9 @@ public class Case {
 	
 	/**
 	 * Retourne le compteur du Bait si ce dernier est Active et retourne la Chaine vide ce cas echeant
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String le compteur du Bait
 	 */
 	public String getBaitOnCaseToString(AbstractMap map, Position posCase) {
 		String baitOnCase = "";
@@ -401,9 +403,9 @@ public class Case {
 	
 	/**
 	 * Retourne un Bait si ce dernier est sur la Case Courante et si il est active et null si il n'y en a pas
-	 * @param map
-	 * @param posCase
-	 * @return IBonus
+	 * @param map la map de la partie en cours
+	 * @param posCase  la position de la case courante
+	 * @return IBonus le bonus sur la case donne
 	 */
 	public IBonus getBaitOnCase(AbstractMap map, Position posCase) {
 		IBonus baitOnCase = null;
@@ -417,9 +419,9 @@ public class Case {
 	
 	/**
 	 * retourne le CHasseur sous la forme d'une Cahaine de Char si ce dernier est sur la Case courante
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map	la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String le hunter de la partie
 	 */
 	public String getHunterOnCaseToString(AbstractMap map, Position posCase) {
 		String res = "";
@@ -430,10 +432,10 @@ public class Case {
 	}
 	
 	/**
-	 * Retourne vrai si le Chasseur est sur la Case courante et faux le cas ï¿½chï¿½ant
-	 * @param map
-	 * @param posCase
-	 * @return boolean
+	 * Retourne vrai si le Chasseur est sur la Case courante et faux le cas echeant
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return boolean determinant si le chasseur est sur la case indiquer
 	 */
 	public boolean getHunterOnCase(AbstractMap map, Position posCase) {
 		if(map.getHunter().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
@@ -444,9 +446,9 @@ public class Case {
 	
 	/**
 	 * retourne la Bete sous la forme d'une Cahaine de Char si cette derniere est sur la Case courante
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String la bete de la partie
 	 */
 	public String getBeastOnCaseBeastModeToString(AbstractMap map, Position posCase) {
 		String res = "";
@@ -457,10 +459,10 @@ public class Case {
 	}
 	
 	/**
-	 * Retourne vrai si la Bete est sur la Case courante et faux le cas ï¿½chï¿½ant
-	 * @param map
-	 * @param posCase
-	 * @return boolean
+	 * Retourne vrai si la Bete est sur la Case courante et faux le cas echeant
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return boolean determinant si le chasseur est sur la case indiquer
 	 */
 	public boolean getBeastOnCaseBeastMode(AbstractMap map, Position posCase) {
 		if(map.getBeast().isPosEnt(posCase.getPosX(), posCase.getPosY())) {
@@ -471,8 +473,8 @@ public class Case {
 	
 	/**
 	 * Retourne le Bonus a ramasser sous la forme d'une Chaine de Char si la Case en contient un
-	 * @param bonus
-	 * @return String 
+	 * @param bonus liste des bonus disponible
+	 * @return String affichage du bonus poser sur la map
 	 */
 	public String getBonusOnCaseNonActifToString(boolean[] bonus) {
 		String res = "";
@@ -485,8 +487,8 @@ public class Case {
 	
 	 /**
 	 * retourne vrai si un bonus peut etre ramasse sur cette Case
-	 * @param bonus
-	 * @return booean
+	 * @param bonus les bonus  disponible
+	 * @return boolean determinant si le bonus peut etre ramasser
 	 */
 	public boolean bonusOnCase(boolean[] bonus) {
 		for (int i = 0; i < bonus.length; i++) {
@@ -499,9 +501,9 @@ public class Case {
 	
 	/**
 	 * Retourne le Bonus Actif sur la Case sous la forme d'une Chaine de Characteresi il y en a un et la Chaine Vide sinon (Cela si c'est un Bonus pose par le Chasseur)
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String version textuelle du bonus
 	 */
 	public String getHunterBonusActifToString(AbstractMap map, Position posCase) {
 		String res="";
@@ -513,10 +515,10 @@ public class Case {
 	}
 
 	/**
-	 * Retourne le Bonus Actif sur la Case sous la forme d'une Chaine de Characteresi il y en a un et la Chaine Vide sinon (Cela si c'est un Bonus pose par la Bete)
-	 * @param map
-	 * @param posCase
-	 * @return String
+	 * Retourne le Bonus Actif sur la Case sous la forme d'une Chaine de Charactere si il y en a un et la Chaine Vide sinon (Cela si c'est un Bonus pose par la Bete)
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String un bonus sous forme textuelle
 	 */
 	public String getBeastBonusActifToString(AbstractMap map, Position posCase) {
 		String res="";
@@ -529,9 +531,9 @@ public class Case {
 	
 	/**
 	 * Retourne le Bonus Actif sur la Case si il y en a un et null sinon (Cela si c'est un Bonus pose par le Chasseur)
-	 * @param map
-	 * @param posCase
-	 * @return IBonus
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return IBonus le bonus de la case courante
 	 */
 	public IBonus getHunterBonusActifOnCase(AbstractMap map, Position posCase) {
 		IBonus bonusActif = null;
@@ -545,9 +547,9 @@ public class Case {
 	
 	/**
 	 * Retourne le Bonus Actif sur la Case si il y en a un et null sinon (Cela si c'est un Bonus pose par la Bete)
-	 * @param map
-	 * @param posCase
-	 * @return IBonus
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return IBonus le bonus de la case courante
 	 */
 	public IBonus getBeastBonusActifOnCase(AbstractMap map, Position posCase) {
 		IBonus bonusActif = null;
@@ -561,9 +563,9 @@ public class Case {
 	
 	/**
 	 * Retourne vrai si il doit y avoir du brouillard sur la case
-	 * @param map
-	 * @param posCase
-	 * @return boolean
+	 * @param map la map de la partie en cours
+	 * @param posCase  la position de la case courante
+	 * @return boolean determinant si il y'a du fog sur un case ou non
 	 */
 	public boolean getFogOnCase(AbstractMap map, Position posCase) {
 		Position posHunter=map.getHunter().getPos();
@@ -590,9 +592,9 @@ public class Case {
 	
 	/**
 	 * Retourne la chaine de charactere associee au brouillard si cette derniere doit etre placee sur la case ou la chaine vide sinon
-	 * @param map
-	 * @param posCase
-	 * @return boolean
+	 * @param map la map de la partie en cours
+	 * @param posCase la position de la case courante
+	 * @return String le fog sous sa forme textuelle
 	 */
 	public String getFogOnCaseToString(AbstractMap map, Position posCase) {
 		String res="";
