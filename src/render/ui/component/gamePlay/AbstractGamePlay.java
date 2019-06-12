@@ -24,6 +24,9 @@ import render.ui.form.button.PlayButton;
 import render.ui.util.Directory;
 import render.ui.util.Interface;
 
+/**
+ * Cette classe gere le deroulement de la partie lors d'un affichage visuelle. Elle gere le comportement du plateau de jeu et ordonne le tour par tour des entites selon leurs actions.
+ */
 public abstract class AbstractGamePlay {
 	
 	protected AbstractGame ag;
@@ -53,7 +56,7 @@ public abstract class AbstractGamePlay {
 	private final double size;
 
 	/**
-	 * initialise la window de l'AbstractGame avec celle passer en parametre
+	 * Initialise la window de l'AbstractGame avec celle passe en parametre.
 	 * @param window la fenetre de l'application
 	 */
 	public void setWindow(Window window)
@@ -62,9 +65,9 @@ public abstract class AbstractGamePlay {
 	}
 	
 	/**
-	 * Instancie l'AbstractGamePlay
-	 * @param map la map de jeu
-	 * @throws FileNotFoundException exception declancher dans le cas ou il ne trouve pas le fichier
+	 * Instancie l'AbstractGamePlay grace a ses classes enfants.
+	 * @param map Le plateau de jeu.
+	 * @throws FileNotFoundException Une exception declanchee dans le cas ou il ne trouve pas le fichier.
 	 */
 	public AbstractGamePlay(AbstractMap map) throws FileNotFoundException {
 		this.map = map;
@@ -96,7 +99,7 @@ public abstract class AbstractGamePlay {
 
 	
 	/**
-	 * Intialise le PlayButton avec celui passer en parametres
+	 * Intialise le PlayButton avec celui passe en parametre.
 	 * @param pb les bouton de jeu
 	 */
 	public void setPlayButton(PlayButton pb) {
@@ -104,7 +107,7 @@ public abstract class AbstractGamePlay {
 	}
 
 	/**
-	 * Initialise l'Inventory avec celui passer en parametres
+	 * Initialise l'Inventory avec celui passe en parametre.
 	 * @param i l'inventaire permettant de voir les bonus
 	 */
 	public void setInventory(Inventory i) {
@@ -112,7 +115,7 @@ public abstract class AbstractGamePlay {
 	}
 
 	/**
-	 * Retourne le GridPane d'AbstracrGame
+	 * Retourne le GridPane d'AbstracrGame.
 	 * @return GridPane le GridPane de la fenetre
 	 */
 	public GridPane getGrid() {
@@ -120,35 +123,35 @@ public abstract class AbstractGamePlay {
 	}
 
 	/**
-	 * Configure la taille maximal d'abstractGame
-	 * @param maxWidth la largeur souhaiter
-	 * @param maxHeight la longueur souhaiter
+	 * Configure la taille maximal du GridPane d'AbstractGame.
+	 * @param maxWidth La largeur souhaite.
+	 * @param maxHeight la longueur souhaite.
 	 */
 	public void setMaxSize(int maxWidth, int  maxHeight ) {
 		grid.setMaxSize(maxWidth, maxHeight);
 	}
 
 	/**
-	 * Configure la taille minimal d'abstractGame
-	 * @param minWidth la largeur souhaiter
-	 * @param minHeight  la longueur souhaiter
+	 * Configure la taille minimal du GridPane d'AbstractGame.
+	 * @param minWidth La largeur souhaite
+	 * @param minHeight La longueur souhaite
 	 */
 	public void setMinSize(int minWidth, int  minHeight ) {
 		grid.setMinSize(minWidth, minHeight);
 	}
 
 	/**
-	 * Configure la taille optimal d'abstractGame
-	 * @param prefWidth la largeur souhaiter
-	 * @param prefHeight la longueur souhaiter
+	 * Configure la taille optimal du GridPane d'AbstractGame.
+	 * @param prefWidth La largeur souhaite.
+	 * @param prefHeight La longueur souhaite.
 	 */
 	public void setPrefSize(int prefWidth, int  prefHeight ) {
 		grid.setPrefSize(prefWidth, prefHeight);
 	}
 	
 	/**
-	 * Adapte le GridPane pour qu'il soit conforme a vision d'une inteligence artificielle
-	 * @param map la map de jeu
+	 * Adapte le GridPane pour qu'il soit conforme a la vision d'une intelligence artificielle.
+	 * @param map Le plateau de jeu.
 	 */
 	public void refreshIAView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
@@ -171,8 +174,8 @@ public abstract class AbstractGamePlay {
 	}
 
 	/**
-	 * Adapte le GridPane pour qu'il soit conforme a vision du chasseur
-	 * @param map la map de jeu
+	 * Adapte le GridPane pour qu'il soit conforme a la vision du chasseur.
+	 * @param map Le plateau de jeu.
 	 */
 	public void refreshHunterView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
@@ -195,8 +198,8 @@ public abstract class AbstractGamePlay {
 	}
 	
 	/**
-	 * Adapte le GridPane pour qu'il soit conforme a vision de la bete
-	 * @param map la map de jeu
+	 * Adapte le GridPane pour qu'il soit conforme a la vision de la bete.
+	 * @param map Le plateau de jeu.
 	 */
 	public void refreshBeastView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
@@ -218,8 +221,8 @@ public abstract class AbstractGamePlay {
 	}
 	
 	/**
-	 * Adapte le GridPane pour qu'elles soit adequat � la vue de transition
-	 * @param map la map de jeu
+	 * Adapte le GridPane pour qu'il soit adequat a la vue de transition.
+	 * @param map Le plateau de jeu.
 	 */
 	public void refreshTransitionView(AbstractMap map) {
 		for (int row = 0; row < (map.getTab().length); row++) {
@@ -238,13 +241,13 @@ public abstract class AbstractGamePlay {
 	}
 
 	/**
-	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue du chasseur
-	 * @param rec le rectangle sur lequel appliquer une texture
-	 * @param caseCour la case ou appliquer la texture
-	 * @param map la map de jeu
-	 * @param row la ligne sur laquelle est la case
-	 * @param col la colonne sur laquelle est la case
-	 * @param posCase la position de la case
+	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue du chasseur.
+	 * @param rec Le rectangle sur lequel appliquer une texture.
+	 * @param caseCour La case ou appliquer la texture.
+	 * @param map Le plateau de jeu.
+	 * @param row La ligne sur laquelle est la case.
+	 * @param col La colonne sur laquelle est la case.
+	 * @param posCase La position de la case.
 	 */
 	private void paintRectangleHunterView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
@@ -309,13 +312,13 @@ public abstract class AbstractGamePlay {
 	
 
 	/**
-	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue de la bete
-	 * @param rec le rectangle sur lequel appliquer une texture
-	 * @param caseCour la case ou appliquer la texture
-	 * @param map la map de jeu
-	 * @param row la ligne sur laquelle est la case
-	 * @param col la colonne sur laquelle est la case
-	 * @param posCase la position de la case
+	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue de la bete.
+	 * @param rec Le rectangle sur lequel appliquer une texture.
+	 * @param caseCour La case ou appliquer la texture.
+	 * @param map Le plateau de jeu.
+	 * @param row La ligne sur laquelle est la case.
+	 * @param col La colonne sur laquelle est la case.
+	 * @param posCase La position de la case.
 	 */
 	private void paintRectangleBeastView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
@@ -348,13 +351,13 @@ public abstract class AbstractGamePlay {
 	}
 	
 	/**
-	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue de l'intelligence artificielle
-	 * @param rec le rectangle sur lequel appliquer une texture
-	 * @param caseCour la case ou appliquer la texture
-	 * @param map la map de jeu
-	 * @param row la ligne sur laquelle est la case
-	 * @param col la colonne sur laquelle est la case
-	 * @param posCase la position de la case
+	 * Applique une texture a un rectangle en fonction de la case qu'il represente et de la vue de l'intelligence artificielle.
+	 * @param rec Le rectangle sur lequel appliquer une texture.
+	 * @param caseCour la case ou appliquer la texture.
+	 * @param map La map de jeu.
+	 * @param row La ligne sur laquelle est la case.
+	 * @param col La colonne sur laquelle est la case.
+	 * @param posCase La position de la case.
 	 */
 	public void paintRectangleIAView(Rectangle rec , Case caseCour , AbstractMap map, int row , int col, Position posCase) {
 		if(caseCour.isObstacle()) {
@@ -404,11 +407,11 @@ public abstract class AbstractGamePlay {
 	}
 	
 	/**
-	 * Retourne le rectangle se trouvant a la case d'indice row, col, dans le gridpane
-	 * @param row la ligne sur laquel se trouve le rectangle
-	 * @param column la colone ou se trouve le rectangle voulu
-	 * @param gridPane le gridpane ou le rectangle doit ce situer
-	 * @return Rectangle le rectangle au coordonne rentre en parametre
+	 * Retourne le rectangle se trouvant a la case d'indice row, l'incide col dans le gridpane.
+	 * @param row La ligne sur laquelle se trouve le rectangle.
+	 * @param column La colonne ou se trouve le rectangle voulu.
+	 * @param gridPane Le GridPane ou le rectangle doit se situer.
+	 * @return Rectangle Le rectangle aux coordonnees rentrees en parametres.
 	 */
 	public Rectangle getNode (final int row, final int column, GridPane gridPane) {
 		Node result = null;
@@ -435,7 +438,7 @@ public abstract class AbstractGamePlay {
 	
 	/**
 	 * Retourne Le plateau de jeu.
-	 * @return L platerau de jeu de la partie en cours.
+	 * @return Le plateau de jeu de la partie en cours.
 	 */
 	public AbstractMap getMap()
 	{

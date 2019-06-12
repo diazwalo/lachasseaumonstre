@@ -47,12 +47,12 @@ public abstract class AbstractMap
 
     
     /**
-     * Place le Premier Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote
+     * Place le premier bonus de l'entite concernee (grace au parametre bonusHunterOrBeast) de son cote
      * @param idxWidth place sur la largeure de l'entitee
      * @param idxHeight place sur la longueur de l'entitee
      * @param tabBonus La configuration des bonus.
      * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
-     * @return Position
+     * @return La position du premier bonus sur le plateau de jeu.
      */
     public final Position createPositionTempoFirstBonus(int idxWidth, int idxHeight, boolean[] tabBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
@@ -86,12 +86,12 @@ public abstract class AbstractMap
     }
 
     /**
-     * Place le Deuxieme Bonus de l'Entite concernee (grace au parametre bonusHunterOrBeast) de son cote en s'assurant que ce dernier ne soit pas a la position du premier Bonus
+     * Place le deuxieme bonus de l'entite concernee (grace au parametre bonusHunterOrBeast) de son cote en s'assurant que ce dernier ne soit pas a la position du premier Bonus
      * @param idxWidth place sur la largeure de l'entitee
      * @param idxHeight place sur la longueur de l'entitee
      * @param tabBonus La configuration des bonus
      * @param posFirstBonus La position du premier bonus.
-     * @param bonusHunterOrBeast True pour la bete, false pour le monstre.
+     * @param bonusHunterOrBeast true pour la bete, false pour le monstre.
      */
     public final void createPositionTempoSecondBonus(int idxWidth, int idxHeight, boolean[] tabBonus, Position posFirstBonus, boolean bonusHunterOrBeast) {
         Random r=new Random();
