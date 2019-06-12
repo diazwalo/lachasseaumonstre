@@ -50,6 +50,10 @@ public class GamePlayBeast extends AbstractGamePlay implements IScore{
 			}
 			ag.incrementNbTurnEntityOne();	
 			ag.updateStartGame();
+			bo=ag.checkBeastTrapped();
+			if(super.map.getBeast().getTrapped()) {
+				this.ag.triggerTrap();
+			}
 			super.refreshBeastView(super.map);
 			return true;
 		}

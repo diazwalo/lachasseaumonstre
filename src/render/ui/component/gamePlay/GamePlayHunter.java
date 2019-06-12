@@ -52,6 +52,9 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 	@Override
 	public void next() {
 		if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
+			if(super.map.getBeast().getTrapped()) {
+				this.ag.triggerTrap();
+			}
 			((GameHunter)ag).beastTurn();
 			ag.checkBeastRevealed();
 			ag.updateEndGame();
