@@ -54,7 +54,7 @@ public class Game {
 	 * @param window Le core de l'ihm
 	 * @param map Le plateau de jeu de la partie.
 	 * @param gameType Le mode de jeu de la partie.
-	 * @throws FileNotFoundException exception se declachant si il ne trouve pas les texture voulu
+	 * @throws FileNotFoundException
 	 */
 	
 	public Game(Window window, AbstractMap map, AbstractGamePlay gameType) throws FileNotFoundException {
@@ -254,8 +254,8 @@ public class Game {
 
 	/**
 	 * Initiase les evenement pour les bouton de mouvement
-	 * @param map la map de la partie voulu
-	 * @param gameType le type de gameplay
+	 * @param map
+	 * @param gameType
 	 */
 	public void setEventMouvmentButton(AbstractMap map, AbstractGamePlay gameType) {
 		if(! (gameType instanceof GamePlayIA)) {

@@ -33,6 +33,7 @@ public class Home
 	private Window window;
 	Config config;
 	
+	
 	/**
 	 * Cree une vue pour l'accueil
 	 * @param window la fenetre de l'application
@@ -51,18 +52,15 @@ public class Home
 		verticalMenu();
 		
 		Scene scene = new Scene(this.core, Interface.getSize().getWidth(), Interface.getSize().getHeight());
-		scene.getStylesheets().add(Directory.STYLE_CSS);
+		scene.getStylesheets().add(Directory.STYLE_CSS);		
 		
 		window.stage.setScene(scene);
 		
+		window.media = new Media(getClass().getClassLoader().getResource(Directory.SOUND_GAME).toString());
+		window.mp= new MediaPlayer(window.media);
+		window.mp.play();
+		window.mp.setCycleCount(MediaPlayer.INDEFINITE);
 	
-		Media media;
-		MediaPlayer mp;
-		media = new Media(getClass().getClassLoader().getResource(Directory.SOUND_GAME).toString());
-		mp= new MediaPlayer(media);
-		mp.play();
-		mp.setCycleCount(MediaPlayer.INDEFINITE);
-		
 	}
 	
 	

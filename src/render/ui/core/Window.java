@@ -3,6 +3,8 @@ package render.ui.core;
 import config.Config;
 import javafx.application.Application;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import render.ui.util.Directory;
 import render.ui.view.Home;
@@ -11,6 +13,9 @@ public class Window extends Application
 {
 	public Stage stage;
 	public Config config;
+	
+	public Media media;
+	public MediaPlayer mp;
 	
 	public void start(Stage stage) {
 		this.stage = stage;
