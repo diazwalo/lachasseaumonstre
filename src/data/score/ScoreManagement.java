@@ -111,6 +111,9 @@ public class ScoreManagement
 	
 	public void createFile(ScoreFile path)
 	{
+		File d = new File("data/");
+		d.mkdir();
+		
 		File f = new File(path.getPath());
 		try {
 			f.createNewFile();

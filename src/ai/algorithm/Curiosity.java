@@ -55,7 +55,7 @@ public class Curiosity
             {
                 positions.add(position);
             }
-            System.out.println(position);
+
             if(cantMooveRight(position) && 
                     positionList.contains(position.toNorth()) && this.listNode.get(NodeUtil.formatNode(position.toNorth())) != null &&
                     positionList.contains(position.toNorthWest()) && this.listNode.get(NodeUtil.formatNode(position.toNorthWest())) != null
