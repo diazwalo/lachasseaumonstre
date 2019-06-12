@@ -11,11 +11,10 @@ import data.score.ScoreFile;
 import map.AbstractMap;
 import map.Mouvment;
 import render.bonus.IBonus;
-import render.ui.view.EndScreen;
 
 public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	public AbstractGame ag;
-	int entityTurn = 1;
+	int entityTurn;
 	
 	/**
 	 * nstancie un GamePlayMulti;
@@ -24,13 +23,13 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	 */
 	public GamePlayMulti(AbstractMap map) throws FileNotFoundException {
 		super(map);
+		this.entityTurn = 1;
 		super.refreshTransitionView(map);
 		ag= new GameMulti(map);
 		ag.map.setBeastWalk();
 		
 	}
 
-	
 	/**
 	 *  Execute un tour de jeu. Renvoie true si le tour c'est passer comme prevue, renvoie false si c'est la fin de la partie
 	 */
@@ -41,12 +40,12 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 				
 				if(entityTurn==0) {
 					
-					
 					IBonus bo=ag.checkBeastTrapped();
 					if(super.map.getBeast().getTrapped()) {
 						super.map.getBeast().setUntrapped();
 						if(bo != null) {
 							this.map.removeBonus(bo);
+							entityTurn=(entityTurn+1)%2;
 						}
 						return true;
 					}else if(ag.map.moveBeast(mouvment)) {
@@ -105,7 +104,7 @@ public class GamePlayMulti extends AbstractGamePlay implements IScore{
 	}
 	
 	/**
-	 * Crée un score et le sauvegarde
+	 * Crï¿½e un score et le sauvegarde
 	 */
 	@Override
 	public void buildScore()

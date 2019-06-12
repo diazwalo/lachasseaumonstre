@@ -173,7 +173,6 @@ public class Game {
 			GamePlayBeast g = ((GamePlayBeast)(this.plateau));
 			this.inventaire = new Inventory(g.ag.map.getBeast(), this.plateau);
 		}else if(this.plateau instanceof GamePlayMulti) {
-			System.out.println("mais nan !?");
 			GamePlayMulti g = ((GamePlayMulti)(this.plateau));
 			this.inventaire = new Inventory(g.ag.map.getHunter(), this.plateau);
 		}
@@ -186,6 +185,7 @@ public class Game {
 	{
 		this.gamePad.desactivateButton();
 		nextTurn.setDisable(false);
+		this.EndOfGame();
 	}
 	
 	/**
@@ -194,12 +194,14 @@ public class Game {
 	public void setEventNextTurnButton() {
 		nextTurn = new Button("Tour suivant");
 		if( this.plateau instanceof GamePlayIA ) {
+			
 			nextTurn.setDisable(false);
 			nextTurn.setOnAction(e -> {
 				this.plateau.next();
 				this.EndOfGame();
 			});
 		}else if(this.plateau instanceof GamePlayMulti) {
+			
 			nextTurn.setDisable(true);
 			nextTurn.setOnAction(e -> {
 				if(playerTurn==0) {
@@ -210,32 +212,46 @@ public class Game {
 					this.hunterTurn.setDisable(false);
 				}
 				this.nextTurn.setDisable(true);
+				
 				this.EndOfGame();
-			}); 
-		}
-		else {
+			});
+			this.inventaire.setBonusDisable();
+		}else {
+			
 			nextTurn.setDisable(true);
 			nextTurn.setOnAction(e -> {
 				nextTurn.setDisable(true);
 				this.plateau.next();
 				this.gamePad.activateButton();
-				
-				List<IBonus> listInventory = new ArrayList<>();
-				
-				if(this.plateau instanceof GamePlayHunter) {
-					((GamePlayHunter)(this.plateau)).ag.map.getHunter().putItAllInInventory();
-					listInventory = ((GamePlayHunter)(this.plateau)).ag.map.getHunter().getInventory();
-				}else if(this.plateau instanceof GamePlayBeast) {
-					((GamePlayBeast)(this.plateau)).ag.map.getBeast().putItAllInInventory();
-					listInventory = ((GamePlayBeast)(this.plateau)).ag.map.getBeast().getInventory();
-				}
-				
 				this.EndOfGame();
-				inventaire.setBonusAble(listInventory);
+				
+				this.refreshBonusView();
 			});
 		}
 	}
 	
+	private void refreshBonusView() {
+		List<IBonus> listInventory = new ArrayList<>();
+		
+		if(this.plateau instanceof GamePlayHunter) {
+			((GamePlayHunter)(this.plateau)).ag.map.getHunter().putItAllInInventory();
+			listInventory = ((GamePlayHunter)(this.plateau)).ag.map.getHunter().getInventory();
+		}else if(this.plateau instanceof GamePlayBeast) {
+			((GamePlayBeast)(this.plateau)).ag.map.getBeast().putItAllInInventory();
+			listInventory = ((GamePlayBeast)(this.plateau)).ag.map.getBeast().getInventory();
+		}else if(this.plateau instanceof GamePlayMulti) {
+			if(this.playerTurn == 1) {
+				((GamePlayMulti)(this.plateau)).ag.map.getBeast().putItAllInInventory();
+				listInventory = ((GamePlayMulti)(this.plateau)).ag.map.getBeast().getInventory();
+			}else if(this.playerTurn == 0) {
+				((GamePlayMulti)(this.plateau)).ag.map.getHunter().putItAllInInventory();
+				listInventory = ((GamePlayMulti)(this.plateau)).ag.map.getHunter().getInventory();
+			}
+		}
+		
+		inventaire.setBonusAble(listInventory);
+	}
+
 	/**
 	 * Initiase les evenement pour les bouton de mouvement
 	 * @param map
@@ -246,56 +262,48 @@ public class Game {
 			this.gamePad.topBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORD)) {
 					userAction();
-					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.upLeftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORDOUEST)) {
 					userAction();
-					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.upRightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.NORDEST)) {
 					userAction();
-					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.leftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.OUEST)) {
 					userAction();
-					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.rightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.EST)) {
 					userAction();
-					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUD)) {
 					userAction();
-					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomLeftBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUDOUEST)) {
 					userAction();
-					this.EndOfGame();
 				}
 			});
 			
 			this.gamePad.bottomRightBtn.getBouton().setOnAction(e -> {
 				if(this.plateau.play(Mouvment.SUDEST)) {
 					userAction();
-					this.EndOfGame();
 				}
 			});
 		}
@@ -310,29 +318,30 @@ public class Game {
 		this.beastTurn.setOnAction(e -> {
 			if(playerTurn==0) {
 				((GamePlayMulti) (this.plateau)).setView(playerTurn);
-				//le plus propre
-				//this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).ag.map.getBeast(), this.plateau, ((GamePlayMulti)(this.plateau)).ag);
-				//le moins propre
-				this.inventaire = new Inventory(((GamePlayMulti)(this.plateau)).ag.map.getBeast(), this.plateau);
+				this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).ag.map.getBeast(), this.plateau, ((GamePlayMulti)(this.plateau)).ag);
+				this.right.getChildren().clear();
+				this.right.getChildren().addAll(inventaire.getCore());
 				playerTurn=(playerTurn+1)%2;
 				this.beastTurn.setDisable(true);
 				this.gamePad.activateButton();
+				this.refreshBonusView();
 			}
 		});
 
-		this.beastTurn.setDisable(true);
 		this.hunterTurn.setOnAction(e -> {
 			if(playerTurn==1) {
 				((GamePlayMulti) (this.plateau)).setView(playerTurn);
-				//this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).ag.map.getHunter(), this.plateau, ((GamePlayMulti)(this.plateau)).ag);
-				this.inventaire = new Inventory(((GamePlayMulti)(this.plateau)).ag.map.getHunter(), this.plateau);
+				this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).ag.map.getHunter(), this.plateau, ((GamePlayMulti)(this.plateau)).ag);
+				this.right.getChildren().clear();
+				this.right.getChildren().addAll(inventaire.getCore());
 				playerTurn=(playerTurn+1)%2;
 				this.hunterTurn.setDisable(true);
 				this.gamePad.activateButton();
+				this.refreshBonusView();
 			}
 		});
 	}
-	
+
 	/**
 	 * Affiche l'ecran de fin jeu en fonction de la victoire ou de la defaite
 	 */

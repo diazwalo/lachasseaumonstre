@@ -69,7 +69,6 @@ public class Inventory {
 		botButton = new Button();
 		
 		if(entity instanceof Beast) {
-			System.out.println("youhou c'est une instance de bete");
 			entity = (Beast)(entity);
 			
 			topButton.setGraphic(new ImageView(Directory.GAME_BAIT));
@@ -88,7 +87,6 @@ public class Inventory {
 				ag.bonusChoiceBeast("1");
 			});
 		}else if (entity instanceof Hunter) {
-			System.out.println("youhou c'est une instance de chasseur");
 			entity = (Hunter)(entity);
 			
 			topButton.setGraphic(new ImageView(Directory.GAME_TRAP));
@@ -110,7 +108,7 @@ public class Inventory {
 	}
 	
 	/**
-	 * Rend la liste de bonus passez en paramètre disponible pour l'utilisater
+	 * Rend la liste de bonus passez en paramï¿½tre disponible pour l'utilisater
 	 * @param listIBonus
 	 */
 	public void setBonusAble(List<IBonus> listIBonus) {
@@ -132,7 +130,7 @@ public class Inventory {
 		botButton.setDisable(true);
 		topButton.setDisable(true);
 	}
-	
+
 	/**
 	 * Retoune le Node principale de l'objet
 	 * @return

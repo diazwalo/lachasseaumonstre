@@ -44,18 +44,9 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 				return true;
 			}
 			return false;
-		}else {
-			buildScore();
-			
-			EndScreen es =new EndScreen(super.window);
-			es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), "");
-			return false;
 		}
-	}
-	/*
-	public boolean useBonus(IBonus bonus) {
 		return false;
-	}*/
+	}
 
 	/**
 	 * Fais passer la partie au tour suivant
@@ -67,11 +58,6 @@ public class GamePlayHunter extends AbstractGamePlay implements IScore{
 			ag.checkBeastRevealed();
 			ag.updateEndGame();
 			super.refreshHunterView(map);
-		}else {
-			buildScore();
-			
-			EndScreen es =new EndScreen(window);
-			es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), "");
 		}
 	}
 

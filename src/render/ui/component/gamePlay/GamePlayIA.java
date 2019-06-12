@@ -19,10 +19,11 @@ import render.ui.view.EndScreen;
 public class GamePlayIA extends AbstractGamePlay implements IScore{
 	public AbstractGame ag;
 	//1 si c'est au tour du Chasseur et a 2 si c'est au tour de la Bete
-	int entityTurn = 1;
+	int entityTurn;
 
 	public GamePlayIA(AbstractMap map) throws FileNotFoundException {
 		super(map);
+		this.entityTurn = 1;
 		super.refreshIAView(map);
 		ag = new GameAI(map);
 		((GameAI)this.ag).graph = new Graph(super.map);
@@ -49,7 +50,6 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 				ag.ramasserBonusHunter();
 				super.refreshIAView(super.map);
 			}
-			
 		}else if(entityTurn == 2) {
 			
 			if(! super.map.isBeastWin() && ! super.map.isHunterWin() && AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
@@ -60,17 +60,7 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 				ag.checkGameStatus();
 				ag.ramasserBonusBeast();
 				super.refreshIAView(map);
-			}else {
-				buildScore();
-				
-				EndScreen es =new EndScreen(window);
-				if(ag.map.isHunterWin()) {
-					es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), "du Chasseur");
-				}else {
-					es.setEndScreen(AbstractGame.gameStatus, ag.map.isHunterWin(), this.ag.map.getConfig(), "de la Bete");
-				}
 			}
-			
 		}
 		
 		if(this.entityTurn == 1) {
@@ -79,7 +69,7 @@ public class GamePlayIA extends AbstractGamePlay implements IScore{
 			this.entityTurn = 1;
 		}
 	}
-	
+
 	@Override
 	public void buildScore()
 	{

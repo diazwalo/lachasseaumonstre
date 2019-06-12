@@ -98,15 +98,12 @@ public abstract class AbstractMap
         Position posBonusFinal=new Position(-2 , -2);
 
         while(posBonusFinal.isPos(-2, -2)) {
-        	System.out.println(posBonusFinal);
             int posBonusX=idxHeight+r.nextInt(this.tab.length/2);
             int posBonusY=idxHeight+r.nextInt(this.tab[0].length/2);
 
             if(idxWidth != 0 || idxHeight != 0) {
             	posBonusY=idxWidth-r.nextInt(idxWidth/2);
-            	System.out.println(posBonusY);
             	posBonusX=idxHeight-r.nextInt(idxHeight/2);
-            	System.out.println(posBonusX);
             }
 
             Position posBonusTempo=new Position(posBonusX, posBonusY);
@@ -119,7 +116,6 @@ public abstract class AbstractMap
         if(bonusHunterOrBeast)  {
         	tab[posBonusFinal.getPosY()][posBonusFinal.getPosX()].setBonusBeast(tabBonus);
         }else {
-        	System.out.println(posBonusFinal);
         	tab[posBonusFinal.getPosX()][posBonusFinal.getPosY()].setBonusHunter(tabBonus);
         }
     }
