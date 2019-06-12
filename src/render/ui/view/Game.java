@@ -166,6 +166,8 @@ public class Game {
 			this.inventaire = new Inventory(g.getGame().map.getBeast(), this.plateau);
 		}else if(this.plateau instanceof GamePlayMulti) {
 			GamePlayMulti g = ((GamePlayMulti)(this.plateau));
+			System.out.println(g.getGame());
+			System.out.println(g.getGame().map.getHunter());
 			this.inventaire = new Inventory(g.getGame().map.getHunter(), this.plateau);
 		}
 	}
@@ -233,11 +235,11 @@ public class Game {
 			listInventory = ((GamePlayBeast)(this.plateau)).getGame().map.getBeast().getInventory();
 		}else if(this.plateau instanceof GamePlayMulti) {
 			if(this.playerTurn == 1) {
-				((GamePlayMulti)(this.plateau)).ag.map.getBeast().putItAllInInventory();
-				listInventory = ((GamePlayMulti)(this.plateau)).ag.map.getBeast().getInventory();
+				((GamePlayMulti)(this.plateau)).getGame().map.getBeast().putItAllInInventory();
+				listInventory = ((GamePlayMulti)(this.plateau)).getGame().map.getBeast().getInventory();
 			}else if(this.playerTurn == 0) {
-				((GamePlayMulti)(this.plateau)).ag.map.getHunter().putItAllInInventory();
-				listInventory = ((GamePlayMulti)(this.plateau)).ag.map.getHunter().getInventory();
+				((GamePlayMulti)(this.plateau)).getGame().map.getHunter().putItAllInInventory();
+				listInventory = ((GamePlayMulti)(this.plateau)).getGame().map.getHunter().getInventory();
 			}
 		}
 		
@@ -310,7 +312,7 @@ public class Game {
 		this.beastTurn.setOnAction(e -> {
 			if(playerTurn==0) {
 				((GamePlayMulti) (this.plateau)).setView(playerTurn);
-				this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).ag.map.getBeast(), this.plateau, ((GamePlayMulti)(this.plateau)).ag);
+				this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).getGame().map.getBeast(), this.plateau, ((GamePlayMulti)(this.plateau)).getGame());
 				this.right.getChildren().clear();
 				this.right.getChildren().addAll(inventaire.getCore());
 				playerTurn=(playerTurn+1)%2;
@@ -323,7 +325,7 @@ public class Game {
 		this.hunterTurn.setOnAction(e -> {
 			if(playerTurn==1) {
 				((GamePlayMulti) (this.plateau)).setView(playerTurn);
-				this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).ag.map.getHunter(), this.plateau, ((GamePlayMulti)(this.plateau)).ag);
+				this.inventaire.setInventory(((GamePlayMulti)(this.plateau)).getGame().map.getHunter(), this.plateau, ((GamePlayMulti)(this.plateau)).getGame());
 				this.right.getChildren().clear();
 				this.right.getChildren().addAll(inventaire.getCore());
 				playerTurn=(playerTurn+1)%2;

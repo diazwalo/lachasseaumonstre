@@ -13,7 +13,6 @@ import map.Mouvment;
 import render.bonus.IBonus;
 
 public class GamePlayMulti extends AbstractGamePlay implements IScore{
-	public AbstractGame ag;
 	int entityTurn;
 	
 	/**
