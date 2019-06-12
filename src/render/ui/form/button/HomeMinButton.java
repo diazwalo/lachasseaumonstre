@@ -8,8 +8,8 @@ public class HomeMinButton extends HomeButton
 
 	/**
 	 * Instancie le HomeMinButton
-	 * @param value
-	 * @param image
+	 * @param value le texte sur le bouton
+	 * @param image la texture du boutton
 	 */
 	public HomeMinButton(String value, Image image)
 	{
@@ -27,7 +27,7 @@ public class HomeMinButton extends HomeButton
 	
 	/**
 	 * Instancie le HomeMinButton
-	 * @param value
+	 * @param value le texte sur le bouton
 	 */
 	public HomeMinButton(String value)
 	{

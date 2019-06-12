@@ -56,7 +56,7 @@ public class PlayButton {
 	
 	/**
 	 * Retourne le mouvement indiquer par le PlayButton
-	 * @return
+	 * @return Mouvment
 	 */
 	public Mouvment getMouvment()
 	{
@@ -67,7 +67,7 @@ public class PlayButton {
 	
 	/**
 	 * Renvoie le Node principale de PlayButton
-	 * @return
+	 * @return VBox
 	 */
 	public VBox getCore() {
 		return core;
@@ -75,8 +75,8 @@ public class PlayButton {
 	
 	/**
 	 * Definie la taille maximum du PlayButton
-	 * @param maxWidth
-	 * @param maxHeight
+	 * @param maxWidth la largeur voulu
+	 * @param maxHeight la longueur voulu
 	 */
 	public void setMaxSize(int maxWidth, int  maxHeight ) {
 		topBtn.getBouton().setMaxSize(maxWidth, maxHeight);
@@ -91,8 +91,8 @@ public class PlayButton {
 	
 	/**
 	 * Definie la taille minimale du PlayButton
-	 * @param minWidth
-	 * @param minHeight
+	 * @param minWidth la largeur voulu
+	 * @param minHeight la longueur voulu
 	 */
 	public void setMinSize(int minWidth, int  minHeight ) {
 		topBtn.getBouton().setMaxSize(minWidth, minHeight );
@@ -108,8 +108,8 @@ public class PlayButton {
 	
 	/**
 	 * Definie la taille optimale du PlayButton
-	 * @param prefWidth
-	 * @param prefHeight
+	 * @param prefWidth la largeur voulu
+	 * @param prefHeight la longueur voulu
 	 */
 	public void setPrefSize(int prefWidth, int  prefHeight ) {
 		topBtn.getBouton().setMaxSize(prefWidth, prefHeight );
@@ -158,7 +158,7 @@ public class PlayButton {
 	
 	/**
 	 * Renvois si le PlayButton est utilisable on non pour l'utilisateur
-	 * @return
+	 * @return boolean
 	 */
 	public boolean isActivated() {
 		return this.activate;

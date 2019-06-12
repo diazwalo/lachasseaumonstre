@@ -124,8 +124,8 @@ public abstract class AbstractGame {
 
 	/**
 	 * Retourne une Position differente de celle du Chasseur vers laquel la Bete pourra se deplacer sauf si il n'y a que cette Position
-	 * @param posDispo
-	 * @return Position 
+	 * @param posDispo la liste des positions disponibles
+	 * @return Position la position ou la bete pourra se deplacer
 	 */
 	public Position chosePosNotOnHunter(List<Position> posDispo) {
 		int idxPosDispo = new Random().nextInt(posDispo.size());
@@ -354,8 +354,8 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Retourne le choix du Bonus du Joueur sous la forme d'une chaine de charactere ( Soit 1, soit 2, ou le reste 
-	 * @param String Le nom du premier bonus.
-	 * @param String Le nom du second bonus.
+	 * @param firstBonus Le nom du premier bonus.
+	 * @param secondBonus Le nom du second bonus.
 	 * @return String
 	 */
 	public String askBonus(String firstBonus, String secondBonus) {
@@ -417,8 +417,8 @@ public abstract class AbstractGame {
 
 	/**
 	 * Choisie un Mouvment qui ne correspond pas a la position du Chasseur
-	 * @param mvtBeast
-	 * @return Mouvment
+	 * @param mvtBeast les mouvement pouvant etre excuter par la bete
+	 * @return Mouvment le mouvemnt choisi
 	 */
 	public Mouvment choseMvtNotOnHunter(List<Mouvment> mvtBeast) {
 		int idxPosDispo = new Random().nextInt(mvtBeast.size());
@@ -454,6 +454,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * confirme la fin du tour au joueur
+	 * @param affichage le texte a afficher
 	 */
 	public void endOfTurn(String affichage) {
 		System.out.println(affichage+"\n");
@@ -473,8 +474,8 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Propose au joueur de choisir quel bonus de son inventaire il veut utiliser
-	 * @param inventory
-	 * @return String
+	 * @param inventory l'inventaire de joueur
+	 * @return String 
 	 */
 	public String askBonusChoiceHunter(String inventory) {
 		System.out.println(inventory);
@@ -483,7 +484,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Active le bonus mis en parametre
-	 * @param s
+	 * @param s le bonus choisi par le chasseur
 	 */
 	public void bonusChoiceHunter(String s) {
 		if(s.equals("1")) {
@@ -510,7 +511,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Propose au joueur de choisir quel bonus de son inventaire il veut utiliser
-	 * @param inventory
+	 * @param inventory l'inventaire du joueur
 	 * @return String
 	 */
 	public String askBonusChoiceBeast(String inventory) {
@@ -520,7 +521,7 @@ public abstract class AbstractGame {
 	
 	/**
 	 * Active le bonus mis en parametre
-	 * @param s
+	 * @param s le bonus a activer
 	 */
 	public void bonusChoiceBeast(String s) {
 		if(s.equals("1")) {

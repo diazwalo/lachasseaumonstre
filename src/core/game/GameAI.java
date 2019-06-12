@@ -37,7 +37,7 @@ public class GameAI extends AbstractGame implements IScore
 	
 	/**
 	 * Instancie une partie entre deux intelligences controles par l'ordinateur.
-	 * @param map
+	 * @param map la map de la partie en cours
 	 */
 	public GameAI(AbstractMap map)
 	{

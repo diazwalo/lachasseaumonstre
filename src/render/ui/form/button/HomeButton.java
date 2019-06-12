@@ -15,8 +15,8 @@ public class HomeButton extends Button
 	
     /**
      * Instacie un HomeButtons
-     * @param value
-     * @param image
+     * @param value le texte afficher dans le HomeButton
+     * @param image la texture du HomeButtons
      */
     public HomeButton(String value, Image image)
 	{
@@ -38,7 +38,7 @@ public class HomeButton extends Button
     
     /**
      * Instancie un HomeButton
-     * @param value
+     * @param value le texte afficher dans le HomeButton
      */
 	public HomeButton(String value)
 	{
@@ -48,7 +48,7 @@ public class HomeButton extends Button
 	
 	/**
 	 * Retourne le DropShadow du HomeButtons
-	 * @return
+	 * @return l'ombre presente sur les boutons
 	 */
 	public DropShadow getShadow()
 	{

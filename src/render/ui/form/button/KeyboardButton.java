@@ -12,7 +12,7 @@ public class KeyboardButton {
 	
 	/**
 	 * Instancie le KeyBoardButton
-	 * @param contenu
+	 * @param contenu le texte a afficher dans le bouton
 	 */
 	public KeyboardButton(String contenu) {
 		this.bouton = new Button(contenu);
@@ -21,8 +21,8 @@ public class KeyboardButton {
 	}
 	
 	/**
-	 * Ibstancie le KeyBoardButton
-	 * @param image
+	 * Instancie le KeyBoardButton
+	 * @param image la texture a appliquer sur le bouton
 	 */
 	public KeyboardButton(Image image) {
 		this.bouton = new Button();
@@ -38,7 +38,7 @@ public class KeyboardButton {
 
 	/**
 	 * Retourne le Node du KeyboardButton
-	 * @return
+	 * @return bouton
 	 */
 	public Button getBouton() {
 		return bouton;
@@ -46,7 +46,7 @@ public class KeyboardButton {
 
 	/**
 	 * Remplace la valeur du Button du KeyBoardButton par celle du bouton passer en paramètre
-	 * @param bouton
+	 * @param bouton le bouton a mettre dans le KeyBoardButton
 	 */
 	public void setBouton(Button bouton) {
 		this.bouton = bouton;
@@ -54,7 +54,7 @@ public class KeyboardButton {
 
 	/**
 	 * Retour la texture du KeyBoardButton
-	 * @return
+	 * @return img
 	 */
 	public Image getImg() {
 		return img;
@@ -62,7 +62,7 @@ public class KeyboardButton {
 
 	/**
 	 * Remplace l'image du KeyboardButton par l'image passer en paramètre
-	 * @param img
+	 * @param img la texture du bouton
 	 */
 	public void setImg(Image img) {
 		this.img = img;

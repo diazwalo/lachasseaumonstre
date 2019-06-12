@@ -34,9 +34,9 @@ public class Home
 	Config config;
 	
 	/**
-	 * Cr�e une vue pour l'accueil
-	 * @param window
-	 * @param config
+	 * Cree une vue pour l'accueil
+	 * @param window la fenetre de l'application
+	 * @param config les parametre de la partie
 	 */
 	public Home(Window window, Config config)
 	{
@@ -146,7 +146,7 @@ public class Home
 	
 	/**
 	 * Renvoie la forme de la map selectionner dans les setting du menu
-	 * @return
+	 * @return la map selectionne
 	 */
 	public AbstractMap getMapForm() {
 		AbstractMap map = null;
