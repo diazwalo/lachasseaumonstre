@@ -7,6 +7,7 @@ import java.util.List;
 
 import core.game.AbstractGame;
 import core.game.GameStatus;
+import data.score.IScore;
 import interaction.Interaction;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -337,7 +338,6 @@ public class Game {
 	 */
 	public void EndOfGame() {
 		if(! AbstractGame.gameStatus.equals(GameStatus.INGAME)) {
-			
 			boolean victory = this.plateau.map.isHunterWin();
 			String entityWinner = null;
 			if(this.plateau instanceof GamePlayBeast) {
@@ -350,8 +350,16 @@ public class Game {
 				}
 			}
 			
+			manageScore();
+			
 			EndScreen es =new EndScreen(plateau.window);
 			es.setEndScreen(AbstractGame.gameStatus, victory, this.plateau.map.getConfig(), entityWinner);
 		}
+	}
+
+	// Regarde ca virgil, quelle si beau code sans instanceOf xD
+	private void manageScore()
+	{
+		((IScore) this.plateau).buildScore();
 	}
 }
