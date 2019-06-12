@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import render.ui.core.Window;
 import render.ui.form.button.HomeMinButton;
 import render.ui.form.label.LabelThemeVariableSize;
@@ -40,19 +42,38 @@ public class EndScreen {
 			if(victory) {
 				statue = new LabelThemeVariableSize("Victoire !", 40);
 				this.core.setBackground(Interface.getBackground(Directory.WIN_BACKGROUND));
+				
+				window.mp.stop();
+				window.media = new Media(getClass().getClassLoader().getResource(Directory.VICTORY_SOUND).toString());
+				window.mp= new MediaPlayer(window.media);
+				window.mp.play();
+		
 			}else if(!victory) {
 				statue = new LabelThemeVariableSize("Defaite...", 40);
 				this.core.setBackground(Interface.getBackground(Directory.LOOSE_BACKGROUND));
+				
+				window.mp.stop();
+				window.media = new Media(getClass().getClassLoader().getResource(Directory.DEFEAT_SOUND).toString());
+				window.mp= new MediaPlayer(window.media);
+				window.mp.play();
+		
 			}
 		}else {
 			this.core.setBackground(Interface.getBackground(Directory.WIN_BACKGROUND));
 			statue = new LabelThemeVariableSize("Victoire "+entityWinner+" !", 40);
+			
+			window.mp.stop();
+			window.media = new Media(getClass().getClassLoader().getResource(Directory.VICTORY_SOUND).toString());
+			window.mp= new MediaPlayer(window.media);
+			window.mp.play();
+			
 		}
 
 		Label txtEnd = new LabelThemeVariableSize(gameStatue.getStatus(), 40);
 		Button next = new HomeMinButton("Suivant");
 		next.setOnAction(e -> { 
 			//On devra faire un this.config (donc l'avoir comme attribut)
+			window.mp.stop();
 			new Home(this.window, config);
 		});
 
